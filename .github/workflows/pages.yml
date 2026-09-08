@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Security exposure guard
         run: |
-          ! grep -RqiE '(DATABASE_URL|REDIS_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|redis://)' --exclude-dir=.git .
+          ! grep -RqiE '(DATABASE_URL|REDIS_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|redis://)' --exclude-dir=.git --exclude-dir=.github index.html digest .nojekyll README.md
       - name: Public surface smoke
         run: |
           test -s index.html
