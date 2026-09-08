@@ -1,0 +1,36 @@
+name: Deploy IIG Public Demo to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  security-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Security exposure guard
+        run: |
+          ! grep -RqiE '(DATABASE_URL|REDIS_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|redis://)' --exclude-dir=.git .
+      - name: Public surface smoke
+        run: |
+          test -s index.html
+          test -s digest/2026-09-review.html
+          grep -q "INDUSTRY INTELLIGENCE GENERATION" index.html
+          grep -q "Monthly Energy Digest" index.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
