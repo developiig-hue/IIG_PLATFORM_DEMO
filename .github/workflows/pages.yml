@@ -22,16 +22,13 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          pages = [Path(x) for x in ['index.html','industry.html','case.html','advice.html','financing.html','news.html','forms.html','about.html','digest/2026-09-review.html']]
+          pages=[Path(x) for x in ['index.html','industry.html','case.html','advice.html','financing.html','news.html','forms.html','about.html','digest/2026-09-review.html']]
           for p in pages:
               s=p.read_text(encoding='utf-8')
-              s=s.replace('<html lang="uk">','<html lang="uk" translate="no">')
-              s=s.replace('<html lang="uk" translate="no" translate="no">','<html lang="uk" translate="no">')
-              if '<meta name="google" content="notranslate">' not in s:
-                  s=s.replace('<head>','<head><meta name="google" content="notranslate">',1)
+              s=s.replace('<html lang="uk">','<html lang="uk" translate="no">').replace('<html lang="uk" translate="no" translate="no">','<html lang="uk" translate="no">')
+              if '<meta name="google" content="notranslate">' not in s:s=s.replace('<head>','<head><meta name="google" content="notranslate">',1)
               s=s.replace('ИІГ','IIG').replace('ІІГ','IIG').replace('ИИГ','IIG')
-              if '<body class="notranslate">' not in s and '<body>' in s:
-                  s=s.replace('<body>','<body class="notranslate">',1)
+              if '<body class="notranslate">' not in s and '<body>' in s:s=s.replace('<body>','<body class="notranslate">',1)
               p.write_text(s,encoding='utf-8')
           PY
       - name: Security exposure guard
@@ -39,58 +36,57 @@ jobs:
           ! grep -RqiE '(DATABASE_URL|REDIS_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|redis://)' --exclude-dir=.git --exclude-dir=.github index.html industry.html case.html advice.html financing.html news.html forms.html about.html digest .nojekyll README.md
       - name: STEP 26 public surface smoke
         run: |
-          for f in index.html industry.html case.html advice.html financing.html news.html forms.html about.html digest/2026-09-review.html assets/iig.css assets/iig.js; do test -s "$f"; done
+          for f in index.html industry.html case.html advice.html financing.html news.html forms.html about.html digest/2026-09-review.html assets/iig.css assets/iig.js assets/iig-logo-navy.svg assets/iig-logo-white.svg; do test -s "$f"; done
           for f in index.html industry.html case.html advice.html financing.html news.html forms.html about.html; do grep -q 'lang="uk" translate="no"' "$f"; grep -q 'notranslate' "$f"; done
           grep -q 'class="mark notranslate" translate="no">IIG' index.html
-          grep -q "ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА" index.html
-          grep -q "engineer-photo" index.html
-          grep -q "PRACTICAL INNOVATION / KNOW-HOW" industry.html
-          grep -q "ПЕРВИННЕ ДЖЕРЕЛО" case.html
-          grep -q "Відкрити аналітику IIG" advice.html
-          grep -q "FINANCING INTELLIGENCE" financing.html
-          grep -q "VERIFIED INDUSTRIAL ENERGY INTELLIGENCE" news.html
-          grep -q "DEMO MODE" forms.html
-          grep -q "Investment Industrial Group" about.html
-          grep -q "MONTHLY DIGEST" digest/2026-09-review.html
-          grep -q "@media(max-width:700px)" assets/iig.css
+          grep -q 'iig-logo-navy.svg' assets/iig.css
+          grep -q 'iig-logo-white.svg' assets/iig.css
+          grep -q 'NEWS IMAGE HARD RULE' assets/iig.js
+          grep -q 'data.sourceImage' assets/iig.js
+          grep -q 'ENERGY_FALLBACK' assets/iig.js
+          grep -q 'MASTER visual reference' README.md
+          grep -q 'ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА' index.html
+          grep -q 'engineer-photo' index.html
+          grep -q 'PRACTICAL INNOVATION / KNOW-HOW' industry.html
+          grep -q 'ПЕРВИННЕ ДЖЕРЕЛО' case.html
+          grep -q 'Відкрити аналітику IIG' advice.html
+          grep -q 'FINANCING INTELLIGENCE' financing.html
+          grep -q 'VERIFIED INDUSTRIAL ENERGY INTELLIGENCE' news.html
+          grep -q 'DEMO MODE' forms.html
+          grep -q 'Investment Industrial Group' about.html
+          grep -q 'MONTHLY DIGEST' digest/2026-09-review.html
+          grep -q '@media(max-width:700px)' assets/iig.css
           grep -q "setLang('ua',false)" assets/iig.js
-          grep -q "images.unsplash.com" assets/iig.css
       - name: UA default and IIG trademark red-team
         run: |
           python - <<'PY'
           import pathlib,re,sys
-          files=['index.html','industry.html','case.html','advice.html','financing.html','news.html','forms.html','about.html']
-          bad=[]
+          files=['index.html','industry.html','case.html','advice.html','financing.html','news.html','forms.html','about.html'];bad=[]
           ru_words=['Главная','Промышлен','Солнечная электростанция','финансирование','советы главного инженера','новости и аналитика','формирование отраслевой разведки','подробности дела','хранилище']
           for f in files:
-              t=pathlib.Path(f).read_text(encoding='utf-8')
-              visible=re.sub(r'data-en="[^"]*"','',t,flags=re.S)
+              t=pathlib.Path(f).read_text(encoding='utf-8');visible=re.sub(r'data-en="[^"]*"','',t,flags=re.S)
               for w in ru_words:
-                  if w.lower() in visible.lower(): bad.append(f+' contains Russian UI: '+w)
-              if any(x in t for x in ['ИІГ','ІІГ','ИИГ']): bad.append(f+' translates IIG trademark')
-              if '<html lang="uk" translate="no">' not in t: bad.append(f+' missing UA/no-translate root')
-          if bad:
-              print('\n'.join(bad));sys.exit(1)
+                  if w.lower() in visible.lower():bad.append(f+' contains Russian UI: '+w)
+              if any(x in t for x in ['ИІГ','ІІГ','ИИГ']):bad.append(f+' translates IIG trademark')
+              if '<html lang="uk" translate="no">' not in t:bad.append(f+' missing UA/no-translate root')
+          if bad:print('\n'.join(bad));sys.exit(1)
           print('UA native + immutable IIG trademark OK')
           PY
       - name: STEP 26 internal navigation red-team
         run: |
           python - <<'PY'
           import pathlib,re,sys
-          root=pathlib.Path('.')
-          pages=['index.html','industry.html','case.html','advice.html','financing.html','news.html','forms.html','about.html']
-          missing=[]
+          root=pathlib.Path('.');pages=['index.html','industry.html','case.html','advice.html','financing.html','news.html','forms.html','about.html'];missing=[]
           for page in pages:
               text=(root/page).read_text(encoding='utf-8')
               for href in re.findall(r'href=["\']([^"\']+)["\']',text):
-                  if href.startswith(('http://','https://','mailto:','#','javascript:','data:')): continue
+                  if href.startswith(('http://','https://','mailto:','#','javascript:','data:')):continue
                   target=href.split('#',1)[0].split('?',1)[0]
-                  if not target: continue
+                  if not target:continue
                   p=(root/page).parent/target
-                  if p.is_dir(): p=p/'index.html'
-                  if not p.exists(): missing.append(f'{page} -> {href}')
-          if missing:
-              print('BROKEN INTERNAL LINKS:');print('\n'.join(missing));sys.exit(1)
+                  if p.is_dir():p=p/'index.html'
+                  if not p.exists():missing.append(f'{page} -> {href}')
+          if missing:print('BROKEN INTERNAL LINKS:');print('\n'.join(missing));sys.exit(1)
           print('Internal navigation OK')
           PY
       - uses: actions/configure-pages@v5
