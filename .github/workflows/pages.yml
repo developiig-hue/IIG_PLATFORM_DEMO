@@ -25,10 +25,11 @@ jobs:
         run: |
           for f in index.html industry.html case.html advice.html financing.html news.html forms.html about.html digest/2026-09-review.html assets/iig.css assets/iig.js; do test -s "$f"; done
           grep -q 'lang="uk"' index.html
+          grep -q 'class="mark">IIG' index.html
           grep -q "INDUSTRY INTELLIGENCE GENERATION" index.html
           grep -q "IIG Industrial Energy Intelligence Digest" index.html
           grep -q "PRACTICAL INNOVATION / KNOW-HOW" industry.html
-          grep -q "PRIMARY SOURCE" case.html
+          grep -q "ПЕРВИННЕ ДЖЕРЕЛО" case.html
           grep -q "Відкрити аналітику IIG" advice.html
           grep -q "FINANCING INTELLIGENCE" financing.html
           grep -q "VERIFIED INDUSTRIAL ENERGY INTELLIGENCE" news.html
@@ -37,6 +38,23 @@ jobs:
           grep -q "MONTHLY DIGEST" digest/2026-09-review.html
           grep -q "@media(max-width:700px)" assets/iig.css
           grep -q "localStorage.setItem('iig_lang'" assets/iig.js
+          grep -q "images.unsplash.com" assets/iig.css
+      - name: UA default and IIG trademark red-team
+        run: |
+          python - <<'PY'
+          import pathlib,re,sys
+          files=['index.html','industry.html','case.html','advice.html','financing.html','news.html','forms.html','about.html']
+          bad=[]
+          ru=re.compile(r'\b(промышленн|финансировани|советы главного|новости и аналитика|формирование отраслевой|разведки)\w*',re.I)
+          for f in files:
+              t=pathlib.Path(f).read_text(encoding='utf-8')
+              visible=re.sub(r'data-en="[^"]*"','',t)
+              if ru.search(visible): bad.append(f+' contains Russian UI text')
+              if 'ИІГ' in t or 'ІІГ' in t: bad.append(f+' translates IIG trademark')
+          if bad:
+              print('\n'.join(bad));sys.exit(1)
+          print('UA default + IIG trademark OK')
+          PY
       - name: STEP 26 internal navigation red-team
         run: |
           python - <<'PY'
@@ -54,9 +72,7 @@ jobs:
                   if p.is_dir(): p=p/'index.html'
                   if not p.exists(): missing.append(f'{page} -> {href}')
           if missing:
-              print('BROKEN INTERNAL LINKS:')
-              print('\n'.join(missing))
-              sys.exit(1)
+              print('BROKEN INTERNAL LINKS:');print('\n'.join(missing));sys.exit(1)
           print('Internal navigation OK')
           PY
       - uses: actions/configure-pages@v5
