@@ -23,17 +23,42 @@ jobs:
           ! grep -RqiE '(DATABASE_URL|REDIS_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|redis://)' --exclude-dir=.git --exclude-dir=.github index.html industry.html case.html advice.html financing.html news.html forms.html about.html digest .nojekyll README.md
       - name: STEP 26 public surface smoke
         run: |
-          for f in index.html industry.html case.html advice.html financing.html news.html forms.html about.html digest/2026-09-review.html; do test -s "$f"; done
+          for f in index.html industry.html case.html advice.html financing.html news.html forms.html about.html digest/2026-09-review.html assets/iig.css assets/iig.js; do test -s "$f"; done
+          grep -q 'lang="uk"' index.html
           grep -q "INDUSTRY INTELLIGENCE GENERATION" index.html
           grep -q "IIG Industrial Energy Intelligence Digest" index.html
           grep -q "PRACTICAL INNOVATION / KNOW-HOW" industry.html
-          grep -q "PRIMARY SOURCES" case.html
+          grep -q "PRIMARY SOURCE" case.html
           grep -q "Відкрити аналітику IIG" advice.html
           grep -q "FINANCING INTELLIGENCE" financing.html
           grep -q "VERIFIED INDUSTRIAL ENERGY INTELLIGENCE" news.html
           grep -q "DEMO MODE" forms.html
           grep -q "Investment Industrial Group" about.html
           grep -q "MONTHLY DIGEST" digest/2026-09-review.html
+          grep -q "@media(max-width:700px)" assets/iig.css
+          grep -q "localStorage.setItem('iig_lang'" assets/iig.js
+      - name: STEP 26 internal navigation red-team
+        run: |
+          python - <<'PY'
+          import pathlib,re,sys
+          root=pathlib.Path('.')
+          pages=['index.html','industry.html','case.html','advice.html','financing.html','news.html','forms.html','about.html']
+          missing=[]
+          for page in pages:
+              text=(root/page).read_text(encoding='utf-8')
+              for href in re.findall(r'href=["\']([^"\']+)["\']',text):
+                  if href.startswith(('http://','https://','mailto:','#','javascript:')): continue
+                  target=href.split('#',1)[0].split('?',1)[0]
+                  if not target: continue
+                  p=(root/page).parent/target
+                  if p.is_dir(): p=p/'index.html'
+                  if not p.exists(): missing.append(f'{page} -> {href}')
+          if missing:
+              print('BROKEN INTERNAL LINKS:')
+              print('\n'.join(missing))
+              sys.exit(1)
+          print('Internal navigation OK')
+          PY
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
