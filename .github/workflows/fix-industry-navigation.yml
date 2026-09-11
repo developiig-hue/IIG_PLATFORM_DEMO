@@ -1,0 +1,41 @@
+name: Fix Industry Navigation
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-industry-navigation.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Route every industry to its dedicated news hub
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html'); s=p.read_text()
+          replacements={
+          '<a class="card cardlink" href="#cases">Metallurgy & Heavy Industry →</a>':'<a class="card cardlink" href="industry.html?sector=metallurgy">Metallurgy & Heavy Industry →<br><small>5–10 weekly news · IIG Know-how</small></a>',
+          '<a class="card cardlink" href="#cases">Food & Dairy →</a>':'<a class="card cardlink" href="industry.html?sector=food">Food & Dairy →<br><small>5–10 weekly news · IIG Know-how</small></a>',
+          '<a class="card cardlink" href="#cases">Pharmaceuticals →</a>':'<a class="card cardlink" href="industry.html?sector=pharma">Pharmaceuticals →<br><small>5–10 weekly news · IIG Know-how</small></a>',
+          '<a class="card cardlink" href="#cases">Agriculture →</a>':'<a class="card cardlink" href="industry.html?sector=agriculture">Agriculture →<br><small>5–10 weekly news · IIG Know-how</small></a>',
+          '<a class="card cardlink" href="#cases">Data Centers →</a>':'<a class="card cardlink" href="industry.html?sector=datacenters">Data Centers →<br><small>5–10 weekly news · IIG Know-how</small></a>',
+          '<a class="card cardlink" href="#cases">Chemical →</a>':'<a class="card cardlink" href="industry.html?sector=chemical">Chemical →<br><small>5–10 weekly news · IIG Know-how</small></a>'}
+          for a,b in replacements.items():
+              if a not in s: raise SystemExit('Missing expected industry card: '+a)
+              s=s.replace(a,b)
+          old='<section id="cases"><h2>Cases by Industry</h2><div class="card"><b>Case model</b><p>Industry → Energy Need → Technical Solution → Practical Innovation / Know-how.</p><p><a class="sectionlink" href="#projects">Перейти до Projects & Deals →</a></p><small>Only approved published content may appear publicly.</small></div></section>'
+          new='<section id="cases"><h2>Cases by Industry</h2><div class="card"><b>IIG Industry Intelligence model</b><p>Кожна галузь має окремий weekly news hub: <b>5–10 перевірених матеріалів → Source → Problem → Technical Solution → Practical Innovation / Know-how → Advice from IIG.</b></p><p><a class="sectionlink" href="industry.html?sector=metallurgy">Відкрити Industry News Hub →</a></p><small>Only verified and approved public-source content may appear publicly.</small></div></section>'
+          if old not in s: raise SystemExit('Expected cases block not found')
+          p.write_text(s.replace(old,new))
+          PY
+      - name: Commit
+        run: |
+          git config user.name "IIG Platform Bot"
+          git config user.email "develop.iig@gmail.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "fix: connect all industry cards to weekly news hubs"
+          git push
