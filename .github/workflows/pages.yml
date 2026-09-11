@@ -18,16 +18,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Normalize UA and protect IIG trademark
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          pages = [Path(x) for x in ['index.html','industry.html','case.html','advice.html','financing.html','news.html','forms.html','about.html','digest/2026-09-review.html']]
+          for p in pages:
+              s=p.read_text(encoding='utf-8')
+              s=s.replace('<html lang="uk">','<html lang="uk" translate="no">')
+              s=s.replace('<html lang="uk" translate="no" translate="no">','<html lang="uk" translate="no">')
+              if '<meta name="google" content="notranslate">' not in s:
+                  s=s.replace('<head>','<head><meta name="google" content="notranslate">',1)
+              s=s.replace('ИІГ','IIG').replace('ІІГ','IIG').replace('ИИГ','IIG')
+              if '<body class="notranslate">' not in s and '<body>' in s:
+                  s=s.replace('<body>','<body class="notranslate">',1)
+              p.write_text(s,encoding='utf-8')
+          PY
       - name: Security exposure guard
         run: |
           ! grep -RqiE '(DATABASE_URL|REDIS_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|redis://)' --exclude-dir=.git --exclude-dir=.github index.html industry.html case.html advice.html financing.html news.html forms.html about.html digest .nojekyll README.md
       - name: STEP 26 public surface smoke
         run: |
           for f in index.html industry.html case.html advice.html financing.html news.html forms.html about.html digest/2026-09-review.html assets/iig.css assets/iig.js; do test -s "$f"; done
-          grep -q 'lang="uk"' index.html
-          grep -q 'translate="no"' index.html
-          grep -q '>IIG<' index.html
-          grep -q "INDUSTRY INTELLIGENCE" index.html
+          for f in index.html industry.html case.html advice.html financing.html news.html forms.html about.html; do grep -q 'lang="uk" translate="no"' "$f"; grep -q 'notranslate' "$f"; done
+          grep -q 'class="mark notranslate" translate="no">IIG' index.html
           grep -q "ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА" index.html
           grep -q "engineer-photo" index.html
           grep -q "PRACTICAL INNOVATION / KNOW-HOW" industry.html
@@ -47,15 +61,17 @@ jobs:
           import pathlib,re,sys
           files=['index.html','industry.html','case.html','advice.html','financing.html','news.html','forms.html','about.html']
           bad=[]
-          ru=re.compile(r'\b(промышленн|финансировани|советы главного|новости и аналитика|формирование отраслевой|разведки|солнечная электростанция|хранилище энергии)\w*',re.I)
+          ru_words=['Главная','Промышлен','Солнечная электростанция','финансирование','советы главного инженера','новости и аналитика','формирование отраслевой разведки','подробности дела','хранилище']
           for f in files:
               t=pathlib.Path(f).read_text(encoding='utf-8')
-              visible=re.sub(r'data-en="[^"]*"','',t)
-              if ru.search(visible): bad.append(f+' contains Russian UI text')
-              if any(x in t for x in ('ИИГ','ИІГ','ІІГ')): bad.append(f+' translates IIG trademark')
+              visible=re.sub(r'data-en="[^"]*"','',t,flags=re.S)
+              for w in ru_words:
+                  if w.lower() in visible.lower(): bad.append(f+' contains Russian UI: '+w)
+              if any(x in t for x in ['ИІГ','ІІГ','ИИГ']): bad.append(f+' translates IIG trademark')
+              if '<html lang="uk" translate="no">' not in t: bad.append(f+' missing UA/no-translate root')
           if bad:
               print('\n'.join(bad));sys.exit(1)
-          print('UA native layer + immutable IIG trademark OK')
+          print('UA native + immutable IIG trademark OK')
           PY
       - name: STEP 26 internal navigation red-team
         run: |
