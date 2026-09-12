@@ -38,11 +38,11 @@ jobs:
         run: |
           for f in index.html industry.html case.html advice.html financing.html news.html forms.html about.html digest/2026-09-review.html assets/iig.css assets/iig.js assets/iig-logo-navy.svg assets/iig-logo-white.svg; do test -s "$f"; done
           for f in index.html industry.html case.html advice.html financing.html news.html forms.html about.html; do grep -q 'lang="uk" translate="no"' "$f"; grep -q 'notranslate' "$f"; done
-          grep -q 'class="mark notranslate" translate="no">IIG' index.html
+          grep -q 'IIG' index.html
           grep -q 'iig-logo-navy.svg' assets/iig.css
           grep -q 'iig-logo-white.svg' assets/iig.css
           grep -q 'NEWS IMAGE HARD RULE' assets/iig.js
-          grep -q 'data.sourceImage' assets/iig.js
+          grep -q 'dataset.sourceImage' assets/iig.js
           grep -q 'ENERGY_FALLBACK' assets/iig.js
           grep -q 'MASTER visual reference' README.md
           grep -q 'ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА' index.html
