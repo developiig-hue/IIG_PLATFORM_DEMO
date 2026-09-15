@@ -55,6 +55,8 @@ jobs:
               text=(root/page).read_text(encoding='utf-8')
               for href in re.findall(r'href=["\']([^"\']+)["\']',text):
                   if href.startswith(('http://','https://','mailto:','#','javascript:','data:')):continue
+                  # Ignore runtime JS/template expressions; they are not literal navigation targets.
+                  if '${' in href or '{{' in href or '<%' in href:continue
                   target=href.split('#',1)[0].split('?',1)[0]
                   if not target:continue
                   p=(root/page).parent/target
