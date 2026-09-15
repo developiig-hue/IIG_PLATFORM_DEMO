@@ -1,5 +1,27 @@
 (()=>{const D=document,$=(s,r=D)=>r.querySelector(s),$$=(s,r=D)=>[...r.querySelectorAll(s)];
 function normalizeHeader(){const h=$('.site-header,.approved-header'),nav=h&&$('.nav',h);if(!h||!nav)return;h.classList.add('approved-header');const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();const items=[['./','ГОЛОВНА','HOME','index'],['./#industries','ГАЛУЗІ','INDUSTRIES','industry'],['financing.html','ФІНАНСУВАННЯ','FINANCING','financing'],['advice.html','ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА','CHIEF ENGINEER ADVICE','advice'],['news.html','НОВИНИ ТА ІНСАЙТИ','NEWS & INSIGHTS','news'],['about.html','ПРО IIG','ABOUT IIG','about'],['about.html#contact','КОНТАКТИ','CONTACTS','contact']];nav.innerHTML=items.map(([href,ua,en,key])=>{const active=(key==='index'&&(path===''||path==='index.html'))||(key==='industry'&&path==='industry.html')||(key==='financing'&&(path==='financing.html'||path==='finance-news.html'))||(key==='advice'&&path==='advice.html')||(key==='news'&&path==='news.html')||(key==='about'&&path==='about.html'&&!location.hash);return `<a${active?' class="active"':''} href="${href}" data-ua="${ua}" data-en="${en}">${ua}</a>`}).join('');const tools=$('.tools',h);if(tools&&!$('.search-ico',tools)){const s=D.createElement('span');s.className='search-ico';s.textContent='⌕';tools.appendChild(s)}}normalizeHeader();
+/* STEP 25 locked readability pass. This deliberately overrides legacy page-local tiny typography. */
+const readability=D.createElement('style');readability.id='step25-readability-lock';readability.textContent=`
+@media(min-width:1181px){
+.site-header .headrow,.approved-header .headrow{min-height:86px!important;gap:18px!important}
+.site-header .brand,.approved-header .brand{min-width:305px!important;width:305px!important;height:72px!important;background-image:url('assets/iig-logo-navy.svg')!important}
+.site-header .nav,.approved-header .nav{gap:18px!important}
+.site-header .nav a,.approved-header .nav a{font-size:16px!important;line-height:1.15!important;font-weight:900!important;letter-spacing:-.15px!important;color:#061d42!important}
+.site-header .nav a.active,.approved-header .nav a.active{color:#d99f00!important;padding-bottom:20px!important}
+.site-header .lang button,.approved-header .lang button{font-size:16px!important;font-weight:900!important;padding:8px!important}
+.search-ico{font-size:29px!important}
+.compact .section-head h2,.section-head h2{font-size:20px!important;line-height:1.15!important}
+.more-link,.section-link{font-size:14px!important}
+.news-card h3{font-size:16px!important;line-height:1.3!important;min-height:0!important}
+.news-card .meta,.meta{font-size:12px!important}
+.home-industry b{font-size:12px!important;line-height:1.2!important}.home-industry small{font-size:11px!important}
+.engineer-title h2{font-size:22px!important}.engineer-title .sub{font-size:14px!important}.engineer-title .btn{font-size:13px!important}
+.latest-title{font-size:16px!important}.advice-mini small{font-size:11px!important}.advice-mini b{font-size:14px!important;line-height:1.3!important}
+.side-cta strong{font-size:18px!important}.side-cta small{font-size:12px!important}
+.value b{font-size:13px!important}.value small{font-size:11px!important}
+}
+@media(min-width:1181px) and (max-width:1550px){.site-header .brand,.approved-header .brand{min-width:255px!important;width:255px!important}.site-header .nav,.approved-header .nav{gap:12px!important}.site-header .nav a,.approved-header .nav a{font-size:14px!important}}
+`;D.head.appendChild(readability);
 function setLang(l,save=true){l=l==='en'?'en':'ua';D.documentElement.lang=l==='en'?'en':'uk';$$('[data-ua]').forEach(el=>{el.textContent=l==='en'?(el.dataset.en||el.dataset.ua):el.dataset.ua});$$('[data-ua-html]').forEach(el=>{el.innerHTML=l==='en'?(el.dataset.enHtml||el.dataset.uaHtml):el.dataset.uaHtml});$$('[data-ua-placeholder]').forEach(el=>{el.placeholder=l==='en'?(el.dataset.enPlaceholder||el.dataset.uaPlaceholder):el.dataset.uaPlaceholder});$$('[data-lang]').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));if(save)sessionStorage.setItem('iig_lang_current',l)}setLang('ua',false);$$('[data-lang]').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));const burger=$('.burger'),nav=$('.nav');if(burger&&nav)burger.onclick=()=>nav.classList.toggle('open');
 const FIN=[
 ['nrb','NRB','https://uif.eu/assets/logos/NRB.png'],
