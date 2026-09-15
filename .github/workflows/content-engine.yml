@@ -1,0 +1,47 @@
+name: IIG Moderated Content Engine
+on:
+  schedule:
+    # Every Monday 06:15 UTC. Generation only; never publication.
+    - cron: '15 6 * * 1'
+    # First day monthly 06:30 UTC. Digest draft from approved monthly pool only.
+    - cron: '30 6 1 * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: weekly or monthly
+        required: true
+        default: weekly
+        type: choice
+        options: [weekly, monthly]
+permissions:
+  contents: read
+jobs:
+  generate-review-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Select generation mode
+        id: mode
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then MODE="${{ inputs.mode }}";
+          elif [ "$(date -u +%d)" = "01" ] && [ "$(date -u +%H%M)" = "0630" ]; then MODE=monthly;
+          else MODE=weekly; fi
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+      - name: Generate READY_FOR_REVIEW queue
+        run: python scripts/content_engine.py "${{ steps.mode.outputs.mode }}"
+      - name: Verify ADMIN_ONLY gate
+        run: python scripts/content_engine.py verify
+      - name: Upload moderation queue artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iig-${{ steps.mode.outputs.mode }}-ready-for-review-${{ github.run_id }}
+          path: content/review-queue/*.json
+          if-no-files-found: error
+          retention-days: 30
+# SECURITY/GOVERNANCE HARD RULE:
+# This workflow has contents:read only. It cannot commit, deploy, publish or mail.
+# Publication and Digest mailing are separate administrator actions after final moderation.
