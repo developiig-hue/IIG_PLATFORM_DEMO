@@ -1,0 +1,40 @@
+name: Build approved Digest PDF
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_digest_pdf.py'
+      - '.github/workflows/build-digest-pdf.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  render-and-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install deterministic renderer
+        run: |
+          pip install playwright pillow
+          playwright install --with-deps chromium
+      - name: Render approved web Digest to PDF
+        run: python scripts/build_digest_pdf.py
+      - name: PDF QA
+        run: |
+          test -s digest/IIG-Monthly-Digest-2026-09.pdf
+          test $(stat -c%s digest/IIG-Monthly-Digest-2026-09.pdf) -gt 100000
+      - name: Commit approved PDF artifact
+        run: |
+          git config user.name 'IIG Digest Builder'
+          git config user.email 'develop.iig@gmail.com'
+          git add digest/IIG-Monthly-Digest-2026-09.pdf
+          git diff --cached --quiet && exit 0
+          git commit -m 'STEP 25: publish approved September Digest PDF artifact'
+          git push origin HEAD:main
+# This workflow only materializes the PDF explicitly approved in this admin session.
+# Monthly automated content generation remains READY_FOR_REVIEW and cannot invoke this workflow automatically.
