@@ -1,0 +1,21 @@
+{
+  "schema": "iig.content-policy.v1",
+  "weekly": {
+    "schedule": "Monday",
+    "max_candidates": 12,
+    "chief_engineer_target": 3,
+    "required_pipeline": ["source_validation", "noise_filter", "evidence_check", "problem", "technical_solution", "practical_innovation", "scoring", "ua_en", "routing"]
+  },
+  "monthly": {
+    "schedule": "first_day_of_month_for_previous_month_review",
+    "max_items": 12,
+    "selection": ["approved_month_content_only", "evidence", "practical_value", "transferability", "technology_diversity", "deduplication", "decision_maker_value", "ceo_10_second_test"]
+  },
+  "publication": {
+    "auto_publish": false,
+    "authority": "ADMIN_ONLY",
+    "required_state_before_admin_action": "READY_FOR_REVIEW",
+    "allowed_final_decisions": ["APPROVED", "REJECTED"],
+    "digest_mailing_requires_admin_approval": true
+  }
+}
