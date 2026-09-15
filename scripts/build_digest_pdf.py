@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# ADMIN-APPROVED September 2026 PDF materialization trigger.
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 from PIL import Image
