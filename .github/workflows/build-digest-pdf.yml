@@ -28,6 +28,13 @@ jobs:
         run: |
           test -s digest/IIG-Monthly-Digest-2026-09.pdf
           test $(stat -c%s digest/IIG-Monthly-Digest-2026-09.pdf) -gt 100000
+      - name: Retain PDF for visual QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: IIG-Monthly-Digest-2026-09-QA
+          path: digest/IIG-Monthly-Digest-2026-09.pdf
+          if-no-files-found: error
+          retention-days: 7
       - name: Commit approved PDF artifact
         run: |
           git config user.name 'IIG Digest Builder'
