@@ -1,38 +1,31 @@
 # STEP 25 — Approved IIG HOME / Shared Header Design Lock
 
-Date: 2026-09-16. Status: DESIGN APPROVED; IMPLEMENTATION AND PUBLISHED VISUAL GATE NOT YET VERIFIED.
+Date: 2026-09-16. Status: DESIGN APPROVED; IMPLEMENTATION COMMITTED; PUBLISHED VISUAL GATE PENDING.
 
-## Source of truth
-User-approved visual reference: `Визуал общего утвержденного макета головной страницы сайта IIG.png` (1536 × 1024 screenshot supplied in chat on 2026-09-16). This screenshot is a layout reference, **not** a production-resolution hero image. Do not upscale/crop the screenshot and use it as the site hero. Use the separately approved original sunrise industrial collage and original approved Chief Engineer portrait, at suitable source resolution, with direct repository-local asset paths. If the original approved files are not available in the repository, STOP and obtain the originals; do not silently substitute existing low-resolution assets or regenerate an unapproved portrait.
+## Approved source of truth
+User-supplied full-page reference screenshot (1536 × 1024) from 2026-09-16 is the composition master, not a hero asset. Use only the two separately approved original PNG images uploaded to repository root; do not substitute thumbnail proxies, crop screenshot as hero, or regenerate engineer portrait.
 
-## APPROVED IMAGE MASTER REGISTRY — HARD RULE
-The user's approvals in this conversation designate TWO separate immutable visual masters, distinct from the complete-page screenshot and from thumbnail files currently named `approved` in the repository. Approval of visual identity is not proof that original-resolution binary bytes are available in GitHub.
+## Confirmed original image paths
+- Hero: `Вариант шапки сайта_промкомплекса на рассвете ( розово-фиалетовый).png`.
+- Engineer: `Принятое фото главного инженера в каске IIG.png`.
+Both filenames and blob SHA were verified against GitHub in the preceding STEP 25 investigation. `assets/home-hero-approved.webp` and `assets/chief-engineer-approved.webp` are not approved replacements. Original image SHA-256, dimensions and published browser decoding have NOT been independently measured; do not invent these results.
 
-**MASTER HERO / SUNRISE:** latest user-approved revision explicitly accepted as `Вариант шапки сайта_промкомплекса на рассвете (розово-фиолетовый)` in the conversation on 2026-09-16. Industrial generating complex at the first moments of sunrise; delicate pink-violet with restrained warm yellow; visible emerging sun, recognizable power transmission pylons/wires (ЛЭП), wind generators, partial solar panels and trees. Wide landscape composition; preserve approved image, palette and object placement. Do not use the screenshot of the site, a different sunset image, pipes/motor imagery, or an enlarged low-resolution proxy. Target canonical repository asset path: `assets/iig-hero-sunrise-master.webp` (RESERVED; not uploaded or validated by this documentation commit).
+## Immutable design lock
+Dark navy (#06223D) shared header, white navigation, yellow (#FFC400) active item and active language, IIG and only INDUSTRY INTELLIGENCE GENERATION branding. Original sunrise industrial collage with power pylons, wind, solar and gentle pink-violet dawn. Original approved Chief Engineer portrait in right rail, navy advice title and three light advice cards, view-all link, two lower CTAs. Hero title/search, four benefit captions. Below hero in this exact order: financing partners NRB, EBRD, EIFO, bpifrance, EIB, World Bank, BII; nine industry cards; TOP-5 news cards; footer. Preserve existing moderation/admin-only news publication gates. Responsive at 1366/1440/1920/2560 and mobile. Persistent UA/EN, navigation and PDF must work.
 
-**MASTER CHIEF ENGINEER:** last separately approved portrait explicitly accepted as `Принятое фото главного инженера в белой каске IIG` in the conversation on 2026-09-16. Approved face and positive expression, glasses, pose, workwear and reflective vest; white helmet with navy IIG lettering and WITHOUT the two yellow stripes. Preserve exact portrait identity and crop from the approved original; no substitute person or regenerated face. Target canonical repository asset path: `assets/iig-chief-engineer-master.webp` (RESERVED; not uploaded or validated by this documentation commit).
+## Digest — explicit user acceptance criterion
+Card in lower-right corner OVER the hero panorama, navy with yellow border/icon and downward arrow. Ukrainian label `ЗАВАНТАЖИТИ ДАЙДЖЕСТ IIG`; English `DOWNLOAD IIG DIGEST`. Entire card is an accessible, actionable anchor to repository-local `digest/IIG-Monthly-Digest-2026-09.pdf` with HTML `download` attribute. It must download the PDF rather than open `digest/2026-09-review.html`, print a page or do nothing. PDF path exists in repository; PDF content and browser download still require end-to-end QA.
 
-**Composition reference:** latest approved full homepage mockup shown in conversation on 2026-09-16 (dark navy navigation, sunrise hero with visible ЛЭП, portrait on right, three advice entries, Digest download card, financing partners, nine industry cards and five news cards). This full mockup specifies placement and typography only; it is not a replacement for either separate master.
+## Implementation record — 2026-09-16
+- Prior commit `df0492edffd59b02a6a68f0bb5c6aa6f41aafd48`: connect approved original PNG paths and unify navy header styles in `assets/iig.js`.
+- Commit `bdf94da265b4434f1209066e6ad1f3b3432c561f`: revise `assets/iig.js` to move existing digest anchor into hero, position it at lower right, assign direct PDF URL and download attribute, reorder industry section before TOP-5 news using existing DOM nodes (no news deletion), make financing partners span the financing row, retain originals and shared header/language logic, refine responsive CSS and advice rail. This is a runtime DOM/CSS adaptation, not a static HTML source reorder.
+- This protocol update records actual committed changes, not proof of successful deployment or visual match.
 
-**Binary acceptance gate:** obtain exact original image files (not screenshot crops), record actual dimensions, byte sizes and SHA-256 hashes in this registry, verify visual match against the two approvals, upload to the reserved paths and confirm decoded dimensions and image integrity. Existing `assets/home-hero-approved.webp` (~8.9 KB) and `assets/chief-engineer-approved.webp` (~8.2 KB) are unverified low-byte proxies and MUST NOT be promoted as high-resolution masters based on filenames alone. Until master files are physically verified, image status = VISUAL APPROVED / BINARY PENDING; site integration and visual GREEN remain blocked. Do not invent hashes, dimensions, URLs or assert an upload from this text-only protocol change.
+## Release / GREEN gate (mandatory)
+1. Verify final repository HEAD includes both commits and this protocol update; inspect JS syntax and browser console.
+2. Verify GitHub Pages workflow concludes success for exact HEAD; verify published HTML actually loads new JS and original images (no 404), PDF responds correctly.
+3. Compare actual published screenshot with user-approved 1536 × 1024 reference, and check 1366, 1440, 1920, 2560 plus mobile; ensure no clipping, overlap or broken logos.
+4. Check UA/EN persistence, active menu, hash routes, advice links, search, download PDF and consistent header across all principal pages.
+5. Only after these checks set STEP 25 = GREEN. Commit alone is not GREEN. Record any unresolved issue explicitly.
 
-## HARD RULE — identical shared header on every principal section
-Navigation/header and hero collage must not switch imagery when navigating HOME, Industries, Financing, Chief Engineer Advice, News & Insights, About IIG or Contact. Single canonical shared header styles/assets; no page-specific pipe/motor image overrides and no JS runtime replacement of approved imagery. Keep content below the header specific to the destination page. Preserve mobile responsiveness and language persistence.
-
-## Approved composition
-- Dark navy navigation strip (#06223D) with white menu text; selected page and selected UA/EN yellow (#FFC400); inactive language white. Logo left: IIG, vertical divider and only `INDUSTRY INTELLIGENCE GENERATION` (verify exact approved spelling against original logo artwork); remove `Industrial Energy Intelligence Platform` and other tagline under the wordmark. Do not recreate or distort approved logo artwork.
-- Wide high-resolution sunrise collage: industrial generating plant, clearly recognizable transmission line pylons and wires, wind turbines, partial solar panels, gentle pink-violet/yellow dawn. Correct wide hero crop and text contrast at 1366, 1440, 1920 and 2560 px. Do not stretch small assets.
-- Approved Chief Engineer portrait: same approved face, glasses, posture, workwear, high-visibility vest, white helmet with navy IIG logo and no yellow stripes. Right-hand separate portrait above dark navy Chief Engineer Advice title bar, followed by three advice cards and the View All Advice CTA. Do not replace approved portrait.
-- Hero headline/search and organically placed separate navy/yellow `ЗАВАНТАЖИТИ ДАЙДЖЕСТ IIG` card, with direct downloadable PDF link; do not replace with print or an inert button.
-- Below hero: financing partners, nine industry cards, TOP-5 weekly news cards, Chief Engineer advice, project/question CTAs and footer, preserving approved content architecture. Weekly news content remains subject to existing moderation/admin-only publication gates; no automatic publishing.
-
-## Typography implementation specification (not measured from generated screenshot)
-Font family: Inter, Arial, sans-serif; normal-width, never condensed. Desktop 1440–1920: main menu 18px/700, language 18px/700, hero title 44px/800, hero copy 18px/500, search 17px/400, section headings 24px/800, industry labels 16px/700 with natural wrapping, news titles 16px/700, advice heading 19px/700, CTAs 17px/700, body 17px/400, digest title 18px/700. For >=1920px: menu 19px, hero 48px, section headings 26px. Adapt smaller viewports without horizontal overflow or clipped text; check actual font availability and Ukrainian glyph coverage.
-
-## Required implementation sequence and gate
-1. Inspect current HEAD, asset provenance/resolution, all public page header structures, CSS cascade and JS runtime overrides. Identify the exact approved source images, not screenshot-derived substitutes.
-2. Implement canonical header and typography with minimum safe delta, remove conflicting rules and image swaps; keep UA/EN, search, navigation, Digest PDF and all approved content functional.
-3. Test desktop 1366/1440/1920/2560 and mobile; verify header identical across every primary route; active menu/language, hash routes, advice links and download PDF; verify no image 404, pixelation, clipping, regressions.
-4. Commit and wait for GitHub Pages success at the exact HEAD, then inspect the actual published URL against the approved screenshot. Only then mark HEADER GREEN; a commit or successful workflow alone is not visual acceptance.
-
-Principle: APPROVED COMPOSITION -> SIMPLEST DIRECT PATH -> ONE SOURCE OF TRUTH -> VERIFY PUBLISHED RESULT. Minimal Delta -> Maximum Verification.
+Principle: APPROVED COMPOSITION → SIMPLEST DIRECT PATH → ONE SOURCE OF TRUTH → VERIFY PUBLISHED RESULT. Minimal Delta → Maximum Verification.
