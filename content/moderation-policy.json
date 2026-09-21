@@ -1,15 +1,25 @@
 {
-  "schema": "iig.content-policy.v1",
+  "schema": "iig.content-policy.v2",
   "weekly": {
     "schedule": "Monday",
     "max_candidates": 12,
     "chief_engineer_target": 3,
-    "required_pipeline": ["source_validation", "noise_filter", "evidence_check", "problem", "technical_solution", "practical_innovation", "scoring", "ua_en", "routing"]
+    "required_pipeline": ["source_validation", "publication_date_validation", "project_status_validation", "noise_filter", "evidence_check", "problem", "technical_solution", "practical_innovation", "scoring", "ua_en", "routing", "editorial_validation", "admin_review"]
   },
   "monthly": {
     "schedule": "first_day_of_month_for_previous_month_review",
     "max_items": 12,
     "selection": ["approved_month_content_only", "evidence", "practical_value", "transferability", "technology_diversity", "deduplication", "decision_maker_value", "ceo_10_second_test"]
+  },
+  "editorial": {
+    "company_context": {
+      "paragraphs": 3,
+      "max_characters": 600,
+      "required_information": ["company_name_and_activity", "project_and_implemented_technology", "project_status_and_context"],
+      "executive_quote": "Only reproduce a verbatim quotation when present in a verified primary source; include speaker full name, position and source URL. Otherwise use a factual third paragraph without a quotation. Never invent quotations, credentials, project dates or status."
+    },
+    "source": {"primary_source_required": true, "canonical_url_required": true, "publication_date_required": true, "project_status_evidence_required": true, "unverified_publication": "BLOCK"},
+    "navigation": "Every published card on home and industry pages must link to a full article derived from the same approved record. No hardcoded demo news in public listings."
   },
   "publication": {
     "auto_publish": false,
