@@ -18,11 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Prepare approved-only news and remove demo listings
+        run: python scripts/prepare_public_news.py
       - name: Normalize UA and protect IIG trademark
         run: |
           python - <<'PY'
           from pathlib import Path
-          pages=[Path(x) for x in ['index.html','industry.html','case.html','advice.html','financing.html','finance-news.html','news.html','forms.html','about.html','digest/2026-09-review.html']]
+          pages=[Path(x) for x in ['index.html','industry.html','case.html','advice.html','financing.html','finance-news.html','news.html','article.html','forms.html','about.html','digest/2026-09-review.html']]
           for p in pages:
               s=p.read_text(encoding='utf-8')
               s=s.replace('<html lang="uk">','<html lang="uk" translate="no">').replace('<html lang="uk" translate="no" translate="no">','<html lang="uk" translate="no">')
@@ -38,7 +40,7 @@ jobs:
           ! grep -RqiE '(DATABASE_URL|REDIS_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|redis://)' --exclude-dir=.git --exclude-dir=.github index.html industry.html case.html advice.html financing.html finance-news.html news.html forms.html about.html digest .nojekyll README.md
       - name: Public surface smoke
         run: |
-          for f in index.html industry.html case.html advice.html financing.html finance-news.html news.html forms.html about.html digest/2026-09-review.html digest/download-pdf.js assets/iig.css assets/iig.js assets/iig-logo-navy.svg assets/iig-logo-white.svg; do test -s "$f"; done
+          for f in index.html industry.html case.html advice.html financing.html finance-news.html news.html article.html forms.html about.html digest/2026-09-review.html digest/download-pdf.js assets/iig.css assets/iig.js assets/public-news.js content/public-news.json; do test -s "$f"; done
           grep -q 'IIG' index.html
           grep -q 'ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА' index.html
           grep -q 'FINANCING INTELLIGENCE' financing.html
@@ -46,16 +48,16 @@ jobs:
           grep -q 'download-pdf.js' digest/2026-09-review.html
           grep -q 'СКАЧАТИ PDF_FILE' digest/download-pdf.js
           grep -q 'window.print' digest/download-pdf.js
+          for f in index.html industry.html news.html article.html; do grep -q 'assets/public-news.js' "$f"; done
       - name: Internal navigation red-team
         run: |
           python - <<'PY'
           import pathlib,re,sys
-          root=pathlib.Path('.');pages=['index.html','industry.html','case.html','advice.html','financing.html','finance-news.html','news.html','forms.html','about.html'];missing=[]
+          root=pathlib.Path('.');pages=['index.html','industry.html','case.html','advice.html','financing.html','finance-news.html','news.html','article.html','forms.html','about.html'];missing=[]
           for page in pages:
               text=(root/page).read_text(encoding='utf-8')
               for href in re.findall(r'href=["\']([^"\']+)["\']',text):
                   if href.startswith(('http://','https://','mailto:','#','javascript:','data:')):continue
-                  # Ignore runtime JS/template expressions; they are not literal navigation targets.
                   if '${' in href or '{{' in href or '<%' in href:continue
                   target=href.split('#',1)[0].split('?',1)[0]
                   if not target:continue
