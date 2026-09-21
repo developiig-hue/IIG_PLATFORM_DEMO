@@ -1,31 +1,12 @@
 {
   "schema": "iig.content-policy.v2",
-  "weekly": {
-    "schedule": "Monday",
-    "max_candidates": 12,
-    "chief_engineer_target": 3,
-    "required_pipeline": ["source_validation", "publication_date_validation", "project_status_validation", "noise_filter", "evidence_check", "problem", "technical_solution", "practical_innovation", "scoring", "ua_en", "routing", "editorial_validation", "admin_review"]
-  },
-  "monthly": {
-    "schedule": "first_day_of_month_for_previous_month_review",
-    "max_items": 12,
-    "selection": ["approved_month_content_only", "evidence", "practical_value", "transferability", "technology_diversity", "deduplication", "decision_maker_value", "ceo_10_second_test"]
-  },
+  "weekly": {"schedule":"Monday","max_candidates":12,"chief_engineer_target":3,"required_pipeline":["source_validation","publication_date_validation","project_status_validation","noise_filter","evidence_check","problem","technical_solution","practical_innovation","scoring","ua_en","routing","image_validation","editorial_validation","admin_review"]},
+  "monthly": {"schedule":"first_day_of_month_for_previous_month_review","max_items":12,"selection":["approved_month_content_only","evidence","practical_value","transferability","technology_diversity","deduplication","decision_maker_value","ceo_10_second_test"]},
   "editorial": {
-    "company_context": {
-      "paragraphs": 3,
-      "max_characters": 600,
-      "required_information": ["company_name_and_activity", "project_and_implemented_technology", "project_status_and_context"],
-      "executive_quote": "Only reproduce a verbatim quotation when present in a verified primary source; include speaker full name, position and source URL. Otherwise use a factual third paragraph without a quotation. Never invent quotations, credentials, project dates or status."
-    },
-    "source": {"primary_source_required": true, "canonical_url_required": true, "publication_date_required": true, "project_status_evidence_required": true, "unverified_publication": "BLOCK"},
-    "navigation": "Every published card on home and industry pages must link to a full article derived from the same approved record. No hardcoded demo news in public listings."
+    "company_context":{"paragraphs":3,"max_characters":600,"required_information":["company_name_and_activity","project_and_implemented_technology","project_status_and_context"],"executive_quote":"Only reproduce a verbatim quotation when present in a verified primary source; include speaker full name, position and source URL. Otherwise use a factual third paragraph without a quotation. Never invent quotations, credentials, project dates or status."},
+    "source":{"primary_source_required":true,"canonical_url_required":true,"publication_date_required":true,"project_status_evidence_required":true,"unverified_publication":"BLOCK"},
+    "images":{"required_for_every_public_card":true,"priority":["licensed_image_from_verified_primary_source","official_company_logo_with_usage_rights","clearly_labelled_original_editorial_illustration"],"image_url":"Use a verified HTTPS asset or site-relative local asset; never assume a source image exists.","alt_text":"Provide factual UA and EN alt text, identifying a logo or illustration as such.","rights":"Record image origin and permitted usage; do not hotlink an unverified third-party logo or imply a generated illustration is a documentary photograph.","fallback":"When no cleared photo or logo is available, use an original neutral editorial illustration clearly labelled as illustrative, not an empty card or an invented company logo.","rendering":"Render image on homepage, all-news, industry card and article with responsive aspect ratio and onerror fallback; validate asset reachability and broken-image behavior before release."},
+    "navigation":"Every published card on home and industry pages must link to a full article derived from the same approved record. No hardcoded demo news in public listings. All nine configured industries must be audited for coverage, valid routing and honest empty states."
   },
-  "publication": {
-    "auto_publish": false,
-    "authority": "ADMIN_ONLY",
-    "required_state_before_admin_action": "READY_FOR_REVIEW",
-    "allowed_final_decisions": ["APPROVED", "REJECTED"],
-    "digest_mailing_requires_admin_approval": true
-  }
+  "publication":{"auto_publish":false,"authority":"ADMIN_ONLY","required_state_before_admin_action":"READY_FOR_REVIEW","allowed_final_decisions":["APPROVED","REJECTED"],"digest_mailing_requires_admin_approval":true}
 }
