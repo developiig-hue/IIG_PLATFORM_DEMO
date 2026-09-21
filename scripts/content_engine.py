@@ -96,7 +96,8 @@ def verify():
         assert forbidden.lower() not in workflow.lower(), f'forbidden publish path: {forbidden}'
     for path in QUEUE.glob('*.json'):
         record = json.loads(path.read_text(encoding='utf-8'))
-        assert record['auto_publish'] is False and record['publish_authority'] == 'ADMIN_ONLY'
+        assert record.get('auto_publish') is False, f'Auto-publish must be disabled: {path}'
+        assert record.get('publish_authority') == 'ADMIN_ONLY', f'Invalid publication authority:
         assert record['status'] in ('READY_FOR_REVIEW', 'APPROVED', 'REJECTED')
         if record['status'] == 'APPROVED':
             assert record['moderation']['decision'] == 'APPROVED' and record['moderation']['reviewed_by'] and record['moderation']['reviewed_at']
