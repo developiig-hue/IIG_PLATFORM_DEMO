@@ -1,0 +1,41 @@
+{
+  "schema": "iig.editorial-review.v1",
+  "created_at": "2026-09-21",
+  "status": "READY_FOR_REVIEW",
+  "visibility": "ADMIN_ONLY",
+  "auto_publish": false,
+  "admin_approved": false,
+  "publication_blocker": "Human administrator must verify publication dates, project status, translations and full article before explicitly approving each item. Do not import this file into public-news.json automatically.",
+  "candidates": [
+    {
+      "slug": "kernel-106mw-solar-bess-ebrd",
+      "sector": "agriculture",
+      "title": {"ua": "ЄБРР повідомив про кредит $45 млн на сонячну станцію Kernel потужністю 106 МВт із BESS", "en": "EBRD announces $45m loan for Kernel's 106 MW solar plant with BESS"},
+      "company_name": "Kernel / Energy RTB 2",
+      "company_activity": "Ukrainian agribusiness group and its wholly owned project subsidiary",
+      "project_status": "Financing announced; construction financed, not reported as commissioned",
+      "canonical_url": "https://www.ebrd.com/home/news-and-events/news/2026/ebrd-and-eu-strengthen-ukraine-s-energy-security-with-new-solar-.html",
+      "primary_source": "European Bank for Reconstruction and Development, official news release",
+      "source_evidence": "EBRD states a US$45 million loan to Energy RTB 2, wholly owned by Kernel, finances construction of a 106 MW solar power plant with co-located battery storage in Ukraine.",
+      "publication_date": null,
+      "date_verification": "BLOCKED: precise release publication date not established in current source extract",
+      "company_context": ["Kernel — українська агропромислова група; Energy RTB 2 є її дочірньою компанією.", "ЄБРР повідомив про кредит $45 млн на будівництво сонячної електростанції 106 МВт із суміжною системою накопичення енергії.", "Йдеться про фінансування будівництва; введення об’єкта в експлуатацію в перевіреному повідомленні не підтверджене."],
+      "editorial_note": "Do not infer BESS capacity, COD or executive quotations. Verify the release date and full status before publication."
+    },
+    {
+      "slug": "ebrd-189mw-wind-galnaftogaz",
+      "sector": "agriculture",
+      "title": {"ua": "ЄБРР повідомив про кредит €50 млн для вітропроєкту Galnaftogaz потужністю 189 МВт", "en": "EBRD announces €50m loan for Galnaftogaz 189 MW wind project"},
+      "company_name": "GNG Group / Galnaftogaz (OKKO Group)",
+      "company_activity": "Ukrainian business group developing renewable generation",
+      "project_status": "Loan agreement announced; do not describe as operational",
+      "canonical_url": "https://www.ebrd.com/home/news-and-events/news/2026/ebrd-support-for-wartime-ukraine-surpasses--10-5-billion-as-bank.html",
+      "primary_source": "European Bank for Reconstruction and Development, official Ukraine Recovery Conference announcement",
+      "source_evidence": "EBRD reports a €50 million loan for development and construction of a 189 MW wind power plant by GNG Group/Galnaftogaz at the Ukraine Recovery Conference held 25–26 June 2026.",
+      "publication_date": null,
+      "date_verification": "BLOCKED: conference dates are not the article publication date",
+      "company_context": ["Galnaftogaz (група OKKO) — українська бізнес-група, що розвиває проєкт вітрової генерації.", "ЄБРР повідомив про кредит €50 млн для розвитку й будівництва вітроелектростанції потужністю 189 МВт.", "Повідомлено про фінансову угоду; факт введення станції в експлуатацію не підтверджений."],
+      "editorial_note": "Do not conflate financing announcement with COD. Confirm precise release date, sector routing and translated article before approval."
+    }
+  ]
+}
