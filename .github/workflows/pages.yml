@@ -20,6 +20,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Prepare approved-only news and remove demo listings
         run: python scripts/prepare_public_news.py
+      - name: Verify nine news photographs and same-sector fallback routing
+        run: python scripts/check_news_images.py
       - name: Normalize UA and protect IIG trademark
         run: |
           python - <<'PY'
@@ -40,7 +42,7 @@ jobs:
           ! grep -RqiE '(DATABASE_URL|REDIS_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|redis://)' --exclude-dir=.git --exclude-dir=.github index.html industry.html case.html advice.html financing.html finance-news.html news.html forms.html about.html digest .nojekyll README.md
       - name: Public surface smoke
         run: |
-          for f in index.html industry.html case.html advice.html financing.html finance-news.html news.html article.html forms.html about.html digest/2026-09-review.html digest/download-pdf.js assets/iig.css assets/iig.js assets/public-news.js content/public-news.json; do test -s "$f"; done
+          for f in index.html industry.html case.html advice.html financing.html finance-news.html news.html article.html forms.html about.html digest/2026-09-review.html digest/download-pdf.js assets/iig.css assets/iig.js assets/public-news.js content/public-news.json baze_foto_news/manifest.json; do test -s "$f"; done
           grep -q 'IIG' index.html
           grep -q 'ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА' index.html
           grep -q 'FINANCING INTELLIGENCE' financing.html
