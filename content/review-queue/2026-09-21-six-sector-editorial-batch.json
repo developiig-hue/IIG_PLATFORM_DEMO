@@ -1,0 +1,78 @@
+{
+  "schema": "iig.editorial-review-batch.v1",
+  "created_at": "2026-09-21",
+  "status": "READY_FOR_REVIEW",
+  "auto_publish": false,
+  "note": "Editorial candidates only. Source publication dates and claims must be rechecked by an editor before administrator approval; no candidate is an APPROVED public record.",
+  "items": [
+    {
+      "slug": "uss-kosice-eaf-asu-investment-2026",
+      "sector": "metallurgy",
+      "publication_date": "2026-09-16",
+      "canonical_url": "https://www.nipponsteel.com/en/newsroom/news/2026/20260916_100.html",
+      "title": {"ua": "U. S. Steel Košice ухвалила інвестиційне рішення щодо електродугової печі та кисневого виробництва", "en": "U. S. Steel Košice decides on electric arc furnace and air separation investment"},
+      "summary": {"ua": "Nippon Steel повідомила про рішення інвестувати близько €0,9 млрд в EAF та ASU; запуск ASU очікується у 2029 році, EAF — у 2030-му.", "en": "Nippon Steel announced a roughly €0.9bn EAF and ASU investment decision, with planned ASU start in 2029 and EAF start in 2030."},
+      "company_context": [{"ua":"U. S. Steel Košice — словацький металургійний комбінат у структурі Nippon Steel.","en":"U. S. Steel Košice is a Slovak steelworks within Nippon Steel."},{"ua":"Компанія вирішила інвестувати приблизно €0,9 млрд у електродугову піч та установку розділення повітря.","en":"The company decided to invest approximately €0.9bn in an electric arc furnace and an air separation unit."},{"ua":"У повідомленні від 16 вересня запуск ASU заплановано на 2029 рік, а EAF — на 2030 рік; обидва об’єкти ще не введені в експлуатацію.","en":"The September 16 release targets ASU operation in 2029 and EAF operation in 2030; neither is reported commissioned."}],
+      "body": {"ua":"ПРОБЛЕМА: енергоємність і викиди традиційного сталеплавильного виробництва.\n\nПІДТВЕРДЖЕНИЙ ФАКТ: Nippon Steel повідомила про інвестиційне рішення, грантову угоду та планові строки; це не повідомлення про завершене будівництво.\n\nТЕХНІЧНЕ РІШЕННЯ: EAF у поєднанні з ASU та чинною виробничою інфраструктурою.\n\nPRACTICAL INNOVATION / KNOW-HOW: оцінювати електричне навантаження EAF і потреби ASU як єдину систему; це інженерний висновок IIG, а не заявлений результат проєкту.","en":"PROBLEM: energy intensity and emissions of conventional steelmaking.\n\nVERIFIED FACT: Nippon Steel announced an investment decision, grant agreement and target dates, not completed construction.\n\nTECHNICAL SOLUTION: EAF combined with ASU and existing facilities.\n\nPRACTICAL INNOVATION / KNOW-HOW: assess EAF power demand and ASU requirements as one system; this is IIG engineering analysis, not a reported project outcome."},
+      "project_status": "investment_decision; planned_not_commissioned", "status": "READY_FOR_REVIEW"
+    },
+    {
+      "slug": "piramal-morpeth-solar-2026",
+      "sector": "pharma",
+      "publication_date": null,
+      "canonical_url": "https://ca.finance.yahoo.com/news/piramal-pharma-solutions-advances-sustainability-141300078.html",
+      "primary_source_url": null,
+      "title": {"ua":"Piramal Pharma Solutions повідомила про сонячну установку на виробничому майданчику Morpeth","en":"Piramal Pharma Solutions reports solar addition at Morpeth manufacturing site"},
+      "summary": {"ua":"Повідомлення компанії про сонячну генерацію в Morpeth знайдено у передруку; оригінал та точна дата ще потребують перевірки.","en":"A syndicated company announcement describes a solar addition at Morpeth; the original release and exact date require verification."},
+      "company_context": [{"ua":"Piramal Pharma Solutions — контрактний розробник і виробник фармацевтичної продукції.","en":"Piramal Pharma Solutions is a pharmaceutical contract development and manufacturing organization."},{"ua":"Компанія повідомила про додавання сонячної генерації на майданчику Morpeth у Великій Британії.","en":"The company reported a solar power addition at its Morpeth site in the UK."},{"ua":"Першоджерело та точну дату публікації ще не підтверджено; матеріал не дозволено до публікації.","en":"The original primary source and exact publication date remain unverified; publication is blocked."}],
+      "body":{"ua":"ПРОБЛЕМА: електроспоживання фармацевтичного виробництва.\n\nРІШЕННЯ: сонячна генерація на виробничому майданчику.\n\nPRACTICAL INNOVATION / KNOW-HOW: перевіряти збіг генерації з базовим навантаженням, резервуванням та вимогами безперервності виробництва. Цей висновок IIG не є підтвердженим результатом проєкту.","en":"PROBLEM: electricity use in pharmaceutical manufacturing.\n\nSOLUTION: on-site solar generation.\n\nPRACTICAL INNOVATION / KNOW-HOW: assess generation against base load, backup and continuity requirements; this IIG analysis is not a reported project result."},
+      "project_status":"announcement; primary_source_pending", "status":"SOURCE_VALIDATION_REQUIRED"
+    },
+    {
+      "slug":"host-next-biogas-latvia-biomethane-2026",
+      "sector":"agriculture",
+      "publication_date":null,
+      "canonical_url":"https://prod-ecepp-ap.publish.aem.ebrd.com/home/news-and-events/news/2026/ebrd-helps-host-group-boost-biomethane-production-in-latvia.html",
+      "title":{"ua":"ЄБРР фінансує переобладнання біогазового заводу в Латвії для виробництва біометану","en":"EBRD finances Latvian biogas-to-biomethane conversion"},
+      "summary":{"ua":"ЄБРР повідомив про кредит €26 млн Next Biogas на придбання та конверсію наявного заводу; заявлений майбутній обсяг — близько 80 070 МВт·год біометану на рік.","en":"EBRD announced a €26m loan to Next Biogas for acquisition and conversion of an existing plant; expected output is around 80,070 MWh of biomethane annually."},
+      "company_context":[{"ua":"Next Biogas — латвійська компанія групи HoSt, що працює з біоенергетичними активами.","en":"Next Biogas is a Latvian HoSt Group company working with bioenergy assets."},{"ua":"Кредит ЄБРР €26 млн призначений для придбання біогазового заводу та переобладнання його на виробництво біометану.","en":"An EBRD €26m loan supports acquisition and conversion of a biogas plant to biomethane."},{"ua":"Показник 80 070 МВт·год на рік є очікуваним після запуску; дату публікації необхідно підтвердити перед випуском.","en":"The 80,070 MWh/year figure is prospective after commissioning; the release date must be verified before publication."}],
+      "body":{"ua":"ПРОБЛЕМА: утилізація аграрних і харчових відходів та залежність від природного газу.\n\nПІДТВЕРДЖЕНИЙ ФАКТ: кредит на конверсію існуючого заводу, а не звіт про введення біометанового виробництва в експлуатацію.\n\nТЕХНІЧНЕ РІШЕННЯ: очищення біогазу до біометану з подальшою подачею в газову мережу.\n\nPRACTICAL INNOVATION / KNOW-HOW: на стадії FEED перевіряти сезонність сировини, якість газу та умови підключення до мережі; інженерна рекомендація IIG.","en":"PROBLEM: agricultural and food waste utilization and natural gas dependence.\n\nVERIFIED FACT: financing for conversion, not a commissioning announcement.\n\nTECHNICAL SOLUTION: upgrade biogas to biomethane and inject into the gas grid.\n\nPRACTICAL INNOVATION / KNOW-HOW: assess feedstock seasonality, gas quality and grid connection at FEED stage; IIG engineering recommendation."},
+      "project_status":"financing; conversion_planned", "status":"DATE_VALIDATION_REQUIRED"
+    },
+    {
+      "slug":"google-finland-ai-infrastructure-2026",
+      "sector":"datacenters",
+      "publication_date":"2026-09-09",
+      "canonical_url":"https://www.googlecloudpresscorner.com/2026-09-09-Google-Deepens-Commitment-to-Finland-with-Two-Year-EUR13-Billion-investment-in-AI-Infrastructure",
+      "title":{"ua":"Google оголосила дворічну інвестиційну програму €13 млрд у ШІ-інфраструктуру Фінляндії","en":"Google announces two-year €13bn investment in Finnish AI infrastructure"},
+      "summary":{"ua":"Google оголосила інвестиційну програму в ШІ-інфраструктуру Фінляндії; оголошені витрати не означають завершення всіх об’єктів.","en":"Google announced an AI infrastructure investment programme in Finland; the announcement does not establish that all facilities are completed."},
+      "company_context":[{"ua":"Google — технологічна компанія та оператор хмарної і ШІ-інфраструктури.","en":"Google is a technology company operating cloud and AI infrastructure."},{"ua":"9 вересня компанія оголосила про дворічну програму інвестицій у Фінляндії обсягом €13 млрд.","en":"On September 9 the company announced a two-year €13bn investment programme in Finland."},{"ua":"Це повідомлення про програму інвестицій, а не підтвердження введення всіх майбутніх потужностей в експлуатацію.","en":"This is an investment programme announcement, not confirmation that all future capacity has been commissioned."}],
+      "body":{"ua":"ПРОБЛЕМА: зростання потреб ШІ-інфраструктури в електроенергії та підключенні.\n\nПІДТВЕРДЖЕНИЙ ФАКТ: Google оголосила дворічну інвестиційну програму; її реалізація є майбутнім процесом.\n\nPRACTICAL INNOVATION / KNOW-HOW: для дата-центрів разом аналізувати grid connection, резервування, профіль навантаження та можливості використання відпрацьованого тепла. Це аналітичний висновок IIG, а не обіцяний показник Google.","en":"PROBLEM: AI infrastructure increases electricity and interconnection demand.\n\nVERIFIED FACT: Google announced a two-year investment programme; implementation is prospective.\n\nPRACTICAL INNOVATION / KNOW-HOW: jointly evaluate grid connection, backup, load profile and waste-heat opportunities. This is IIG analysis, not a Google performance commitment."},
+      "project_status":"investment_announcement", "status":"READY_FOR_REVIEW"
+    },
+    {
+      "slug":"braskem-decarbonization-progress-2026",
+      "sector":"chemical",
+      "publication_date":null,
+      "canonical_url":"https://www.braskem.com.br/news-detail/braskem-achieves-more-than-two-thirds-of-its-2030-decarbonization-objective",
+      "title":{"ua":"Braskem повідомила про прогрес щодо цілі декарбонізації до 2030 року","en":"Braskem reports progress toward its 2030 decarbonization target"},
+      "summary":{"ua":"Компанія повідомляє про скорочення понад 1,2 млн т CO₂e на рік завдяки енергоефективності, електрифікації та зміні енергобалансу; методику й дату необхідно перевірити.","en":"The company reports over 1.2m tonnes CO2e/year of reductions involving efficiency, electrification and energy-mix changes; methodology and date require verification."},
+      "company_context":[{"ua":"Braskem — виробник хімічної та нафтохімічної продукції.","en":"Braskem is a chemical and petrochemical producer."},{"ua":"Компанія пов’язує прогрес декарбонізації з енергоефективністю, електрифікацією та переходом енергобалансу.","en":"The company attributes decarbonization progress to efficiency, electrification and energy-mix changes."},{"ua":"Показники наведені за повідомленням компанії; дату та методику потрібно перевірити до публікації.","en":"Figures are company-reported; the date and methodology require verification before publication."}],
+      "body":{"ua":"ПРОБЛЕМА: енергоємність і викиди хімічного виробництва.\n\nЗАЯВА КОМПАНІЇ: Braskem повідомляє про прогрес щодо власної цілі на 2030 рік.\n\nPRACTICAL INNOVATION / KNOW-HOW: розділяти ефект енергоефективності, електрифікації та зміни палива, не змішуючи корпоративну оцінку з незалежно підтвердженим вимірюванням. Це підхід IIG.","en":"PROBLEM: energy intensity and emissions in chemicals production.\n\nCOMPANY CLAIM: Braskem reports progress against its own 2030 goal.\n\nPRACTICAL INNOVATION / KNOW-HOW: separate efficiency, electrification and fuel-switching impacts, and distinguish corporate claims from independently verified measurements. This is IIG analysis."},
+      "project_status":"company_reported_progress", "status":"DATE_VALIDATION_REQUIRED"
+    },
+    {
+      "slug":"salzgitter-zelestra-hybrid-ppa-2026",
+      "sector":"metallurgy",
+      "publication_date":null,
+      "canonical_url":"https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-flachstahl-and-zelestra-sign-largest-hybrid-solar-plus-energy-storage-contract-in-germany-to-supply-green-electricity-for-low-carbon-steel-production-26993.html",
+      "title":{"ua":"Salzgitter і Zelestra уклали PPA на 147 МВт сонячної генерації та 79 МВт / 237 МВт·год BESS","en":"Salzgitter and Zelestra sign PPA for 147 MW solar and 79 MW / 237 MWh BESS"},
+      "summary":{"ua":"Угода передбачає два майбутні гібридні проєкти; підписаний PPA не означає, що станції вже побудовано.","en":"The agreement covers two prospective hybrid projects; a signed PPA does not mean the plants are commissioned."},
+      "company_context":[{"ua":"Salzgitter Flachstahl — виробник сталі; Zelestra — розробник енергетичних проєктів.","en":"Salzgitter Flachstahl is a steelmaker; Zelestra develops energy projects."},{"ua":"Сторони підписали довгострокову угоду на два проєкти із 147 МВт сонячної генерації та 79 МВт / 237 МВт·год накопичення.","en":"The parties signed a long-term agreement for two projects totaling 147 MW solar and 79 MW / 237 MWh storage."},{"ua":"Zelestra має збудувати та експлуатувати станції; точну дату релізу необхідно перевірити перед публікацією.","en":"Zelestra is to build and operate the plants; the exact release date needs checking before publication."}],
+      "body":{"ua":"ПРОБЛЕМА: забезпечення металургії низьковуглецевою електроенергією з керованим профілем.\n\nПІДТВЕРДЖЕНИЙ ФАКТ: підписано PPA; будівництво й експлуатація є майбутніми етапами.\n\nТЕХНІЧНЕ РІШЕННЯ: PV у поєднанні з BESS та управлінням відпуском.\n\nPRACTICAL INNOVATION / KNOW-HOW: аналізувати погодинний профіль PPA, обмеження мережі та диспетчеризацію BESS разом; висновок IIG.","en":"PROBLEM: low-carbon power for steelmaking with a manageable delivery profile.\n\nVERIFIED FACT: a PPA has been signed; construction and operation are future steps.\n\nTECHNICAL SOLUTION: PV plus BESS and dispatch control.\n\nPRACTICAL INNOVATION / KNOW-HOW: jointly assess hourly PPA delivery, grid constraints and BESS dispatch; IIG analysis."},
+      "project_status":"ppa_signed; not_commissioned", "status":"DATE_VALIDATION_REQUIRED"
+    }
+  ],
+  "coverage_gap": ["food: a separate food-processing energy project with a verified dated primary source is still required; the agriculture biomethane project also uses food waste but must not be duplicated as an independent food-sector event."],
+  "admin_decision": null
+}
