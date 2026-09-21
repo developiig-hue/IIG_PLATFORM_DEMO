@@ -1,5 +1,40 @@
 {
   "schema": "iig.public-news.v1",
-  "publication_policy": "Only administrator-approved, primary-source-verified articles may be added. Never copy READY_FOR_REVIEW candidates into this file automatically.",
-  "items": []
+  "publication_policy": "Administrator-approved records only. Publication_date denotes the primary EBRD project disclosure date, not the financing signing date or commissioning date.",
+  "items": [
+    {
+      "slug": "kernel-106mw-solar-bess-ebrd",
+      "sector": "agriculture",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-04-01",
+      "canonical_url": "https://www.ebrd.com/home/work-with-us/projects/psd/56463.html",
+      "title": {"ua": "Kernel: ЄБРР фінансує сонячний проєкт 106 МВт із системою накопичення енергії", "en": "Kernel: EBRD finances a 106 MW solar project with battery storage"},
+      "summary": {"ua": "У проєктній картці ЄБРР зазначено кредит до $45 млн для Energy RTB 2, дочірньої компанії Kernel. Дата розкриття картки — 1 квітня 2026 року; статус фінансування — Signed. Це не підтвердження введення станції в експлуатацію.", "en": "EBRD's project disclosure lists a loan of up to $45 million to Kernel subsidiary Energy RTB 2. The disclosure date is 1 April 2026 and financing status is Signed; commissioning is not confirmed."},
+      "company_context": [
+        {"ua": "Kernel — українська агропромислова група; Energy RTB 2 — її дочірня компанія.", "en": "Kernel is a Ukrainian agribusiness group; Energy RTB 2 is its subsidiary."},
+        {"ua": "ЄБРР підтримує будівництво сонячної станції 106 МВт і встановлення BESS кредитом до $45 млн.", "en": "EBRD supports construction of a 106 MW solar plant and BESS installation with a loan of up to $45 million."},
+        {"ua": "Картку розкрито 1 квітня 2026 року; фінансування підписано, запуск об’єкта не підтверджено.", "en": "The project was disclosed on 1 April 2026; financing is signed, commissioning is not confirmed."}
+      ],
+      "body": {"ua": "ПІДТВЕРДЖЕНИЙ ФАКТ. ЄБРР опублікував картку проєкту Energy RTB 2 із датою розкриття 1 квітня 2026 року. У ній зазначено кредит до $45 млн на будівництво сонячної станції 106 МВт та встановлення системи накопичення енергії. Статус кредиту — Signed. Потужність BESS і дата введення об’єкта в експлуатацію цією карткою не підтверджені.\n\nТЕХНІЧНЕ ЗНАЧЕННЯ. Поєднання фотоелектричної генерації та накопичувача дозволяє проєктувати керований профіль видачі, але конкретний режим роботи залежить від параметрів BESS і мережевого приєднання.\n\nPRACTICAL INNOVATION / KNOW-HOW — АНАЛІЗ IIG. На стадії FEED необхідно разом оцінити графік сонячної генерації, потужність та ємність накопичувача, точку приєднання, обмеження мережі та економіку диспетчеризації. Це інженерна рекомендація, а не заявлений результат проєкту.", "en": "VERIFIED FACT. EBRD's Energy RTB 2 project disclosure is dated 1 April 2026. It lists a loan of up to $45 million for construction of a 106 MW solar plant and installation of battery energy storage. The loan status is Signed. The document does not establish BESS capacity or commissioning date.\n\nTECHNICAL SIGNIFICANCE. Combining photovoltaics with storage offers options for a controllable output profile, subject to storage specifications and grid connection conditions.\n\nPRACTICAL INNOVATION / KNOW-HOW — IIG ANALYSIS. FEED should jointly assess solar production profiles, storage power and energy, interconnection, grid constraints and dispatch economics. This is engineering analysis, not a claimed project outcome."}
+    },
+    {
+      "slug": "ebrd-189mw-wind-galnaftogaz",
+      "sector": "energy",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-04-24",
+      "canonical_url": "https://www.ebrd.com/home/work-with-us/projects/psd/56596.html",
+      "title": {"ua": "Galnaftogaz / OKKO: ЄБРР підписав фінансування вітропроєкту 189 МВт", "en": "Galnaftogaz / OKKO: EBRD signs financing for a 189 MW wind project"},
+      "summary": {"ua": "Проєктна картка ЄБРР підтверджує кредит до €50 млн для будівництва ВЕС 189 МВт. Дата розкриття — 24 квітня 2026 року, дата схвалення — 17 червня; станція не зазначена як введена в експлуатацію.", "en": "EBRD's project disclosure confirms a loan of up to €50 million for a 189 MW wind farm. Disclosure was on 24 April 2026 and approval on 17 June; the plant is not reported commissioned."},
+      "company_context": [
+        {"ua": "Galnaftogaz належить до групи OKKO, яка розвиває відновлювану генерацію в Україні.", "en": "Galnaftogaz belongs to OKKO Group, which is developing renewable generation in Ukraine."},
+        {"ua": "ЄБРР передбачив кредит до €50 млн для проєктних компаній Volyn West Wind-2 і Volyn West Wind-3 на ВЕС 189 МВт.", "en": "EBRD provides a loan of up to €50 million to Volyn West Wind-2 and Volyn West Wind-3 for a 189 MW wind farm."},
+        {"ua": "Дата розкриття — 24 квітня 2026 року; статус Signed стосується фінансування, а не запуску ВЕС.", "en": "Disclosure date is 24 April 2026; Signed refers to financing, not plant commissioning."}
+      ],
+      "body": {"ua": "ПІДТВЕРДЖЕНИЙ ФАКТ. Картка ЄБРР проєкту Galnaftogaz Wind II містить дату розкриття 24 квітня 2026 року, дату схвалення 17 червня 2026 року та статус Signed. Кредит до €50 млн призначений для будівництва й експлуатації вітроелектростанції приблизно 189 МВт. Підписання фінансування не означає завершення будівництва.\n\nТЕХНІЧНЕ ЗНАЧЕННЯ. Для інтеграції ВЕС важливі прогноз виробітку, мережеве приєднання, балансування та обмеження видачі. Зазначені в проєктній документації річні показники генерації є очікуваними, а не фактично виміряними.\n\nPRACTICAL INNOVATION / KNOW-HOW — АНАЛІЗ IIG. Перед фінальним EPC-бюджетом варто синхронізувати графік будівництва, підстанцію, лінію приєднання та умови диспетчеризації. Це рекомендація IIG, не підтверджений результат реалізації.", "en": "VERIFIED FACT. EBRD's Galnaftogaz Wind II project disclosure is dated 24 April 2026, records approval on 17 June 2026 and lists status Signed. A loan of up to €50 million supports construction and operation of a roughly 189 MW wind farm. Financing signature is not construction completion.\n\nTECHNICAL SIGNIFICANCE. Wind integration requires generation forecasting, interconnection, balancing and curtailment assessment. Annual generation figures in project documents are forecasts, not measured operational results.\n\nPRACTICAL INNOVATION / KNOW-HOW — IIG ANALYSIS. Before finalizing the EPC budget, align construction schedule, substation, interconnection line and dispatch conditions. This is an IIG recommendation, not a verified operational result."}
+    }
+  ]
 }
