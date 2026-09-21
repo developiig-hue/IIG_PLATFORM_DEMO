@@ -97,7 +97,7 @@ def verify():
     for path in QUEUE.glob('*.json'):
         record = json.loads(path.read_text(encoding='utf-8'))
         assert record.get('auto_publish') is False, f'Auto-publish must be disabled: {path}'
-        assert record.get('publish_authority') == 'ADMIN_ONLY', f'Invalid publication authority:
+        assert record.get('publish_authority') == 'ADMIN_ONLY', f'Invalid publication authority: {path}'
         assert record['status'] in ('READY_FOR_REVIEW', 'APPROVED', 'REJECTED')
         if record['status'] == 'APPROVED':
             assert record['moderation']['decision'] == 'APPROVED' and record['moderation']['reviewed_by'] and record['moderation']['reviewed_at']
