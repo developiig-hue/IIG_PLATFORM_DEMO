@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
-"""Generate moderation artifacts only. This program never publishes content."""
+"""Generate portable moderation artifacts only; never approve or publish."""
 import argparse
 import hashlib
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
+from news_image_selector import select_image
+
 ROOT = Path(__file__).resolve().parents[1]
 QUEUE = ROOT / 'content' / 'review-queue'
 POLICY = ROOT / 'content' / 'moderation-policy.json'
+MAPPING = ROOT / 'content' / 'news-sector-image-paths.json'
+MANIFEST = ROOT / 'baze_foto_news' / 'manifest.json'
 
 
 def policy():
@@ -30,7 +35,7 @@ def score(item):
 
 
 def valid(item):
-    """Fail closed: never send unverified or incomplete news to the editorial queue."""
+    """Structural checks only: supplied verification flags are not independent fact checks."""
     if not isinstance(item, dict):
         return False
     required = ('title', 'company_name', 'company_activity', 'project', 'technology', 'project_status', 'project_status_evidence', 'date', 'canonical_url', 'company_context')
@@ -61,6 +66,27 @@ def candidate_pool():
     return [item for item in pool if valid(item)]
 
 
+def image_resources():
+    mapping = json.loads(MAPPING.read_text(encoding='utf-8'))
+    manifest = json.loads(MANIFEST.read_text(encoding='utf-8'))
+    register = os.environ.get('IIG_IMAGE_RIGHTS_REGISTER', '').strip()
+    rights = json.loads(Path(register).read_text(encoding='utf-8')) if register else {}
+    return mapping, manifest, rights
+
+
+def attach_image(item, resources):
+    mapping, manifest, rights = resources
+    draft = dict(item)
+    decision = select_image(draft, mapping, manifest, root=ROOT, rights=rights)
+    draft['image_decision'] = decision
+    draft['image_status'] = decision['image_status']
+    draft['status'] = 'READY_FOR_REVIEW' if decision['image_status'] == 'SELECTED' else 'IMAGE_REVIEW_REQUIRED'
+    draft['auto_publish'] = False
+    draft['publish_authority'] = 'ADMIN_ONLY'
+    draft.pop('approval', None)
+    return draft
+
+
 def make(kind, now):
     pol = policy()
     month = now.strftime('%Y-%m')
@@ -77,9 +103,12 @@ def make(kind, now):
                 seen.add(key)
                 selected.append(item)
         selected = selected[:pol['monthly']['max_items']]
+    resources = image_resources()
+    selected = [attach_image(item, resources) for item in selected]
     stamp = now.strftime('%Y%m%dT%H%M%SZ')
     ident = hashlib.sha256((kind + stamp).encode()).hexdigest()[:12]
-    document = {'schema': 'iig.moderation.v1', 'id': ident, 'kind': kind, 'generated_at': now.isoformat(), 'status': 'READY_FOR_REVIEW', 'publish_authority': 'ADMIN_ONLY', 'auto_publish': False, 'items': selected, 'moderation': {'reviewed_by': None, 'reviewed_at': None, 'decision': None}, 'audit': {'generator': 'scripts/content_engine.py', 'immutable_rule': 'NO_AUTO_PUBLISH'}}
+    blocked = any(item['image_status'] != 'SELECTED' for item in selected)
+    document = {'schema': 'iig.moderation.v1', 'id': ident, 'kind': kind, 'generated_at': now.isoformat(), 'status': 'IMAGE_REVIEW_REQUIRED' if blocked else 'READY_FOR_REVIEW', 'publish_authority': 'ADMIN_ONLY', 'auto_publish': False, 'items': selected, 'moderation': {'reviewed_by': None, 'reviewed_at': None, 'decision': None}, 'audit': {'generator': 'scripts/content_engine.py', 'immutable_rule': 'NO_AUTO_PUBLISH', 'image_selector': 'scripts/news_image_selector.py'}}
     QUEUE.mkdir(parents=True, exist_ok=True)
     path = QUEUE / f'{kind}-{stamp}.json'
     path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
@@ -98,9 +127,10 @@ def verify():
         record = json.loads(path.read_text(encoding='utf-8'))
         assert record.get('auto_publish') is False, f'Auto-publish must be disabled: {path}'
         assert record.get('publish_authority') == 'ADMIN_ONLY', f'Invalid publication authority: {path}'
-        assert record['status'] in ('READY_FOR_REVIEW', 'APPROVED', 'REJECTED')
+        assert record['status'] in ('READY_FOR_REVIEW', 'IMAGE_REVIEW_REQUIRED', 'APPROVED', 'REJECTED')
         if record['status'] == 'APPROVED':
             assert record['moderation']['decision'] == 'APPROVED' and record['moderation']['reviewed_by'] and record['moderation']['reviewed_at']
+            assert all(i.get('image_status') == 'SELECTED' for i in record.get('items', []))
     print('PASS: scheduler and fail-closed moderation invariants')
 
 
