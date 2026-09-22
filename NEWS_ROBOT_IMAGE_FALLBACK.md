@@ -1,11 +1,35 @@
-# News Robot — mandatory image selection and baze_foto_news fallback
+# News Robot — обязательный протокол фотографий и автоматического резерва
 
-Status: binding specification for PR #3; not deployed or verified. Apply together with NEWS_EDITORIAL_PROTOCOL.md and NEWS_ROBOT_QUALITY_PROTOCOL.md.
+Статус: обязательная спецификация PR #3; вступает в действие в роботе после подключения к коду и проверки. Применять вместе с `NEWS_EDITORIAL_PROTOCOL.md` и `NEWS_ROBOT_QUALITY_PROTOCOL.md`.
 
-For every news article, inspect a project-specific official photograph from the project owner, EPC contractor or OEM first; then an accurately described official company/site photograph. Before selection verify (1) factual relevance and correct identification of project/site, (2) documented reuse rights/license or permission and credit, (3) sufficient image quality, resolution and appropriate format, and (4) accurate caption/alt text and no misleading watermark, crop or representation. An accessible photo or attribution alone does not confer republication rights.
+## 1. Проверка оригинального новостного фото: четыре критерия
 
-**Mandatory fallback:** If available news photographs fail ANY of the first four criteria or none exists, select the corresponding image from the repository's `baze_foto_news` collection of NINE thematic photographs, matching the article's actual sector exactly: `energy`, `metallurgy`, `agriculture`, `food`, `chemical`, `pharma`, `logistics`, `datacenters`, `waste`. Consult `baze_foto_news/manifest.json` and verify that the matching JPEG exists as a deployed web-accessible asset, that IIG has rights to publish it, and that it loads in article and listing views. Do not treat a ZIP archive member as a browser URL or claim repository assets exist without checking. Never substitute an image from another sector.
+Для каждой новости робот сначала ищет фотографию конкретного проекта у заказчика, EPC-подрядчика или OEM, затем — корректно подписанное официальное фото компании/площадки. Фото допустимо, только если одновременно выполнены четыре условия: (1) изображение соответствует фактическому объекту и событию; (2) есть документированное право публикации и корректное указание автора/источника; (3) качество, разрешение, формат и кадрирование подходят для сайта; (4) подпись и alt-текст достоверны, нет вводящих в заблуждение водяных знаков, обрезки или ложной атрибуции. Доступность изображения в интернете не доказывает права на повторную публикацию.
 
-A thematic fallback is illustrative, NOT a photograph of the named company's project. Provide accurate UA/EN alt text and caption identifying it as a thematic/illustrative image, and record `image_type=sector_photo` (or `sector_generated` when applicable), `image_source_url`, `image_credit`, `image_rights_verified`, `image_rights_basis`, and image file/manifest reference. Do not add false project attribution or logos.
+## 2. ОБЯЗАТЕЛЬНО: автоматический выбор резервного фото БЕЗ отдельного разрешения администратора
 
-If the sector-matched repository image is absent, broken, unlicensed or not verifiably deployed, set `IMAGE_REVIEW_REQUIRED` and BLOCK publication until a suitable rights-cleared same-sector image is available. Include chosen image, caption, rights evidence and fallback reason in READY_FOR_REVIEW. Any post-approval image change invalidates the approval and requires renewed human approval. No robot may auto-approve or auto-publish.
+Если оригинальное новостное фото отсутствует либо НЕ ПРОХОДИТ ХОТЯ БЫ ОДИН из четырёх критериев, робот **самостоятельно и немедленно при подготовке черновика** выбирает строго соответствующее отрасли изображение из внутренней базы `baze_foto_news`. Он НЕ ожидает отдельного разрешения администратора на переключение с неподходящего новостного фото на заранее допущенное резервное фото. Это автоматический выбор иллюстрации для черновика, а НЕ разрешение на публикацию новости. Утверждение всей статьи с выбранным изображением остаётся обязательным и выполняется только администратором.
+
+Точное расположение: `baze_foto_news/manifest.json` — манифест с описаниями и соответствиями; **девять JPG расположены в корне репозитория**, а не внутри каталога `baze_foto_news/`. Для определения пути использовать `content/news-sector-image-paths.json` и проверять соответствие с манифестом. Ниже приведены точные web-пути от корня сайта (для GitHub Pages проекта учитывать базовый путь сайта при построении абсолютного URL):
+
+| Отрасль / sector | Точный путь к JPG |
+|---|---|
+| Энергетика / `energy` | `/baze_foto_news_energy.jpg` |
+| Металлургия / `metallurgy` | `/baze_foto_news_metallurgy.jpg` |
+| АПК / `agriculture` | `/baze_foto_news_agriculture.jpg` |
+| Пищевая промышленность / `food` | `/baze_foto_news_food.jpg` |
+| Химическая промышленность / `chemical` | `/baze_foto_news_chemical.jpg` |
+| Фармацевтика / `pharma` | `/baze_foto_news_pharma.jpg` |
+| Логистика / `logistics` | `/baze_foto_news_logistics.jpg` |
+| Дата-центры / `datacenters` | `/baze_foto_news_datacenters.jpg` |
+| Переработка отходов / `waste` | `/baze_foto_news_waste.jpg` |
+
+Алгоритм: определить фактическую отрасль новости → проверить четыре критерия оригинального фото → при любом отказе автоматически прочитать точный путь своей отрасли → проверить существование JPG, доступность в сборке и ранее подтверждённые права на использование внутреннего актива → назначить его черновику `image_type=sector_photo`, сохранить `fallback_reason` и путь → установить UA/EN подпись «Ілюстративне фото, не об’єкт новини» / «Illustrative image, not the reported facility» и корректный alt-текст → включить выбранное фото и подписи в общую очередь утверждения статьи. Не выбирать фото другой отрасли; не представлять резерв как реальное фото проекта.
+
+**Правило разрешений:** отсутствие отдельного согласования выбора резервного изображения НЕ отменяет проверки прав на само изображение. Для девяти внутренних файлов права должны быть подтверждены и сохранены заранее на уровне реестра активов; исторический `image_rights_verified=true` в `manifest.json` сам по себе не является документом о правах. После однократного подтверждения прав робот повторно не спрашивает разрешения на каждое использование заранее допущенного JPG.
+
+Если подходящий JPG отсутствует, не загружается или права на него не подтверждены, установить `IMAGE_REVIEW_REQUIRED` и не публиковать материал до устранения проблемы. Если фото есть и права заранее подтверждены, отдельное согласование резервной фотографии не требуется. Любое изменение изображения ПОСЛЕ утверждения статьи аннулирует утверждение и требует повторного утверждения всей изменённой версии.
+
+## 3. Граница полномочий
+
+Робот может автоматически выбрать и вставить разрешённое резервное фото **в черновик и очередь модерации**. Робот не может самостоятельно утверждать статью, выставлять `APPROVED` или публиковать её на сайте. Публикация — только после явного утверждения администратором статьи UA/EN вместе с изображением.
