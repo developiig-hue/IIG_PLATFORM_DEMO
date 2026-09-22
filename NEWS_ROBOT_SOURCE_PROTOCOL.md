@@ -1,0 +1,21 @@
+# IIG News Robot — source discovery and enrichment protocol
+
+## Authoritative paths
+- `content/news-source-registry.json`: machine-readable approved source registry, exactly 260 entries, P1=160 and P2=100. The attached Excel workbook is an import source, not a runtime dependency. `scripts/news_registry.py` validates and orders the registry.
+- `content/news-feeds.json`: ONLY individually verified RSS/Atom URLs; an official website homepage is never assumed to be a feed.
+- `scripts/news_source_discovery.py`: RSS/Atom discovery only; its results are unverified evidence, not publishable articles.
+- `scripts/content_engine.py`: generates research/review artifacts, never publishes.
+
+## Mandatory scheduling and coverage
+1. Traverse all P1 sources first (160); traverse all P2 sources next (100) in every complete research cycle. A failure of one source must not abort the remaining sources. Log attempts, successes, failures, last check and extracted items by source ID. Apply host-specific rate limits and access restrictions. Never mark a site successfully crawled merely because its owner approved its inclusion.
+2. Only call the RSS parser on independently audited feeds. Websites without feeds require a separately tested site adapter or an approved search integration. Do not fabricate an RSS endpoint, claim 260 websites were searched when only a few feeds ran, or silently skip P2.
+3. Deduplicate across URLs, mirrored releases, parent companies and languages by underlying event; preserve every evidence URL and the source's P1/P2 provenance. Ranking by editorial relevance is independent of crawl priority; do not impose artificial news quotas.
+
+## MANDATORY: research beyond the 260-source registry
+The 260-source list is a PRIORITY STARTING POINT, never a closed search boundary. For each event, if the registry report is dry, insufficiently detailed, lacks an authentic interview or an appropriate rights-cleared photo, or contains unsupported project figures, the robot MUST conduct topic-specific discovery OUTSIDE the registry. Search the project's official owner, OEM, EPC, regulator, financing institution, exchange disclosures, tender documents, relevant local-language outlets and attributable interview transcripts. Search across languages and regions as warranted. Record discovery query, URLs, source identity, retrieval date and exact supporting passages. A second outlet repeating the same press release is NOT independent corroboration. An interview is optional editorial material: NEVER invent one or imply a person was interviewed when no authenticated interview exists. A missing interview does not justify blocking an otherwise well-evidenced article, but must trigger an enrichment attempt when useful. If no licensed suitable photo is found, use a documented rights-cleared generic image clearly identified as illustrative or mark IMAGE_REVIEW_REQUIRED; never scrape and reuse an unlicensed photo.
+
+## Evidence and editorial gate
+Treat titles, RSS descriptions, AI summaries and industry media as leads, not verified facts. Fetch full primary material; attribute and independently cross-check material claims when possible, recording claim-to-source mapping and conflicts. Clearly distinguish confirmed facts, source claims and unresolved questions. Do not fill gaps with invented details, quotes, dates, project status or equipment specifications. Produce substantial original UA/EN drafts only when evidence supports them; never pad to a character target. If insufficient evidence remains, submit a research-needed record instead of an article. Keep the website and digest outputs separately traceable to the same evidence dossier; no auto-publication, administrator approval required for both. Preserve existing public news and do not merge this branch without explicit owner approval.
+
+## Acceptance conditions
+Verify registry 260/160/100 and source ordering, real adapter coverage, failure isolation, cross-registry enrichment, claim citations, image rights, UA/EN draft generation, deduplication and admin-only publishing with offline fixtures and a separately authorized live integration run. A successful offline RSS test is not evidence of full-source discovery or article generation.
