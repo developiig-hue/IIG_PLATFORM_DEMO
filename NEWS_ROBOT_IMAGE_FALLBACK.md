@@ -1,0 +1,11 @@
+# News Robot — mandatory image selection and baze_foto_news fallback
+
+Status: binding specification for PR #3; not deployed or verified. Apply together with NEWS_EDITORIAL_PROTOCOL.md and NEWS_ROBOT_QUALITY_PROTOCOL.md.
+
+For every news article, inspect a project-specific official photograph from the project owner, EPC contractor or OEM first; then an accurately described official company/site photograph. Before selection verify (1) factual relevance and correct identification of project/site, (2) documented reuse rights/license or permission and credit, (3) sufficient image quality, resolution and appropriate format, and (4) accurate caption/alt text and no misleading watermark, crop or representation. An accessible photo or attribution alone does not confer republication rights.
+
+**Mandatory fallback:** If available news photographs fail ANY of the first four criteria or none exists, select the corresponding image from the repository's `baze_foto_news` collection of NINE thematic photographs, matching the article's actual sector exactly: `energy`, `metallurgy`, `agriculture`, `food`, `chemical`, `pharma`, `logistics`, `datacenters`, `waste`. Consult `baze_foto_news/manifest.json` and verify that the matching JPEG exists as a deployed web-accessible asset, that IIG has rights to publish it, and that it loads in article and listing views. Do not treat a ZIP archive member as a browser URL or claim repository assets exist without checking. Never substitute an image from another sector.
+
+A thematic fallback is illustrative, NOT a photograph of the named company's project. Provide accurate UA/EN alt text and caption identifying it as a thematic/illustrative image, and record `image_type=sector_photo` (or `sector_generated` when applicable), `image_source_url`, `image_credit`, `image_rights_verified`, `image_rights_basis`, and image file/manifest reference. Do not add false project attribution or logos.
+
+If the sector-matched repository image is absent, broken, unlicensed or not verifiably deployed, set `IMAGE_REVIEW_REQUIRED` and BLOCK publication until a suitable rights-cleared same-sector image is available. Include chosen image, caption, rights evidence and fallback reason in READY_FOR_REVIEW. Any post-approval image change invalidates the approval and requires renewed human approval. No robot may auto-approve or auto-publish.
