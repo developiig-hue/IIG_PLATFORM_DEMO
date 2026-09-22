@@ -1,0 +1,69 @@
+name: News Robot Tests (No Publishing)
+on:
+  push:
+    branches: [feature/news-robot-pipeline]
+    paths: ['scripts/news_source_discovery.py', 'scripts/content_engine.py', 'tests/**', 'content/news-feeds.json', '.github/workflows/news-robot-tests.yml']
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      live_feeds:
+        description: 'Run real HTTPS feed smoke test (requires audited nonempty news-feeds.json)'
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline synthetic RSS and Atom tests
+        run: python -m unittest discover -s tests -v
+      - name: Verify moderation invariants
+        run: python scripts/content_engine.py verify
+      - name: Offline empty-feed smoke test
+        run: |
+          python scripts/news_source_discovery.py --output /tmp/iig-discovery-smoke.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('/tmp/iig-discovery-smoke.json').read_text())
+          assert x['schema']=='iig.discovery.v1'
+          assert all(i['fact_check_status']=='NOT_VERIFIED' and i['auto_publish'] is False for i in x['items'])
+          print('PASS: discovery never certifies facts or publishes')
+          PY
+  live-feed-smoke:
+    if: github.event_name == 'workflow_dispatch' && inputs.live_feeds == true
+    needs: offline-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require audited feed registry
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          feeds=json.loads(Path('content/news-feeds.json').read_text())['feeds']
+          assert feeds, 'No audited feeds configured: live test intentionally blocked'
+          PY
+      - name: Discover real sources without publishing
+        run: python scripts/news_source_discovery.py --output /tmp/iig-live-discovery.json
+      - name: Check discovery and report failures
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('/tmp/iig-live-discovery.json').read_text())
+          assert x['items'], 'No valid source entries discovered'
+          assert not x['failures'], f"Feed failures: {x['failures']}"
+          assert all(i['fact_check_status']=='NOT_VERIFIED' and i['auto_publish'] is False for i in x['items'])
+          print('PASS: live discovery works; factual claims remain UNVERIFIED')
+          PY
+# No deployment, repository write permission, approval or publication.
