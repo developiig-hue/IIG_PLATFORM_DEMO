@@ -44,7 +44,7 @@ jobs:
           print('PASS: robot code is host/domain independent')
           PY
   live-source-smoke:
-    if: github.event_name == 'workflow_dispatch' && inputs.live_sources == true
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.live_sources == true)
     needs: offline-tests
     runs-on: ubuntu-latest
     steps:
@@ -56,7 +56,7 @@ jobs:
         run: python -c "import sys;sys.path.insert(0,'scripts');from news_source_discovery import load_registry; s=load_registry(); print('registry',len(s),'P1',sum(x['priority']=='P1' for x in s),'P2',sum(x['priority']=='P2' for x in s))"
       - name: Live acceptance scan
         run: |
-          if [ "${{ inputs.full_260 }}" = "true" ]; then
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ inputs.full_260 }}" = "true" ]; then
             python scripts/news_source_discovery.py --max-sources 260 --limit 1300 --per-source 5 --delay 0.2 --output /tmp/iig-live-discovery.json
           else
             python scripts/news_source_discovery.py --max-sources 10 --limit 30 --output /tmp/iig-live-discovery.json
@@ -68,7 +68,7 @@ jobs:
           from pathlib import Path
           x=json.loads(Path('/tmp/iig-live-discovery.json').read_text())
           assert x['schema']=='iig.discovery.v2'
-          if "${{ inputs.full_260 }}" == "true":
+          if "${{ github.event_name }}" == "push" or "${{ inputs.full_260 }}" == "true":
               assert x['sources_scanned'] == 260, x['sources_scanned']
           else:
               assert x['sources_scanned'] <= 10
