@@ -8,14 +8,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 from news_image_selector import select_image
-from news_source_discovery import discover
+from news_source_discovery import discover_registry, load_registry
 
 ROOT = Path(__file__).resolve().parents[1]
 QUEUE = ROOT / 'content' / 'review-queue'
 POLICY = ROOT / 'content' / 'moderation-policy.json'
 MAPPING = ROOT / 'content' / 'news-sector-image-paths.json'
 MANIFEST = ROOT / 'baze_foto_news' / 'manifest.json'
-FEEDS = ROOT / 'content' / 'news-feeds.json'
+REGISTRY = ROOT / 'content' / 'news-source-registry.json'
 
 
 def policy():
@@ -81,11 +81,8 @@ def attach_image(item, resources):
 
 
 def research():
-    """RSS discovery is separated from publishable drafts and cannot elevate RSS claims to facts."""
-    config = json.loads(FEEDS.read_text(encoding='utf-8'))
-    if not isinstance(config, dict) or not isinstance(config.get('feeds'), list):
-        raise ValueError('Invalid news feed configuration')
-    return discover(config['feeds'])
+    """Registry discovery is separated from publishable drafts and cannot elevate discovered claims to facts."""
+    return discover_registry(load_registry(REGISTRY))
 
 
 def make(kind, now):
