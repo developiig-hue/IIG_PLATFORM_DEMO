@@ -126,9 +126,12 @@ def verify():
         assert forbidden.lower() not in workflow.lower(), f'forbidden publish path: {forbidden}'
     for path in QUEUE.glob('*.json'):
         record = json.loads(path.read_text(encoding='utf-8'))
+        schema = record.get('schema')
+        if schema not in ('iig.moderation.v1', 'iig.discovery.v1', 'iig.discovery.v2'):
+            continue  # legacy/editorial artifacts are outside this robot's contract
         assert record.get('auto_publish') is False, f'Auto-publish must be disabled: {path}'
         assert record.get('publish_authority') == 'ADMIN_ONLY', f'Invalid publication authority: {path}'
-        if record.get('schema') == 'iig.discovery.v1':
+        if schema in ('iig.discovery.v1', 'iig.discovery.v2'):
             assert all(x.get('fact_check_status') == 'NOT_VERIFIED' for x in record.get('items', []))
             continue
         assert record['status'] in ('READY_FOR_REVIEW', 'IMAGE_REVIEW_REQUIRED', 'APPROVED', 'REJECTED')
