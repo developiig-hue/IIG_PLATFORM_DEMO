@@ -4,7 +4,7 @@
 Discovery order per source: RSS/Atom -> sitemap -> HTML. Results are research leads only:
 this module never verifies facts, approves drafts, or publishes content.
 """
-import argparse, hashlib, html, ipaddress, json, re, sys
+import argparse, hashlib, html, ipaddress, json, re, socket, sys, time
 from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
@@ -44,8 +44,21 @@ class SafeRedirect(HTTPRedirectHandler):
         if not safe_url(target): raise ValueError('Unsafe redirect')
         return super().redirect_request(req,fp,code,msg,headers,target)
 
+def _require_public_dns(url):
+    host=urlparse(url).hostname
+    if not host: raise ValueError('Missing hostname')
+    try:
+        ipaddress.ip_address(host.strip('[]'))
+        return
+    except ValueError:
+        pass
+    for info in socket.getaddrinfo(host,443,type=socket.SOCK_STREAM):
+        if not ipaddress.ip_address(info[4][0]).is_global:
+            raise ValueError('Hostname resolves to non-public address')
+
 def http_fetch(url, timeout=15, max_bytes=MAX_BYTES):
     if not safe_url(url): raise ValueError('Unsafe URL')
+    _require_public_dns(url)
     req=Request(url,headers={'User-Agent':UA,'Accept':'application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.9, */*;q=0.1'})
     with build_opener(SafeRedirect()).open(req,timeout=timeout) as r:
         final=r.geturl()
@@ -159,10 +172,11 @@ def discover_source(source, fetch=http_fetch, per_source=5):
         if likely_news(u,label): add(candidate(source,u,label,method='html'))
     return out[:per_source],attempts
 
-def discover_registry(sources, fetch=http_fetch, limit=100, max_sources=None, per_source=5):
+def discover_registry(sources, fetch=http_fetch, limit=100, max_sources=None, per_source=5, delay_seconds=0):
     items=[]; failures=[]; attempts=[]; seen=set(); scanned=0
     selected=sources[:max_sources] if max_sources else sources
     for source in selected:
+        if scanned and delay_seconds > 0: time.sleep(delay_seconds)
         scanned+=1
         try: found,log=discover_source(source,fetch=fetch,per_source=per_source)
         except Exception as e: found=[]; log=[{'method':'source','status':'ERROR','reason':type(e).__name__}]
@@ -180,8 +194,8 @@ def atomic_write_json(path,data):
     tmp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); tmp.replace(path)
 
 def main():
-    p=argparse.ArgumentParser(); p.add_argument('--registry',type=Path,default=DEFAULT_REGISTRY); p.add_argument('--output',type=Path,default=DEFAULT_OUTPUT); p.add_argument('--limit',type=int,default=100); p.add_argument('--max-sources',type=int); p.add_argument('--per-source',type=int,default=5)
-    a=p.parse_args(); sources=load_registry(a.registry); result=discover_registry(sources,limit=a.limit,max_sources=a.max_sources,per_source=a.per_source); atomic_write_json(a.output,result)
+    p=argparse.ArgumentParser(); p.add_argument('--registry',type=Path,default=DEFAULT_REGISTRY); p.add_argument('--output',type=Path,default=DEFAULT_OUTPUT); p.add_argument('--limit',type=int,default=100); p.add_argument('--max-sources',type=int); p.add_argument('--per-source',type=int,default=5); p.add_argument('--delay',type=float,default=0.2,help='Polite delay between sources in seconds')
+    a=p.parse_args(); sources=load_registry(a.registry); result=discover_registry(sources,limit=a.limit,max_sources=a.max_sources,per_source=a.per_source,delay_seconds=max(0,a.delay)); atomic_write_json(a.output,result)
     print(json.dumps({'items':len(result['items']),'failed_sources':len(result['failures']),'sources_scanned':result['sources_scanned'],'output':str(a.output)})); return 0
 
 if __name__=='__main__': sys.exit(main())
