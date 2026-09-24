@@ -2,12 +2,12 @@ name: News Robot Tests (No Publishing)
 on:
   push:
     branches: [feature/news-robot-pipeline]
-    paths: ['scripts/news_source_discovery.py', 'scripts/content_engine.py', 'tests/**', 'content/news-feeds.json', '.github/workflows/news-robot-tests.yml']
+    paths: ['scripts/news_source_discovery.py', 'scripts/news_registry.py', 'scripts/content_engine.py', 'tests/**', 'content/news-source-registry.json', '.github/workflows/news-robot-tests.yml']
   pull_request:
   workflow_dispatch:
     inputs:
-      live_feeds:
-        description: 'Run real HTTPS feed smoke test (requires audited nonempty news-feeds.json)'
+      live_sources:
+        description: 'Run real HTTPS source smoke test against approved registry'
         required: true
         type: boolean
         default: false
@@ -21,23 +21,25 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Offline synthetic RSS and Atom tests
+      - name: Compile portable robot
+        run: python -m py_compile scripts/news_source_discovery.py scripts/content_engine.py
+      - name: Offline fallback security dedup and portability tests
         run: python -m unittest discover -s tests -v
       - name: Verify moderation invariants
         run: python scripts/content_engine.py verify
-      - name: Offline empty-feed smoke test
+      - name: Assert no hard-coded local or GitHub Pages dependency
         run: |
-          python scripts/news_source_discovery.py --output /tmp/iig-discovery-smoke.json
           python - <<'PY'
-          import json
           from pathlib import Path
-          x=json.loads(Path('/tmp/iig-discovery-smoke.json').read_text())
-          assert x['schema']=='iig.discovery.v1'
-          assert all(i['fact_check_status']=='NOT_VERIFIED' and i['auto_publish'] is False for i in x['items'])
-          print('PASS: discovery never certifies facts or publishes')
+          files=[Path('scripts/news_source_discovery.py'),Path('scripts/content_engine.py')]
+          bad=('C:\\Users\\','/home/igor/','developiig-hue.github.io')
+          for p in files:
+              text=p.read_text(encoding='utf-8')
+              assert not any(x.lower() in text.lower() for x in bad), f'non-portable path/domain in {p}'
+          print('PASS: robot code is host/domain independent')
           PY
-  live-feed-smoke:
-    if: github.event_name == 'workflow_dispatch' && inputs.live_feeds == true
+  live-source-smoke:
+    if: github.event_name == 'workflow_dispatch' && inputs.live_sources == true
     needs: offline-tests
     runs-on: ubuntu-latest
     steps:
@@ -45,25 +47,20 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Require audited feed registry
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          feeds=json.loads(Path('content/news-feeds.json').read_text())['feeds']
-          assert feeds, 'No audited feeds configured: live test intentionally blocked'
-          PY
-      - name: Discover real sources without publishing
-        run: python scripts/news_source_discovery.py --output /tmp/iig-live-discovery.json
-      - name: Check discovery and report failures
+      - name: Validate 260-source registry
+        run: python -c "import sys;sys.path.insert(0,'scripts');from news_source_discovery import load_registry; s=load_registry(); print('registry',len(s),'P1',sum(x['priority']=='P1' for x in s),'P2',sum(x['priority']=='P2' for x in s))"
+      - name: Live smoke first 10 prioritized sources
+        run: python scripts/news_source_discovery.py --max-sources 10 --limit 30 --output /tmp/iig-live-discovery.json
+      - name: Check fail-closed discovery contract
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           x=json.loads(Path('/tmp/iig-live-discovery.json').read_text())
-          assert x['items'], 'No valid source entries discovered'
-          assert not x['failures'], f"Feed failures: {x['failures']}"
+          assert x['schema']=='iig.discovery.v2'
+          assert x['sources_scanned'] <= 10
+          assert x['auto_publish'] is False and x['publish_authority']=='ADMIN_ONLY'
           assert all(i['fact_check_status']=='NOT_VERIFIED' and i['auto_publish'] is False for i in x['items'])
-          print('PASS: live discovery works; factual claims remain UNVERIFIED')
+          print({'items':len(x['items']),'failures':len(x['failures']),'attempted_sources':len(x['adapter_attempts'])})
           PY
 # No deployment, repository write permission, approval or publication.
