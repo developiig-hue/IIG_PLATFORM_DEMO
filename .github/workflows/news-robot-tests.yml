@@ -7,7 +7,12 @@ on:
   workflow_dispatch:
     inputs:
       live_sources:
-        description: 'Run real HTTPS source smoke test against approved registry'
+        description: 'Run real HTTPS source acceptance test against approved registry'
+        required: true
+        type: boolean
+        default: false
+      full_260:
+        description: 'Scan all 260 sources (otherwise first 10)'
         required: true
         type: boolean
         default: false
@@ -49,8 +54,13 @@ jobs:
           python-version: '3.12'
       - name: Validate 260-source registry
         run: python -c "import sys;sys.path.insert(0,'scripts');from news_source_discovery import load_registry; s=load_registry(); print('registry',len(s),'P1',sum(x['priority']=='P1' for x in s),'P2',sum(x['priority']=='P2' for x in s))"
-      - name: Live smoke first 10 prioritized sources
-        run: python scripts/news_source_discovery.py --max-sources 10 --limit 30 --output /tmp/iig-live-discovery.json
+      - name: Live acceptance scan
+        run: |
+          if [ "${{ inputs.full_260 }}" = "true" ]; then
+            python scripts/news_source_discovery.py --max-sources 260 --limit 1300 --per-source 5 --delay 0.2 --output /tmp/iig-live-discovery.json
+          else
+            python scripts/news_source_discovery.py --max-sources 10 --limit 30 --output /tmp/iig-live-discovery.json
+          fi
       - name: Check fail-closed discovery contract
         run: |
           python - <<'PY'
@@ -58,9 +68,18 @@ jobs:
           from pathlib import Path
           x=json.loads(Path('/tmp/iig-live-discovery.json').read_text())
           assert x['schema']=='iig.discovery.v2'
-          assert x['sources_scanned'] <= 10
+          if "${{ inputs.full_260 }}" == "true":
+              assert x['sources_scanned'] == 260, x['sources_scanned']
+          else:
+              assert x['sources_scanned'] <= 10
           assert x['auto_publish'] is False and x['publish_authority']=='ADMIN_ONLY'
           assert all(i['fact_check_status']=='NOT_VERIFIED' and i['auto_publish'] is False for i in x['items'])
-          print({'items':len(x['items']),'failures':len(x['failures']),'attempted_sources':len(x['adapter_attempts'])})
+          methods={}
+          for source in x['adapter_attempts']:
+              for a in source['attempts']:
+                  key=a.get('method','unknown')+':'+a.get('status','unknown')
+                  methods[key]=methods.get(key,0)+1
+          print({'items':len(x['items']),'failures':len(x['failures']),'attempted_sources':len(x['adapter_attempts']),'methods':methods})
+          Path('/tmp/iig-live-summary.json').write_text(json.dumps({'sources_scanned':x['sources_scanned'],'items':len(x['items']),'failures':len(x['failures']),'methods':methods},indent=2))
           PY
 # No deployment, repository write permission, approval or publication.
