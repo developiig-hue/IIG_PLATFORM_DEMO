@@ -87,16 +87,22 @@ def parse_feed(payload):
     return out
 
 class LinkParser(HTMLParser):
-    def __init__(self): super().__init__(); self.links=[]; self.feeds=[]; self.title=''; self._title=False
+    def __init__(self):
+        super().__init__(); self.links=[]; self.feeds=[]; self.title=''; self._title=False; self._anchor=None
     def handle_starttag(self,tag,attrs):
         a=dict(attrs)
-        if tag=='a' and a.get('href'): self.links.append((a['href'],a.get('title','')))
+        if tag=='a' and a.get('href'):
+            self._anchor={'href':a['href'],'title':a.get('title',''),'text':[]}
         if tag=='link' and a.get('href') and 'alternate' in a.get('rel','').lower() and ('rss' in a.get('type','').lower() or 'atom' in a.get('type','').lower()): self.feeds.append(a['href'])
         if tag=='title': self._title=True
     def handle_endtag(self,tag):
         if tag=='title': self._title=False
+        if tag=='a' and self._anchor:
+            label=self._anchor['title'] or ' '.join(self._anchor['text'])
+            self.links.append((self._anchor['href'],label)); self._anchor=None
     def handle_data(self,data):
         if self._title: self.title+=data
+        if self._anchor and data.strip(): self._anchor['text'].append(data.strip())
 
 def parse_html(payload,base):
     p=LinkParser(); p.feed(payload.decode('utf-8','replace'))
@@ -117,7 +123,7 @@ def likely_news(url,title=''):
     s=(url+' '+title).lower()
     return any(h in s for h in NEWS_HINTS) and not any(h in s for h in JUNK_HINTS)
 
-def clean_text(v): return re.sub(r'<[^>]*>','',html.unescape(v or '')).strip()
+def clean_text(v): return re.sub(r'\\s+',' ',re.sub(r'<[^>]*>','',html.unescape(v or ''))).strip()
 
 def candidate(source,url,title,published='',summary='',method='html'):
     url=canonicalize(url)
