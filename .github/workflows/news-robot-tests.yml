@@ -79,7 +79,17 @@ jobs:
               for a in source['attempts']:
                   key=a.get('method','unknown')+':'+a.get('status','unknown')
                   methods[key]=methods.get(key,0)+1
-          print({'items':len(x['items']),'failures':len(x['failures']),'attempted_sources':len(x['adapter_attempts']),'methods':methods})
-          Path('/tmp/iig-live-summary.json').write_text(json.dumps({'sources_scanned':x['sources_scanned'],'items':len(x['items']),'failures':len(x['failures']),'methods':methods},indent=2))
+          items=x['items']
+          empty_title=sum(not i.get('title','').strip() for i in items)
+          missing_date=sum(not i.get('source_published_at_unverified','').strip() for i in items)
+          short_title=sum(len(i.get('title','').strip()) < 12 for i in items)
+          by_method={}
+          by_priority={}
+          for i in items:
+              by_method[i['discovery_method']]=by_method.get(i['discovery_method'],0)+1
+              by_priority[i['priority']]=by_priority.get(i['priority'],0)+1
+          failure_ids=[f['source_id'] for f in x['failures']]
+          print('IIG_ACCEPTANCE_SUMMARY='+json.dumps({'sources_scanned':x['sources_scanned'],'items':len(items),'failures':len(x['failures']),'failure_ids':failure_ids,'methods':methods,'items_by_method':by_method,'items_by_priority':by_priority,'quality':{'empty_title':empty_title,'missing_date':missing_date,'short_title':short_title}},sort_keys=True))
+          Path('/tmp/iig-live-summary.json').write_text(json.dumps({'sources_scanned':x['sources_scanned'],'items':len(items),'failures':len(x['failures']),'failure_ids':failure_ids,'methods':methods,'items_by_method':by_method,'items_by_priority':by_priority,'quality':{'empty_title':empty_title,'missing_date':missing_date,'short_title':short_title}},indent=2))
           PY
 # No deployment, repository write permission, approval or publication.
