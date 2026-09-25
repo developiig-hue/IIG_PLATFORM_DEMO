@@ -19,3 +19,17 @@ Treat titles, RSS descriptions, AI summaries and industry media as leads, not ve
 
 ## Acceptance conditions
 Verify registry 260/160/100 and source ordering, real adapter coverage, failure isolation, cross-registry enrichment, claim citations, image rights, UA/EN draft generation, deduplication and admin-only publishing with offline fixtures and a separately authorized live integration run. A successful offline RSS test is not evidence of full-source discovery or article generation.
+
+
+## Undated but valuable source material
+
+An absent source publication date is **not** by itself a rejection criterion. If an item is substantively useful, relevant to IIG's approved industrial themes, and passes normal verification/editorial review, it may enter the review pipeline without a source date.
+
+For an approved undated item:
+- preserve `source_published_at_unverified` as empty/unknown; never invent or backfill a source date;
+- the public news date may be the IIG publication timestamp, clearly representing publication on the IIG site rather than the source's original publication date;
+- publish at most once: before later discovery/review cycles, compare the canonical source URL and a persistent content identity/fingerprint against the already-seen/published ledger;
+- if the same undated source item is discovered again, treat it as a duplicate and do not create a new publishable item;
+- a materially changed source page may be reconsidered only when the change produces a new content identity and passes editorial review again.
+
+This rule changes freshness handling only; it does not weaken fact verification, relevance, quality, rights, ADMIN_ONLY approval, or the prohibition on automatic publication.
