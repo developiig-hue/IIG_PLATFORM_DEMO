@@ -15,6 +15,7 @@ from xml.etree import ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_REGISTRY = ROOT / 'content' / 'news-source-registry.json'
 DEFAULT_OUTPUT = ROOT / 'content' / 'discovered-candidates.json'
+DEFAULT_LEDGER = ROOT / 'content' / 'news-discovery-ledger.json'
 SECTORS={'energy','metallurgy','agriculture','food','chemical','pharma','logistics','datacenters','waste'}
 UA='IIG-NewsResearch/1.0 (+editorial research; no publishing)'
 MAX_BYTES=3_000_000
@@ -122,6 +123,48 @@ def candidate(source,url,title,published='',summary='',method='html'):
     url=canonicalize(url)
     return {'id':hashlib.sha256(url.encode()).hexdigest()[:16],'source_id':source['id'],'priority':source['priority'],'sector':source['sector'],'publisher':source['name'],'publisher_url':source['website_url'],'canonical_url':url,'title':clean_text(title)[:500] or url.rstrip('/').split('/')[-1].replace('-',' ')[:500],'source_published_at_unverified':published,'summary_unverified':clean_text(summary)[:1000],'discovery_method':method,'source_status':'DISCOVERED_UNVERIFIED','fact_check_status':'NOT_VERIFIED','enrichment_required':True,'auto_publish':False,'publish_authority':'ADMIN_ONLY'}
 
+def content_identity(item):
+    """Stable identity: canonical URL plus normalized editorial-visible content."""
+    basis='|'.join([item.get('canonical_url',''), clean_text(item.get('title','')).lower(), clean_text(item.get('summary_unverified','')).lower()])
+    return hashlib.sha256(basis.encode('utf-8')).hexdigest()
+
+def load_ledger(path=DEFAULT_LEDGER):
+    path=Path(path)
+    if not path.exists(): return {'schema':'iig.discovery-ledger.v1','items':{}}
+    data=json.loads(path.read_text(encoding='utf-8'))
+    if data.get('schema')!='iig.discovery-ledger.v1' or not isinstance(data.get('items'),dict):
+        raise ValueError('Invalid discovery ledger')
+    return data
+
+def update_seen_ledger(ledger, candidates, now=None):
+    now=now or datetime.now(timezone.utc).isoformat()
+    records=ledger.setdefault('items',{})
+    for item in candidates:
+        key=content_identity(item); rec=records.get(key)
+        if rec:
+            rec['last_seen_at']=now; rec['seen_count']=int(rec.get('seen_count',1))+1
+        else:
+            records[key]={'canonical_url':item['canonical_url'],'source_id':item['source_id'],'first_seen_at':now,'last_seen_at':now,'seen_count':1,'published_at':None}
+        item['content_identity']=key
+    return ledger
+
+def mark_published(ledger, item, published_at=None):
+    """Called only after ADMIN approval/publication; makes rediscovery non-publishable."""
+    update_seen_ledger(ledger,[item],now=published_at or datetime.now(timezone.utc).isoformat())
+    key=content_identity(item)
+    ledger['items'][key]['published_at']=published_at or datetime.now(timezone.utc).isoformat()
+    return ledger
+
+def filter_already_published(candidates, ledger):
+    records=ledger.get('items',{})
+    out=[]
+    for item in candidates:
+        key=content_identity(item); item['content_identity']=key
+        rec=records.get(key)
+        if rec and rec.get('published_at'): continue
+        out.append(item)
+    return out
+
 def load_registry(path=DEFAULT_REGISTRY):
     data=json.loads(Path(path).read_text(encoding='utf-8')); sources=data.get('sources')
     if not isinstance(sources,list): raise ValueError('registry must contain sources array')
@@ -194,8 +237,13 @@ def atomic_write_json(path,data):
     tmp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); tmp.replace(path)
 
 def main():
-    p=argparse.ArgumentParser(); p.add_argument('--registry',type=Path,default=DEFAULT_REGISTRY); p.add_argument('--output',type=Path,default=DEFAULT_OUTPUT); p.add_argument('--limit',type=int,default=100); p.add_argument('--max-sources',type=int); p.add_argument('--per-source',type=int,default=5); p.add_argument('--delay',type=float,default=0.2,help='Polite delay between sources in seconds')
-    a=p.parse_args(); sources=load_registry(a.registry); result=discover_registry(sources,limit=a.limit,max_sources=a.max_sources,per_source=a.per_source,delay_seconds=max(0,a.delay)); atomic_write_json(a.output,result)
-    print(json.dumps({'items':len(result['items']),'failed_sources':len(result['failures']),'sources_scanned':result['sources_scanned'],'output':str(a.output)})); return 0
+    p=argparse.ArgumentParser(); p.add_argument('--registry',type=Path,default=DEFAULT_REGISTRY); p.add_argument('--output',type=Path,default=DEFAULT_OUTPUT); p.add_argument('--ledger',type=Path,default=DEFAULT_LEDGER); p.add_argument('--limit',type=int,default=100); p.add_argument('--max-sources',type=int); p.add_argument('--per-source',type=int,default=5); p.add_argument('--delay',type=float,default=0.2,help='Polite delay between sources in seconds')
+    a=p.parse_args(); sources=load_registry(a.registry); ledger=load_ledger(a.ledger)
+    result=discover_registry(sources,limit=a.limit,max_sources=a.max_sources,per_source=a.per_source,delay_seconds=max(0,a.delay))
+    discovered=list(result['items']); result['items']=filter_already_published(discovered,ledger)
+    result['already_published_suppressed']=len(discovered)-len(result['items'])
+    update_seen_ledger(ledger,discovered)
+    atomic_write_json(a.ledger,ledger); atomic_write_json(a.output,result)
+    print(json.dumps({'items':len(result['items']),'failed_sources':len(result['failures']),'sources_scanned':result['sources_scanned'],'already_published_suppressed':result['already_published_suppressed'],'output':str(a.output)})); return 0
 
 if __name__=='__main__': sys.exit(main())
