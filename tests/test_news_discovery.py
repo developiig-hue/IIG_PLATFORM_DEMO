@@ -2,7 +2,7 @@
 import json, sys, tempfile, unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from news_source_discovery import safe_url, discover_source, discover_registry, atomic_write_json, load_registry
+from news_source_discovery import safe_url, discover_source, discover_registry, atomic_write_json, load_registry, update_seen_ledger, mark_published, filter_already_published, content_identity
 
 SRC={'id':'IIG-001','priority':'P1','name':'Example','website_url':'https://example.org/','sector':'energy','discovery':{}}
 RSS=b'<rss><channel><item><title>New project</title><link>https://example.org/news/a</link><pubDate>2026-09-24</pubDate></item></channel></rss>'
@@ -60,6 +60,16 @@ class DiscoveryTests(unittest.TestCase):
             path=Path(d)/'arbitrary-host-root'/'content'/'x.json'
             atomic_write_json(path,{'ok':True})
             self.assertEqual(json.loads(path.read_text()),{'ok':True})
+
+    def test_undated_item_is_allowed_but_published_identity_is_suppressed(self):
+        item={'canonical_url':'https://example.org/news/undated','source_id':'IIG-001','title':'Useful industrial project','summary_unverified':'Relevant IIG content','source_published_at_unverified':''}
+        ledger={'schema':'iig.discovery-ledger.v1','items':{}}
+        update_seen_ledger(ledger,[item],now='2026-09-25T10:00:00+00:00')
+        self.assertEqual(len(filter_already_published([item],ledger)),1)
+        self.assertEqual(ledger['items'][content_identity(item)]['seen_count'],1)
+        mark_published(ledger,item,published_at='2026-09-25T11:00:00+00:00')
+        self.assertEqual(filter_already_published([item],ledger),[])
+        self.assertEqual(ledger['items'][content_identity(item)]['published_at'],'2026-09-25T11:00:00+00:00')
 
     def test_registry_contract_160_p1_100_p2(self):
         sources=[]
