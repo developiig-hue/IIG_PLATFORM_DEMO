@@ -104,6 +104,10 @@ jobs:
             echo "No QA demo changes to persist"
           else
             git commit -m "Update live News Robot QA demo [skip ci]"
+            # The feature branch may advance while the 260-source scan is running.
+            # Rebase the generated QA commit onto the latest remote head before push.
+            git fetch origin feature/news-robot-pipeline
+            git rebase origin/feature/news-robot-pipeline
             git push origin HEAD:feature/news-robot-pipeline
           fi
 # QA-only feature-branch output. No public-news.json write, no production deployment, no merge.
