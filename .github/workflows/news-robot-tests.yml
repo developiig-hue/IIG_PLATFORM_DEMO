@@ -1,0 +1,113 @@
+name: News Robot Tests (No Publishing)
+on:
+  push:
+    branches: [feature/news-robot-pipeline]
+    paths: ['scripts/news_source_discovery.py', 'scripts/news_registry.py', 'scripts/content_engine.py', 'tests/**', 'content/news-source-registry.json', '.github/workflows/news-robot-tests.yml']
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      live_sources:
+        description: 'Run real HTTPS source acceptance test against approved registry'
+        required: true
+        type: boolean
+        default: false
+      full_260:
+        description: 'Scan all 260 sources (otherwise first 10)'
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: write
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile portable robot
+        run: python -m py_compile scripts/news_source_discovery.py scripts/content_engine.py
+      - name: Offline fallback security dedup and portability tests
+        run: python -m unittest discover -s tests -v
+      - name: Verify moderation invariants
+        run: python scripts/content_engine.py verify
+      - name: Assert no hard-coded local or GitHub Pages dependency
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files=[Path('scripts/news_source_discovery.py'),Path('scripts/content_engine.py')]
+          bad=('C:\\Users\\','/home/igor/','developiig-hue.github.io')
+          for p in files:
+              text=p.read_text(encoding='utf-8')
+              assert not any(x.lower() in text.lower() for x in bad), f'non-portable path/domain in {p}'
+          print('PASS: robot code is host/domain independent')
+          PY
+  live-source-smoke:
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.live_sources == true)
+    needs: offline-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate 260-source registry
+        run: python -c "import sys;sys.path.insert(0,'scripts');from news_source_discovery import load_registry; s=load_registry(); print('registry',len(s),'P1',sum(x['priority']=='P1' for x in s),'P2',sum(x['priority']=='P2' for x in s))"
+      - name: Live acceptance scan
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ inputs.full_260 }}" = "true" ]; then
+            python scripts/news_source_discovery.py --max-sources 260 --limit 1300 --per-source 5 --delay 0.2 --output /tmp/iig-live-discovery.json
+          else
+            python scripts/news_source_discovery.py --max-sources 10 --limit 30 --output /tmp/iig-live-discovery.json
+          fi
+      - name: Check fail-closed discovery contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('/tmp/iig-live-discovery.json').read_text())
+          assert x['schema']=='iig.discovery.v2'
+          if "${{ github.event_name }}" == "push" or "${{ inputs.full_260 }}" == "true":
+              assert x['sources_scanned'] == 260, x['sources_scanned']
+          else:
+              assert x['sources_scanned'] <= 10
+          assert x['auto_publish'] is False and x['publish_authority']=='ADMIN_ONLY'
+          assert all(i['fact_check_status']=='NOT_VERIFIED' and i['auto_publish'] is False for i in x['items'])
+          methods={}
+          for source in x['adapter_attempts']:
+              for a in source['attempts']:
+                  key=a.get('method','unknown')+':'+a.get('status','unknown')
+                  methods[key]=methods.get(key,0)+1
+          items=x['items']
+          empty_title=sum(not i.get('title','').strip() for i in items)
+          missing_date=sum(not i.get('source_published_at_unverified','').strip() for i in items)
+          short_title=sum(len(i.get('title','').strip()) < 12 for i in items)
+          by_method={}
+          by_priority={}
+          for i in items:
+              by_method[i['discovery_method']]=by_method.get(i['discovery_method'],0)+1
+              by_priority[i['priority']]=by_priority.get(i['priority'],0)+1
+          failure_ids=[f['source_id'] for f in x['failures']]
+          print('IIG_ACCEPTANCE_SUMMARY='+json.dumps({'sources_scanned':x['sources_scanned'],'items':len(items),'failures':len(x['failures']),'failure_ids':failure_ids,'methods':methods,'items_by_method':by_method,'items_by_priority':by_priority,'quality':{'empty_title':empty_title,'missing_date':missing_date,'short_title':short_title}},sort_keys=True))
+          Path('/tmp/iig-live-summary.json').write_text(json.dumps({'sources_scanned':x['sources_scanned'],'items':len(items),'failures':len(x['failures']),'failure_ids':failure_ids,'methods':methods,'items_by_method':by_method,'items_by_priority':by_priority,'quality':{'empty_title':empty_title,'missing_date':missing_date,'short_title':short_title}},indent=2))
+          PY
+      - name: Build administrator-approved QA demo
+        run: python scripts/build_news_demo.py --input /tmp/iig-live-discovery.json --output news-robot-live-demo.html --max-items 36
+      - name: Persist QA demo and discovery ledger on feature branch
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "iig-news-robot"
+          git config user.email "actions@users.noreply.github.com"
+          git add news-robot-live-demo.html content/news-discovery-ledger.json
+          if git diff --cached --quiet; then
+            echo "No QA demo changes to persist"
+          else
+            git commit -m "Update live News Robot QA demo [skip ci]"
+            # The feature branch may advance while the 260-source scan is running.
+            # Rebase the generated QA commit onto the latest remote head before push.
+            git fetch origin feature/news-robot-pipeline
+            git rebase origin/feature/news-robot-pipeline
+            git push origin HEAD:feature/news-robot-pipeline
+          fi
+# QA-only feature-branch output. No public-news.json write, no production deployment, no merge.

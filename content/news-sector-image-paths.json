@@ -1,0 +1,18 @@
+{
+  "schema": "iig.news-sector-image-paths.v1",
+  "manifest_repository_path": "baze_foto_news/manifest.json",
+  "asset_location": "repository_root",
+  "note": "The nine JPG files are at repository root, NOT inside baze_foto_news/. image_url is a root-relative web path. Verify actual deployment, image load and reuse rights before publication; manifest image_rights_verified flags alone are not proof of permission.",
+  "sector_images": {
+    "energy": "/baze_foto_news_energy.jpg",
+    "metallurgy": "/baze_foto_news_metallurgy.jpg",
+    "agriculture": "/baze_foto_news_agriculture.jpg",
+    "food": "/baze_foto_news_food.jpg",
+    "chemical": "/baze_foto_news_chemical.jpg",
+    "pharma": "/baze_foto_news_pharma.jpg",
+    "logistics": "/baze_foto_news_logistics.jpg",
+    "datacenters": "/baze_foto_news_datacenters.jpg",
+    "waste": "/baze_foto_news_waste.jpg"
+  },
+  "selection": "Use only matching article sector; label fallback as illustrative in UA/EN; if missing, broken or rights unverified, IMAGE_REVIEW_REQUIRED and block publication. Never use a ZIP member path or /baze_foto_news/<jpg> because those files are not stored in that folder."
+}

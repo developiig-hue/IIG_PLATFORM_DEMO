@@ -1,0 +1,5 @@
+{
+  "schema": "iig.news-feeds.v1",
+  "feeds": [],
+  "instructions": "Populate only with individually audited official publisher HTTPS RSS/Atom feed URLs and publisher URLs. Each entry requires feed_url, publisher_url, publisher, sector. An empty registry deliberately produces zero discoveries rather than fabricated news. Do not confuse a publisher home page with an RSS feed."
+}

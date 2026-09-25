@@ -1,0 +1,23 @@
+# IIG News Robot — mandatory quality supplement to NEWS_EDITORIAL_PROTOCOL.md
+
+Status: binding implementation specification for PR #3; not deployed until reviewed and merged. Read together with NEWS_EDITORIAL_PROTOCOL.md; where there is tension, never relax primary-source verification or administrator approval.
+
+## High-value but thin news: mandatory enrichment
+
+If a project is materially relevant to IIG but the first release is short, the robot MUST perform a second research pass before drafting: search the project owner’s official site, About/History, annual reports and investor relations, project pages, OEM/EPC contractor, financing bank/ECA, permits and regional authorities; find independent coverage of the SAME project, including local-language reporting, and trace material claims back to official documents. An analogous project may explain technology or industry context only and MUST NOT be used as evidence for the target project's capacity, budget, ownership, schedule, participants or implementation status. Label analogies and IIG analysis explicitly.
+
+## Project-specific executive interview requirement
+
+For high-value projects actively search for a substantive, attributable project-specific interview or published Q&A with the owner’s project director, CEO, technical director or authorized delivery manager in company newsroom, local-language trade press, conference transcripts and reputable media. Extract only verifiable project-specific insights: engineering choices, construction constraints, permitting, integration, energy needs, EPC/financing risks, commissioning and schedule. Record interview URL, original language, date, full speaker name/role, verbatim evidence and faithful UA/EN translations. An interview from a different project is NOT a substitute. Never invent an interview, imply IIG conducted it, or convert paraphrase into a quote. If no interview exists, set `interview_status=NOT_FOUND`, list searched locations and dates, request an interview through a human editor if useful, and HOLD the high-value article for enrichment/editorial decision; an editor may expressly waive the interview requirement with a documented reason while keeping all factual gates. A short release alone does not qualify as a rich article.
+
+## Local languages and audited source registry
+
+Registry target: MORE THAN 100 distinct, accessible, checked, relevant energy/industrial project news and primary-source sites across countries. Do not assert this threshold is met until audited. Record source URL, country, original language(s), source type, sector, access status, last checked, publication rights and whether primary/secondary. Search in the project-country language(s) and English, including Ukrainian, Czech, Slovak, Polish, German, French, Romanian, Spanish, Italian and other relevant languages; translate search terms and preserve original-language evidence. More than 100 entries are discovery breadth, not 100 independent confirmations: syndications and mirrors count as one underlying report. Never bypass access restrictions or assume rights to republish text/photos.
+
+## Geographic diversity: maximum two news articles per country
+
+In each newly prepared nine-sector editorial batch, include at most TWO articles from the same project-site country (ISO 3166-1 alpha-2). Country is determined by the actual project location, not the press-release publisher, financier or owner headquarters. Apply cap after factual/quality checks and before review queue creation; keep excluded candidates in backlog with `COUNTRY_CAP` reason. Do not relabel a project’s country or fabricate low-quality articles to fill nine sectors. Existing older published articles do not become false or automatically unpublished. If nine sectors cannot be filled while respecting the cap, report actual coverage and gaps for administrator review. Apply same cap to a new nine-article batch, not retroactively to all historical archive records.
+
+## Quality gate and audit
+
+Require project-specific official evidence, meaningful sourced company background, verified project site and stage, technical and financing detail where published, enrichment search log, interview status/evidence or explicit human waiver for high-value articles, UA/EN parity, separated IIG analysis, and sector-matched licensed images. Machine checks can enforce structure and country caps, but cannot certify factual truth from a self-declared `primary_source_verified` flag. No robot step can set APPROVED or publish. Preserve `READY_FOR_REVIEW`, `auto_publish=false`, `publish_authority=ADMIN_ONLY`, immutable revision digest and authenticated administrator approval before any publication.
