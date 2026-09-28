@@ -9,6 +9,9 @@ on:
       - 'content/discovery/IIG_news_source_registry_260.json'
       - 'content/discovery-report.json'
       - 'scripts/verify_full_discovery.py'
+      - 'scripts/news_registry.py'
+      - 'tests/test_news_registry.py'
+      - 'NEWS_ROBOT_SOURCE_PROTOCOL.md'
       - '.github/workflows/content-engine.yml'
   schedule:
     # Every Monday 06:15 UTC. Generation only; never publication.
