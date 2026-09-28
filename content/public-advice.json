@@ -1,1 +1,377 @@
-{"schema":"iig.advice.v1","items":[{"slug":"chp-first-start","topic":"CHP · Commissioning","title":{"ua":"Перший пуск КГУ: контрольний список перед Start","en":"CHP first start: pre-start checklist"},"summary":{"ua":"Сім контрольних рубежів перед першим пуском і прийманням установки.","en":"Seven control gates before first start and acceptance."},"sections":[{"heading":{"ua":"Проблема","en":"Problem"},"body":{"ua":"Пуск без завершення механічної готовності та узгоджених меж відповідальності створює ризик простою й пошкодження обладнання. Загальний список не замінює інструкції OEM.","en":"Starting before mechanical completion and agreed interfaces risks downtime and equipment damage. This general checklist does not replace OEM instructions."}},{"heading":{"ua":"Практичний чек-лист","en":"Practical checklist"},"body":{"ua":"1. Підписати mechanical completion і punch list. 2. Перевірити якість газу, тиск і герметичність за процедурою OEM. 3. Підтвердити вентиляцію та газовиявлення. 4. Перевірити мастило, охолодження і допоміжні системи. 5. Протестувати захисти та аварійне зупинення. 6. Підтвердити синхронізацію і погодження мережевого оператора. 7. Зафіксувати SCADA-сигнали, протокол випробувань і критерії приймання.","en":"1. Sign off mechanical completion and punch list. 2. Verify gas quality, pressure and tightness under OEM procedures. 3. Verify ventilation and gas detection. 4. Check lubrication, cooling and auxiliaries. 5. Test protections and emergency stop. 6. Confirm synchronization and grid operator requirements. 7. Record SCADA signals, test protocol and acceptance criteria."}},{"heading":{"ua":"Рішення керівника","en":"Management decision"},"body":{"ua":"Призначте відповідального за кожний interface і забороніть пуск до закриття критичних пунктів. Фінальний дозвіл оформлюйте письмово.","en":"Assign an owner to every interface and prohibit start until critical issues are closed. Document the final go-ahead."}}]},{"slug":"bess-sizing","topic":"BESS · EMS","title":{"ua":"Як правильно вибрати BESS для промислового підприємства","en":"How to size industrial BESS"},"summary":{"ua":"Потужність, ємність, профіль навантаження і реальна економіка.","en":"Power, capacity, load profile and actual economics."},"sections":[{"heading":{"ua":"Проблема","en":"Problem"},"body":{"ua":"Вибір лише за MWh не визначає, чи система витримає необхідний режим.","en":"Selecting by MWh alone does not establish whether the system can deliver the duty."}},{"heading":{"ua":"Практичні дії","en":"Practical actions"},"body":{"ua":"Зберіть інтервальний профіль споживання та аварійних навантажень; окремо визначте MW, MWh, час автономії, допустимий SOC, C-rate, деградацію та режим EMS. Перевірте PCS, трансформатор, пожежну безпеку, приєднання і гарантію usable capacity. Змоделюйте піки та сценарій відключення окремо.","en":"Collect interval load and critical-load profiles; define MW, MWh, autonomy, SOC window, C-rate, degradation and EMS duty separately. Check PCS, transformer, fire safety, grid connection and usable-capacity warranty. Model peak shaving and outage scenarios independently."}},{"heading":{"ua":"Рішення керівника","en":"Management decision"},"body":{"ua":"Порівнюйте пропозиції за гарантованою корисною ємністю та вартістю життєвого циклу, а не тільки ціною контейнера.","en":"Compare bids by guaranteed usable capacity and lifecycle cost, not container price alone."}}]},{"slug":"grid-connection","topic":"Grid · Protection","title":{"ua":"Приєднання генерації: що перевірити до підписання EPC","en":"Grid connection checks before signing EPC"},"summary":{"ua":"Точка приєднання, експорт, захисти й межі відповідальності.","en":"Connection point, export, protection and scope boundaries."},"sections":[{"heading":{"ua":"Проблема","en":"Problem"},"body":{"ua":"Паспортна потужність генератора не дорівнює дозволеній потужності відпуску в мережу.","en":"Generator nameplate capacity is not the same as permitted grid export."}},{"heading":{"ua":"Практичні дії","en":"Practical actions"},"body":{"ua":"Отримайте актуальні технічні умови від оператора; зафіксуйте P-import і P-export, клас напруги, точку балансового розмежування, обмеження відпуску, релейний захист, телеметрію, облік, режим острова та обсяг реконструкції підстанції. Зіставте всі вимоги з EPC battery limits.","en":"Obtain current operator connection conditions; document import/export limits, voltage, ownership boundary, curtailment, relay protection, telemetry, metering, island mode and substation upgrades. Reconcile these with EPC battery limits."}},{"heading":{"ua":"Рішення керівника","en":"Management decision"},"body":{"ua":"Не фіксуйте остаточний EPC CAPEX та COD, поки вартість мережевих робіт і дозвільні залежності не визначені.","en":"Do not lock final EPC CAPEX and COD until grid scope and permitting dependencies are defined."}}]},{"slug":"efficiency-baseline","topic":"Efficiency · Heat","title":{"ua":"Енергоефективність: п’ять кроків від вимірювання до результату","en":"Energy efficiency: five steps from baseline to results"},"summary":{"ua":"Як уникнути інвестицій в обладнання без вимірюваної економії.","en":"Avoid equipment investment without measurable savings."},"sections":[{"heading":{"ua":"Проблема","en":"Problem"},"body":{"ua":"Без достовірної базової лінії економію неможливо відокремити від зміни обсягу виробництва.","en":"Without a reliable baseline, savings cannot be separated from production changes."}},{"heading":{"ua":"Практичні дії","en":"Practical actions"},"body":{"ua":"1. Зберіть електричні та теплові лічильники і виробничі дані. 2. Нормалізуйте baseline за випуском і погодою. 3. Побудуйте карту втрат тепла, стисненого повітря та піків. 4. Порівняйте CAPEX, простої і виробничий ризик заходів. 5. Узгодьте план measurement and verification та відповідальних.","en":"1. Collect electrical, thermal and production data. 2. Normalize baseline for output and weather. 3. Map heat, compressed-air losses and peaks. 4. Compare CAPEX, downtime and production risk. 5. Agree a measurement and verification plan with owners."}},{"heading":{"ua":"Рішення керівника","en":"Management decision"},"body":{"ua":"Запускайте спочатку заходи з перевірюваним ефектом і мінімальним впливом на безперервність виробництва.","en":"Start with verifiable measures that minimize disruption to production."}}]},{"slug":"chp-bess-hybrid","topic":"CHP · BESS · EMS","title":{"ua":"CHP + BESS: коли гібрид виправдовує додаткові інвестиції","en":"CHP + BESS: when hybrid investment is justified"},"summary":{"ua":"Спільне моделювання генератора, акумулятора та режимів мережі.","en":"Joint modelling of engine, battery and grid duty."},"sections":[{"heading":{"ua":"Проблема","en":"Problem"},"body":{"ua":"Газовий двигун і батарея виконують різні функції; додавання BESS не гарантує окупності.","en":"A gas engine and battery serve different functions; adding BESS does not guarantee payback."}},{"heading":{"ua":"Практичні дії","en":"Practical actions"},"body":{"ua":"Змоделюйте погодинний і швидкий профіль навантаження, мінімальне стабільне навантаження CHP, тепловий відбір, SOC, цикли, резерв, обмеження експорту та ціни газу й електроенергії. Перевірте, чи EMS не створює конфлікту між оптимізацією палива та вимогами резервування.","en":"Model hourly and fast load, CHP minimum stable load, heat demand, SOC, cycling, reserve, export limits and gas/electricity prices. Check EMS for conflicts between fuel optimization and backup requirements."}},{"heading":{"ua":"Рішення керівника","en":"Management decision"},"body":{"ua":"Затверджуйте гібрид лише за порівнянням із CHP-only і BESS-only та прозорим розрахунком життєвого циклу.","en":"Approve a hybrid only after comparison with CHP-only and BESS-only cases and transparent lifecycle economics."}}]},{"slug":"epc-tender-pack","topic":"EPC · Procurement","title":{"ua":"EPC-тендер: які дані потрібні для порівнюваних пропозицій","en":"EPC tender: data needed for comparable bids"},"summary":{"ua":"Технічна база, інтерфейси, гарантії та випробування.","en":"Technical baseline, interfaces, guarantees and tests."},"sections":[{"heading":{"ua":"Проблема","en":"Problem"},"body":{"ua":"Неповні вихідні дані перетворюють порівняння цін на порівняння різних обсягів робіт.","en":"Incomplete inputs turn price comparisons into comparisons of different scopes."}},{"heading":{"ua":"Практичні дії","en":"Practical actions"},"body":{"ua":"Підготуйте load/heat profiles, якість палива, P&ID, SLD, геологію, майданчик, мережеві умови, battery limits, interfaces, перелік дозволів, performance guarantees, графік і процедури PAC/FAC. Видайте всім учасникам єдину compliance matrix і реєстр уточнень.","en":"Prepare load/heat profiles, fuel specification, P&IDs, SLD, geotechnical/site data, grid conditions, battery limits, interfaces, permits, performance guarantees, schedule and PAC/FAC procedures. Issue one compliance matrix and clarification log to all bidders."}},{"heading":{"ua":"Рішення керівника","en":"Management decision"},"body":{"ua":"Порівнюйте приведену ціну за однаковим обсягом, ризиками, гарантіями та строками; окремо покажіть exclusions.","en":"Compare normalized prices for equal scope, risk, warranties and timing; show exclusions separately."}}]}]}
+{
+  "schema": "iig.advice.v1",
+  "items": [
+    {
+      "slug": "chp-first-start",
+      "topic": "CHP · Commissioning",
+      "title": {
+        "ua": "Перший пуск КГУ: контрольний список перед Start",
+        "en": "CHP first start: pre-start checklist"
+      },
+      "summary": {
+        "ua": "Сім контрольних рубежів перед першим пуском і прийманням установки.",
+        "en": "Seven control gates before first start and acceptance."
+      },
+      "sections": [
+        {
+          "heading": {
+            "ua": "Проблема",
+            "en": "Problem"
+          },
+          "body": {
+            "ua": "Пуск без завершення механічної готовності та узгоджених меж відповідальності створює ризик простою й пошкодження обладнання. Загальний список не замінює інструкції OEM.",
+            "en": "Starting before mechanical completion and agreed interfaces risks downtime and equipment damage. This general checklist does not replace OEM instructions."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Практичний чек-лист",
+            "en": "Practical checklist"
+          },
+          "body": {
+            "ua": "1. Підписати mechanical completion і punch list. 2. Перевірити якість газу, тиск і герметичність за процедурою OEM. 3. Підтвердити вентиляцію та газовиявлення. 4. Перевірити мастило, охолодження і допоміжні системи. 5. Протестувати захисти та аварійне зупинення. 6. Підтвердити синхронізацію і погодження мережевого оператора. 7. Зафіксувати SCADA-сигнали, протокол випробувань і критерії приймання.",
+            "en": "1. Sign off mechanical completion and punch list. 2. Verify gas quality, pressure and tightness under OEM procedures. 3. Verify ventilation and gas detection. 4. Check lubrication, cooling and auxiliaries. 5. Test protections and emergency stop. 6. Confirm synchronization and grid operator requirements. 7. Record SCADA signals, test protocol and acceptance criteria."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Рішення керівника",
+            "en": "Management decision"
+          },
+          "body": {
+            "ua": "Призначте відповідального за кожний interface і забороніть пуск до закриття критичних пунктів. Фінальний дозвіл оформлюйте письмово.",
+            "en": "Assign an owner to every interface and prohibit start until critical issues are closed. Document the final go-ahead."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "bess-sizing",
+      "topic": "BESS · EMS",
+      "title": {
+        "ua": "Як правильно вибрати BESS для промислового підприємства",
+        "en": "How to size industrial BESS"
+      },
+      "summary": {
+        "ua": "Потужність, ємність, профіль навантаження і реальна економіка.",
+        "en": "Power, capacity, load profile and actual economics."
+      },
+      "sections": [
+        {
+          "heading": {
+            "ua": "Проблема",
+            "en": "Problem"
+          },
+          "body": {
+            "ua": "Вибір лише за MWh не визначає, чи система витримає необхідний режим.",
+            "en": "Selecting by MWh alone does not establish whether the system can deliver the duty."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Практичні дії",
+            "en": "Practical actions"
+          },
+          "body": {
+            "ua": "Зберіть інтервальний профіль споживання та аварійних навантажень; окремо визначте MW, MWh, час автономії, допустимий SOC, C-rate, деградацію та режим EMS. Перевірте PCS, трансформатор, пожежну безпеку, приєднання і гарантію usable capacity. Змоделюйте піки та сценарій відключення окремо.",
+            "en": "Collect interval load and critical-load profiles; define MW, MWh, autonomy, SOC window, C-rate, degradation and EMS duty separately. Check PCS, transformer, fire safety, grid connection and usable-capacity warranty. Model peak shaving and outage scenarios independently."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Рішення керівника",
+            "en": "Management decision"
+          },
+          "body": {
+            "ua": "Порівнюйте пропозиції за гарантованою корисною ємністю та вартістю життєвого циклу, а не тільки ціною контейнера.",
+            "en": "Compare bids by guaranteed usable capacity and lifecycle cost, not container price alone."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "grid-connection",
+      "topic": "Grid · Protection",
+      "title": {
+        "ua": "Приєднання генерації: що перевірити до підписання EPC",
+        "en": "Grid connection checks before signing EPC"
+      },
+      "summary": {
+        "ua": "Точка приєднання, експорт, захисти й межі відповідальності.",
+        "en": "Connection point, export, protection and scope boundaries."
+      },
+      "sections": [
+        {
+          "heading": {
+            "ua": "Проблема",
+            "en": "Problem"
+          },
+          "body": {
+            "ua": "Паспортна потужність генератора не дорівнює дозволеній потужності відпуску в мережу.",
+            "en": "Generator nameplate capacity is not the same as permitted grid export."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Практичні дії",
+            "en": "Practical actions"
+          },
+          "body": {
+            "ua": "Отримайте актуальні технічні умови від оператора; зафіксуйте P-import і P-export, клас напруги, точку балансового розмежування, обмеження відпуску, релейний захист, телеметрію, облік, режим острова та обсяг реконструкції підстанції. Зіставте всі вимоги з EPC battery limits.",
+            "en": "Obtain current operator connection conditions; document import/export limits, voltage, ownership boundary, curtailment, relay protection, telemetry, metering, island mode and substation upgrades. Reconcile these with EPC battery limits."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Рішення керівника",
+            "en": "Management decision"
+          },
+          "body": {
+            "ua": "Не фіксуйте остаточний EPC CAPEX та COD, поки вартість мережевих робіт і дозвільні залежності не визначені.",
+            "en": "Do not lock final EPC CAPEX and COD until grid scope and permitting dependencies are defined."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "efficiency-baseline",
+      "topic": "Efficiency · Heat",
+      "title": {
+        "ua": "Енергоефективність: п’ять кроків від вимірювання до результату",
+        "en": "Energy efficiency: five steps from baseline to results"
+      },
+      "summary": {
+        "ua": "Як уникнути інвестицій в обладнання без вимірюваної економії.",
+        "en": "Avoid equipment investment without measurable savings."
+      },
+      "sections": [
+        {
+          "heading": {
+            "ua": "Проблема",
+            "en": "Problem"
+          },
+          "body": {
+            "ua": "Без достовірної базової лінії економію неможливо відокремити від зміни обсягу виробництва.",
+            "en": "Without a reliable baseline, savings cannot be separated from production changes."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Практичні дії",
+            "en": "Practical actions"
+          },
+          "body": {
+            "ua": "1. Зберіть електричні та теплові лічильники і виробничі дані. 2. Нормалізуйте baseline за випуском і погодою. 3. Побудуйте карту втрат тепла, стисненого повітря та піків. 4. Порівняйте CAPEX, простої і виробничий ризик заходів. 5. Узгодьте план measurement and verification та відповідальних.",
+            "en": "1. Collect electrical, thermal and production data. 2. Normalize baseline for output and weather. 3. Map heat, compressed-air losses and peaks. 4. Compare CAPEX, downtime and production risk. 5. Agree a measurement and verification plan with owners."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Рішення керівника",
+            "en": "Management decision"
+          },
+          "body": {
+            "ua": "Запускайте спочатку заходи з перевірюваним ефектом і мінімальним впливом на безперервність виробництва.",
+            "en": "Start with verifiable measures that minimize disruption to production."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "chp-bess-hybrid",
+      "topic": "CHP · BESS · EMS",
+      "title": {
+        "ua": "CHP + BESS: коли гібрид виправдовує додаткові інвестиції",
+        "en": "CHP + BESS: when hybrid investment is justified"
+      },
+      "summary": {
+        "ua": "Спільне моделювання генератора, акумулятора та режимів мережі.",
+        "en": "Joint modelling of engine, battery and grid duty."
+      },
+      "sections": [
+        {
+          "heading": {
+            "ua": "Проблема",
+            "en": "Problem"
+          },
+          "body": {
+            "ua": "Газовий двигун і батарея виконують різні функції; додавання BESS не гарантує окупності.",
+            "en": "A gas engine and battery serve different functions; adding BESS does not guarantee payback."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Практичні дії",
+            "en": "Practical actions"
+          },
+          "body": {
+            "ua": "Змоделюйте погодинний і швидкий профіль навантаження, мінімальне стабільне навантаження CHP, тепловий відбір, SOC, цикли, резерв, обмеження експорту та ціни газу й електроенергії. Перевірте, чи EMS не створює конфлікту між оптимізацією палива та вимогами резервування.",
+            "en": "Model hourly and fast load, CHP minimum stable load, heat demand, SOC, cycling, reserve, export limits and gas/electricity prices. Check EMS for conflicts between fuel optimization and backup requirements."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Рішення керівника",
+            "en": "Management decision"
+          },
+          "body": {
+            "ua": "Затверджуйте гібрид лише за порівнянням із CHP-only і BESS-only та прозорим розрахунком життєвого циклу.",
+            "en": "Approve a hybrid only after comparison with CHP-only and BESS-only cases and transparent lifecycle economics."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "epc-tender-pack",
+      "topic": "EPC · Procurement",
+      "title": {
+        "ua": "EPC-тендер: які дані потрібні для порівнюваних пропозицій",
+        "en": "EPC tender: data needed for comparable bids"
+      },
+      "summary": {
+        "ua": "Технічна база, інтерфейси, гарантії та випробування.",
+        "en": "Technical baseline, interfaces, guarantees and tests."
+      },
+      "sections": [
+        {
+          "heading": {
+            "ua": "Проблема",
+            "en": "Problem"
+          },
+          "body": {
+            "ua": "Неповні вихідні дані перетворюють порівняння цін на порівняння різних обсягів робіт.",
+            "en": "Incomplete inputs turn price comparisons into comparisons of different scopes."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Практичні дії",
+            "en": "Practical actions"
+          },
+          "body": {
+            "ua": "Підготуйте load/heat profiles, якість палива, P&ID, SLD, геологію, майданчик, мережеві умови, battery limits, interfaces, перелік дозволів, performance guarantees, графік і процедури PAC/FAC. Видайте всім учасникам єдину compliance matrix і реєстр уточнень.",
+            "en": "Prepare load/heat profiles, fuel specification, P&IDs, SLD, geotechnical/site data, grid conditions, battery limits, interfaces, permits, performance guarantees, schedule and PAC/FAC procedures. Issue one compliance matrix and clarification log to all bidders."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Рішення керівника",
+            "en": "Management decision"
+          },
+          "body": {
+            "ua": "Порівнюйте приведену ціну за однаковим обсягом, ризиками, гарантіями та строками; окремо покажіть exclusions.",
+            "en": "Compare normalized prices for equal scope, risk, warranties and timing; show exclusions separately."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "eaf-asu-power-integration",
+      "topic": "EAF · ASU · Grid",
+      "title": {
+        "ua": "EAF + ASU: як не прорахуватися з електроприєднанням металургійного проєкту",
+        "en": "EAF + ASU: how to de-risk grid connection for a steel project"
+      },
+      "summary": {
+        "ua": "Практичний висновок із проєкту Košice: динамічне навантаження EAF, безперервний ASU та мережу треба моделювати як одну систему.",
+        "en": "A practical lesson from Košice: dynamic EAF load, continuous ASU demand and the grid must be modelled as one system."
+      },
+      "sections": [
+        {
+          "heading": {
+            "ua": "Проблема",
+            "en": "Problem"
+          },
+          "body": {
+            "ua": "EAF створює великі й швидкі зміни навантаження, тоді як ASU потребує стабільного безперервного живлення. Якщо їх проєктують окремо, трансформатори, компенсація реактивної потужності, power quality та N-1 можуть бути визначені за несумісними сценаріями.",
+            "en": "An EAF creates large, rapid load changes while an ASU needs stable continuous supply. Designing them separately can leave transformers, reactive compensation, power quality and N-1 based on incompatible scenarios."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Що перевірити",
+            "en": "Checks"
+          },
+          "body": {
+            "ua": "Побудуйте спільні min/normal/peak/start-up profiles; виконайте load-flow, short-circuit, flicker і harmonic studies; перевірте voltage dips, reactive power, transformer loading і резервування. Додайте перехідні виробничі режими, коли нова EAF працює паралельно з існуючим маршрутом. Зафіксуйте battery limits між utility, HV system, EAF package та ASU.",
+            "en": "Build common minimum/normal/peak/start-up profiles; run load-flow, short-circuit, flicker and harmonic studies; check voltage dips, reactive power, transformer loading and redundancy. Include transition modes where the new EAF operates alongside the existing route. Fix battery limits among utility, HV system, EAF package and ASU."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Технічне рішення",
+            "en": "Technical solution"
+          },
+          "body": {
+            "ua": "Видавайте єдину electrical design basis для EAF+ASU до замовлення головних трансформаторів і HV equipment. Power-quality mitigation, compensation та резервування повинні випливати з розрахунків, а не з типових запасів постачальника. Усі гарантії перевіряйте на одних і тих самих grid assumptions.",
+            "en": "Issue one electrical design basis for EAF+ASU before ordering main transformers and HV equipment. Power-quality mitigation, compensation and redundancy should follow studies rather than generic supplier margins. Test all guarantees against the same grid assumptions."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Рішення керівника",
+            "en": "Management decision"
+          },
+          "body": {
+            "ua": "Не затверджуйте остаточний CAPEX і long-lead electrical procurement, доки єдина модель EAF+ASU+grid не пройшла review оператора мережі та технологічних постачальників. Приклад Košice підтверджує масштаб інвестиції та поетапний запуск, але конкретні MW приєднання не опубліковані — їх не можна переносити на інший завод.",
+            "en": "Do not approve final CAPEX or long-lead electrical procurement until the combined EAF+ASU+grid model is reviewed by the utility and process suppliers. Košice confirms investment scale and staged start dates, but its connection MW are not public and must not be copied to another plant."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "ai-datacenter-grid-bess",
+      "topic": "Data Center · Grid · BESS",
+      "title": {
+        "ua": "AI data center: спочатку мережа, резерв і BESS — потім фіксуйте CAPEX",
+        "en": "AI data centre: lock grid, backup and BESS before CAPEX"
+      },
+      "summary": {
+        "ua": "Урок фінської програми Google: site selection, доступна мережа, BESS і нова генерація мають формувати одну енергетичну стратегію.",
+        "en": "Lesson from Google's Finland programme: site selection, grid capacity, BESS and new generation belong in one energy strategy."
+      },
+      "sections": [
+        {
+          "heading": {
+            "ua": "Проблема",
+            "en": "Problem"
+          },
+          "body": {
+            "ua": "AI-навантаження може зростати швидше за можливість мережі. Якщо землю, IT MW і cooling concept зафіксувати до підтвердження connection capacity, проєкт отримує дорогі мережеві роботи, затримку COD або надлишкову резервну генерацію.",
+            "en": "AI load can grow faster than grid availability. Fixing land, IT MW and cooling concept before connection capacity is confirmed can create expensive network works, COD delay or oversized standby generation."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Що перевірити",
+            "en": "Checks"
+          },
+          "body": {
+            "ua": "Підтвердіть firm/import capacity, N-1, строки мережевого підсилення, ramp restrictions, power quality і curtailment. Розділіть UPS ride-through, BESS flexibility та standby generation — це різні функції. Побудуйте сценарії normal, grid event, prolonged outage і black-start/recovery. Перевірте cooling, water constraints та можливість корисного відбору тепла.",
+            "en": "Confirm firm/import capacity, N-1, reinforcement schedule, ramp restrictions, power quality and curtailment. Separate UPS ride-through, BESS flexibility and standby generation: they are different duties. Model normal operation, grid events, prolonged outage and black-start/recovery. Check cooling, water constraints and useful heat recovery."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Технічне рішення",
+            "en": "Technical solution"
+          },
+          "body": {
+            "ua": "Створіть інтегровану power architecture з load blocks за критичністю, EMS sequence of operation і погодженими autonomy criteria. BESS MW/MWh визначайте після сценарного моделювання, а не за benchmark іншого дата-центру. PPA та нова генерація повинні оцінюватися разом із фізичною пропускною здатністю мережі.",
+            "en": "Create an integrated power architecture with criticality-based load blocks, EMS sequence of operation and agreed autonomy criteria. Size BESS MW/MWh after scenario modelling, not from another data centre's benchmark. Evaluate PPAs and new generation together with physical grid transfer capacity."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Рішення керівника",
+            "en": "Management decision"
+          },
+          "body": {
+            "ua": "Land/IT procurement gate має вимагати підтверджену power strategy. У фінському кейсі Google прямо поєднує нові дата-центри з вибором сильних мережевих точок, 94-МВт батареєю, PPA та співпрацею щодо нової генерації. MWh батареї та site-specific PUE у релізі не наведені — не використовуйте їх як нібито відомі параметри.",
+            "en": "The land/IT procurement gate should require a confirmed power strategy. In Finland, Google explicitly combines new data centres with strong grid locations, a 94 MW battery, PPAs and cooperation on new generation. Battery MWh and site-specific PUE are not disclosed and must not be treated as known design values."
+          }
+        }
+      ]
+    }
+  ]
+}
