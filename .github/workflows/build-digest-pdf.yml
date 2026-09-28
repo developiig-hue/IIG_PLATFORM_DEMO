@@ -33,8 +33,7 @@ jobs:
           p='digest/IIG-Monthly-Digest-2026-09.pdf'
           r=PdfReader(p)
           assert len(r.pages)==2, len(r.pages)
-          text='
-'.join((x.extract_text() or '') for x in r.pages)
+          text=' '.join((x.extract_text() or '') for x in r.pages)
           assert 'file://' not in text
           assert '15.09.2026, 14:51' not in text
           assert 'основних новин' in text
