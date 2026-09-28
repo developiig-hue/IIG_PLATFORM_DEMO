@@ -5,6 +5,8 @@ from datetime import datetime,timezone
 from pathlib import Path
 from urllib.request import Request,urlopen
 from urllib.parse import urlparse
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parent))
 from recipient_provider import get_active_recipients
 ROOT=Path(__file__).resolve().parents[1];IN=ROOT/"content/digest/approved-digest.json";OUT=ROOT/"content/orchestration"
 NEWS=ROOT/"content/public-news.json";ADVICE=ROOT/"content/public-advice.json"
