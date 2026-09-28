@@ -3,7 +3,7 @@ on:
   push:
     branches: [main, feature/scheduler-orchestration-production]
     paths:
-      - 'scripts/scheduler_orchestration.py'
+      - 'scripts/scheduler_orchestration.py'\n      - 'scripts/recipient_provider.py'
       - 'tests/test_scheduler_orchestration.py'
       - 'SCHEDULER_ORCHESTRATION_PROTOCOL.md'
       - '.github/workflows/scheduler-orchestration.yml'
@@ -19,7 +19,7 @@ concurrency:
 jobs:
   acceptance:
     runs-on: ubuntu-latest
-    steps:
+    env:\n      RECIPIENT_PROVIDER: runtime_json\n      RECIPIENTS_RUNTIME_JSON: '[{"recipient_id":"acceptance","email":"acceptance@example.com","status":"ACTIVE","language":"EN"}]'\n    steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
