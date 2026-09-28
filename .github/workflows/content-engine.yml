@@ -31,9 +31,9 @@ jobs:
           elif [ "$(date -u +%d)" = "01" ] && [ "$(date -u +%H%M)" = "0630" ]; then MODE=monthly;
           else MODE=weekly; fi
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
-      - name: Generate READY_FOR_REVIEW queue
+      - name: Generate NEWS + CHIEF ENGINEER ADVICE READY_FOR_REVIEW outputs
         run: python scripts/content_engine.py "${{ steps.mode.outputs.mode }}"
-      - name: Verify ADMIN_ONLY gate
+      - name: Verify seven-robot architecture, dual-output routing and ADMIN_ONLY gate
         run: python scripts/content_engine.py verify
       - name: Upload moderation queue artifact
         uses: actions/upload-artifact@v4
@@ -44,4 +44,5 @@ jobs:
           retention-days: 30
 # SECURITY/GOVERNANCE HARD RULE:
 # This workflow has contents:read only. It cannot commit, deploy, publish or mail.
+# News Source / Discovery -> Content Engine -> NEWS + CHIEF_ENGINEER_ADVICE is one seven-robot architecture; the two routes are outputs, not extra robots.
 # Publication and Digest mailing are separate administrator actions after final moderation.
