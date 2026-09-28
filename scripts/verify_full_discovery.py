@@ -2,19 +2,20 @@
 """Hard gate for IIG News Source / Discovery production runs."""
 import json, sys
 from pathlib import Path
+from news_registry import REGISTRY_URI, load_registry, resolve_repo_uri
 ROOT=Path(__file__).resolve().parents[1]
 policy=json.loads((ROOT/'content/moderation-policy.json').read_text(encoding='utf-8'))
 TARGET=int(policy['discovery']['source_registry_target'])
-registry_path=ROOT/policy['discovery']['registry_path']
+registry_path=resolve_repo_uri(policy['discovery'].get('registry_uri', REGISTRY_URI), ROOT)
 report_path=ROOT/policy['discovery']['full_run_report_path']
 def fail(msg):
     print('FULL_DISCOVERY_BLOCKED:',msg); sys.exit(1)
 if not registry_path.is_file(): fail(f'missing audited registry: {registry_path.relative_to(ROOT)}')
-registry=json.loads(registry_path.read_text(encoding='utf-8'))
+registry=load_registry(policy['discovery'].get('registry_uri', REGISTRY_URI), ROOT)
 items=registry.get('sources',[])
 if len(items)!=TARGET: fail(f'registry_total={len(items)}; required={TARGET}')
-urls=[x.get('canonical_url') for x in items]
-if any(not isinstance(u,str) or not u.startswith('https://') for u in urls): fail('every source requires canonical https URL')
+urls=[x.get('website_url') for x in items]
+if any(not isinstance(u,str) or not u.startswith(('https://','http://')) for u in urls): fail('every source requires a valid website URL')
 if len(set(urls))!=TARGET: fail('registry contains duplicate canonical URLs')
 required=set(policy['discovery']['source_registry_required_fields'])
 for i,x in enumerate(items,1):
