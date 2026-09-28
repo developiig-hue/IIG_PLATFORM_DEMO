@@ -27,6 +27,11 @@ class DigestTests(unittest.TestCase):
  def test_http_base_blocked(self):
   self.seed();os.environ["IIG_PUBLIC_BASE_URL"]="http://iig.example/"
   with self.assertRaises(SystemExit):d.build()
- def test_digest_approval_is_explicit_and_hash_bound(self):\n  self.seed();d.build();d.approve("Admin User","Digest reviewed for mailing");a=json.loads((d.OUT/"approved-digest.json").read_text());self.assertTrue(a["approval"]["delivery_authorized"]);self.assertEqual(a["approval"]["next"],"SCHEDULER_ORCHESTRATION")\n def test_digest_approval_requires_human_metadata(self):\n  self.seed();d.build()\n  with self.assertRaises(SystemExit):d.approve("","x")\n def test_auto_send_false_and_scheduler_next(self):
+ def test_digest_approval_is_explicit_and_hash_bound(self):
+  self.seed();d.build();d.approve("Admin User","Digest reviewed for mailing");a=json.loads((d.OUT/"approved-digest.json").read_text());self.assertTrue(a["approval"]["delivery_authorized"]);self.assertEqual(a["approval"]["next"],"SCHEDULER_ORCHESTRATION")
+ def test_digest_approval_requires_human_metadata(self):
+  self.seed();d.build()
+  with self.assertRaises(SystemExit):d.approve("","x")
+ def test_auto_send_false_and_scheduler_next(self):
   self.seed();d.build();x=json.loads((d.OUT/"digest.json").read_text());self.assertFalse(x["auto_send"]);self.assertEqual(x["status"],"READY_FOR_ADMIN_APPROVAL");self.assertEqual(x["pipeline"]["next"],"SCHEDULER_ORCHESTRATION")
 if __name__=="__main__":unittest.main()
