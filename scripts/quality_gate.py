@@ -73,6 +73,10 @@ def validate_item(x,audits):
     for k in ("title","company_name","project","technology","project_status","project_status_evidence","date","canonical_url","company_context"):
         if not isinstance(x.get(k),str) or not x[k].strip():reasons.append("missing_"+k)
     if x.get("primary_source_verified") is not True:reasons.append("primary_source_unverified")
+    try:
+        when=datetime.fromisoformat(x.get("date","").replace("Z","+00:00"))
+        if when.tzinfo and when>datetime.now(timezone.utc):reasons.append("future_date")
+    except Exception:reasons.append("invalid_date")
     if not safe_https(x.get("canonical_url","")):reasons.append("unsafe_canonical_url")
     if typ=="chief-engineer-advice":
         a=x.get("advice")
