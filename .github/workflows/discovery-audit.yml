@@ -13,6 +13,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '45 5 * * 1'
+concurrency:
+  group: iig-news-discovery-production
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
