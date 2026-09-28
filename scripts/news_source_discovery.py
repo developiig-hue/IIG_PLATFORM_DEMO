@@ -181,7 +181,7 @@ def main():
     handoff=[x for x in items[:24] if x["handoff_ready"]]
     counts={k:sum(x["status"]==k for x in results) for k in ("DISCOVERED","NO_MATCH","ERROR")}
     report={"schema":"iig.discovery-report.v2","run_type":"FULL_DISCOVERY","registry_uri":REGISTRY_URI,"run_finished_at":dt.datetime.now(dt.timezone.utc).isoformat(),"registry_total":260,"checked_total":260,"p1_checked":160,"p2_checked":100,"accessible":260-counts["ERROR"],"unavailable":counts["ERROR"],"discovered_sources":counts["DISCOVERED"],"no_match_sources":counts["NO_MATCH"],"error_sources":counts["ERROR"],"publications_found":len(items),"rejected":rejected,"news_output":0,"chief_engineer_advice_output":0,"handoff_candidates":len(handoff),"external_search_attempted":min(24,len(items)),"enrichment_gate_passed":bool(handoff) and all(x["supplementary_search"]["attempted"] and x["supplementary_search"]["leads"] for x in handoff),"pipeline_ready":True,"external_enrichment_required_for_routed_items":True,"sources":results}
-    rp=ROOT/z.report;rp.parent.mkdir(parents=True,exist_ok=True);rp.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    cp=ROOT/z.candidates;cp.parent.mkdir(parents=True,exist_ok=True);cp.write_text(json.dumps({"schema":"iig.discovery-candidates.v1","generated_at":report["run_finished_at"],"items":items,"handoff_items":handoff},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    rp=ROOT/z.report;atomic_json(rp,report)
+    cp=ROOT/z.candidates;atomic_json(cp,{"schema":"iig.discovery-candidates.v1","generated_at":report["run_finished_at"],"items":items,"handoff_items":handoff})
     print("FULL_DISCOVERY_COMPLETE",json.dumps({k:report[k] for k in ("checked_total","p1_checked","p2_checked","discovered_sources","no_match_sources","error_sources","publications_found","rejected")}))
 if __name__=="__main__":main()
