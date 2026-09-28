@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Production News Source / Discovery: 260 sources, P1 then P2, RSS -> Sitemap -> HTML. Never publishes."""
-import argparse,concurrent.futures,datetime as dt,email.utils,html.parser,ipaddress,json,os,re,time,urllib.error,urllib.parse,urllib.request,xml.etree.ElementTree as ET
+import argparse,concurrent.futures,datetime as dt,email.utils,html.parser,ipaddress,json,os,re,socket,time,urllib.error,urllib.parse,urllib.request,xml.etree.ElementTree as ET
 from pathlib import Path
 try:
     from .news_registry import REGISTRY_URI,load_registry
@@ -28,8 +28,16 @@ class SafeRedirect(urllib.request.HTTPRedirectHandler):
         if not safe_url(u):raise urllib.error.HTTPError(u,code,"unsafe redirect",headers,fp)
         return super().redirect_request(req,fp,code,msg,headers,u)
 OPENER=urllib.request.build_opener(SafeRedirect())
+def public_dns_host(u):
+    host=urllib.parse.urlparse(u).hostname
+    try:
+        for x in socket.getaddrinfo(host,None):
+            ip=ipaddress.ip_address(x[4][0])
+            if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved or ip.is_multicast:return False
+        return True
+    except socket.gaierror:return False
 def fetch(u,timeout,accept="*/*"):
-    if not safe_url(u):raise ValueError("unsafe URL")
+    if not safe_url(u) or not public_dns_host(u):raise ValueError("unsafe/non-public URL")
     q=urllib.request.Request(u,headers={"User-Agent":UA,"Accept":accept})
     with OPENER.open(q,timeout=timeout) as r:
         if not safe_url(r.geturl()):raise ValueError("unsafe final URL")
@@ -74,6 +82,10 @@ def feed_items(body,base,now,days):
         link=urllib.parse.urljoin(base,link);d=when(tx(["pubDate","date","updated","published","{*}updated","{*}published"])) or url_date(link)
         if safe_url(link) and relevant(title,link) and fresh(d,now,days):out.append({"url":norm(link),"title":title,"published_at":d.isoformat(),"method":"RSS_ATOM"})
     return out
+def sitemap_children(body):
+    try:
+        root=ET.fromstring(body);return [(x.text or "").strip() for x in root.findall(".//{*}sitemap/{*}loc") if (x.text or "").strip()][:8]
+    except Exception:return []
 def sitemap_items(body,base,now,days):
     out=[];root=ET.fromstring(body)
     for n in root.findall(".//{*}url")[:5000]:
@@ -110,8 +122,15 @@ def discover(src,timeout,now,days):
     if not r["candidates"]:
         for u in (urllib.parse.urljoin(base,"/sitemap.xml"),urllib.parse.urljoin(base,"/sitemap_index.xml")):
             try:
-                st,f,b=fetch(u,timeout,"application/xml,text/xml,*/*;q=0.1");x=sitemap_items(b,f,now,days);r["attempts"].append({"method":"SITEMAP","url":u,"http_status":st,"result_count":len(x)})
-                if x:r["candidates"]=x;r["method"]="SITEMAP";break
+                st,f,b=fetch(u,timeout,"application/xml,text/xml,*/*;q=0.1");x=sitemap_items(b,f,now,days)
+                if not x:
+                    for child in sitemap_children(b):
+                        try:
+                            cs,cf,cb=fetch(child,timeout,"application/xml,text/xml,*/*;q=0.1");x.extend(sitemap_items(cb,cf,now,days))
+                            if len(x)>=MAX_LINKS:break
+                        except Exception:continue
+                r["attempts"].append({"method":"SITEMAP","url":u,"http_status":st,"result_count":len(x)})
+                if x:r["candidates"]=x[:MAX_LINKS];r["method"]="SITEMAP";break
             except Exception as e:r["attempts"].append({"method":"SITEMAP","url":u,"error":f"{type(e).__name__}: {str(e)[:100]}"})
     if not r["candidates"] and home is not None:
         x,_=html_items(home,final,now,days);r["attempts"].append({"method":"HTML","url":final,"result_count":len(x)})
@@ -142,6 +161,9 @@ def dedup(results):
             if k in seen:rejected+=1;continue
             seen.add(k);x=dict(c);x.update({"source_id":r["id"],"source_name":r["name"],"priority":r["priority"],"sector":r["sector"],"primary_source_url":r["website_url"],"enrichment_status":"REQUIRED"});out.append(x)
     out.sort(key=lambda x:(x["published_at"],x["priority"]=="P1"),reverse=True);return out,rejected
+def atomic_json(path,obj):
+    path.parent.mkdir(parents=True,exist_ok=True);tmp=path.with_suffix(path.suffix+".tmp")
+    tmp.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+"\n",encoding="utf-8");tmp.replace(path)
 def main():
     a=argparse.ArgumentParser();a.add_argument("--timeout",type=float,default=8);a.add_argument("--workers",type=int,default=12);a.add_argument("--max-age-days",type=int,default=45);a.add_argument("--report",default="content/discovery-report.json");a.add_argument("--candidates",default="content/candidates/discovered-candidates.json");z=a.parse_args()
     sources=load_registry()["sources"];p1=[x for x in sources if x["priority"]=="P1"];p2=[x for x in sources if x["priority"]=="P2"];assert len(sources)==260 and len(p1)==160 and len(p2)==100
