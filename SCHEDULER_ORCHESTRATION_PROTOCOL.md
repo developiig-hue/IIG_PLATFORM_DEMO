@@ -6,7 +6,7 @@ Robot **7 of 7**. It is the final gate before the external email delivery adapte
 1. Functionality — accepts only an explicitly Admin-approved exact Digest SHA and prepares one scheduled delivery job.
 2. Input/Output — `iig.approved-digest.v1 -> iig.orchestration-preflight.v1 -> iig.delivery-job.v1`.
 3. Reliability — fail closed; atomic state; duplicate-send ledger.
-4. Security — digest SHA binding, reviewer/reason/timestamp, HTTPS-only live checks, no credentials in URLs.
+4. Security — digest SHA binding, reviewer/reason/timestamp, HTTPS-only live checks, strict same-origin IIG paths, no credentials in URLs, DNS/IP SSRF blocking for private/loopback/link-local/reserved/multicast/unspecified addresses.
 5. Portability — repository-relative paths; public URLs originate upstream from `IIG_PUBLIC_BASE_URL`; UTC-normalized schedule.
 6. Integration — exact `DIGEST (#6) -> SCHEDULER_ORCHESTRATION (#7) -> DELIVERY_ADAPTER`.
 7. Admin Approval / NO AUTO — no Digest approval is created here. #7 consumes only `iig.approved-digest.v1`.
