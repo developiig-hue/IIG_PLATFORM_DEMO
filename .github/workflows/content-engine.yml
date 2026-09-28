@@ -6,7 +6,7 @@ on:
       - 'scripts/content_engine.py'
       - 'content/moderation-policy.json'
       - 'content/candidates/**'
-      - 'content/source-registry.json'
+      - 'content/discovery/IIG_news_source_registry_260.json'
       - 'content/discovery-report.json'
       - 'scripts/verify_full_discovery.py'
       - '.github/workflows/content-engine.yml'
@@ -41,6 +41,10 @@ jobs:
           elif [ "$(date -u +%d)" = "01" ] && [ "$(date -u +%H%M)" = "0630" ]; then MODE=monthly;
           else MODE=weekly; fi
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+      - name: Verify portable 260-source registry contract
+        run: |
+          python scripts/news_registry.py
+          python -m unittest tests.test_news_registry
       - name: Verify full 260-source Discovery when production report is present
         run: |
           if [ -f content/discovery-report.json ]; then
