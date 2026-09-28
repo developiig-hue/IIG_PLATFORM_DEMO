@@ -1,9 +1,13 @@
 name: Build approved Digest PDF
 on:
   push:
-    branches: [main]
+    branches: [main, feature/scheduler-orchestration-production]
     paths:
       - 'scripts/build_digest_pdf.py'
+      - 'scripts/build_digest_release.py'
+      - 'content/public-news.json'
+      - 'content/public-advice.json'
+      - 'assets/*.webp'
       - '.github/workflows/build-digest-pdf.yml'
   workflow_dispatch:
 permissions:
