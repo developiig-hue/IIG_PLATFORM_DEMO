@@ -1,0 +1,39 @@
+name: IIG 260-Source Discovery Audit
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '45 5 * * 1'
+permissions:
+  contents: read
+jobs:
+  source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify portable registry
+        run: python scripts/news_registry.py
+      - name: Check all 260 source URLs and collect candidate links
+        run: python scripts/discovery_audit.py --workers 20 --timeout 9
+      - name: Verify 260 source accounting
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('content/discovery-report.json'))
+          assert d['registry_total']==d['checked_total']==260
+          assert d['accessible']+d['unavailable']==260
+          assert len(d['sources'])==260
+          assert len({s['id'] for s in d['sources']})==260
+          print('PASS: 260 source checks accounted for; unverified links are not news')
+          PY
+      - name: Upload per-source audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: iig-discovery-audit-260-${{ github.run_id }}
+          path: content/discovery-report.json
+          if-no-files-found: error
+          retention-days: 30
+# Connectivity audit only. This job cannot approve or publish content.
