@@ -1,5 +1,12 @@
 name: IIG 260-Source Discovery Audit
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/discovery_audit.py'
+      - 'scripts/news_registry.py'
+      - 'content/discovery/IIG_news_source_registry_260.json'
+      - '.github/workflows/discovery-audit.yml'
   workflow_dispatch:
   schedule:
     - cron: '45 5 * * 1'
