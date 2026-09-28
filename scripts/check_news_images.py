@@ -31,6 +31,19 @@ for item in items:
         assert item.get('image_rights_verified') is True, f'{item["slug"]}: original image rights not verified'
         assert item.get('image_type') == 'source_photo', f'{item["slug"]}: expected original source photo'
     print(f'PASS {item["slug"]} -> {expected} ({path.stat().st_size} bytes)')
+# Four-stage original-source moderation is mandatory whenever an original is considered.
+policy_path = root / 'content/image-moderation/policy.json'
+assert policy_path.is_file(), 'Missing four-stage image moderation policy'
+policy = json.loads(policy_path.read_text(encoding='utf-8'))
+assert [g['id'] for g in policy['gates']] == ['G1_PROVENANCE','G2_RELEVANCE','G3_RIGHTS','G4_TECHNICAL']
+for audit_path in sorted((root / 'content/image-moderation').glob('*.json')):
+    if audit_path.name == 'policy.json': continue
+    audit = json.loads(audit_path.read_text(encoding='utf-8'))
+    statuses = [audit['gates'][g]['status'] for g in ('G1_PROVENANCE','G2_RELEVANCE','G3_RIGHTS','G4_TECHNICAL')]
+    all_pass = statuses == ['PASS','PASS','PASS','PASS']
+    expected = 'ORIGINAL_SOURCE_IMAGE' if all_pass else 'SAME_SECTOR_IIG_FALLBACK'
+    assert audit['decision'] == expected, f'{audit_path.name}: unsafe image decision {audit["decision"]}; expected {expected}'
+    print(f'IMAGE MODERATION {audit["slug"]}: {statuses} -> {expected}')
 js = (root / 'assets/public-news.js').read_text(encoding='utf-8')
 for token in ('manifestURL', 'fallback(x.sector)', 'data-news-image', 'aspect-ratio:16/9', "page==='news.html'", "page==='industry.html'", "page==='index.html'", "page==='article.html'"):
     assert token in js, f'Missing image routing feature: {token}'
