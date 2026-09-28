@@ -70,7 +70,14 @@ assert len({x['slug'] for x in advice['items']}) == len(advice['items'])
 for x in advice['items']:
     assert re.fullmatch(r'[a-z0-9-]+', x['slug'])
     assert all(x['title'][l] and x['summary'][l] for l in ('ua', 'en'))
-    assert len(x['sections']) >= 3 and all(all(s[k][l] for k in ('heading', 'body') for l in ('ua', 'en')) for s in x['sections'])
+    assert len(x['sections']) == 4 and all(all(s[k][l] for k in ('heading', 'body') for l in ('ua', 'en')) for s in x['sections']), f'Advice must have exactly four protocol sections: {x["slug"]}'
+    expected_ua = ('Проблема', 'Що перевірити', 'Технічне рішення', 'Рішення керівника')
+    expected_en = ('Problem', 'Checks', 'Technical solution', 'Management decision')
+    assert tuple(s['heading']['ua'] for s in x['sections']) == expected_ua, f'UA advice protocol order invalid: {x["slug"]}'
+    assert tuple(s['heading']['en'] for s in x['sections']) == expected_en, f'EN advice protocol order invalid: {x["slug"]}'
+    for section in x['sections']:
+        for language in ('ua','en'):
+            assert len(section['body'][language]) >= 100, f'Advice section too thin ({language}): {x["slug"]}'
 for asset in ('assets/public-news.js', 'assets/public-advice.js', 'assets/advice-content.css', 'assets/iig-editorial-illustration.svg', 'advice-article.html', 'advice.html', 'assets/news-editorial.svg'):
     assert (ROOT / asset).is_file(), f'Missing asset: {asset}'
 script = '<script src="assets/public-news.js" defer></script>'
