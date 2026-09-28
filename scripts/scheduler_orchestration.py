@@ -4,7 +4,7 @@ import argparse,hashlib,json,os,tempfile,ipaddress,socket
 from datetime import datetime,timezone
 from pathlib import Path
 from urllib.request import Request,urlopen
-from urllib.parse import urlparse
+from urllib.parse import urlparse\nfrom recipient_provider import get_active_recipients
 ROOT=Path(__file__).resolve().parents[1];IN=ROOT/"content/digest/approved-digest.json";OUT=ROOT/"content/orchestration"
 NEWS=ROOT/"content/public-news.json";ADVICE=ROOT/"content/public-advice.json"
 def load(p):
@@ -85,7 +85,7 @@ def schedule(send_at):
  if dt.tzinfo is None:raise SystemExit("ORCHESTRATION_BLOCKED: timezone required")
  did=r["digest_sha256"];ledger=OUT/"delivery-ledger.json";l=load(ledger) if ledger.exists() else {"schema":"iig.delivery-ledger.v1","jobs":[]}
  if any(j.get("digest_sha256")==did and j.get("state") in ("SCHEDULED","DISPATCHED","DELIVERED") for j in l["jobs"]):raise SystemExit("ORCHESTRATION_BLOCKED: duplicate digest delivery")
- job={"job_id":did[:16],"digest_sha256":did,"send_at":dt.astimezone(timezone.utc).isoformat(),"state":"SCHEDULED","preflight_sha256":sha(r),"created_at":datetime.now(timezone.utc).isoformat()}
+ recipients=get_active_recipients()\n if not recipients:raise SystemExit("ORCHESTRATION_BLOCKED: no ACTIVE recipients")\n job={"job_id":did[:16],"digest_sha256":did,"send_at":dt.astimezone(timezone.utc).isoformat(),"state":"SCHEDULED","recipient_count":len(recipients),"recipient_provider":os.getenv("RECIPIENT_PROVIDER","http_api"),"preflight_sha256":sha(r),"created_at":datetime.now(timezone.utc).isoformat()}
  l["jobs"].append(job);atomic(ledger,l);atomic(OUT/"delivery-job.json",{"schema":"iig.delivery-job.v1","job":job,"delivery_adapter_required":True})
  print("ORCHESTRATION_SCHEDULED",json.dumps(job))
 def main():
