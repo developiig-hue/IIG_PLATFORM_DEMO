@@ -12,7 +12,8 @@ def atomic(p,o):
     p.parent.mkdir(parents=True,exist_ok=True);fd,t=tempfile.mkstemp(dir=p.parent,prefix=p.name)
     try:
         with os.fdopen(fd,"w",encoding="utf-8") as h:
-            json.dump(o,h,ensure_ascii=False,indent=2);h.write("\n");h.flush();os.fsync(h.fileno())
+            json.dump(o,h,ensure_ascii=False,indent=2);h.write("
+");h.flush();os.fsync(h.fileno())
         os.replace(t,p)
     finally:
         if os.path.exists(t):os.unlink(t)
@@ -46,7 +47,11 @@ def prepare():
     atomic(OUT/"review-queue.json",o)
     r={"schema":"iig.admin-review-report.v1","status":"PASS","generated_at":now,"queue_total":len(rows),"pending_total":len(rows),"approved_total":0,"rejected_total":0,"next_state":"ADMIN_DECISION_REQUIRED"}
     atomic(ROOT/"content/admin-review-report.json",r);print("ADMIN_REVIEW_PREPARE_PASS",json.dumps(r))
-def public_slug(item,h):\n    raw=unicodedata.normalize('NFKD',str(item.get('title',''))).encode('ascii','ignore').decode().lower()\n    raw=re.sub(r'[^a-z0-9]+','-',raw).strip('-')[:70]\n    return (raw or 'iig-material')+'-'+h[:10]\ndef valid_reviewer(v):return isinstance(v,str) and 2<=len(v.strip())<=120 and bool(re.fullmatch(r"[\w .@+\-]+",v.strip(),re.UNICODE))
+def public_slug(item,h):
+    raw=unicodedata.normalize('NFKD',str(item.get('title',''))).encode('ascii','ignore').decode().lower()
+    raw=re.sub(r'[^a-z0-9]+','-',raw).strip('-')[:70]
+    return (raw or 'iig-material')+'-'+h[:10]
+def valid_reviewer(v):return isinstance(v,str) and 2<=len(v.strip())<=120 and bool(re.fullmatch(r"[\w .@+\-]+",v.strip(),re.UNICODE))
 def decide(item_sha,decision,reviewer,reason):
     p,d,q=upstream()
     if decision not in ("APPROVED","REJECTED"):raise SystemExit("ADMIN_REVIEW_BLOCKED: invalid decision")
