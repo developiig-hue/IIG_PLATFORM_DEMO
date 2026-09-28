@@ -5,7 +5,8 @@ Discovery order per source: RSS/Atom -> sitemap -> HTML. Results are research le
 this module never verifies facts, approves drafts, or publishes content.
 """
 import argparse, hashlib, html, ipaddress, json, re, socket, sys, time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
+from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, urlunparse
@@ -20,7 +21,9 @@ SECTORS={'energy','metallurgy','agriculture','food','chemical','pharma','logisti
 UA='IIG-NewsResearch/1.0 (+editorial research; no publishing)'
 MAX_BYTES=3_000_000
 NEWS_HINTS=('news','press','media','article','story','release','project','update','insight')
-JUNK_HINTS=('login','signup','privacy','cookie','terms','career','jobs','contact','about','tag/','category/')
+JUNK_HINTS=('login','signup','privacy','cookie','terms','career','jobs','contact','about','tag/','category/','author/','search/','page/')
+SECTOR_HINTS={'energy':('energy','power','electric','generation','grid','battery','bess','chp','cogeneration','turbine','solar','wind','hydrogen','gas'),'metallurgy':('steel','metal','metallurg','smelter','furnace','rolling','iron','aluminium','copper','decarbon'),'agriculture':('agri','farm','grain','bioenergy','biogas','biomass','fertilizer','food processing'),'food':('food','beverage','brew','dairy','processing','factory','plant','energy','heat'),'chemical':('chemical','chemistry','petrochem','ammonia','fertilizer','hydrogen','plant','energy'),'pharma':('pharma','pharmaceutical','medicine','manufactur','plant','energy','facility'),'logistics':('logistics','warehouse','distribution','fleet','port','rail','terminal','energy','charging'),'datacenters':('data center','datacenter','data-cent','server','cloud','cooling','power','ups','energy'),'waste':('waste','recycl','circular','landfill','waste-to-energy','biogas','sorting','energy')}
+MAX_AGE_DAYS=120
 ATOM='{http://www.w3.org/2005/Atom}'
 
 def safe_url(url):
@@ -124,6 +127,36 @@ def likely_news(url,title=''):
     return any(h in s for h in NEWS_HINTS) and not any(h in s for h in JUNK_HINTS)
 
 def clean_text(v): return re.sub(r'\\s+',' ',re.sub(r'<[^>]*>','',html.unescape(v or ''))).strip()
+
+def parse_date(value):
+    value=clean_text(value)
+    if not value: return None
+    try: dt=parsedate_to_datetime(value)
+    except Exception:
+        try: dt=datetime.fromisoformat(value.replace('Z','+00:00'))
+        except Exception: return None
+    if dt.tzinfo is None: dt=dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
+def relevance_score(source,url,title='',summary=''):
+    text=(' '+url+' '+title+' '+summary+' ').lower(); score=0
+    if likely_news(url,title): score+=2
+    score+=min(3,sum(1 for k in SECTOR_HINTS.get(source.get('sector'),()) if k in text))
+    if len(clean_text(title))>=12: score+=1
+    return score
+
+def editorial_filter(source,item,now=None,max_age_days=MAX_AGE_DAYS):
+    now=now or datetime.now(timezone.utc); title=clean_text(item.get('title','')); url=item.get('canonical_url','')
+    if len(title)<12 or any(j in (url+' '+title).lower() for j in JUNK_HINTS): return False,'LOW_QUALITY_OR_JUNK'
+    score=relevance_score(source,url,title,item.get('summary_unverified','')); item['relevance_score']=score
+    if score<2: return False,'LOW_RELEVANCE'
+    dt=parse_date(item.get('source_published_at_unverified',''))
+    if dt:
+        age=(now-dt).days; item['source_published_at_normalized']=dt.isoformat(); item['age_days']=age
+        if age>max_age_days: return False,'STALE'
+        item['freshness_status']='CURRENT'
+    else: item['freshness_status']='UNDATED_CURRENTNESS_UNKNOWN'
+    return True,'ACCEPT'
 
 def candidate(source,url,title,published='',summary='',method='html'):
     url=canonicalize(url)
