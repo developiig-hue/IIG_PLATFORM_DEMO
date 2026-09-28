@@ -8,8 +8,8 @@ Robot **4 of 7**. Its job is to produce auditable image-selection evidence; it n
 3. Reliability — malformed/failed evidence blocks that image without promoting it; JSON output is atomic.
 4. Security — remote candidate and external rights-evidence URLs must be HTTPS and credential-free; local fallback must resolve inside repository and be a real non-empty JPEG.
 5. Portability — all runtime paths are repository-relative; no workstation, account, Pages host or Library dependency.
-6. Integration — robot identifies itself as IMAGE_RIGHTS #4 and hands evidence to QUALITY_GATE within the fixed seven-robot architecture.
-7. Admin control — `ADMIN_ONLY`, `auto_publish=false`; BLOCK is never Quality-Gate eligible.
+6. Integration — robot consumes the accepted NEWS handoff from QUALITY_GATE (#3), preserves Advice unchanged, and sends only rights-cleared NEWS plus Advice to ADMIN_REVIEW.
+7. Admin control — `ADMIN_ONLY`, `auto_publish=false`; BLOCK NEWS is never Admin-Review eligible.
 8. Automated tests — positive and negative tests for rights bases, failed gates, schema, URL safety, local ownership proof and nonpublishing workflow.
 9. Live test — CI executes Content Engine → Quality Gate (#3) → Image / Rights (#4) on real repository evidence, not only fixtures.
 10. Acceptance + GitHub — feature branch must be GREEN; merge requires separate owner decision and post-merge verification.
