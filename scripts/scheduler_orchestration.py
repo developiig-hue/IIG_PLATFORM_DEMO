@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """IIG Robot #7: publication preflight, scheduling and idempotent delivery authorization."""
-import argparse,hashlib,json,os,tempfile
+import argparse,hashlib,json,os,tempfile,ipaddress,socket
 from datetime import datetime,timezone
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -32,6 +32,25 @@ def approved():
  if a.get("digest_sha256")!=sha(d) or not a.get("reviewer") or not a.get("reason") or not a.get("approved_at"):raise SystemExit("ORCHESTRATION_BLOCKED: digest approval integrity")
  if d.get("schema")!="iig.digest.v1" or d.get("auto_send") is not False:raise SystemExit("ORCHESTRATION_BLOCKED: digest governance")
  return x
+def safe_public_host(host):
+ try:
+  infos=socket.getaddrinfo(host,None)
+  ips={ipaddress.ip_address(x[4][0]) for x in infos}
+  return bool(ips) and all(not (i.is_private or i.is_loopback or i.is_link_local or i.is_reserved or i.is_multicast or i.is_unspecified) for i in ips)
+ except Exception:return False
+def url_contract(d):
+ root=d.get("ctas",{}).get("site","");ru=urlparse(root)
+ if ru.scheme!="https" or not ru.hostname or ru.username or ru.password or not safe_public_host(ru.hostname):raise SystemExit("ORCHESTRATION_BLOCKED: unsafe IIG site root")
+ origin=(ru.scheme,ru.hostname,ru.port)
+ expected={"news":"/IIG_PLATFORM_DEMO/article.html","chief_engineer_advice":"/IIG_PLATFORM_DEMO/advice-article.html"}
+ prefix=ru.path.rstrip("/")
+ for x in d.get("items",[]):
+  u=urlparse(x.get("url",""))
+  if (u.scheme,u.hostname,u.port)!=origin or u.path!=prefix+("/article.html" if x.get("route")=="news" else "/advice-article.html" if x.get("route")=="chief_engineer_advice" else "/__invalid__"):raise SystemExit("ORCHESTRATION_BLOCKED: non-IIG item URL")
+ for k,frag in (("submit_project","project"),("subscribe_digest","subscribe")):
+  u=urlparse(d.get("ctas",{}).get(k,""))
+  if (u.scheme,u.hostname,u.port)!=origin or u.path!=prefix+"/forms.html" or u.fragment!=frag:raise SystemExit("ORCHESTRATION_BLOCKED: invalid IIG CTA")
+ return True
 def slug_from_url(u):
  q=urlparse(u).query
  from urllib.parse import parse_qs
@@ -46,13 +65,13 @@ def registry_preflight(d):
  return rows
 def live_check(url,timeout=12):
  u=urlparse(url)
- if u.scheme!="https" or not u.hostname or u.username or u.password:return {"url":url,"ok":False,"status":0}
+ if u.scheme!="https" or not u.hostname or u.username or u.password or not safe_public_host(u.hostname):return {"url":url,"ok":False,"status":0}
  try:
   req=Request(url,headers={"User-Agent":"IIG-Orchestration-Preflight/1.0"})
   with urlopen(req,timeout=timeout) as r:return {"url":url,"ok":200<=r.status<400,"status":r.status}
  except Exception:return {"url":url,"ok":False,"status":0}
 def preflight(check_http=True):
- x=approved();d=x["digest"];rows=registry_preflight(d)
+ x=approved();d=x["digest"];url_contract(d);rows=registry_preflight(d)
  urls=[i["url"] for i in d.get("items",[])]+[d.get("ctas",{}).get(k,"") for k in ("submit_project","subscribe_digest")]+[d.get("ctas",{}).get("site","")]
  if any(not u for u in urls):raise SystemExit("ORCHESTRATION_BLOCKED: mandatory URL missing")
  live=[live_check(u) for u in urls] if check_http else [{"url":u,"ok":True,"status":200} for u in urls]
