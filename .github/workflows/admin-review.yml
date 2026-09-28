@@ -6,7 +6,7 @@ on:
       - 'scripts/admin_review.py'
       - 'scripts/verify_admin_review.py'
       - 'tests/test_admin_review.py'
-      - 'ADMIN_REVIEW_PROTOCOL.md'
+      - 'ADMIN_REVIEW_PROTOCOL.md'\n      - 'content/moderation-policy.json'
       - '.github/workflows/admin-review.yml'
       - 'scripts/image_rights_robot.py'
       - 'scripts/quality_gate.py'
