@@ -13,6 +13,9 @@ class DiscoveryTests(unittest.TestCase):
  def test_html_date_and_noise(self):
   b=b"""<a href="/2026/09/27/new-50-mw-power-project">New 50 MW power project</a><a href="/privacy">Energy privacy policy</a>"""
   x,_=d.html_items(b,"https://example.com",NOW,45);self.assertEqual(len(x),1);self.assertEqual(x[0]["method"],"HTML")
+ def test_sitemap_index_children(self):
+  b=b"""<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>https://example.com/news-sitemap.xml</loc></sitemap></sitemapindex>"""
+  self.assertEqual(d.sitemap_children(b),["https://example.com/news-sitemap.xml"])
  def test_dedup_prefers_first_priority_order(self):
   rs=[{"id":"1","name":"A","priority":"P1","sector":"energy","website_url":"https://a.com","candidates":[{"url":"https://x.com/news","title":"100 MW power project","published_at":NOW.isoformat(),"method":"RSS_ATOM"}]},{"id":"2","name":"B","priority":"P2","sector":"energy","website_url":"https://b.com","candidates":[{"url":"https://x.com/news","title":"100 MW power project","published_at":NOW.isoformat(),"method":"HTML"}]}]
   x,n=d.dedup(rs);self.assertEqual((len(x),n),(1,1));self.assertEqual(x[0]["priority"],"P1")
