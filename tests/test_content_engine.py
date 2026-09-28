@@ -13,7 +13,7 @@ class ContentEngineTests(unittest.TestCase):
  def test_unverified_primary_blocked(self):
   x=self.good();x["primary_source_verified"]=False;self.assertIn("primary_source_unverified",c.validate_curated(x))
  def test_unsafe_url_blocked(self):
-  x=self.good();x["canonical_url"]="http://127.0.0.1/a";self.assertIn("unsafe_canonical_url",c.validate_curated(x))
+  x=self.good();x["canonical_url"]="https://127.0.0.1/a";self.assertIn("unsafe_canonical_url",c.validate_curated(x))\n  x=self.good();x["canonical_url"]="https://localhost/a";self.assertIn("unsafe_canonical_url",c.validate_curated(x))
  def test_bad_date_blocked(self):
   x=self.good();x["date"]="not-a-date";self.assertIn("invalid_date",c.validate_curated(x))
  def test_advice_four_blocks(self):
