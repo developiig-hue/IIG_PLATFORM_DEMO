@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """IIG Content Engine production router. Research/enrichment + two review outputs. Never publishes."""
-import argparse,hashlib,json,os,re,tempfile
+import argparse,hashlib,ipaddress,json,os,re,tempfile
 from datetime import datetime,timezone,timedelta
 from pathlib import Path
 from urllib.parse import urlparse
@@ -21,7 +21,14 @@ def atomic_json(p,obj):
         if os.path.exists(tmp):os.unlink(tmp)
 def policy():return load_json(POLICY)
 def https_url(v):
-    try:p=urlparse(v);return p.scheme=="https" and bool(p.netloc) and not p.username and not p.password
+    try:
+        p=urlparse(v);h=(p.hostname or "").lower()
+        if p.scheme!="https" or not h or p.username or p.password or h=="localhost" or h.endswith(".local"):return False
+        try:
+            ip=ipaddress.ip_address(h)
+            if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved or ip.is_multicast:return False
+        except ValueError:pass
+        return True
     except Exception:return False
 def iso_date(v):
     try:return datetime.fromisoformat(v.replace("Z","+00:00"))
@@ -76,7 +83,9 @@ def discovery_intake():
 def curated_pool():
     accepted=[];rejected=[];seen=set()
     for p in sorted(CAND.glob("*.json")):
-        d=load_json(p)
+        try:d=load_json(p)
+        except ValueError as e:
+            rejected.append({"file":p.name,"index":None,"reasons":["invalid_json"],"detail":str(e)[:180]});continue
         if isinstance(d,dict) and d.get("schema")==DISCOVERY_SCHEMA:continue
         rows=d if isinstance(d,list) else [d]
         for i,x in enumerate(rows):
@@ -97,7 +106,7 @@ def route(items):
     return {"news":[x for x in items if x.get("type")=="news"],"chief_engineer_advice":[x for x in items if x.get("type")=="chief-engineer-advice"]}
 def make(kind,now):
     pol=policy();pool,rejected=curated_pool();intake=discovery_intake()
-    if intake["errors"] and intake["accepted"]==0 and intake["received"]>0:raise SystemExit("CONTENT_ENGINE_BLOCKED: invalid Discovery handoff")
+    if intake["present"] and intake["errors"] and intake["accepted"]==0:raise SystemExit("CONTENT_ENGINE_BLOCKED: invalid Discovery handoff")
     if kind=="weekly":selected=sorted(pool,key=lambda x:(score(x),x["date"]),reverse=True)[:int(pol["weekly"]["max_candidates"])]
     else:
         month=(now.replace(day=1)-timedelta(days=1)).strftime("%Y-%m");selected=[];seen=set()
