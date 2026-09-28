@@ -33,12 +33,12 @@ def upstream():
         if not isinstance(item,dict) or not isinstance(h,str) or h!=sha(item):raise SystemExit("DIGEST_BLOCKED: item integrity")
         if h in seen:raise SystemExit("DIGEST_BLOCKED: duplicate item");seen.add(h)
         if not isinstance(a,dict) or a.get("decision")!="APPROVED" or a.get("item_sha256")!=h or not a.get("reviewer") or not a.get("reason") or not a.get("decided_at"):raise SystemExit("DIGEST_BLOCKED: explicit Admin approval missing")
-        if x.get("route")=="news" and not x.get("selected_image"):raise SystemExit("DIGEST_BLOCKED: NEWS image authorization missing")
+        if x.get("route")=="news" and not x.get("selected_image"):raise SystemExit("DIGEST_BLOCKED: NEWS image authorization missing")\n        slug=x.get("public_slug","")\n        if not isinstance(slug,str) or not __import__("re").fullmatch(r"[a-z0-9-]{3,90}",slug):raise SystemExit("DIGEST_BLOCKED: stable public slug missing")
         if x.get("route") not in ("news","chief_engineer_advice"):raise SystemExit("DIGEST_BLOCKED: invalid route")
     return d
 def public_link(x,b):
     page="article.html" if x["route"]=="news" else "advice-article.html"
-    return urljoin(b,page)+"?id="+quote(x["item_sha256"],safe="")
+    return urljoin(b,page)+"?id="+quote(x["public_slug"],safe="")
 def build():
     d=upstream();b=base_url();now=datetime.now(timezone.utc).isoformat()
     items=[]
@@ -61,6 +61,6 @@ def verify():
     if d.get("ctas",{}).get("submit_project")!=urljoin(b,"forms.html#project") or d["ctas"].get("subscribe_digest")!=urljoin(b,"forms.html#subscribe"):raise SystemExit("DIGEST_BLOCKED: CTA")
     if d["ctas"]["submit_project"] not in h or d["ctas"]["subscribe_digest"] not in h:raise SystemExit("DIGEST_BLOCKED: inactive CTA")
     print("DIGEST_VERIFY_PASS",json.dumps({"items_total":len(d["items"]),"active_iig_links":len(d["items"]),"cta_links":2}))
-def main():
-    p=argparse.ArgumentParser();p.add_argument("cmd",choices=("build","verify"));a=p.parse_args();build() if a.cmd=="build" else verify()
+def approve(reviewer,reason):\n    d=load(OUT/"digest.json")\n    if d.get("status")!="READY_FOR_ADMIN_APPROVAL" or d.get("auto_send") is not False:raise SystemExit("DIGEST_BLOCKED: digest not approvable")\n    if not reviewer.strip() or len(reason.strip())<5:raise SystemExit("DIGEST_BLOCKED: reviewer/reason required")\n    digest_sha=sha(d);now=datetime.now(timezone.utc).isoformat()\n    a={"schema":"iig.digest-approval.v1","digest_sha256":digest_sha,"decision":"APPROVED","reviewer":reviewer.strip(),"reason":reason.strip(),"approved_at":now,"delivery_authorized":True,"next":"SCHEDULER_ORCHESTRATION"}\n    atomic(OUT/"approved-digest.json",{"schema":"iig.approved-digest.v1","digest":d,"approval":a})\n    print("DIGEST_ADMIN_APPROVAL_RECORDED",json.dumps(a,ensure_ascii=False))\ndef main():
+    p=argparse.ArgumentParser();p.add_argument("cmd",choices=("build","verify","approve"));p.add_argument("--reviewer",default="");p.add_argument("--reason",default="");a=p.parse_args();build() if a.cmd=="build" else verify() if a.cmd=="verify" else approve(a.reviewer,a.reason)
 if __name__=="__main__":main()
