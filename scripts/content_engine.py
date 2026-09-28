@@ -61,6 +61,16 @@ def candidate_pool():
     return [item for item in pool if valid(item)]
 
 
+def route_outputs(items):
+    """One discovery pool, two editorial outputs; this is routing, not an eighth robot."""
+    news = [x for x in items if x.get('type') == 'news']
+    advice = [x for x in items if x.get('type') == 'chief-engineer-advice']
+    return {
+        'news': news,
+        'chief_engineer_advice': advice,
+    }
+
+
 def make(kind, now):
     pol = policy()
     month = now.strftime('%Y-%m')
@@ -79,7 +89,29 @@ def make(kind, now):
         selected = selected[:pol['monthly']['max_items']]
     stamp = now.strftime('%Y%m%dT%H%M%SZ')
     ident = hashlib.sha256((kind + stamp).encode()).hexdigest()[:12]
-    document = {'schema': 'iig.moderation.v1', 'id': ident, 'kind': kind, 'generated_at': now.isoformat(), 'status': 'READY_FOR_REVIEW', 'publish_authority': 'ADMIN_ONLY', 'auto_publish': False, 'items': selected, 'moderation': {'reviewed_by': None, 'reviewed_at': None, 'decision': None}, 'audit': {'generator': 'scripts/content_engine.py', 'immutable_rule': 'NO_AUTO_PUBLISH'}}
+    outputs = route_outputs(selected)
+    document = {
+        'schema': 'iig.moderation.v2',
+        'id': ident,
+        'kind': kind,
+        'generated_at': now.isoformat(),
+        'status': 'READY_FOR_REVIEW',
+        'publish_authority': 'ADMIN_ONLY',
+        'auto_publish': False,
+        # Backward-compatible combined pool plus explicit two-output contract.
+        'items': selected,
+        'outputs': outputs,
+        'output_counts': {name: len(items) for name, items in outputs.items()},
+        'pipeline': {
+            'discovery': 'NEWS_SOURCE_DISCOVERY',
+            'content_engine': 'CONTENT_ENGINE',
+            'routes': ['NEWS', 'CHIEF_ENGINEER_ADVICE'],
+            'robot_count': 7,
+            'new_robot_created': False,
+        },
+        'moderation': {'reviewed_by': None, 'reviewed_at': None, 'decision': None},
+        'audit': {'generator': 'scripts/content_engine.py', 'immutable_rule': 'NO_AUTO_PUBLISH'},
+    }
     QUEUE.mkdir(parents=True, exist_ok=True)
     path = QUEUE / f'{kind}-{stamp}.json'
     path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
@@ -99,6 +131,15 @@ def verify():
         assert record.get('auto_publish') is False, f'Auto-publish must be disabled: {path}'
         assert record.get('publish_authority') == 'ADMIN_ONLY', f'Invalid publication authority: {path}'
         assert record['status'] in ('READY_FOR_REVIEW', 'APPROVED', 'REJECTED')
+        if record.get('schema') == 'iig.moderation.v2':
+            outputs = record.get('outputs', {})
+            assert set(outputs) == {'news', 'chief_engineer_advice'}, f'Invalid Content Engine outputs: {path}'
+            assert all(x.get('type') == 'news' for x in outputs['news']), f'NEWS routing leak: {path}'
+            assert all(x.get('type') == 'chief-engineer-advice' for x in outputs['chief_engineer_advice']), f'ADVICE routing leak: {path}'
+            assert record.get('output_counts') == {name: len(items) for name, items in outputs.items()}, f'Output count mismatch: {path}'
+            pipeline = record.get('pipeline', {})
+            assert pipeline.get('routes') == ['NEWS', 'CHIEF_ENGINEER_ADVICE'], f'Route contract missing: {path}'
+            assert pipeline.get('robot_count') == 7 and pipeline.get('new_robot_created') is False, f'Seven-robot architecture violated: {path}'
         if record['status'] == 'APPROVED':
             assert record['moderation']['decision'] == 'APPROVED' and record['moderation']['reviewed_by'] and record['moderation']['reviewed_at']
     print('PASS: scheduler and fail-closed moderation invariants')
