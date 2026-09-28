@@ -49,7 +49,9 @@ jobs:
           q=json.loads(Path('content/quality-gate-report.json').read_text())
           r=json.loads(Path('content/image-rights-report.json').read_text())
           assert q['next_state']=='IMAGE_RIGHTS'
+          assert q['news_evaluated'] > 0 and q['passed_total'] > 0
           assert r['evaluated_total'] > 0
+          assert any(x.get('source_page') for x in json.loads((Path(r['artifact'])).read_text())['results'])
           assert r['next_state']=='ADMIN_REVIEW'
           print('IMAGE_RIGHTS_LIVE_CHAIN_PASS', {'evaluated':r['evaluated_total'],'passed':r['passed_total'],'blocked':r['blocked_total']})
           PY
