@@ -2,7 +2,10 @@
 """Production News Source / Discovery: 260 sources, P1 then P2, RSS -> Sitemap -> HTML. Never publishes."""
 import argparse,concurrent.futures,datetime as dt,email.utils,html.parser,ipaddress,json,os,re,time,urllib.error,urllib.parse,urllib.request,xml.etree.ElementTree as ET
 from pathlib import Path
-try:\n    from .news_registry import REGISTRY_URI,load_registry\nexcept ImportError:\n    from news_registry import REGISTRY_URI,load_registry
+try:
+    from .news_registry import REGISTRY_URI,load_registry
+except ImportError:
+    from news_registry import REGISTRY_URI,load_registry
 ROOT=Path(__file__).resolve().parents[1]; UA=os.getenv("IIG_DISCOVERY_UA","IIG-News-Discovery/2.0")
 MAX_BYTES=700000; MAX_LINKS=80
 HINT=re.compile(r"(news|press|media|release|project|invest|energy|power|plant|factory|construction|commission|capacity|mw|mwh|solar|wind|battery|bess|chp|hydrogen|steel|data.?cent|chemical|pharma|logistics|agri|waste|новин|прес|проєкт|проект|інвест|енерг)",re.I)
