@@ -25,12 +25,22 @@
         },
         {
           "heading": {
-            "ua": "Практичний чек-лист",
-            "en": "Practical checklist"
+            "ua": "Що перевірити",
+            "en": "Checks"
           },
           "body": {
-            "ua": "1. Підписати mechanical completion і punch list. 2. Перевірити якість газу, тиск і герметичність за процедурою OEM. 3. Підтвердити вентиляцію та газовиявлення. 4. Перевірити мастило, охолодження і допоміжні системи. 5. Протестувати захисти та аварійне зупинення. 6. Підтвердити синхронізацію і погодження мережевого оператора. 7. Зафіксувати SCADA-сигнали, протокол випробувань і критерії приймання.",
-            "en": "1. Sign off mechanical completion and punch list. 2. Verify gas quality, pressure and tightness under OEM procedures. 3. Verify ventilation and gas detection. 4. Check lubrication, cooling and auxiliaries. 5. Test protections and emergency stop. 6. Confirm synchronization and grid operator requirements. 7. Record SCADA signals, test protocol and acceptance criteria."
+            "ua": "Закрийте mechanical completion і punch list; підтвердьте якість та тиск газу за вимогами OEM, вентиляцію, gas detection, мастило, охолодження, допоміжні системи, релейні захисти, emergency stop, синхронізацію, SCADA та дозвіл оператора мережі. Окремо перевірте готовність систем пожежогасіння, DC/UPS, black-start/auxiliary supply і журнал interlocks.",
+            "en": "Close mechanical completion and punch list; confirm gas quality and pressure to OEM requirements, ventilation, gas detection, lubrication, cooling, auxiliaries, relay protection, emergency stop, synchronisation, SCADA and grid-operator clearance. Separately verify fire systems, DC/UPS, black-start/auxiliary supply and the interlock register."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Технічне рішення",
+            "en": "Technical solution"
+          },
+          "body": {
+            "ua": "Використовуйте єдину commissioning matrix: система → prerequisite → test → measured result → open deviation → owner. Перший пуск дозволяється тільки після підписання критичних prerequisites OEM, EPC та замовником; performance test проводиться за окремою погодженою процедурою.",
+            "en": "Use one commissioning matrix: system → prerequisite → test → measured result → open deviation → owner. First start is permitted only after critical OEM, EPC and owner prerequisites are signed; performance testing follows a separate agreed procedure."
           }
         },
         {
@@ -69,12 +79,22 @@
         },
         {
           "heading": {
-            "ua": "Практичні дії",
-            "en": "Practical actions"
+            "ua": "Що перевірити",
+            "en": "Checks"
           },
           "body": {
-            "ua": "Зберіть інтервальний профіль споживання та аварійних навантажень; окремо визначте MW, MWh, час автономії, допустимий SOC, C-rate, деградацію та режим EMS. Перевірте PCS, трансформатор, пожежну безпеку, приєднання і гарантію usable capacity. Змоделюйте піки та сценарій відключення окремо.",
-            "en": "Collect interval load and critical-load profiles; define MW, MWh, autonomy, SOC window, C-rate, degradation and EMS duty separately. Check PCS, transformer, fire safety, grid connection and usable-capacity warranty. Model peak shaving and outage scenarios independently."
+            "ua": "Зберіть щонайменше погодинний, а для швидких піків — коротший інтервальний профіль. Розділіть MW і MWh; задайте usable SOC window, C-rate, round-trip efficiency, auxiliary consumption, ambient derating, degradation, cycle count, grid limits, fire concept та гарантовану usable capacity на контрольні роки.",
+            "en": "Collect at least hourly data and shorter intervals for fast peaks. Separate MW from MWh; define usable SOC window, C-rate, round-trip efficiency, auxiliary consumption, ambient derating, degradation, cycle count, grid limits, fire concept and guaranteed usable capacity at defined years."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Технічне рішення",
+            "en": "Technical solution"
+          },
+          "body": {
+            "ua": "Побудуйте сценарну модель для кожної функції BESS: peak shaving, backup, PV/CHP smoothing, arbitrage або grid services. PCS MW визначається найважчим power duty, а MWh — потрібною тривалістю з урахуванням SOC, деградації та резерву. EMS повинен мати пріоритети, щоб гарантійні режими не конфліктували.",
+            "en": "Build a scenario model for each BESS duty: peak shaving, backup, PV/CHP smoothing, arbitrage or grid services. PCS MW follows the hardest power duty; MWh follows required duration including SOC, degradation and reserve. EMS priorities must prevent guaranteed duties from conflicting."
           }
         },
         {
@@ -113,12 +133,22 @@
         },
         {
           "heading": {
-            "ua": "Практичні дії",
-            "en": "Practical actions"
+            "ua": "Що перевірити",
+            "en": "Checks"
           },
           "body": {
-            "ua": "Отримайте актуальні технічні умови від оператора; зафіксуйте P-import і P-export, клас напруги, точку балансового розмежування, обмеження відпуску, релейний захист, телеметрію, облік, режим острова та обсяг реконструкції підстанції. Зіставте всі вимоги з EPC battery limits.",
-            "en": "Obtain current operator connection conditions; document import/export limits, voltage, ownership boundary, curtailment, relay protection, telemetry, metering, island mode and substation upgrades. Reconcile these with EPC battery limits."
+            "ua": "Отримайте чинні технічні умови; зафіксуйте P-import/P-export, voltage level, fault level, точку балансового розмежування, curtailment, protection philosophy, metering, telemetry, reactive-power requirements, island mode та необхідну реконструкцію підстанції. Перевірте строки мережевих робіт проти COD.",
+            "en": "Obtain current connection conditions; document P-import/P-export, voltage level, fault level, ownership boundary, curtailment, protection philosophy, metering, telemetry, reactive-power requirements, island mode and required substation upgrades. Check network-work dates against COD."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Технічне рішення",
+            "en": "Technical solution"
+          },
+          "body": {
+            "ua": "Випустіть grid interface schedule як контрактний додаток до EPC. Усі relay settings, SCADA signals, metering points, utility tests та battery limits повинні мати відповідального й acceptance criterion. CAPEX мережі тримайте окремим контрольованим work package, якщо його scope ще змінюється.",
+            "en": "Issue a grid interface schedule as an EPC contract appendix. Every relay setting, SCADA signal, metering point, utility test and battery limit needs an owner and acceptance criterion. Keep network CAPEX as a controlled work package if its scope is still moving."
           }
         },
         {
@@ -157,12 +187,22 @@
         },
         {
           "heading": {
-            "ua": "Практичні дії",
-            "en": "Practical actions"
+            "ua": "Що перевірити",
+            "en": "Checks"
           },
           "body": {
-            "ua": "1. Зберіть електричні та теплові лічильники і виробничі дані. 2. Нормалізуйте baseline за випуском і погодою. 3. Побудуйте карту втрат тепла, стисненого повітря та піків. 4. Порівняйте CAPEX, простої і виробничий ризик заходів. 5. Узгодьте план measurement and verification та відповідальних.",
-            "en": "1. Collect electrical, thermal and production data. 2. Normalize baseline for output and weather. 3. Map heat, compressed-air losses and peaks. 4. Compare CAPEX, downtime and production risk. 5. Agree a measurement and verification plan with owners."
+            "ua": "Визначте межі baseline, період даних, production drivers, weather dependence і якість лічильників. Розділіть electricity, gas, steam, heat, compressed air та cooling. Перевірте простої й зміни product mix, інакше зменшення MWh може бути лише наслідком нижчого випуску.",
+            "en": "Define baseline boundaries, data period, production drivers, weather dependence and meter quality. Separate electricity, gas, steam, heat, compressed air and cooling. Check downtime and product-mix changes, otherwise lower MWh may simply reflect lower output."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Технічне рішення",
+            "en": "Technical solution"
+          },
+          "body": {
+            "ua": "Створіть нормалізований KPI — наприклад kWh/т або GJ/т — і погодьте M&V plan до інвестиції. Для кожного заходу зафіксуйте baseline, adjustment factors, meter, frequency, owner і acceptance threshold. Після реалізації порівнюйте measured result, а не vendor estimate.",
+            "en": "Create a normalised KPI such as kWh/t or GJ/t and agree the M&V plan before investment. For every measure define baseline, adjustment factors, meter, frequency, owner and acceptance threshold. After implementation compare measured results, not vendor estimates."
           }
         },
         {
@@ -201,12 +241,22 @@
         },
         {
           "heading": {
-            "ua": "Практичні дії",
-            "en": "Practical actions"
+            "ua": "Що перевірити",
+            "en": "Checks"
           },
           "body": {
-            "ua": "Змоделюйте погодинний і швидкий профіль навантаження, мінімальне стабільне навантаження CHP, тепловий відбір, SOC, цикли, резерв, обмеження експорту та ціни газу й електроенергії. Перевірте, чи EMS не створює конфлікту між оптимізацією палива та вимогами резервування.",
-            "en": "Model hourly and fast load, CHP minimum stable load, heat demand, SOC, cycling, reserve, export limits and gas/electricity prices. Check EMS for conflicts between fuel optimization and backup requirements."
+            "ua": "Побудуйте одночасні профілі electric load, heat demand, gas constraints, grid import/export і critical load. Для BESS задайте MW, MWh, SOC reserve та degradation; для CHP — minimum load, ramp, heat recovery, start/stop limits і maintenance. Перевірте сценарії grid-connected, peak, outage та recovery.",
+            "en": "Build simultaneous profiles for electric load, heat demand, gas constraints, grid import/export and critical load. For BESS define MW, MWh, SOC reserve and degradation; for CHP define minimum load, ramp, heat recovery, start/stop limits and maintenance. Test grid-connected, peak, outage and recovery cases."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Технічне рішення",
+            "en": "Technical solution"
+          },
+          "body": {
+            "ua": "EMS має оптимізувати CHP за корисним теплом і fuel economics, а BESS — покривати швидкі електричні відхилення та погоджений резерв. Зафіксуйте dispatch hierarchy і SOC floor для аварії; не використовуйте батарею для постійного маскування неправильно підібраної CHP capacity.",
+            "en": "EMS should optimise CHP around useful heat and fuel economics while BESS covers fast electrical deviations and agreed reserve. Fix dispatch hierarchy and an emergency SOC floor; do not use the battery to continuously mask incorrectly sized CHP capacity."
           }
         },
         {
@@ -245,12 +295,22 @@
         },
         {
           "heading": {
-            "ua": "Практичні дії",
-            "en": "Practical actions"
+            "ua": "Що перевірити",
+            "en": "Checks"
           },
           "body": {
-            "ua": "Підготуйте load/heat profiles, якість палива, P&ID, SLD, геологію, майданчик, мережеві умови, battery limits, interfaces, перелік дозволів, performance guarantees, графік і процедури PAC/FAC. Видайте всім учасникам єдину compliance matrix і реєстр уточнень.",
-            "en": "Prepare load/heat profiles, fuel specification, P&IDs, SLD, geotechnical/site data, grid conditions, battery limits, interfaces, permits, performance guarantees, schedule and PAC/FAC procedures. Issue one compliance matrix and clarification log to all bidders."
+            "ua": "Перед RFQ зафіксуйте design basis, battery limits, utilities, site data, grid conditions, permits, exclusions, owner-supplied scope, performance guarantees, liquidated damages, schedule milestones, documentation, training, spare parts, commissioning та PAC/FAC. Усі bidders повинні рахувати однакову базу.",
+            "en": "Before RFQ fix the design basis, battery limits, utilities, site data, grid conditions, permits, exclusions, owner-supplied scope, performance guarantees, liquidated damages, schedule milestones, documentation, training, spares, commissioning and PAC/FAC. All bidders must price the same baseline."
+          }
+        },
+        {
+          "heading": {
+            "ua": "Технічне рішення",
+            "en": "Technical solution"
+          },
+          "body": {
+            "ua": "Видайте compliance matrix із відповіддю Comply/Deviation/Excluded для кожного requirement. Commercial comparison нормалізуйте на однаковий scope: EPC price + owner costs + exclusions + lifecycle-critical options. Технічні deviations закривайте до BAFO, а не після award.",
+            "en": "Issue a compliance matrix with Comply/Deviation/Excluded against every requirement. Normalise commercial comparison to the same scope: EPC price + owner costs + exclusions + lifecycle-critical options. Close technical deviations before BAFO, not after award."
           }
         },
         {
