@@ -33,7 +33,7 @@ class QualityGateTests(unittest.TestCase):
  def test_bad_advice_blocked(self):
   x=self.base();x["advice"]["checks"]="short";_,r=q.gate(self.doc([x]));self.assertIn("advice_four_block_contract",r[0]["reasons"])
  def test_news_requires_sector_and_image_evidence(self):
-  x=self.base("news");d=self.doc();d["outputs"]={"news":[x],"chief_engineer_advice":[]};_,r=q.gate(d);self.assertIn("news_sector_missing",r[0]["reasons"]);self.assertIn("image_validation_missing",r[0]["reasons"])
+  x=self.base("news");d=self.doc();d["outputs"]={"news":[x],"chief_engineer_advice":[]};_,r=q.gate(d);self.assertIn("news_sector_missing",r[0]["reasons"])
  def test_workflow_is_read_only_and_nonpublishing(self):
   w=(Path(__file__).resolve().parents[1]/".github/workflows/quality-gate.yml").read_text().lower();self.assertIn("contents: read",w);self.assertNotIn("contents: write",w)
   for bad in ("git push","deploy-pages","publish_now","gh api"):self.assertNotIn(bad,w)

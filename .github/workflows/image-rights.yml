@@ -1,0 +1,67 @@
+name: IIG Image Rights Production
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, feature/image-rights-robot]
+    paths:
+      - 'scripts/image_rights_robot.py'
+      - 'scripts/verify_image_rights.py'
+      - 'scripts/quality_gate.py'
+      - 'scripts/verify_quality_gate.py'
+      - 'tests/test_image_rights_robot.py'
+      - 'tests/test_quality_gate.py'
+      - 'content/image-moderation/**'
+      - 'baze_foto_news/manifest.json'
+      - 'IMAGE_RIGHTS_PROTOCOL.md'
+      - '.github/workflows/image-rights.yml'
+permissions:
+  contents: read
+concurrency:
+  group: iig-image-rights-${{ github.sha }}
+  cancel-in-progress: true
+jobs:
+  image-rights:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit security rights and isolation tests
+        run: python -m unittest tests.test_content_engine tests.test_quality_gate tests.test_image_rights_robot
+      - name: Build live upstream handoff
+        run: |
+          python scripts/content_engine.py weekly
+          python scripts/quality_gate.py run
+          python scripts/verify_quality_gate.py
+      - name: Run Image Rights robot 4
+        run: python scripts/image_rights_robot.py run
+      - name: Verify robot invariants
+        run: |
+          python scripts/image_rights_robot.py verify
+          python scripts/verify_image_rights.py
+      - name: Prove live chain
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          q=json.loads(Path('content/quality-gate-report.json').read_text())
+          r=json.loads(Path('content/image-rights-report.json').read_text())
+          assert q['next_state']=='IMAGE_RIGHTS'
+          assert q['news_evaluated'] > 0 and q['passed_total'] > 0
+          assert r['evaluated_total'] > 0
+          assert any(x.get('source_page') for x in json.loads((Path(r['artifact'])).read_text())['results'])
+          assert r['next_state']=='ADMIN_REVIEW'
+          print('IMAGE_RIGHTS_LIVE_CHAIN_PASS', {'evaluated':r['evaluated_total'],'passed':r['passed_total'],'blocked':r['blocked_total']})
+          PY
+      - name: Upload immutable audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iig-image-rights-${{ github.run_id }}
+          path: |
+            content/image-rights/*.json
+            content/image-rights-report.json
+            content/quality-gate-report.json
+          if-no-files-found: error
+          retention-days: 30

@@ -16,7 +16,8 @@
     "practical_value": 5,
     "transferability": 4,
     "technology_diversity": 5,
-    "decision_maker_value": 5
+    "decision_maker_value": 5,
+    "sector": "metallurgy"
   },
   {
     "type": "chief-engineer-advice",
@@ -60,7 +61,8 @@
     "practical_value": 4,
     "transferability": 5,
     "technology_diversity": 4,
-    "decision_maker_value": 5
+    "decision_maker_value": 5,
+    "sector": "datacenters"
   },
   {
     "type": "chief-engineer-advice",
