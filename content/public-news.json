@@ -316,6 +316,222 @@
         "ua": "ФАКТ. 24 квітня 2026 року Kanadevia Inova повідомила про завершення будівництва й пусконалагодження Rivenhall Integrated Waste Management Facility та передачу Indaver. Сертифікат попереднього приймання PAC датовано 18 квітня.\n\nТЕХНІКА. Для WtE критичні стабільність подачі відходів, тепловий баланс, очищення димових газів і підтвердження гарантійних показників.\n\nАНАЛІЗ IIG. Під час передачі EPC окремо перевіряти PAC, перелік недоробок, гарантійні випробування й обов’язки оператора. Це рекомендація, не твердження про параметри Rivenhall.\n\nЧОМУ HANDOVER ВАЖЛИВІШИЙ ЗА ЗАГОЛОВОК «ЗАВЕРШЕНО». Для складного WtE-об’єкта передача замовнику означає перехід відповідальності, але не автоматично закриття всіх гарантійних зобов’язань. PAC, punch list, performance tests, defects liability і майбутній FAC мають різний юридичний та технічний зміст. Саме тому IIG фіксує дату PAC окремо від повідомлення про передачу.\n\nІНЖЕНЕРНИЙ КОНТРОЛЬ. Для WtE критично підтвердити пропускну здатність по відходах, стабільність combustion, steam cycle, availability, власні потреби, emissions compliance та роботу flue-gas treatment у погодженому діапазоні палива. Один короткий acceptance run не замінює перевірку сезонної експлуатації та реального складу відходів.\n\nАНАЛІЗ IIG. На етапі handover потрібна матриця: guaranteed value → test method → measured result → open deviation → responsible party → deadline. Окремо передаються spare parts, O&M manuals, training records, software/SCADA backups та перелік тимчасових режимів. Для керівництва це перетворює «об’єкт передано» на контрольований список залишкових ризиків.\n\nДЖЕРЕЛО І МЕЖІ. Повідомлення Kanadevia підтверджує завершення commissioning і передачу Indaver, але IIG не приписує Rivenhall конкретні невказані показники efficiency або availability. Наступний доказ повного завершення — закриття contractual acceptance milestones відповідно до EPC та підтверджена стабільна експлуатація.",
         "en": "FACT. On 24 April 2026 Kanadevia Inova announced completed construction and commissioning of Rivenhall Integrated Waste Management Facility and handover to Indaver. The provisional acceptance certificate was issued 18 April.\n\nTECHNICAL CONTEXT. WtE requires stable feed, thermal balance, flue-gas treatment and performance testing.\n\nIIG ANALYSIS. At EPC handover, verify PAC, punch list, guarantees and operator obligations separately. This is advice, not a claim about Rivenhall performance.\n\nWHY HANDOVER IS MORE PRECISE THAN “COMPLETED”. For a complex WtE facility, transfer to the owner changes responsibility but does not automatically close every performance obligation. PAC, punch list, performance tests, defects liability and eventual FAC have different legal and technical meanings. IIG therefore records the PAC date separately from the handover announcement.\n\nENGINEERING CONTROL. WtE acceptance should demonstrate waste throughput, combustion stability, steam cycle, availability, auxiliary consumption, emissions compliance and flue-gas treatment across the agreed fuel envelope. A short acceptance run cannot by itself represent seasonal operation or the full variability of real waste.\n\nIIG ANALYSIS. At handover, use a matrix linking guaranteed value, test method, measured result, open deviation, responsible party and deadline. Spare parts, O&M manuals, training records, software/SCADA backups and temporary operating modes should be transferred explicitly. This converts “handed over” into a management-visible register of residual risk.\n\nSOURCE AND LIMITS. Kanadevia's announcement confirms commissioning and handover to Indaver, but IIG does not attribute undisclosed efficiency or availability figures to Rivenhall. The next evidence of full completion is closure of contractual acceptance milestones under the EPC contract and demonstrated stable operation."
       }
+    },
+    {
+      "slug": "nkrekp-1355-distribution-code-2026",
+      "sector": "energy",
+      "category": "regulation",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-08-12",
+      "canonical_url": "https://www.nerc.gov.ua/acts/pro-zatverdzhennia-zmin-do-kodeksu-system-rozpodilu",
+      "title": {
+        "ua": "НКРЕКП №1355: зміни до Кодексу систем розподілу з 1 вересня",
+        "en": "НКРЕКП №1355: зміни до Кодексу систем розподілу з 1 вересня"
+      },
+      "summary": {
+        "ua": "Постанова №1355 змінює Кодекс систем розподілу та набирає чинності 1 вересня 2026 року.",
+        "en": "Постанова №1355 змінює Кодекс систем розподілу та набирає чинності 1 вересня 2026 року."
+      },
+      "company_context": [
+        {
+          "ua": "Офіційне регуляторне рішення енергетичного ринку України.",
+          "en": "Official Ukrainian energy-market regulatory development."
+        },
+        {
+          "ua": "Матеріал IIG відокремлює чинну норму від проєкту закону або повідомлення регулятора.",
+          "en": "IIG distinguishes binding rules from draft legislation or regulator announcements."
+        },
+        {
+          "ua": "Для інвестора важливі дата набрання чинності та вплив на приєднання, генерацію, BESS або ринкові процедури.",
+          "en": "Investors should track effective dates and impacts on grid connection, generation, BESS and market procedures."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. НКРЕКП 11 серпня 2026 року прийняла постанову №1355 про зміни до Кодексу систем розподілу; офіційне оприлюднення — 12 серпня, набрання чинності — 1 вересня 2026 року.\\n\\nДЛЯ БІЗНЕСУ. Нові правила потрібно враховувати в проєктах приєднання генерації, накопичувачів і промислових електроустановок. Перед FEED/EPC слід звірити технічні умови та процедуру приєднання з актуальною редакцією Кодексу.",
+        "en": "ФАКТ. НКРЕКП 11 серпня 2026 року прийняла постанову №1355 про зміни до Кодексу систем розподілу; офіційне оприлюднення — 12 серпня, набрання чинності — 1 вересня 2026 року.\\n\\nДЛЯ БІЗНЕСУ. Нові правила потрібно враховувати в проєктах приєднання генерації, накопичувачів і промислових електроустановок. Перед FEED/EPC слід звірити технічні умови та процедуру приєднання з актуальною редакцією Кодексу."
+      }
+    },
+    {
+      "slug": "bill-16033-security-of-electricity-supply",
+      "sector": "energy",
+      "category": "regulation",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-04",
+      "canonical_url": "https://itd.rada.gov.ua/billinfo/Bills/commBillProcId/5291?current=1",
+      "title": {
+        "ua": "Законопроєкт №16033: безпека постачання електроенергії",
+        "en": "Законопроєкт №16033: безпека постачання електроенергії"
+      },
+      "summary": {
+        "ua": "4 вересня зареєстровано законопроєкт №16033 щодо врегулювання питань безпеки постачання електроенергії.",
+        "en": "4 вересня зареєстровано законопроєкт №16033 щодо врегулювання питань безпеки постачання електроенергії."
+      },
+      "company_context": [
+        {
+          "ua": "Офіційне регуляторне рішення енергетичного ринку України.",
+          "en": "Official Ukrainian energy-market regulatory development."
+        },
+        {
+          "ua": "Матеріал IIG відокремлює чинну норму від проєкту закону або повідомлення регулятора.",
+          "en": "IIG distinguishes binding rules from draft legislation or regulator announcements."
+        },
+        {
+          "ua": "Для інвестора важливі дата набрання чинності та вплив на приєднання, генерацію, BESS або ринкові процедури.",
+          "en": "Investors should track effective dates and impacts on grid connection, generation, BESS and market procedures."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 4 вересня 2026 року зареєстровано проєкт Закону №16033 про зміни до Закону «Про ринок електричної енергії» щодо врегулювання питань забезпечення безпеки постачання.\\n\\nСТАТУС. Це законопроєкт, а не чинний закон. IIG не подає запропоновані норми як такі, що вже набрали чинності. Для промислових споживачів важливо відстежувати проходження документа та остаточний текст.",
+        "en": "ФАКТ. 4 вересня 2026 року зареєстровано проєкт Закону №16033 про зміни до Закону «Про ринок електричної енергії» щодо врегулювання питань забезпечення безпеки постачання.\\n\\nСТАТУС. Це законопроєкт, а не чинний закон. IIG не подає запропоновані норми як такі, що вже набрали чинності. Для промислових споживачів важливо відстежувати проходження документа та остаточний текст."
+      }
+    },
+    {
+      "slug": "renewables-auctions-rules-2026",
+      "sector": "energy",
+      "category": "regulation",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-08-13",
+      "canonical_url": "https://www.kmu.gov.ua/news/uriad-onovyv-pravyla-provedennia-auktsioniv-z-pidtrymky-proiektiv-vidnovliuvanoi-enerhetyky",
+      "title": {
+        "ua": "Уряд оновив правила аукціонів підтримки ВДЕ",
+        "en": "Уряд оновив правила аукціонів підтримки ВДЕ"
+      },
+      "summary": {
+        "ua": "Кабмін оновив процедуру аукціонів з розподілу квоти підтримки проєктів відновлюваної енергетики.",
+        "en": "Кабмін оновив процедуру аукціонів з розподілу квоти підтримки проєктів відновлюваної енергетики."
+      },
+      "company_context": [
+        {
+          "ua": "Офіційне регуляторне рішення енергетичного ринку України.",
+          "en": "Official Ukrainian energy-market regulatory development."
+        },
+        {
+          "ua": "Матеріал IIG відокремлює чинну норму від проєкту закону або повідомлення регулятора.",
+          "en": "IIG distinguishes binding rules from draft legislation or regulator announcements."
+        },
+        {
+          "ua": "Для інвестора важливі дата набрання чинності та вплив на приєднання, генерацію, BESS або ринкові процедури.",
+          "en": "Investors should track effective dates and impacts on grid connection, generation, BESS and market procedures."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. Кабінет Міністрів повідомив 13 серпня 2026 року про оновлення правил аукціонів з розподілу квоти підтримки ВДЕ; оновлена процедура має застосовуватися до осінніх аукціонів.\\n\\nДЛЯ ІНВЕСТОРА. При підготовці ВДЕ-проєкту необхідно перевіряти актуальні квоти, вимоги до учасників, модель підтримки та календар аукціону.",
+        "en": "ФАКТ. Кабінет Міністрів повідомив 13 серпня 2026 року про оновлення правил аукціонів з розподілу квоти підтримки ВДЕ; оновлена процедура має застосовуватися до осінніх аукціонів.\\n\\nДЛЯ ІНВЕСТОРА. При підготовці ВДЕ-проєкту необхідно перевіряти актуальні квоти, вимоги до учасників, модель підтримки та календар аукціону."
+      }
+    },
+    {
+      "slug": "nkrekp-grid-connection-mechanisms-sept-2026",
+      "sector": "energy",
+      "category": "regulation",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-01",
+      "canonical_url": "https://www.nerc.gov.ua/news/nkrekp-z-1-veresnia-zaprovadzhuiutsia-onovleni-mekhanizmy-pryiednannia-do-elektrychnykh-merezh",
+      "title": {
+        "ua": "НКРЕКП: нові механізми приєднання до електромереж з 1 вересня",
+        "en": "НКРЕКП: нові механізми приєднання до електромереж з 1 вересня"
+      },
+      "summary": {
+        "ua": "Регулятор підтвердив нові підходи до приєднання генерації, споживання та накопичення електроенергії.",
+        "en": "Регулятор підтвердив нові підходи до приєднання генерації, споживання та накопичення електроенергії."
+      },
+      "company_context": [
+        {
+          "ua": "Офіційне регуляторне рішення енергетичного ринку України.",
+          "en": "Official Ukrainian energy-market regulatory development."
+        },
+        {
+          "ua": "Матеріал IIG відокремлює чинну норму від проєкту закону або повідомлення регулятора.",
+          "en": "IIG distinguishes binding rules from draft legislation or regulator announcements."
+        },
+        {
+          "ua": "Для інвестора важливі дата набрання чинності та вплив на приєднання, генерацію, BESS або ринкові процедури.",
+          "en": "Investors should track effective dates and impacts on grid connection, generation, BESS and market procedures."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. З 1 вересня 2026 року набули чинності зміни до нормативних актів НКРЕКП щодо приєднання електроустановок. Для установок зберігання до 1 січня 2027 року збережено визначений регулятором порядок розрахунку плати за приєднання за встановлених умов введення в експлуатацію або запуску.\\n\\nДЛЯ ПРОЄКТУ. Це прямо впливає на графік, connection CAPEX та bankability нової розподіленої генерації й BESS.",
+        "en": "ФАКТ. З 1 вересня 2026 року набули чинності зміни до нормативних актів НКРЕКП щодо приєднання електроустановок. Для установок зберігання до 1 січня 2027 року збережено визначений регулятором порядок розрахунку плати за приєднання за встановлених умов введення в експлуатацію або запуску.\\n\\nДЛЯ ПРОЄКТУ. Це прямо впливає на графік, connection CAPEX та bankability нової розподіленої генерації й BESS."
+      }
+    },
+    {
+      "slug": "active-consumers-energy-law-4777",
+      "sector": "energy",
+      "category": "regulation",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-03-11",
+      "canonical_url": "https://zakon.rada.gov.ua/laws/show/4777-IX",
+      "title": {
+        "ua": "Закон №4777-IX: нові умови для енергоринків, ВДЕ та накопичення",
+        "en": "Закон №4777-IX: нові умови для енергоринків, ВДЕ та накопичення"
+      },
+      "summary": {
+        "ua": "Закон №4777-IX набрав чинності 11 березня і змінює низку правил енергетичних ринків, ВДЕ та систем зберігання.",
+        "en": "Закон №4777-IX набрав чинності 11 березня і змінює низку правил енергетичних ринків, ВДЕ та систем зберігання."
+      },
+      "company_context": [
+        {
+          "ua": "Офіційне регуляторне рішення енергетичного ринку України.",
+          "en": "Official Ukrainian energy-market regulatory development."
+        },
+        {
+          "ua": "Матеріал IIG відокремлює чинну норму від проєкту закону або повідомлення регулятора.",
+          "en": "IIG distinguishes binding rules from draft legislation or regulator announcements."
+        },
+        {
+          "ua": "Для інвестора важливі дата набрання чинності та вплив на приєднання, генерацію, BESS або ринкові процедури.",
+          "en": "Investors should track effective dates and impacts on grid connection, generation, BESS and market procedures."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. Закон України №4777-IX від 10 лютого 2026 року набрав чинності 11 березня 2026 року. Він спрямований на удосконалення функціонування енергетичних ринків, конкурентних умов ВДЕ та енергетичної стійкості.\\n\\nДЛЯ БІЗНЕСУ. Норми закону є базою для подальших змін НКРЕКП щодо приєднання, накопичення та роботи учасників ринку. Конкретний проєкт необхідно перевіряти за чинними підзаконними актами.",
+        "en": "ФАКТ. Закон України №4777-IX від 10 лютого 2026 року набрав чинності 11 березня 2026 року. Він спрямований на удосконалення функціонування енергетичних ринків, конкурентних умов ВДЕ та енергетичної стійкості.\\n\\nДЛЯ БІЗНЕСУ. Норми закону є базою для подальших змін НКРЕКП щодо приєднання, накопичення та роботи учасників ринку. Конкретний проєкт необхідно перевіряти за чинними підзаконними актами."
+      }
+    },
+    {
+      "slug": "bess-connection-nkrekp-1461-2026",
+      "sector": "energy",
+      "category": "regulation",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-08-31",
+      "canonical_url": "https://www.nerc.gov.ua/acts/pro-vnesennia-zmin-do-postanovy-nkrekp-vid-26-bereznia-2022-roku-352",
+      "title": {
+        "ua": "НКРЕКП №1461: умови приєднання BESS продовжено до 1 січня 2027",
+        "en": "НКРЕКП №1461: умови приєднання BESS продовжено до 1 січня 2027"
+      },
+      "summary": {
+        "ua": "Регулятор зберіг до 1 січня 2027 року чинний порядок розрахунку плати за приєднання установок зберігання за визначених умов.",
+        "en": "Регулятор зберіг до 1 січня 2027 року чинний порядок розрахунку плати за приєднання установок зберігання за визначених умов."
+      },
+      "company_context": [
+        {
+          "ua": "Офіційне регуляторне рішення енергетичного ринку України.",
+          "en": "Official Ukrainian energy-market regulatory development."
+        },
+        {
+          "ua": "Матеріал IIG відокремлює чинну норму від проєкту закону або повідомлення регулятора.",
+          "en": "IIG distinguishes binding rules from draft legislation or regulator announcements."
+        },
+        {
+          "ua": "Для інвестора важливі дата набрання чинності та вплив на приєднання, генерацію, BESS або ринкові процедури.",
+          "en": "Investors should track effective dates and impacts on grid connection, generation, BESS and market procedures."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. Постанова НКРЕКП №1461 від 31 серпня 2026 року внесла зміни до тимчасового порядку приєднання. Вона набрала чинності 1 вересня.\\n\\nДЛЯ BESS. До 1 січня 2027 року зберігається відповідний порядок розрахунку плати за приєднання установок зберігання за умови їх введення в експлуатацію або запуску в роботу у встановлений строк. Це важливий deadline для проєктного графіка.",
+        "en": "ФАКТ. Постанова НКРЕКП №1461 від 31 серпня 2026 року внесла зміни до тимчасового порядку приєднання. Вона набрала чинності 1 вересня.\\n\\nДЛЯ BESS. До 1 січня 2027 року зберігається відповідний порядок розрахунку плати за приєднання установок зберігання за умови їх введення в експлуатацію або запуску в роботу у встановлений строк. Це важливий deadline для проєктного графіка."
+      }
     }
   ]
 }
