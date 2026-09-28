@@ -1,0 +1,59 @@
+name: IIG Quality Gate Production
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, feature/quality-gate-production]
+    paths:
+      - 'scripts/quality_gate.py'
+      - 'scripts/verify_quality_gate.py'
+      - 'tests/test_quality_gate.py'
+      - 'QUALITY_GATE_PROTOCOL.md'
+      - '.github/workflows/quality-gate.yml'
+      - 'scripts/content_engine.py'
+      - 'content/candidates/**'
+permissions:
+  contents: read
+concurrency:
+  group: iig-quality-gate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit security and failure-isolation tests
+        run: python -m unittest tests.test_content_engine tests.test_quality_gate
+      - name: Generate real Content Engine v3 handoff
+        run: python scripts/content_engine.py weekly
+      - name: Verify Content Engine boundary
+        run: python scripts/verify_content_engine.py
+      - name: Run Quality Gate
+        run: python scripts/quality_gate.py run
+      - name: Verify Quality Gate invariants
+        run: |
+          python scripts/quality_gate.py verify
+          python scripts/verify_quality_gate.py
+      - name: Prove live Content Engine handoff
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('content/quality-gate-report.json').read_text())
+          assert r['evaluated_total'] > 0
+          assert r['news_evaluated'] > 0 and r['advice_evaluated'] > 0
+          print('QUALITY_GATE_LIVE_HANDOFF_PASS', {'evaluated':r['evaluated_total'],'passed':r['passed_total'],'blocked':r['blocked_total']})
+          PY
+      - name: Upload Quality Gate audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iig-quality-gate-${{ github.run_id }}
+          path: |
+            content/quality-gate/*.json
+            content/quality-gate-report.json
+            content/content-engine-report.json
+          if-no-files-found: error
+          retention-days: 30
