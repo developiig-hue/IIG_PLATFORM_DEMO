@@ -117,14 +117,14 @@ def run():
     if fatal:raise SystemExit("QUALITY_GATE_BLOCKED: "+";".join(fatal))
     passed=[x for x in results if x["decision"]=="PASS"];blocked=[x for x in results if x["decision"]=="BLOCK"]
     now=datetime.now(timezone.utc);ident=hashlib.sha256((doc["id"]+now.isoformat()).encode()).hexdigest()[:16]
-    artifact={"schema":OUT_SCHEMA,"id":ident,"generated_at":now.isoformat(),"input_artifact":str(p.relative_to(ROOT)),"input_id":doc["id"],"status":"READY_FOR_ADMIN_REVIEW","publish_authority":"ADMIN_ONLY","auto_publish":False,"evaluated_total":len(results),"passed_total":len(passed),"blocked_total":len(blocked),"results":results,"admin_review_queue":passed,"blocked_items":blocked,"pipeline":{"previous":"CONTENT_ENGINE","gate":"QUALITY_GATE","next":"ADMIN_REVIEW","robot_count":7},"audit":{"rule":"NO_AUTO_PUBLISH","blocked_items_never_admin_eligible":True}}
+    artifact={"schema":OUT_SCHEMA,"id":ident,"generated_at":now.isoformat(),"input_artifact":str(p.relative_to(ROOT)),"input_id":doc["id"],"status":"READY_FOR_ADMIN_REVIEW","publish_authority":"ADMIN_ONLY","auto_publish":False,"evaluated_total":len(results),"passed_total":len(passed),"blocked_total":len(blocked),"results":results,"admin_review_queue":passed,"blocked_items":blocked,"pipeline":{"previous":"CONTENT_ENGINE","gate":"QUALITY_GATE","next":"IMAGE_RIGHTS","robot_count":7},"audit":{"rule":"NO_AUTO_PUBLISH","blocked_items_never_admin_eligible":True}}
     ap=OUT/f"quality-{ident}.json";atomic(ap,artifact)
-    report={"schema":REPORT_SCHEMA,"generated_at":now.isoformat(),"status":"PASS","input_id":doc["id"],"evaluated_total":len(results),"passed_total":len(passed),"blocked_total":len(blocked),"news_evaluated":sum(x["route"]=="news" for x in results),"advice_evaluated":sum(x["route"]=="chief_engineer_advice" for x in results),"artifact":str(ap.relative_to(ROOT)),"next_state":"ADMIN_REVIEW"}
+    report={"schema":REPORT_SCHEMA,"generated_at":now.isoformat(),"status":"PASS","input_id":doc["id"],"evaluated_total":len(results),"passed_total":len(passed),"blocked_total":len(blocked),"news_evaluated":sum(x["route"]=="news" for x in results),"advice_evaluated":sum(x["route"]=="chief_engineer_advice" for x in results),"artifact":str(ap.relative_to(ROOT)),"next_state":"IMAGE_RIGHTS"}
     atomic(ROOT/"content/quality-gate-report.json",report);print("QUALITY_GATE_RUN_PASS",json.dumps(report))
 def verify():
     for p in OUT.glob("quality-*.json"):
         d=load(p);assert d["schema"]==OUT_SCHEMA and d["auto_publish"] is False and d["publish_authority"]=="ADMIN_ONLY"
-        assert d["pipeline"]["next"]=="ADMIN_REVIEW" and d["pipeline"]["robot_count"]==7
+        assert d["pipeline"]["next"]=="IMAGE_RIGHTS" and d["pipeline"]["robot_count"]==7
         assert all(x["decision"]=="PASS" and x["admin_eligible"] for x in d["admin_review_queue"])
         assert all(x["decision"]=="BLOCK" and not x["admin_eligible"] for x in d["blocked_items"])
     print("QUALITY_GATE_VERIFY_PASS")
