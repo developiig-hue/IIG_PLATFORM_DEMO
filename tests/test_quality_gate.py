@@ -28,6 +28,8 @@ class QualityGateTests(unittest.TestCase):
   x=self.base();x["canonical_url"]="https://127.0.0.1/a";_,r=q.gate(self.doc([x]));self.assertIn("unsafe_canonical_url",r[0]["reasons"])
  def test_unverified_primary_blocked(self):
   x=self.base();x["primary_source_verified"]=False;_,r=q.gate(self.doc([x]));self.assertIn("primary_source_unverified",r[0]["reasons"])
+ def test_invalid_date_blocked(self):
+  x=self.base();x["date"]="not-a-date";_,r=q.gate(self.doc([x]));self.assertIn("invalid_date",r[0]["reasons"])
  def test_bad_advice_blocked(self):
   x=self.base();x["advice"]["checks"]="short";_,r=q.gate(self.doc([x]));self.assertIn("advice_four_block_contract",r[0]["reasons"])
  def test_news_requires_sector_and_image_evidence(self):
