@@ -109,7 +109,7 @@ def discover(src,timeout,now,days):
     try:
         st,final,home=fetch(base,timeout,"text/html,application/xhtml+xml,*/*;q=0.1");p=Page();p.feed(home.decode("utf-8",errors="replace"));feeds += [urllib.parse.urljoin(final,x) for x in p.feeds];r["attempts"].append({"method":"HOME","url":base,"http_status":st})
     except Exception as e:r["attempts"].append({"method":"HOME","url":base,"error":f"{type(e).__name__}: {str(e)[:120]}"})
-    feeds += [urllib.parse.urljoin(base,x) for x in ("/feed","/rss","/rss.xml","/feed.xml","/atom.xml")]
+    feeds += [urllib.parse.urljoin(base,x) for x in ("/feed","/rss.xml")]
     seen=set()
     for u in feeds:
         u=norm(u)
