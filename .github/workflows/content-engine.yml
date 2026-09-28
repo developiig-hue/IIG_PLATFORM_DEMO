@@ -1,7 +1,7 @@
 name: IIG Moderated Content Engine
 on:
   push:
-    branches: [main]
+    branches: [main, feature/content-engine-production]
     paths:
       - 'scripts/content_engine.py'
       - 'content/moderation-policy.json'
@@ -11,7 +11,10 @@ on:
       - 'scripts/verify_full_discovery.py'
       - 'scripts/news_registry.py'
       - 'tests/test_news_registry.py'
+      - 'tests/test_content_engine.py'
+      - 'scripts/verify_content_engine.py'
       - 'NEWS_ROBOT_SOURCE_PROTOCOL.md'
+      - 'CONTENT_ENGINE_PROTOCOL.md'
       - '.github/workflows/content-engine.yml'
   schedule:
     # Every Monday 06:15 UTC. Generation only; never publication.
@@ -26,11 +29,15 @@ on:
         default: weekly
         type: choice
         options: [weekly, monthly]
+concurrency:
+  group: iig-content-engine-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
   generate-review-artifact:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -47,7 +54,7 @@ jobs:
       - name: Verify portable 260-source registry contract
         run: |
           python scripts/news_registry.py
-          python -m unittest tests.test_news_registry
+          python -m unittest tests.test_news_registry tests.test_content_engine
       - name: Verify full 260-source Discovery when production report is present
         run: |
           if [ -f content/discovery-report.json ]; then
@@ -59,11 +66,15 @@ jobs:
         run: python scripts/content_engine.py "${{ steps.mode.outputs.mode }}"
       - name: Verify seven-robot architecture, dual-output routing and ADMIN_ONLY gate
         run: python scripts/content_engine.py verify
+      - name: Production Content Engine acceptance
+        run: python scripts/verify_content_engine.py
       - name: Upload moderation queue artifact
         uses: actions/upload-artifact@v4
         with:
           name: iig-${{ steps.mode.outputs.mode }}-ready-for-review-${{ github.run_id }}
-          path: content/review-queue/*.json
+          path: |
+            content/review-queue/*.json
+            content/content-engine-report.json
           if-no-files-found: error
           retention-days: 30
 # SECURITY/GOVERNANCE HARD RULE:

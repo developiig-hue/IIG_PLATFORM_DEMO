@@ -35,7 +35,13 @@
     "practical_value": 5,
     "transferability": 5,
     "technology_diversity": 5,
-    "decision_maker_value": 5
+    "decision_maker_value": 5,
+    "advice": {
+      "problem": "EAF and ASU loads can be underestimated when electrical and utility interfaces are studied separately.",
+      "checks": "Verify coincident EAF and ASU load profiles, grid connection limits, power quality, redundancy philosophy and operating modes before design freeze.",
+      "technical_solution": "Develop one integrated electrical and utility design basis, model coincident demand and disturbances, and size connection and reserve architecture against verified operating cases.",
+      "management_decision": "Do not approve grid capacity, major electrical procurement or final interface limits until the integrated EAF–ASU study and design basis are signed."
+    }
   },
   {
     "type": "news",
@@ -73,6 +79,12 @@
     "practical_value": 5,
     "transferability": 5,
     "technology_diversity": 4,
-    "decision_maker_value": 5
+    "decision_maker_value": 5,
+    "advice": {
+      "problem": "AI data-center CAPEX can be fixed before grid capacity, backup philosophy, cooling demand and recoverable heat are reconciled.",
+      "checks": "Verify utility connection capacity, phased IT load, redundancy level, backup runtime, cooling architecture, BESS role and heat-reuse boundary conditions.",
+      "technical_solution": "Build a staged energy balance and reliability model linking grid, backup generation, BESS, cooling and heat-reuse interfaces before equipment sizing.",
+      "management_decision": "Do not freeze electrical CAPEX or procure major backup and storage equipment until the load cases and resilience design basis are approved."
+    }
   }
 ]
