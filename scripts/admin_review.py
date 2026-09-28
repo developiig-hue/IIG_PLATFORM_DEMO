@@ -12,7 +12,7 @@ def atomic(p,o):
     p.parent.mkdir(parents=True,exist_ok=True);fd,t=tempfile.mkstemp(dir=p.parent,prefix=p.name)
     try:
         with os.fdopen(fd,"w",encoding="utf-8") as h:
-            json.dump(o,h,ensure_ascii=False,indent=2);h.write("\\n");h.flush();os.fsync(h.fileno())
+            json.dump(o,h,ensure_ascii=False,indent=2);h.flush();os.fsync(h.fileno())
         os.replace(t,p)
     finally:
         if os.path.exists(t):os.unlink(t)
