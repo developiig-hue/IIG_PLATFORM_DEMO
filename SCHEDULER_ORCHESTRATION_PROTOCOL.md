@@ -23,3 +23,11 @@ Then #7 checks live HTTPS for every individual digest item, **Розмістит
 
 A digest SHA may have only one active `SCHEDULED/DISPATCHED/DELIVERED` ledger record. Actual SMTP/API delivery is performed by a configured external delivery adapter; #7 authorizes and orchestrates it, it does not invent provider credentials.
 \n## Portable recipient source\nRobot #7 never reads recipient emails from Git, digest files or site assets. It calls `RecipientProvider.get_active_recipients()` through `scripts/recipient_provider.py`. Production uses `RECIPIENT_PROVIDER=http_api` with `RECIPIENT_PROVIDER_URL` + secret `RECIPIENT_PROVIDER_TOKEN`; migrations change ENV/adapter, not orchestration. `runtime_json` exists only for isolated tests/manual single-recipient checks. Only ACTIVE recipients are returned; production provider owns consent, unsubscribe, bounce and suppression state. Recipient PII must not be committed or uploaded as CI artifacts.\n
+## Email delivery artifact contract
+- Email body is a short language-specific wrapper only. **The Digest HTML must never be embedded into the email body.**
+- UA is the default language. EN is selected only for a recipient whose stored `language=EN`.
+- Approved subject: `IIG Monthly Digest — промислова енергетика | [Місяць, рік]` (UA); EN mirror is stored in `content/email/digest-template.json`.
+- The approved Digest is delivered as an **application/pdf attachment**. Current approved artifact: `digest/IIG-Monthly-Digest-2026-09.pdf`.
+- Every message requires a recipient-specific unsubscribe URL. Missing unsubscribe token/URL blocks delivery; suppression/unsubscribe is owned by Recipient Provider.
+- The wrapper contains Submit Project CTA; article links remain active inside the approved PDF.
+- No production send may use an inline HTML Digest, even if a mail client can render it.
