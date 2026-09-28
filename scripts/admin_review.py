@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """IIG Robot #5: human Admin Review and publication authorization."""
-import argparse,hashlib,json,os,re,tempfile
+import argparse,hashlib,json,os,re,tempfile,unicodedata
 from datetime import datetime,timezone
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -12,7 +12,7 @@ def atomic(p,o):
     p.parent.mkdir(parents=True,exist_ok=True);fd,t=tempfile.mkstemp(dir=p.parent,prefix=p.name)
     try:
         with os.fdopen(fd,"w",encoding="utf-8") as h:
-            json.dump(o,h,ensure_ascii=False,indent=2);h.write("\n");h.flush();os.fsync(h.fileno())
+            json.dump(o,h,ensure_ascii=False,indent=2);h.flush();os.fsync(h.fileno())
         os.replace(t,p)
     finally:
         if os.path.exists(t):os.unlink(t)
@@ -46,6 +46,10 @@ def prepare():
     atomic(OUT/"review-queue.json",o)
     r={"schema":"iig.admin-review-report.v1","status":"PASS","generated_at":now,"queue_total":len(rows),"pending_total":len(rows),"approved_total":0,"rejected_total":0,"next_state":"ADMIN_DECISION_REQUIRED"}
     atomic(ROOT/"content/admin-review-report.json",r);print("ADMIN_REVIEW_PREPARE_PASS",json.dumps(r))
+def public_slug(item,h):
+    raw=unicodedata.normalize('NFKD',str(item.get('title',''))).encode('ascii','ignore').decode().lower()
+    raw=re.sub(r'[^a-z0-9]+','-',raw).strip('-')[:70]
+    return (raw or 'iig-material')+'-'+h[:10]
 def valid_reviewer(v):return isinstance(v,str) and 2<=len(v.strip())<=120 and bool(re.fullmatch(r"[\w .@+\-]+",v.strip(),re.UNICODE))
 def decide(item_sha,decision,reviewer,reason):
     p,d,q=upstream()
@@ -65,7 +69,7 @@ def decide(item_sha,decision,reviewer,reason):
         pd=load(pp) if pp.is_file() else {"schema":"iig.publication-handoff.v1","items":[]}
         if pd.get("schema")!="iig.publication-handoff.v1" or not isinstance(pd.get("items"),list):raise SystemExit("ADMIN_REVIEW_BLOCKED: publication ledger invalid")
         if any(y.get("item_sha256")==item_sha for y in pd["items"]):raise SystemExit("ADMIN_REVIEW_BLOCKED: duplicate publication authorization")
-        pd["items"].append({"item_sha256":item_sha,"route":x["route"],"item":x["item"],"selected_image":x.get("selected_image"),"admin_approval":rec,"publication_authorized":True,"next":"DIGEST"})
+        pd["items"].append({"item_sha256":item_sha,"route":x["route"],"item":x["item"],"public_slug":public_slug(x["item"],item_sha),"selected_image":x.get("selected_image"),"admin_approval":rec,"publication_authorized":True,"next":"DIGEST"})
         atomic(pp,pd)
     print("ADMIN_DECISION_RECORDED",json.dumps(rec,ensure_ascii=False))
 def verify():
