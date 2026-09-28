@@ -43,6 +43,14 @@ jobs:
           python scripts/content_engine.py weekly
           python scripts/content_engine.py verify
           python scripts/verify_content_engine.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('content/content-engine-report.json').read_text())
+          assert r['discovery_received'] > 0, 'LIVE_HANDOFF_BLOCKED: zero Discovery candidates received'
+          assert r['discovery_research_packets'] > 0, 'LIVE_HANDOFF_BLOCKED: zero safe Discovery research packets'
+          print('CONTENT_ENGINE_LIVE_HANDOFF_PASS', {'received':r['discovery_received'],'research_packets':r['discovery_research_packets']})
+          PY
       - name: Upload full per-source report and handoff
         uses: actions/upload-artifact@v4
         with:
