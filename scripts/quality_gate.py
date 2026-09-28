@@ -52,6 +52,21 @@ def image_evidence(item,audits):
     for a in audits:
         if a.get("source_page")==u:return a
     return None
+def validate_image(a,item):
+    if not isinstance(a,dict) or a.get("schema")!="iig.news-image-audit.v1":return ["image_audit_schema"]
+    decision=a.get("decision")
+    if decision=="ORIGINAL_SOURCE_IMAGE":
+        g=a.get("gates",{})
+        if any(g.get(k,{}).get("status")!="PASS" for k in ("G1_PROVENANCE","G2_RELEVANCE","G3_RIGHTS","G4_TECHNICAL")):return ["original_image_four_gate_failure"]
+        return []
+    if decision=="SAME_SECTOR_IIG_FALLBACK":
+        sector=item.get("sector")
+        if not sector or a.get("fallback_sector")!=sector:return ["image_fallback_sector_mismatch"]
+        try:m=load(ROOT/"baze_foto_news/manifest.json");meta=m["sectors"][sector];asset=ROOT/meta["image_url"]
+        except Exception:return ["image_fallback_manifest_invalid"]
+        if not asset.is_file():return ["image_fallback_asset_missing"]
+        return []
+    return ["image_decision_invalid"]
 def validate_item(x,audits):
     reasons=[];typ=x.get("type")
     if typ not in ("news","chief-engineer-advice"):reasons.append("invalid_type")
@@ -66,7 +81,7 @@ def validate_item(x,audits):
         if not x.get("sector"):reasons.append("news_sector_missing")
         audit=image_evidence(x,audits)
         if not audit:reasons.append("image_validation_missing")
-        elif audit.get("decision") not in ("ORIGINAL_SOURCE_IMAGE","SAME_SECTOR_IIG_FALLBACK"):reasons.append("image_decision_invalid")
+        else:reasons.extend(validate_image(audit,x))
     return sorted(set(reasons))
 def gate(doc):
     fatal=[]
