@@ -16,7 +16,7 @@ a=ROOT/r["artifact"]
 if not a.is_file():fail("artifact missing")
 d=json.loads(a.read_text(encoding="utf-8"))
 if d.get("schema")!="iig.quality-gate.v1" or d.get("auto_publish") is not False or d.get("publish_authority")!="ADMIN_ONLY":fail("governance")
-if d.get("pipeline",{}).get("previous")!="CONTENT_ENGINE" or d.get("pipeline",{}).get("next")!="ADMIN_REVIEW" or d.get("pipeline",{}).get("robot_count")!=7:fail("pipeline")
+if d.get("pipeline",{}).get("previous")!="CONTENT_ENGINE" or d.get("pipeline",{}).get("next")!="IMAGE_RIGHTS" or d.get("pipeline",{}).get("robot_count")!=7:fail("pipeline")
 if any(x.get("decision")!="PASS" or x.get("admin_eligible") is not True for x in d.get("admin_review_queue",[])):fail("admin queue contamination")
 if any(not isinstance(x.get("item"),dict) or not isinstance(x.get("item_sha256"),str) or len(x["item_sha256"])!=64 for x in d.get("admin_review_queue",[])):fail("admin payload/integrity missing")
 if any(x.get("decision")!="BLOCK" or x.get("admin_eligible") is not False for x in d.get("blocked_items",[])):fail("blocked item escaped")
