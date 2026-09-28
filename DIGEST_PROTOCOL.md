@@ -24,3 +24,4 @@ Mandatory CTA:
 - **Підписатися на Дайджест** -> `forms.html#subscribe`
 
 All URLs are generated from `IIG_PUBLIC_BASE_URL`; no hard dependency on GitHub Pages in the robot contract.
+\nAcceptance note: production regression includes the approved Robot #5 boundary and exact public-link contract.\n
