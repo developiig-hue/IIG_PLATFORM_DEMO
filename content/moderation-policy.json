@@ -73,19 +73,23 @@
     ],
     "example_media": "InVenture (Ukraine); verify actual domain, publication, source and relevance.",
     "source_registry_required_fields": [
+      "id",
+      "priority",
+      "category",
       "name",
-      "canonical_url",
-      "geography",
+      "country",
+      "website_url",
       "sector",
-      "source_type",
-      "access_status",
-      "last_checked_at",
-      "primary_or_secondary",
-      "rights_policy_url"
+      "owner_approved",
+      "technical_url_verified",
+      "feed_url",
+      "feed_verified",
+      "adapter_type",
+      "notes"
     ],
     "verification": "Trace project claims to official announcements or filings; deduplicate syndications. Search independent reporting for relevant context and executive statements, and check each claim against its dated source. Never claim unchecked sources are connected.",
     "editorial_scope": "Industrial energy and generation, metallurgy, food, logistics, data centers, chemical, agriculture, pharma and waste, including relevant financing and implementation technologies.",
-    "registry_path": "content/source-registry.json",
+    "registry_path": "content/discovery/IIG_news_source_registry_260.json",
     "full_run_report_path": "content/discovery-report.json",
     "full_run_required_metrics": [
       "registry_total",
@@ -109,7 +113,14 @@
       "technical_context",
       "next_project_stage"
     ],
-    "success_gate": "registry_total == 260 AND checked_total == 260 AND accessible + unavailable == 260; every routed item must retain traceable enrichment evidence. Seed-only and zero-output tests are E2E_TEST, never FULL_DISCOVERY_PASS."
+    "success_gate": "registry_total == 260 AND checked_total == 260 AND accessible + unavailable == 260; every routed item must retain traceable enrichment evidence. Seed-only and zero-output tests are E2E_TEST, never FULL_DISCOVERY_PASS.",
+    "registry_uri": "repo://content/discovery/IIG_news_source_registry_260.json",
+    "registry_resolver": "scripts/news_registry.py",
+    "portability": {
+      "required": true,
+      "rule": "Registry runtime dependency MUST be repository-relative and resolved via repo://; absolute paths, Library IDs, GitHub owner-specific URLs and external fallback copies are forbidden.",
+      "fail_closed": true
+    }
   },
   "editorial": {
     "homepage_news": {
