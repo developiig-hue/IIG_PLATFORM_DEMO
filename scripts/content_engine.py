@@ -129,7 +129,14 @@ def verify():
     for path in QUEUE.glob('*.json'):
         record = json.loads(path.read_text(encoding='utf-8'))
         assert record.get('auto_publish') is False, f'Auto-publish must be disabled: {path}'
-        assert record.get('publish_authority') == 'ADMIN_ONLY', f'Invalid publication authority: {path}'
+        # Legacy editorial-review.v1 used visibility=ADMIN_ONLY before publish_authority
+        # became part of iig.moderation.v1/v2. Accept that historical equivalent,
+        # but require publish_authority on all moderation artifacts going forward.
+        authority = record.get('publish_authority')
+        if str(record.get('schema', '')).startswith('iig.moderation.'):
+            assert authority == 'ADMIN_ONLY', f'Invalid publication authority: {path}'
+        else:
+            assert authority == 'ADMIN_ONLY' or record.get('visibility') == 'ADMIN_ONLY', f'Legacy review is not ADMIN_ONLY: {path}'
         assert record['status'] in ('READY_FOR_REVIEW', 'APPROVED', 'REJECTED')
         if record.get('schema') == 'iig.moderation.v2':
             outputs = record.get('outputs', {})
