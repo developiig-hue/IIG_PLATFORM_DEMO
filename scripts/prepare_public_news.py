@@ -55,7 +55,7 @@ for item in registry['items']:
         body = item['body'][language]
         # Existing legacy articles are short; enforce editorial structure now and flag
         # insufficient length rather than fabricating extra words or claiming compliance.
-        assert len(body) >= 300, f'Article too short for substantive coverage ({language}): {slug}'
+        assert len(body) >= 1500, f'Article too short for substantive coverage ({language}): {slug}'
         assert ('IIG' in body), f'IIG analysis missing ({language}): {slug}'
         assert len(body.split('\n\n')) >= 3, f'Fact / engineering / analysis separation missing ({language}): {slug}'
     assert abs(len(item['body']['ua']) - len(item['body']['en'])) <= max(len(item['body']['ua']), len(item['body']['en'])) * 0.7, f'Bilingual content imbalance: {slug}'
