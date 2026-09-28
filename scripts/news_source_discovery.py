@@ -136,11 +136,12 @@ def discover(src,timeout,now,days):
         x,_=html_items(home,final,now,days);r["attempts"].append({"method":"HTML","url":final,"result_count":len(x)})
         if x:r["candidates"]=x;r["method"]="HTML"
     r["status"]="DISCOVERED" if r["candidates"] else ("NO_MATCH" if home is not None else "ERROR")
-    if r["status"]=="ERROR":r["problem"]="all access methods failed"
+    if r["status"]=="NO_MATCH":r["method"]="RSS_ATOM>SITEMAP>HTML";r["problem"]="methods completed; no recent relevant publication matched"
+    if r["status"]=="ERROR":r["method"]="FAILED_ALL";r["problem"]="all access methods failed"
     r["elapsed_seconds"]=round(time.monotonic()-start,2);return r
 def external_search(item,timeout):
     """Mandatory outside-registry search; supplementary leads are not automatic factual confirmation."""
-    q=urllib.parse.quote('"' + item["title"][:180] + '"')
+    q=urllib.parse.quote(item["source_name"]+" "+" ".join(item["title"].split()[:14]))
     u="https://news.google.com/rss/search?q="+q+"&hl=en&gl=US&ceid=US:en"
     try:
         st,final,body=fetch(u,timeout,"application/rss+xml,application/xml,text/xml")
