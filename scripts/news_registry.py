@@ -25,7 +25,9 @@ def load_registry(uri=REGISTRY_URI,start=None):
     sources=data.get('sources',[])
     if len(sources)!=EXPECTED_COUNT: raise ValueError(f"Registry must contain exactly {EXPECTED_COUNT} sources, got {len(sources)}")
     ids=[x.get('id') for x in sources]; urls=[x.get('website_url') for x in sources]
-    if len(set(ids))!=EXPECTED_COUNT or len(set(urls))!=EXPECTED_COUNT: raise ValueError("Registry IDs and website URLs must be unique")
+    if len(set(ids))!=EXPECTED_COUNT: raise ValueError("Registry source IDs must be unique")
+    # Multiple approved source records may intentionally resolve to one corporate domain.
+    # Domain deduplication belongs to Discovery reporting, not portability resolution.
     if not all(isinstance(u,str) and u.startswith(('https://','http://')) for u in urls): raise ValueError("Invalid website_url in registry")
     return data
 if __name__=="__main__":
