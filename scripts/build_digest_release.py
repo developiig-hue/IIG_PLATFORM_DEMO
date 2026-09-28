@@ -5,10 +5,14 @@ from urllib.parse import quote
 ROOT=Path(__file__).resolve().parents[1]
 BASE="https://developiig-hue.github.io/IIG_PLATFORM_DEMO/"
 news=json.loads((ROOT/"content/public-news.json").read_text(encoding="utf-8"))["items"]
+pharma=json.loads((ROOT/"content/pharma-news.json").read_text(encoding="utf-8"))["items"]
+merged={x["slug"]:x for x in news+pharma}
+news=list(merged.values())
 advice=json.loads((ROOT/"content/public-advice.json").read_text(encoding="utf-8"))["items"]
 news=[x for x in news if x.get("status")=="APPROVED" and x.get("admin_approved") is True]
 regular=[x for x in news if x.get("category")!="regulation"][:10]
 regulation=[x for x in news if x.get("category")=="regulation"][:6]
+if len(regular)!=10 or len(regulation)!=6: raise SystemExit(f"DIGEST_RELEASE_BLOCKED: expected 10 main + 6 regulation, got {len(regular)} + {len(regulation)}")
 def t(x): return x.get("title",{}).get("ua","")
 def link(kind,slug): return BASE+("article.html" if kind=="news" else "advice-article.html")+"?id="+quote(slug)
 def esc(x): return html.escape(str(x))
