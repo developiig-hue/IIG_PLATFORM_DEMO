@@ -212,12 +212,18 @@
   "publication": {
     "auto_publish": false,
     "authority": "ADMIN_ONLY",
-    "required_state_before_admin_action": "READY_FOR_REVIEW",
+    "required_state_before_admin_action": "READY_FOR_ADMIN_REVIEW",
     "allowed_final_decisions": [
       "APPROVED",
       "REJECTED"
     ],
-    "digest_mailing_requires_admin_approval": true
+    "digest_mailing_requires_admin_approval": true,
+    "admin_review_robot": 5,
+    "approved_publication_handoff": "DIGEST",
+    "digest_robot": 6,
+    "mailing_executor": "SCHEDULER_ORCHESTRATION",
+    "mailing_executor_robot": 7,
+    "mailing_rule": "No digest mailing before explicit Admin approval. After approval, Scheduler / Orchestration may trigger the configured email transport; the transport is infrastructure, not an eighth robot."
   },
   "architecture": {
     "robot_count": 7,

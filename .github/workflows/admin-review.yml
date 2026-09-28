@@ -1,0 +1,65 @@
+name: IIG Admin Review Production
+on:
+  push:
+    branches: [main, feature/admin-review-publication]
+    paths:
+      - 'scripts/admin_review.py'
+      - 'scripts/verify_admin_review.py'
+      - 'tests/test_admin_review.py'
+      - 'ADMIN_REVIEW_PROTOCOL.md'
+      - 'content/moderation-policy.json'
+      - '.github/workflows/admin-review.yml'
+      - 'scripts/image_rights_robot.py'
+      - 'scripts/quality_gate.py'
+      - 'scripts/content_engine.py'
+      - 'content/candidates/**'
+      - 'content/image-moderation/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: admin-review-${{ github.sha }}
+  cancel-in-progress: true
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit and governance tests
+        run: python -m unittest tests.test_content_engine tests.test_quality_gate tests.test_image_rights_robot tests.test_admin_review
+      - name: Build real upstream chain
+        run: |
+          python scripts/content_engine.py weekly
+          python scripts/quality_gate.py run
+          python scripts/verify_quality_gate.py
+          python scripts/image_rights_robot.py run
+          python scripts/image_rights_robot.py verify
+          python scripts/verify_image_rights.py
+      - name: Prepare Admin Review queue without making a decision
+        run: |
+          python scripts/admin_review.py prepare
+          python scripts/admin_review.py verify
+          python scripts/verify_admin_review.py
+      - name: Prove live boundary
+        run: |
+          python - <<'PY'
+          import json
+          a=json.load(open('content/image-rights-report.json',encoding='utf-8'))
+          r=json.load(open('content/admin-review-report.json',encoding='utf-8'))
+          q=json.load(open('content/admin-review/review-queue.json',encoding='utf-8'))
+          assert a['next_state']=='ADMIN_REVIEW'
+          assert r['next_state']=='ADMIN_DECISION_REQUIRED'
+          assert all(x['state']=='PENDING_ADMIN_DECISION' for x in q['queue'])
+          assert q['auto_approve'] is False and q['auto_publish'] is False
+          print('ADMIN_REVIEW_LIVE_CHAIN_PASS',{'queue_total':r['queue_total'],'pending_total':r['pending_total']})
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: admin-review-audit-${{ github.sha }}
+          path: |
+            content/admin-review-report.json
+            content/admin-review/review-queue.json
+          retention-days: 30
