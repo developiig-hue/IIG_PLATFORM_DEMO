@@ -19,6 +19,20 @@ class ContentEngineTests(unittest.TestCase):
  def test_advice_four_blocks(self):
   x=self.good("chief-engineer-advice");self.assertEqual(c.validate_curated(x),[])
   x["advice"]["checks"]="short";self.assertIn("advice_four_block_contract",c.validate_curated(x))
+ def test_malformed_candidate_file_isolated(self):
+  old=c.CAND
+  with tempfile.TemporaryDirectory() as td:
+   c.CAND=Path(td);(c.CAND/"bad.json").write_text("{broken",encoding="utf-8");(c.CAND/"good.json").write_text(json.dumps([self.good()]),encoding="utf-8")
+   try:
+    ok,bad=c.curated_pool();self.assertEqual(len(ok),1);self.assertEqual(bad[0]["reasons"],["invalid_json"])
+   finally:c.CAND=old
+ def test_discovery_schema_mismatch_is_explicit(self):
+  old=c.CAND
+  with tempfile.TemporaryDirectory() as td:
+   c.CAND=Path(td);(c.CAND/"discovered-candidates.json").write_text(json.dumps({"schema":"wrong","handoff_items":[]}),encoding="utf-8")
+   try:
+    r=c.discovery_intake();self.assertTrue(r["present"]);self.assertIn("schema_mismatch",r["errors"])
+   finally:c.CAND=old
  def test_routing_isolated(self):
   n=self.good();a=self.good("chief-engineer-advice");r=c.route([n,a]);self.assertEqual(len(r["news"]),1);self.assertEqual(len(r["chief_engineer_advice"]),1)
  def test_score_bounded(self):
