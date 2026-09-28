@@ -30,7 +30,7 @@ jobs:
       - name: Unit and portability tests
         run: |
           python scripts/news_registry.py
-          python -m unittest tests.test_news_registry tests.test_news_source_discovery
+          python -m unittest tests.test_news_registry tests.test_news_source_discovery tests.test_content_engine
       - name: Full 260-source Discovery — strict P1 then P2
         run: python scripts/news_source_discovery.py --workers 20 --timeout 5 --max-age-days 45
       - name: Production acceptance gate
