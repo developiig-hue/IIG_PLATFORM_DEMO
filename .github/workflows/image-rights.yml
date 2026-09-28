@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Unit security rights and isolation tests
-        run: python -m unittest tests.test_image_rights_robot
+        run: python -m unittest tests.test_content_engine tests.test_quality_gate tests.test_image_rights_robot
       - name: Run Image Rights robot on real repository audit
         run: python scripts/image_rights_robot.py run
       - name: Verify robot invariants
