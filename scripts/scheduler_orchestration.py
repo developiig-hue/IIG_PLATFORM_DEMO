@@ -9,7 +9,7 @@ import sys
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from recipient_provider import get_active_recipients
 ROOT=Path(__file__).resolve().parents[1];IN=ROOT/"content/digest/approved-digest.json";OUT=ROOT/"content/orchestration"
-NEWS=ROOT/"content/public-news.json";ADVICE=ROOT/"content/public-advice.json"
+NEWS=ROOT/"content/public-news.json";ADVICE=ROOT/"content/public-advice.json";DIGEST_PDF=ROOT/"digest/IIG-Monthly-Digest-2026-09.pdf"
 def load(p):
  try:return json.loads(p.read_text(encoding="utf-8"))
  except Exception:raise SystemExit("ORCHESTRATION_BLOCKED: invalid "+str(p))
@@ -88,9 +88,10 @@ def schedule(send_at):
  if dt.tzinfo is None:raise SystemExit("ORCHESTRATION_BLOCKED: timezone required")
  did=r["digest_sha256"];ledger=OUT/"delivery-ledger.json";l=load(ledger) if ledger.exists() else {"schema":"iig.delivery-ledger.v1","jobs":[]}
  if any(j.get("digest_sha256")==did and j.get("state") in ("SCHEDULED","DISPATCHED","DELIVERED") for j in l["jobs"]):raise SystemExit("ORCHESTRATION_BLOCKED: duplicate digest delivery")
+ if not DIGEST_PDF.exists() or DIGEST_PDF.stat().st_size<100000:raise SystemExit("ORCHESTRATION_BLOCKED: approved Digest PDF missing")
  recipients=get_active_recipients()
  if not recipients:raise SystemExit("ORCHESTRATION_BLOCKED: no ACTIVE recipients")
- job={"job_id":did[:16],"digest_sha256":did,"send_at":dt.astimezone(timezone.utc).isoformat(),"state":"SCHEDULED","recipient_count":len(recipients),"recipient_provider":os.getenv("RECIPIENT_PROVIDER","http_api"),"preflight_sha256":sha(r),"created_at":datetime.now(timezone.utc).isoformat()}
+ job={"job_id":did[:16],"digest_sha256":did,"send_at":dt.astimezone(timezone.utc).isoformat(),"state":"SCHEDULED","recipient_count":len(recipients),"attachment":"digest/IIG-Monthly-Digest-2026-09.pdf","email_body_mode":"TEMPLATE_ONLY_NO_INLINE_DIGEST","subject_pattern":"IIG Monthly Digest — промислова енергетика | [Місяць, рік]","unsubscribe_required":True,"recipient_provider":os.getenv("RECIPIENT_PROVIDER","http_api"),"preflight_sha256":sha(r),"created_at":datetime.now(timezone.utc).isoformat()}
  l["jobs"].append(job);atomic(ledger,l);atomic(OUT/"delivery-job.json",{"schema":"iig.delivery-job.v1","job":job,"delivery_adapter_required":True})
  print("ORCHESTRATION_SCHEDULED",json.dumps(job))
 def main():
