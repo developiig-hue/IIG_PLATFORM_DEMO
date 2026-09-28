@@ -21,7 +21,13 @@ def test_workflow_cannot_write_or_deploy():
         assert forbidden not in w
 
 def test_engine_emits_review_only():
-    s=(ROOT/'scripts/content_engine.py').read_text()
+    s=(ROOT/'scripts/content_engine.py').read_text().replace(' ','')
     assert "'status':'READY_FOR_REVIEW'" in s
     assert "'publish_authority':'ADMIN_ONLY'" in s
     assert "'auto_publish':False" in s
+
+def test_discovery_handoff_is_fail_closed():
+    s=(ROOT/'scripts/content_engine.py').read_text()
+    assert "iig.discovery-candidates.v1" in s
+    assert "raw_discovery_never_publishable" in s
+    assert "NEEDS_CONTENT_ENRICHMENT" in s
