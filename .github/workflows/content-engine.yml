@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/content_engine.py'
       - 'content/moderation-policy.json'
+      - 'content/candidates/**'
       - '.github/workflows/content-engine.yml'
   schedule:
     # Every Monday 06:15 UTC. Generation only; never publication.
