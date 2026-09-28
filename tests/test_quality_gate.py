@@ -10,6 +10,10 @@ class QualityGateTests(unittest.TestCase):
   items=items or [self.base()];return {"schema":q.IN_SCHEMA,"status":"READY_FOR_REVIEW","publish_authority":"ADMIN_ONLY","auto_publish":False,"pipeline":{"engine":"CONTENT_ENGINE","next":"QUALITY_GATE","robot_count":7},"discovery_intake":{"raw_discovery_never_publishable":True},"outputs":{"news":[],"chief_engineer_advice":items}}
  def test_valid_advice_passes(self):
   f,r=q.gate(self.doc());self.assertEqual(f,[]);self.assertEqual(r[0]["decision"],"PASS")
+ def test_pass_preserves_full_item_and_integrity(self):
+  x=self.base();_,r=q.gate(self.doc([x]));self.assertEqual(r[0]["item"],x);self.assertEqual(len(r[0]["item_sha256"]),64)
+ def test_non_object_isolated(self):
+  d=self.doc();d["outputs"]["chief_engineer_advice"]=[None,self.base()];f,r=q.gate(d);self.assertEqual(f,[]);self.assertEqual(r[0]["decision"],"BLOCK");self.assertEqual(r[1]["decision"],"PASS")
  def test_schema_fails_closed(self):
   d=self.doc();d["schema"]="wrong";f,r=q.gate(d);self.assertIn("input_schema_mismatch",f);self.assertEqual(r,[])
  def test_governance_fails_closed(self):
