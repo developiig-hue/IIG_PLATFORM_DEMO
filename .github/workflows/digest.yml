@@ -1,0 +1,83 @@
+name: IIG Digest Robot Production
+on:
+  push:
+    branches: [main, feature/digest-robot-production]
+    paths:
+      - 'scripts/digest_robot.py'
+      - 'scripts/verify_digest.py'
+      - 'tests/test_digest_robot.py'
+      - 'DIGEST_PROTOCOL.md'
+      - '.github/workflows/digest.yml'
+      - 'scripts/admin_review.py'
+      - 'content/moderation-policy.json'
+      - 'forms.html'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: digest-${{ github.sha }}
+  cancel-in-progress: true
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    env:
+      IIG_PUBLIC_BASE_URL: https://developiig-hue.github.io/IIG_PLATFORM_DEMO/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: All robot regression tests
+        run: python -m unittest tests.test_content_engine tests.test_quality_gate tests.test_image_rights_robot tests.test_admin_review tests.test_digest_robot
+      - name: Prove real Admin Review remains human-only
+        run: |
+          python scripts/content_engine.py weekly
+          python scripts/quality_gate.py run
+          python scripts/image_rights_robot.py run
+          python scripts/admin_review.py prepare
+          python scripts/admin_review.py verify
+          python - <<'PY'
+          import json
+          q=json.load(open('content/admin-review/review-queue.json',encoding='utf-8'))
+          assert q['auto_approve'] is False and q['auto_publish'] is False
+          assert all(x['state']=='PENDING_ADMIN_DECISION' for x in q['queue'])
+          print('DIGEST_REAL_UPSTREAM_BOUNDARY_PASS',{'pending':len(q['queue'])})
+          PY
+      - name: Create isolated Admin-approved acceptance handoff
+        run: |
+          python - <<'PY'
+          import hashlib,json,os
+          os.makedirs('content/publication',exist_ok=True)
+          items=[]
+          for route,title,image in [('news','IIG acceptance news','baze_foto_news_energy.jpg'),('chief_engineer_advice','IIG acceptance advice',None)]:
+            item={'title':title,'type':'NEWS' if route=='news' else 'CHIEF_ENGINEER_ADVICE'}
+            h=hashlib.sha256(json.dumps(item,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+            approval={'item_sha256':h,'route':route,'decision':'APPROVED','reviewer':'CI Acceptance Fixture','reason':'Isolated Robot 6 contract test only','decided_at':'2026-09-28T00:00:00+00:00','upstream_artifact':'acceptance-fixture'}
+            items.append({'item_sha256':h,'route':route,'item':item,'selected_image':image,'admin_approval':approval,'publication_authorized':True,'next':'DIGEST'})
+          json.dump({'schema':'iig.publication-handoff.v1','acceptance_fixture':True,'items':items},open('content/publication/approved-content.json','w',encoding='utf-8'),ensure_ascii=False,indent=2)
+          PY
+      - name: Build and verify Digest Robot
+        run: |
+          python scripts/digest_robot.py build
+          python scripts/digest_robot.py verify
+          python scripts/verify_digest.py
+      - name: Prove mandatory IIG links and CTA
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('content/digest/digest.json',encoding='utf-8'))
+          assert len(d['items'])==2
+          assert all(x['url'].startswith('https://developiig-hue.github.io/IIG_PLATFORM_DEMO/') for x in d['items'])
+          assert d['ctas']['submit_project'].endswith('/forms.html#project')
+          assert d['ctas']['subscribe_digest'].endswith('/forms.html#subscribe')
+          assert d['status']=='READY_FOR_ADMIN_APPROVAL' and d['auto_send'] is False
+          print('DIGEST_LIVE_CHAIN_PASS',{'items':2,'active_iig_links':2,'cta_links':2,'next':'SCHEDULER_ORCHESTRATION'})
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: digest-audit-${{ github.sha }}
+          path: |
+            content/digest-report.json
+            content/digest/digest.json
+            content/digest/digest.html
+          retention-days: 30
