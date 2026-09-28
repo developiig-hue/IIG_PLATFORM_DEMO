@@ -9,8 +9,9 @@ def normalize(rows):
  for r in rows:
   if not isinstance(r,dict):continue
   email=str(r.get("email","")).strip().lower();status=str(r.get("status","")).upper()
-  if status not in VALID or "@" not in email or email in seen:continue
-  seen.add(email);out.append({"recipient_id":str(r.get("recipient_id","")),"email":email,"language":str(r.get("language","EN")).upper(),"status":"ACTIVE"})
+  unsub=str(r.get("unsubscribe_url","")).strip()
+  if status not in VALID or "@" not in email or email in seen or not unsub.startswith("https://"):continue
+  seen.add(email);out.append({"recipient_id":str(r.get("recipient_id","")),"email":email,"language":str(r.get("language","EN")).upper(),"status":"ACTIVE","unsubscribe_url":unsub})
  return out
 def get_active_recipients():
  provider=os.getenv("RECIPIENT_PROVIDER","http_api")
