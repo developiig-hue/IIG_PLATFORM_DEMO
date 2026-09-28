@@ -52,11 +52,21 @@ def valid(item):
     return True
 
 
+def discovery_handoff():
+    """Accept Discovery v1 handoff without treating raw discovery leads as publishable content."""
+    path = ROOT / 'content' / 'candidates' / 'discovered-candidates.json'
+    if not path.is_file(): return []
+    data = json.loads(path.read_text(encoding='utf-8'))
+    if data.get('schema') != 'iig.discovery-candidates.v1': return []
+    return [x for x in data.get('handoff_items', []) if x.get('handoff_ready') is True and x.get('supplementary_search', {}).get('leads')]
+
 def candidate_pool():
     pool = []
     directory = ROOT / 'content' / 'candidates'
     for path in sorted(directory.glob('*.json')):
         data = json.loads(path.read_text(encoding='utf-8'))
+        if isinstance(data, dict) and data.get('schema') == 'iig.discovery-candidates.v1':
+            continue  # Discovery handoff is enrichment input, never publication-ready by itself.
         pool.extend(data if isinstance(data, list) else [data])
     return [item for item in pool if valid(item)]
 
@@ -102,6 +112,12 @@ def make(kind, now):
         'items': selected,
         'outputs': outputs,
         'output_counts': {name: len(items) for name, items in outputs.items()},
+        'discovery_handoff': {
+            'schema': 'iig.discovery-candidates.v1',
+            'received': len(discovery_handoff()),
+            'state': 'NEEDS_CONTENT_ENRICHMENT',
+            'raw_discovery_never_publishable': True,
+        },
         'pipeline': {
             'discovery': 'NEWS_SOURCE_DISCOVERY',
             'content_engine': 'CONTENT_ENGINE',
