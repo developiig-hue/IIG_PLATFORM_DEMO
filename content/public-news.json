@@ -1,15 +1,321 @@
 {
- "schema":"iig.public-news.v1",
- "publication_policy":"Nine industry sectors; primary-source dates, not commissioning dates. Editorial analysis is explicitly distinguished from company statements. Original IIG illustration is used unless licensed photography is documented.",
- "items":[
- {"slug":"kernel-106mw-solar-bess-ebrd","sector":"agriculture","status":"APPROVED","admin_approved":true,"primary_source_verified":true,"publication_date":"2026-04-01","canonical_url":"https://www.ebrd.com/home/work-with-us/projects/psd/56463.html","title":{"ua":"Kernel: ЄБРР підтримує сонячний проєкт 106 МВт із BESS","en":"Kernel: EBRD supports 106 MW solar project with BESS"},"summary":{"ua":"Картка ЄБРР від 1 квітня: кредит до $45 млн для Energy RTB 2; фінансування підписано, введення в експлуатацію не підтверджено.","en":"EBRD's 1 April disclosure: up to $45m for Energy RTB 2; financing signed, commissioning unconfirmed."},"company_context":[{"ua":"Kernel — українська агропромислова група; Energy RTB 2 — дочірня компанія.","en":"Kernel is a Ukrainian agribusiness; Energy RTB 2 is its subsidiary."},{"ua":"Проєкт охоплює сонячну станцію 106 МВт і систему накопичення.","en":"The project includes a 106 MW solar plant and battery storage."},{"ua":"Кредит має статус Signed; дата запуску і ємність BESS не вказані.","en":"The loan is Signed; commissioning and BESS energy capacity are unspecified."}],"body":{"ua":"ФАКТ. ЄБРР оприлюднив проєктну картку 1 квітня 2026 року щодо кредиту до $45 млн на будівництво СЕС 106 МВт із накопичувачем. Статус Signed стосується фінансування, а не готовності об’єкта.\n\nІНЖЕНЕРНИЙ КОНТЕКСТ. СЕС і BESS потребують спільного розрахунку графіка видачі та умов приєднання.\n\nАНАЛІЗ IIG. На FEED узгодити потужність і ємність BESS, обмеження мережі, прогноз сонячної генерації та сценарії диспетчеризації. Це рекомендація, а не заявлений результат Kernel.","en":"FACT. EBRD disclosed on 1 April 2026 a loan of up to $45m for a 106 MW solar plant with storage. Signed describes financing, not commissioning.\n\nENGINEERING CONTEXT. PV and BESS need joint output and grid-connection modelling.\n\nIIG ANALYSIS. At FEED, align BESS power and energy, network limits, solar forecasts and dispatch scenarios. This is advice, not a claimed Kernel result."}},
- {"slug":"ebrd-189mw-wind-galnaftogaz","sector":"energy","status":"APPROVED","admin_approved":true,"primary_source_verified":true,"publication_date":"2026-04-24","canonical_url":"https://www.ebrd.com/home/work-with-us/projects/psd/56596.html","title":{"ua":"Galnaftogaz / OKKO: фінансування ВЕС 189 МВт","en":"Galnaftogaz / OKKO: financing for 189 MW wind farm"},"summary":{"ua":"ЄБРР розкрив проєкт 24 квітня; кредит до €50 млн, схвалення 17 червня. Підписання не означає запуску ВЕС.","en":"EBRD disclosed the project on 24 April; loan up to €50m, approved 17 June. Signing does not mean commissioning."},"company_context":[{"ua":"Galnaftogaz входить до групи OKKO.","en":"Galnaftogaz is part of OKKO Group."},{"ua":"Кредит до €50 млн призначений для ВЕС приблизно 189 МВт.","en":"A loan of up to €50m supports a roughly 189 MW wind farm."},{"ua":"Статус Signed стосується кредиту, не завершення будівництва.","en":"Signed refers to the loan, not construction completion."}],"body":{"ua":"ФАКТ. Проєктна картка ЄБРР від 24 квітня 2026 року передбачає кредит до €50 млн на вітропроєкт близько 189 МВт. Схвалення датовано 17 червня.\n\nІНЖЕНЕРНИЙ КОНТЕКСТ. Для ВЕС потрібні прогноз виробітку, мережеве приєднання, балансування та оцінка обмежень видачі.\n\nАНАЛІЗ IIG. Синхронізувати графік будівництва, підстанцію, лінію приєднання й умови диспетчеризації до затвердження EPC-бюджету; це не звіт про виконані роботи.","en":"FACT. EBRD's disclosure of 24 April 2026 concerns up to €50m for a roughly 189 MW wind project, approved 17 June.\n\nENGINEERING CONTEXT. Wind projects require forecasting, interconnection, balancing and curtailment analysis.\n\nIIG ANALYSIS. Align construction, substation, connection line and dispatch before EPC budget approval; this is not a report of completed works."}},
- {"slug":"kosice-eaf-asu-2026","sector":"metallurgy","status":"APPROVED","admin_approved":true,"primary_source_verified":true,"publication_date":"2026-09-16","canonical_url":"https://www.nipponsteel.com/en/newsroom/news/2026/20260916_100.html","title":{"ua":"U. S. Steel Košice: рішення про інвестицію €0,9 млрд в EAF та ASU","en":"U. S. Steel Košice: €0.9bn EAF and ASU investment decision"},"summary":{"ua":"Nippon Steel оголосила інвестиційне рішення; ASU планують запустити у 2029 році, EAF — у 2030-му.","en":"Nippon Steel announced an investment decision; ASU is targeted for 2029 and EAF for 2030."},"company_context":[{"ua":"U. S. Steel Košice — металургійний комбінат у Словаччині.","en":"U. S. Steel Košice is a steelworks in Slovakia."},{"ua":"Компанія вирішила інвестувати близько €0,9 млрд в електропіч і ASU.","en":"The company decided to invest roughly €0.9bn in an EAF and ASU."},{"ua":"Планові дати запуску — 2029 і 2030 роки; це не введені потужності.","en":"Target starts are 2029 and 2030; the facilities are not yet commissioned."}],"body":{"ua":"ФАКТ. 16 вересня Nippon Steel оголосила рішення інвестувати близько €0,9 млрд в електродугову піч і установку розділення повітря в Кошице, а також грантову угоду зі Словаччиною. Запуск ASU планується у 2029 році, EAF — у 2030 році.\n\nТЕХНІКА. EAF створює значне змінне електричне навантаження, ASU має власні вимоги до живлення та безперервності.\n\nАНАЛІЗ IIG. На FEED спільно моделювати піки EAF, електроживлення ASU та можливості мережі. Це інженерна рекомендація, а не обіцяний виробником результат.","en":"FACT. On 16 September Nippon Steel announced an approximately €0.9bn EAF and ASU investment in Košice and a Slovak grant agreement. ASU start is targeted for 2029 and EAF for 2030.\n\nTECHNICAL CONTEXT. EAF creates variable high power demand; ASU has its own continuity requirements.\n\nIIG ANALYSIS. Model EAF peaks, ASU supply and grid capacity together at FEED; this is engineering advice, not a promised project outcome."}},
- {"slug":"nestle-biessenhofen-agri-pv-2026","sector":"food","status":"APPROVED","admin_approved":true,"primary_source_verified":true,"publication_date":"2026-04-22","canonical_url":"https://www.nestle.de/medien/pressemitteilungen/energiewende-bei-nestl%C3%A9-biessenhofen-mit-neu-er%C3%B6ffneter-agri-photovoltaic","title":{"ua":"Nestlé відкрила Agri-PV біля харчового заводу Biessenhofen","en":"Nestlé opens Agri-PV installation at Biessenhofen food plant"},"summary":{"ua":"22 квітня компанія повідомила про відкриття Agri-PV; сонячна електроенергія підтримує теплові насоси й використання відпрацьованого тепла.","en":"On 22 April Nestlé announced an Agri-PV opening; solar power supports heat pumps and waste-heat use."},"company_context":[{"ua":"Nestlé Nutrition виробляє харчову продукцію в Biessenhofen.","en":"Nestlé Nutrition operates a food manufacturing site at Biessenhofen."},{"ua":"Компанія відкрила агрофотовольтаїчну установку 22 квітня.","en":"The company opened an agrivoltaic installation on 22 April."},{"ua":"Електроенергія підтримує електрифікацію, теплові насоси й утилізацію тепла.","en":"The power supports electrification, heat pumps and heat recovery."}],"body":{"ua":"ФАКТ. Nestlé повідомила 22 квітня 2026 року про відкриття Agri-PV на території поблизу заводу Biessenhofen. Компанія пов’язує локальну генерацію з тепловими насосами та використанням відпрацьованого тепла.\n\nТЕХНІКА. Профілі виробітку сонячної електроенергії та потреб у технологічному теплі не обов’язково збігаються.\n\nАНАЛІЗ IIG. Перевірити погодинний баланс електрики й тепла, температурні рівні, резервування та можливість накопичення. Це рекомендація IIG, не виміряний ефект проєкту.","en":"FACT. Nestlé announced the opening of Agri-PV near its Biessenhofen plant on 22 April 2026. The company connects local generation with heat pumps and waste-heat recovery.\n\nTECHNICAL CONTEXT. Solar output and process-heat demand profiles need not coincide.\n\nIIG ANALYSIS. Assess hourly electricity and heat balances, temperatures, backup and storage; this is advice, not a measured project outcome."}},
- {"slug":"dhl-longi-solar-mou-2026","sector":"logistics","status":"APPROVED","admin_approved":true,"primary_source_verified":true,"publication_date":"2026-07-23","canonical_url":"https://group.dhl.com/en/media-relations/press-releases/2026/dhl-group-and-longi-solar-sign-mou-to-advance-global-renewable-energy-and-sustainable-logistics-solutions.html","title":{"ua":"DHL і LONGi підписали меморандум щодо сонячної генерації для логістики","en":"DHL and LONGi sign solar-energy logistics memorandum"},"summary":{"ua":"Меморандум від 23 липня передбачає співпрацю щодо розподіленої сонячної генерації на об’єктах DHL у Європі; це не звіт про завершені установки.","en":"The 23 July MoU covers cooperation on distributed solar at European DHL sites; it is not a commissioning report."},"company_context":[{"ua":"DHL Group — міжнародний оператор логістичної інфраструктури.","en":"DHL Group operates international logistics infrastructure."},{"ua":"LONGi виробляє сонячні технології; сторони підписали MoU.","en":"LONGi supplies solar technology; the parties signed an MoU."},{"ua":"Розгортання PV у Європі є предметом співпраці, не завершеним фактом.","en":"European PV deployment is a cooperation objective, not a completed outcome."}],"body":{"ua":"ФАКТ. 23 липня 2026 року DHL Group та LONGi оголосили меморандум про співпрацю щодо розподілених сонячних рішень, включно з BIPV, на європейських об’єктах DHL. MoU не підтверджує завершення монтажу.\n\nТЕХНІКА. Логістичні центри мають великі покрівлі, але потрібна перевірка несучої здатності, пожежних відстаней і графіка навантаження.\n\nАНАЛІЗ IIG. Порівняти денне споживання, потужність приєднання та можливості PV+BESS до вибору EPC-концепції. Це рекомендація IIG.","en":"FACT. On 23 July 2026 DHL and LONGi announced an MoU on distributed solar, including BIPV, across European DHL facilities. An MoU does not confirm installation completion.\n\nTECHNICAL CONTEXT. Logistics roofs offer area but require structural, fire-safety and load-profile checks.\n\nIIG ANALYSIS. Compare daytime demand, grid connection and PV+BESS options before EPC concept selection. This is IIG advice."}},
- {"slug":"google-finland-ai-grid-2026","sector":"datacenters","status":"APPROVED","admin_approved":true,"primary_source_verified":true,"publication_date":"2026-09-09","canonical_url":"https://www.googlecloudpresscorner.com/2026-09-09-Google-Deepens-Commitment-to-Finland-with-Two-Year-EUR13-Billion-investment-in-AI-Infrastructure","title":{"ua":"Google оголосила €13 млрд інвестицій у ШІ-інфраструктуру Фінляндії","en":"Google announces €13bn Finnish AI infrastructure programme"},"summary":{"ua":"Програма на 2027–2028 роки включає дата-центри та енергетичні партнерства; Google також повідомила про контракт на BESS 94 МВт із очікуваним запуском наприкінці 2027 року.","en":"The 2027–28 programme includes data centres and energy partnerships; Google also reports a contracted 94 MW BESS expected in late 2027."},"company_context":[{"ua":"Google розвиває хмарну й ШІ-інфраструктуру у Фінляндії.","en":"Google develops cloud and AI infrastructure in Finland."},{"ua":"9 вересня оголошено програму щонайменше €13 млрд на 2027–2028 роки.","en":"On 9 September it announced at least €13bn for 2027–28."},{"ua":"BESS 94 МВт законтрактовано; запуск очікується у 2027 році.","en":"A 94 MW BESS is contracted and expected online in 2027."}],"body":{"ua":"ФАКТ. 9 вересня 2026 року Google оголосила план інвестувати щонайменше €13 млрд у фінську цифрову інфраструктуру протягом 2027–2028 років. У релізі також зазначено законтрактовану батарею 94 МВт біля Kajaani з очікуваним запуском наприкінці 2027 року. Це план і контракт, а не підтверджена експлуатація.\n\nТЕХНІКА. Для дата-центрів критичні мережеві точки, резервування, охолодження та можливості використання відпрацьованого тепла.\n\nАНАЛІЗ IIG. На концептуальній стадії спільно моделювати PUE, графік навантаження, резервну потужність, BESS і теплову інтеграцію. Це не заявлені Google проєктні KPI.","en":"FACT. On 9 September 2026 Google announced plans to invest at least €13bn in Finnish digital infrastructure during 2027–28. It also described a contracted 94 MW battery near Kajaani expected online in late 2027. These are plans and a contract, not proof of operation.\n\nTECHNICAL CONTEXT. Data centres require grid access, backup, cooling and waste-heat assessment.\n\nIIG ANALYSIS. Model PUE, load, backup, BESS and heat integration together at concept stage. These are not Google project KPIs."}},
- {"slug":"basf-ludwigshafen-renewable-accc-2026","sector":"chemical","status":"APPROVED","admin_approved":true,"primary_source_verified":true,"publication_date":"2026-09-02","canonical_url":"https://www.basf.com/global/en/media/news-releases/2026/09/p-26-149","title":{"ua":"BASF відкрила модернізоване хімічне виробництво в Ludwigshafen","en":"BASF opens modernised chemical production in Ludwigshafen"},"summary":{"ua":"2 вересня BASF повідомила про модернізацію виробництва ACCF із приростом потужності близько 30%; заявлене зменшення вуглецевого сліду продукції на 19% пов’язане з кредитами відновлюваної електроенергії.","en":"On 2 September BASF reported an ACCF plant revamp with roughly 30% higher capacity; its 19% product-footprint reduction is linked to renewable electricity credits."},"company_context":[{"ua":"BASF виробляє хімічні проміжні продукти в Ludwigshafen.","en":"BASF manufactures chemical intermediates in Ludwigshafen."},{"ua":"Компанія відкрила модернізоване виробництво 2 вересня.","en":"The company inaugurated a modernised plant on 2 September."},{"ua":"BASF повідомляє про приблизно 30% приросту потужності й 19% зниження PCF за визначеною методикою.","en":"BASF reports roughly 30% more capacity and a 19% PCF reduction under its stated methodology."}],"body":{"ua":"ФАКТ. 2 вересня 2026 року BASF оголосила відкриття модернізованої установки виробництва хлорангідридів кислот і хлорформіатів у Ludwigshafen. Компанія заявляє приріст потужності приблизно 30%. Середнє зниження PCF на 19% пов’язане з обліком кредитів відновлюваної електроенергії та методикою BASF; це не вимір прямого скорочення викидів на майданчику.\n\nТЕХНІКА. Розширення виробництва змінює потреби в електриці, парі й допоміжних системах.\n\nАНАЛІЗ IIG. Роздільно оцінювати фізичне енергоспоживання, ринкові інструменти обліку електроенергії та межі PCF. Це інженерна рекомендація.","en":"FACT. On 2 September 2026 BASF inaugurated a modernised acid chlorides and chloroformates facility in Ludwigshafen, reporting around 30% more capacity. Its average 19% PCF reduction relates to renewable-electricity credits and BASF's methodology; it is not a direct measurement of on-site emissions reductions.\n\nTECHNICAL CONTEXT. Expansion changes power, steam and auxiliary demand.\n\nIIG ANALYSIS. Evaluate physical energy use, electricity accounting instruments and PCF boundaries separately. This is engineering advice."}},
- {"slug":"solarfoods-factory02-financing-2026","sector":"pharma","status":"APPROVED","admin_approved":true,"primary_source_verified":true,"publication_date":"2026-06-17","canonical_url":"https://investors.solarfoods.com/release/0b136998-8c6b-4e6b-b171-68a1a4869735","title":{"ua":"Solar Foods отримала €77,8 млн фінансування для Factory 02","en":"Solar Foods receives €77.8m financing for Factory 02"},"summary":{"ua":"Business Finland виділила грант і кредит для харчового виробництва; остаточне інвестиційне рішення ще готується.","en":"Business Finland granted financing for a food factory; the final investment decision remains in preparation."},"company_context":[{"ua":"Solar Foods — виробник харчового білка, не фармацевтична компанія.","en":"Solar Foods produces food protein, not pharmaceuticals."},{"ua":"17 червня компанія оголосила грант і кредит на Factory 02.","en":"On 17 June the company announced grant and loan funding for Factory 02."},{"ua":"Проєкт належить до харчової галузі; цей запис не слід маршрутизувати у фармацевтику.","en":"This is a food-sector project and must not be routed to pharmaceuticals."}],"body":{"ua":"ФАКТ. Solar Foods оголосила фінансування Factory 02 у червні 2026 року, але проєкт стосується харчового білка, а не фармацевтики.\n\nРЕДАКЦІЙНА ПРИМІТКА. Запис потребує перенесення до харчової галузі та заміни окремою підтвердженою фармацевтичною новиною; це не приклад фармацевтичного виробництва.\n\nАНАЛІЗ IIG. Для нового харчового виробництва оцінювати безперервність процесу та електричні й теплові навантаження.","en":"FACT. Solar Foods announced Factory 02 financing in June 2026, but it is a food protein project, not pharmaceuticals.\n\nEDITORIAL NOTE. This item must be moved to food and replaced with a verified pharmaceutical story; it is not an example of pharmaceutical manufacturing.\n\nIIG ANALYSIS. Assess process continuity and electrical and thermal demand for new food production."}},
- {"slug":"rivenhall-waste-energy-handover-2026","sector":"waste","status":"APPROVED","admin_approved":true,"primary_source_verified":true,"publication_date":"2026-04-24","canonical_url":"https://kanadevia-inova.com/discover/news/kanadevia-hands-over-the-new-rivenhall-integrated-waste-management-facility-to-indaver","title":{"ua":"Kanadevia передала Indaver комплекс переробки відходів Rivenhall","en":"Kanadevia hands over Rivenhall waste facility to Indaver"},"summary":{"ua":"24 квітня підрядник повідомив про завершення пусконалагодження і передачу об’єкта; PAC видано 18 квітня.","en":"On 24 April the contractor reported completed commissioning and handover; PAC was issued 18 April."},"company_context":[{"ua":"Kanadevia Inova — підрядник об’єкта Rivenhall у Великій Британії.","en":"Kanadevia Inova is the contractor for the UK Rivenhall facility."},{"ua":"Замовник і майбутній оператор — Indaver Rivenhall.","en":"Indaver Rivenhall is the project developer and future operator."},{"ua":"PAC видано 18 квітня; 24 квітня оголошено передачу після ПНР.","en":"PAC was issued 18 April; handover after commissioning was announced 24 April."}],"body":{"ua":"ФАКТ. 24 квітня 2026 року Kanadevia Inova повідомила про завершення будівництва й пусконалагодження Rivenhall Integrated Waste Management Facility та передачу Indaver. Сертифікат попереднього приймання PAC датовано 18 квітня.\n\nТЕХНІКА. Для WtE критичні стабільність подачі відходів, тепловий баланс, очищення димових газів і підтвердження гарантійних показників.\n\nАНАЛІЗ IIG. Під час передачі EPC окремо перевіряти PAC, перелік недоробок, гарантійні випробування й обов’язки оператора. Це рекомендація, не твердження про параметри Rivenhall.","en":"FACT. On 24 April 2026 Kanadevia Inova announced completed construction and commissioning of Rivenhall Integrated Waste Management Facility and handover to Indaver. The provisional acceptance certificate was issued 18 April.\n\nTECHNICAL CONTEXT. WtE requires stable feed, thermal balance, flue-gas treatment and performance testing.\n\nIIG ANALYSIS. At EPC handover, verify PAC, punch list, guarantees and operator obligations separately. This is advice, not a claim about Rivenhall performance."}}
- ]
+  "schema": "iig.public-news.v1",
+  "publication_policy": "Nine industry sectors; primary-source dates, not commissioning dates. Editorial analysis is explicitly distinguished from company statements. Original IIG illustration is used unless licensed photography is documented.",
+  "items": [
+    {
+      "slug": "kernel-106mw-solar-bess-ebrd",
+      "sector": "agriculture",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-04-01",
+      "canonical_url": "https://www.ebrd.com/home/work-with-us/projects/psd/56463.html",
+      "title": {
+        "ua": "Kernel: ЄБРР підтримує сонячний проєкт 106 МВт із BESS",
+        "en": "Kernel: EBRD supports 106 MW solar project with BESS"
+      },
+      "summary": {
+        "ua": "Картка ЄБРР від 1 квітня: кредит до $45 млн для Energy RTB 2; фінансування підписано, введення в експлуатацію не підтверджено.",
+        "en": "EBRD's 1 April disclosure: up to $45m for Energy RTB 2; financing signed, commissioning unconfirmed."
+      },
+      "company_context": [
+        {
+          "ua": "Kernel — українська агропромислова група; Energy RTB 2 — дочірня компанія.",
+          "en": "Kernel is a Ukrainian agribusiness; Energy RTB 2 is its subsidiary."
+        },
+        {
+          "ua": "Проєкт охоплює сонячну станцію 106 МВт і систему накопичення.",
+          "en": "The project includes a 106 MW solar plant and battery storage."
+        },
+        {
+          "ua": "Кредит має статус Signed; дата запуску і ємність BESS не вказані.",
+          "en": "The loan is Signed; commissioning and BESS energy capacity are unspecified."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. ЄБРР оприлюднив проєктну картку 1 квітня 2026 року щодо кредиту до $45 млн на будівництво СЕС 106 МВт із накопичувачем. Статус Signed стосується фінансування, а не готовності об’єкта.\n\nІНЖЕНЕРНИЙ КОНТЕКСТ. СЕС і BESS потребують спільного розрахунку графіка видачі та умов приєднання.\n\nАНАЛІЗ IIG. На FEED узгодити потужність і ємність BESS, обмеження мережі, прогноз сонячної генерації та сценарії диспетчеризації. Це рекомендація, а не заявлений результат Kernel.\n\nФІНАНСУВАННЯ І РЕАЛІЗАЦІЯ. Проєктний документ ЄБРР уточнює загальну вартість проєкту на рівні $86 млн: до $45 млн має надати ЄБРР, також очікується паралельний кредит до $10 млн. Позичальник — Energy RTB 2 LLC, дочірня компанія Kernel. Документ описує майданчик на півдні України, лінію 110 кВ довжиною близько 3 км до існуючої підстанції 330 кВ та майбутній вибір EPC-підрядника. Це важливо: фінансова угода вже підписана, але EPC, остаточний постачальник PV та частина дозвільних процедур на момент розкриття ще не завершені.\n\nОЧІКУВАНИЙ ЕФЕКТ. ЄБРР оцінює майбутній виробіток СЕС приблизно у 141 ГВт·год на рік і скорочення CO₂ приблизно на 82 500 т/рік після завершення. Ці цифри є прогнозом кредитора, а не фактичними експлуатаційними показниками. Окремо ЄБРР підтверджує співрозташований BESS, але в доступному описі не наводить його MW/MWh, тому IIG не підміняє відсутні параметри припущеннями.\n\nЩО ПЕРЕВІРИТИ НА НАСТУПНІЙ СТАДІЇ. Для EPC/FEED критично отримати технічні умови приєднання, погоджений режим 110-кВ лінії, допустимий експорт, вимоги до РЗА і телеметрії, а також функціональну специфікацію BESS: MW, MWh, SOC-вікно, гарантію деградації та алгоритм EMS. Окремо потрібна перевірка, чи батарея оптимізує видачу СЕС, працює на системні послуги або поєднує обидва режими. Без цього коректно порівняти CAPEX і гарантований результат неможливо.\n\nДЖЕРЕЛА І ОБМЕЖЕННЯ. IIG звірив картку проєкту ЄБРР, розширений екологічний опис і новинне повідомлення банку. Проєкт має статус Signed, а не Completed. Публічної проєктної прямої мови керівника Kernel про конкретні параметри BESS у перевірених матеріалах не знайдено; тому цитату не вигадуємо. Наступний контрольний рубіж — EPC/постачальники, дозвільні рішення та підтверджені параметри накопичувача.",
+        "en": "FACT. EBRD disclosed on 1 April 2026 a loan of up to $45m for a 106 MW solar plant with storage. Signed describes financing, not commissioning.\n\nENGINEERING CONTEXT. PV and BESS need joint output and grid-connection modelling.\n\nIIG ANALYSIS. At FEED, align BESS power and energy, network limits, solar forecasts and dispatch scenarios. This is advice, not a claimed Kernel result.\n\nFINANCING AND DELIVERY. EBRD's project document gives a total project cost of $86 million, with up to $45 million from EBRD and an expected parallel loan of up to $10 million. The borrower is Energy RTB 2 LLC, a Kernel subsidiary. The disclosed scope places the project in southern Ukraine and describes an approximately 3 km, 110 kV transmission line to an existing 330 kV substation, while the EPC contractor and final PV supplier were still to be selected. This distinction matters: financing is signed, but procurement, permitting and delivery are not the same as commissioning.\n\nEXPECTED EFFECT. EBRD estimates about 141 GWh of annual solar generation and roughly 82,500 tonnes of annual CO2 savings after completion. These are forward-looking lender estimates, not measured operating results. EBRD also confirms co-located battery storage but does not disclose its MW/MWh rating in the material reviewed, so IIG does not fill that gap with an assumption.\n\nNEXT ENGINEERING GATES. Before EPC/FEED is locked, the team should obtain final connection conditions, the agreed 110 kV line duty, export limits, protection and telemetry requirements, and a functional BESS specification covering MW, MWh, SOC window, degradation warranty and EMS logic. It should also be clear whether storage is intended mainly to shape PV export, provide system services, or combine both duties. Without this definition, CAPEX and guaranteed performance cannot be compared consistently.\n\nSOURCES AND LIMITATIONS. IIG cross-checked EBRD's project summary, environmental disclosure and the Bank's project news. The project status is Signed, not Completed. No verified project-specific statement from a Kernel executive describing the BESS design was found in the reviewed material, so no quotation is invented. The next evidence gates are EPC/supplier selection, permits and confirmed storage parameters."
+      }
+    },
+    {
+      "slug": "ebrd-189mw-wind-galnaftogaz",
+      "sector": "energy",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-04-24",
+      "canonical_url": "https://www.ebrd.com/home/work-with-us/projects/psd/56596.html",
+      "title": {
+        "ua": "Galnaftogaz / OKKO: фінансування ВЕС 189 МВт",
+        "en": "Galnaftogaz / OKKO: financing for 189 MW wind farm"
+      },
+      "summary": {
+        "ua": "ЄБРР розкрив проєкт 24 квітня; кредит до €50 млн, схвалення 17 червня. Підписання не означає запуску ВЕС.",
+        "en": "EBRD disclosed the project on 24 April; loan up to €50m, approved 17 June. Signing does not mean commissioning."
+      },
+      "company_context": [
+        {
+          "ua": "Galnaftogaz входить до групи OKKO.",
+          "en": "Galnaftogaz is part of OKKO Group."
+        },
+        {
+          "ua": "Кредит до €50 млн призначений для ВЕС приблизно 189 МВт.",
+          "en": "A loan of up to €50m supports a roughly 189 MW wind farm."
+        },
+        {
+          "ua": "Статус Signed стосується кредиту, не завершення будівництва.",
+          "en": "Signed refers to the loan, not construction completion."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. Проєктна картка ЄБРР від 24 квітня 2026 року передбачає кредит до €50 млн на вітропроєкт близько 189 МВт. Схвалення датовано 17 червня.\n\nІНЖЕНЕРНИЙ КОНТЕКСТ. Для ВЕС потрібні прогноз виробітку, мережеве приєднання, балансування та оцінка обмежень видачі.\n\nАНАЛІЗ IIG. Синхронізувати графік будівництва, підстанцію, лінію приєднання й умови диспетчеризації до затвердження EPC-бюджету; це не звіт про виконані роботи.\n\nСТАДІЯ ТА РИЗИКИ. Для вітрового проєкту фінансове закриття, будівельна готовність і фактична генерація — різні контрольні точки. Тому IIG не трактує банківський статус як доказ готовності турбін. До початку основних робіт мають бути синхронізовані земельні права, дороги для великогабаритної логістики, фундаменти, кабельна мережа, підстанція, зовнішня лінія та графік поставки турбін.\n\nІНЖЕНЕРНИЙ КОНТЕКСТ. Номінальні 189 МВт не визначають річний виробіток або гарантований експорт. Для інвестиційного рішення потрібні банківський wind-resource assessment, P50/P90, втрати, curtailment, availability, вимоги оператора мережі та модель балансування. Особливо важливо відокремити потужність турбін від дозволеної потужності видачі у точці приєднання.\n\nАНАЛІЗ IIG. Перед фіксацією EPC-ціни слід закрити battery limits між turbine supplier, BoP та grid contractor, погодити РЗА/SCADA, випробування і критерії PAC/FAC. Окремий risk register має показувати залежності від логістики, мережевих робіт, воєнних ризиків і страхового покриття. Таке структурування дозволяє керівництву бачити не лише €/MW, а й ризик до COD.\n\nПРЯМА МОВА І ОБМЕЖЕННЯ. У використаній картці ЄБРР немає перевіреної прямої цитати керівника про технічні KPI саме цього проєкту; тому IIG її не створює. Публікуємо лише підтверджену стадію та параметри, а майбутній виробіток і COD не подаємо як факт до появи відповідних документів.",
+        "en": "FACT. EBRD's disclosure of 24 April 2026 concerns up to €50m for a roughly 189 MW wind project, approved 17 June.\n\nENGINEERING CONTEXT. Wind projects require forecasting, interconnection, balancing and curtailment analysis.\n\nIIG ANALYSIS. Align construction, substation, connection line and dispatch before EPC budget approval; this is not a report of completed works.\n\nSTATUS AND DELIVERY RISK. For a wind project, financing, construction readiness and actual generation are separate gates. IIG therefore does not treat a banking status as evidence that turbines are operational. Before major works, land rights, heavy-haul roads, foundations, collector system, substation, external connection and turbine delivery schedule must be aligned.\n\nENGINEERING CONTEXT. A nominal 189 MW does not determine annual output or guaranteed grid export. Investment-grade assessment requires bankable wind resource data, P50/P90 cases, losses, curtailment, availability, grid-code requirements and balancing assumptions. Turbine nameplate capacity must be distinguished from permitted export at the connection point.\n\nIIG ANALYSIS. Before locking EPC price, close battery limits among turbine supplier, BoP and grid contractor; agree protection/SCADA, tests and PAC/FAC criteria. A separate risk register should expose dependencies on logistics, network works, wartime risks and insurance. Management can then compare not just €/MW but risk to COD.\n\nEXECUTIVE VOICE AND LIMITATIONS. The EBRD project disclosure reviewed by IIG does not contain a verified executive quotation establishing technical KPIs for this specific project, so none is invented. Only confirmed stage and parameters are presented; future production and COD remain unconfirmed until supported by project documents."
+      }
+    },
+    {
+      "slug": "kosice-eaf-asu-2026",
+      "sector": "metallurgy",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-16",
+      "canonical_url": "https://www.nipponsteel.com/en/newsroom/news/2026/20260916_100.html",
+      "title": {
+        "ua": "U. S. Steel Košice: рішення про інвестицію €0,9 млрд в EAF та ASU",
+        "en": "U. S. Steel Košice: €0.9bn EAF and ASU investment decision"
+      },
+      "summary": {
+        "ua": "Nippon Steel оголосила інвестиційне рішення; ASU планують запустити у 2029 році, EAF — у 2030-му.",
+        "en": "Nippon Steel announced an investment decision; ASU is targeted for 2029 and EAF for 2030."
+      },
+      "company_context": [
+        {
+          "ua": "U. S. Steel Košice — металургійний комбінат у Словаччині.",
+          "en": "U. S. Steel Košice is a steelworks in Slovakia."
+        },
+        {
+          "ua": "Компанія вирішила інвестувати близько €0,9 млрд в електропіч і ASU.",
+          "en": "The company decided to invest roughly €0.9bn in an EAF and ASU."
+        },
+        {
+          "ua": "Планові дати запуску — 2029 і 2030 роки; це не введені потужності.",
+          "en": "Target starts are 2029 and 2030; the facilities are not yet commissioned."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 16 вересня Nippon Steel оголосила рішення інвестувати близько €0,9 млрд в електродугову піч і установку розділення повітря в Кошице, а також грантову угоду зі Словаччиною. Запуск ASU планується у 2029 році, EAF — у 2030 році.\n\nТЕХНІКА. EAF створює значне змінне електричне навантаження, ASU має власні вимоги до живлення та безперервності.\n\nАНАЛІЗ IIG. На FEED спільно моделювати піки EAF, електроживлення ASU та можливості мережі. Це інженерна рекомендація, а не обіцяний виробником результат.\n\nМАСШТАБ І ФІНАНСУВАННЯ. Nippon Steel уточнює, що нова EAF матиме річну виробничу потужність близько 1,6 млн т і працюватиме разом з існуючими доменними потужностями. Грантова угода зі словацьким урядом передбачає до €350 млн із EU Modernisation Fund: €310 млн для EAF та €40 млн для ASU. Це підтверджене інвестиційне рішення, але до планового старту ASU у 2029 році та EAF у 2030 році залишається інженерна й будівельна фаза.\n\nКОНТЕКСТ ВЛАСНОСТІ. У релізі зазначено, що USSK є дочірньою структурою United States Steel Corporation у групі Nippon Steel; також оголошений перехід до прямого володіння Nippon Steel з 1 жовтня 2026 року та майбутня назва Nippon Steel Slovakia. Для редакційної точності IIG відокремлює поточний на дату релізу статус від оголошеної корпоративної зміни.\n\nЕНЕРГЕТИЧНА ЗАДАЧА. EAF — велике динамічне електричне навантаження, а ASU додає значне безперервне споживання та критичні допоміжні системи. Для FEED потрібні load-flow, short-circuit і power-quality studies, перевірка flicker/harmonics, трансформаторів, компенсації реактивної потужності та сценаріїв відмови. Паралельна робота з доменним маршрутом означає, що енергетична модель має враховувати перехідні виробничі режими, а не тільки кінцевий design point.\n\nАНАЛІЗ IIG І НАСТУПНИЙ ЕТАП. До закупівлі основного електрообладнання варто зафіксувати профілі EAF/ASU, N-1, резервування, вимоги до якості електроенергії та межі відповідальності мережі й заводу. Nippon Steel говорить про конкурентоспроможність і декарбонізацію, але не публікує в цьому релізі MW електричного приєднання чи конкретну схему живлення. IIG не домислює ці параметри. Наступні докази — EPC/технологічні контракти, дозволи та детальні електротехнічні рішення.",
+        "en": "FACT. On 16 September Nippon Steel announced an approximately €0.9bn EAF and ASU investment in Košice and a Slovak grant agreement. ASU start is targeted for 2029 and EAF for 2030.\n\nTECHNICAL CONTEXT. EAF creates variable high power demand; ASU has its own continuity requirements.\n\nIIG ANALYSIS. Model EAF peaks, ASU supply and grid capacity together at FEED; this is engineering advice, not a promised project outcome.\n\nSCALE AND FINANCING. Nippon Steel states that the new EAF will have annual production capacity of about 1.6 million tonnes and will operate alongside existing blast-furnace facilities. The Slovak grant agreement provides access to up to €350 million from the EU Modernisation Fund: €310 million for the EAF and €40 million for the ASU. This is a confirmed investment decision, but engineering and construction remain ahead of the targeted 2029 ASU and 2030 EAF starts.\n\nOWNERSHIP CONTEXT. The release describes USSK as a United States Steel Corporation subsidiary within Nippon Steel's group and announces a transition to direct Nippon Steel ownership effective 1 October 2026, with the future name Nippon Steel Slovakia. IIG distinguishes the corporate status at publication date from the announced future change.\n\nENERGY CHALLENGE. An EAF is a large dynamic electrical load, while the ASU adds substantial continuous demand and critical auxiliaries. FEED should cover load flow, short circuit and power quality, including flicker/harmonics, transformers, reactive compensation and failure cases. Parallel operation with the blast-furnace route means the energy model should cover transition operating modes rather than only the final design point.\n\nIIG ANALYSIS AND NEXT GATE. Before major electrical procurement, define EAF/ASU load profiles, N-1 philosophy, redundancy, power-quality limits and utility/plant battery limits. Nippon Steel discusses competitiveness and decarbonisation but does not publish the site's MW connection requirement or detailed supply architecture in this release. IIG does not infer those values. The next evidence should come from EPC/process contracts, permits and detailed electrical design."
+      }
+    },
+    {
+      "slug": "nestle-biessenhofen-agri-pv-2026",
+      "sector": "food",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-04-22",
+      "canonical_url": "https://www.nestle.de/medien/pressemitteilungen/energiewende-bei-nestl%C3%A9-biessenhofen-mit-neu-er%C3%B6ffneter-agri-photovoltaic",
+      "title": {
+        "ua": "Nestlé відкрила Agri-PV біля харчового заводу Biessenhofen",
+        "en": "Nestlé opens Agri-PV installation at Biessenhofen food plant"
+      },
+      "summary": {
+        "ua": "22 квітня компанія повідомила про відкриття Agri-PV; сонячна електроенергія підтримує теплові насоси й використання відпрацьованого тепла.",
+        "en": "On 22 April Nestlé announced an Agri-PV opening; solar power supports heat pumps and waste-heat use."
+      },
+      "company_context": [
+        {
+          "ua": "Nestlé Nutrition виробляє харчову продукцію в Biessenhofen.",
+          "en": "Nestlé Nutrition operates a food manufacturing site at Biessenhofen."
+        },
+        {
+          "ua": "Компанія відкрила агрофотовольтаїчну установку 22 квітня.",
+          "en": "The company opened an agrivoltaic installation on 22 April."
+        },
+        {
+          "ua": "Електроенергія підтримує електрифікацію, теплові насоси й утилізацію тепла.",
+          "en": "The power supports electrification, heat pumps and heat recovery."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. Nestlé повідомила 22 квітня 2026 року про відкриття Agri-PV на території поблизу заводу Biessenhofen. Компанія пов’язує локальну генерацію з тепловими насосами та використанням відпрацьованого тепла.\n\nТЕХНІКА. Профілі виробітку сонячної електроенергії та потреб у технологічному теплі не обов’язково збігаються.\n\nАНАЛІЗ IIG. Перевірити погодинний баланс електрики й тепла, температурні рівні, резервування та можливість накопичення. Це рекомендація IIG, не виміряний ефект проєкту.\n\nЩО ВАЖЛИВО ДЛЯ ЗАВОДУ. Локальна PV-генерація на харчовому підприємстві має цінність лише в контексті реального профілю споживання. Теплові насоси переводять частину теплового навантаження в електричне, а утилізація відпрацьованого тепла змінює базовий тепловий баланс. Тому оцінка тільки встановлених kWp без погодинної моделі може перебільшувати фактичне самоспоживання.\n\nІНЖЕНЕРНИЙ АНАЛІЗ IIG. Для подібного майданчика слід побудувати 8 760-годинну модель PV, технологічного навантаження, холодильних систем і теплових насосів; окремо перевірити літні/зимові режими та вихідні дні. Після цього визначаються доцільність BESS, обмеження експорту, алгоритми EMS і резервування критичних споживачів. Для Agri-PV додатково потрібні механічні, агрономічні та експлуатаційні interfaces.\n\nПЕРЕВІРКА РЕЗУЛЬТАТУ. Економічний ефект потрібно підтверджувати не номінальною генерацією, а зменшенням закупівлі електроенергії, використанням тепла і виміряним baseline виробництва. CAPEX слід порівнювати з альтернативами: roof-PV, PPA, efficiency measures, heat recovery і storage.\n\nОБМЕЖЕННЯ ДЖЕРЕЛА. Реліз Nestlé підтверджує відкриття Agri-PV і напрям інтеграції з тепловими насосами, але не дає повного погодинного енергобалансу заводу. IIG не приписує проєкту непублічні показники окупності чи економії. Наступний якісний доказ — фактичні дані першого року роботи та методика M&V.",
+        "en": "FACT. Nestlé announced the opening of Agri-PV near its Biessenhofen plant on 22 April 2026. The company connects local generation with heat pumps and waste-heat recovery.\n\nTECHNICAL CONTEXT. Solar output and process-heat demand profiles need not coincide.\n\nIIG ANALYSIS. Assess hourly electricity and heat balances, temperatures, backup and storage; this is advice, not a measured project outcome.\n\nWHY IT MATTERS FOR THE FACTORY. On-site PV has value only against the plant's actual load profile. Heat pumps shift part of thermal demand into electricity, while waste-heat recovery changes the underlying heat balance. Evaluating installed kWp without an hourly model can therefore overstate self-consumption.\n\nIIG ENGINEERING ANALYSIS. A comparable site should use an 8,760-hour model combining PV, process demand, refrigeration and heat pumps, with separate summer/winter and weekend cases. Only then should the team size BESS, export limits, EMS logic and critical-load backup. Agrivoltaics also adds structural, agricultural and O&M interfaces that conventional rooftop PV may not have.\n\nVERIFYING THE RESULT. Economic performance should be demonstrated through reduced purchased electricity, useful recovered heat and a production-normalised baseline rather than nameplate generation alone. CAPEX should be benchmarked against rooftop PV, PPA, efficiency, heat recovery and storage alternatives.\n\nSOURCE LIMITATIONS. Nestlé's release confirms the Agri-PV opening and its integration direction with heat pumps, but does not disclose a complete hourly plant energy balance. IIG does not attribute unpublished payback or savings figures to the project. The next strong evidence would be first-year operating data supported by a defined M&V method."
+      }
+    },
+    {
+      "slug": "dhl-longi-solar-mou-2026",
+      "sector": "logistics",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-07-23",
+      "canonical_url": "https://group.dhl.com/en/media-relations/press-releases/2026/dhl-group-and-longi-solar-sign-mou-to-advance-global-renewable-energy-and-sustainable-logistics-solutions.html",
+      "title": {
+        "ua": "DHL і LONGi підписали меморандум щодо сонячної генерації для логістики",
+        "en": "DHL and LONGi sign solar-energy logistics memorandum"
+      },
+      "summary": {
+        "ua": "Меморандум від 23 липня передбачає співпрацю щодо розподіленої сонячної генерації на об’єктах DHL у Європі; це не звіт про завершені установки.",
+        "en": "The 23 July MoU covers cooperation on distributed solar at European DHL sites; it is not a commissioning report."
+      },
+      "company_context": [
+        {
+          "ua": "DHL Group — міжнародний оператор логістичної інфраструктури.",
+          "en": "DHL Group operates international logistics infrastructure."
+        },
+        {
+          "ua": "LONGi виробляє сонячні технології; сторони підписали MoU.",
+          "en": "LONGi supplies solar technology; the parties signed an MoU."
+        },
+        {
+          "ua": "Розгортання PV у Європі є предметом співпраці, не завершеним фактом.",
+          "en": "European PV deployment is a cooperation objective, not a completed outcome."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 23 липня 2026 року DHL Group та LONGi оголосили меморандум про співпрацю щодо розподілених сонячних рішень, включно з BIPV, на європейських об’єктах DHL. MoU не підтверджує завершення монтажу.\n\nТЕХНІКА. Логістичні центри мають великі покрівлі, але потрібна перевірка несучої здатності, пожежних відстаней і графіка навантаження.\n\nАНАЛІЗ IIG. Порівняти денне споживання, потужність приєднання та можливості PV+BESS до вибору EPC-концепції. Це рекомендація IIG.\n\nСТАДІЯ ПРОЄКТУ. Меморандум — це рамка співпраці, а не EPC-контракт і не підтверджений портфель введених MW. Для кожного логістичного центру потрібен окремий site screening: право на дах/землю, конструктив, пожежна безпека, затінення, стан покрівлі, точка приєднання та правила експорту.\n\nІНЖЕНЕРНИЙ АНАЛІЗ IIG. Найкращий кандидат визначається не максимальною площею панелей, а збігом денного навантаження з PV. Для складів треба врахувати HVAC, холодильні навантаження, заряджання електротранспорту та сезонність. BESS варто додавати лише після моделювання peak shaving, self-consumption, backup та можливих мережевих послуг; одна батарея не повинна одночасно отримати несумісні гарантійні режими.\n\nBIPV І РИЗИКИ. Якщо концепція переходить від стандартного rooftop PV до BIPV, змінюються interfaces фасаду/покрівлі, гарантії герметичності, пожежні вимоги, ремонтопридатність і відповідальність постачальників. Ці ризики потрібно закривати до тендеру, інакше низька ціна модулів може бути перекрита будівельними змінами.\n\nЩО ВВАЖАТИ УСПІХОМ. Для менеджменту потрібен portfolio dashboard: MWp, прогноз MWh, self-consumption, avoided cost, grid constraints, CAPEX, schedule та verified commissioning по кожному об’єкту. Реліз DHL/LONGi не підтверджує такі результати для всієї Європи, тому IIG не подає їх як факт. Наступний рубіж — оголошення конкретних sites та контрактів.",
+        "en": "FACT. On 23 July 2026 DHL and LONGi announced an MoU on distributed solar, including BIPV, across European DHL facilities. An MoU does not confirm installation completion.\n\nTECHNICAL CONTEXT. Logistics roofs offer area but require structural, fire-safety and load-profile checks.\n\nIIG ANALYSIS. Compare daytime demand, grid connection and PV+BESS options before EPC concept selection. This is IIG advice.\n\nPROJECT STATUS. An MoU is a cooperation framework, not an EPC contract and not evidence of a commissioned MW portfolio. Every logistics facility requires its own site screening covering roof/land rights, structure, fire safety, shading, roof condition, connection point and export rules.\n\nIIG ENGINEERING ANALYSIS. The best candidate is determined not by maximum panel area but by the match between daytime demand and PV output. Warehouses may include HVAC, refrigeration, EV charging and seasonal loads. BESS should be considered only after modelling peak shaving, self-consumption, backup and possible grid services; a battery should not be assigned conflicting guaranteed duties.\n\nBIPV AND RISK. Moving from conventional rooftop PV to BIPV changes façade/roof interfaces, watertightness warranties, fire requirements, maintainability and supplier responsibilities. Those risks belong in the tender baseline; otherwise apparent module savings can be overwhelmed by building modifications.\n\nSUCCESS CRITERIA. Management needs a portfolio dashboard showing MWp, forecast MWh, self-consumption, avoided cost, grid constraints, CAPEX, schedule and verified commissioning for each site. The DHL/LONGi announcement does not establish those outcomes across Europe, so IIG does not present them as facts. The next evidence gate is identification of specific sites and binding contracts."
+      }
+    },
+    {
+      "slug": "google-finland-ai-grid-2026",
+      "sector": "datacenters",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-09",
+      "canonical_url": "https://www.googlecloudpresscorner.com/2026-09-09-Google-Deepens-Commitment-to-Finland-with-Two-Year-EUR13-Billion-investment-in-AI-Infrastructure",
+      "title": {
+        "ua": "Google оголосила €13 млрд інвестицій у ШІ-інфраструктуру Фінляндії",
+        "en": "Google announces €13bn Finnish AI infrastructure programme"
+      },
+      "summary": {
+        "ua": "Програма на 2027–2028 роки включає дата-центри та енергетичні партнерства; Google також повідомила про контракт на BESS 94 МВт із очікуваним запуском наприкінці 2027 року.",
+        "en": "The 2027–28 programme includes data centres and energy partnerships; Google also reports a contracted 94 MW BESS expected in late 2027."
+      },
+      "company_context": [
+        {
+          "ua": "Google розвиває хмарну й ШІ-інфраструктуру у Фінляндії.",
+          "en": "Google develops cloud and AI infrastructure in Finland."
+        },
+        {
+          "ua": "9 вересня оголошено програму щонайменше €13 млрд на 2027–2028 роки.",
+          "en": "On 9 September it announced at least €13bn for 2027–28."
+        },
+        {
+          "ua": "BESS 94 МВт законтрактовано; запуск очікується у 2027 році.",
+          "en": "A 94 MW BESS is contracted and expected online in 2027."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 9 вересня 2026 року Google оголосила план інвестувати щонайменше €13 млрд у фінську цифрову інфраструктуру протягом 2027–2028 років. У релізі також зазначено законтрактовану батарею 94 МВт біля Kajaani з очікуваним запуском наприкінці 2027 року. Це план і контракт, а не підтверджена експлуатація.\n\nТЕХНІКА. Для дата-центрів критичні мережеві точки, резервування, охолодження та можливості використання відпрацьованого тепла.\n\nАНАЛІЗ IIG. На концептуальній стадії спільно моделювати PUE, графік навантаження, резервну потужність, BESS і теплову інтеграцію. Це не заявлені Google проєктні KPI.\n\nЕНЕРГЕТИЧНА АРХІТЕКТУРА ПРОГРАМИ. Реліз Google пов’язує цифрову інфраструктуру з енергосистемою значно ширше, ніж просто закупівля електроенергії. Компанія описує співпрацю з Fingrid і Business Finland щодо розміщення нових об’єктів у північній частині країни, ближче до доступної мережевої потужності та безвуглецевої генерації. Також оголошені нові wind PPA; сумарна підтримувана нова наземна вітрова потужність названа на рівні 629 МВт.\n\nОкремий елемент — законтрактована BESS 94 МВт поблизу Kajaani з очікуваним введенням наприкінці 2027 року. Її MWh у релізі не наведено, тому тривалість розряду не можна визначити з опублікованих даних. Google також повідомляє про довгострокову PPA з Fortum, пов’язану з продовженням ресурсу АЕС Loviisa, та MoU щодо майбутньої гнучкості й нової безвуглецевої генерації.\n\nПРЯМА МОВА. Президент і Chief Investment Officer Alphabet/Google Ruth Porat характеризує інвестицію як розширення технічної інфраструктури разом із новими енергетичними потужностями та зміцненням мережі. Fingrid окремо пояснює логіку північних точок приєднання наявністю значної мережевої спроможності. Це важливий сигнал для промислових інвесторів: site selection і power strategy тут розглядаються разом, а не послідовно.\n\nАНАЛІЗ IIG. Для великого AI/data-center кампусу до land acquisition слід закрити connection capacity, redundancy, ramp profile, backup philosophy, cooling water/heat rejection і можливість heat reuse. BESS треба моделювати разом із UPS та резервною генерацією, щоб не дублювати функції. Окремо потрібні сценарії grid curtailment і аварійного острова. Публічний реліз не дає PUE, IT MW або MWh батареї для конкретного майданчика; IIG ці значення не вигадує.",
+        "en": "FACT. On 9 September 2026 Google announced plans to invest at least €13bn in Finnish digital infrastructure during 2027–28. It also described a contracted 94 MW battery near Kajaani expected online in late 2027. These are plans and a contract, not proof of operation.\n\nTECHNICAL CONTEXT. Data centres require grid access, backup, cooling and waste-heat assessment.\n\nIIG ANALYSIS. Model PUE, load, backup, BESS and heat integration together at concept stage. These are not Google project KPIs.\n\nENERGY ARCHITECTURE. Google's announcement connects digital infrastructure to the power system far beyond electricity procurement. It describes work with Fingrid and Business Finland to locate new infrastructure in northern Finland closer to available grid capacity and carbon-free generation. New wind PPAs are also announced, bringing Google's stated supported new-to-grid onshore wind capacity to 629 MW.\n\nA separate element is a contracted 94 MW battery near Kajaani, expected online in late 2027. The release does not disclose its MWh rating, so discharge duration cannot be derived from the published information. Google also describes a long-term PPA with Fortum linked to extending the Loviisa nuclear plant's life and an MoU on future flexibility and new carbon-free generation.\n\nEXECUTIVE VOICE. Alphabet and Google President and Chief Investment Officer Ruth Porat frames the investment as expansion of technical infrastructure paired with new energy capacity and grid enhancements. Fingrid separately explains the northern siting logic through significant available consumption capacity at strong grid points. For industrial investors, the lesson is that site selection and power strategy are being addressed together rather than sequentially.\n\nIIG ANALYSIS. Before land acquisition for a large AI/data-centre campus, close connection capacity, redundancy, ramp profile, backup philosophy, cooling/heat rejection and heat-reuse potential. Model BESS together with UPS and standby generation to avoid duplicated functions, and test curtailment and island scenarios. The public release does not provide site-specific PUE, IT MW or battery MWh; IIG does not invent them."
+      }
+    },
+    {
+      "slug": "basf-ludwigshafen-renewable-accc-2026",
+      "sector": "chemical",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-02",
+      "canonical_url": "https://www.basf.com/global/en/media/news-releases/2026/09/p-26-149",
+      "title": {
+        "ua": "BASF відкрила модернізоване хімічне виробництво в Ludwigshafen",
+        "en": "BASF opens modernised chemical production in Ludwigshafen"
+      },
+      "summary": {
+        "ua": "2 вересня BASF повідомила про модернізацію виробництва ACCF із приростом потужності близько 30%; заявлене зменшення вуглецевого сліду продукції на 19% пов’язане з кредитами відновлюваної електроенергії.",
+        "en": "On 2 September BASF reported an ACCF plant revamp with roughly 30% higher capacity; its 19% product-footprint reduction is linked to renewable electricity credits."
+      },
+      "company_context": [
+        {
+          "ua": "BASF виробляє хімічні проміжні продукти в Ludwigshafen.",
+          "en": "BASF manufactures chemical intermediates in Ludwigshafen."
+        },
+        {
+          "ua": "Компанія відкрила модернізоване виробництво 2 вересня.",
+          "en": "The company inaugurated a modernised plant on 2 September."
+        },
+        {
+          "ua": "BASF повідомляє про приблизно 30% приросту потужності й 19% зниження PCF за визначеною методикою.",
+          "en": "BASF reports roughly 30% more capacity and a 19% PCF reduction under its stated methodology."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 2 вересня 2026 року BASF оголосила відкриття модернізованої установки виробництва хлорангідридів кислот і хлорформіатів у Ludwigshafen. Компанія заявляє приріст потужності приблизно 30%. Середнє зниження PCF на 19% пов’язане з обліком кредитів відновлюваної електроенергії та методикою BASF; це не вимір прямого скорочення викидів на майданчику.\n\nТЕХНІКА. Розширення виробництва змінює потреби в електриці, парі й допоміжних системах.\n\nАНАЛІЗ IIG. Роздільно оцінювати фізичне енергоспоживання, ринкові інструменти обліку електроенергії та межі PCF. Це інженерна рекомендація.\n\nЧОМУ ЦЕ ЕНЕРГЕТИЧНА НОВИНА. Збільшення виробничої потужності хімічної установки змінює не лише output, а й профілі пари, електроенергії, охолодження, стисненого повітря та очищення. Тому показник product carbon footprint не можна використовувати як заміну фізичному енергобалансу майданчика.\n\nМЕТОДОЛОГІЧНЕ РОЗДІЛЕННЯ. BASF пов’язує заявлене середнє зниження PCF із використанням renewable electricity credits. Для інженерної оцінки IIG рекомендує показувати три шари окремо: фактичне споживання енергії на тонну продукту, фізичний carbon intensity енергопостачання та market-based accounting instruments. Тільки так керівництво бачить, яка частина результату походить від модернізації процесу, а яка — від закупівельної/облікової моделі.\n\nFEED/OPERATIONS CHECK. Після debottlenecking слід повторно перевірити utility headers, резерв насосів і компресорів, cooling capacity, relief cases та мінімальні/максимальні виробничі режими. Якщо потужність зросла приблизно на 30%, старі design margins не можна автоматично вважати достатніми. Дані повинні підтверджуватися фактичними performance tests.\n\nОБМЕЖЕННЯ. Реліз BASF підтверджує модернізацію і корпоративну методику PCF, але не розкриває повний енергобаланс установки. IIG тому не переводить 19% PCF у непідтверджені MWh або тонни фактичних site emissions. Для інвестора наступний якісний доказ — нормалізовані експлуатаційні KPI після стабілізації виробництва.",
+        "en": "FACT. On 2 September 2026 BASF inaugurated a modernised acid chlorides and chloroformates facility in Ludwigshafen, reporting around 30% more capacity. Its average 19% PCF reduction relates to renewable-electricity credits and BASF's methodology; it is not a direct measurement of on-site emissions reductions.\n\nTECHNICAL CONTEXT. Expansion changes power, steam and auxiliary demand.\n\nIIG ANALYSIS. Evaluate physical energy use, electricity accounting instruments and PCF boundaries separately. This is engineering advice.\n\nWHY THIS IS AN ENERGY STORY. Increasing chemical plant production capacity changes not only output but steam, electricity, cooling, compressed air and treatment loads. Product carbon footprint therefore cannot substitute for the physical site energy balance.\n\nMETHODOLOGY SEPARATION. BASF links its reported average PCF reduction to renewable electricity credits. IIG recommends separating three layers: actual energy use per tonne, physical carbon intensity of supply, and market-based accounting instruments. Management can then see what comes from process improvement versus procurement/accounting choices.\n\nFEED/OPERATIONS CHECK. After debottlenecking, revalidate utility headers, pump/compressor redundancy, cooling capacity, relief cases and minimum/maximum operating modes. With roughly 30% more capacity reported, historic design margins should not automatically be assumed sufficient. Actual performance should be demonstrated by operating tests.\n\nLIMITATIONS. BASF's release confirms the modernisation and its PCF methodology but does not disclose a complete unit energy balance. IIG therefore does not convert the 19% PCF figure into unsupported MWh or tonnes of physical site emissions. The next strong evidence for investors is production-normalised operating KPI data after the plant stabilises."
+      }
+    },
+    {
+      "slug": "solarfoods-factory02-financing-2026",
+      "sector": "pharma",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-06-17",
+      "canonical_url": "https://investors.solarfoods.com/release/0b136998-8c6b-4e6b-b171-68a1a4869735",
+      "title": {
+        "ua": "Solar Foods отримала €77,8 млн фінансування для Factory 02",
+        "en": "Solar Foods receives €77.8m financing for Factory 02"
+      },
+      "summary": {
+        "ua": "Business Finland виділила грант і кредит для харчового виробництва; остаточне інвестиційне рішення ще готується.",
+        "en": "Business Finland granted financing for a food factory; the final investment decision remains in preparation."
+      },
+      "company_context": [
+        {
+          "ua": "Solar Foods — виробник харчового білка, не фармацевтична компанія.",
+          "en": "Solar Foods produces food protein, not pharmaceuticals."
+        },
+        {
+          "ua": "17 червня компанія оголосила грант і кредит на Factory 02.",
+          "en": "On 17 June the company announced grant and loan funding for Factory 02."
+        },
+        {
+          "ua": "Проєкт належить до харчової галузі; цей запис не слід маршрутизувати у фармацевтику.",
+          "en": "This is a food-sector project and must not be routed to pharmaceuticals."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. Solar Foods оголосила фінансування Factory 02 у червні 2026 року, але проєкт стосується харчового білка, а не фармацевтики.\n\nРЕДАКЦІЙНА ПРИМІТКА. Запис потребує перенесення до харчової галузі та заміни окремою підтвердженою фармацевтичною новиною; це не приклад фармацевтичного виробництва.\n\nАНАЛІЗ IIG. Для нового харчового виробництва оцінювати безперервність процесу та електричні й теплові навантаження.",
+        "en": "FACT. Solar Foods announced Factory 02 financing in June 2026, but it is a food protein project, not pharmaceuticals.\n\nEDITORIAL NOTE. This item must be moved to food and replaced with a verified pharmaceutical story; it is not an example of pharmaceutical manufacturing.\n\nIIG ANALYSIS. Assess process continuity and electrical and thermal demand for new food production."
+      }
+    },
+    {
+      "slug": "rivenhall-waste-energy-handover-2026",
+      "sector": "waste",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-04-24",
+      "canonical_url": "https://kanadevia-inova.com/discover/news/kanadevia-hands-over-the-new-rivenhall-integrated-waste-management-facility-to-indaver",
+      "title": {
+        "ua": "Kanadevia передала Indaver комплекс переробки відходів Rivenhall",
+        "en": "Kanadevia hands over Rivenhall waste facility to Indaver"
+      },
+      "summary": {
+        "ua": "24 квітня підрядник повідомив про завершення пусконалагодження і передачу об’єкта; PAC видано 18 квітня.",
+        "en": "On 24 April the contractor reported completed commissioning and handover; PAC was issued 18 April."
+      },
+      "company_context": [
+        {
+          "ua": "Kanadevia Inova — підрядник об’єкта Rivenhall у Великій Британії.",
+          "en": "Kanadevia Inova is the contractor for the UK Rivenhall facility."
+        },
+        {
+          "ua": "Замовник і майбутній оператор — Indaver Rivenhall.",
+          "en": "Indaver Rivenhall is the project developer and future operator."
+        },
+        {
+          "ua": "PAC видано 18 квітня; 24 квітня оголошено передачу після ПНР.",
+          "en": "PAC was issued 18 April; handover after commissioning was announced 24 April."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 24 квітня 2026 року Kanadevia Inova повідомила про завершення будівництва й пусконалагодження Rivenhall Integrated Waste Management Facility та передачу Indaver. Сертифікат попереднього приймання PAC датовано 18 квітня.\n\nТЕХНІКА. Для WtE критичні стабільність подачі відходів, тепловий баланс, очищення димових газів і підтвердження гарантійних показників.\n\nАНАЛІЗ IIG. Під час передачі EPC окремо перевіряти PAC, перелік недоробок, гарантійні випробування й обов’язки оператора. Це рекомендація, не твердження про параметри Rivenhall.\n\nЧОМУ HANDOVER ВАЖЛИВІШИЙ ЗА ЗАГОЛОВОК «ЗАВЕРШЕНО». Для складного WtE-об’єкта передача замовнику означає перехід відповідальності, але не автоматично закриття всіх гарантійних зобов’язань. PAC, punch list, performance tests, defects liability і майбутній FAC мають різний юридичний та технічний зміст. Саме тому IIG фіксує дату PAC окремо від повідомлення про передачу.\n\nІНЖЕНЕРНИЙ КОНТРОЛЬ. Для WtE критично підтвердити пропускну здатність по відходах, стабільність combustion, steam cycle, availability, власні потреби, emissions compliance та роботу flue-gas treatment у погодженому діапазоні палива. Один короткий acceptance run не замінює перевірку сезонної експлуатації та реального складу відходів.\n\nАНАЛІЗ IIG. На етапі handover потрібна матриця: guaranteed value → test method → measured result → open deviation → responsible party → deadline. Окремо передаються spare parts, O&M manuals, training records, software/SCADA backups та перелік тимчасових режимів. Для керівництва це перетворює «об’єкт передано» на контрольований список залишкових ризиків.\n\nДЖЕРЕЛО І МЕЖІ. Повідомлення Kanadevia підтверджує завершення commissioning і передачу Indaver, але IIG не приписує Rivenhall конкретні невказані показники efficiency або availability. Наступний доказ повного завершення — закриття contractual acceptance milestones відповідно до EPC та підтверджена стабільна експлуатація.",
+        "en": "FACT. On 24 April 2026 Kanadevia Inova announced completed construction and commissioning of Rivenhall Integrated Waste Management Facility and handover to Indaver. The provisional acceptance certificate was issued 18 April.\n\nTECHNICAL CONTEXT. WtE requires stable feed, thermal balance, flue-gas treatment and performance testing.\n\nIIG ANALYSIS. At EPC handover, verify PAC, punch list, guarantees and operator obligations separately. This is advice, not a claim about Rivenhall performance.\n\nWHY HANDOVER IS MORE PRECISE THAN “COMPLETED”. For a complex WtE facility, transfer to the owner changes responsibility but does not automatically close every performance obligation. PAC, punch list, performance tests, defects liability and eventual FAC have different legal and technical meanings. IIG therefore records the PAC date separately from the handover announcement.\n\nENGINEERING CONTROL. WtE acceptance should demonstrate waste throughput, combustion stability, steam cycle, availability, auxiliary consumption, emissions compliance and flue-gas treatment across the agreed fuel envelope. A short acceptance run cannot by itself represent seasonal operation or the full variability of real waste.\n\nIIG ANALYSIS. At handover, use a matrix linking guaranteed value, test method, measured result, open deviation, responsible party and deadline. Spare parts, O&M manuals, training records, software/SCADA backups and temporary operating modes should be transferred explicitly. This converts “handed over” into a management-visible register of residual risk.\n\nSOURCE AND LIMITS. Kanadevia's announcement confirms commissioning and handover to Indaver, but IIG does not attribute undisclosed efficiency or availability figures to Rivenhall. The next evidence of full completion is closure of contractual acceptance milestones under the EPC contract and demonstrated stable operation."
+      }
+    }
+  ]
 }
