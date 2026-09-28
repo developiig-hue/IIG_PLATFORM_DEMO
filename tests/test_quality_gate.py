@@ -32,6 +32,11 @@ class QualityGateTests(unittest.TestCase):
   x=self.base();x["advice"]["checks"]="short";_,r=q.gate(self.doc([x]));self.assertIn("advice_four_block_contract",r[0]["reasons"])
  def test_news_requires_sector_and_image_evidence(self):
   x=self.base("news");d=self.doc();d["outputs"]={"news":[x],"chief_engineer_advice":[]};_,r=q.gate(d);self.assertIn("news_sector_missing",r[0]["reasons"]);self.assertIn("image_validation_missing",r[0]["reasons"])
+ def test_original_image_requires_all_four_gates(self):
+  x=self.base("news");x["sector"]="energy";a={"schema":"iig.news-image-audit.v1","decision":"ORIGINAL_SOURCE_IMAGE","gates":{k:{"status":"PASS"} for k in ("G1_PROVENANCE","G2_RELEVANCE","G3_RIGHTS","G4_TECHNICAL")}}
+  self.assertEqual(q.validate_image(a,x),[]);a["gates"]["G3_RIGHTS"]["status"]="FAIL";self.assertIn("original_image_four_gate_failure",q.validate_image(a,x))
+ def test_fallback_must_match_sector(self):
+  x=self.base("news");x["sector"]="energy";a={"schema":"iig.news-image-audit.v1","decision":"SAME_SECTOR_IIG_FALLBACK","fallback_sector":"metallurgy"};self.assertIn("image_fallback_sector_mismatch",q.validate_image(a,x))
  def test_duplicate_isolated(self):
   x=self.base();d=self.doc([x,copy.deepcopy(x)]);_,r=q.gate(d);self.assertEqual(r[0]["decision"],"PASS");self.assertIn("duplicate_route_item",r[1]["reasons"])
 if __name__=="__main__":unittest.main()
