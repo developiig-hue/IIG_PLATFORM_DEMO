@@ -2,7 +2,8 @@
 import json, sys, tempfile, unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from news_source_discovery import safe_url, discover_source, discover_registry, atomic_write_json, load_registry, update_seen_ledger, mark_published, filter_already_published, content_identity
+from news_source_discovery import safe_url, discover_source, discover_registry, atomic_write_json, load_registry, update_seen_ledger, mark_published, filter_already_published, content_identity, editorial_filter
+from datetime import datetime, timezone
 
 SRC={'id':'IIG-001','priority':'P1','name':'Example','website_url':'https://example.org/','sector':'energy','discovery':{}}
 RSS=b'<rss><channel><item><title>New project</title><link>https://example.org/news/a</link><pubDate>2026-09-24</pubDate></item></channel></rss>'
@@ -54,6 +55,28 @@ class DiscoveryTests(unittest.TestCase):
         self.assertEqual(result['adapter_attempts'][0]['priority'],'P1')
         self.assertEqual(len(result['items']),1)
         self.assertEqual(len(result['failures']),1)
+
+    def test_source_statuses_are_explicit(self):
+        ok=dict(SRC,id='IIG-002',website_url='https://ok.example.org/')
+        empty=dict(SRC,id='IIG-003',website_url='https://empty.example.org/')
+        bad=dict(SRC,id='IIG-004',website_url='https://bad.example.org/')
+        def fetch(url,**_):
+            if 'bad.example.org' in url: raise OSError('down')
+            if url.endswith('/sitemap.xml'): raise OSError('none')
+            if 'ok.example.org' in url: return b'<a href="/news/power-project">Industrial power project update</a>',url,'text/html'
+            return b'<html><body><a href="/about">About</a></body></html>',url,'text/html'
+        r=discover_registry([ok,empty,bad],fetch=fetch,limit=10,now=datetime(2026,9,28,tzinfo=timezone.utc))
+        self.assertEqual([x['status'] for x in r['source_statuses']],['DISCOVERED','NO_MATCH','ERROR'])
+        self.assertEqual(r['status_counts'],{'DISCOVERED':1,'NO_MATCH':1,'ERROR':1})
+
+    def test_stale_and_low_quality_are_filtered_but_undated_relevant_is_allowed(self):
+        source=SRC
+        stale={'canonical_url':'https://example.org/news/power-old','title':'Industrial power project','summary_unverified':'energy generation','source_published_at_unverified':'2025-01-01'}
+        ok,reason=editorial_filter(source,stale,now=datetime(2026,9,28,tzinfo=timezone.utc))
+        self.assertFalse(ok); self.assertEqual(reason,'STALE')
+        undated={'canonical_url':'https://example.org/news/power-new','title':'Industrial power generation project update','summary_unverified':'energy grid','source_published_at_unverified':''}
+        ok,reason=editorial_filter(source,undated,now=datetime(2026,9,28,tzinfo=timezone.utc))
+        self.assertTrue(ok); self.assertEqual(undated['freshness_status'],'UNDATED_CURRENTNESS_UNKNOWN')
 
     def test_atomic_write_is_location_independent(self):
         with tempfile.TemporaryDirectory() as d:
