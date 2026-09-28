@@ -23,6 +23,8 @@ class ImageRightsTests(unittest.TestCase):
   self.assertFalse(r.rights_ok({"basis":"OPEN_LICENSE","evidence":"Creative Commons license is documented."}))
  def test_unknown_schema_blocks(self):
   a=self.audit();a["schema"]="wrong";d,b,_=r.evaluate(a,{"sectors":{}});self.assertEqual(d,"BLOCK");self.assertIn("audit_contract",b)
+ def test_protocol_declares_forward_pipeline(self):
+  p=Path(__file__).resolve().parents[1]/"IMAGE_RIGHTS_PROTOCOL.md";t=p.read_text();self.assertIn("QUALITY_GATE",t);self.assertIn("ADMIN_REVIEW",t)
  def test_workflow_nonpublishing(self):
   p=Path(__file__).resolve().parents[1]/".github/workflows/image-rights.yml"
   if p.exists():
