@@ -254,22 +254,35 @@ def discover_source(source, fetch=http_fetch, per_source=5):
         if likely_news(u,label): add(candidate(source,u,label,method='html'))
     return out[:per_source],attempts
 
-def discover_registry(sources, fetch=http_fetch, limit=100, max_sources=None, per_source=5, delay_seconds=0):
-    items=[]; failures=[]; attempts=[]; seen=set(); scanned=0
+def discover_registry(sources, fetch=http_fetch, limit=100, max_sources=None, per_source=5, delay_seconds=0, now=None):
+    items=[]; failures=[]; attempts=[]; statuses=[]; seen=set(); scanned=0; filtered_counts={}
     selected=sources[:max_sources] if max_sources else sources
     for source in selected:
         if scanned and delay_seconds > 0: time.sleep(delay_seconds)
         scanned+=1
         try: found,log=discover_source(source,fetch=fetch,per_source=per_source)
         except Exception as e: found=[]; log=[{'method':'source','status':'ERROR','reason':type(e).__name__}]
+        accepted=[]
+        for item in found:
+            ok,reason=editorial_filter(source,item,now=now)
+            if ok: accepted.append(item)
+            else: filtered_counts[reason]=filtered_counts.get(reason,0)+1
         attempts.append({'source_id':source['id'],'priority':source['priority'],'attempts':log})
-        if not found: failures.append({'source_id':source['id'],'priority':source['priority'],'status':'NO_MATCH_OR_ERROR'})
-        for c in found:
-            if c['canonical_url'] in seen: continue
-            seen.add(c['canonical_url']); items.append(c)
+        any_ok=any(a.get('status')=='OK' for a in log)
+        if accepted: status='DISCOVERED'
+        elif any_ok: status='NO_MATCH'
+        else: status='ERROR'
+        status_row={'source_id':source['id'],'priority':source['priority'],'status':status,'discovered':len(accepted)}
+        if status=='ERROR':
+            status_row['problem']='; '.join(sorted(set(a.get('reason','ERROR') for a in log if a.get('status')=='ERROR')))
+            failures.append(status_row.copy())
+        statuses.append(status_row)
+        for item in accepted:
+            if item['canonical_url'] in seen: continue
+            seen.add(item['canonical_url']); items.append(item)
             if len(items)>=limit: break
         if len(items)>=limit: break
-    return {'schema':'iig.discovery.v2','generated_at':datetime.now(timezone.utc).isoformat(),'registry_sources':len(sources),'sources_scanned':scanned,'items':items,'failures':failures,'adapter_attempts':attempts,'auto_publish':False,'publish_authority':'ADMIN_ONLY','note':'Discovery only. Verify article body, dates, project status and every material factual claim independently before editorial use.'}
+    return {'schema':'iig.discovery.v3','generated_at':datetime.now(timezone.utc).isoformat(),'registry_sources':len(sources),'sources_scanned':scanned,'items':items,'source_statuses':statuses,'status_counts':{k:sum(1 for s in statuses if s['status']==k) for k in ('DISCOVERED','NO_MATCH','ERROR')},'filtered_counts':filtered_counts,'failures':failures,'adapter_attempts':attempts,'auto_publish':False,'publish_authority':'ADMIN_ONLY','note':'Discovery only. Verify article body, dates, project status and every material factual claim independently before editorial use.'}
 
 def atomic_write_json(path,data):
     path=Path(path); path.parent.mkdir(parents=True,exist_ok=True); tmp=path.with_name(path.name+'.tmp')
