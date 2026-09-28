@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RECIPIENT_PROVIDER: runtime_json
-      RECIPIENTS_RUNTIME_JSON: '[{"recipient_id":"acceptance","email":"acceptance@example.com","status":"ACTIVE","language":"EN"}]'
+      RECIPIENTS_RUNTIME_JSON: '[{"recipient_id":"acceptance","email":"acceptance@example.com","status":"ACTIVE","language":"EN","unsubscribe_url":"https://example.com/unsubscribe/acceptance"}]'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
