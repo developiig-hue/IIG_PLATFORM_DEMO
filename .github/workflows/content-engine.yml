@@ -1,5 +1,11 @@
 name: IIG Moderated Content Engine
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/content_engine.py'
+      - 'content/moderation-policy.json'
+      - '.github/workflows/content-engine.yml'
   schedule:
     # Every Monday 06:15 UTC. Generation only; never publication.
     - cron: '15 6 * * 1'
