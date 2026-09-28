@@ -1,4 +1,4 @@
-name: Build approved Digest PDF
+name: Build Digest PDF QA
 on:
   push:
     branches: [main, feature/scheduler-orchestration-production]
@@ -11,27 +11,36 @@ on:
       - '.github/workflows/build-digest-pdf.yml'
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
-  render-and-lock:
+  render-and-qa:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Install deterministic renderer
         run: |
-          pip install playwright pillow
+          pip install playwright pypdf
           playwright install --with-deps chromium
-      - name: Render approved web Digest to PDF
+      - name: Render current approved content to PDF
         run: python scripts/build_digest_pdf.py
-      - name: PDF QA
+      - name: PDF structural QA
         run: |
-          test -s digest/IIG-Monthly-Digest-2026-09.pdf
-          test $(stat -c%s digest/IIG-Monthly-Digest-2026-09.pdf) -gt 100000
+          python - <<'PY'
+          from pypdf import PdfReader
+          p='digest/IIG-Monthly-Digest-2026-09.pdf'
+          r=PdfReader(p)
+          assert len(r.pages)==2, len(r.pages)
+          text='\n'.join((x.extract_text() or '') for x in r.pages)
+          assert 'file://' not in text
+          assert '15.09.2026, 14:51' not in text
+          assert '9 перевірених публікацій' in text
+          links=sum(len(x.get('/Annots',[])) for x in r.pages)
+          assert links>=19, links
+          print('DIGEST_PDF_QA_PASS',{'pages':len(r.pages),'links':links})
+          PY
       - name: Retain PDF for visual QA
         uses: actions/upload-artifact@v4
         with:
@@ -39,13 +48,3 @@ jobs:
           path: digest/IIG-Monthly-Digest-2026-09.pdf
           if-no-files-found: error
           retention-days: 7
-      - name: Commit approved PDF artifact
-        run: |
-          git config user.name 'IIG Digest Builder'
-          git config user.email 'develop.iig@gmail.com'
-          git add digest/IIG-Monthly-Digest-2026-09.pdf
-          git diff --cached --quiet && exit 0
-          git commit -m 'STEP 25: publish approved September Digest PDF artifact'
-          git push origin HEAD:main
-# This workflow only materializes the PDF explicitly approved in this admin session.
-# Monthly automated content generation remains READY_FOR_REVIEW and cannot invoke this workflow automatically.
