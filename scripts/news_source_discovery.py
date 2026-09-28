@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]; UA=os.getenv("IIG_DISCOVERY_UA","IIG-N
 MAX_BYTES=700000; MAX_LINKS=80
 HINT=re.compile(r"(news|press|media|release|project|invest|energy|power|plant|factory|construction|commission|capacity|mw|mwh|solar|wind|battery|bess|chp|hydrogen|steel|data.?cent|chemical|pharma|logistics|agri|waste|новин|прес|проєкт|проект|інвест|енерг)",re.I)
 NOISE=re.compile(r"(privacy|cookie|career|jobs|contact|about|login|register|newsletter|tag/|category/|author/)",re.I)
-URLDATE=re.compile(r"/(20\\d{2})[/-](0?[1-9]|1[0-2])(?:[/-]([0-3]?\\d))?")
+URLDATE=re.compile(r"/(20\d{2})[/-](0?[1-9]|1[0-2])(?:[/-]([0-3]?\d))?")
 def safe_url(u):
     try:
         p=urllib.parse.urlparse(u); h=(p.hostname or "").lower()
