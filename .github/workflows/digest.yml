@@ -53,7 +53,7 @@ jobs:
             item={'title':title,'type':'NEWS' if route=='news' else 'CHIEF_ENGINEER_ADVICE'}
             h=hashlib.sha256(json.dumps(item,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
             approval={'item_sha256':h,'route':route,'decision':'APPROVED','reviewer':'CI Acceptance Fixture','reason':'Isolated Robot 6 contract test only','decided_at':'2026-09-28T00:00:00+00:00','upstream_artifact':'acceptance-fixture'}
-            items.append({'item_sha256':h,'route':route,'item':item,'selected_image':image,'admin_approval':approval,'publication_authorized':True,'next':'DIGEST'})
+            items.append({'item_sha256':h,'route':route,'item':item,'selected_image':image,'admin_approval':approval,'public_slug':('acceptance-news-' if route=='news' else 'acceptance-advice-')+h[:10],'publication_authorized':True,'next':'DIGEST'})
           json.dump({'schema':'iig.publication-handoff.v1','acceptance_fixture':True,'items':items},open('content/publication/approved-content.json','w',encoding='utf-8'),ensure_ascii=False,indent=2)
           PY
       - name: Build and verify Digest Robot
