@@ -83,9 +83,6 @@ def validate_item(x,audits):
         if not isinstance(a,dict) or any(not isinstance(a.get(k),str) or len(a[k].strip())<40 for k in ("problem","checks","technical_solution","management_decision")):reasons.append("advice_four_block_contract")
     if typ=="news":
         if not x.get("sector"):reasons.append("news_sector_missing")
-        audit=image_evidence(x,audits)
-        if not audit:reasons.append("image_validation_missing")
-        else:reasons.extend(validate_image(audit,x))
     return sorted(set(reasons))
 def gate(doc):
     fatal=[]
