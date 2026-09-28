@@ -27,13 +27,18 @@ def safe_https(v):
         return True
     except Exception:return False
 def latest_input():
-    rows=[]
-    for p in QUEUE.glob("weekly-*.json"):
-        try:d=load(p)
-        except ValueError:continue
-        if d.get("schema")==IN_SCHEMA:rows.append((d.get("generated_at",""),p,d))
-    if not rows:raise SystemExit("QUALITY_GATE_BLOCKED: no Content Engine v3 artifact")
-    return max(rows,key=lambda x:x[0])[1:]
+    rp=ROOT/"content/content-engine-report.json"
+    if not rp.is_file():raise SystemExit("QUALITY_GATE_BLOCKED: missing Content Engine report")
+    r=load(rp)
+    if r.get("schema")!="iig.content-engine-report.v1" or r.get("status")!="PASS":raise SystemExit("QUALITY_GATE_BLOCKED: invalid Content Engine report")
+    rel=r.get("artifact")
+    if not isinstance(rel,str) or not rel:raise SystemExit("QUALITY_GATE_BLOCKED: missing Content Engine artifact reference")
+    p=(ROOT/rel).resolve();root=QUEUE.resolve()
+    if root not in p.parents:raise SystemExit("QUALITY_GATE_BLOCKED: unsafe Content Engine artifact path")
+    if not p.is_file():raise SystemExit("QUALITY_GATE_BLOCKED: referenced Content Engine artifact missing")
+    d=load(p)
+    if r.get("kind") and d.get("kind")!=r["kind"]:raise SystemExit("QUALITY_GATE_BLOCKED: report/artifact kind mismatch")
+    return p,d
 def image_audits():
     out=[]
     for p in IMG.glob("*.json"):
@@ -84,7 +89,9 @@ def gate(doc):
             key=(x.get("canonical_url",""),expected) if isinstance(x,dict) else ("",expected)
             if key in seen:reasons.append("duplicate_route_item")
             seen.add(key)
-            results.append({"route":route,"index":i,"title":x.get("title") if isinstance(x,dict) else None,"canonical_url":x.get("canonical_url") if isinstance(x,dict) else None,"decision":"PASS" if not reasons else "BLOCK","reasons":sorted(set(reasons)),"admin_eligible":not reasons})
+            payload=x if isinstance(x,dict) else None
+            integrity=hashlib.sha256(json.dumps(payload,ensure_ascii=False,sort_keys=True,separators=(",",":")).encode()).hexdigest() if payload is not None else None
+            results.append({"route":route,"index":i,"title":x.get("title") if isinstance(x,dict) else None,"canonical_url":x.get("canonical_url") if isinstance(x,dict) else None,"decision":"PASS" if not reasons else "BLOCK","reasons":sorted(set(reasons)),"admin_eligible":not reasons,"item_sha256":integrity,"item":payload})
     return [],results
 def run():
     p,doc=latest_input();fatal,results=gate(doc)
