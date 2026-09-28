@@ -1,0 +1,67 @@
+name: IIG Scheduler Orchestration Production
+on:
+  push:
+    branches: [main, feature/scheduler-orchestration-production]
+    paths:
+      - 'scripts/scheduler_orchestration.py'
+      - 'tests/test_scheduler_orchestration.py'
+      - 'SCHEDULER_ORCHESTRATION_PROTOCOL.md'
+      - '.github/workflows/scheduler-orchestration.yml'
+      - 'content/public-news.json'
+      - 'content/public-advice.json'
+      - 'forms.html'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: scheduler-orchestration-${{ github.sha }}
+  cancel-in-progress: true
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Full robot regression
+        run: python -m unittest tests.test_content_engine tests.test_quality_gate tests.test_image_rights_robot tests.test_admin_review tests.test_digest_robot tests.test_scheduler_orchestration
+      - name: Build isolated approved Digest from actually published IIG slugs
+        run: |
+          python - <<'PY'
+          import hashlib,json,os
+          base='https://developiig-hue.github.io/IIG_PLATFORM_DEMO/'
+          news=json.load(open('content/public-news.json',encoding='utf-8'))['items']
+          advice=json.load(open('content/public-advice.json',encoding='utf-8'))['items']
+          n=next(x for x in news if x.get('status')=='APPROVED' and x.get('admin_approved') is True)
+          a=advice[0]
+          d={'schema':'iig.digest.v1','generated_at':'2026-09-28T00:00:00+00:00','status':'READY_FOR_ADMIN_APPROVAL','publication_authority':'ADMIN_ONLY','auto_send':False,'source':'ROBOT7_ACCEPTANCE_PUBLISHED_CONTENT','items':[{'route':'news','title':'Published NEWS preflight','url':base+'article.html?id='+n['slug']},{'route':'chief_engineer_advice','title':'Published Advice preflight','url':base+'advice-article.html?id='+a['slug']}],'ctas':{'submit_project':base+'forms.html#project','subscribe_digest':base+'forms.html#subscribe','site':base},'pipeline':{'robot':'DIGEST','robot_number':6,'previous':'ADMIN_REVIEW_PUBLICATION','next':'SCHEDULER_ORCHESTRATION','robot_count':7}}
+          h=hashlib.sha256(json.dumps(d,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+          approval={'schema':'iig.digest-approval.v1','digest_sha256':h,'decision':'APPROVED','reviewer':'CI Acceptance Fixture','reason':'Robot 7 isolated preflight against already-public IIG content','approved_at':'2026-09-28T00:00:00+00:00','delivery_authorized':True,'next':'SCHEDULER_ORCHESTRATION'}
+          os.makedirs('content/digest',exist_ok=True)
+          json.dump({'schema':'iig.approved-digest.v1','acceptance_fixture':True,'digest':d,'approval':approval},open('content/digest/approved-digest.json','w',encoding='utf-8'),ensure_ascii=False,indent=2)
+          print('ROBOT7_ACCEPTANCE_FIXTURE',{'news_slug':n['slug'],'advice_slug':a['slug'],'digest_sha256':h})
+          PY
+      - name: Live publication and URL preflight
+        run: python scripts/scheduler_orchestration.py preflight
+      - name: Schedule once and prove duplicate protection
+        run: |
+          python scripts/scheduler_orchestration.py schedule --send-at 2026-09-29T09:00:00+02:00
+          if python scripts/scheduler_orchestration.py schedule --send-at 2026-09-29T10:00:00+02:00; then echo 'Duplicate delivery was wrongly accepted'; exit 1; else echo 'ORCHESTRATION_DUPLICATE_BLOCK_PASS'; fi
+      - name: Acceptance invariants
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('content/orchestration/preflight.json',encoding='utf-8'))
+          j=json.load(open('content/orchestration/delivery-job.json',encoding='utf-8'))
+          assert p['status']=='PASS' and p['delivery_authorized'] is True
+          assert len(p['published_items'])==2 and all(x['published'] for x in p['published_items'])
+          assert len(p['live_urls'])==5 and all(x['ok'] and 200<=x['status']<400 for x in p['live_urls'])
+          assert j['delivery_adapter_required'] is True and j['job']['state']=='SCHEDULED'
+          print('ORCHESTRATION_ACCEPTANCE_PASS',{'published_items':2,'live_urls':5,'duplicate_protection':True,'state':'SCHEDULED'})
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: orchestration-audit-${{ github.sha }}
+          path: content/orchestration/
+          retention-days: 30
