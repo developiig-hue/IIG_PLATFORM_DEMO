@@ -1,0 +1,29 @@
+{
+  "schema": "iig.news-image-audit.v1",
+  "slug": "google-finland-ai-grid-2026",
+  "source_page": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/google-ai-commitment-to-finland/",
+  "checked_at": "2026-09-28",
+  "candidate_description": "Official Google article hero/editorial image showing the Finland investment announcement event.",
+  "gates": {
+    "G1_PROVENANCE": {
+      "status": "PASS",
+      "evidence": "Image is embedded in the verified official Google source article."
+    },
+    "G2_RELEVANCE": {
+      "status": "PASS",
+      "evidence": "The image accompanies the exact €13bn Finland AI infrastructure announcement."
+    },
+    "G3_RIGHTS": {
+      "status": "FAIL",
+      "evidence": "No explicit reusable license/permission for republication by IIG was established during this moderation pass. Publication on the source page is not treated as permission."
+    },
+    "G4_TECHNICAL": {
+      "status": "NOT_EVALUATED",
+      "evidence": "Rights gate already blocks republication; remote asset is not promoted into the public registry."
+    }
+  },
+  "decision": "SAME_SECTOR_IIG_FALLBACK",
+  "fallback_sector": "datacenters",
+  "public_image_mutation": false,
+  "note": "This is the intended safe-path demonstration: original-source candidate discovered and relevant, but fallback remains because all four gates did not pass."
+}
