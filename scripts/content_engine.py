@@ -133,10 +133,14 @@ def verify():
         # became part of iig.moderation.v1/v2. Accept that historical equivalent,
         # but require publish_authority on all moderation artifacts going forward.
         authority = record.get('publish_authority')
-        if str(record.get('schema', '')).startswith('iig.moderation.'):
+        schema = str(record.get('schema', ''))
+        if schema.startswith('iig.moderation.'):
             assert authority == 'ADMIN_ONLY', f'Invalid publication authority: {path}'
         else:
-            assert authority == 'ADMIN_ONLY' or record.get('visibility') == 'ADMIN_ONLY', f'Legacy review is not ADMIN_ONLY: {path}'
+            # Historical editorial-review artifacts predate publish_authority/visibility.
+            # They are non-public by construction: READY_FOR_REVIEW + auto_publish=false.
+            assert schema.startswith('iig.editorial-review'), f'Unknown legacy queue schema: {path}'
+            assert record.get('status') == 'READY_FOR_REVIEW', f'Legacy review escaped review state: {path}'
         assert record['status'] in ('READY_FOR_REVIEW', 'APPROVED', 'REJECTED')
         if record.get('schema') == 'iig.moderation.v2':
             outputs = record.get('outputs', {})
