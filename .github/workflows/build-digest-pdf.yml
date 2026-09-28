@@ -41,8 +41,10 @@ jobs:
           assert '6 регуляторних новин' in text
           assert 'ЗАКОНОДАВСТВО ТА РЕГУЛЮВАННЯ ЕНЕРГЕТИКИ' in text
           links=sum(len(x.get('/Annots',[])) for x in r.pages)
-          assert links>=26, links
-          print('DIGEST_PDF_QA_PASS',{'pages':len(r.pages),'links':links})
+          assert links>=30, links
+          assert text.count('РОЗМІСТИТИ ПРОЄКТ')>=2
+          assert text.count('ПІДПИСАТИСЯ НА ДАЙДЖЕСТ')>=2
+          print('DIGEST_PDF_QA_PASS',{'pages':len(r.pages),'links':links,'cta_pairs':2})
           PY
       - name: Retain PDF for visual QA
         uses: actions/upload-artifact@v4
