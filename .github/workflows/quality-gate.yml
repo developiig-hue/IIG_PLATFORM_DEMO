@@ -14,7 +14,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: iig-quality-gate-${{ github.ref }}
+  group: iig-quality-gate-${{ github.sha }}
   cancel-in-progress: true
 jobs:
   quality-gate:
