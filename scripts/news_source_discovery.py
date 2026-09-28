@@ -116,6 +116,21 @@ def discover(src,timeout,now,days):
     r["status"]="DISCOVERED" if r["candidates"] else ("NO_MATCH" if home is not None else "ERROR")
     if r["status"]=="ERROR":r["problem"]="all access methods failed"
     r["elapsed_seconds"]=round(time.monotonic()-start,2);return r
+def external_search(item,timeout):
+    """Mandatory outside-registry search; supplementary leads are not automatic factual confirmation."""
+    q=urllib.parse.quote('"' + item["title"][:180] + '"')
+    u="https://news.google.com/rss/search?q="+q+"&hl=en&gl=US&ceid=US:en"
+    try:
+        st,final,body=fetch(u,timeout,"application/rss+xml,application/xml,text/xml")
+        root=ET.fromstring(body);out=[]
+        for n in root.findall(".//item")[:8]:
+            title=(n.findtext("title") or "").strip();link=(n.findtext("link") or "").strip();src=n.find("source")
+            publisher=(src.text or "").strip() if src is not None else ""
+            if link and safe_url(link):out.append({"title":title,"url":link,"publisher":publisher,"discovery_method":"EXTERNAL_NEWS_SEARCH"})
+            if len(out)>=3:break
+        return {"attempted":True,"status":"FOUND" if out else "NO_MATCH","leads":out}
+    except Exception as e:return {"attempted":True,"status":"ERROR","leads":[],"error":f"{type(e).__name__}: {str(e)[:120]}"}
+
 def dedup(results):
     seen=set();out=[];rejected=0
     for r in results:
@@ -130,9 +145,18 @@ def main():
     now=dt.datetime.now(dt.timezone.utc);results=[]
     for batch in (p1,p2):
         with concurrent.futures.ThreadPoolExecutor(max_workers=z.workers) as ex:results.extend(ex.map(lambda s:discover(s,z.timeout,now,z.max_age_days),batch))
-    items,rejected=dedup(results);counts={k:sum(x["status"]==k for x in results) for k in ("DISCOVERED","NO_MATCH","ERROR")}
-    report={"schema":"iig.discovery-report.v2","run_type":"FULL_DISCOVERY","registry_uri":REGISTRY_URI,"run_finished_at":dt.datetime.now(dt.timezone.utc).isoformat(),"registry_total":260,"checked_total":260,"p1_checked":160,"p2_checked":100,"accessible":260-counts["ERROR"],"unavailable":counts["ERROR"],"discovered_sources":counts["DISCOVERED"],"no_match_sources":counts["NO_MATCH"],"error_sources":counts["ERROR"],"publications_found":len(items),"rejected":rejected,"news_output":0,"chief_engineer_advice_output":0,"enrichment_gate_passed":False,"pipeline_ready":True,"external_enrichment_required_for_routed_items":True,"sources":results}
+    items,rejected=dedup(results)
+    # All 260 are checked; newest 24 candidates are the bounded handoff window.
+    # Each handoff candidate receives the required search outside the 260 registry.
+    for item in items[:24]:
+        item["supplementary_search"]=external_search(item,z.timeout)
+        item["handoff_ready"]=bool(item["supplementary_search"]["leads"])
+        item["enrichment_status"]="SUPPLEMENTARY_LEADS_FOUND" if item["handoff_ready"] else "NEEDS_RESEARCH"
+    for item in items[24:]:item["handoff_ready"]=False;item["enrichment_status"]="NOT_SELECTED_FOR_HANDOFF"
+    handoff=[x for x in items[:24] if x["handoff_ready"]]
+    counts={k:sum(x["status"]==k for x in results) for k in ("DISCOVERED","NO_MATCH","ERROR")}
+    report={"schema":"iig.discovery-report.v2","run_type":"FULL_DISCOVERY","registry_uri":REGISTRY_URI,"run_finished_at":dt.datetime.now(dt.timezone.utc).isoformat(),"registry_total":260,"checked_total":260,"p1_checked":160,"p2_checked":100,"accessible":260-counts["ERROR"],"unavailable":counts["ERROR"],"discovered_sources":counts["DISCOVERED"],"no_match_sources":counts["NO_MATCH"],"error_sources":counts["ERROR"],"publications_found":len(items),"rejected":rejected,"news_output":0,"chief_engineer_advice_output":0,"handoff_candidates":len(handoff),"external_search_attempted":min(24,len(items)),"enrichment_gate_passed":bool(handoff) and all(x["supplementary_search"]["attempted"] and x["supplementary_search"]["leads"] for x in handoff),"pipeline_ready":True,"external_enrichment_required_for_routed_items":True,"sources":results}
     rp=ROOT/z.report;rp.parent.mkdir(parents=True,exist_ok=True);rp.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    cp=ROOT/z.candidates;cp.parent.mkdir(parents=True,exist_ok=True);cp.write_text(json.dumps({"schema":"iig.discovery-candidates.v1","generated_at":report["run_finished_at"],"items":items},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    cp=ROOT/z.candidates;cp.parent.mkdir(parents=True,exist_ok=True);cp.write_text(json.dumps({"schema":"iig.discovery-candidates.v1","generated_at":report["run_finished_at"],"items":items,"handoff_items":handoff},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("FULL_DISCOVERY_COMPLETE",json.dumps({k:report[k] for k in ("checked_total","p1_checked","p2_checked","discovered_sources","no_match_sources","error_sources","publications_found","rejected")}))
 if __name__=="__main__":main()
