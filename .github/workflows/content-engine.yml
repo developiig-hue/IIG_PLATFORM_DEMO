@@ -6,6 +6,9 @@ on:
       - 'scripts/content_engine.py'
       - 'content/moderation-policy.json'
       - 'content/candidates/**'
+      - 'content/source-registry.json'
+      - 'content/discovery-report.json'
+      - 'scripts/verify_full_discovery.py'
       - '.github/workflows/content-engine.yml'
   schedule:
     # Every Monday 06:15 UTC. Generation only; never publication.
@@ -38,6 +41,13 @@ jobs:
           elif [ "$(date -u +%d)" = "01" ] && [ "$(date -u +%H%M)" = "0630" ]; then MODE=monthly;
           else MODE=weekly; fi
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+      - name: Verify full 260-source Discovery when production report is present
+        run: |
+          if [ -f content/discovery-report.json ]; then
+            python scripts/verify_full_discovery.py
+          else
+            echo "E2E_TEST_ONLY: no full Discovery report; FULL_DISCOVERY_PASS is not claimed"
+          fi
       - name: Generate NEWS + CHIEF ENGINEER ADVICE READY_FOR_REVIEW outputs
         run: python scripts/content_engine.py "${{ steps.mode.outputs.mode }}"
       - name: Verify seven-robot architecture, dual-output routing and ADMIN_ONLY gate
