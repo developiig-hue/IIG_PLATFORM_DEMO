@@ -3,7 +3,7 @@ from pathlib import Path
 SPEC=importlib.util.spec_from_file_location("so",Path(__file__).parents[1]/"scripts/scheduler_orchestration.py");s=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(s)
 class SchedulerTests(unittest.TestCase):
  def setUp(self):
-  self.t=tempfile.TemporaryDirectory();self.old_safe=s.safe_public_host;s.safe_public_host=lambda h:True;s.ROOT=Path(self.t.name);s.IN=s.ROOT/"content/digest/approved-digest.json";s.OUT=s.ROOT/"content/orchestration";s.NEWS=s.ROOT/"content/public-news.json";s.ADVICE=s.ROOT/"content/public-advice.json";s.IN.parent.mkdir(parents=True);s.NEWS.parent.mkdir(parents=True,exist_ok=True)
+  self.t=tempfile.TemporaryDirectory();self.old_safe=s.safe_public_host;s.safe_public_host=lambda h:True;s.ROOT=Path(self.t.name);s.IN=s.ROOT/"content/digest/approved-digest.json";s.OUT=s.ROOT/"content/orchestration";s.NEWS=s.ROOT/"content/public-news.json";s.ADVICE=s.ROOT/"content/public-advice.json";s.DIGEST_PDF=s.ROOT/"digest/IIG-Monthly-Digest-2026-09.pdf";s.DIGEST_PDF.parent.mkdir(parents=True);s.DIGEST_PDF.write_bytes(b"x"*100001);s.IN.parent.mkdir(parents=True);s.NEWS.parent.mkdir(parents=True,exist_ok=True)
   s.NEWS.write_text(json.dumps({"schema":"iig.public-news.v1","items":[{"slug":"published-news","status":"APPROVED","admin_approved":True}]}));s.ADVICE.write_text(json.dumps({"schema":"iig.advice.v1","items":[{"slug":"published-advice"}]}))
  def tearDown(self):s.safe_public_host=self.old_safe;self.t.cleanup()
  def seed(self,slug="published-news",route="news",tamper=False):
