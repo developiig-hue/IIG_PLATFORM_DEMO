@@ -73,8 +73,8 @@
             "en": "Problem"
           },
           "body": {
-            "ua": "Вибір лише за MWh не визначає, чи система витримає необхідний режим.",
-            "en": "Selecting by MWh alone does not establish whether the system can deliver the duty."
+            "ua": "Вибір лише за MWh не визначає, чи система витримає необхідний режим. Рішення повинно містити гарантійні точки на початку та наприкінці строку, умови температури, доступність і вартість augmentation, щоб порівняння постачальників було еквівалентним.",
+            "en": "Selecting by MWh alone does not establish whether the system can deliver the duty. The decision should include beginning- and end-of-term warranty points, temperature conditions, availability and augmentation cost so supplier bids are comparable."
           }
         },
         {
@@ -104,7 +104,7 @@
           },
           "body": {
             "ua": "Порівнюйте пропозиції за гарантованою корисною ємністю та вартістю життєвого циклу, а не тільки ціною контейнера.",
-            "en": "Compare bids by guaranteed usable capacity and lifecycle cost, not container price alone."
+            "en": "Compare bids by guaranteed usable capacity and lifecycle cost, not container price alone. The decision should include beginning- and end-of-term warranty points, temperature conditions, availability and augmentation cost so supplier bids are comparable."
           }
         }
       ]
@@ -127,8 +127,8 @@
             "en": "Problem"
           },
           "body": {
-            "ua": "Паспортна потужність генератора не дорівнює дозволеній потужності відпуску в мережу.",
-            "en": "Generator nameplate capacity is not the same as permitted grid export."
+            "ua": "Паспортна потужність генератора не дорівнює дозволеній потужності відпуску в мережу. Остаточне рішення має спиратися на письмово підтверджений grid scope, відповідальних за кожну межу та інтегрований графік мережевих робіт з EPC.",
+            "en": "Generator nameplate capacity is not the same as permitted grid export. The final decision should rely on a written grid scope, named owners for every interface and an integrated network/EPC schedule."
           }
         },
         {
@@ -158,7 +158,7 @@
           },
           "body": {
             "ua": "Не фіксуйте остаточний EPC CAPEX та COD, поки вартість мережевих робіт і дозвільні залежності не визначені.",
-            "en": "Do not lock final EPC CAPEX and COD until grid scope and permitting dependencies are defined."
+            "en": "Do not lock final EPC CAPEX and COD until grid scope and permitting dependencies are defined. The final decision should rely on a written grid scope, named owners for every interface and an integrated network/EPC schedule."
           }
         }
       ]
@@ -181,8 +181,8 @@
             "en": "Problem"
           },
           "body": {
-            "ua": "Без достовірної базової лінії економію неможливо відокремити від зміни обсягу виробництва.",
-            "en": "Without a reliable baseline, savings cannot be separated from production changes."
+            "ua": "Без достовірної базової лінії економію неможливо відокремити від зміни обсягу виробництва. Інвестиційний gate повинен містити цільовий KPI, метод M&V, допустиму похибку та строк перевірки; без цього заявлену економію не можна приймати як результат.",
+            "en": "Without a reliable baseline, savings cannot be separated from production changes. The investment gate should state the target KPI, M&V method, allowable uncertainty and verification period; otherwise claimed savings cannot be accepted as a result."
           }
         },
         {
@@ -212,7 +212,7 @@
           },
           "body": {
             "ua": "Запускайте спочатку заходи з перевірюваним ефектом і мінімальним впливом на безперервність виробництва.",
-            "en": "Start with verifiable measures that minimize disruption to production."
+            "en": "Start with verifiable measures that minimize disruption to production. The investment gate should state the target KPI, M&V method, allowable uncertainty and verification period; otherwise claimed savings cannot be accepted as a result."
           }
         }
       ]
@@ -235,8 +235,8 @@
             "en": "Problem"
           },
           "body": {
-            "ua": "Газовий двигун і батарея виконують різні функції; додавання BESS не гарантує окупності.",
-            "en": "A gas engine and battery serve different functions; adding BESS does not guarantee payback."
+            "ua": "Газовий двигун і батарея виконують різні функції; додавання BESS не гарантує окупності. Перед award затвердьте єдину модель dispatch і KPI для електрики, тепла, газу та резерву, щоб гарантії CHP, BESS і EMS не суперечили одна одній.",
+            "en": "A gas engine and battery serve different functions; adding BESS does not guarantee payback. Before award approve one dispatch model and KPIs for electricity, heat, gas and reserve so CHP, BESS and EMS guarantees do not conflict."
           }
         },
         {
@@ -289,8 +289,8 @@
             "en": "Problem"
           },
           "body": {
-            "ua": "Неповні вихідні дані перетворюють порівняння цін на порівняння різних обсягів робіт.",
-            "en": "Incomplete inputs turn price comparisons into comparisons of different scopes."
+            "ua": "Неповні вихідні дані перетворюють порівняння цін на порівняння різних обсягів робіт. Рішення про award приймайте лише після техніко-комерційної нормалізації, закриття критичних deviations і письмового підтвердження гарантій, interfaces та acceptance tests.",
+            "en": "Incomplete inputs turn price comparisons into comparisons of different scopes. Make the award decision only after technical-commercial normalisation, closure of critical deviations and written confirmation of guarantees, interfaces and acceptance tests."
           }
         },
         {
@@ -320,7 +320,7 @@
           },
           "body": {
             "ua": "Порівнюйте приведену ціну за однаковим обсягом, ризиками, гарантіями та строками; окремо покажіть exclusions.",
-            "en": "Compare normalized prices for equal scope, risk, warranties and timing; show exclusions separately."
+            "en": "Compare normalized prices for equal scope, risk, warranties and timing; show exclusions separately. Make the award decision only after technical-commercial normalisation, closure of critical deviations and written confirmation of guarantees, interfaces and acceptance tests."
           }
         }
       ]
