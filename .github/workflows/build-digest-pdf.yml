@@ -33,12 +33,15 @@ jobs:
           p='digest/IIG-Monthly-Digest-2026-09.pdf'
           r=PdfReader(p)
           assert len(r.pages)==2, len(r.pages)
-          text='\n'.join((x.extract_text() or '') for x in r.pages)
+          text='
+'.join((x.extract_text() or '') for x in r.pages)
           assert 'file://' not in text
           assert '15.09.2026, 14:51' not in text
-          assert '9 перевірених публікацій' in text
+          assert 'основних новин' in text
+          assert 'регуляторних новин' in text
+          assert 'ЗАКОНОДАВСТВО ТА РЕГУЛЮВАННЯ ЕНЕРГЕТИКИ' in text
           links=sum(len(x.get('/Annots',[])) for x in r.pages)
-          assert links>=19, links
+          assert links>=25, links
           print('DIGEST_PDF_QA_PASS',{'pages':len(r.pages),'links':links})
           PY
       - name: Retain PDF for visual QA
