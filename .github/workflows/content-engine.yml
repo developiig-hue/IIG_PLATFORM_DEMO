@@ -14,6 +14,7 @@ on:
       - 'tests/test_content_engine.py'
       - 'scripts/verify_content_engine.py'
       - 'NEWS_ROBOT_SOURCE_PROTOCOL.md'
+      - 'CONTENT_ENGINE_PROTOCOL.md'
       - '.github/workflows/content-engine.yml'
   schedule:
     # Every Monday 06:15 UTC. Generation only; never publication.
