@@ -67,7 +67,7 @@ jobs:
           import json
           from pathlib import Path
           x=json.loads(Path('/tmp/iig-live-discovery.json').read_text())
-          assert x['schema']=='iig.discovery.v2'
+          assert x['schema']=='iig.discovery.v3'
           if "${{ github.event_name }}" == "push" or "${{ inputs.full_260 }}" == "true":
               assert x['sources_scanned'] == 260, x['sources_scanned']
           else:
@@ -89,17 +89,22 @@ jobs:
               by_method[i['discovery_method']]=by_method.get(i['discovery_method'],0)+1
               by_priority[i['priority']]=by_priority.get(i['priority'],0)+1
           failure_ids=[f['source_id'] for f in x['failures']]
+          assert sum(x['status_counts'].values()) == x['sources_scanned']
+          assert all(s['status'] in ('DISCOVERED','NO_MATCH','ERROR') for s in x['source_statuses'])
           print('IIG_ACCEPTANCE_SUMMARY='+json.dumps({'sources_scanned':x['sources_scanned'],'items':len(items),'failures':len(x['failures']),'failure_ids':failure_ids,'methods':methods,'items_by_method':by_method,'items_by_priority':by_priority,'quality':{'empty_title':empty_title,'missing_date':missing_date,'short_title':short_title}},sort_keys=True))
           Path('/tmp/iig-live-summary.json').write_text(json.dumps({'sources_scanned':x['sources_scanned'],'items':len(items),'failures':len(x['failures']),'failure_ids':failure_ids,'methods':methods,'items_by_method':by_method,'items_by_priority':by_priority,'quality':{'empty_title':empty_title,'missing_date':missing_date,'short_title':short_title}},indent=2))
           PY
       - name: Build administrator-approved QA demo
-        run: python scripts/build_news_demo.py --input /tmp/iig-live-discovery.json --output news-robot-live-demo.html --max-items 36
+        run: |
+          python scripts/build_news_demo.py --input /tmp/iig-live-discovery.json --output news-robot-live-demo.html --max-items 36
+          python scripts/build_news_demo.py --input /tmp/iig-live-discovery.json --output iig-home-news-demo.html --max-items 5 --home-template index.html
       - name: Persist QA demo and discovery ledger on feature branch
         if: github.event_name == 'push'
         run: |
           git config user.name "iig-news-robot"
           git config user.email "actions@users.noreply.github.com"
-          git add news-robot-live-demo.html content/news-discovery-ledger.json
+          cp /tmp/iig-live-discovery.json content/discovered-candidates.json
+          git add news-robot-live-demo.html iig-home-news-demo.html content/discovered-candidates.json content/news-discovery-ledger.json
           if git diff --cached --quiet; then
             echo "No QA demo changes to persist"
           else
