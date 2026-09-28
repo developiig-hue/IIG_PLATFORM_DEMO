@@ -11,7 +11,7 @@ Robot **4 of 7**. Its job is to produce auditable image-selection evidence; it n
 6. Integration — robot identifies itself as IMAGE_RIGHTS #4 and hands evidence to QUALITY_GATE within the fixed seven-robot architecture.
 7. Admin control — `ADMIN_ONLY`, `auto_publish=false`; BLOCK is never Quality-Gate eligible.
 8. Automated tests — positive and negative tests for rights bases, failed gates, schema, URL safety, local ownership proof and nonpublishing workflow.
-9. Live test — CI evaluates the repository's real image audit, not only fixtures.
+9. Live test — CI executes Content Engine → Quality Gate (#3) → Image / Rights (#4) on real repository evidence, not only fixtures.
 10. Acceptance + GitHub — feature branch must be GREEN; merge requires separate owner decision and post-merge verification.
 
 ## Rights rule
