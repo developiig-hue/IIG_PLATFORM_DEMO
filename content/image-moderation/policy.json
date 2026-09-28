@@ -1,0 +1,29 @@
+{
+  "schema": "iig.news-image-moderation.v1",
+  "description": "Four-stage moderation evidence for original-source news images. A source-hosted image is never reusable merely because it is publicly visible.",
+  "gates": [
+    {
+      "id": "G1_PROVENANCE",
+      "required": true,
+      "question": "Is the candidate image hosted/published by the verified primary source and traceable to the exact source page?"
+    },
+    {
+      "id": "G2_RELEVANCE",
+      "required": true,
+      "question": "Does the image represent the reported project/event/company without misleading substitution?"
+    },
+    {
+      "id": "G3_RIGHTS",
+      "required": true,
+      "question": "Is reuse by IIG supported by explicit license/permission or other documented rights basis? Public visibility alone is FAIL."
+    },
+    {
+      "id": "G4_TECHNICAL",
+      "required": true,
+      "question": "Does the asset meet safe URL/file, availability, format, dimensions/crop and rendering requirements?"
+    }
+  ],
+  "decision": "ORIGINAL_SOURCE_IMAGE only when G1..G4 all PASS; otherwise SAME_SECTOR_IIG_FALLBACK",
+  "fallback_manifest": "baze_foto_news/manifest.json",
+  "audit_path": "content/image-moderation/"
+}
