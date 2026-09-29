@@ -14,6 +14,27 @@ Robot **6 of 7**. Input is exclusively content explicitly APPROVED by Robot #5.
 9. Live-test — production workflow tests the real #5 handoff contract plus a deterministic, explicitly Admin-approved acceptance fixture; no fake approval enters public content.
 10. Acceptance + GitHub — feature GREEN, PR, merge to main by owner instruction, then post-merge GREEN.
 
+
+## HARD RULE — DIRECT LINK TO THE SAME IIG MATERIAL
+This rule is **release-blocking and non-optional**.
+
+Every content item displayed in the Digest MUST be clickable and MUST link directly to the **same individual material on the IIG website** that the Digest item represents.
+
+Applies without exception to:
+- main NEWS / Ukraine / World items;
+- energy legislation and regulatory items;
+- financing / bank / ECA / project-finance items;
+- Chief Engineer Advice;
+- future IIG ORIGINAL, PARTNER MATERIAL and SPONSORED MATERIAL items when enabled.
+
+Required routes are individual-content routes such as `article.html?id=<public_slug>` or `advice-article.html?id=<public_slug>` generated from `IIG_PUBLIC_BASE_URL`.
+
+**FORBIDDEN:** home page, generic NEWS catalogue/section, generic finance section, empty `#`, missing URL, another item's URL, or any substitute destination that is not the exact material represented by the Digest card.
+
+If the exact IIG material does not yet exist or does not have a valid HTTPS direct URL, that card MUST NOT be released in the Digest. The build/release gate must fail closed with `DIGEST_RELEASE_BLOCKED: DIRECT_LINK_HARD_RULE`.
+
+QA must validate the direct-link contract before Digest approval. A visually clickable card is not sufficient: destination identity must match the item's public slug/content identity.
+
 ## Mandatory active links
 Every digest content item has an HTTPS link back to its individual IIG site page:
 - NEWS -> `article.html?id=<public_slug>`
@@ -25,3 +46,30 @@ Mandatory CTA:
 
 All URLs are generated from `IIG_PUBLIC_BASE_URL`; no hard dependency on GitHub Pages in the robot contract.
 \nAcceptance note: production regression includes the approved Robot #5 boundary and exact public-link contract.\n
+## HARD RULE — UNIFIED PRIMARY CTA GEOMETRY & TYPOGRAPHY
+The primary Digest CTAs **РОЗМІСТИТИ ПРОЄКТ** and **ПІДПИСАТИСЯ НА ДАЙДЖЕСТ** MUST use one identical component standard on every Digest page.
+
+They may differ only by **color and destination/action**. The following properties MUST be identical 1:1:
+- button height and shape;
+- width logic within the same CTA row;
+- corner radius;
+- internal horizontal/vertical padding;
+- font family and font weight;
+- font size;
+- letter spacing;
+- text baseline, horizontal centering and vertical centering.
+
+Canonical typography: **DejaVu Sans Bold**, white uppercase label. Canonical geometry: equal-height rounded rectangles with the same radius and padding. **РОЗМІСТИТИ ПРОЄКТ** links only to the project form; **ПІДПИСАТИСЯ НА ДАЙДЖЕСТ** links only to the subscription form.
+
+Any generated Digest where these two primary CTAs have different geometry or typography fails visual QA and MUST NOT be released until corrected.
+
+## APPROVED MASTER LOCK — 2026-09-29
+The approved visual/content master is `IIG_Monthly_Digest_2026-09_FINAL_DEMO.pdf`, SHA-256 `6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc`.
+
+Normative companion artifacts:
+- `DIGEST_MASTER_SPEC.md` — human-readable locked layout/content specification;
+- `content/digest-layout-standard-v1.json` — machine-readable portability/design contract.
+
+The Digest is fixed as a 3-page portrait presentation (Cover → 15 News → Finance/Regulation/Chief Engineer). The cover MUST use a visible real energy-enterprise photograph as a full-page background with moderate navy dimming; pages 2–3 use the approved large-news typography and collision-safe layout. Page-2 news cards have no thumbnails. Page-3 approved lower Chief Engineer/CTA block is locked.
+
+Portability is mandatory: hosting/domain changes MUST be implemented by changing `IIG_PUBLIC_BASE_URL` and deployment configuration, not by changing the Digest information architecture, layout contract, direct-link identity rules, typography hierarchy or CTA component standard. Post-migration visual and link regression against the MASTER is release-blocking.
