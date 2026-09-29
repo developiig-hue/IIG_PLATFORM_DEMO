@@ -1,0 +1,78 @@
+{
+  "schema": "iig.digest-layout-standard.v1",
+  "status": "APPROVED_LOCKED",
+  "approved_at": "2026-09-29",
+  "master": {
+    "filename": "IIG_Monthly_Digest_2026-09_FINAL_DEMO.pdf",
+    "sha256": "6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc",
+    "pages": 3,
+    "orientation": "portrait",
+    "flow": "vertical"
+  },
+  "public_base_env": "IIG_PUBLIC_BASE_URL",
+  "typography": {
+    "family": "DejaVu Sans",
+    "bold": "DejaVu Sans Bold",
+    "cover_title_pt": 39,
+    "cover_subtitle_pt": 15.5,
+    "cover_slogan_pt": 17,
+    "cover_theme_title_pt": 14.8,
+    "cover_theme_body_pt": 12,
+    "cover_theme_readmore_pt": 10.5,
+    "page2_heading_pt": 17.2,
+    "news_title_target_pt": 12.2,
+    "news_title_floor_pt": 9.5,
+    "page3_heading_pt": 15.6,
+    "section_heading_pt": 11.5,
+    "regulation_range_pt": [
+      8.8,
+      11.2
+    ],
+    "chief_engineer_range_pt": [
+      9.5,
+      11.8
+    ]
+  },
+  "cover": {
+    "background": "real_energy_enterprise_photo",
+    "fit": "cover",
+    "preserve_aspect": true,
+    "divider": false,
+    "overlay": "moderate_navy_photo_must_remain_visible"
+  },
+  "page2": {
+    "cards": 15,
+    "thumbnails": false,
+    "whole_card_clickable": true,
+    "safe_zone": true
+  },
+  "direct_link_hard_rule": {
+    "enabled": true,
+    "fail_closed": true,
+    "forbid_generic_routes": true,
+    "error": "DIGEST_RELEASE_BLOCKED: DIRECT_LINK_HARD_RULE"
+  },
+  "cta": {
+    "font": "DejaVu Sans Bold",
+    "uppercase": true,
+    "text_color": "#FFFFFF",
+    "same_geometry": true,
+    "rounded": true,
+    "project": {
+      "label": "РОЗМІСТИТИ ПРОЄКТ",
+      "color": "#FF3832",
+      "route": "forms.html#project"
+    },
+    "subscribe": {
+      "label": "ПІДПИСАТИСЯ НА ДАЙДЖЕСТ",
+      "color": "#E66B32",
+      "route": "forms.html#subscribe"
+    }
+  },
+  "governance": {
+    "robot6_auto_send": false,
+    "admin_approval_required": true,
+    "robot7_send_only_after_approval": true,
+    "change_requires_new_approval": true
+  }
+}
