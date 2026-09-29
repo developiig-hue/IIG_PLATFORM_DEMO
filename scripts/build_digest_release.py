@@ -16,9 +16,25 @@ if len(regular)!=10 or len(regulation)!=6: raise SystemExit(f"DIGEST_RELEASE_BLO
 def t(x): return x.get("title",{}).get("ua","")
 def link(kind,slug): return BASE+("article.html" if kind=="news" else "advice-article.html")+"?id="+quote(slug)
 def esc(x): return html.escape(str(x))
-news_cards="".join(f'<a class="news-card" href="{link("news",x["slug"])}"><span class="sector">{esc(x.get("sector","ENERGY")).upper()}</span><b>{esc(t(x))}</b><span class="more">ЧИТАТИ НА САЙТІ IIG →</span></a>' for x in regular)
+# HARD RULE — DIRECT CONTENT LINK
+# Every content item rendered in Digest MUST resolve to that exact individual IIG material.
+# Generic section/home URLs, empty anchors, missing slugs, or cross-item substitutions block the build.
+def require_direct_iig_url(kind,item):
+    slug=str(item.get("slug","")).strip()
+    if not slug: raise SystemExit("DIGEST_RELEASE_BLOCKED: DIRECT_LINK_HARD_RULE missing public slug")
+    url=link(kind,slug)
+    expected=("article.html?id=" if kind=="news" else "advice-article.html?id=")+quote(slug)
+    if not url.startswith("https://") or expected not in url:
+        raise SystemExit(f"DIGEST_RELEASE_BLOCKED: DIRECT_LINK_HARD_RULE invalid direct URL for {slug}")
+    if url.rstrip("/") in {BASE.rstrip("/"),(BASE+"news.html").rstrip("/"),(BASE+"index.html").rstrip("/")}:
+        raise SystemExit(f"DIGEST_RELEASE_BLOCKED: DIRECT_LINK_HARD_RULE generic URL forbidden for {slug}")
+    return url
+for _item in regular+regulation: require_direct_iig_url("news",_item)
+for _item in advice: require_direct_iig_url("advice",_item)
+
+news_cards="".join(f'<a class="news-card" href="{require_direct_iig_url("news",x)}"><span class="sector">{esc(x.get("sector","ENERGY")).upper()}</span><b>{esc(t(x))}</b><span class="more">ЧИТАТИ НА САЙТІ IIG →</span></a>' for x in regular)
 reg_cards="".join('<a class="advice-card" href="'+link("news",x["slug"])+'"><b>⚖️ '+esc(t(x))+'</b><span>Читати →</span></a>' for x in regulation)
-advice_cards="".join(f'<a class="advice-card" href="{link("advice",x["slug"])}"><b>{esc(t(x))}</b><span>Читати →</span></a>' for x in advice)
+advice_cards="".join(f'<a class="advice-card" href="{require_direct_iig_url("advice",x)}"><b>{esc(t(x))}</b><span>Читати →</span></a>' for x in advice)
 doc=f'''<!doctype html><html lang="uk"><head><meta charset="utf-8"><title>IIG Monthly Digest — Вересень 2026</title><style>
 @page{{size:1536px 1024px;margin:0}}*{{box-sizing:border-box}}html,body{{margin:0;font-family:Arial,sans-serif;color:#10243b;background:#fff}}a{{color:inherit;text-decoration:none}}
 .page{{width:1536px;height:1024px;page-break-after:always;position:relative;overflow:hidden;background:#fff}}.page:last-child{{page-break-after:auto}}
