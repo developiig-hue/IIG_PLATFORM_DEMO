@@ -46,3 +46,19 @@ Mandatory CTA:
 
 All URLs are generated from `IIG_PUBLIC_BASE_URL`; no hard dependency on GitHub Pages in the robot contract.
 \nAcceptance note: production regression includes the approved Robot #5 boundary and exact public-link contract.\n
+## HARD RULE — UNIFIED PRIMARY CTA GEOMETRY & TYPOGRAPHY
+The primary Digest CTAs **РОЗМІСТИТИ ПРОЄКТ** and **ПІДПИСАТИСЯ НА ДАЙДЖЕСТ** MUST use one identical component standard on every Digest page.
+
+They may differ only by **color and destination/action**. The following properties MUST be identical 1:1:
+- button height and shape;
+- width logic within the same CTA row;
+- corner radius;
+- internal horizontal/vertical padding;
+- font family and font weight;
+- font size;
+- letter spacing;
+- text baseline, horizontal centering and vertical centering.
+
+Canonical typography: **DejaVu Sans Bold**, white uppercase label. Canonical geometry: equal-height rounded rectangles with the same radius and padding. **РОЗМІСТИТИ ПРОЄКТ** links only to the project form; **ПІДПИСАТИСЯ НА ДАЙДЖЕСТ** links only to the subscription form.
+
+Any generated Digest where these two primary CTAs have different geometry or typography fails visual QA and MUST NOT be released until corrected.
