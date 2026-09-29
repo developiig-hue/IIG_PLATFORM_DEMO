@@ -14,6 +14,27 @@ Robot **6 of 7**. Input is exclusively content explicitly APPROVED by Robot #5.
 9. Live-test — production workflow tests the real #5 handoff contract plus a deterministic, explicitly Admin-approved acceptance fixture; no fake approval enters public content.
 10. Acceptance + GitHub — feature GREEN, PR, merge to main by owner instruction, then post-merge GREEN.
 
+
+## HARD RULE — DIRECT LINK TO THE SAME IIG MATERIAL
+This rule is **release-blocking and non-optional**.
+
+Every content item displayed in the Digest MUST be clickable and MUST link directly to the **same individual material on the IIG website** that the Digest item represents.
+
+Applies without exception to:
+- main NEWS / Ukraine / World items;
+- energy legislation and regulatory items;
+- financing / bank / ECA / project-finance items;
+- Chief Engineer Advice;
+- future IIG ORIGINAL, PARTNER MATERIAL and SPONSORED MATERIAL items when enabled.
+
+Required routes are individual-content routes such as `article.html?id=<public_slug>` or `advice-article.html?id=<public_slug>` generated from `IIG_PUBLIC_BASE_URL`.
+
+**FORBIDDEN:** home page, generic NEWS catalogue/section, generic finance section, empty `#`, missing URL, another item's URL, or any substitute destination that is not the exact material represented by the Digest card.
+
+If the exact IIG material does not yet exist or does not have a valid HTTPS direct URL, that card MUST NOT be released in the Digest. The build/release gate must fail closed with `DIGEST_RELEASE_BLOCKED: DIRECT_LINK_HARD_RULE`.
+
+QA must validate the direct-link contract before Digest approval. A visually clickable card is not sufficient: destination identity must match the item's public slug/content identity.
+
 ## Mandatory active links
 Every digest content item has an HTTPS link back to its individual IIG site page:
 - NEWS -> `article.html?id=<public_slug>`
