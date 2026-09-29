@@ -62,3 +62,14 @@ They may differ only by **color and destination/action**. The following properti
 Canonical typography: **DejaVu Sans Bold**, white uppercase label. Canonical geometry: equal-height rounded rectangles with the same radius and padding. **РОЗМІСТИТИ ПРОЄКТ** links only to the project form; **ПІДПИСАТИСЯ НА ДАЙДЖЕСТ** links only to the subscription form.
 
 Any generated Digest where these two primary CTAs have different geometry or typography fails visual QA and MUST NOT be released until corrected.
+
+## APPROVED MASTER LOCK — 2026-09-29
+The approved visual/content master is `IIG_Monthly_Digest_2026-09_FINAL_DEMO.pdf`, SHA-256 `6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc`.
+
+Normative companion artifacts:
+- `DIGEST_MASTER_SPEC.md` — human-readable locked layout/content specification;
+- `content/digest-layout-standard-v1.json` — machine-readable portability/design contract.
+
+The Digest is fixed as a 3-page portrait presentation (Cover → 15 News → Finance/Regulation/Chief Engineer). The cover MUST use a visible real energy-enterprise photograph as a full-page background with moderate navy dimming; pages 2–3 use the approved large-news typography and collision-safe layout. Page-2 news cards have no thumbnails. Page-3 approved lower Chief Engineer/CTA block is locked.
+
+Portability is mandatory: hosting/domain changes MUST be implemented by changing `IIG_PUBLIC_BASE_URL` and deployment configuration, not by changing the Digest information architecture, layout contract, direct-link identity rules, typography hierarchy or CTA component standard. Post-migration visual and link regression against the MASTER is release-blocking.
