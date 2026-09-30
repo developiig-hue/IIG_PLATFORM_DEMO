@@ -117,3 +117,57 @@ Mandatory rules:
 - Production release is BLOCKED if `/admin/` can expose protected data or privileged actions without the complete Password -> MFA -> authenticated session -> RBAC chain.
 
 **Acceptance invariant:** `PASSWORD_OK != ADMIN_ACCESS`; only `PASSWORD_OK + MFA_OK + ACTIVE_AUTHORIZED_ACCOUNT + VALID_SERVER_SESSION` permits entry to Dashboard.
+
+
+## 13. OWNER WORKFLOW — NEWS EDITOR / DIGEST BUILDER / MAILING CENTER
+**APPROVED SCOPE — 2026-09-30.**
+
+### 13.1 NEWS Editor and publication approval
+Admin Backstage MUST provide a real content list and editor for NEWS and supported content types. Authorized users can open a material, edit title/category/date/summary/body/source/public slug, preview the resulting article, save a versioned draft and submit it for approval.
+Production publication chain is mandatory:
+`EDIT -> SAVE VERSION -> PREVIEW -> ADMIN APPROVE -> PUBLISH -> AUDIT`.
+Robot #5 content enters the same review surface. No Robot may bypass Admin approval. Production PUBLISH requires authenticated backend RBAC and records actor, version/content SHA, reason/status and timestamp. Unpublish/rollback are required production functions.
+
+### 13.2 Digest Builder
+Admin Backstage MUST include a visual Digest Builder using the approved IIG Digest MASTER layout. Admin can:
+- select approved NEWS/Finance/Regulation/Chief Engineer content from the content library;
+- add/remove items from a Digest;
+- change item order;
+- move items between Digest pages;
+- add additional pages when editorially required;
+- rename/manage additional pages;
+- preview the complete Digest structure;
+- build the final renderer artifact/PDF;
+- run direct-link and layout QA;
+- approve the exact final Digest artifact/SHA.
+The CMS controls content composition, not arbitrary MASTER design changes. Typography/layout/CTA MASTER remains governed by DIGEST_MASTER_SPEC and DIGEST_PROTOCOL. Production approval is `BUILD -> QA -> PREVIEW -> ADMIN APPROVE exact SHA -> READY_FOR_MAILING`.
+
+### 13.3 Mailing & Recipient Database
+Admin Backstage MUST include a separate `Mailing & Database` workspace.
+Required production functions:
+- import recipient database from approved CSV/XLSX format;
+- validate and normalize email addresses;
+- detect duplicates;
+- map name/language/consent fields;
+- store recipients only in the private production database;
+- manage ACTIVE / UNSUBSCRIBED / BOUNCED / SUPPRESSED status;
+- select the exact approved Digest;
+- edit/approve campaign subject/template;
+- run campaign preflight;
+- send a controlled TEST SEND;
+- start mass mailing only after Admin authorization;
+- show delivery/reporting state and preserve campaign audit.
+Recipient PII MUST NEVER be committed to Git, public JSON, static site assets or browser localStorage.
+
+### 13.4 Mass-mailing HARD GATE
+`START MAILING` is permitted only when all are true:
+`AUTHENTICATED_ADMIN + MFA + RBAC + APPROVED_DIGEST_SHA + PRIVATE_RECIPIENT_DB + VALID_CONSENT + SUPPRESSION_CHECK + WORKING_UNSUBSCRIBE + EMAIL_TRANSPORT + DUPLICATE_SEND_PROTECTION + AUDIT`.
+Failure of any term blocks send.
+
+### 13.5 GitHub Pages Demo behavior
+Step 26 demo MUST allow the owner to exercise the workflow safely:
+- NEWS editing and Demo approval in volatile browser memory;
+- Digest composition, pages, ordering and structure preview;
+- CSV recipient parsing/validation/deduplication in volatile browser memory;
+- campaign preflight.
+The demo MUST NOT persist recipient PII, publish content, send email or perform privileged production mutations. Those actions remain visibly present but blocked until the Step 27 backend/security dependencies exist.
