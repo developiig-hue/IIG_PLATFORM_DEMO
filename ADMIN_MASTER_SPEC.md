@@ -171,3 +171,40 @@ Step 26 demo MUST allow the owner to exercise the workflow safely:
 - CSV recipient parsing/validation/deduplication in volatile browser memory;
 - campaign preflight.
 The demo MUST NOT persist recipient PII, publish content, send email or perform privileged production mutations. Those actions remain visibly present but blocked until the Step 27 backend/security dependencies exist.
+
+
+## 14. HARD RULE — UKRAINIAN ADMIN UX / SIMPLE OPERATION
+**APPROVED OWNER DECISION — 2026-09-30.**
+
+### 14.1 Language
+- The default and primary language of the entire IIG Admin Backstage user interface MUST be Ukrainian.
+- Navigation, buttons, field labels, help text, validation, warnings, confirmations, empty states, workflow guidance and operational notifications MUST be understandable in Ukrainian.
+- English technical identifiers may remain only where they are established system terms or data identifiers (e.g. URL, API, MFA, SEO, CSV, SHA, slug), and MUST NOT replace a clear Ukrainian explanation for an administrator.
+- New Admin modules/features MUST NOT ship with an English-only operator interface.
+- UA Admin terminology is part of the portable MASTER and MUST survive hosting/domain migration.
+
+### 14.2 Usability for any authorized administrator
+The Admin UI MUST be task-oriented and understandable without knowledge of repository structure, Robots implementation or source code.
+Primary owner workflow is visible in plain language:
+`Новини та публікації -> Дайджест -> Розсилка та база`.
+
+Mandatory UX rules:
+- Use action names that describe the administrator's goal: `Створити новину`, `Зберегти чернетку`, `Попередній перегляд`, `Підтвердити`, `Опублікувати`, `Додати до дайджесту`, `Перевірити розсилку`, `Тестовий лист`, `Запустити розсилку`.
+- Each workspace MUST show what the administrator should do next and the current state of the object.
+- Technical/security detail MUST NOT obscure the normal editorial workflow; advanced details belong in Security/Audit/System areas.
+- Dangerous or irreversible production actions MUST be visually distinct and require confirmation; security controls are never removed for simplicity.
+- Forms use clear labels, sensible grouping, validation close to the field, and human-readable errors.
+- Lists provide search/filter and a clear selected state.
+- Preview is available before publication and before final Digest approval.
+- The interface MUST distinguish `Чернетка`, `На перевірці`, `Підтверджено`, `Опубліковано`, `Заблоковано` using both text and visual state; color alone is insufficient.
+- Empty states explain what is missing and how to proceed.
+- Mobile/desktop layouts MUST preserve the same workflow and controls without horizontal operational confusion.
+- An authorized administrator must be able to operate routine moderation without knowing GitHub, JSON, repository paths, Robot numbers or command-line tools.
+- Robots and technical pipeline status remain available in a separate advanced module and do not replace human task navigation.
+
+### 14.3 Acceptance test
+Before Step 26 is accepted, owner testing MUST be possible entirely through Ukrainian UI for:
+1. open/edit/preview/confirm a NEWS item;
+2. compose/reorder/add pages/preview a Digest;
+3. import and validate a recipient database, prepare a campaign and reach the protected send gate.
+Any required routine step that forces the administrator to edit Git/JSON/source code is a Step 26 UX failure.
