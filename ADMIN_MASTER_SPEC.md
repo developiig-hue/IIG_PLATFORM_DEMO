@@ -86,3 +86,34 @@ Use a transactional production database (PostgreSQL recommended by prior archite
 
 ## 11. Step 27 blockers
 Do NOT call production ready until: server-side auth + MFA; RBAC API enforcement; production DB; forms backend; subscriber consent/suppression; real unsubscribe; email transport; audit persistence; backup/restore test; secrets management; security headers/WAF/rate limit; staging E2E; production health/rollback; final owner approval.
+
+
+## 12. HARD RULE — ADMIN ENTRY / AUTHENTICATION FLOW
+**APPROVED OWNER DECISION — 2026-09-30.**
+
+The production Admin Backstage MUST use a dedicated administrative route on the final IIG domain:
+
+`https://<IIG_PRODUCTION_DOMAIN>/admin/`
+
+Canonical access flow:
+
+`/admin/ -> IIG ADMIN BACKSTAGE Login -> Login + Password -> MFA one-time code -> authenticated Dashboard`
+
+Mandatory rules:
+- The public website does NOT need a visible ADMIN button. The administrative route is a separate operational entry point known to authorized users.
+- Opening `/admin/` while unauthenticated MUST show only the IIG ADMIN BACKSTAGE authentication screen; protected Dashboard/content/API data MUST NOT be rendered before authentication.
+- Step 1 requires Login + Password validated server-side over HTTPS.
+- Successful password validation MUST NOT grant Dashboard access by itself.
+- Step 2 requires a valid one-time MFA code for every privileged Admin Backstage account.
+- Only after successful MFA may the server create the authenticated Admin session and open Dashboard.
+- Authorization is then enforced server-side by RBAC for every protected API/action.
+- Passwords, password hashes, MFA seeds/codes, session tokens and recovery secrets MUST NEVER be stored in public HTML/JavaScript, Git, browser localStorage or public artifacts.
+- Authenticated session cookies MUST be Secure + HttpOnly + SameSite, with server-side expiry and revocation.
+- Login and MFA endpoints MUST have rate limiting/brute-force protection and security audit events.
+- Admin MUST provide explicit LOG OUT, inactivity timeout and server-side session termination/revocation.
+- Failed password/MFA attempts MUST NOT reveal whether a login/account exists beyond the minimum safe authentication response.
+- Recovery/reset flow MUST be server-side, audited and must not bypass MFA/RBAC controls.
+- GitHub Pages demo MUST NOT implement fake client-side password protection. It may demonstrate the screens/flow only; real authentication is activated on the production backend during Step 27.
+- Production release is BLOCKED if `/admin/` can expose protected data or privileged actions without the complete Password -> MFA -> authenticated session -> RBAC chain.
+
+**Acceptance invariant:** `PASSWORD_OK != ADMIN_ACCESS`; only `PASSWORD_OK + MFA_OK + ACTIVE_AUTHORIZED_ACCOUNT + VALID_SERVER_SESSION` permits entry to Dashboard.
