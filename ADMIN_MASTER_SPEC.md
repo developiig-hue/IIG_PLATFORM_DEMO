@@ -208,3 +208,17 @@ Before Step 26 is accepted, owner testing MUST be possible entirely through Ukra
 2. compose/reorder/add pages/preview a Digest;
 3. import and validate a recipient database, prepare a campaign and reach the protected send gate.
 Any required routine step that forces the administrator to edit Git/JSON/source code is a Step 26 UX failure.
+
+
+## 15. HARD RULE — SINGLE IIG CONTACT BASE / RADAR → CONTACT REVIEW → MAILING
+**Owner request — 2026-09-30.**
+
+The IIG Admin has one protected, unified contact database, not separate competing lists for RADAR and Digest. The administrator can import CSV/XLSX (CSV in static demo), search, add, edit, classify, deduplicate and review contacts; assign organization, position, language, source, provenance, consent evidence and mailing status. The production schema must retain audit/version history, source IDs, contact owner, verification timestamps and lawful processing basis.
+
+**RADAR integration:** RADAR sends discovered decision-makers and contact proposals to a separate pending review queue with source/provenance, project/organization association and deduplication key. An Admin may reject, correct or accept a proposal into the unified contact database. Acceptance into the contact database MUST NOT mean marketing subscription or consent. RADAR never auto-enrolls contacts into the Digest mailing list, and RADAR cannot override UNSUBSCRIBED/BOUNCED/SUPPRESSED status. Contact sourcing, business outreach and marketing subscription are separate permissions/workflows.
+
+**Mailing:** Only ACTIVE contacts with a documented applicable marketing consent or other verified lawful basis for the specific communication may be eligible, subject to jurisdiction and compliance review. Unknown/unspecified consent = PENDING and excluded. Opt-out, suppression and bounce history are immutable from ordinary import; reactivation requires a separate audited lawful event. Every campaign uses a suppression check immediately before send. Production import and export require authorization, audit and access restrictions; PII remains in the private DB, never Git, public HTML/JSON or static artifacts.
+
+**Demo implementation:** the Ukrainian `Розсилка та база` workspace supports CSV import, search/filter, contact creation/editing, consent/status controls, RADAR CSV/JSON proposal import, duplicate detection and human acceptance/rejection. Demo data lives in volatile browser memory only. This is a manual RADAR import adapter, NOT a live RADAR connection or durable database. Real automated RADAR sync, XLSX parsing, persistent CRUD, suppression registry, campaign transport and role-scoped exports are Step 27 backend dependencies. Do not mark them as connected until verified.
+
+**Production API contract:** `/api/v1/contacts`, `/api/v1/contacts/import`, `/api/v1/radar/contact-proposals`, `/api/v1/radar/contact-proposals/{id}/decision`, `/api/v1/consent-events`, `/api/v1/suppression`, and campaign recipient snapshots; exact implementation may differ while preserving semantics. Admin action and Robot ingestion must be authenticated, authorized, rate-limited and audited.
