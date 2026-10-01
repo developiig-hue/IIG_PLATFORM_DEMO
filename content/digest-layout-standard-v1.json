@@ -123,9 +123,12 @@
     ],
     "fields": [
       "background",
+      "background_position",
+      "overlay",
       "type_label",
       "title",
       "subtitle",
+      "announcements",
       "body",
       "cta_1",
       "cta_1_url",
@@ -134,6 +137,8 @@
     ],
     "sponsored_partner_disclosure_required": true,
     "direct_link_gate": true,
-    "final_artifact_new_sha_required": true
+    "final_artifact_new_sha_required": true,
+    "preserve_on_core_repack": true,
+    "same_visual_controls_as_cover": true
   }
 }
