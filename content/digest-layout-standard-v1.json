@@ -139,6 +139,33 @@
     "direct_link_gate": true,
     "final_artifact_new_sha_required": true,
     "preserve_on_core_repack": true,
-    "same_visual_controls_as_cover": true
+    "same_visual_controls_as_cover": true,
+    "article_page2_canvas": {
+      "enabled": true,
+      "source_formats": [
+        ".docx",
+        ".txt",
+        ".md",
+        ".rtf",
+        ".html"
+      ],
+      "legacy_doc_supported": false,
+      "local_parse_no_external_cdn": true,
+      "inherit_page2_canvas": true,
+      "auto_paginate": true,
+      "page_capacity_units": 100,
+      "embedded_image_min_long_side_px": 900,
+      "preserve_images": true,
+      "repeat_subscribe_cta_every_page": true,
+      "subscribe_route": "forms.html#subscribe",
+      "footer_reserved": true,
+      "overflow_creates_continuation_page": true,
+      "allowed_types": [
+        "IIG_ORIGINAL",
+        "SUCCESS_PROJECT",
+        "PARTNER",
+        "SPONSORED"
+      ]
+    }
   }
 }
