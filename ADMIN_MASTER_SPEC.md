@@ -389,3 +389,26 @@ Importer supports `IIG_ORIGINAL`, `SUCCESS_PROJECT`, `PARTNER`, `SPONSORED`. Par
 
 ### 23.6 Preservation
 Core Page 2/Page 3 auto-pack and compact logic MUST preserve both free-layout `promo` pages and imported `article` pages. Repacking normal news may not delete, reflow into, or reorder imported article sequences.
+
+
+## 24. DEFAULT MASTER FALLBACK + ADMIN-ONLY NEXT-ISSUE READINESS — 2026-10-01
+
+### 24.1 No-change fallback
+If ADMIN does not explicitly change the working title page, the working Digest MUST use the approved MASTER v2 Page 1 as the default 1:1 title-page/canvas reference. Empty custom fields, missing custom background or absence of an Apply action must never produce a blank/blue substitute cover. Reset returns to the approved MASTER fallback. The same principle applies to canonical core canvases: Page 2 and Page 3 begin from approved layout standards; customization is opt-in, not required for a valid issue.
+
+### 24.2 Editorial Admin-only workflow
+STEP 26 now prepares the next issue through one operator path: repository baseline -> Admin editorial session -> review/approve -> Digest Builder. Public NEWS and ADVICE drafts are persisted locally in the browser under a versioned editorial-session key so an accidental refresh does not discard public editorial work. This local persistence is for non-secret editorial content only; credentials/PII are forbidden. A JSON export provides a portable editorial handoff. Production persistence remains backend-only.
+
+### 24.3 CMS fixes from red-team audit
+- NEWS editor exposes all nine industrial sectors plus Finance/Regulation/Other.
+- Digest rubric is an independent Admin field (AUTO / General / Finance / Regulation / Advice) and does not corrupt the site's industrial taxonomy.
+- ADVICE text editing now round-trips structured sections instead of silently discarding edits.
+- Duplicate APPROVED filter state removed.
+- Admin JS/CSS cache-busting versions must advance with functional changes.
+- Website/media locked controls must explain the production gate instead of being inert.
+
+### 24.4 New-issue readiness
+Dashboard exposes operational counts for General, Finance, Regulation and Advice, unresolved Draft/Review content and direct-ID integrity. This is an operator readiness aid, not production approval. Robot/security/backend blockers remain visibly separate.
+
+### 24.5 Source registry honesty
+Admin Source view distinguishes owner approval from technical URL/feed verification. A source is not production-ready merely because `owner_approved=true`. Search/filter and URL/feed state are visible to Admin; this prevents the 260-source registry from being presented as technically connected when adapters remain unconfigured.
