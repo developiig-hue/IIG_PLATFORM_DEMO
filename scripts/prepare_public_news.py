@@ -116,4 +116,4 @@ coverage = {sector: sum(x['sector'] == sector and not x.get('supplemental') for 
 assert all(count == 1 for count in coverage.values())
 print('PASS: editorial protocol present, nine verified CORE bilingual articles plus approved supplemental September editorial content')
 print('PUBLIC NEWS CORE COVERAGE:', coverage)
-print('SUPPLEMENTAL CONTENT:', {'general':sum(x.get('supplemental') and x.get('digest_rubric','GENERAL')=='GENERAL' for x in registry['items']), 'finance':sum(x.get('digest_rubric')=='FINANCE' for x in registry['items']), 'regulation':sum(x.get('digest_rubric')=='REGULATION' for x in registry['items'])})
+print('SUPPLEMENTAL CONTENT:', {'general':sum(bool(x.get('supplemental')) and x.get('digest_rubric','GENERAL')=='GENERAL' for x in registry['items']), 'finance':sum(x.get('digest_rubric')=='FINANCE' for x in registry['items']), 'regulation':sum(x.get('digest_rubric')=='REGULATION' for x in registry['items'])})
