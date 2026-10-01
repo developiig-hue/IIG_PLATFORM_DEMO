@@ -387,7 +387,8 @@
         "ua": "ФАКТ. У Верховній Раді 4 вересня 2026 року зареєстровано законопроєкт №16033 про внесення змін до Закону України «Про ринок електричної енергії» щодо врегулювання питань забезпечення безпеки постачання електричної енергії.\n\nСТАТУС. Це проєкт закону. Його не можна подавати як чинну норму до завершення законодавчої процедури та офіційного набрання чинності.\n\nДЛЯ ПРОМИСЛОВОСТІ. Компаніям із власною генерацією, критичними навантаженнями та резервним живленням доцільно відстежувати остаточну редакцію, оскільки зміни можуть впливати на правила нагляду, відповідальність та вимоги до надійності електропостачання.\n\nКОНТРОЛЬ IIG. У Digest матеріал позначається як «законопроєкт», а не «закон». Перед використанням у договорі або технічній політиці потрібно перевірити актуальний статус на офіційному порталі Верховної Ради.",
         "en": "FACT. Bill No. 16033 was registered in the Verkhovna Rada on 4 September 2026 to amend the Electricity Market Law in relation to security of electricity supply.\n\nSTATUS. It is a bill, not enacted law. It must not be treated as binding until the legislative process is complete and the final act enters into force.\n\nINDUSTRIAL RELEVANCE. Companies with on-site generation, critical loads and backup supply should monitor the final text.\n\nIIG CONTROL. The Digest labels it as a bill and requires status verification before contractual use."
       },
-      "supplemental": true
+      "supplemental": true,
+      "digest_exclude": true
     },
     {
       "slug": "kmu-renewables-auctions-rules-2026",
@@ -475,6 +476,1131 @@
         "en": "FACT. NEURC Resolution No. 1461 of 31 August 2026 amended the temporary wartime connection framework and preserved through 1 January 2027 the existing storage connection-charge calculation using averaged import/export capacity rates.\n\nCONDITION. NEURC links this approach to commissioning or starting the storage facility by 1 January 2027.\n\nBESS PROJECT VIEW. EPC, battery/inverter delivery, protection/SCADA, construction and commissioning should be aligned to the regulatory deadline.\n\nIIG CONTROL. Project-specific connection conditions and network-operator charges still require verification."
       },
       "supplemental": true
+    },
+    {
+      "slug": "wartsila-schneider-generator-to-chip-2026-09",
+      "sector": "datacenters",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-30",
+      "canonical_url": "https://www.wartsila.com/media/news/30-09-2026-wartsila-schneider-electric-and-stanley-consultants-launch-coordinated-approach-for-faster-u-s-data-center-power-delivery-3796160",
+      "title": {
+        "ua": "Wärtsilä, Schneider Electric і Stanley Consultants об’єднали генерацію та електроінфраструктуру для дата-центрів",
+        "en": "Wärtsilä, Schneider Electric and Stanley Consultants link generation and electrical infrastructure for data centers"
+      },
+      "summary": {
+        "ua": "Підхід Generator-to-Chip поєднує onsite generation, електророзподіл, автоматизацію та engineering для швидшого введення AI-навантажень.",
+        "en": "The Generator-to-Chip approach combines onsite generation, electrical distribution, automation and engineering to accelerate AI-load delivery."
+      },
+      "company_context": [
+        {
+          "ua": "Компанії прямо пов’язують рішення з дефіцитом швидких мережевих приєднань та потребою масштабувати потужність під AI-навантаження.",
+          "en": "The companies explicitly link the approach to long grid-interconnection timelines and the need to scale power for AI loads."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 30 вересня Wärtsilä, Schneider Electric і Stanley Consultants представили узгоджений Generator-to-Chip підхід для американських дата-центрів, який інтегрує onsite engine generation, електричну інфраструктуру, автоматизацію та engineering від джерела живлення до IT-навантаження.\n\nПРОЄКТНИЙ КОНТЕКСТ. Компанії прямо пов’язують рішення з дефіцитом швидких мережевих приєднань та потребою масштабувати потужність під AI-навантаження. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для промислових EPC-проєктів корисний принцип ранньої інтеграції генерації, електрики, автоматики та commissioning в одній interface matrix. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 30 September Wärtsilä, Schneider Electric and Stanley Consultants announced a coordinated Generator-to-Chip approach for U.S. data centers integrating onsite engine generation, electrical infrastructure, automation and engineering from power source to IT load.\n\nPROJECT CONTEXT. The companies explicitly link the approach to long grid-interconnection timelines and the need to scale power for AI loads. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For industrial EPC projects, the key lesson is early integration of generation, electrical systems, automation and commissioning in one interface matrix. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "wartsila-tges-japan-ai-power-2026-09",
+      "sector": "datacenters",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-17",
+      "canonical_url": "https://www.wartsila.com/phl/media/news/17-09-2026-wartsila-and-tges-to-evaluate-power-solutions-to-support-japan-s-accelerating-ai-driven-data-centre-growth-3791059",
+      "title": {
+        "ua": "Wärtsilä і TGES оцінять газові та dual-fuel рішення для AI-дата-центрів Японії",
+        "en": "Wärtsilä and TGES to assess gas and dual-fuel power for Japan AI data centers"
+      },
+      "summary": {
+        "ua": "MoU охоплює onsite/off-grid engine generation для проєктів TGES в умовах обмежених строків мережевого підключення.",
+        "en": "The MoU covers onsite/off-grid engine generation for TGES projects facing grid-connection constraints."
+      },
+      "company_context": [
+        {
+          "ua": "Офіційний реліз вказує на прискорене зростання AI/cloud попиту, обмеження grid connection і тривалі строки закупівлі потужності.",
+          "en": "The release cites accelerating AI/cloud demand, grid-connection constraints and long power-procurement timelines."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 17 вересня Wärtsilä та Tokyo Gas Engineering Solutions підписали MoU щодо спільної оцінки газових або dual-fuel engine-based power solutions для вибраних дата-центрів у Японії.\n\nПРОЄКТНИЙ КОНТЕКСТ. Офіційний реліз вказує на прискорене зростання AI/cloud попиту, обмеження grid connection і тривалі строки закупівлі потужності. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Ключова перевірка для аналогічного промислового кейсу — island/parallel modes, резервування N+1, паливна логістика, emissions permits і синхронізація з майбутнім grid connection. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 17 September Wärtsilä and Tokyo Gas Engineering Solutions signed an MoU to jointly evaluate gas- or dual-fuel engine-based power solutions for selected Japanese data-center projects.\n\nPROJECT CONTEXT. The release cites accelerating AI/cloud demand, grid-connection constraints and long power-procurement timelines. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For a comparable industrial case, verify island/parallel modes, N+1 redundancy, fuel logistics, emissions permits and synchronization with a future grid connection. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "rwe-moerdijk-bess-400mw-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-21",
+      "canonical_url": "https://www.rwe.com/en/press/rwe-generation/2026-09-21-rwe-to-build-400-mw-battery-to-ease-grid-congestion-in-noord-brabant/",
+      "title": {
+        "ua": "RWE інвестує у BESS 400 МВт / 1 100 МВт·год у Moerdijk",
+        "en": "RWE to build 400 MW / 1,100 MWh BESS at Moerdijk"
+      },
+      "summary": {
+        "ua": "Фінальне інвестиційне рішення: 208 контейнерів, майже три години повної потужності, введення у Q2 2028.",
+        "en": "Final investment decision: 208 containers, almost three hours at full output, commissioning in Q2 2028."
+      },
+      "company_context": [
+        {
+          "ua": "BESS має підтримувати інтеграцію 795 МВт offshore-проєкту OranjeWind і зменшувати мережеві обмеження.",
+          "en": "The BESS will support integration of the 795 MW OranjeWind offshore project and help ease grid congestion."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 21 вересня RWE оголосила final investment decision для батарейної системи 400 МВт / 1 100 МВт·год на майданчику електростанції Moerdijk у Нідерландах; commissioning заплановано на другий квартал 2028 року.\n\nПРОЄКТНИЙ КОНТЕКСТ. BESS має підтримувати інтеграцію 795 МВт offshore-проєкту OranjeWind і зменшувати мережеві обмеження. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для промислової BESS-моделі це сильний приклад, що sizing має виходити з функції системи — congestion/flexibility, а не лише з номінальних MWh. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 21 September RWE announced the final investment decision for a 400 MW / 1,100 MWh battery at the Moerdijk power-station site in the Netherlands, with commissioning planned for Q2 2028.\n\nPROJECT CONTEXT. The BESS will support integration of the 795 MW OranjeWind offshore project and help ease grid congestion. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For industrial BESS design, this is a strong example that sizing must follow the system duty—congestion/flexibility—not the headline MWh alone. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "waratah-super-battery-full-capacity-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-28",
+      "canonical_url": "https://www.hitachienergy.com/fr/fr/news-and-events/press-releases/2026/09/waratah-super-battery-reaches-full-capacity-australia-hitachi",
+      "title": {
+        "ua": "Waratah Super Battery вийшла на повну потужність 850 МВт / 1 680 МВт·год",
+        "en": "Waratah Super Battery reaches full 850 MW / 1,680 MWh capacity"
+      },
+      "summary": {
+        "ua": "Hitachi Energy завершила commissioning PCS і контролерів для одного з найпотужніших BESS світу.",
+        "en": "Hitachi Energy completed commissioning of PCS and controllers for one of the world's most powerful BESS projects."
+      },
+      "company_context": [
+        {
+          "ua": "Проєкт інтегрований у System Integrity Protection Scheme; Hitachi Energy поставила 288 PCS і два power plant controllers.",
+          "en": "The project is integrated into the System Integrity Protection Scheme; Hitachi Energy supplied 288 PCS and two power plant controllers."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 28 вересня Hitachi Energy повідомила про фінальні комерційні операції Waratah Super Battery в Новому Південному Уельсі: 850 МВт потужності та 1 680 МВт·год зберігання.\n\nПРОЄКТНИЙ КОНТЕКСТ. Проєкт інтегрований у System Integrity Protection Scheme; Hitachi Energy поставила 288 PCS і два power plant controllers. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для промислових систем важливий не масштаб, а архітектура керування: response time, PCS redundancy, controller hierarchy, telemetry та grid-code tests. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 28 September Hitachi Energy reported final commercial operations at the Waratah Super Battery in New South Wales, rated at 850 MW and 1,680 MWh.\n\nPROJECT CONTEXT. The project is integrated into the System Integrity Protection Scheme; Hitachi Energy supplied 288 PCS and two power plant controllers. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For industrial systems, the transferable lesson is control architecture: response time, PCS redundancy, controller hierarchy, telemetry and grid-code testing. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "ge-egypt-9f-life-extension-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-23",
+      "canonical_url": "https://www.gevernova.com/news/press-releases/ge-vernova-advances-asset-longevity-egypts-power-sector-rotor-life-extension",
+      "title": {
+        "ua": "GE Vernova продовжить ресурс п’яти газових турбін 9F у Єгипті",
+        "en": "GE Vernova to extend life of five 9F gas turbines in Egypt"
+      },
+      "summary": {
+        "ua": "Rotor Life Extension охоплює до 1 250 МВт сукупної потужності на трьох електростанціях.",
+        "en": "Rotor Life Extension covers up to 1,250 MW of combined capacity at three power plants."
+      },
+      "company_context": [
+        {
+          "ua": "Компанія очікує продовжити експлуатаційний ресурс обладнання на 13–15 років.",
+          "en": "The company says the work aims to extend equipment operating life by 13–15 years."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 23 вересня GE Vernova оголосила сервісну угоду Rotor Life Extension для п’яти газових турбін 9F на Kureimat, Nubaria та Cairo North із сукупною потужністю до 1 250 МВт.\n\nПРОЄКТНИЙ КОНТЕКСТ. Компанія очікує продовжити експлуатаційний ресурс обладнання на 13–15 років. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для власника генерації це нагадує, що life-extension слід порівнювати з replacement не лише за CAPEX, а й за heat rate, availability, outage duration та залишковим ресурсом auxiliaries. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 23 September GE Vernova announced a Rotor Life Extension service agreement for five 9F gas turbines at Kureimat, Nubaria and Cairo North, representing up to 1,250 MW of combined capacity.\n\nPROJECT CONTEXT. The company says the work aims to extend equipment operating life by 13–15 years. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For generation owners, life extension should be compared with replacement using heat rate, availability, outage duration and remaining auxiliary-system life, not CAPEX alone. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "bwrx300-europe-mou-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-22",
+      "canonical_url": "https://www.gevernova.com/news/press-releases/sge-ge-vernova-hitachi-samsung-ct-sign-mou-advance-bwrx-300-fleet-deployment-europe",
+      "title": {
+        "ua": "SGE, GE Vernova Hitachi і Samsung C&T домовилися просувати BWRX-300 у Європі",
+        "en": "SGE, GE Vernova Hitachi and Samsung C&T agree to advance BWRX-300 deployment in Europe"
+      },
+      "summary": {
+        "ua": "MoU створює рамку для ринкового розвитку й комерційних можливостей у Центральній та Східній Європі та Великій Британії.",
+        "en": "The MoU creates a framework for market development and commercial opportunities in Central and Eastern Europe and the UK."
+      },
+      "company_context": [
+        {
+          "ua": "Документ є рамкою співпраці, а не фінальним EPC/NTP конкретного майданчика.",
+          "en": "The document is a cooperation framework, not a final EPC or notice-to-proceed for a specific site."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 22 вересня SGE, GE Vernova, Hitachi та Samsung C&T підписали MoU щодо розвитку комерційних можливостей для deployment малих модульних реакторів BWRX-300 у Центральній і Східній Європі та Великій Британії.\n\nПРОЄКТНИЙ КОНТЕКСТ. Документ є рамкою співпраці, а не фінальним EPC/NTP конкретного майданчика. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для оцінки SMR-проєкту критично відділяти технологічний MoU від bankable project: licensing, site permit, grid connection, fuel cycle, EPC wrap і long-term O&M мають бути підтверджені окремо. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 22 September SGE, GE Vernova, Hitachi and Samsung C&T signed an MoU to develop commercial opportunities for BWRX-300 small modular reactors in Central and Eastern Europe and the United Kingdom.\n\nPROJECT CONTEXT. The document is a cooperation framework, not a final EPC or notice-to-proceed for a specific site. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. When assessing an SMR project, distinguish a technology MoU from a bankable project: licensing, site permits, grid connection, fuel cycle, EPC wrap and long-term O&M must be confirmed separately. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "ge-eurus-japan-wind-294mw-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-15",
+      "canonical_url": "https://www.gevernova.com/news/press-releases/ge-vernova-supply-294-mw-wind-capacity-eurus-energys-hiyamizutouge-project-japan",
+      "title": {
+        "ua": "GE Vernova поставить 29,4 МВт вітрових турбін для Eurus Energy у Японії",
+        "en": "GE Vernova to supply 29.4 MW of wind capacity for Eurus Energy in Japan"
+      },
+      "summary": {
+        "ua": "Сім турбін 4,2 МВт-117m для Hiyamizutouge Wind Farm плюс дворічний service agreement.",
+        "en": "Seven 4.2 MW-117m turbines for Hiyamizutouge Wind Farm plus a two-year service agreement."
+      },
+      "company_context": [
+        {
+          "ua": "Угода включає дворічний сервіс із можливістю продовження ще на два роки.",
+          "en": "The deal includes a two-year service agreement with an option for a two-year extension."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 15 вересня GE Vernova повідомила про угоду з Eurus Energy на сім onshore wind turbines по 4,2 МВт для Hiyamizutouge Wind Farm, загальною потужністю 29,4 МВт.\n\nПРОЄКТНИЙ КОНТЕКСТ. Угода включає дворічний сервіс із можливістю продовження ще на два роки. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для EPC-порівняння важливо оцінювати не лише turbine CAPEX, а transport envelope, site wind class, service scope, availability guarantee і grid-code compliance. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 15 September GE Vernova announced an agreement with Eurus Energy for seven 4.2 MW onshore wind turbines for the 29.4 MW Hiyamizutouge Wind Farm.\n\nPROJECT CONTEXT. The deal includes a two-year service agreement with an option for a two-year extension. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For EPC comparisons, evaluate transport envelope, site wind class, service scope, availability guarantee and grid-code compliance in addition to turbine CAPEX. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "rwe-oracle-vppa-433mw-2026-09",
+      "sector": "datacenters",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-17",
+      "canonical_url": "https://www.rwe.com/en/press/rwe-americas/2026-09-17-rwe-signs-433-mw-virtual-power-purchase-agreement-with-oracle/",
+      "title": {
+        "ua": "RWE та Oracle уклали VPPA на 433 МВт вітрової генерації",
+        "en": "RWE and Oracle sign 433 MW wind VPPA"
+      },
+      "summary": {
+        "ua": "Електроенергія з трьох Panther Creek wind farms у Техасі підтримуватиме портфель енергорішень для дата-центрів Oracle.",
+        "en": "Power from three Panther Creek wind farms in Texas supports Oracle's broader data-center energy portfolio."
+      },
+      "company_context": [
+        {
+          "ua": "RWE вказує, що угода є частиною ширшого портфеля Oracle з понад 1,7 ГВт генерації для підтримки Texas grid і дата-центрів.",
+          "en": "RWE says the deal forms part of Oracle's broader portfolio representing more than 1.7 GW of generation supporting the Texas grid and data-center operations."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 17 вересня RWE оголосила virtual power purchase agreement з Oracle на 433 МВт виробітку трьох діючих Panther Creek wind farms у Західному Техасі.\n\nПРОЄКТНИЙ КОНТЕКСТ. RWE вказує, що угода є частиною ширшого портфеля Oracle з понад 1,7 ГВт генерації для підтримки Texas grid і дата-центрів. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для промислового покупця VPPA не замінює фізичне резервне живлення; фінансовий hedge, grid supply і onsite resiliency потрібно моделювати окремими шарами. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 17 September RWE announced a 433 MW virtual power purchase agreement with Oracle covering output from three operating Panther Creek wind farms in West Texas.\n\nPROJECT CONTEXT. RWE says the deal forms part of Oracle's broader portfolio representing more than 1.7 GW of generation supporting the Texas grid and data-center operations. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For an industrial buyer, a VPPA does not replace physical backup power; the financial hedge, grid supply and onsite resiliency should be modeled as separate layers. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "rwe-germany-wind-auction-119mw-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-18",
+      "canonical_url": "https://www.rwe.com/en/investor-relations/financial-calendar-and-publications/news-and-ad-hoc-announcements/news/news-2026-09-18_a/",
+      "title": {
+        "ua": "RWE отримала 119 МВт у німецькому аукціоні onshore wind",
+        "en": "RWE secures 119 MW in German onshore wind auction"
+      },
+      "summary": {
+        "ua": "Jüchen 3 — 84 МВт, Seedorf repowering — 35 МВт; commissioning очікується у 2028 році після FID.",
+        "en": "Jüchen 3 is 84 MW and Seedorf repowering 35 MW; commissioning is targeted for 2028 subject to FID."
+      },
+      "company_context": [
+        {
+          "ua": "Обидва проєкти заплановані до commissioning у 2028 році за умови final investment decisions.",
+          "en": "Both projects target commissioning in 2028 subject to final investment decisions."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 18 вересня RWE повідомила про отримання контрактів на 119 МВт у німецькому аукціоні: 84 МВт Jüchen 3 і 35 МВт repowering Seedorf.\n\nПРОЄКТНИЙ КОНТЕКСТ. Обидва проєкти заплановані до commissioning у 2028 році за умови final investment decisions. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Repowering показує окрему економіку від greenfield: існуюча мережа й площадка можуть скорочувати ризики, але turbine transport, permits і grid uprating все одно потребують нового технічного аудиту. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 18 September RWE reported awards totaling 119 MW in Germany's onshore-wind auction: 84 MW at Jüchen 3 and 35 MW at the Seedorf repowering project.\n\nPROJECT CONTEXT. Both projects target commissioning in 2028 subject to final investment decisions. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. Repowering has a different economics from greenfield: existing grid/site assets can lower risk, but turbine transport, permits and grid uprating still require a fresh technical audit. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "hitachi-daikin-sf6free-grid-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-03",
+      "canonical_url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/critical-gas-for-sustainable-high-voltage-grids-now-made-in-germany",
+      "title": {
+        "ua": "Hitachi Energy і Daikin локалізують у Німеччині компонент для SF₆-free високовольтного обладнання",
+        "en": "Hitachi Energy and Daikin localize a component for SF6-free high-voltage equipment in Germany"
+      },
+      "summary": {
+        "ua": "Daikin постачатиме C4-FN для EconiQ з Frankfurt facility з 2027 року.",
+        "en": "Daikin will supply C4-FN for Hitachi Energy's EconiQ portfolio from Frankfurt starting in 2027."
+      },
+      "company_context": [
+        {
+          "ua": "Постачання з нової європейської потужності планується з 2027 року.",
+          "en": "Supply from the new European production capacity is planned from 2027."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 3 вересня Hitachi Energy і Daikin оголосили довгострокову співпрацю: Daikin Chemical Europe постачатиме з Frankfurt facility C4-FN — компонент газової суміші для SF₆-free високовольтного портфеля EconiQ.\n\nПРОЄКТНИЙ КОНТЕКСТ. Постачання з нової європейської потужності планується з 2027 року. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для замовника switchgear важливо перевіряти не лише номінальні параметри, а availability газової суміші, service procedures, leak management, spare strategy та сумісність із прийнятими grid standards. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 3 September Hitachi Energy and Daikin announced a long-term supply relationship under which Daikin Chemical Europe will supply C4-FN from Frankfurt for Hitachi Energy's SF6-free EconiQ high-voltage portfolio.\n\nPROJECT CONTEXT. Supply from the new European production capacity is planned from 2027. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For switchgear buyers, check not only ratings but also gas-mixture availability, service procedures, leak management, spare strategy and compatibility with applicable grid standards. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "holcim-czech-calcined-clay-2026-09",
+      "sector": "chemical",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-03",
+      "canonical_url": "https://www.holcim.com/media/media-releases",
+      "title": {
+        "ua": "Holcim запустила лінію кальцинованої глини у Чехії для низьковуглецевих цементів",
+        "en": "Holcim launches calcined-clay line in the Czech Republic for lower-carbon cement"
+      },
+      "summary": {
+        "ua": "Нова лінія розширює локальну пропозицію низьковуглецевих матеріалів і є сигналом для енергоємної цементної промисловості.",
+        "en": "The new line expands local lower-carbon material supply and is a signal for energy-intensive cement production."
+      },
+      "company_context": [
+        {
+          "ua": "Кальцинована глина використовується як компонент цементних систем зі зниженим clinker factor і пов’язана зі змінами теплового та електричного балансу виробництва.",
+          "en": "Calcined clay is used in cement systems with a lower clinker factor and changes the thermal and electrical balance of production."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 3 вересня Holcim повідомила про запуск calcined clay line у Чехії як частину розширення sustainable offering.\n\nПРОЄКТНИЙ КОНТЕКСТ. Кальцинована глина використовується як компонент цементних систем зі зниженим clinker factor і пов’язана зі змінами теплового та електричного балансу виробництва. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для енергетичного аудиту цементного майданчика потрібно окремо рахувати specific heat/electricity, drying requirements, material moisture, kiln interaction і ефект на CO₂ per tonne. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 3 September Holcim announced the launch of a calcined-clay line in the Czech Republic as part of expanding its sustainable offering.\n\nPROJECT CONTEXT. Calcined clay is used in cement systems with a lower clinker factor and changes the thermal and electrical balance of production. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For a cement-site energy audit, separately calculate specific heat/electricity, drying requirements, feed moisture, kiln interaction and the resulting CO2 per tonne. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "arcelormittal-gijon-eaf-2026-09",
+      "sector": "metallurgy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-03",
+      "canonical_url": "https://europe.arcelormittal.com/newsandmedia/europenews/wire-tube-2026",
+      "title": {
+        "ua": "ArcelorMittal готує EAF у Gijón: інвестиція €213 млн і зниження CO₂",
+        "en": "ArcelorMittal advances €213 million EAF project in Gijón"
+      },
+      "summary": {
+        "ua": "Новий EAF має перейти до виробництва пізніше у 2026 році та зменшити викиди більш ніж на 35% на першому етапі.",
+        "en": "The new EAF is expected to start production later in 2026 and cut emissions by more than 35% initially."
+      },
+      "company_context": [
+        {
+          "ua": "Компанія оцінює первинне скорочення CO₂ більш ніж на 35%, із використанням scrap і DRI.",
+          "en": "The company expects an initial CO2 reduction of more than 35%, using scrap and direct reduced iron."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. У вересневому матеріалі ArcelorMittal підтвердила будівництво нового electric arc furnace у Gijón, Іспанія, з інвестицією €213 млн; старт виробництва очікується пізніше у 2026 році.\n\nПРОЄКТНИЙ КОНТЕКСТ. Компанія оцінює первинне скорочення CO₂ більш ніж на 35%, із використанням scrap і DRI. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для такого EAF-проєкту критичні contracted grid capacity, short-circuit level, harmonics, flicker, transformer/reactor configuration, oxygen/ASU balance та ціна електроенергії. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. In its September update ArcelorMittal confirmed construction of a new electric arc furnace in Gijón, Spain, representing a €213 million investment, with production expected to start later in 2026.\n\nPROJECT CONTEXT. The company expects an initial CO2 reduction of more than 35%, using scrap and direct reduced iron. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For an EAF project, contracted grid capacity, short-circuit level, harmonics, flicker, transformer/reactor configuration, oxygen/ASU balance and power price are critical. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "thyssenkrupp-steel-transform30-2026-09",
+      "sector": "metallurgy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-28",
+      "canonical_url": "https://www.thyssenkrupp-steel.com/en/newsroom/press-releases/capital-market-day-thyssenkrupp-steel-reaffirms-strategy-and-states-medium-term-ambition.html",
+      "title": {
+        "ua": "thyssenkrupp Steel підтвердила Transform 30 і середньострокову ціль EBITDA ≥ €1,2 млрд",
+        "en": "thyssenkrupp Steel reaffirms Transform 30 and medium-term EBITDA ambition of at least €1.2 billion"
+      },
+      "summary": {
+        "ua": "Компанія пов’язує конкурентоспроможність із реструктуризацією виробничої мережі та понад €800 млн self-help improvement.",
+        "en": "The company links competitiveness to production-network restructuring and more than €800 million of self-help improvement."
+      },
+      "company_context": [
+        {
+          "ua": "Новина не є окремим енергопроєктом, але важлива для heavy-industry CAPEX: фінансова дисципліна та restructuring прямо впливають на темп модернізації енергоємних активів.",
+          "en": "This is not a standalone energy project, but it is relevant to heavy-industry CAPEX because financial discipline and restructuring directly affect the pace of energy-intensive asset modernization."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 28 вересня thyssenkrupp Steel на Capital Market Day підтвердила програму Transform 30, середньострокову ціль adjusted EBITDA щонайменше €1,2 млрд та понад €800 млн поліпшень від self-help measures.\n\nПРОЄКТНИЙ КОНТЕКСТ. Новина не є окремим енергопроєктом, але важлива для heavy-industry CAPEX: фінансова дисципліна та restructuring прямо впливають на темп модернізації енергоємних активів. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для EPC-постачальника це сигнал перевіряти funding source, board/FID gates і stage-gated CAPEX замість орієнтації лише на стратегічні декларації. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 28 September thyssenkrupp Steel reaffirmed its Transform 30 program, a medium-term adjusted EBITDA ambition of at least €1.2 billion and more than €800 million of improvement from self-help measures.\n\nPROJECT CONTEXT. This is not a standalone energy project, but it is relevant to heavy-industry CAPEX because financial discipline and restructuring directly affect the pace of energy-intensive asset modernization. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For EPC suppliers, it is a reminder to verify funding source, board/FID gates and stage-gated CAPEX rather than relying on strategic statements alone. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "dtek-tpp-generation-stopped-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-08",
+      "canonical_url": "https://energo.dtek.com/media-center/press/vnaslidok-obstrilu-tes-dtek-energo-pripinila-generatsiyu-elektroenergii-seryozno-poshkodzheno-obladnannya/",
+      "title": {
+        "ua": "ДТЕК: одна з ТЕС припинила генерацію після атаки, обладнання серйозно пошкоджено",
+        "en": "DTEK: one thermal power plant stopped generation after attack and equipment was seriously damaged"
+      },
+      "summary": {
+        "ua": "Подія 8 вересня знову підкреслила потребу у розподіленій, резервній та швидко відновлюваній генерації.",
+        "en": "The 8 September incident again highlighted the need for distributed, backup and rapidly recoverable generation."
+      },
+      "company_context": [
+        {
+          "ua": "Компанія не розкривала у повідомленні зайві технічні деталі, тому матеріал IIG не спекулює щодо конкретної конфігурації пошкоджень.",
+          "en": "The company did not disclose unnecessary technical details, so IIG does not speculate about the exact damage configuration."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 8 вересня ДТЕК Енерго повідомила, що внаслідок атаки одна з теплоелектростанцій припинила генерацію, а обладнання було серйозно пошкоджено.\n\nПРОЄКТНИЙ КОНТЕКСТ. Компанія не розкривала у повідомленні зайві технічні деталі, тому матеріал IIG не спекулює щодо конкретної конфігурації пошкоджень. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для промислових підприємств практичний висновок — сегментація критичних навантажень, black-start/UPS/DGU, islanding logic, запасні вузли та план відновлення мають бути частиною енергетичного проєкту з першого дня. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 8 September DTEK Energy reported that one of its thermal power plants stopped generating after an attack and that equipment was seriously damaged.\n\nPROJECT CONTEXT. The company did not disclose unnecessary technical details, so IIG does not speculate about the exact damage configuration. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For industrial sites, the practical lesson is to include critical-load segmentation, black-start/UPS/DG, islanding logic, strategic spares and recovery planning from day one. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "windenergy-hamburg-2026-final-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-25",
+      "canonical_url": "https://www.windenergyhamburg.com/news-details/article/windenergy-hamburg-international-wind-energy-sector-pursues-growth-trajectory-despite-challenges",
+      "event_type": "EXHIBITION",
+      "title": {
+        "ua": "WindEnergy Hamburg 2026 завершилась: 1 600+ експонентів і глобальний фокус на гнучкості та стійкості",
+        "en": "WindEnergy Hamburg 2026 closes with 1,600+ exhibitors and focus on flexibility and resilience"
+      },
+      "summary": {
+        "ua": "Чотири дні виставки 22–25 вересня зосередилися на onshore/offshore wind, storage, grid integration та інвестиційних умовах.",
+        "en": "The four-day 22–25 September event focused on onshore/offshore wind, storage, grid integration and investment conditions."
+      },
+      "company_context": [
+        {
+          "ua": "Програма охоплювала onshore/offshore wind, storage, grid integration, ринкові та політичні умови розвитку.",
+          "en": "The program covered onshore/offshore wind, storage, grid integration and the market and policy conditions for deployment."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 25 вересня WindEnergy Hamburg підбила підсумки чотириденної виставки; організатори повідомляли про понад 1 600 експонентів і масштабну міжнародну участь.\n\nПРОЄКТНИЙ КОНТЕКСТ. Програма охоплювала onshore/offshore wind, storage, grid integration, ринкові та політичні умови розвитку. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для IIG цінність виставки — supplier intelligence: OEM roadmap, service/LTSA, delivery slots, grid equipment, BESS integration та реальні строки поставки потрібно переносити в vendor matrix, а не залишати як виставкові контакти. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 25 September WindEnergy Hamburg closed its four-day fair; organizers reported more than 1,600 exhibitors and broad international participation.\n\nPROJECT CONTEXT. The program covered onshore/offshore wind, storage, grid integration and the market and policy conditions for deployment. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For IIG, the value is supplier intelligence: OEM roadmaps, service/LTSA, delivery slots, grid equipment, BESS integration and actual lead times should be captured in a vendor matrix, not left as exhibition contacts. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "kioge-2026-almaty-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-30",
+      "canonical_url": "https://kioge.kz/en/press-center/press-releases/press-releases-blog/2576-kioge-2026-30-years-at-the-heart-of-kazakhstan-s-oil-and-gas-industry-and-international-cooperation",
+      "event_type": "EXHIBITION",
+      "title": {
+        "ua": "KIOGE 2026 стартувала в Алмати: 501 компанія та нові energy value chains",
+        "en": "KIOGE 2026 opens in Almaty with 501 companies and new energy value chains"
+      },
+      "summary": {
+        "ua": "Ювілейна виставка 30 вересня – 2 жовтня об’єднала постачальників, операторів і технологічні компанії з 22 країн.",
+        "en": "The 30 September–2 October anniversary event brought together operators, suppliers and technology companies from 22 countries."
+      },
+      "company_context": [
+        {
+          "ua": "Тематика охоплює oil & gas, технологічні рішення, digitalization та трансформацію енергетичних ланцюгів.",
+          "en": "The program spans oil and gas, technology solutions, digitalization and transformation of energy value chains."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 30 вересня в Алмати розпочалась 30-та KIOGE; організатори повідомили про 501 компанію з 22 країн.\n\nПРОЄКТНИЙ КОНТЕКСТ. Тематика охоплює oil & gas, технологічні рішення, digitalization та трансформацію енергетичних ланцюгів. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для EPC-компанії виставковий lead має переходити в кваліфікацію: product scope, references, sanctions/compliance, EU/UA acceptance, delivery terms, warranty/LTSA та фінансова спроможність. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 30 September the 30th KIOGE opened in Almaty; organizers reported 501 companies from 22 countries.\n\nPROJECT CONTEXT. The program spans oil and gas, technology solutions, digitalization and transformation of energy value chains. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For an EPC company, exhibition leads should enter a qualification process covering product scope, references, sanctions/compliance, EU/UA acceptance, delivery terms, warranty/LTSA and financial capacity. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "energy-community-ukraine-procurement-workshop-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-16",
+      "canonical_url": "https://www.energy-community.org/",
+      "event_type": "INDUSTRY_WORKSHOP",
+      "title": {
+        "ua": "Energy Community провела Industry Outreach щодо закупівель Ukraine Energy Support Fund",
+        "en": "Energy Community held industry outreach on Ukraine Energy Support Fund procurement opportunities"
+      },
+      "summary": {
+        "ua": "16 вересня відбувся workshop для бізнесу щодо procurement opportunities у межах Ukraine Energy Support Fund.",
+        "en": "A 16 September industry workshop addressed procurement opportunities for businesses under the Ukraine Energy Support Fund."
+      },
+      "company_context": [
+        {
+          "ua": "Подія важлива для виробників і EPC-постачальників, які планують участь у відновленні енергетичної інфраструктури України.",
+          "en": "The event is relevant to manufacturers and EPC suppliers seeking participation in Ukraine's energy-infrastructure recovery."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 16 вересня Energy Community провела industry outreach workshop «Procurement opportunities for businesses under the Ukraine Energy Support Fund».\n\nПРОЄКТНИЙ КОНТЕКСТ. Подія важлива для виробників і EPC-постачальників, які планують участь у відновленні енергетичної інфраструктури України. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Практичний крок — мати готовий compliance/vendor package: references, beneficial ownership, sanctions screening, technical certificates, delivery capability, Incoterms, warranty and service structure. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 16 September the Energy Community held an industry outreach workshop on procurement opportunities for businesses under the Ukraine Energy Support Fund.\n\nPROJECT CONTEXT. The event is relevant to manufacturers and EPC suppliers seeking participation in Ukraine's energy-infrastructure recovery. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. The practical step is to maintain a ready compliance/vendor package: references, beneficial ownership, sanctions screening, technical certificates, delivery capability, Incoterms, warranty and service structure. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "rollsroyce-mankato-backup-power-2026-09",
+      "sector": "datacenters",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-07",
+      "canonical_url": "https://www.rolls-royce.com/media/press-releases/2026/09-07-2026-rr-cuts-ribbon-on-new-usd-24m-expansion-in-mankato-minnesota.aspx",
+      "title": {
+        "ua": "Rolls-Royce відкрила $24 млн розширення Mankato для mtu backup power",
+        "en": "Rolls-Royce opens $24 million Mankato expansion for mtu backup power"
+      },
+      "summary": {
+        "ua": "Розширення має більш ніж подвоїти випуск mtu Series 4000 gensets для дата-центрів та критичної інфраструктури.",
+        "en": "The expansion is intended to more than double mtu Series 4000 genset output for data centers and critical infrastructure."
+      },
+      "company_context": [
+        {
+          "ua": "mtu Series 4000 gensets використовуються для hospitals, airports, industrial sites і data centers.",
+          "en": "mtu Series 4000 gensets are used for hospitals, airports, industrial sites and data centers."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. Rolls-Royce відкрила у Mankato, Minnesota, новий Logistics Operations Center вартістю $24 млн поруч із виробництвом mtu power generation; компанія очікує більш ніж подвоїти виробничу потужність backup systems до кінця 2026 року.\n\nПРОЄКТНИЙ КОНТЕКСТ. mtu Series 4000 gensets використовуються для hospitals, airports, industrial sites і data centers. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для замовника backup plant масштаб виробництва OEM важливий разом із engine lead time, alternator/switchgear lead time, service coverage, black-start logic і stock of critical spares. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. Rolls-Royce opened a new $24 million Logistics Operations Center in Mankato, Minnesota, adjacent to its mtu power-generation operation, and expects to more than double backup-system production capacity by the end of 2026.\n\nPROJECT CONTEXT. mtu Series 4000 gensets are used for hospitals, airports, industrial sites and data centers. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For backup-plant buyers, OEM manufacturing capacity matters together with engine, alternator and switchgear lead times, service coverage, black-start logic and critical-spares stock. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "ge-chleansaid-wind-96mw-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-03",
+      "canonical_url": "https://www.gevernova.com/news/taxonomy/term/9480",
+      "title": {
+        "ua": "GE Vernova поставить 96 МВт вітрових турбін для Chleansaid Wind Farm у Шотландії",
+        "en": "GE Vernova to supply 96 MW of wind turbines for Chleansaid Wind Farm in Scotland"
+      },
+      "summary": {
+        "ua": "16 турбін 6,1 МВт із 20-річним service agreement; перше застосування Cypress у Великій Британії.",
+        "en": "Sixteen 6.1 MW turbines with a 20-year service agreement; first UK use of the Cypress turbine."
+      },
+      "company_context": [
+        {
+          "ua": "Проєкт включає 20-річний service agreement і використовує split-blade технологію для складної логістики.",
+          "en": "The project includes a 20-year service agreement and split-blade technology to address challenging transport logistics."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 3 вересня GE Vernova оголосила угоду з ESB на 16 onshore wind turbines по 6,1 МВт для 96 МВт Chleansaid Wind Farm у Scottish Highlands.\n\nПРОЄКТНИЙ КОНТЕКСТ. Проєкт включає 20-річний service agreement і використовує split-blade технологію для складної логістики. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для віддалених industrial/wind sites логістика oversized equipment і довгостроковий service scope мають бути частиною bankability review так само, як turbine yield. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 3 September GE Vernova announced an agreement with ESB for sixteen 6.1 MW onshore wind turbines for the 96 MW Chleansaid Wind Farm in the Scottish Highlands.\n\nPROJECT CONTEXT. The project includes a 20-year service agreement and split-blade technology to address challenging transport logistics. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For remote industrial/wind sites, oversized-equipment logistics and long-term service scope belong in the bankability review alongside turbine yield. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "ge-studsvik-refirm-12gw-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-03",
+      "canonical_url": "https://www.gevernova.com/news/media-hub?business=Nuclear+Power",
+      "title": {
+        "ua": "Studsvik, GE Vernova Hitachi і Samsung C&T просувають 1,2 ГВт nuclear program у Швеції",
+        "en": "Studsvik, GE Vernova Hitachi and Samsung C&T advance 1.2 GW nuclear program in Sweden"
+      },
+      "summary": {
+        "ua": "Угода створює основу для ReFirm program на майданчиках Studsvik; це development agreement, а не фінальний EPC.",
+        "en": "The agreement advances the ReFirm program at Studsvik sites; it is a development agreement, not a final EPC."
+      },
+      "company_context": [
+        {
+          "ua": "Угода ексклюзивна на визначений період і має development character.",
+          "en": "The agreement is exclusive for a defined period and has a development-stage character."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 3 вересня Studsvik, GE Vernova Hitachi, GE Vernova Financial Services, DS Investment Partners і Samsung C&T оголосили угоду щодо просування 1,2 ГВт ReFirm nuclear program у Швеції.\n\nПРОЄКТНИЙ КОНТЕКСТ. Угода ексклюзивна на визначений період і має development character. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Інвестору важливо не прирівнювати development consortium до фінансового закриття: permitting, technology licensing, EPC allocation, debt/equity plan and offtake remain separate gates. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 3 September Studsvik, GE Vernova Hitachi, GE Vernova Financial Services, DS Investment Partners and Samsung C&T announced an agreement to advance the 1.2 GW ReFirm nuclear program in Sweden.\n\nPROJECT CONTEXT. The agreement is exclusive for a defined period and has a development-stage character. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. Investors should not equate a development consortium with financial close: permitting, technology licensing, EPC allocation, debt/equity planning and offtake remain separate gates. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "ge-azulao-grid-stability-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-21",
+      "canonical_url": "https://www.gevernova.com/news/articles/deep-amazon-new-power-plant-aims-deliver-grid-stability-complex-transmission-networks",
+      "title": {
+        "ua": "Azulão I у Бразилії використовує 7HA.02 для підтримки стабільності довгої мережі",
+        "en": "Brazil's Azulão I uses 7HA.02 technology to support a long transmission network"
+      },
+      "summary": {
+        "ua": "GE Vernova описала нову thermal generation як гнучкий ресурс для компенсації коливань renewable generation.",
+        "en": "GE Vernova described the new thermal generation as a flexible resource for balancing renewable variability."
+      },
+      "company_context": [
+        {
+          "ua": "Кейс демонструє роль керованої thermal generation у системі з ростом wind/solar.",
+          "en": "The case illustrates the role of dispatchable thermal generation in a system with increasing wind and solar."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 21 вересня GE Vernova опублікувала кейс Azulão I у штаті Amazonas: газова електростанція з 7HA.02 працює як ресурс стабільності для складної приблизно 1 200-мильної transmission corridor.\n\nПРОЄКТНИЙ КОНТЕКСТ. Кейс демонструє роль керованої thermal generation у системі з ростом wind/solar. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для промислових мікромереж аналогічний принцип означає, що dispatchability, ramp rate, minimum stable load and control integration can matter more than headline efficiency in certain resilience duties. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 21 September GE Vernova published a case study on Azulão I in Amazonas, where a gas plant using 7HA.02 technology supports stability across a complex roughly 1,200-mile transmission corridor.\n\nPROJECT CONTEXT. The case illustrates the role of dispatchable thermal generation in a system with increasing wind and solar. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For industrial microgrids, the analogous lesson is that dispatchability, ramp rate, minimum stable load and control integration can matter more than headline efficiency for some resilience duties. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "fluence-guidance-supply-chain-2026-09",
+      "sector": "energy",
+      "digest_rubric": "GENERAL",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-16",
+      "canonical_url": "https://ir.fluenceenergy.com/news-releases/news-release-details/fluence-energy-announces-revised-guidance-fiscal-year-2026",
+      "title": {
+        "ua": "Fluence знизила FY2026 guidance через затримки виробничого ramp-up у США",
+        "en": "Fluence cuts FY2026 guidance amid U.S. manufacturing ramp-up delays"
+      },
+      "summary": {
+        "ua": "Компанія вказала на сильний попит, але проблеми contract manufacturing стали головним фактором нижчого прогнозу виручки.",
+        "en": "The company cited strong demand but contract-manufacturing delays as the main driver of lower revenue guidance."
+      },
+      "company_context": [
+        {
+          "ua": "Компанія окремо зазначила, що попит на products залишається сильним.",
+          "en": "The company separately stated that product demand remains strong."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 16 вересня Fluence Energy переглянула FY2026 guidance: близько $2,4 млрд revenue проти попереднього midpoint близько $3,0 млрд і adjusted EBITDA loss близько $200 млн, головним чином через затримки ramp-up contract manufacturing у Houston.\n\nПРОЄКТНИЙ КОНТЕКСТ. Компанія окремо зазначила, що попит на products залишається сильним. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для BESS EPC це прямий reminder: bankable schedule має перевіряти не лише OEM order confirmation, а factory ramp risk, localization, cells/PCS supply, FAT slots і liquidated damages. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 16 September Fluence Energy revised FY2026 guidance to about $2.4 billion of revenue versus a previous midpoint around $3.0 billion and an adjusted EBITDA loss around $200 million, largely due to delays ramping contract manufacturing in Houston.\n\nPROJECT CONTEXT. The company separately stated that product demand remains strong. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For BESS EPC, this is a direct reminder that a bankable schedule must test factory-ramp risk, localization, cell/PCS supply, FAT slots and liquidated damages—not merely OEM order confirmation. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "eib-eu-ukraine-district-heating-grant-2026-09",
+      "sector": "finance",
+      "digest_rubric": "FINANCE",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-03",
+      "canonical_url": "https://www.eib.org/en/press/all/2026-281-eur30-million-eu-grant-boosts-eib-support-for-district-heating-in-ukraine",
+      "title": {
+        "ua": "ЄС надав €30 млн гранту до €200 млн програми ЄІБ для теплопостачання України",
+        "en": "EU adds €30 million grant to EIB's €200 million Ukraine district-heating programme"
+      },
+      "summary": {
+        "ua": "Фінансування для громад проходитиме через Укргазбанк, Ощадбанк та Укрексімбанк.",
+        "en": "Municipalities can access financing through Ukrgasbank, Oschadbank and Ukreximbank."
+      },
+      "company_context": [
+        {
+          "ua": "Доступ до програми передбачено через три українські державні банки.",
+          "en": "Access to the programme is provided through three Ukrainian state-owned banks."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 3 вересня ЄІБ повідомив про €30 млн гранту ЄС для прифронтових громад, який доповнює €200 млн фінансування ЄІБ на модернізацію теплопостачання, енергоефективність і renewable solutions в Україні.\n\nПРОЄКТНИЙ КОНТЕКСТ. Доступ до програми передбачено через три українські державні банки. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для EPC-позичальника ключове — перевірити eligible capex, procurement rules, municipal/bank credit process, grant blending і технічні вимоги до energy-efficiency effect. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 3 September the EIB announced a €30 million EU grant for frontline communities complementing €200 million of EIB financing for district heating, energy efficiency and renewable solutions in Ukraine.\n\nPROJECT CONTEXT. Access to the programme is provided through three Ukrainian state-owned banks. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For EPC borrowers, the key checks are eligible CAPEX, procurement rules, municipal/bank credit process, grant blending and technical energy-efficiency requirements. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "eib-credit-agricole-grid-guarantees-2026-09",
+      "sector": "finance",
+      "digest_rubric": "FINANCE",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-21",
+      "canonical_url": "https://www.eib.org/de/press/all/2026-301-france-eib-and-credit-agricole-cib-commit-eur600-million-to-european-energy-grids",
+      "title": {
+        "ua": "ЄІБ і Crédit Agricole CIB формують €600 млн гарантій для виробників grid equipment",
+        "en": "EIB and Crédit Agricole CIB create €600 million guarantee portfolio for grid manufacturers"
+      },
+      "summary": {
+        "ua": "€300 млн counter-guarantee ЄІБ має мобілізувати до €2,4 млрд реальних інвестицій.",
+        "en": "A €300 million EIB counter-guarantee is expected to mobilize up to €2.4 billion of real-economy investment."
+      },
+      "company_context": [
+        {
+          "ua": "За оцінкою ЄІБ, leverage може мобілізувати до €2,4 млрд інвестицій у real economy.",
+          "en": "The EIB says the leverage could mobilize up to €2.4 billion of real-economy investment."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 21 вересня ЄІБ і Crédit Agricole CIB оголосили схему до €600 млн bank guarantees для виробників компонентів енергомереж; ЄІБ надає до €300 млн counter-guarantees.\n\nПРОЄКТНИЙ КОНТЕКСТ. За оцінкою ЄІБ, leverage може мобілізувати до €2,4 млрд інвестицій у real economy. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для OEM це приклад того, як guarantee capacity може знімати bottleneck оборотного капіталу й performance guarantees; конкретна доступність залежить від банку та eligibility. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 21 September the EIB and Crédit Agricole CIB announced up to €600 million of bank guarantees for energy-grid component manufacturers, supported by up to €300 million of EIB counter-guarantees.\n\nPROJECT CONTEXT. The EIB says the leverage could mobilize up to €2.4 billion of real-economy investment. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For OEMs, this shows how guarantee capacity can ease working-capital and performance-guarantee bottlenecks; actual availability depends on bank and eligibility criteria. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "eib-bnp-grid-guarantees-2026-09",
+      "sector": "finance",
+      "digest_rubric": "FINANCE",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-29",
+      "canonical_url": "https://www.eib.org/de/press/all/2026-322-eib-and-bnp-paribas-to-mobilise-eur700-million-in-guarantees-to-support-european-energy-grids",
+      "title": {
+        "ua": "ЄІБ і BNP Paribas мобілізують €700 млн гарантій для європейських електромереж",
+        "en": "EIB and BNP Paribas mobilize €700 million in guarantees for European grids"
+      },
+      "summary": {
+        "ua": "€350 млн гарантії ЄІБ + еквівалент BNP Paribas; очікуваний ефект — до €2,8 млрд інвестицій.",
+        "en": "€350 million from the EIB plus an equivalent BNP Paribas commitment; expected impact up to €2.8 billion of investment."
+      },
+      "company_context": [
+        {
+          "ua": "Операція підтримується InvestEU і, за оцінкою ЄІБ, може сприяти до €2,8 млрд інвестицій.",
+          "en": "The operation is backed by InvestEU and, according to the EIB, could support up to €2.8 billion of investment."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 29 вересня ЄІБ і BNP Paribas оголосили портфель bank guarantees до €700 млн для європейських виробників grid components; ЄІБ надає до €350 млн counter-guarantees.\n\nПРОЄКТНИЙ КОНТЕКСТ. Операція підтримується InvestEU і, за оцінкою ЄІБ, може сприяти до €2,8 млрд інвестицій. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для supplier-finance стратегії важливо відділяти guarantee line від project debt: гарантія підтримує контрактне виконання, але не замінює фінансування самого замовника. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 29 September the EIB and BNP Paribas announced a bank-guarantee portfolio of up to €700 million for European grid-component manufacturers, backed by up to €350 million of EIB counter-guarantees.\n\nPROJECT CONTEXT. The operation is backed by InvestEU and, according to the EIB, could support up to €2.8 billion of investment. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. In supplier-finance strategy, distinguish a guarantee line from project debt: guarantees support contractual performance but do not replace financing for the end customer. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "eib-reactive-technologies-gridverix-2026-09",
+      "sector": "finance",
+      "digest_rubric": "FINANCE",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-23",
+      "canonical_url": "https://www.eib.org/fr/press/all/2026-309-eib-acts-to-strengthen-europe-s-power-grids-with-eur19-million-in-financing-for-reactive-technologies",
+      "title": {
+        "ua": "ЄІБ надає €19 млн Reactive Technologies для цифрової стабільності мереж",
+        "en": "EIB provides €19 million to Reactive Technologies for digital grid-stability technology"
+      },
+      "summary": {
+        "ua": "GridVerix вимірює inertia, strength і voltage stability у реальному часі для інтеграції renewables і великих навантажень.",
+        "en": "GridVerix measures inertia, grid strength and voltage stability in real time to support renewables and large loads."
+      },
+      "company_context": [
+        {
+          "ua": "Проєкт підтримується InvestEU і орієнтований на інтеграцію wind/solar та великих споживачів, включно з data centers.",
+          "en": "The InvestEU-backed project targets integration of wind/solar and large users including data centers."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 23 вересня ЄІБ оголосив €19 млн фінансування Reactive Technologies для розвитку GridVerix — платформи real-time measurements of inertia, grid strength and voltage stability.\n\nПРОЄКТНИЙ КОНТЕКСТ. Проєкт підтримується InvestEU і орієнтований на інтеграцію wind/solar та великих споживачів, включно з data centers. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для промислового приєднання це підкреслює зростання ролі dynamic studies і monitoring замість оцінки лише steady-state MW/MVA. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 23 September the EIB announced €19 million of financing for Reactive Technologies to advance GridVerix, a platform providing real-time measurements of inertia, grid strength and voltage stability.\n\nPROJECT CONTEXT. The InvestEU-backed project targets integration of wind/solar and large users including data centers. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For industrial grid connection, it underlines the growing role of dynamic studies and monitoring rather than relying only on steady-state MW/MVA calculations. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "eib-statkraft-green-bond-2026-09",
+      "sector": "finance",
+      "digest_rubric": "FINANCE",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-10",
+      "canonical_url": "https://www.eib.org/en/projects/all/20250415",
+      "title": {
+        "ua": "ЄІБ схвалив близько €300 млн для green bonds Statkraft",
+        "en": "EIB approves about €300 million for Statkraft green bonds"
+      },
+      "summary": {
+        "ua": "Кошти green bond framework спрямовуються на onshore wind, hydro, BESS та transmission/distribution у ЄС і EFTA.",
+        "en": "The green-bond framework supports onshore wind, hydro, BESS and transmission/distribution projects in the EU and EFTA."
+      },
+      "company_context": [
+        {
+          "ua": "Eligible proceeds охоплюють onshore wind, hydropower, BESS та electricity transmission/distribution у країнах ЄС і EFTA.",
+          "en": "Eligible proceeds cover onshore wind, hydropower, BESS and electricity transmission/distribution in EU and EFTA countries."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 10 вересня ЄІБ оприлюднив summary sheet щодо придбання приблизно €300 млн green bonds Statkraft у межах програми загальною орієнтовною вартістю €600 млн.\n\nПРОЄКТНИЙ КОНТЕКСТ. Eligible proceeds охоплюють onshore wind, hydropower, BESS та electricity transmission/distribution у країнах ЄС і EFTA. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для корпоративного позичальника green bond потребує чіткої taxonomy of eligible assets, allocation/reporting та доказу use-of-proceeds; це інша структура, ніж project finance одного SPV. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 10 September the EIB published the summary sheet for purchasing approximately €300 million of Statkraft green bonds within a programme with an estimated total cost of €600 million.\n\nPROJECT CONTEXT. Eligible proceeds cover onshore wind, hydropower, BESS and electricity transmission/distribution in EU and EFTA countries. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. For corporate borrowers, a green bond requires a clear eligible-asset taxonomy, allocation/reporting and use-of-proceeds evidence; it differs from single-SPV project finance. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "nkrekp-grid-connection-mechanisms-sep2026",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-01",
+      "canonical_url": "https://www.nerc.gov.ua/news/nkrekp-z-1-veresnia-zaprovadzhuiutsia-onovleni-mekhanizmy-pryiednannia-do-elektrychnykh-merezh",
+      "title": {
+        "ua": "НКРЕКП: з 1 вересня діють оновлені механізми приєднання до електромереж",
+        "en": "NEURC: updated grid-connection mechanisms take effect from 1 September"
+      },
+      "summary": {
+        "ua": "Нові підходи стосуються виробництва, споживання та зберігання електроенергії на виконання Закону №4777-IX.",
+        "en": "The updated mechanisms address generation, consumption and storage under Law No. 4777-IX."
+      },
+      "company_context": [
+        {
+          "ua": "Регулятор прямо пов’язує зміни з сучасними моделями виробництва, споживання і зберігання електроенергії.",
+          "en": "The regulator explicitly links the changes to modern models of generation, consumption and electricity storage."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 1 вересня НКРЕКП повідомила про набрання чинності оновленими механізмами приєднання електроустановок до мереж, розробленими на виконання Закону №4777-IX.\n\nПРОЄКТНИЙ КОНТЕКСТ. Регулятор прямо пов’язує зміни з сучасними моделями виробництва, споживання і зберігання електроенергії. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Перед FEED/EPC необхідно перевіряти актуальну редакцію connection rules, application package, capacity reservation, metering/protection requirements і строки оператора мережі. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 1 September NEURC announced that updated grid-connection mechanisms had entered into force, implementing Law No. 4777-IX.\n\nPROJECT CONTEXT. The regulator explicitly links the changes to modern models of generation, consumption and electricity storage. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. Before FEED/EPC, verify the current connection rules, application package, capacity reservation, metering/protection requirements and network-operator timelines. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "rada-eu-renewables-law-14271-2026-09",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-02",
+      "canonical_url": "https://www.rada.gov.ua/en/news/summari_pz/275062.html",
+      "title": {
+        "ua": "Верховна Рада ухвалила закон щодо імплементації права ЄС у сфері ВДЕ",
+        "en": "Verkhovna Rada adopts law implementing EU renewable-energy legislation"
+      },
+      "summary": {
+        "ua": "Документ №14271 оновлює sustainability criteria, certification, permitting, renewable acceleration areas та energy communities.",
+        "en": "Bill No. 14271 updates sustainability criteria, certification, permitting, renewable acceleration areas and energy communities."
+      },
+      "company_context": [
+        {
+          "ua": "Документ охоплює sustainability criteria, tracking/certification, permitting deadlines, renewable acceleration areas, energy communities та active consumers.",
+          "en": "The measure covers sustainability criteria, tracking/certification, permitting deadlines, renewable acceleration areas, energy communities and active consumers."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 2 вересня Верховна Рада ухвалила у другому читанні та в цілому законопроєкт №14271 щодо імплементації законодавства ЄС у сфері відновлюваних джерел енергії.\n\nПРОЄКТНИЙ КОНТЕКСТ. Документ охоплює sustainability criteria, tracking/certification, permitting deadlines, renewable acceleration areas, energy communities та active consumers. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Для проєктів ВДЕ важливо перевірити дату набрання чинності фінального закону та підзаконні процедури; прийняття парламентом саме по собі не замінює project-specific permit map. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 2 September the Verkhovna Rada adopted at second reading and as a whole Bill No. 14271 implementing EU renewable-energy legislation.\n\nPROJECT CONTEXT. The measure covers sustainability criteria, tracking/certification, permitting deadlines, renewable acceleration areas, energy communities and active consumers. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. Renewable projects must verify the final law's entry into force and secondary procedures; parliamentary adoption alone does not replace a project-specific permit map. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "nkrekp-resolution-1507-2026-09",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-09",
+      "canonical_url": "https://www.nerc.gov.ua/acts/pro-zatverdzhennia-zmin-do-deiakykh-postanov-nkrep-12",
+      "title": {
+        "ua": "НКРЕКП №1507: зміни до постанов щодо підтримки електроенергії з альтернативних джерел",
+        "en": "NEURC Resolution No. 1507 amends decisions related to support for alternative-source electricity"
+      },
+      "summary": {
+        "ua": "Постанова від 9 вересня коригує окремі регуляторні рішення в межах механізмів гарантованого покупця.",
+        "en": "The 9 September resolution adjusts regulatory decisions within the guaranteed-buyer support framework."
+      },
+      "company_context": [
+        {
+          "ua": "Документ містить точкові коригування попередніх рішень і не повинен трактуватися як універсальна зміна всього механізму ВДЕ.",
+          "en": "The resolution contains targeted amendments to earlier decisions and should not be read as a wholesale rewrite of the renewables support mechanism."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 9 вересня НКРЕКП прийняла постанову №1507 «Про затвердження Змін до деяких постанов НКРЕКП» відповідно до законів про ринок електроенергії та регулятора і порядку купівлі електроенергії з альтернативних джерел гарантованим покупцем.\n\nПРОЄКТНИЙ КОНТЕКСТ. Документ містить точкові коригування попередніх рішень і не повинен трактуватися як універсальна зміна всього механізму ВДЕ. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Фінансова модель ВДЕ має посилатися на конкретні чинні постанови та розрахунковий період; узагальнення без перевірки applicable tariff/service value створює ризик помилки. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 9 September NEURC adopted Resolution No. 1507 amending several NEURC decisions under the Electricity Market Law and the guaranteed buyer framework for electricity from alternative sources.\n\nPROJECT CONTEXT. The resolution contains targeted amendments to earlier decisions and should not be read as a wholesale rewrite of the renewables support mechanism. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. A renewable-energy financial model should cite the specific decisions and calculation period in force; generalized assumptions without checking applicable tariff/service values create error risk. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "nkrekp-resolution-1520-2026-09",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-15",
+      "canonical_url": "https://www.nerc.gov.ua/acts/pro-vnesennia-zmin-do-postanovy-nkrekp-vid-10-liutoho-2026-roku-205-2",
+      "title": {
+        "ua": "НКРЕКП №1520 оновила рішення, пов’язане з планами розвитку та інвестпрограмами ОСР",
+        "en": "NEURC Resolution No. 1520 updates a decision linked to DSO development plans and investment programmes"
+      },
+      "summary": {
+        "ua": "Постанова від 15 вересня прийнята в контексті порядку розроблення планів розвитку систем розподілу та інвестпрограм.",
+        "en": "The 15 September resolution was adopted in the context of procedures for distribution-system development plans and investment programmes."
+      },
+      "company_context": [
+        {
+          "ua": "Для великих промислових підключень плани розвитку ОСР можуть бути критичними для строків і доступної capacity.",
+          "en": "For large industrial connections, DSO development plans can be critical to timing and available capacity."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 15 вересня НКРЕКП прийняла постанову №1520 про внесення змін до постанови №205 від 10 лютого 2026 року; правовою основою зазначено, зокрема, порядок планів розвитку систем розподілу та інвестиційних програм ОСР.\n\nПРОЄКТНИЙ КОНТЕКСТ. Для великих промислових підключень плани розвитку ОСР можуть бути критичними для строків і доступної capacity. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. На етапі feasibility потрібно звіряти заявлену потужність проєкту з approved network development plan, planned substations/lines and investment-program timing. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 15 September NEURC adopted Resolution No. 1520 amending Resolution No. 205 of 10 February 2026, citing the framework for distribution-system development plans and DSO investment programmes.\n\nPROJECT CONTEXT. For large industrial connections, DSO development plans can be critical to timing and available capacity. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. At feasibility stage, compare project capacity with the approved network-development plan, planned substations/lines and investment-program timing. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "nkrekp-transmission-plan-2026-2035-sep2026",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-17",
+      "canonical_url": "https://www.nerc.gov.ua/results/rezultat-zasidannia-za-17-veresnia-2026-roku-prodovzhennia-zasidannia-nkrekp-vid-15092026",
+      "title": {
+        "ua": "НКРЕКП схвалила зміни до Плану розвитку системи передачі 2026–2035",
+        "en": "NEURC approves amendments to the 2026–2035 transmission-system development plan"
+      },
+      "summary": {
+        "ua": "Рішення ухвалено 17 вересня на продовженні відкритого засідання Комісії.",
+        "en": "The decision was taken on 17 September during a continued open hearing."
+      },
+      "company_context": [
+        {
+          "ua": "Для нової промислової генерації та великих навантажень transmission plan є важливим контекстом доступності мережі та майбутніх reinforcement.",
+          "en": "For new industrial generation and large loads, the transmission plan is important context for grid availability and future reinforcement."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 17 вересня НКРЕКП повідомила про рішення схвалити зміни до Плану розвитку системи передачі на 2026–2035 роки.\n\nПРОЄКТНИЙ КОНТЕКСТ. Для нової промислової генерації та великих навантажень transmission plan є важливим контекстом доступності мережі та майбутніх reinforcement. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Project schedule слід звіряти з transmission milestones: дата planned reinforcement не дорівнює guaranteed connection date, тому потрібні офіційні техумови й договірні milestones. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 17 September NEURC reported a decision to approve amendments to the Transmission System Development Plan for 2026–2035.\n\nPROJECT CONTEXT. For new industrial generation and large loads, the transmission plan is important context for grid availability and future reinforcement. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. Project schedules should be cross-checked with transmission milestones: a planned reinforcement date is not a guaranteed connection date, so official technical conditions and contractual milestones are still required. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "nkrekp-retail-rules-1565-2026-09",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-24",
+      "canonical_url": "https://www.nerc.gov.ua/acts/pro-zatverdzhennia-zmin-do-pravyl-rozdribnoho-rynku-elektrychnoi-enerhii-2",
+      "title": {
+        "ua": "НКРЕКП №1565 змінила Правила роздрібного ринку електроенергії",
+        "en": "NEURC Resolution No. 1565 amends retail electricity market rules"
+      },
+      "summary": {
+        "ua": "Більшість положень набрали чинності 26 вересня; новий механізм вартості послуг — з 1 жовтня.",
+        "en": "Most provisions took effect on 26 September, with a new service-cost mechanism from 1 October."
+      },
+      "company_context": [
+        {
+          "ua": "Зміни, зокрема, стосуються порядку відключення та відновлення електропостачання й оцінки впливу перерв.",
+          "en": "The changes include rules around disconnection/reconnection and assessment of interruption impacts."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 24 вересня НКРЕКП прийняла постанову №1565 зі змінами до Правил роздрібного ринку електричної енергії; регулятор пізніше пояснив, що більшість положень діють з 26 вересня, а новий механізм визначення вартості окремих послуг — з 1 жовтня.\n\nПРОЄКТНИЙ КОНТЕКСТ. Зміни, зокрема, стосуються порядку відключення та відновлення електропостачання й оцінки впливу перерв. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. Промисловим споживачам слід перевірити contractual supply/disconnection procedures, critical-load classification and internal response rules against the updated retail framework. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 24 September NEURC adopted Resolution No. 1565 amending retail electricity market rules; the regulator later explained that most provisions took effect on 26 September and a new service-cost mechanism starts on 1 October.\n\nPROJECT CONTEXT. The changes include rules around disconnection/reconnection and assessment of interruption impacts. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. Industrial consumers should review contractual supply/disconnection procedures, critical-load classification and internal response rules against the updated retail framework. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
+    },
+    {
+      "slug": "nkrekp-green-tariffs-1611-2026-09",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "supplemental": true,
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-29",
+      "canonical_url": "https://www.nerc.gov.ua/acts/pro-vstanovlennia-zelenykh-taryfiv-na-elektrychnu-enerhiiu-ta-nadbavky-do-zelenykh-taryfiv-za-dotrymannia-rivnia-vykorystannia-obladnannia-ukrainskoho-vyrobnytstva-dlia-subiektiv-hospodariu-2",
+      "title": {
+        "ua": "НКРЕКП №1611 встановила «зелені» тарифи та local-content надбавки",
+        "en": "NEURC Resolution No. 1611 sets green tariffs and local-content premiums"
+      },
+      "summary": {
+        "ua": "Постанова від 29 вересня стосується тарифів для суб’єктів ВДЕ та надбавок за українське обладнання.",
+        "en": "The 29 September resolution concerns renewable-energy tariffs and premiums for Ukrainian-made equipment."
+      },
+      "company_context": [
+        {
+          "ua": "Постанова є конкретним тарифним рішенням для визначених суб’єктів, а не загальною гарантією доходу для нового проєкту.",
+          "en": "The resolution is a specific tariff decision for eligible entities, not a general revenue guarantee for any new project."
+        },
+        {
+          "ua": "Матеріал включено до вересневого редакційного пулу IIG після перевірки дати, первинного джерела та практичної релевантності для промислової енергетики.",
+          "en": "The item is included in IIG's September editorial pool after checking the date, primary source and practical relevance to industrial energy."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. 29 вересня НКРЕКП прийняла постанову №1611 про встановлення «зелених» тарифів та надбавок за дотримання рівня використання обладнання українського виробництва для відповідних суб’єктів господарювання.\n\nПРОЄКТНИЙ КОНТЕКСТ. Постанова є конкретним тарифним рішенням для визначених суб’єктів, а не загальною гарантією доходу для нового проєкту. Для промислових споживачів це важливо не лише як окрема корпоративна новина: рішення показує, як змінюються вимоги до надійності, гнучкості, приєднання, строків EPC та інтеграції нової генерації або мережевої інфраструктури.\n\nАНАЛІЗ IIG. У новій фінансовій моделі потрібно перевіряти eligibility конкретного об’єкта, commissioning date, support mechanism, currency/indexation and settlement risk instead of copying headline tariff values. Перед використанням кейсу у власному проєкті потрібно окремо перевірити місцеві технічні умови, профіль навантаження, мережеві обмеження, CAPEX/OPEX, гарантії обладнання та календар реалізації. IIG трактує цей матеріал як практичний ринковий сигнал, а не як універсальну модель для будь-якого підприємства.",
+        "en": "FACT. On 29 September NEURC adopted Resolution No. 1611 setting green tariffs and local-content premiums for eligible renewable-energy producers.\n\nPROJECT CONTEXT. The resolution is a specific tariff decision for eligible entities, not a general revenue guarantee for any new project. For industrial users, the relevance goes beyond a single corporate announcement: it illustrates changing requirements for reliability, flexibility, grid connection, EPC schedules and integration of new generation or grid infrastructure.\n\nIIG ANALYSIS. A new financial model must verify project-specific eligibility, commissioning date, support mechanism, currency/indexation and settlement risk rather than copying headline tariff values. Before applying the case to another project, the local technical conditions, load profile, grid constraints, CAPEX/OPEX, equipment guarantees and delivery schedule must be checked separately. IIG treats the item as a practical market signal rather than a universal template for every industrial site."
+      }
     }
   ]
 }
