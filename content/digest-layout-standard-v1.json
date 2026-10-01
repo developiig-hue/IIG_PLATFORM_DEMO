@@ -3,7 +3,7 @@
   "status": "APPROVED_LOCKED",
   "approved_at": "2026-09-29",
   "master": {
-    "filename": "IIG_Monthly_Digest_2026-09_FINAL_DEMO.pdf",
+    "filename": "IIG_Monthly_Digest_2026-09_FINAL_DEMO (2).pdf",
     "sha256": "6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc",
     "pages": 3,
     "orientation": "portrait",
@@ -67,6 +67,17 @@
       "label": "ПІДПИСАТИСЯ НА ДАЙДЖЕСТ",
       "color": "#E66B32",
       "route": "forms.html#subscribe"
+    },
+    "owner_typography_lock": {
+      "approved_at": "2026-10-01",
+      "page1_bottom_font_px": 14,
+      "page3_bottom_font_px": 12,
+      "previous_page1_font_px": 7,
+      "previous_page3_font_px": 6,
+      "scale_factor": 2,
+      "weight": "Bold",
+      "uppercase": true,
+      "preserve_on_hosting_migration": true
     }
   },
   "governance": {
