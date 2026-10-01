@@ -253,7 +253,7 @@
     },
     {
       "slug": "solarfoods-factory02-financing-2026",
-      "sector": "pharma",
+      "sector": "finance",
       "status": "APPROVED",
       "admin_approved": true,
       "primary_source_verified": true,
@@ -285,7 +285,8 @@
         "ua": "ФАКТ. Solar Foods оголосила фінансування Factory 02 у червні 2026 року, але проєкт стосується харчового білка, а не фармацевтики.\n\nРЕДАКЦІЙНА ПРИМІТКА. Запис потребує перенесення до харчової галузі та заміни окремою підтвердженою фармацевтичною новиною; це не приклад фармацевтичного виробництва.\n\nАНАЛІЗ IIG. Для нового харчового виробництва оцінювати безперервність процесу та електричні й теплові навантаження.",
         "en": "FACT. Solar Foods announced Factory 02 financing in June 2026, but it is a food protein project, not pharmaceuticals.\n\nEDITORIAL NOTE. This item must be moved to food and replaced with a verified pharmaceutical story; it is not an example of pharmaceutical manufacturing.\n\nIIG ANALYSIS. Assess process continuity and electrical and thermal demand for new food production."
       },
-      "digest_rubric": "FINANCE"
+      "digest_rubric": "FINANCE",
+      "supplemental": true
     },
     {
       "slug": "rivenhall-waste-energy-handover-2026",
@@ -352,7 +353,8 @@
       "body": {
         "ua": "ФАКТ. НКРЕКП постановою №1355 від 11 серпня 2026 року затвердила зміни до Кодексу систем розподілу. Офіційний текст визначає, що постанова набирає чинності з 1 вересня 2026 року, але не раніше дня, наступного за днем її оприлюднення на сайті Регулятора.\n\nЩО ЦЕ ОЗНАЧАЄ ДЛЯ ПРОЄКТІВ. Для промислових замовників, власної генерації, BESS та нових приєднань зміни до кодексу потрібно враховувати при формуванні технічних умов, схем приєднання, вимог до обліку, РЗА та взаємодії з оператором системи розподілу.\n\nПРАКТИЧНИЙ КОНТРОЛЬ IIG. Перед підписанням EPC або договору на приєднання слід перевірити актуальну редакцію Кодексу систем розподілу та застосовні перехідні положення. IIG не підміняє юридичну експертизу; для контрактного рішення потрібна перевірка чинної редакції документів на дату підписання.",
         "en": "FACT. NEURC Resolution No. 1355 of 11 August 2026 approved amendments to the Distribution Systems Code. The official text provides for entry into force from 1 September 2026, subject to publication timing.\n\nPROJECT IMPACT. Industrial generation, BESS and new grid connections should reflect the updated code in technical conditions, connection design, metering, protection and DSO interfaces.\n\nIIG CONTROL POINT. Before EPC or connection contracts are signed, confirm the then-current code and transition provisions. This is not a substitute for legal advice."
-      }
+      },
+      "supplemental": true
     },
     {
       "slug": "bill-16033-security-of-electricity-supply-2026",
@@ -384,7 +386,8 @@
       "body": {
         "ua": "ФАКТ. У Верховній Раді 4 вересня 2026 року зареєстровано законопроєкт №16033 про внесення змін до Закону України «Про ринок електричної енергії» щодо врегулювання питань забезпечення безпеки постачання електричної енергії.\n\nСТАТУС. Це проєкт закону. Його не можна подавати як чинну норму до завершення законодавчої процедури та офіційного набрання чинності.\n\nДЛЯ ПРОМИСЛОВОСТІ. Компаніям із власною генерацією, критичними навантаженнями та резервним живленням доцільно відстежувати остаточну редакцію, оскільки зміни можуть впливати на правила нагляду, відповідальність та вимоги до надійності електропостачання.\n\nКОНТРОЛЬ IIG. У Digest матеріал позначається як «законопроєкт», а не «закон». Перед використанням у договорі або технічній політиці потрібно перевірити актуальний статус на офіційному порталі Верховної Ради.",
         "en": "FACT. Bill No. 16033 was registered in the Verkhovna Rada on 4 September 2026 to amend the Electricity Market Law in relation to security of electricity supply.\n\nSTATUS. It is a bill, not enacted law. It must not be treated as binding until the legislative process is complete and the final act enters into force.\n\nINDUSTRIAL RELEVANCE. Companies with on-site generation, critical loads and backup supply should monitor the final text.\n\nIIG CONTROL. The Digest labels it as a bill and requires status verification before contractual use."
-      }
+      },
+      "supplemental": true
     },
     {
       "slug": "kmu-renewables-auctions-rules-2026",
@@ -412,7 +415,8 @@
       "body": {
         "ua": "ФАКТ. Кабінет Міністрів 3 квітня 2026 року повідомив про оновлення правил проведення конкурсу на будівництво генеруючих потужностей і правил аукціонів з розподілу квот підтримки відновлюваної енергетики.\n\nКЛЮЧОВИЙ КОНТЕКСТ. Рішення охоплюють механізми нової генерації та аукціони підтримки ВДЕ на 2026 рік із прогнозними показниками на наступні роки.\n\nДЛЯ ІНВЕСТОРА. Перед розрахунком revenue model потрібно відокремити ринкову модель продажу електроенергії від проєктів, які можуть претендувати на механізми підтримки. Умови конкретного аукціону, квоти та строки слід перевіряти за офіційними документами.\n\nКОНТРОЛЬ IIG. У фінансовій моделі не можна автоматично закладати підтримку як гарантований дохід без підтвердження права участі та результату відповідної процедури.",
         "en": "FACT. On 3 April 2026, the Cabinet announced updated rules for generation-capacity tenders and renewable support auctions.\n\nCONTEXT. The decisions cover new generation mechanisms and 2026 renewable support quotas with forward indicators.\n\nINVESTOR VIEW. Revenue models should distinguish merchant sales from support mechanisms and verify eligibility, quotas and deadlines.\n\nIIG CONTROL. Support must not be assumed as guaranteed revenue before eligibility and award are confirmed."
-      }
+      },
+      "supplemental": true
     },
     {
       "slug": "law-4777-ix-energy-markets-resilience-2026",
@@ -440,7 +444,8 @@
       "body": {
         "ua": "ФАКТ. Закон України №4777-IX від 10 лютого 2026 року вносить зміни до законодавчих актів щодо функціонування енергетичних ринків, конкурентних умов виробництва електроенергії з альтернативних джерел та посилення енергетичної стійкості. В офіційній базі зазначено набрання чинності 11 березня 2026 року.\n\nПРОЄКТНИЙ КОНТЕКСТ. Закон є базою для подальших регуляторних змін, зокрема щодо приєднання, роботи установок зберігання енергії та розвитку розподіленої генерації.\n\nДЛЯ EPC / ІНВЕСТОРА. Технічна та фінансова модель проєкту має використовувати не лише текст закону, а й чинні підзаконні акти НКРЕКП, кодекси системи передачі/розподілу та правила приєднання.\n\nКОНТРОЛЬ IIG. Перед фінальним investment decision слід звірити повний набір актів, які вже набрали чинності на дату рішення.",
         "en": "FACT. Law No. 4777-IX of 10 February 2026 amends legislation on energy-market functioning, competitive renewable generation and energy resilience. The official database records entry into force on 11 March 2026.\n\nPROJECT CONTEXT. It underpins subsequent regulatory changes affecting connection, storage and distributed generation.\n\nEPC / INVESTOR VIEW. Projects must use both the law and the applicable secondary regulation and grid codes.\n\nIIG CONTROL. Verify the complete set of acts in force at the investment-decision date."
-      }
+      },
+      "supplemental": true
     },
     {
       "slug": "nkrekp-1461-bess-connection-2026",
@@ -468,7 +473,8 @@
       "body": {
         "ua": "ФАКТ. Постановою НКРЕКП №1461 від 31 серпня 2026 року внесено зміни до тимчасового порядку приєднання електроустановок у період воєнного стану. Регулятор зберіг до 1 січня 2027 року чинний порядок розрахунку плати за приєднання установок зберігання енергії із застосуванням середнього значення ставок для потужності відбору та відпуску.\n\nУМОВА. Офіційне повідомлення НКРЕКП пов’язує застосування цього підходу з введенням УЗЕ в експлуатацію або запуском у роботу до 1 січня 2027 року.\n\nДЛЯ BESS-ПРОЄКТУ. Графік EPC, поставки батарей, інверторів, РЗА/SCADA, будівельно-монтажних робіт і процедури введення в експлуатацію мають бути синхронізовані з регуляторним дедлайном.\n\nКОНТРОЛЬ IIG. Необхідно перевірити конкретні технічні умови та розрахунок плати оператора мережі; загальне правило не замінює індивідуальний договір приєднання.",
         "en": "FACT. NEURC Resolution No. 1461 of 31 August 2026 amended the temporary wartime connection framework and preserved through 1 January 2027 the existing storage connection-charge calculation using averaged import/export capacity rates.\n\nCONDITION. NEURC links this approach to commissioning or starting the storage facility by 1 January 2027.\n\nBESS PROJECT VIEW. EPC, battery/inverter delivery, protection/SCADA, construction and commissioning should be aligned to the regulatory deadline.\n\nIIG CONTROL. Project-specific connection conditions and network-operator charges still require verification."
-      }
+      },
+      "supplemental": true
     }
   ]
 }
