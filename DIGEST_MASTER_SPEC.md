@@ -98,3 +98,7 @@ Background assets: JPG/PNG/WebP, <=10 MB, hard minimum 1200×1697 px, recommende
 
 ## PAGE 2 CANVAS FOR IMPORTED LONG-FORM MATERIAL — 2026-10-01
 Optional pages 4+ may use ARTICLE_PAGE2_CANVAS for IIG original news, successful projects, Partner or Sponsored articles imported from DOCX/TXT/MD/RTF/HTML. The visual grammar follows Page 2: portrait canvas, safe margins, top identity strip, readable editorial typography and reserved bottom footer. Text and embedded approved-quality photos auto-flow within the fixed page height; overflow creates continuation pages. Every continuation repeats the Subscribe CTA to `forms.html#subscribe`. The historical 3-page MASTER remains the baseline; appended article pages form part of a new final artifact/SHA.
+
+
+## DEFAULT CANVAS FALLBACK — 2026-10-01
+Customization is opt-in. If no working-cover change is applied, the Digest uses the approved MASTER v2 Page 1 visual/canvas as the default. Core Page 2/Page 3 layout standards likewise remain the fallback when no explicit page-level customization exists. Missing optional customization must never create a blank page or replace an approved canvas with a generic placeholder.
