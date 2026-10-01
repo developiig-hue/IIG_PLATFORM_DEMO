@@ -38,7 +38,17 @@
     "fit": "cover",
     "preserve_aspect": true,
     "divider": false,
-    "overlay": "moderate_navy_photo_must_remain_visible"
+    "overlay": "moderate_navy_photo_must_remain_visible",
+    "admin_editable_working_copy": {
+      "background": true,
+      "title": true,
+      "subtitle": true,
+      "slogan": true,
+      "announcements": 4,
+      "position": true,
+      "overlay": true,
+      "master_remains_read_only": true
+    }
   },
   "page2": {
     "cards": 15,
@@ -85,5 +95,45 @@
     "admin_approval_required": true,
     "robot7_send_only_after_approval": true,
     "change_requires_new_approval": true
+  },
+  "background_asset_gate": {
+    "formats": [
+      "image/jpeg",
+      "image/png",
+      "image/webp"
+    ],
+    "max_bytes": 10485760,
+    "min_width_px": 1200,
+    "min_height_px": 1697,
+    "recommended_width_px": 1800,
+    "recommended_height_px": 2546,
+    "preserve_aspect": true,
+    "fit": "cover"
+  },
+  "extensible_pages": {
+    "enabled": true,
+    "start_page": 4,
+    "unbounded_by_ui": true,
+    "types": [
+      "IIG_ORIGINAL",
+      "SUCCESS_PROJECT",
+      "PARTNER",
+      "SPONSORED",
+      "EDITORIAL"
+    ],
+    "fields": [
+      "background",
+      "type_label",
+      "title",
+      "subtitle",
+      "body",
+      "cta_1",
+      "cta_1_url",
+      "cta_2",
+      "cta_2_url"
+    ],
+    "sponsored_partner_disclosure_required": true,
+    "direct_link_gate": true,
+    "final_artifact_new_sha_required": true
   }
 }
