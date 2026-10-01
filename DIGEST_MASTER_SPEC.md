@@ -94,3 +94,7 @@ The approved Admin MASTER v2 visual reference was updated by ADMIN_1 instruction
 The 3-page approved MASTER remains the read-only baseline reference; the working Builder is now extensible. ADMIN may edit the working cover background and copy, and may append pages 4+ for IIG ORIGINAL, successful-project cases, Partner, Sponsored or Editorial material. A changed working cover or appended page does not silently redefine the historical MASTER SHA; final production output requires a new rendered artifact and approval.
 
 Background assets: JPG/PNG/WebP, <=10 MB, hard minimum 1200×1697 px, recommended >=1800×2546 px portrait. Preserve aspect ratio and use cover crop. Content pages 4+ support headline, subtitle, body, background, disclosure/type label and up to two CTAs. Sponsored/partner labels are mandatory when applicable. All configured CTAs obey the direct-link rule.
+
+
+## PAGE 2 CANVAS FOR IMPORTED LONG-FORM MATERIAL — 2026-10-01
+Optional pages 4+ may use ARTICLE_PAGE2_CANVAS for IIG original news, successful projects, Partner or Sponsored articles imported from DOCX/TXT/MD/RTF/HTML. The visual grammar follows Page 2: portrait canvas, safe margins, top identity strip, readable editorial typography and reserved bottom footer. Text and embedded approved-quality photos auto-flow within the fixed page height; overflow creates continuation pages. Every continuation repeats the Subscribe CTA to `forms.html#subscribe`. The historical 3-page MASTER remains the baseline; appended article pages form part of a new final artifact/SHA.
