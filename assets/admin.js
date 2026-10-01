@@ -15,6 +15,9 @@ async function json(path){const r=await fetch(path,{cache:"no-store"});if(!r.ok)
 const gates=["UA LANGUAGE","NAVIGATION / UX","NEWS + ADVICE CMS","ADMIN REVIEW / NO AUTO-PUBLISH","DIGEST BUILDER","MAILING DATABASE","RADAR / SUBSCRIBERS / REQUESTS","ROBOTS / 260 SOURCES","SECURITY / AUDIT / SYSTEM","OWNER E2E"];
 if($("gate10"))$("gate10").innerHTML=gates.map((g,i)=>'<div class="gateitem"><span>'+(i+1)+'. '+g+'</span><span class="pill green">GREEN MASTER</span></div>').join("");
 
+const DIGEST_MASTER_PDF="digest/IIG-Monthly-Digest-2026-09.pdf";
+function showMasterPage(page){const frame=$("digestMasterFrame");if(!frame)return;frame.src=DIGEST_MASTER_PDF+"#page="+page+"&zoom=page-width&toolbar=0&navpanes=0";document.querySelectorAll(".masterPage").forEach(b=>b.classList.toggle("active",Number(b.dataset.page)===Number(page)));auditEvent("Перегляд MASTER Digest","Сторінка "+page+"/3")}
+document.querySelectorAll(".masterPage").forEach(b=>b.addEventListener("click",()=>showMasterPage(b.dataset.page)));
 const robots=[
 ["#1 Пошук і збір новин","У MAIN","green"],
 ["#2 Підготовка контенту","У MAIN","green"],
