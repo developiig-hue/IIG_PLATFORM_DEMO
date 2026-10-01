@@ -1,0 +1,19 @@
+{
+  "schema": "iig.digest-email-template.v1",
+  "default_language": "UA",
+  "subject": {
+    "UA": "IIG Monthly Digest — промислова енергетика | {MONTH_UA} {YEAR}",
+    "EN": "IIG Monthly Digest — Industrial Energy | {MONTH_EN} {YEAR}"
+  },
+  "delivery": {
+    "digest_inline_in_email": false,
+    "attachment_required": true,
+    "attachment_media_type": "application/pdf",
+    "unsubscribe_required": true,
+    "language_rule": "UA_DEFAULT_EN_ONLY_WHEN_RECIPIENT_LANGUAGE_EN"
+  },
+  "body": {
+    "UA": "Шановний {NAME}!\n\nНадсилаємо Вам новий випуск IIG Monthly Digest — практичний огляд ключових подій, проєктів, технологій, фінансування та регуляторних змін у промисловій енергетиці за {MONTH_UA} {YEAR}.\n\nУ випуску: генерація в промисловості України; світова практика промислової енергетики; фінансування та державне регулювання; поради Головного інженера.\n\nДайджест додається до листа у PDF. Повні матеріали доступні за активними посиланнями всередині PDF на сайті IIG.\n\nРОЗМІСТИТИ ПРОЄКТ: {SUBMIT_PROJECT_URL}\n\nЗ повагою,\nІгор Кривошей\nДиректор з розвитку IIG s.r.o.\n\nВІДПИСАТИСЯ ВІД РОЗСИЛКИ: {UNSUBSCRIBE_URL}",
+    "EN": "Dear {NAME},\n\nPlease find attached the new IIG Monthly Digest — a practical overview of key industrial energy projects, technologies, financing and regulatory developments for {MONTH_EN} {YEAR}.\n\nThe issue covers industrial generation in Ukraine; international industrial energy practice; financing and regulation; and Chief Engineer Advice.\n\nThe Digest is attached as a PDF. Full materials are available through the active links inside the PDF on the IIG website.\n\nSUBMIT A PROJECT: {SUBMIT_PROJECT_URL}\n\nBest regards,\nIgor Kryvoshei\nDevelopment Director, IIG s.r.o.\n\nUNSUBSCRIBE: {UNSUBSCRIBE_URL}"
+  }
+}

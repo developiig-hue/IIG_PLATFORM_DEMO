@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+import html,json
+from pathlib import Path
+from urllib.parse import quote
+ROOT=Path(__file__).resolve().parents[1]
+BASE="https://developiig-hue.github.io/IIG_PLATFORM_DEMO/"
+news=json.loads((ROOT/"content/public-news.json").read_text(encoding="utf-8"))["items"]
+pharma=json.loads((ROOT/"content/pharma-news.json").read_text(encoding="utf-8"))["items"]
+merged={x["slug"]:x for x in news+pharma}
+news=list(merged.values())
+advice=json.loads((ROOT/"content/public-advice.json").read_text(encoding="utf-8"))["items"]
+news=[x for x in news if x.get("status")=="APPROVED" and x.get("admin_approved") is True]
+regular=[x for x in news if x.get("category")!="regulation"][:10]
+regulation=[x for x in news if x.get("category")=="regulation"][:6]
+if len(regular)!=10 or len(regulation)!=6: raise SystemExit(f"DIGEST_RELEASE_BLOCKED: expected 10 main + 6 regulation, got {len(regular)} + {len(regulation)}")
+def t(x): return x.get("title",{}).get("ua","")
+def link(kind,slug): return BASE+("article.html" if kind=="news" else "advice-article.html")+"?id="+quote(slug)
+def esc(x): return html.escape(str(x))
+# HARD RULE — DIRECT CONTENT LINK
+# Every content item rendered in Digest MUST resolve to that exact individual IIG material.
+# Generic section/home URLs, empty anchors, missing slugs, or cross-item substitutions block the build.
+def require_direct_iig_url(kind,item):
+    slug=str(item.get("slug","")).strip()
+    if not slug: raise SystemExit("DIGEST_RELEASE_BLOCKED: DIRECT_LINK_HARD_RULE missing public slug")
+    url=link(kind,slug)
+    expected=("article.html?id=" if kind=="news" else "advice-article.html?id=")+quote(slug)
+    if not url.startswith("https://") or expected not in url:
+        raise SystemExit(f"DIGEST_RELEASE_BLOCKED: DIRECT_LINK_HARD_RULE invalid direct URL for {slug}")
+    if url.rstrip("/") in {BASE.rstrip("/"),(BASE+"news.html").rstrip("/"),(BASE+"index.html").rstrip("/")}:
+        raise SystemExit(f"DIGEST_RELEASE_BLOCKED: DIRECT_LINK_HARD_RULE generic URL forbidden for {slug}")
+    return url
+for _item in regular+regulation: require_direct_iig_url("news",_item)
+for _item in advice: require_direct_iig_url("advice",_item)
+
+news_cards="".join(f'<a class="news-card" href="{require_direct_iig_url("news",x)}"><span class="sector">{esc(x.get("sector","ENERGY")).upper()}</span><b>{esc(t(x))}</b><span class="more">ЧИТАТИ НА САЙТІ IIG →</span></a>' for x in regular)
+reg_cards="".join('<a class="advice-card" href="'+link("news",x["slug"])+'"><b>⚖️ '+esc(t(x))+'</b><span>Читати →</span></a>' for x in regulation)
+advice_cards="".join(f'<a class="advice-card" href="{require_direct_iig_url("advice",x)}"><b>{esc(t(x))}</b><span>Читати →</span></a>' for x in advice)
+doc=f'''<!doctype html><html lang="uk"><head><meta charset="utf-8"><title>IIG Monthly Digest — Вересень 2026</title><style>
+@page{{size:1536px 1024px;margin:0}}*{{box-sizing:border-box}}html,body{{margin:0;font-family:Arial,sans-serif;color:#10243b;background:#fff}}a{{color:inherit;text-decoration:none}}
+.page{{width:1536px;height:1024px;page-break-after:always;position:relative;overflow:hidden;background:#fff}}.page:last-child{{page-break-after:auto}}
+.cover{{display:grid;grid-template-columns:47% 53%}}.hero{{position:relative;padding:54px 55px;color:#fff;background:#092c4d url("../assets/home-hero-approved.webp") center/cover no-repeat}}.hero:before{{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,28,49,.76),rgba(5,28,49,.91))}}.hero>*{{position:relative}}.brand{{font-size:52px;font-weight:800}}.brand small{{font-size:15px;margin-left:18px;vertical-align:middle}}h1{{font-size:54px;line-height:.95;margin:70px 0 10px}}.sub{{font-size:27px;font-weight:700}}.month{{display:inline-block;margin-top:25px;background:#e9372c;padding:12px 18px;font-weight:800;font-size:18px}}.mission{{font-size:26px;line-height:1.25;font-weight:700;margin-top:28px}}.hero-foot{{position:absolute;left:55px;right:55px;bottom:45px;border-top:1px solid rgba(255,255,255,.45);padding-top:20px;font-size:17px}}.index{{padding:38px 34px;background:#f7f9fc;display:flex;flex-direction:column}}.index h2,.page2 h2{{margin:0 0 18px;font-size:26px;color:#153d72}}.news-grid{{display:grid;grid-template-columns:1fr;gap:9px}}.news-card{{display:grid;grid-template-columns:118px 1fr 145px;gap:13px;align-items:center;background:#fff;border:1px solid #dce4ee;border-radius:10px;padding:12px 14px;min-height:72px}}.news-card b{{font-size:17px;line-height:1.15}}.sector{{font-size:11px;font-weight:800;color:#153d72}}.more{{font-size:11px;font-weight:800;color:#e9372c;text-align:right}}.foot{{position:absolute;bottom:15px;right:25px;font-size:11px;color:#64748b}}
+.page2{{padding:38px 48px;background:#f7f9fc}}.page2 .top{{display:grid;grid-template-columns:1fr 330px;gap:28px;align-items:start}}.advice-grid{{display:grid;grid-template-columns:1fr 1fr;gap:13px}}.advice-card{{min-height:118px;background:#fff;border:1px solid #dce4ee;border-radius:10px;padding:18px;display:flex;flex-direction:column;justify-content:space-between}}.advice-card b{{font-size:18px;line-height:1.2}}.advice-card span{{font-size:12px;color:#5d33a6;font-weight:800}}.engineer{{height:285px;border-radius:12px;background:#173d64 url("../Принятое фото главного инженера в каске IIG.png") center/cover no-repeat;position:relative;overflow:hidden}}.engineer:after{{content:"ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА";position:absolute;left:0;right:0;bottom:0;padding:18px;color:#fff;font-weight:800;background:linear-gradient(transparent,rgba(3,23,42,.92))}}.cta-row{{display:flex;gap:16px;margin-top:22px}}.cta{{padding:15px 22px;border-radius:8px;background:#153d72;color:#fff;font-weight:800}}.cta.red{{background:#e9372c}}.page1-cta{{display:flex;gap:14px;margin-top:18px;justify-content:flex-start}}.page1-cta .cta{{font-size:13px;padding:13px 18px}}
+@media(max-width:760px){{@page{{size:auto;margin:0}}html,body{{background:#f7f9fc}}.page{{width:100%;height:auto;min-height:0;page-break-after:auto;overflow:visible}}.cover{{display:block}}.hero{{padding:28px 22px;min-height:440px}}.brand{{font-size:38px}}.brand small{{display:block;margin:8px 0 0;font-size:12px}}h1{{font-size:40px;margin:48px 0 8px}}.sub{{font-size:21px}}.mission{{font-size:21px}}.hero-foot{{position:static;margin-top:55px}}.index{{padding:24px 16px}}.news-card{{grid-template-columns:1fr;gap:7px;padding:14px;min-height:0}}.news-card b{{font-size:16px}}.more{{text-align:left}}.page1-cta,.cta-row{{flex-direction:column;gap:10px}}.page1-cta .cta,.cta{{display:block;width:100%;text-align:center;font-size:14px}}.page2{{padding:28px 16px}}.page2 .top{{grid-template-columns:1fr;gap:20px}}.advice-grid{{grid-template-columns:1fr}}.advice-card{{min-height:100px}}.engineer{{height:330px}}.foot{{position:static;text-align:right;margin-top:24px}}}}
+</style></head><body>
+<section class="page cover"><div class="hero"><div class="brand">IIG <small>INDUSTRY INTELLIGENCE GENERATION</small></div><h1>MONTHLY DIGEST</h1><div class="sub">ПРОМИСЛОВОЇ ЕНЕРГЕТИКИ</div><div class="month">ВЕРЕСЕНЬ 2026</div><div class="mission">Енергія відновлення.<br>Інвестиції в майбутнє<br>промисловості України</div><div class="hero-foot">{len(regular)} основних новин · {len(regulation)} регуляторних новин · активні посилання на IIG</div></div><div class="index"><h2>КЛЮЧОВІ НОВИНИ ВИПУСКУ</h2><div class="news-grid">{news_cards}</div><div class="page1-cta"><a class="cta red" href="{BASE}forms.html#project">РОЗМІСТИТИ ПРОЄКТ</a><a class="cta" href="{BASE}forms.html#subscribe">ПІДПИСАТИСЯ НА ДАЙДЖЕСТ</a></div></div><div class="foot">IIG Monthly Digest · Вересень 2026 · 1/2</div></section>
+<section class="page page2"><div class="top"><div><h2>ЗАКОНОДАВСТВО ТА РЕГУЛЮВАННЯ ЕНЕРГЕТИКИ</h2><div class="advice-grid">{reg_cards}</div><h2 style="margin-top:18px">ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА</h2><div class="advice-grid">{advice_cards}</div></div><div><div class="engineer"></div><div class="cta-row"><a class="cta red" href="{BASE}forms.html#project">РОЗМІСТИТИ ПРОЄКТ</a></div><div class="cta-row"><a class="cta" href="{BASE}forms.html#subscribe">ПІДПИСАТИСЯ НА ДАЙДЖЕСТ</a></div></div></div><div class="foot">IIG Monthly Digest · Вересень 2026 · 2/2</div></section>
+</body></html>'''
+(ROOT/"digest/2026-09-review.html").write_text(doc,encoding="utf-8")
+print("DIGEST_RELEASE_HTML_PASS",{"main_news":len(regular),"regulation":len(regulation),"advice":len(advice)})
