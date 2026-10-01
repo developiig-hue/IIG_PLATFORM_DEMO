@@ -89,3 +89,7 @@ Allowed extra-page classes: IIG_ORIGINAL, SUCCESS_PROJECT, PARTNER, SPONSORED, E
 
 ## FILE IMPORT / ARTICLE_PAGE2_CANVAS CONTRACT — 2026-10-01
 Robot #6/Admin may receive approved long-form source material prepared in DOCX or supported text-editor formats. Step 26 performs local import and deterministic pagination; production must persist the normalized article blocks and approved media, not the original browser-only object URLs. ARTICLE_PAGE2_CANVAS preserves Page-2 margins/header/footer and repeats the Subscribe CTA on every continuation page. Content overflow must create a new page; it must never be hidden, overlap the footer/CTA, or force unreadable text shrinkage. Partner/Sponsored disclosure is mandatory on each generated page. Final send remains blocked until the exact rendered multi-page artifact is approved by Admin and handed to Robot #7.
+
+
+## DEFAULT TEMPLATE RESOLUTION — 2026-10-01
+Robot #6 resolves absent optional layout overrides by inheriting the approved MASTER/canonical page canvas. It must not interpret a missing background, missing override object or untouched Admin form as an instruction to generate a blank title page. Explicit Admin override wins; otherwise approved fallback wins.
