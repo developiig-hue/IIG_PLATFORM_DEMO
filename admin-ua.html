@@ -1,4 +1,4 @@
-<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IIG Адмін-панель — Крок 26 • Демо</title><link rel="stylesheet" href="assets/admin.css?v=step26-final-preview-review-20261001"></head><body>
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IIG Адмін-панель — Крок 26 • Демо</title><link rel="stylesheet" href="assets/admin.css?v=step26-image-review-approval-20261001"></head><body>
 <div class="shell"><aside class="side"><div class="brand">IIG<small>АДМІН-ПАНЕЛЬ / CMS</small></div><div class="demo"><b>КРОК 26 • ДЕМО</b><br>Безпечний деморежим.<br>Паролі, персональні дані та секрети тут не зберігаються.</div>
 <nav class="nav" id="nav">
 <button class="active" data-tab="dashboard">▦ <span>Головна</span></button>
@@ -44,6 +44,27 @@
 <label id="edBodyLabel">Текст матеріалу<textarea class="input" id="edBody" rows="11"></textarea><small class="muted" id="edBodyHint">Для NEWS — основний текст. Для ADVICE — блоки «Заголовок секції» + текст, розділені порожнім рядком.</small></label>
 <label>Посилання на першоджерело<input class="input" id="edSource" type="url"></label>
 <label>Адреса матеріалу (slug)<input class="input" id="edSlug"></label>
+<div class="newsimagepanel" id="newsImagePanel">
+  <div class="sectionhead"><div><h3>ЗОБРАЖЕННЯ НОВИНИ / IMAGE REVIEW</h3><p class="muted">Фото затверджується ADMIN окремо від тексту. Без затвердженого зображення NEWS не переходить у APPROVED і не потрапляє до Digest.</p></div><span class="pill amber" id="imageApprovalState">НЕ ЗАТВЕРДЖЕНО</span></div>
+  <div class="imageapprovalgrid">
+    <div>
+      <div class="newsimagepreview" id="newsImagePreview"><span>Зображення ще не вибрано</span></div>
+      <div class="miniwarn" id="newsImageMeta">Спочатку оберіть джерело зображення.</div>
+    </div>
+    <div>
+      <label>Джерело зображення<select class="input" id="newsImageMode"><option value="CATALOG">Каталог IIG у репозиторії</option><option value="SOURCE">Фото з першоджерела</option><option value="UPLOAD">Завантажити з комп’ютера</option></select></label>
+      <label id="newsCatalogLabel">Зображення з каталогу<select class="input" id="newsCatalogImage"></select></label>
+      <div id="newsSourceImageInfo" class="miniwarn hidden">Для цієї новини немає підтвердженого source_photo з правами.</div>
+      <div id="newsUploadBlock" class="hidden">
+        <label>Файл JPG / PNG / WebP<input class="input" type="file" id="newsImageFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></label>
+        <label>Credit / власник прав<input class="input" id="newsImageCredit" placeholder="Напр.: IIG / власне фото / назва правовласника"></label>
+        <label class="checkline"><input type="checkbox" id="newsImageRights"> ADMIN_1 підтверджує наявність права на використання цього зображення</label>
+        <div class="miniwarn">Demo зберігає uploaded-фото лише локально у браузері. Перед production-публікацією КРОК 27 має перенести файл у захищене media storage/CDN та записати rights/audit metadata.</div>
+      </div>
+      <div class="toolbar"><button type="button" class="btn primary" id="previewNewsImage">Переглянути фото</button><button type="button" class="btn success" id="approveNewsImage">✓ ЗАТВЕРДИТИ ФОТО</button><button type="button" class="btn danger" id="resetNewsImage">Скинути фото</button></div>
+    </div>
+  </div>
+</div>
 <div id="approvalState" class="approvalstate pending">● НЕ ЗАТВЕРДЖЕНО ДО ПУБЛІКАЦІЇ</div><div class="toolbar"><button type="button" class="btn primary" id="saveDraft">Зберегти чернетку</button><button type="button" class="btn primary" id="previewNews">Попередній перегляд</button><button type="button" class="btn success" id="approveDemo">✓ Затвердити до публікації</button><button type="button" class="btn danger" id="rejectDemo">Відхилити</button><button type="button" class="btn danger" id="publishProd">Опублікувати</button></div>
 <div class="miniwarn">У демоверсії можна редагувати, переглядати та підтверджувати матеріал. Реальна публікація на сайті буде доступна після підключення захищеного production backend, MFA/RBAC та журналу дій.</div>
 </form></div></div></section>
@@ -136,5 +157,5 @@
 
 <section class="tab" id="audit"><div class="card module"><h2>ЖУРНАЛ ДЕМО-ДІЙ</h2><p class="muted">Показує дії поточної вкладки без персональних даних і без збереження.</p><div id="demoAudit" class="auditlist"><div class="empty">Дій ще немає.</div></div></div><div class="grid"><div class="card"><h2>ЖУРНАЛ ДІЙ</h2><p class="muted">Незмінний production-журнал: користувач, роль, дія, об’єкт, час, результат і зв’язок із сесією. Демоверсія не створює фіктивних записів про захищені дії.</p><div class="tablewrap"><table class="table"><thead><tr><th>Час</th><th>Користувач</th><th>Дія</th><th>Об’єкт</th><th>Результат</th></tr></thead><tbody><tr><td>—</td><td>—</td><td>Production backend журналу</td><td>НЕ ПІДКЛЮЧЕНО</td><td><span class="pill amber">ДЕМО</span></td></tr></tbody></table></div></div><div class="card"><h2>РЕЗЕРВНІ КОПІЇ / РОЗГОРТАННЯ</h2><div class="row"><span>Зашифрована резервна копія за розкладом</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Копія на окремому сховищі</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Тест відновлення</span><span class="pill red">ОБОВ’ЯЗКОВО</span></div><div class="row"><span>Тестове середовище → Production</span><span class="pill red">КРОК 27</span></div><div class="row"><span>Відкат версії</span><span class="pill red">ОБОВ’ЯЗКОВО</span></div><button class="btn danger" data-locked="Restore is destructive/high-risk and requires додаткове підтвердження authentication + audit">Restore backup</button></div></div></section>
 </div></main></div>
-<div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2>ЗАХИЩЕНА PRODUCTION-ДІЯ</h2><p id="modalText"></p><p class="muted">У демоверсії ця дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
-<script src="assets/admin.js?v=step26-final-preview-review-20261001"></script><script defer src="assets/admin-contacts.js?v=step26-review-20261001-2"></script></body></html>
+<div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2 id="modalTitle">ПОВІДОМЛЕННЯ ADMIN</h2><p id="modalText"></p><p class="muted hidden" id="modalProductionHint">У демоверсії ця production-дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
+<script src="assets/admin.js?v=step26-image-review-approval-20261001"></script><script defer src="assets/admin-contacts.js?v=step26-review-20261001-2"></script></body></html>
