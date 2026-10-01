@@ -93,3 +93,7 @@ Robot #6/Admin may receive approved long-form source material prepared in DOCX o
 
 ## DEFAULT TEMPLATE RESOLUTION — 2026-10-01
 Robot #6 resolves absent optional layout overrides by inheriting the approved MASTER/canonical page canvas. It must not interpret a missing background, missing override object or untouched Admin form as an instruction to generate a blank title page. Explicit Admin override wins; otherwise approved fallback wins.
+
+
+## MONTH-BOUND ISSUE SELECTION / RELEASE CANDIDATE — 2026-10-01
+Every monthly Digest resolves content against the selected `YYYY-MM` issue. Approved archive items outside that month are excluded from automatic issue packing unless ADMIN explicitly imports them as a separately labelled retrospective/original page. A release-candidate JSON may freeze the Admin Builder input slugs/counts for QA, but it never substitutes for the final rendered artifact, ADMIN_1 approval, exact SHA, Robot #7 link check or mailing approval.
