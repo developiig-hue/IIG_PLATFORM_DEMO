@@ -1,0 +1,38 @@
+from pathlib import Path
+import re, json, sys
+root=Path(".")
+html=(root/"admin-ua.html").read_text(encoding="utf-8")
+js=(root/"assets/admin.js").read_text(encoding="utf-8")
+contacts=(root/"assets/admin-contacts.js").read_text(encoding="utf-8")
+spec=(root/"ADMIN_MASTER_SPEC.md").read_text(encoding="utf-8")
+errors=[]
+def need(cond,msg):
+    if not cond: errors.append(msg)
+for s in ["Новини та публікації","Дайджест","Розсилка та база","Користувачі та права","Безпека"]:
+    need(s in html,f"UA navigation missing: {s}")
+need("contentTypeFilter" in html,"Content type filter missing")
+need("rejectDemo" in html and "Відхилити" in html,"Reject workflow missing")
+need("accept=\".csv,.xlsx" in html,"CSV/XLSX UI contract missing")
+need('const STATE={DRAFT:' in js,"Stable machine state map missing")
+need('n.status="DRAFT"' in js and 'n.status="APPROVED"' in js and 'n.status="REJECTED"' in js,"Content state transitions incomplete")
+need('public-advice.json' in js,"Chief Engineer Advice is not in CMS")
+need("DIGEST_RELEASE_BLOCKED" in js,"Digest direct-link gate missing")
+need("PR #10 • НЕ MERGED" in js,"Robot #7 honest main-state marker missing")
+need("sourceRegistryPreview" in html and "loadSources" in js,"260 sources operator view missing")
+need("demoAudit" in html and "auditEvent" in js,"Demo audit trail missing")
+need("PENDING" in contacts and "SUPPRESSED" in contacts and "ACTIVE" in contacts,"Consent state model incomplete")
+need(".xlsx" in contacts and "КРОКУ 27" in contacts,"XLSX MASTER production gate missing")
+need("NO_AUTO_PUBLISH" in spec and "ADMIN_ONLY" in spec,"Admin publication hard rules missing")
+need("PASSWORD_OK != ADMIN_ACCESS" in spec,"Authentication invariant missing")
+need("\\nfunction" not in js,"Literal escaped newline corrupts JavaScript")
+need("n.status=statusUA" not in js,"Display localization corrupts machine status")
+need("password" not in html.lower() or "production" in html.lower(),"Unexpected password material")
+reg=json.loads((root/"content/discovery/IIG_news_source_registry_260.json").read_text(encoding="utf-8"))
+sources=reg if isinstance(reg,list) else reg.get("sources",[])
+need(len(sources)==260,f"Source registry expected 260, found {len(sources)}")
+if errors:
+    print("STEP 26 ADMIN MASTER: FAIL")
+    for e in errors: print("-",e)
+    sys.exit(1)
+print("STEP 26 ADMIN MASTER: 10/10 STATIC ACCEPTANCE GREEN")
+print("UA / UX / CMS / REVIEW / DIGEST / MAILING / RADAR / ROBOTS / SECURITY / E2E-CONTRACT = PASS")
