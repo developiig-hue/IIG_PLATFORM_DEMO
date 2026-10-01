@@ -44,6 +44,7 @@ reg_items=[x for x in news_items if x.get("status")=="APPROVED" and x.get("admin
 need(len(finance_items)>=5 and len(reg_items)>=5,"Finance/Regulation approved pool missing")
 need("ФІНАНСИ" in js and "ЗАКОНОДАВСТВО / РЕГУЛЮВАННЯ" in js,"Finance/Legislation rubric labels missing")
 need("digest_rubric" in js,"Explicit digest rubric override missing")
+need("article.html?id=" in js,"NEWS direct-link route must use article.html?id")
 need("PR #10 • НЕ MERGED" in js,"Robot #7 honest main-state marker missing")
 need("sourceRegistryPreview" in html and "loadSources" in js,"260 sources operator view missing")
 need("demoAudit" in html and "auditEvent" in js,"Demo audit trail missing")
