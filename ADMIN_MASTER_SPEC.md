@@ -275,3 +275,18 @@ Primary accountable administrator:
 - Responsibility: correct operation of the IIG website and governance of Digest mailing.
 
 The `Users & Roles` workspace is maintained in English by owner decision. Any new Admin account, restoration of Admin privileges, or elevation to an Admin role REQUIRES explicit approval by `ADMIN_1`. No second Admin, Robot, CI workflow or application service may self-approve or bypass this gate. Production approval requires MFA/RBAC and an immutable Audit event. `ADMIN_1` is the final authority for Admin-account governance unless the owner later changes this rule through a separately audited governance procedure.
+
+
+## 18. ADMIN DIGEST MASTER VIEWER — 2026-10-01
+
+The `Дайджест` workspace MUST expose the current approved Digest MASTER directly to ADMIN_1 as a read-only page-by-page reference before the editable Builder.
+
+Current approved artifact:
+- File: `digest/IIG-Monthly-Digest-2026-09.pdf`
+- SHA-256: `6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc`
+- Pages: exactly 3
+- Page 1: Cover
+- Page 2: 15 Ukraine / World events
+- Page 3: Finance / Regulation / Chief Engineer Advice
+
+Admin must be able to select Page 1/3, 2/3 and 3/3 and open the complete PDF MASTER. The reference is immutable/read-only; the working Digest Builder is a separate area below it. A Builder change does not alter the MASTER. Any replacement of this reference requires explicit ADMIN_1 approval, a new approved PDF artifact and a new SHA recorded in the Digest protocol.
