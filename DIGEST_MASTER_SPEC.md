@@ -2,8 +2,10 @@
 
 Status: **APPROVED / DESIGN & CONTENT PRINCIPLES LOCKED**  
 Approval date: 2026-09-29  
-Visual master: `IIG_Monthly_Digest_2026-09_FINAL_DEMO.pdf`  
-Approved master SHA-256: `6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc`
+Visual master: `IIG_Monthly_Digest_2026-09_FINAL_DEMO (2).pdf`  
+Approved master SHA-256: `6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc`  
+Admin read-only reference: `digest/admin-master-2026-09-v2.html`  
+The legacy public-site PDF is not normative unless its SHA exactly matches this approved master.
 
 ## Immutable structure
 1. Page 1 — COVER.
