@@ -11,6 +11,10 @@ def need(cond,msg):
 for s in ["Новини та публікації","Дайджест","Розсилка та база","Користувачі та права","Безпека"]:
     need(s in html,f"UA navigation missing: {s}")
 need("contentTypeFilter" in html,"Content type filter missing")
+need("masterdigest" in html and "digestMasterFrame" in html,"Approved Digest MASTER viewer missing")
+need(html.count('class="btn primary masterPage')==3,"Digest MASTER must expose exactly 3 page controls")
+need("6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc" in html,"Approved Digest MASTER SHA missing")
+need("digest/IIG-Monthly-Digest-2026-09.pdf" in html and "DIGEST_MASTER_PDF" in js,"Approved Digest PDF route missing")
 need("projectRequests" in html and "subscribeRequests" in html and "engineerRequests" in html,"Request moderation cards missing")
 need("ADMIN_1" in html and "Igor Kryvoshei" in html and "develop.iig@gmail.com" in html,"ADMIN_1 profile missing")
 need("+38 067 5063591" in html,"ADMIN_1 phone missing")
