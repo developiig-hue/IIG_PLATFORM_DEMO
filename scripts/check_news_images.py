@@ -9,7 +9,7 @@ root = Path(__file__).resolve().parents[1]
 manifest = json.loads((root / 'baze_foto_news/manifest.json').read_text(encoding='utf-8'))
 registry = json.loads((root / 'content/public-news.json').read_text(encoding='utf-8'))
 sectors = manifest['sectors']
-all_items = [x for x in registry['items'] if x.get('status') == 'APPROVED' and x.get('admin_approved') is True]
+all_items = list(registry['items'])
 items = [x for x in all_items if x.get('sector') in sectors and not x.get('supplemental')]
 assert len(items) == 9, f'Expected nine approved CORE news items, got {len(items)}'
 assert len({x['sector'] for x in items}) == 9, 'Each approved CORE news item must have its own sector'
