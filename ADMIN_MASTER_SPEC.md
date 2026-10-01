@@ -412,3 +412,9 @@ Dashboard exposes operational counts for General, Finance, Regulation and Advice
 
 ### 24.5 Source registry honesty
 Admin Source view distinguishes owner approval from technical URL/feed verification. A source is not production-ready merely because `owner_approved=true`. Search/filter and URL/feed state are visible to Admin; this prevents the 260-source registry from being presented as technically connected when adapters remain unconfigured.
+
+
+## 25. SEPTEMBER 2026 FULL-MONTH ADMIN CYCLE — 2026-10-01
+The September issue is built from the completed calendar month 2026-09. Digest Auto-fill and readiness MUST filter editorial material by the selected issue month/year; archived approved material from other months remains on the website but is not silently reused in the new issue. The September release-candidate manifest is `content/digest-issues/2026-09-admin-candidate.json` and records the Admin Builder input set only; it is not a manually rendered Digest and it is not final publication approval.
+
+The September candidate contains a verified editorial pool across general industrial-energy news/events, Finance, Regulation/Legislation and Chief Engineer Advice. Packing remains dynamic and based on the existing Admin capacity algorithm. If the full month exceeds a single core page, the system creates continuation pages rather than shrinking typography or dropping approved material. Final PDF/artifact SHA remains unapproved until ADMIN_1 reviews the rendered result.
