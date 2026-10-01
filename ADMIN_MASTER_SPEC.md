@@ -366,3 +366,26 @@ Cover and flexible-page configuration belong to the portable Digest schema and M
 Auto-pack and compact/reorder logic MUST preserve all `promo` / page-4+ objects. Core NEWS repacking may rebuild pages 1–3 but MUST reattach additional pages in their existing order. Deleting/reordering a core NEWS item must never silently delete advertising, IIG ORIGINAL, Partner, Sponsored or Success Project pages.
 
 Pages 4+ mirror the cover controls for visual composition: background image, focal position, navy overlay strength and announcement/teaser fields, in addition to title/subtitle/body/CTA. This closes the earlier partial implementation where extra pages had a background but lacked the cover-level positioning/overlay/announcement controls.
+
+
+## 23. FILE-BASED IIG / ADVERTISING ARTICLE IMPORT — PAGE 2 CANVAS — 2026-10-01
+
+ADMIN_1 requires a second mode for pages 4+: long personal IIG news, successful-project articles and advertising/partner materials may be imported from a separately prepared editor file rather than manually rebuilt card-by-card.
+
+### 23.1 Source files
+Step 26 Admin accepts DOCX, TXT, Markdown, RTF and HTML. DOCX parsing is local in the browser: the Admin reads the OOXML ZIP, extracts `word/document.xml`, paragraph text and embedded JPEG/PNG/WebP media. No external CDN/parser/API is used. Legacy binary `.doc` is intentionally not accepted; it must be saved as DOCX.
+
+### 23.2 Canonical canvas
+Imported material uses `ARTICLE_PAGE2_CANVAS`: the visual canvas, safe margins, top identity strip and footer logic follow Page 2. Article text/photos may differ, but the page may not grow vertically. Content is automatically paginated according to layout capacity. Overflow creates the next article page (4, 5, 6…) instead of shrinking below readability or creating empty dead zones.
+
+### 23.3 Pagination
+Paragraph length and images consume layout units. The first page reserves additional height for headline/lead; continuation pages reserve a smaller continuation heading. Images consume a fixed layout budget and embedded images with long side below 900 px are rejected from automatic layout as insufficient-quality source media. The administrator can edit imported text before pagination.
+
+### 23.4 Repeated Subscribe CTA
+Every generated ARTICLE_PAGE2_CANVAS page MUST contain the same lower Subscribe CTA component used by the Page-2 design: `ПІДПИСАТИСЯ НА ДАЙДЖЕСТ` -> `forms.html#subscribe`. Footer/CTA is reserved space and article text or images may not collide with it.
+
+### 23.5 Editorial types and disclosure
+Importer supports `IIG_ORIGINAL`, `SUCCESS_PROJECT`, `PARTNER`, `SPONSORED`. Partner/Sponsored type label remains visibly printed on every generated page. Import does not constitute publication approval. The resulting pages stay under final Admin approval, direct-link QA and exact-artifact SHA rules.
+
+### 23.6 Preservation
+Core Page 2/Page 3 auto-pack and compact logic MUST preserve both free-layout `promo` pages and imported `article` pages. Repacking normal news may not delete, reflow into, or reorder imported article sequences.
