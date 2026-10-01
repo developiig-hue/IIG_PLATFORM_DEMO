@@ -292,3 +292,19 @@ Current approved artifact:
 - Page 3: Finance / Regulation / Chief Engineer Advice
 
 Admin must be able to select Page 1/3, 2/3 and 3/3 and open the ADMIN MASTER v2 reference. The Admin reference must never silently fall back to the legacy public-site PDF. The reference is immutable/read-only; the working Digest Builder is a separate area below it. A Builder change does not alter the MASTER. Any replacement of this reference requires explicit ADMIN_1 approval, a new approved PDF artifact and a new SHA recorded in the Digest protocol.
+
+
+## 19. DIGEST BUILDER PAGE-PACKING / ISSUE CONTROL / RUBRICS — 2026-10-01
+
+Owner requirement: the working Digest in Admin MUST be formable page-by-page without avoidable blank areas.
+
+- Page 1 is the locked cover layout; Admin controls the red issue badge month/year through a dedicated control.
+- Page 2 and later NEWS pages use capacity-aware packing. Capacity is measured in layout units; headline length changes item cost, so the system does not rely on a blind fixed item count.
+- Current NEWS page target capacity is 23 nominal short-headline slots, reflecting the approved layout remaining 7–8-card opportunity beyond the previous 15-card example.
+- Page 3 reserves the Chief Engineer Advice block at fixed size and allows Finance/Regulation material to use the remaining capacity up to 14 nominal slots, reflecting the approximately five additional items identified by ADMIN_1.
+- Overflow MUST move to the next compatible page; the UI shows used/free capacity and blocks manual moves that would overflow a page.
+- The Auto-fill by free space action repacks all approved non-Advice content, prioritizing general NEWS and then Finance/Regulation, and creates additional NEWS pages only when required.
+- Chief Engineer Advice is a fixed three-slot block on Page 3 and does not expand the page height.
+- Admin content list and Digest library are grouped into the Digest rubrics: Ukraine / World, Financing, Regulation, Chief Engineer Advice.
+- After Admin approval a material is visibly marked in green text as ZATVERDZHENO DO PUBLIKATSII / ЗАТВЕРДЖЕНО ДО ПУБЛІКАЦІЇ and enters the approved Digest library. Draft/rejected material must not carry this marker.
+- Final approval is blocked if any page exceeds capacity or any Digest material lacks its exact IIG URL.
