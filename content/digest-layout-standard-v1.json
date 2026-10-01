@@ -184,5 +184,16 @@
     "production_persistence_requires_backend": true,
     "digest_rubric_independent_of_sector": true,
     "advice_structured_roundtrip": true
+  },
+  "issue_selection": {
+    "mode": "YYYY-MM",
+    "field": "publication_date",
+    "archive_auto_reuse": false,
+    "explicit_retrospective_only": true
+  },
+  "release_candidate": {
+    "manifest_path": "content/digest-issues/2026-09-admin-candidate.json",
+    "input_freeze_only": true,
+    "final_approval": false
   }
 }
