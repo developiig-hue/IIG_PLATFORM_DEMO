@@ -71,6 +71,11 @@ need("sourceHealthSummary" in html and "technical_url_verified" in js and "feed_
 need('class="btn lock" data-locked=' in html,"Website locked controls remain inert")
 need("step26-admin-readiness-20261001" in html,"Admin asset cache-busting version not advanced")
 need(html.count('<option value="APPROVED">')==1,"Duplicate APPROVED status filter remains")
+need("issueMatches" in js and "publication_date" in js,"Monthly Digest issue filter missing")
+candidate=json.loads((root/"content/digest-issues/2026-09-admin-candidate.json").read_text(encoding="utf-8"))
+need(candidate.get("issue")=="2026-09" and candidate.get("status")=="ADMIN_BUILDER_READY","September Admin Digest candidate missing")
+need(candidate["counts"].get("general",0)>=20 and candidate["counts"].get("finance",0)>=5 and candidate["counts"].get("regulation",0)>=5 and candidate["counts"].get("advice",0)>=3,"September candidate content pool incomplete")
+
 need("PR #10 • НЕ MERGED" in js,"Robot #7 honest main-state marker missing")
 need("sourceRegistryPreview" in html and "loadSources" in js,"260 sources operator view missing")
 need("demoAudit" in html and "auditEvent" in js,"Demo audit trail missing")
