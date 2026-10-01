@@ -222,3 +222,38 @@ The IIG Admin has one protected, unified contact database, not separate competin
 **Demo implementation:** the Ukrainian `Розсилка та база` workspace supports CSV import, search/filter, contact creation/editing, consent/status controls, RADAR CSV/JSON proposal import, duplicate detection and human acceptance/rejection. Demo data lives in volatile browser memory only. This is a manual RADAR import adapter, NOT a live RADAR connection or durable database. Real automated RADAR sync, XLSX parsing, persistent CRUD, suppression registry, campaign transport and role-scoped exports are Step 27 backend dependencies. Do not mark them as connected until verified.
 
 **Production API contract:** `/api/v1/contacts`, `/api/v1/contacts/import`, `/api/v1/radar/contact-proposals`, `/api/v1/radar/contact-proposals/{id}/decision`, `/api/v1/consent-events`, `/api/v1/suppression`, and campaign recipient snapshots; exact implementation may differ while preserving semantics. Admin action and Robot ingestion must be authenticated, authorized, rate-limited and audited.
+
+
+## 16. FINAL STEP 26 ADMIN MASTER GATE — 2026-10-01
+
+STEP 26 is the ADMIN MASTER/CMS acceptance gate, not the production infrastructure gate. The canonical Demo entry is `admin-ua.html`; `admin.html` redirects to it to prevent stale English copies.
+
+The operator-visible interface is Ukrainian. Only established technical identifiers/abbreviations may remain in English (IIG, CMS, MFA, RBAC, API, URL, CSV, XLSX, PDF, SEO, SHA, DB, HTTPS, SMTP, GitHub, MASTER). Machine identifiers and state values remain stable and are never translated inside code/data merely for display.
+
+Canonical content state machine:
+`DRAFT -> REVIEW -> APPROVED -> PUBLISHED`, with `REJECTED`, `BLOCKED` and production `UNPUBLISHED/rollback` branches. Demo may exercise DRAFT/APPROVED/REJECTED in volatile memory. Display labels are Ukrainian; machine states are not localized.
+
+Canonical contact/mailing state model:
+- UNKNOWN consent -> `PENDING` and excluded from mailing.
+- Opt-out/bounce/suppression -> `SUPPRESSED` and excluded.
+- `ACTIVE` requires documented evidence/lawful basis and still passes campaign suppression checks.
+- RADAR acceptance into the contact base never implies `ACTIVE`.
+- Approved MASTER XLSX schema is the production import contract; the public Demo may validate CSV locally and must never embed a third-party XLSX parser or persist PII merely to simulate production.
+
+Digest library accepts only Admin-approved content. Every digest item must resolve to its same specific IIG article/advice URL. Missing IIG URL = `DIGEST_RELEASE_BLOCKED`.
+
+Robot #7 must be reported from actual main state. As of this gate PR #10 is open/not merged, so Admin displays this honestly. STEP 26 GREEN MUST NOT be interpreted as seven-robot production release.
+
+Final 10 gates:
+1. UA LANGUAGE
+2. NAVIGATION / UX
+3. NEWS + CHIEF ENGINEER ADVICE CMS
+4. ADMIN REVIEW / NO AUTO-PUBLISH
+5. DIGEST BUILDER / direct-link QA
+6. UNIFIED MAILING DATABASE / consent
+7. RADAR / SUBSCRIBERS / PROJECT REQUESTS contract
+8. ROBOTS / 260 SOURCES operator view
+9. SECURITY / AUDIT / SYSTEM contract
+10. OWNER E2E workflow
+
+Repository acceptance is enforced by `python scripts/check_step26_admin.py`. A passing static/UI contract test means **STEP 26 ADMIN MASTER GREEN**. It does not waive any Step 27 blocker.
