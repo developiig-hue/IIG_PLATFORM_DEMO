@@ -113,7 +113,8 @@
         "ua": "U. S. Steel Košice: €0,9 млрд в EAF та ASU",
         "en": "U. S. Steel Košice: €0.9bn EAF and ASU investment decision"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "nestle-biessenhofen-agri-pv-2026",
@@ -224,7 +225,8 @@
         "ua": "Google: €13 млрд у AI-інфраструктуру Фінляндії",
         "en": "Google announces €13bn Finnish AI infrastructure programme"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "basf-ludwigshafen-renewable-accc-2026",
@@ -264,7 +266,8 @@
         "ua": "BASF модернізувала виробництво в Ludwigshafen",
         "en": "BASF opens modernised chemical production in Ludwigshafen"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "solarfoods-factory02-financing-2026",
@@ -528,7 +531,8 @@
         "ua": "Wärtsilä + Schneider: Generator-to-Chip для дата-центрів",
         "en": "Wärtsilä, Schneider Electric and Stanley Consultants link generation and electrical infrastructure for data centers"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "wartsila-tges-japan-ai-power-2026-09",
@@ -566,7 +570,8 @@
         "ua": "Wärtsilä і TGES: onsite power для AI-дата-центрів",
         "en": "Wärtsilä and TGES to assess gas and dual-fuel power for Japan AI data centers"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "rwe-moerdijk-bess-400mw-2026-09",
@@ -604,7 +609,8 @@
         "ua": "RWE: BESS 400 МВт / 1 100 МВт·год у Moerdijk",
         "en": "RWE to build 400 MW / 1,100 MWh BESS at Moerdijk"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "waratah-super-battery-full-capacity-2026-09",
@@ -642,7 +648,8 @@
         "ua": "Waratah Super Battery: 850 МВт / 1 680 МВт·год",
         "en": "Waratah Super Battery reaches full 850 MW / 1,680 MWh capacity"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "ge-egypt-9f-life-extension-2026-09",
@@ -680,7 +687,8 @@
         "ua": "GE Vernova: Life Extension п’яти турбін 9F у Єгипті",
         "en": "GE Vernova to extend life of five 9F gas turbines in Egypt"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "bwrx300-europe-mou-2026-09",
@@ -718,7 +726,8 @@
         "ua": "BWRX-300: нове партнерство для deployment у Європі",
         "en": "SGE, GE Vernova Hitachi and Samsung C&T agree to advance BWRX-300 deployment in Europe"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "ge-eurus-japan-wind-294mw-2026-09",
@@ -756,7 +765,8 @@
         "ua": "GE Vernova: 29,4 МВт wind для Eurus Energy",
         "en": "GE Vernova to supply 29.4 MW of wind capacity for Eurus Energy in Japan"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "rwe-oracle-vppa-433mw-2026-09",
@@ -794,7 +804,8 @@
         "ua": "RWE + Oracle: VPPA на 433 МВт wind",
         "en": "RWE and Oracle sign 433 MW wind VPPA"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "rwe-germany-wind-auction-119mw-2026-09",
@@ -832,7 +843,8 @@
         "ua": "RWE отримала 119 МВт у німецькому wind-аукціоні",
         "en": "RWE secures 119 MW in German onshore wind auction"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "hitachi-daikin-sf6free-grid-2026-09",
@@ -870,7 +882,8 @@
         "ua": "Hitachi Energy + Daikin: компонент для SF₆-free grid",
         "en": "Hitachi Energy and Daikin localize a component for SF6-free high-voltage equipment in Germany"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "holcim-czech-calcined-clay-2026-09",
@@ -908,7 +921,8 @@
         "ua": "Holcim запустила calcined-clay line у Чехії",
         "en": "Holcim launches calcined-clay line in the Czech Republic for lower-carbon cement"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "arcelormittal-gijon-eaf-2026-09",
@@ -946,7 +960,8 @@
         "ua": "ArcelorMittal: €213 млн у EAF Gijón",
         "en": "ArcelorMittal advances €213 million EAF project in Gijón"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "thyssenkrupp-steel-transform30-2026-09",
@@ -984,7 +999,8 @@
         "ua": "thyssenkrupp Steel підтвердила Transform 30",
         "en": "thyssenkrupp Steel reaffirms Transform 30 and medium-term EBITDA ambition of at least €1.2 billion"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "dtek-tpp-generation-stopped-2026-09",
@@ -1022,7 +1038,8 @@
         "ua": "ДТЕК: ТЕС зупинила генерацію після атаки",
         "en": "DTEK: one thermal power plant stopped generation after attack and equipment was seriously damaged"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "windenergy-hamburg-2026-final-2026-09",
@@ -1061,7 +1078,8 @@
         "ua": "WindEnergy Hamburg 2026: підсумки виставки",
         "en": "WindEnergy Hamburg 2026 closes with 1,600+ exhibitors and focus on flexibility and resilience"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "kioge-2026-almaty-2026-09",
@@ -1100,7 +1118,8 @@
         "ua": "KIOGE 2026: 501 компанія з 22 країн",
         "en": "KIOGE 2026 opens in Almaty with 501 companies and new energy value chains"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "energy-community-ukraine-procurement-workshop-2026-09",
@@ -1139,7 +1158,8 @@
         "ua": "Ukraine Energy Support Fund: procurement workshop",
         "en": "Energy Community held industry outreach on Ukraine Energy Support Fund procurement opportunities"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "rollsroyce-mankato-backup-power-2026-09",
@@ -1177,7 +1197,8 @@
         "ua": "Rolls-Royce: $24 млн у mtu backup power",
         "en": "Rolls-Royce opens $24 million Mankato expansion for mtu backup power"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "ge-chleansaid-wind-96mw-2026-09",
@@ -1215,7 +1236,8 @@
         "ua": "GE Vernova: 96 МВт wind для Chleansaid",
         "en": "GE Vernova to supply 96 MW of wind turbines for Chleansaid Wind Farm in Scotland"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "ge-studsvik-refirm-12gw-2026-09",
@@ -1253,7 +1275,8 @@
         "ua": "Швеція: партнерство для 1,2 ГВт nuclear program",
         "en": "Studsvik, GE Vernova Hitachi and Samsung C&T advance 1.2 GW nuclear program in Sweden"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "ge-azulao-grid-stability-2026-09",
@@ -1291,7 +1314,8 @@
         "ua": "Azulão I: dispatchable power для grid stability",
         "en": "Brazil's Azulão I uses 7HA.02 technology to support a long transmission network"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "fluence-guidance-supply-chain-2026-09",
@@ -1329,7 +1353,8 @@
         "ua": "Fluence: manufacturing delays вплинули на FY2026",
         "en": "Fluence cuts FY2026 guidance amid U.S. manufacturing ramp-up delays"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "eib-eu-ukraine-district-heating-grant-2026-09",
@@ -1367,7 +1392,8 @@
         "ua": "ЄС + ЄІБ: €30 млн гранту для теплопостачання України",
         "en": "EU adds €30 million grant to EIB's €200 million Ukraine district-heating programme"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "eib-credit-agricole-grid-guarantees-2026-09",
@@ -1405,7 +1431,8 @@
         "ua": "ЄІБ + Crédit Agricole: €600 млн grid guarantees",
         "en": "EIB and Crédit Agricole CIB create €600 million guarantee portfolio for grid manufacturers"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "eib-bnp-grid-guarantees-2026-09",
@@ -1443,7 +1470,8 @@
         "ua": "ЄІБ + BNP Paribas: €700 млн grid guarantees",
         "en": "EIB and BNP Paribas mobilize €700 million in guarantees for European grids"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "eib-reactive-technologies-gridverix-2026-09",
@@ -1481,7 +1509,8 @@
         "ua": "ЄІБ: €19 млн для GridVerix",
         "en": "EIB provides €19 million to Reactive Technologies for digital grid-stability technology"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "eib-statkraft-green-bond-2026-09",
@@ -1519,7 +1548,8 @@
         "ua": "ЄІБ: близько €300 млн у green bonds Statkraft",
         "en": "EIB approves about €300 million for Statkraft green bonds"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "nkrekp-grid-connection-mechanisms-sep2026",
@@ -1557,7 +1587,8 @@
         "ua": "НКРЕКП: нові механізми приєднання з 1 вересня",
         "en": "NEURC: updated grid-connection mechanisms take effect from 1 September"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "rada-eu-renewables-law-14271-2026-09",
@@ -1595,7 +1626,8 @@
         "ua": "Рада ухвалила закон щодо права ЄС у ВДЕ",
         "en": "Verkhovna Rada adopts law implementing EU renewable-energy legislation"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "nkrekp-resolution-1507-2026-09",
@@ -1633,7 +1665,8 @@
         "ua": "НКРЕКП №1507: зміни механізмів підтримки ВДЕ",
         "en": "NEURC Resolution No. 1507 amends decisions related to support for alternative-source electricity"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "nkrekp-resolution-1520-2026-09",
@@ -1671,7 +1704,8 @@
         "ua": "НКРЕКП №1520: плани розвитку та інвестпрограми ОСР",
         "en": "NEURC Resolution No. 1520 updates a decision linked to DSO development plans and investment programmes"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "nkrekp-transmission-plan-2026-2035-sep2026",
@@ -1709,7 +1743,8 @@
         "ua": "НКРЕКП: зміни до Плану передачі 2026–2035",
         "en": "NEURC approves amendments to the 2026–2035 transmission-system development plan"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "nkrekp-retail-rules-1565-2026-09",
@@ -1747,7 +1782,8 @@
         "ua": "НКРЕКП №1565: зміни Правил роздрібного ринку",
         "en": "NEURC Resolution No. 1565 amends retail electricity market rules"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     },
     {
       "slug": "nkrekp-green-tariffs-1611-2026-09",
@@ -1785,7 +1821,8 @@
         "ua": "НКРЕКП №1611: green tariffs і local-content надбавки",
         "en": "NEURC Resolution No. 1611 sets green tariffs and local-content premiums"
       },
-      "review_required_by": "ADMIN_1"
+      "review_required_by": "ADMIN_1",
+      "image_admin_approved": false
     }
   ],
   "editorial_cycle": {
