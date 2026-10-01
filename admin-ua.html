@@ -1,4 +1,4 @@
-<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IIG Адмін-панель — Крок 26 • Демо</title><link rel="stylesheet" href="assets/admin.css?v=step26-digest-page-editor-20261001"></head><body>
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IIG Адмін-панель — Крок 26 • Демо</title><link rel="stylesheet" href="assets/admin.css?v=step26-article-import-20261001"></head><body>
 <div class="shell"><aside class="side"><div class="brand">IIG<small>АДМІН-ПАНЕЛЬ / CMS</small></div><div class="demo"><b>КРОК 26 • ДЕМО</b><br>Безпечний деморежим.<br>Паролі, персональні дані та секрети тут не зберігаються.</div>
 <nav class="nav" id="nav">
 <button class="active" data-tab="dashboard">▦ <span>Головна</span></button>
@@ -65,6 +65,20 @@
 <div class="toolbar"><button class="btn primary" id="applyCover">Застосувати до титульної</button><button class="btn primary" id="previewCover">Попередній перегляд</button><button class="btn danger" id="resetCover">Скинути до робочого стандарту</button></div>
 </div></div></div>
 <div class="buildertop card"><div><h2>КОНСТРУКТОР ДАЙДЖЕСТУ</h2><p class="muted">Сторінки заповнюються за реальною місткістю макета: короткі заголовки займають менше місця, довгі — більше. Переповнення автоматично переноситься на наступну сторінку.</p><div class="issuebar"><span class="issuebadge" id="digestIssueBadge">ВЕРЕСЕНЬ 2026</span><button class="btn primary" id="changeDigestIssue">Змінити місяць / рік</button><span class="muted" id="digestPackingStatus">Автопакування активне</span></div></div><div class="toolbar"><button class="btn success" id="autoFillDigest">⚡ Автозаповнити по вільному місцю</button><button class="btn primary" id="addDigestPage">+ Додати сторінку 4+</button><button class="btn primary" id="previewDigest">Попередній перегляд</button><button class="btn danger" id="approveDigestProd">Підтвердити дайджест</button></div></div>
+<div class="card articleimporter"><div class="sectionhead"><div><h2>ІМПОРТ ПЕРСОНАЛЬНОГО / РЕКЛАМНОГО МАТЕРІАЛУ</h2><p class="muted">Завантажте Word DOCX або текстовий файл. Матеріал автоматично верстається у канву Сторінки 2 та, якщо не вміщується, продовжується на наступних сторінках з тим самим footer і кнопкою «ПІДПИСАТИСЯ НА ДАЙДЖЕСТ».</p></div><span class="pill green">PAGE 2 CANVAS</span></div>
+<div class="articleimportgrid"><div>
+<label>Тип матеріалу<select class="input" id="articleMaterialType"><option value="IIG_ORIGINAL">IIG ORIGINAL</option><option value="SUCCESS_PROJECT">Успішно реалізований проєкт IIG</option><option value="PARTNER">PARTNER MATERIAL</option><option value="SPONSORED">SPONSORED MATERIAL</option></select></label>
+<label>Файл матеріалу<input class="input" type="file" id="articleSourceFile" accept=".docx,.txt,.md,.rtf,.html,text/plain,text/markdown,text/html,application/rtf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></label>
+<div id="articleImportStatus" class="miniwarn">DOCX/TXT/MD/RTF/HTML. DOCX читається локально в браузері; текст і вбудовані фото не передаються зовнішнім сервісам.</div>
+<label>Заголовок<input class="input" id="articleImportTitle"></label>
+<label>Лід / короткий анонс<textarea class="input" id="articleImportLead" rows="3"></textarea></label>
+</div><div>
+<label>Текст матеріалу<textarea class="input" id="articleImportBody" rows="13" placeholder="Текст буде завантажено з файлу; його можна відредагувати перед версткою."></textarea></label>
+<label>Пряме посилання на повний матеріал IIG<input class="input" id="articleImportUrl" placeholder="article.html?id=... або https://..."></label>
+<div class="row"><span>Вбудовані фото</span><b id="articleImageCount">0</b></div>
+<div class="toolbar"><button class="btn success" id="buildArticlePages">Сформувати сторінки</button><button class="btn primary" id="previewArticleImport">Попередній перегляд</button><button class="btn danger" id="clearArticleImport">Очистити</button></div>
+<div class="miniwarn"><b>Правило:</b> канва, поля, шапка і нижня зона — як на Сторінці 2. Текст і фото автоматично розподіляються по висоті. На кожній сформованій сторінці обов’язково зберігається CTA «ПІДПИСАТИСЯ НА ДАЙДЖЕСТ».</div>
+</div></div></div>
 <div class="digestgrid"><div class="card"><h2>ПІДТВЕРДЖЕНІ МАТЕРІАЛИ ЗА РУБРИКАМИ</h2><input class="input" id="digestSearch" placeholder="Пошук матеріалу"><div class="rubriclegend"><span>Україна / Світ</span><span>Фінанси</span><span>Законодавство / Регулювання</span><span>Поради Головного інженера</span></div><div id="digestLibrary" class="newslist compact"><div class="empty">Завантаження…</div></div></div>
 <div class="card"><div class="sectionhead"><div><h2>ПОТОЧНИЙ ДАЙДЖЕСТ</h2><p class="muted" id="digestWorkingTitle">IIG Monthly Digest • Вересень 2026 • робоча версія</p></div><span class="pill blue" id="digestCounter">0 матеріалів</span></div>
 <div id="digestPages"></div>
