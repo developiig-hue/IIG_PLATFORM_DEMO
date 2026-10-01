@@ -1,0 +1,79 @@
+{
+  "schema": "iig.digest-issue-candidate.v1",
+  "issue": "2026-09",
+  "status": "ADMIN_BUILDER_READY",
+  "generated_by": "STEP26_ADMIN_RULESET",
+  "generated_at": "2026-10-01",
+  "master_fallback": "IIG_Monthly_Digest_2026-09_FINAL_DEMO (2)",
+  "counts": {
+    "general": 23,
+    "finance": 7,
+    "regulation": 7,
+    "advice": 8
+  },
+  "items": {
+    "general": [
+      "basf-ludwigshafen-renewable-accc-2026",
+      "wartsila-schneider-generator-to-chip-2026-09",
+      "wartsila-tges-japan-ai-power-2026-09",
+      "rwe-moerdijk-bess-400mw-2026-09",
+      "waratah-super-battery-full-capacity-2026-09",
+      "ge-egypt-9f-life-extension-2026-09",
+      "bwrx300-europe-mou-2026-09",
+      "ge-eurus-japan-wind-294mw-2026-09",
+      "rwe-oracle-vppa-433mw-2026-09",
+      "rwe-germany-wind-auction-119mw-2026-09",
+      "hitachi-daikin-sf6free-grid-2026-09",
+      "holcim-czech-calcined-clay-2026-09",
+      "arcelormittal-gijon-eaf-2026-09",
+      "thyssenkrupp-steel-transform30-2026-09",
+      "dtek-tpp-generation-stopped-2026-09",
+      "windenergy-hamburg-2026-final-2026-09",
+      "kioge-2026-almaty-2026-09",
+      "energy-community-ukraine-procurement-workshop-2026-09",
+      "rollsroyce-mankato-backup-power-2026-09",
+      "ge-chleansaid-wind-96mw-2026-09",
+      "ge-studsvik-refirm-12gw-2026-09",
+      "ge-azulao-grid-stability-2026-09",
+      "fluence-guidance-supply-chain-2026-09"
+    ],
+    "finance": [
+      "kosice-eaf-asu-2026",
+      "google-finland-ai-grid-2026",
+      "eib-eu-ukraine-district-heating-grant-2026-09",
+      "eib-credit-agricole-grid-guarantees-2026-09",
+      "eib-bnp-grid-guarantees-2026-09",
+      "eib-reactive-technologies-gridverix-2026-09",
+      "eib-statkraft-green-bond-2026-09"
+    ],
+    "regulation": [
+      "nkrekp-grid-connection-mechanisms-sep2026",
+      "rada-eu-renewables-law-14271-2026-09",
+      "nkrekp-resolution-1507-2026-09",
+      "nkrekp-resolution-1520-2026-09",
+      "nkrekp-transmission-plan-2026-2035-sep2026",
+      "nkrekp-retail-rules-1565-2026-09",
+      "nkrekp-green-tariffs-1611-2026-09"
+    ],
+    "advice": [
+      "grid-connection-september-rules",
+      "bess-duty-before-mwh",
+      "onsite-power-for-ai-and-industry",
+      "turbine-life-extension-vs-replacement",
+      "vppa-does-not-equal-resilience",
+      "bankability-guarantees-and-project-debt",
+      "supplier-qualification-after-exhibition",
+      "industrial-resilience-blackstart-segmentation"
+    ]
+  },
+  "rules": {
+    "month_filter": "publication_date starts with 2026-09",
+    "packing": "ADMIN_PAGE_CAPACITY_WEIGHTED",
+    "cover": "MASTER_FALLBACK_UNLESS_ADMIN_OVERRIDE",
+    "page2": "AUTO_PACK_GENERAL",
+    "page3": "AUTO_PACK_FINANCE_REGULATION_PLUS_FIXED_ADVICE",
+    "overflow": "CREATE_CONTINUATION_PAGE",
+    "direct_links": "REQUIRED",
+    "final_exact_pdf_sha": "NOT_YET_APPROVED"
+  }
+}
