@@ -440,3 +440,11 @@ Successful editorial approval uses a normal green Admin confirmation. The protec
 STEP 26 Demo runs with an explicit editorial identity `ADMIN_1 / Igor Kryvoshei`. This identity may approve NEWS images, approve NEWS content and approve the final Digest layout. These operations are guarded by `requireAdmin1()` and logged as ADMIN_1 editorial actions. The Demo identity is explicitly NOT production authentication: `production_authenticated=false`; production Publish/Send/user-management remains Step 27 only.
 
 Successful image/content approval MUST NOT open a blocking modal that resembles a production-security warning. It now uses a short non-blocking green toast and leaves the editor in place so ADMIN_1 can continue reviewing the next item. The protected modal is reserved for true production-locked actions or blocking validation errors.
+
+
+## 29. STEP 26 DEMO PUBLICATION — 2026-10-01
+ADMIN_1 may complete the full editorial acceptance cycle inside the Step 26 demo by changing a fully approved NEWS item to machine state `PUBLISHED` through the button `Опублікувати у DEMO`. Preconditions: active ADMIN_1 editorial authority, content approval, image approval and rights metadata. The action records `demo_published=true`, ADMIN_1 identity and timestamp in the local editorial session and Audit, and keeps the item eligible for Digest Builder.
+
+Demo publication is NOT production publication and does not mutate the paid-hosting/public production backend. Production publication remains a separate Step 27 server-side action protected by Password + MFA + RBAC + server session + immutable Audit. Editing text or changing/resetting an image after Demo publication invalidates the publication state and returns the item to REVIEW for fresh ADMIN_1 approval.
+
+The UI must not show the production-security modal when `Опублікувати у DEMO` succeeds. Successful Demo publication uses a non-blocking green Admin toast. The production-security modal is reserved for actual Step 27 operations.
