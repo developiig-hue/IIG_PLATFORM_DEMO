@@ -360,3 +360,9 @@ Sponsored or partner material MUST be visibly identified as such; editorial/news
 
 ### 22.4 Portability
 Cover and flexible-page configuration belong to the portable Digest schema and MUST survive migration to paid hosting/domain. Uploaded production backgrounds must be stored in the approved media storage/CDN rather than browser memory; Step 26 Demo only validates the operator workflow.
+
+
+### 22.5 Red-team preservation rule — 2026-10-01
+Auto-pack and compact/reorder logic MUST preserve all `promo` / page-4+ objects. Core NEWS repacking may rebuild pages 1–3 but MUST reattach additional pages in their existing order. Deleting/reordering a core NEWS item must never silently delete advertising, IIG ORIGINAL, Partner, Sponsored or Success Project pages.
+
+Pages 4+ mirror the cover controls for visual composition: background image, focal position, navy overlay strength and announcement/teaser fields, in addition to title/subtitle/body/CTA. This closes the earlier partial implementation where extra pages had a background but lacked the cover-level positioning/overlay/announcement controls.
