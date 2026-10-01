@@ -34,7 +34,7 @@ if not any(x['slug'] == pharma['items'][0]['slug'] for x in registry['items']): 
 core=[x for x in registry['items'] if x.get('sector') in SECTORS and not x.get('supplemental')]
 supplemental=[x for x in registry['items'] if x not in core]
 assert len(core) == 9 and {x['sector'] for x in core} == set(SECTORS), 'Exactly one verified CORE article per sector required'
-assert all(x.get('sector') in {'finance','regulation'} for x in supplemental), 'Supplemental news must be Finance or Regulation'
+assert all(x.get('sector') in set(SECTORS) | {'finance','regulation'} for x in supplemental), 'Supplemental news has invalid sector'
 
 slugs = set()
 for item in registry['items']:
@@ -114,6 +114,6 @@ for name in ('index.html', 'advice.html', 'advice-article.html'):
     assert 'assets/public-advice.js' in (ROOT / name).read_text(encoding='utf-8')
 coverage = {sector: sum(x['sector'] == sector and not x.get('supplemental') for x in registry['items']) for sector in SECTORS}
 assert all(count == 1 for count in coverage.values())
-print('PASS: editorial protocol present, nine verified CORE bilingual articles plus approved supplemental Finance/Regulation content')
+print('PASS: editorial protocol present, nine verified CORE bilingual articles plus approved supplemental September editorial content')
 print('PUBLIC NEWS CORE COVERAGE:', coverage)
-print('SUPPLEMENTAL CONTENT:', {'finance':sum(x.get('digest_rubric')=='FINANCE' for x in registry['items']), 'regulation':sum(x.get('digest_rubric')=='REGULATION' for x in registry['items'])})
+print('SUPPLEMENTAL CONTENT:', {'general':sum(x.get('supplemental') and x.get('digest_rubric','GENERAL')=='GENERAL' for x in registry['items']), 'finance':sum(x.get('digest_rubric')=='FINANCE' for x in registry['items']), 'regulation':sum(x.get('digest_rubric')=='REGULATION' for x in registry['items'])})
