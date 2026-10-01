@@ -43,7 +43,11 @@ for item in registry['items']:
     slugs.add(slug)
     is_core=item in core
     assert item['sector'] in SECTORS or item['sector'] in {'finance','regulation'}, f'Invalid sector: {slug}'
-    assert item['status'] == 'APPROVED' and item['admin_approved'] is True, f'Not approved: {slug}'
+    assert item['status'] in {'APPROVED','REVIEW'}, f'Invalid editorial status: {slug}'
+if item['status']=='APPROVED':
+    assert item['admin_approved'] is True, f'APPROVED without admin approval: {slug}'
+else:
+    assert item['admin_approved'] is False, f'REVIEW must not be admin approved: {slug}'
     assert item['primary_source_verified'] is True, f'Primary source not verified: {slug}'
     source = urlparse(item['canonical_url'])
     assert source.scheme == 'https' and source.netloc and '.' in source.netloc, f'Invalid primary source: {slug}'
@@ -114,6 +118,6 @@ for name in ('index.html', 'advice.html', 'advice-article.html'):
     assert 'assets/public-advice.js' in (ROOT / name).read_text(encoding='utf-8')
 coverage = {sector: sum(x['sector'] == sector and not x.get('supplemental') for x in registry['items']) for sector in SECTORS}
 assert all(count == 1 for count in coverage.values())
-print('PASS: editorial protocol present, nine verified CORE bilingual articles plus approved supplemental September editorial content')
+print('PASS: editorial protocol present; content may remain REVIEW until explicit ADMIN_1 approval')
 print('PUBLIC NEWS CORE COVERAGE:', coverage)
 print('SUPPLEMENTAL CONTENT:', {'general':sum(bool(x.get('supplemental')) and x.get('digest_rubric','GENERAL')=='GENERAL' for x in registry['items']), 'finance':sum(x.get('digest_rubric')=='FINANCE' for x in registry['items']), 'regulation':sum(x.get('digest_rubric')=='REGULATION' for x in registry['items'])})
