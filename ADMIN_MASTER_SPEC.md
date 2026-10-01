@@ -312,3 +312,20 @@ Owner requirement: the working Digest in Admin MUST be formable page-by-page wit
 
 ## 20. PORTABLE DIGEST CTA TYPOGRAPHY — OWNER LOCK — 2026-10-01
 The current `main` branch and any future paid-hosting/domain deployment MUST preserve the latest approved Digest CTA typography. The bottom CTA pair on Page 1 uses white uppercase Bold labels at 14 px. The bottom CTA pair inside the fixed Chief Engineer block on Page 3 uses white uppercase Bold labels at 12 px. The two labels are `РОЗМІСТИТИ ПРОЄКТ` and `ПІДПИСАТИСЯ НА ДАЙДЖЕСТ`. This rule is part of the portable MASTER and cannot be silently reverted by migration, rebuild, Robot #6 or CSS normalization.
+
+
+## 21. PAGE 3 — FINANCE + LEGISLATION CONTENT POOL — 2026-10-01
+
+ADMIN_1 requirement: Page 3 of the working Digest MUST NOT remain empty when approved Finance or Regulation content exists.
+
+Canonical Admin rubrics are now:
+- `УКРАЇНА / СВІТ`
+- `ФІНАНСИ`
+- `ЗАКОНОДАВСТВО / РЕГУЛЮВАННЯ`
+- `ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА`
+
+The content model supports an explicit `digest_rubric` field independent of the industrial sector. This allows an article to remain, for example, Agriculture or Metallurgy in the site taxonomy while being intentionally placed in the Finance block of the Digest.
+
+The approved demo pool contains at least 5 Finance items and 5 Regulation/Legislation items. Page 3 auto-packing places Finance first, then Regulation/Legislation, while retaining the fixed 3-slot Chief Engineer Advice block. If Page 3 capacity is exhausted, remaining eligible items flow to the next compatible page; they are never silently dropped or used to expand the fixed Advice block.
+
+Regulatory content added to the approved pool is based on official primary sources (NEURC/NKREKP, Cabinet of Ministers, Verkhovna Rada) and must preserve the distinction between an enacted act and a draft bill. Each item has its own IIG article slug/direct URL so Digest direct-link QA remains valid.
