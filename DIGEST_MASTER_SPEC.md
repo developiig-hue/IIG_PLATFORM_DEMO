@@ -65,6 +65,8 @@ If the exact individual IIG material does not exist with a valid HTTPS direct UR
 - Project: red → `forms.html#project`
 - Subscribe: pumpkin terracotta `#E66B32` → `forms.html#subscribe`
 - white uppercase DejaVu Sans Bold labels.
+- OWNER CTA TYPOGRAPHY LOCK — 2026-10-01: on Page 1 bottom primary CTA row, label font size is 14 px; on Page 3 bottom Chief Engineer CTA row, label font size is 12 px. These values are exactly 2× the prior Admin MASTER v2 values (7 px and 6 px). Text remains #FFFFFF, uppercase, bold, centered. The two buttons within each row remain 1:1 identical in typography and geometry.
+- This CTA typography rule is portable and MUST survive migration to paid hosting/domain without reset to legacy sizes.
 - Site MUST resolve hashes to the correct form.
 
 ## Portability
@@ -82,3 +84,7 @@ No hard dependency on GitHub Pages. All public routes derive from `IIG_PUBLIC_BA
 
 ## Change control
 Any visual/content-rule change requires new demo, User/Admin approval, protocol version increment, machine-readable spec update and regression QA. Silent builder/CSS drift is forbidden.
+
+
+## OWNER CHANGE LOCK — CTA FONT SCALE — 2026-10-01
+The approved Admin MASTER v2 visual reference was updated by ADMIN_1 instruction: the white labels inside the two primary CTA buttons are doubled relative to the previous reference on the bottom of Page 1 and bottom of Page 3. Page 1 CTA labels = 14 px Bold; Page 3 CTA labels = 12 px Bold. This is a normative MASTER requirement, not a demo-only override. Migration/deployment tooling must preserve it.
