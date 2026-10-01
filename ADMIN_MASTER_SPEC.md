@@ -282,11 +282,13 @@ The `Users & Roles` workspace is maintained in English by owner decision. Any ne
 The `Дайджест` workspace MUST expose the current approved Digest MASTER directly to ADMIN_1 as a read-only page-by-page reference before the editable Builder.
 
 Current approved artifact:
-- File: `digest/IIG-Monthly-Digest-2026-09.pdf`
+- Owner-approved source: `IIG_Monthly_Digest_2026-09_FINAL_DEMO (2).pdf`
+- Admin visual reference: `digest/admin-master-2026-09-v2.html`
+- Legacy public-site file `digest/IIG-Monthly-Digest-2026-09.pdf` is NOT the ADMIN MASTER and MUST NOT be used by the Admin viewer.
 - SHA-256: `6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc`
 - Pages: exactly 3
 - Page 1: Cover
 - Page 2: 15 Ukraine / World events
 - Page 3: Finance / Regulation / Chief Engineer Advice
 
-Admin must be able to select Page 1/3, 2/3 and 3/3 and open the complete PDF MASTER. The reference is immutable/read-only; the working Digest Builder is a separate area below it. A Builder change does not alter the MASTER. Any replacement of this reference requires explicit ADMIN_1 approval, a new approved PDF artifact and a new SHA recorded in the Digest protocol.
+Admin must be able to select Page 1/3, 2/3 and 3/3 and open the ADMIN MASTER v2 reference. The Admin reference must never silently fall back to the legacy public-site PDF. The reference is immutable/read-only; the working Digest Builder is a separate area below it. A Builder change does not alter the MASTER. Any replacement of this reference requires explicit ADMIN_1 approval, a new approved PDF artifact and a new SHA recorded in the Digest protocol.
