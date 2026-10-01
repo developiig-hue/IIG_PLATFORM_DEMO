@@ -308,3 +308,7 @@ Owner requirement: the working Digest in Admin MUST be formable page-by-page wit
 - Admin content list and Digest library are grouped into the Digest rubrics: Ukraine / World, Financing, Regulation, Chief Engineer Advice.
 - After Admin approval a material is visibly marked in green text as ZATVERDZHENO DO PUBLIKATSII / ЗАТВЕРДЖЕНО ДО ПУБЛІКАЦІЇ and enters the approved Digest library. Draft/rejected material must not carry this marker.
 - Final approval is blocked if any page exceeds capacity or any Digest material lacks its exact IIG URL.
+
+
+## 20. PORTABLE DIGEST CTA TYPOGRAPHY — OWNER LOCK — 2026-10-01
+The current `main` branch and any future paid-hosting/domain deployment MUST preserve the latest approved Digest CTA typography. The bottom CTA pair on Page 1 uses white uppercase Bold labels at 14 px. The bottom CTA pair inside the fixed Chief Engineer block on Page 3 uses white uppercase Bold labels at 12 px. The two labels are `РОЗМІСТИТИ ПРОЄКТ` and `ПІДПИСАТИСЯ НА ДАЙДЖЕСТ`. This rule is part of the portable MASTER and cannot be silently reverted by migration, rebuild, Robot #6 or CSS normalization.
