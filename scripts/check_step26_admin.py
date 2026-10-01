@@ -39,9 +39,9 @@ need("ЗАТВЕРДЖЕНО ДО ПУБЛІКАЦІЇ" in js and "approvalState
 need("fixedAdvice" in js and "kind===\"finance\"" in js,"Fixed Chief Engineer Advice block contract missing")
 news_data=json.loads((root/"content/public-news.json").read_text(encoding="utf-8"))
 news_items=news_data if isinstance(news_data,list) else news_data.get("items",[])
-finance_items=[x for x in news_items if x.get("status")=="APPROVED" and x.get("admin_approved") is True and x.get("digest_rubric")=="FINANCE"]
-reg_items=[x for x in news_items if x.get("status")=="APPROVED" and x.get("admin_approved") is True and x.get("digest_rubric")=="REGULATION"]
-need(len(finance_items)>=5 and len(reg_items)>=5,"Finance/Regulation approved pool missing")
+finance_items=[x for x in news_items if x.get("digest_rubric")=="FINANCE"]
+reg_items=[x for x in news_items if x.get("digest_rubric")=="REGULATION"]
+need(len(finance_items)>=5 and len(reg_items)>=5,"Finance/Regulation editorial pool missing")
 need("ФІНАНСИ" in js and "ЗАКОНОДАВСТВО / РЕГУЛЮВАННЯ" in js,"Finance/Legislation rubric labels missing")
 need("digest_rubric" in js,"Explicit digest rubric override missing")
 need("article.html?id=" in js,"NEWS direct-link route must use article.html?id")
@@ -69,13 +69,20 @@ need("EDITORIAL_SESSION_KEY" in js and "persistEditorial" in js and "restoreEdit
 need("releaseReadiness" in html and "renderReleaseReadiness" in js,"New-issue readiness panel missing")
 need("sourceHealthSummary" in html and "technical_url_verified" in js and "feed_verified" in js,"Source technical-health operator view missing")
 need('class="btn lock" data-locked=' in html,"Website locked controls remain inert")
-need("step26-admin-readiness-20261001" in html,"Admin asset cache-busting version not advanced")
+need("step26-final-preview-review-20261001" in html,"Admin asset cache-busting version not advanced")
 need(html.count('<option value="APPROVED">')==1,"Duplicate APPROVED status filter remains")
 need("issueMatches" in js and "publication_date" in js,"Monthly Digest issue filter missing")
 candidate=json.loads((root/"content/digest-issues/2026-09-admin-candidate.json").read_text(encoding="utf-8"))
-need(candidate.get("issue")=="2026-09" and candidate.get("status")=="ADMIN_BUILDER_READY","September Admin Digest candidate missing")
+need(candidate.get("issue")=="2026-09" and candidate.get("status")=="AWAITING_ADMIN_REVIEW","September Admin Digest candidate must await ADMIN_1 review")
 need(candidate["counts"].get("general",0)==23 and candidate["counts"].get("finance",0)==7 and candidate["counts"].get("regulation",0)==7 and candidate["counts"].get("advice_pool",0)>=3 and candidate["counts"].get("advice_selected",0)==3,"September candidate content pool incomplete")
 need("digest_title" in js and "fullTitle" in js,"Digest digest_title policy missing")
+need("finalPreviewDigest" in html and "finalPreviewState" in html and "openFinalDigestPreview" in js,"Final Digest layout preview missing")
+need("DIGEST_RELEASE_BLOCKED: усі NEWS" in js,"Final approval must require ADMIN_1 news approvals")
+need("iig.step26.editorial.sep2026.admin1.v2" in js,"Editorial session version reset missing")
+sept=[x for x in news_items if str(x.get("publication_date","")).startswith("2026-09") and not x.get("digest_exclude")]
+need(len(sept)>=30 and all(x.get("status")=="REVIEW" and x.get("admin_approved") is False for x in sept),"September NEWS must start unconfirmed for ADMIN_1 review")
+manifest=json.loads((root/"baze_foto_news/manifest.json").read_text(encoding="utf-8"))
+need("rubric_fallback" in manifest and "FINANCE" in manifest["rubric_fallback"] and "REGULATION" in manifest["rubric_fallback"],"Finance/Regulation image fallback missing")
 
 need("PR #10 • НЕ MERGED" in js,"Robot #7 honest main-state marker missing")
 need("sourceRegistryPreview" in html and "loadSources" in js,"260 sources operator view missing")
