@@ -27,19 +27,22 @@ SECTORS = {
 news_path = ROOT / 'content/public-news.json'
 registry = json.loads(news_path.read_text(encoding='utf-8'))
 assert registry['schema'] == 'iig.public-news.v1' and isinstance(registry['items'], list)
-# Legacy food-protein article was wrongly routed to pharma; never publish it in that sector.
-registry['items'] = [x for x in registry['items'] if x['slug'] != 'solarfoods-factory02-financing-2026']
+# Keep exactly one verified CORE article per industrial sector, while allowing approved supplemental Finance/Regulation material for Digest/news use.
 pharma = json.loads((ROOT / 'content/pharma-news.json').read_text(encoding='utf-8'))
 assert pharma['schema'] == 'iig.public-news.v1' and len(pharma['items']) == 1
-registry['items'].extend(pharma['items'])
-assert len(registry['items']) == 9 and {x['sector'] for x in registry['items']} == set(SECTORS), 'Exactly one verified article per sector required'
+if not any(x['slug'] == pharma['items'][0]['slug'] for x in registry['items']): registry['items'].extend(pharma['items'])
+core=[x for x in registry['items'] if x.get('sector') in SECTORS and not x.get('supplemental')]
+supplemental=[x for x in registry['items'] if x not in core]
+assert len(core) == 9 and {x['sector'] for x in core} == set(SECTORS), 'Exactly one verified CORE article per sector required'
+assert all(x.get('sector') in {'finance','regulation'} for x in supplemental), 'Supplemental news must be Finance or Regulation'
 
 slugs = set()
 for item in registry['items']:
     slug = item['slug']
     assert re.fullmatch(r'[a-z0-9-]+', slug) and slug not in slugs, f'Invalid or duplicate slug: {slug}'
     slugs.add(slug)
-    assert item['sector'] in SECTORS, f'Invalid sector: {slug}'
+    is_core=item in core
+    assert item['sector'] in SECTORS or item['sector'] in {'finance','regulation'}, f'Invalid sector: {slug}'
     assert item['status'] == 'APPROVED' and item['admin_approved'] is True, f'Not approved: {slug}'
     assert item['primary_source_verified'] is True, f'Primary source not verified: {slug}'
     source = urlparse(item['canonical_url'])
@@ -47,15 +50,15 @@ for item in registry['items']:
     assert re.fullmatch(r'\d{4}-\d{2}-\d{2}', item['publication_date']), f'Invalid date format: {slug}'
     published = date.fromisoformat(item['publication_date'])
     assert published <= date.today(), f'Future-dated article: {slug}'
-    assert isinstance(item['company_context'], list) and len(item['company_context']) == 3, f'Invalid context: {slug}'
-    assert sum(len(p['ua']) for p in item['company_context']) <= 600, f'Context too long: {slug}'
+    assert isinstance(item['company_context'], list) and (len(item['company_context']) == 3 if is_core else 1 <= len(item['company_context']) <= 3), f'Invalid context: {slug}'
+    assert sum(len(p['ua']) for p in item['company_context']) <= (600 if is_core else 900), f'Context too long: {slug}'
     for language in ('ua', 'en'):
         assert all(isinstance(item[field][language], str) and item[field][language].strip() for field in ('title', 'summary', 'body')), f'Missing {language} text: {slug}'
         assert all(isinstance(p[language], str) and p[language].strip() for p in item['company_context']), f'Missing {language} context: {slug}'
         body = item['body'][language]
         # Existing legacy articles are short; enforce editorial structure now and flag
         # insufficient length rather than fabricating extra words or claiming compliance.
-        assert len(body) >= 1500, f'Article too short for substantive coverage ({language}): {slug}'
+        assert len(body) >= (1500 if is_core else 450), f'Article too short for substantive coverage ({language}): {slug}'
         assert ('IIG' in body), f'IIG analysis missing ({language}): {slug}'
         assert len(body.split('\n\n')) >= 3, f'Fact / engineering / analysis separation missing ({language}): {slug}'
     assert abs(len(item['body']['ua']) - len(item['body']['en'])) <= max(len(item['body']['ua']), len(item['body']['en'])) * 0.7, f'Bilingual content imbalance: {slug}'
@@ -109,7 +112,8 @@ for name in ('index.html', 'industry.html', 'news.html'):
     assert script in html and 'Нова промислова газова генерація для підвищення енергостійкості' not in html
 for name in ('index.html', 'advice.html', 'advice-article.html'):
     assert 'assets/public-advice.js' in (ROOT / name).read_text(encoding='utf-8')
-coverage = {sector: sum(x['sector'] == sector for x in registry['items']) for sector in SECTORS}
+coverage = {sector: sum(x['sector'] == sector and not x.get('supplemental') for x in registry['items']) for sector in SECTORS}
 assert all(count == 1 for count in coverage.values())
-print('PASS: editorial protocol present, nine verified bilingual articles and nine unique industry routes')
-print('PUBLIC NEWS COVERAGE:', coverage)
+print('PASS: editorial protocol present, nine verified CORE bilingual articles plus approved supplemental Finance/Regulation content')
+print('PUBLIC NEWS CORE COVERAGE:', coverage)
+print('SUPPLEMENTAL CONTENT:', {'finance':sum(x.get('digest_rubric')=='FINANCE' for x in registry['items']), 'regulation':sum(x.get('digest_rubric')=='REGULATION' for x in registry['items'])})
