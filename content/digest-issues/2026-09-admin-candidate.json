@@ -1,7 +1,7 @@
 {
   "schema": "iig.digest-issue-candidate.v1",
   "issue": "2026-09",
-  "status": "ADMIN_BUILDER_READY",
+  "status": "AWAITING_ADMIN_REVIEW",
   "generated_by": "STEP26_ADMIN_RULESET",
   "generated_at": "2026-10-01",
   "master_fallback": "IIG_Monthly_Digest_2026-09_FINAL_DEMO (2)",
@@ -82,6 +82,9 @@
     "direct_links": "REQUIRED",
     "final_exact_pdf_sha": "NOT_YET_APPROVED",
     "advice_block": "FIXED_3_FROM_APPROVED_MONTH_POOL",
-    "digest_title": "USE_DIGEST_TITLE_FOR_LAYOUT_FULL_ARTICLE_TITLE_PRESERVED"
+    "digest_title": "USE_DIGEST_TITLE_FOR_LAYOUT_FULL_ARTICLE_TITLE_PRESERVED",
+    "admin_approval": "ALL_SEPTEMBER_NEWS_REQUIRE_EXPLICIT_ADMIN_1_APPROVAL",
+    "final_preview": "REQUIRED_BEFORE_FINAL_LAYOUT_APPROVAL",
+    "publication": "ADMIN_1_ONLY_NOT_AUTO"
   }
 }
