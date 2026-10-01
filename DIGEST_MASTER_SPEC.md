@@ -88,3 +88,9 @@ Any visual/content-rule change requires new demo, User/Admin approval, protocol 
 
 ## OWNER CHANGE LOCK — CTA FONT SCALE — 2026-10-01
 The approved Admin MASTER v2 visual reference was updated by ADMIN_1 instruction: the white labels inside the two primary CTA buttons are doubled relative to the previous reference on the bottom of Page 1 and bottom of Page 3. Page 1 CTA labels = 14 px Bold; Page 3 CTA labels = 12 px Bold. This is a normative MASTER requirement, not a demo-only override. Migration/deployment tooling must preserve it.
+
+
+## WORKING COVER AND EXTENSIBLE PAGE CONTRACT — 2026-10-01
+The 3-page approved MASTER remains the read-only baseline reference; the working Builder is now extensible. ADMIN may edit the working cover background and copy, and may append pages 4+ for IIG ORIGINAL, successful-project cases, Partner, Sponsored or Editorial material. A changed working cover or appended page does not silently redefine the historical MASTER SHA; final production output requires a new rendered artifact and approval.
+
+Background assets: JPG/PNG/WebP, <=10 MB, hard minimum 1200×1697 px, recommended >=1800×2546 px portrait. Preserve aspect ratio and use cover crop. Content pages 4+ support headline, subtitle, body, background, disclosure/type label and up to two CTAs. Sponsored/partner labels are mandatory when applicable. All configured CTAs obey the direct-link rule.
