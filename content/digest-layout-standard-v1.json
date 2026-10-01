@@ -167,5 +167,22 @@
         "SPONSORED"
       ]
     }
+  },
+  "fallback_resolution": {
+    "customization_opt_in": true,
+    "cover_no_override": "APPROVED_MASTER_V2_PAGE_1",
+    "page2_no_override": "APPROVED_PAGE2_CANVAS",
+    "page3_no_override": "APPROVED_PAGE3_CANVAS",
+    "blank_placeholder_forbidden": true,
+    "reset_returns_to_master": true
+  },
+  "admin_editorial_session": {
+    "step26_local_persistence": true,
+    "contains_public_editorial_content_only": true,
+    "pii_and_secrets_forbidden": true,
+    "json_export": true,
+    "production_persistence_requires_backend": true,
+    "digest_rubric_independent_of_sector": true,
+    "advice_structured_roundtrip": true
   }
 }
