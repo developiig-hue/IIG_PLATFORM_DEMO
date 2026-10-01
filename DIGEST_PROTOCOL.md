@@ -64,7 +64,9 @@ Canonical typography: **DejaVu Sans Bold**, white uppercase label. Canonical geo
 Any generated Digest where these two primary CTAs have different geometry or typography fails visual QA and MUST NOT be released until corrected.
 
 ## APPROVED MASTER LOCK — 2026-09-29
-The approved visual/content master is `IIG_Monthly_Digest_2026-09_FINAL_DEMO.pdf`, SHA-256 `6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc`.
+The approved visual/content master is `IIG_Monthly_Digest_2026-09_FINAL_DEMO (2).pdf`, SHA-256 `6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc`.
+
+Admin read-only visual reference: `digest/admin-master-2026-09-v2.html`. The legacy public-site PDF MUST NOT be substituted for this master unless its SHA matches the approved SHA.
 
 Normative companion artifacts:
 - `DIGEST_MASTER_SPEC.md` — human-readable locked layout/content specification;
