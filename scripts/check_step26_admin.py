@@ -37,6 +37,13 @@ need("changeDigestIssue" in html and "digestIssueBadge" in html and "MONTHS_UA" 
 need("digestRubricFilter" in html and "RUBRIC_LABEL" in js and "rubrichead" in js,"Digest rubric grouping missing")
 need("ЗАТВЕРДЖЕНО ДО ПУБЛІКАЦІЇ" in js and "approvalState" in html,"Green publication approval state missing")
 need("fixedAdvice" in js and "kind===\"finance\"" in js,"Fixed Chief Engineer Advice block contract missing")
+news_data=json.loads((root/"content/public-news.json").read_text(encoding="utf-8"))
+news_items=news_data if isinstance(news_data,list) else news_data.get("items",[])
+finance_items=[x for x in news_items if x.get("status")=="APPROVED" and x.get("admin_approved") is True and x.get("digest_rubric")=="FINANCE"]
+reg_items=[x for x in news_items if x.get("status")=="APPROVED" and x.get("admin_approved") is True and x.get("digest_rubric")=="REGULATION"]
+need(len(finance_items)>=5 and len(reg_items)>=5,"Finance/Regulation approved pool missing")
+need("ФІНАНСИ" in js and "ЗАКОНОДАВСТВО / РЕГУЛЮВАННЯ" in js,"Finance/Legislation rubric labels missing")
+need("digest_rubric" in js,"Explicit digest rubric override missing")
 need("PR #10 • НЕ MERGED" in js,"Robot #7 honest main-state marker missing")
 need("sourceRegistryPreview" in html and "loadSources" in js,"260 sources operator view missing")
 need("demoAudit" in html and "auditEvent" in js,"Demo audit trail missing")
