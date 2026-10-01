@@ -50,6 +50,8 @@ need("IMAGE_RULES" in js and "validateDigestImage" in js and "1200" in js and "1
 need("extraPageEditor" in html and "extraPageType" in html and "saveExtraPage" in html,"Flexible page 4+ editor missing")
 need("IIG_ORIGINAL" in html and "SUCCESS_PROJECT" in html and "SPONSORED" in html,"Page 4+ content types missing")
 need("extraPageMarkup" in js and 'kind:"promo"' in js,"Flexible promotional page renderer missing")
+need("extraPageOverlay" in html and "extraPageBgPosition" in html and "extraAnnouncement" in html,"Page 4+ must mirror cover background/announcement controls")
+need('const extras=digestPages.filter(p=>p.kind==="promo")' in js and 'digestPages.push(...extras)' in js,"Auto-pack/compact must preserve pages 4+")
 need("validInternalOrHttps" in js and "badPromo" in js,"Page 4+ CTA/direct-link release gate missing")
 need("PR #10 • НЕ MERGED" in js,"Robot #7 honest main-state marker missing")
 need("sourceRegistryPreview" in html and "loadSources" in js,"260 sources operator view missing")
