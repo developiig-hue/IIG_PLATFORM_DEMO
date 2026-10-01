@@ -97,3 +97,7 @@ Robot #6 resolves absent optional layout overrides by inheriting the approved MA
 
 ## MONTH-BOUND ISSUE SELECTION / RELEASE CANDIDATE — 2026-10-01
 Every monthly Digest resolves content against the selected `YYYY-MM` issue. Approved archive items outside that month are excluded from automatic issue packing unless ADMIN explicitly imports them as a separately labelled retrospective/original page. A release-candidate JSON may freeze the Admin Builder input slugs/counts for QA, but it never substitutes for the final rendered artifact, ADMIN_1 approval, exact SHA, Robot #7 link check or mailing approval.
+
+
+## ADMIN_1 FINAL PREVIEW / NO AUTO-PUBLISH — 2026-10-01
+The monthly Digest may only be assembled from NEWS explicitly approved by ADMIN_1. Newly collected monthly NEWS starts as REVIEW and is excluded from Robot #6 input until approval. Robot #6/Admin provides a final page-by-page visual preview after packing and before exact-artifact approval. Final Preview is non-mutating and does not publish/send. Website publication, exact PDF/SHA approval and Robot #7 mailing authorization remain separate protected ADMIN_1 actions. Missing news photography must resolve through the approved image hierarchy/fallback policy; an editorial fallback must be clearly illustrative and never mislabelled as the reported object.
