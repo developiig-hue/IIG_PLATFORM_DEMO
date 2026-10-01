@@ -329,3 +329,34 @@ The content model supports an explicit `digest_rubric` field independent of the 
 The approved demo pool contains at least 5 Finance items and 5 Regulation/Legislation items. Page 3 auto-packing places Finance first, then Regulation/Legislation, while retaining the fixed 3-slot Chief Engineer Advice block. If Page 3 capacity is exhausted, remaining eligible items flow to the next compatible page; they are never silently dropped or used to expand the fixed Advice block.
 
 Regulatory content added to the approved pool is based on official primary sources (NEURC/NKREKP, Cabinet of Ministers, Verkhovna Rada) and must preserve the distinction between an enacted act and a draft bill. Each item has its own IIG article slug/direct URL so Digest direct-link QA remains valid.
+
+
+## 22. DIGEST COVER + FLEXIBLE PAGES 4+ EDITOR — OWNER REQUIREMENT — 2026-10-01
+
+Red-team review identified a missing operational layer: the Builder could compose approved materials but could not manage the working cover background/content or create fully designed extra pages for IIG original/promotional/project material.
+
+### 22.1 Working cover editor
+The Admin Digest workspace now provides a dedicated working-cover editor. ADMIN may change, for the current working issue:
+- full-page background image;
+- headline and subtitle;
+- slogan;
+- four cover announcements;
+- background focal position and navy overlay strength;
+- issue month/year through the existing separate control.
+
+Background image gate: JPG/PNG/WebP only, max 10 MB, hard minimum 1200×1697 px, recommended 1800×2546 px or larger portrait source. The browser checks actual decoded dimensions before accepting the image. Low-resolution assets fail closed. Demo images stay in volatile browser memory and are never committed as hidden PII/content.
+
+The approved read-only MASTER v2 remains the visual reference and is not mutated by working-cover edits. Final release of a materially changed cover requires Admin preview/approval and, in production, a newly rendered artifact/SHA.
+
+### 22.2 Flexible pages 4+
+Admin may add pages 4, 5, 6… as independent designed pages. Supported working page classes: `IIG_ORIGINAL`, `SUCCESS_PROJECT`, `PARTNER`, `SPONSORED`, `EDITORIAL`.
+
+Each flexible page supports: background image with the same quality gate as the cover, page type/label, headline, subtitle/announcement, body copy, two configurable CTA labels and destinations, preview, rename/edit and deletion. This is intended for IIG original articles, successfully implemented project cases, partner material and clearly labelled advertising/sponsored content.
+
+Every CTA/direct content destination must be an exact internal IIG route or HTTPS URL. Empty/unconfigured CTA is allowed; a configured invalid route blocks release. A page with no title or body blocks final Digest approval.
+
+### 22.3 Governance / disclosure
+Sponsored or partner material MUST be visibly identified as such; editorial/news material must never be silently converted into advertising. Working pages 4+ are not allowed to bypass Admin approval, direct-link QA, legal/rights review, or final exact-artifact approval. Robot #6 may render these pages but may not invent, auto-publish or auto-send them.
+
+### 22.4 Portability
+Cover and flexible-page configuration belong to the portable Digest schema and MUST survive migration to paid hosting/domain. Uploaded production backgrounds must be stored in the approved media storage/CDN rather than browser memory; Step 26 Demo only validates the operator workflow.
