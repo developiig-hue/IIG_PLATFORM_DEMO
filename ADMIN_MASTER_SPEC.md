@@ -257,3 +257,21 @@ Final 10 gates:
 10. OWNER E2E workflow
 
 Repository acceptance is enforced by `python scripts/check_step26_admin.py`. A passing static/UI contract test means **STEP 26 ADMIN MASTER GREEN**. It does not waive any Step 27 blocker.
+
+
+## 17. OWNER REVIEW — REQUESTS / ADMIN_1 GOVERNANCE — 2026-10-01
+
+### 17.1 Incoming website requests
+The Admin `Заявки` workspace MUST show a complete human-readable card for each website submission, not an empty placeholder. Project requests show at minimum: request ID, full name, company, email, phone, industry, solution/technology, free-text project description, consent text/evidence, timestamp/status. Digest subscription requests show full name, company, email, language, explicit Digest consent and status. Chief Engineer requests show full name, company, email, role/position, technical question, contact-processing consent and status.
+
+Moderation rule: an Admin may approve or reject a request. Approved project/engineer contacts may be added to the unified IIG contact base as `PENDING`; processing consent for answering a request MUST NOT be converted into marketing consent. An approved Digest subscription with explicit evidence may enter as `ACTIVE`. Unsubscribe events MUST immediately set `SUPPRESSED`, must be visually highlighted red in Admin, and ordinary import must never reactivate them.
+
+### 17.2 ADMIN_1
+Primary accountable administrator:
+- ID: `ADMIN_1`
+- Name: Igor Kryvoshei
+- Email: develop.iig@gmail.com
+- Phone: +38 067 5063591
+- Responsibility: correct operation of the IIG website and governance of Digest mailing.
+
+The `Users & Roles` workspace is maintained in English by owner decision. Any new Admin account, restoration of Admin privileges, or elevation to an Admin role REQUIRES explicit approval by `ADMIN_1`. No second Admin, Robot, CI workflow or application service may self-approve or bypass this gate. Production approval requires MFA/RBAC and an immutable Audit event. `ADMIN_1` is the final authority for Admin-account governance unless the owner later changes this rule through a separately audited governance procedure.
