@@ -74,7 +74,8 @@ need(html.count('<option value="APPROVED">')==1,"Duplicate APPROVED status filte
 need("issueMatches" in js and "publication_date" in js,"Monthly Digest issue filter missing")
 candidate=json.loads((root/"content/digest-issues/2026-09-admin-candidate.json").read_text(encoding="utf-8"))
 need(candidate.get("issue")=="2026-09" and candidate.get("status")=="ADMIN_BUILDER_READY","September Admin Digest candidate missing")
-need(candidate["counts"].get("general",0)>=20 and candidate["counts"].get("finance",0)>=5 and candidate["counts"].get("regulation",0)>=5 and candidate["counts"].get("advice",0)>=3,"September candidate content pool incomplete")
+need(candidate["counts"].get("general",0)==23 and candidate["counts"].get("finance",0)==7 and candidate["counts"].get("regulation",0)==7 and candidate["counts"].get("advice_pool",0)>=3 and candidate["counts"].get("advice_selected",0)==3,"September candidate content pool incomplete")
+need("digest_title" in js and "fullTitle" in js,"Digest digest_title policy missing")
 
 need("PR #10 • НЕ MERGED" in js,"Robot #7 honest main-state marker missing")
 need("sourceRegistryPreview" in html and "loadSources" in js,"260 sources operator view missing")
