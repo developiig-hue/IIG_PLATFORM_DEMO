@@ -434,3 +434,9 @@ NEWS approval is a two-part Admin workflow. Text/content approval and image appr
 The NEWS editor provides three image sources: (1) rights-verified source_photo/company logo already registered on the item; (2) IIG repository image catalog/fallback with explicit illustrative labelling; (3) local ADMIN upload. A local upload requires explicit ADMIN_1 confirmation that IIG has the right to use the image and requires a credit/rights-owner field. Step 26 stores local uploads only in browser editorial state; production publication MUST first persist the asset to approved media storage/CDN and record rights metadata and Audit. If no image is approved, NEWS approval fails closed.
 
 Successful editorial approval uses a normal green Admin confirmation. The protected-production modal is reserved for actual production actions such as Publish; it must not be shown for a successful Step 26 editorial approval because that falsely implies the approval failed.
+
+
+## 28. ACTIVE ADMIN_1 EDITORIAL SESSION / NON-BLOCKING APPROVAL UX — 2026-10-01
+STEP 26 Demo runs with an explicit editorial identity `ADMIN_1 / Igor Kryvoshei`. This identity may approve NEWS images, approve NEWS content and approve the final Digest layout. These operations are guarded by `requireAdmin1()` and logged as ADMIN_1 editorial actions. The Demo identity is explicitly NOT production authentication: `production_authenticated=false`; production Publish/Send/user-management remains Step 27 only.
+
+Successful image/content approval MUST NOT open a blocking modal that resembles a production-security warning. It now uses a short non-blocking green toast and leaves the editor in place so ADMIN_1 can continue reviewing the next item. The protected modal is reserved for true production-locked actions or blocking validation errors.
