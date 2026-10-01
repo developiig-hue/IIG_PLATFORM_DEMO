@@ -9,10 +9,11 @@ root = Path(__file__).resolve().parents[1]
 manifest = json.loads((root / 'baze_foto_news/manifest.json').read_text(encoding='utf-8'))
 registry = json.loads((root / 'content/public-news.json').read_text(encoding='utf-8'))
 sectors = manifest['sectors']
-items = [x for x in registry['items'] if x.get('status') == 'APPROVED' and x.get('admin_approved') is True]
-assert len(items) == 9, f'Expected nine approved news items, got {len(items)}'
-assert len({x['sector'] for x in items}) == 9, 'Each approved news item must have its own sector'
-assert set(sectors) == {x['sector'] for x in items}, 'Manifest sectors do not match approved news'
+all_items = [x for x in registry['items'] if x.get('status') == 'APPROVED' and x.get('admin_approved') is True]
+items = [x for x in all_items if x.get('sector') in sectors and not x.get('supplemental')]
+assert len(items) == 9, f'Expected nine approved CORE news items, got {len(items)}'
+assert len({x['sector'] for x in items}) == 9, 'Each approved CORE news item must have its own sector'
+assert set(sectors) == {x['sector'] for x in items}, 'Manifest sectors do not match approved CORE news'
 for item in items:
     sector = item['sector']
     image = sectors[sector]
@@ -47,5 +48,5 @@ for audit_path in sorted((root / 'content/image-moderation').glob('*.json')):
 js = (root / 'assets/public-news.js').read_text(encoding='utf-8')
 for token in ('manifestURL', 'fallback(x.sector)', 'data-news-image', 'aspect-ratio:16/9', "page==='news.html'", "page==='industry.html'", "page==='index.html'", "page==='article.html'"):
     assert token in js, f'Missing image routing feature: {token}'
-print('PASS: nine JPEG assets, nine same-sector mappings and four news render targets')
+print('PASS: nine CORE JPEG assets, nine same-sector mappings and supplemental Finance/Regulation content exempt from core-image quota')
 print('NOTICE: rights flags are metadata, not legal evidence; confirm licenses separately.')
