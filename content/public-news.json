@@ -35,7 +35,8 @@
       "body": {
         "ua": "ФАКТ. ЄБРР оприлюднив проєктну картку 1 квітня 2026 року щодо кредиту до $45 млн на будівництво СЕС 106 МВт із накопичувачем. Статус Signed стосується фінансування, а не готовності об’єкта.\n\nІНЖЕНЕРНИЙ КОНТЕКСТ. СЕС і BESS потребують спільного розрахунку графіка видачі та умов приєднання.\n\nАНАЛІЗ IIG. На FEED узгодити потужність і ємність BESS, обмеження мережі, прогноз сонячної генерації та сценарії диспетчеризації. Це рекомендація, а не заявлений результат Kernel.\n\nФІНАНСУВАННЯ І РЕАЛІЗАЦІЯ. Проєктний документ ЄБРР уточнює загальну вартість проєкту на рівні $86 млн: до $45 млн має надати ЄБРР, також очікується паралельний кредит до $10 млн. Позичальник — Energy RTB 2 LLC, дочірня компанія Kernel. Документ описує майданчик на півдні України, лінію 110 кВ довжиною близько 3 км до існуючої підстанції 330 кВ та майбутній вибір EPC-підрядника. Це важливо: фінансова угода вже підписана, але EPC, остаточний постачальник PV та частина дозвільних процедур на момент розкриття ще не завершені.\n\nОЧІКУВАНИЙ ЕФЕКТ. ЄБРР оцінює майбутній виробіток СЕС приблизно у 141 ГВт·год на рік і скорочення CO₂ приблизно на 82 500 т/рік після завершення. Ці цифри є прогнозом кредитора, а не фактичними експлуатаційними показниками. Окремо ЄБРР підтверджує співрозташований BESS, але в доступному описі не наводить його MW/MWh, тому IIG не підміняє відсутні параметри припущеннями.\n\nЩО ПЕРЕВІРИТИ НА НАСТУПНІЙ СТАДІЇ. Для EPC/FEED критично отримати технічні умови приєднання, погоджений режим 110-кВ лінії, допустимий експорт, вимоги до РЗА і телеметрії, а також функціональну специфікацію BESS: MW, MWh, SOC-вікно, гарантію деградації та алгоритм EMS. Окремо потрібна перевірка, чи батарея оптимізує видачу СЕС, працює на системні послуги або поєднує обидва режими. Без цього коректно порівняти CAPEX і гарантований результат неможливо.\n\nДЖЕРЕЛА І ОБМЕЖЕННЯ. IIG звірив картку проєкту ЄБРР, розширений екологічний опис і новинне повідомлення банку. Проєкт має статус Signed, а не Completed. Публічної проєктної прямої мови керівника Kernel про конкретні параметри BESS у перевірених матеріалах не знайдено; тому цитату не вигадуємо. Наступний контрольний рубіж — EPC/постачальники, дозвільні рішення та підтверджені параметри накопичувача.",
         "en": "FACT. EBRD disclosed on 1 April 2026 a loan of up to $45m for a 106 MW solar plant with storage. Signed describes financing, not commissioning.\n\nENGINEERING CONTEXT. PV and BESS need joint output and grid-connection modelling.\n\nIIG ANALYSIS. At FEED, align BESS power and energy, network limits, solar forecasts and dispatch scenarios. This is advice, not a claimed Kernel result.\n\nFINANCING AND DELIVERY. EBRD's project document gives a total project cost of $86 million, with up to $45 million from EBRD and an expected parallel loan of up to $10 million. The borrower is Energy RTB 2 LLC, a Kernel subsidiary. The disclosed scope places the project in southern Ukraine and describes an approximately 3 km, 110 kV transmission line to an existing 330 kV substation, while the EPC contractor and final PV supplier were still to be selected. This distinction matters: financing is signed, but procurement, permitting and delivery are not the same as commissioning.\n\nEXPECTED EFFECT. EBRD estimates about 141 GWh of annual solar generation and roughly 82,500 tonnes of annual CO2 savings after completion. These are forward-looking lender estimates, not measured operating results. EBRD also confirms co-located battery storage but does not disclose its MW/MWh rating in the material reviewed, so IIG does not fill that gap with an assumption.\n\nNEXT ENGINEERING GATES. Before EPC/FEED is locked, the team should obtain final connection conditions, the agreed 110 kV line duty, export limits, protection and telemetry requirements, and a functional BESS specification covering MW, MWh, SOC window, degradation warranty and EMS logic. It should also be clear whether storage is intended mainly to shape PV export, provide system services, or combine both duties. Without this definition, CAPEX and guaranteed performance cannot be compared consistently.\n\nSOURCES AND LIMITATIONS. IIG cross-checked EBRD's project summary, environmental disclosure and the Bank's project news. The project status is Signed, not Completed. No verified project-specific statement from a Kernel executive describing the BESS design was found in the reviewed material, so no quotation is invented. The next evidence gates are EPC/supplier selection, permits and confirmed storage parameters."
-      }
+      },
+      "digest_rubric": "FINANCE"
     },
     {
       "slug": "ebrd-189mw-wind-galnaftogaz",
@@ -70,7 +71,8 @@
       "body": {
         "ua": "ФАКТ. Проєктна картка ЄБРР від 24 квітня 2026 року передбачає кредит до €50 млн на вітропроєкт близько 189 МВт. Схвалення датовано 17 червня.\n\nІНЖЕНЕРНИЙ КОНТЕКСТ. Для ВЕС потрібні прогноз виробітку, мережеве приєднання, балансування та оцінка обмежень видачі.\n\nАНАЛІЗ IIG. Синхронізувати графік будівництва, підстанцію, лінію приєднання й умови диспетчеризації до затвердження EPC-бюджету; це не звіт про виконані роботи.\n\nСТАДІЯ ТА РИЗИКИ. Для вітрового проєкту фінансове закриття, будівельна готовність і фактична генерація — різні контрольні точки. Тому IIG не трактує банківський статус як доказ готовності турбін. До початку основних робіт мають бути синхронізовані земельні права, дороги для великогабаритної логістики, фундаменти, кабельна мережа, підстанція, зовнішня лінія та графік поставки турбін.\n\nІНЖЕНЕРНИЙ КОНТЕКСТ. Номінальні 189 МВт не визначають річний виробіток або гарантований експорт. Для інвестиційного рішення потрібні банківський wind-resource assessment, P50/P90, втрати, curtailment, availability, вимоги оператора мережі та модель балансування. Особливо важливо відокремити потужність турбін від дозволеної потужності видачі у точці приєднання.\n\nАНАЛІЗ IIG. Перед фіксацією EPC-ціни слід закрити battery limits між turbine supplier, BoP та grid contractor, погодити РЗА/SCADA, випробування і критерії PAC/FAC. Окремий risk register має показувати залежності від логістики, мережевих робіт, воєнних ризиків і страхового покриття. Таке структурування дозволяє керівництву бачити не лише €/MW, а й ризик до COD.\n\nПРЯМА МОВА І ОБМЕЖЕННЯ. У використаній картці ЄБРР немає перевіреної прямої цитати керівника про технічні KPI саме цього проєкту; тому IIG її не створює. Публікуємо лише підтверджену стадію та параметри, а майбутній виробіток і COD не подаємо як факт до появи відповідних документів.",
         "en": "FACT. EBRD's disclosure of 24 April 2026 concerns up to €50m for a roughly 189 MW wind project, approved 17 June.\n\nENGINEERING CONTEXT. Wind projects require forecasting, interconnection, balancing and curtailment analysis.\n\nIIG ANALYSIS. Align construction, substation, connection line and dispatch before EPC budget approval; this is not a report of completed works.\n\nSTATUS AND DELIVERY RISK. For a wind project, financing, construction readiness and actual generation are separate gates. IIG therefore does not treat a banking status as evidence that turbines are operational. Before major works, land rights, heavy-haul roads, foundations, collector system, substation, external connection and turbine delivery schedule must be aligned.\n\nENGINEERING CONTEXT. A nominal 189 MW does not determine annual output or guaranteed grid export. Investment-grade assessment requires bankable wind resource data, P50/P90 cases, losses, curtailment, availability, grid-code requirements and balancing assumptions. Turbine nameplate capacity must be distinguished from permitted export at the connection point.\n\nIIG ANALYSIS. Before locking EPC price, close battery limits among turbine supplier, BoP and grid contractor; agree protection/SCADA, tests and PAC/FAC criteria. A separate risk register should expose dependencies on logistics, network works, wartime risks and insurance. Management can then compare not just €/MW but risk to COD.\n\nEXECUTIVE VOICE AND LIMITATIONS. The EBRD project disclosure reviewed by IIG does not contain a verified executive quotation establishing technical KPIs for this specific project, so none is invented. Only confirmed stage and parameters are presented; future production and COD remain unconfirmed until supported by project documents."
-      }
+      },
+      "digest_rubric": "FINANCE"
     },
     {
       "slug": "kosice-eaf-asu-2026",
@@ -105,7 +107,8 @@
       "body": {
         "ua": "ФАКТ. 16 вересня Nippon Steel оголосила рішення інвестувати близько €0,9 млрд в електродугову піч і установку розділення повітря в Кошице, а також грантову угоду зі Словаччиною. Запуск ASU планується у 2029 році, EAF — у 2030 році.\n\nТЕХНІКА. EAF створює значне змінне електричне навантаження, ASU має власні вимоги до живлення та безперервності.\n\nАНАЛІЗ IIG. На FEED спільно моделювати піки EAF, електроживлення ASU та можливості мережі. Це інженерна рекомендація, а не обіцяний виробником результат.\n\nМАСШТАБ І ФІНАНСУВАННЯ. Nippon Steel уточнює, що нова EAF матиме річну виробничу потужність близько 1,6 млн т і працюватиме разом з існуючими доменними потужностями. Грантова угода зі словацьким урядом передбачає до €350 млн із EU Modernisation Fund: €310 млн для EAF та €40 млн для ASU. Це підтверджене інвестиційне рішення, але до планового старту ASU у 2029 році та EAF у 2030 році залишається інженерна й будівельна фаза.\n\nКОНТЕКСТ ВЛАСНОСТІ. У релізі зазначено, що USSK є дочірньою структурою United States Steel Corporation у групі Nippon Steel; також оголошений перехід до прямого володіння Nippon Steel з 1 жовтня 2026 року та майбутня назва Nippon Steel Slovakia. Для редакційної точності IIG відокремлює поточний на дату релізу статус від оголошеної корпоративної зміни.\n\nЕНЕРГЕТИЧНА ЗАДАЧА. EAF — велике динамічне електричне навантаження, а ASU додає значне безперервне споживання та критичні допоміжні системи. Для FEED потрібні load-flow, short-circuit і power-quality studies, перевірка flicker/harmonics, трансформаторів, компенсації реактивної потужності та сценаріїв відмови. Паралельна робота з доменним маршрутом означає, що енергетична модель має враховувати перехідні виробничі режими, а не тільки кінцевий design point.\n\nАНАЛІЗ IIG І НАСТУПНИЙ ЕТАП. До закупівлі основного електрообладнання варто зафіксувати профілі EAF/ASU, N-1, резервування, вимоги до якості електроенергії та межі відповідальності мережі й заводу. Nippon Steel говорить про конкурентоспроможність і декарбонізацію, але не публікує в цьому релізі MW електричного приєднання чи конкретну схему живлення. IIG не домислює ці параметри. Наступні докази — EPC/технологічні контракти, дозволи та детальні електротехнічні рішення.",
         "en": "FACT. On 16 September Nippon Steel announced an approximately €0.9bn EAF and ASU investment in Košice and a Slovak grant agreement. ASU start is targeted for 2029 and EAF for 2030.\n\nTECHNICAL CONTEXT. EAF creates variable high power demand; ASU has its own continuity requirements.\n\nIIG ANALYSIS. Model EAF peaks, ASU supply and grid capacity together at FEED; this is engineering advice, not a promised project outcome.\n\nSCALE AND FINANCING. Nippon Steel states that the new EAF will have annual production capacity of about 1.6 million tonnes and will operate alongside existing blast-furnace facilities. The Slovak grant agreement provides access to up to €350 million from the EU Modernisation Fund: €310 million for the EAF and €40 million for the ASU. This is a confirmed investment decision, but engineering and construction remain ahead of the targeted 2029 ASU and 2030 EAF starts.\n\nOWNERSHIP CONTEXT. The release describes USSK as a United States Steel Corporation subsidiary within Nippon Steel's group and announces a transition to direct Nippon Steel ownership effective 1 October 2026, with the future name Nippon Steel Slovakia. IIG distinguishes the corporate status at publication date from the announced future change.\n\nENERGY CHALLENGE. An EAF is a large dynamic electrical load, while the ASU adds substantial continuous demand and critical auxiliaries. FEED should cover load flow, short circuit and power quality, including flicker/harmonics, transformers, reactive compensation and failure cases. Parallel operation with the blast-furnace route means the energy model should cover transition operating modes rather than only the final design point.\n\nIIG ANALYSIS AND NEXT GATE. Before major electrical procurement, define EAF/ASU load profiles, N-1 philosophy, redundancy, power-quality limits and utility/plant battery limits. Nippon Steel discusses competitiveness and decarbonisation but does not publish the site's MW connection requirement or detailed supply architecture in this release. IIG does not infer those values. The next evidence should come from EPC/process contracts, permits and detailed electrical design."
-      }
+      },
+      "digest_rubric": "FINANCE"
     },
     {
       "slug": "nestle-biessenhofen-agri-pv-2026",
@@ -210,7 +213,8 @@
       "body": {
         "ua": "ФАКТ. 9 вересня 2026 року Google оголосила план інвестувати щонайменше €13 млрд у фінську цифрову інфраструктуру протягом 2027–2028 років. У релізі також зазначено законтрактовану батарею 94 МВт біля Kajaani з очікуваним запуском наприкінці 2027 року. Це план і контракт, а не підтверджена експлуатація.\n\nТЕХНІКА. Для дата-центрів критичні мережеві точки, резервування, охолодження та можливості використання відпрацьованого тепла.\n\nАНАЛІЗ IIG. На концептуальній стадії спільно моделювати PUE, графік навантаження, резервну потужність, BESS і теплову інтеграцію. Це не заявлені Google проєктні KPI.\n\nЕНЕРГЕТИЧНА АРХІТЕКТУРА ПРОГРАМИ. Реліз Google пов’язує цифрову інфраструктуру з енергосистемою значно ширше, ніж просто закупівля електроенергії. Компанія описує співпрацю з Fingrid і Business Finland щодо розміщення нових об’єктів у північній частині країни, ближче до доступної мережевої потужності та безвуглецевої генерації. Також оголошені нові wind PPA; сумарна підтримувана нова наземна вітрова потужність названа на рівні 629 МВт.\n\nОкремий елемент — законтрактована BESS 94 МВт поблизу Kajaani з очікуваним введенням наприкінці 2027 року. Її MWh у релізі не наведено, тому тривалість розряду не можна визначити з опублікованих даних. Google також повідомляє про довгострокову PPA з Fortum, пов’язану з продовженням ресурсу АЕС Loviisa, та MoU щодо майбутньої гнучкості й нової безвуглецевої генерації.\n\nПРЯМА МОВА. Президент і Chief Investment Officer Alphabet/Google Ruth Porat характеризує інвестицію як розширення технічної інфраструктури разом із новими енергетичними потужностями та зміцненням мережі. Fingrid окремо пояснює логіку північних точок приєднання наявністю значної мережевої спроможності. Це важливий сигнал для промислових інвесторів: site selection і power strategy тут розглядаються разом, а не послідовно.\n\nАНАЛІЗ IIG. Для великого AI/data-center кампусу до land acquisition слід закрити connection capacity, redundancy, ramp profile, backup philosophy, cooling water/heat rejection і можливість heat reuse. BESS треба моделювати разом із UPS та резервною генерацією, щоб не дублювати функції. Окремо потрібні сценарії grid curtailment і аварійного острова. Публічний реліз не дає PUE, IT MW або MWh батареї для конкретного майданчика; IIG ці значення не вигадує.",
         "en": "FACT. On 9 September 2026 Google announced plans to invest at least €13bn in Finnish digital infrastructure during 2027–28. It also described a contracted 94 MW battery near Kajaani expected online in late 2027. These are plans and a contract, not proof of operation.\n\nTECHNICAL CONTEXT. Data centres require grid access, backup, cooling and waste-heat assessment.\n\nIIG ANALYSIS. Model PUE, load, backup, BESS and heat integration together at concept stage. These are not Google project KPIs.\n\nENERGY ARCHITECTURE. Google's announcement connects digital infrastructure to the power system far beyond electricity procurement. It describes work with Fingrid and Business Finland to locate new infrastructure in northern Finland closer to available grid capacity and carbon-free generation. New wind PPAs are also announced, bringing Google's stated supported new-to-grid onshore wind capacity to 629 MW.\n\nA separate element is a contracted 94 MW battery near Kajaani, expected online in late 2027. The release does not disclose its MWh rating, so discharge duration cannot be derived from the published information. Google also describes a long-term PPA with Fortum linked to extending the Loviisa nuclear plant's life and an MoU on future flexibility and new carbon-free generation.\n\nEXECUTIVE VOICE. Alphabet and Google President and Chief Investment Officer Ruth Porat frames the investment as expansion of technical infrastructure paired with new energy capacity and grid enhancements. Fingrid separately explains the northern siting logic through significant available consumption capacity at strong grid points. For industrial investors, the lesson is that site selection and power strategy are being addressed together rather than sequentially.\n\nIIG ANALYSIS. Before land acquisition for a large AI/data-centre campus, close connection capacity, redundancy, ramp profile, backup philosophy, cooling/heat rejection and heat-reuse potential. Model BESS together with UPS and standby generation to avoid duplicated functions, and test curtailment and island scenarios. The public release does not provide site-specific PUE, IT MW or battery MWh; IIG does not invent them."
-      }
+      },
+      "digest_rubric": "FINANCE"
     },
     {
       "slug": "basf-ludwigshafen-renewable-accc-2026",
@@ -280,7 +284,8 @@
       "body": {
         "ua": "ФАКТ. Solar Foods оголосила фінансування Factory 02 у червні 2026 року, але проєкт стосується харчового білка, а не фармацевтики.\n\nРЕДАКЦІЙНА ПРИМІТКА. Запис потребує перенесення до харчової галузі та заміни окремою підтвердженою фармацевтичною новиною; це не приклад фармацевтичного виробництва.\n\nАНАЛІЗ IIG. Для нового харчового виробництва оцінювати безперервність процесу та електричні й теплові навантаження.",
         "en": "FACT. Solar Foods announced Factory 02 financing in June 2026, but it is a food protein project, not pharmaceuticals.\n\nEDITORIAL NOTE. This item must be moved to food and replaced with a verified pharmaceutical story; it is not an example of pharmaceutical manufacturing.\n\nIIG ANALYSIS. Assess process continuity and electrical and thermal demand for new food production."
-      }
+      },
+      "digest_rubric": "FINANCE"
     },
     {
       "slug": "rivenhall-waste-energy-handover-2026",
@@ -315,6 +320,154 @@
       "body": {
         "ua": "ФАКТ. 24 квітня 2026 року Kanadevia Inova повідомила про завершення будівництва й пусконалагодження Rivenhall Integrated Waste Management Facility та передачу Indaver. Сертифікат попереднього приймання PAC датовано 18 квітня.\n\nТЕХНІКА. Для WtE критичні стабільність подачі відходів, тепловий баланс, очищення димових газів і підтвердження гарантійних показників.\n\nАНАЛІЗ IIG. Під час передачі EPC окремо перевіряти PAC, перелік недоробок, гарантійні випробування й обов’язки оператора. Це рекомендація, не твердження про параметри Rivenhall.\n\nЧОМУ HANDOVER ВАЖЛИВІШИЙ ЗА ЗАГОЛОВОК «ЗАВЕРШЕНО». Для складного WtE-об’єкта передача замовнику означає перехід відповідальності, але не автоматично закриття всіх гарантійних зобов’язань. PAC, punch list, performance tests, defects liability і майбутній FAC мають різний юридичний та технічний зміст. Саме тому IIG фіксує дату PAC окремо від повідомлення про передачу.\n\nІНЖЕНЕРНИЙ КОНТРОЛЬ. Для WtE критично підтвердити пропускну здатність по відходах, стабільність combustion, steam cycle, availability, власні потреби, emissions compliance та роботу flue-gas treatment у погодженому діапазоні палива. Один короткий acceptance run не замінює перевірку сезонної експлуатації та реального складу відходів.\n\nАНАЛІЗ IIG. На етапі handover потрібна матриця: guaranteed value → test method → measured result → open deviation → responsible party → deadline. Окремо передаються spare parts, O&M manuals, training records, software/SCADA backups та перелік тимчасових режимів. Для керівництва це перетворює «об’єкт передано» на контрольований список залишкових ризиків.\n\nДЖЕРЕЛО І МЕЖІ. Повідомлення Kanadevia підтверджує завершення commissioning і передачу Indaver, але IIG не приписує Rivenhall конкретні невказані показники efficiency або availability. Наступний доказ повного завершення — закриття contractual acceptance milestones відповідно до EPC та підтверджена стабільна експлуатація.",
         "en": "FACT. On 24 April 2026 Kanadevia Inova announced completed construction and commissioning of Rivenhall Integrated Waste Management Facility and handover to Indaver. The provisional acceptance certificate was issued 18 April.\n\nTECHNICAL CONTEXT. WtE requires stable feed, thermal balance, flue-gas treatment and performance testing.\n\nIIG ANALYSIS. At EPC handover, verify PAC, punch list, guarantees and operator obligations separately. This is advice, not a claim about Rivenhall performance.\n\nWHY HANDOVER IS MORE PRECISE THAN “COMPLETED”. For a complex WtE facility, transfer to the owner changes responsibility but does not automatically close every performance obligation. PAC, punch list, performance tests, defects liability and eventual FAC have different legal and technical meanings. IIG therefore records the PAC date separately from the handover announcement.\n\nENGINEERING CONTROL. WtE acceptance should demonstrate waste throughput, combustion stability, steam cycle, availability, auxiliary consumption, emissions compliance and flue-gas treatment across the agreed fuel envelope. A short acceptance run cannot by itself represent seasonal operation or the full variability of real waste.\n\nIIG ANALYSIS. At handover, use a matrix linking guaranteed value, test method, measured result, open deviation, responsible party and deadline. Spare parts, O&M manuals, training records, software/SCADA backups and temporary operating modes should be transferred explicitly. This converts “handed over” into a management-visible register of residual risk.\n\nSOURCE AND LIMITS. Kanadevia's announcement confirms commissioning and handover to Indaver, but IIG does not attribute undisclosed efficiency or availability figures to Rivenhall. The next evidence of full completion is closure of contractual acceptance milestones under the EPC contract and demonstrated stable operation."
+      }
+    },
+    {
+      "slug": "nkrekp-1355-distribution-code-2026",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-08-11",
+      "canonical_url": "https://www.nerc.gov.ua/acts/pro-zatverdzhennia-zmin-do-kodeksu-system-rozpodilu",
+      "title": {
+        "ua": "НКРЕКП №1355: зміни до Кодексу систем розподілу",
+        "en": "NEURC Resolution No. 1355: amendments to the Distribution Systems Code"
+      },
+      "summary": {
+        "ua": "НКРЕКП 11 серпня 2026 року затвердила зміни до Кодексу систем розподілу; постанова передбачає набрання чинності з 1 вересня 2026 року за умовою офіційного оприлюднення.",
+        "en": "On 11 August 2026, NEURC approved amendments to the Distribution Systems Code, with entry into force from 1 September 2026 subject to official publication."
+      },
+      "company_context": [
+        {
+          "ua": "Офіційний первинний документ — постанова НКРЕКП №1355.",
+          "en": "The primary official document is NEURC Resolution No. 1355."
+        },
+        {
+          "ua": "Зміни стосуються Кодексу систем розподілу.",
+          "en": "The amendments concern the Distribution Systems Code."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. НКРЕКП постановою №1355 від 11 серпня 2026 року затвердила зміни до Кодексу систем розподілу. Офіційний текст визначає, що постанова набирає чинності з 1 вересня 2026 року, але не раніше дня, наступного за днем її оприлюднення на сайті Регулятора.\n\nЩО ЦЕ ОЗНАЧАЄ ДЛЯ ПРОЄКТІВ. Для промислових замовників, власної генерації, BESS та нових приєднань зміни до кодексу потрібно враховувати при формуванні технічних умов, схем приєднання, вимог до обліку, РЗА та взаємодії з оператором системи розподілу.\n\nПРАКТИЧНИЙ КОНТРОЛЬ IIG. Перед підписанням EPC або договору на приєднання слід перевірити актуальну редакцію Кодексу систем розподілу та застосовні перехідні положення. IIG не підміняє юридичну експертизу; для контрактного рішення потрібна перевірка чинної редакції документів на дату підписання.",
+        "en": "FACT. NEURC Resolution No. 1355 of 11 August 2026 approved amendments to the Distribution Systems Code. The official text provides for entry into force from 1 September 2026, subject to publication timing.\n\nPROJECT IMPACT. Industrial generation, BESS and new grid connections should reflect the updated code in technical conditions, connection design, metering, protection and DSO interfaces.\n\nIIG CONTROL POINT. Before EPC or connection contracts are signed, confirm the then-current code and transition provisions. This is not a substitute for legal advice."
+      }
+    },
+    {
+      "slug": "bill-16033-security-of-electricity-supply-2026",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-09-04",
+      "canonical_url": "https://itd.rada.gov.ua/billinfo/Bills/Card/70811",
+      "title": {
+        "ua": "Законопроєкт №16033: безпека постачання електроенергії",
+        "en": "Bill No. 16033: security of electricity supply"
+      },
+      "summary": {
+        "ua": "4 вересня 2026 року зареєстровано законопроєкт №16033 щодо врегулювання питань забезпечення безпеки постачання електричної енергії; стан проходження потрібно відстежувати окремо від чинного закону.",
+        "en": "Bill No. 16033 was registered on 4 September 2026 concerning security of electricity supply; its legislative progress must be distinguished from law already in force."
+      },
+      "company_context": [
+        {
+          "ua": "Це законопроєкт, а не чинний закон.",
+          "en": "This is a bill, not enacted law."
+        },
+        {
+          "ua": "Офіційна картка Верховної Ради фіксує реєстрацію №16033 від 04.09.2026.",
+          "en": "The official Verkhovna Rada card records registration No. 16033 dated 4 September 2026."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. У Верховній Раді 4 вересня 2026 року зареєстровано законопроєкт №16033 про внесення змін до Закону України «Про ринок електричної енергії» щодо врегулювання питань забезпечення безпеки постачання електричної енергії.\n\nСТАТУС. Це проєкт закону. Його не можна подавати як чинну норму до завершення законодавчої процедури та офіційного набрання чинності.\n\nДЛЯ ПРОМИСЛОВОСТІ. Компаніям із власною генерацією, критичними навантаженнями та резервним живленням доцільно відстежувати остаточну редакцію, оскільки зміни можуть впливати на правила нагляду, відповідальність та вимоги до надійності електропостачання.\n\nКОНТРОЛЬ IIG. У Digest матеріал позначається як «законопроєкт», а не «закон». Перед використанням у договорі або технічній політиці потрібно перевірити актуальний статус на офіційному порталі Верховної Ради.",
+        "en": "FACT. Bill No. 16033 was registered in the Verkhovna Rada on 4 September 2026 to amend the Electricity Market Law in relation to security of electricity supply.\n\nSTATUS. It is a bill, not enacted law. It must not be treated as binding until the legislative process is complete and the final act enters into force.\n\nINDUSTRIAL RELEVANCE. Companies with on-site generation, critical loads and backup supply should monitor the final text.\n\nIIG CONTROL. The Digest labels it as a bill and requires status verification before contractual use."
+      }
+    },
+    {
+      "slug": "kmu-renewables-auctions-rules-2026",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-04-03",
+      "canonical_url": "https://www.kmu.gov.ua/news/uriad-onovyv-pravyla-konkursu-na-budivnytstvo-novoi-heneratsii-ta-auktsioniv-pidtrymky-vde",
+      "title": {
+        "ua": "Уряд оновив правила конкурсів нової генерації та аукціонів підтримки ВДЕ",
+        "en": "Government updates rules for new-generation tenders and renewable support auctions"
+      },
+      "summary": {
+        "ua": "3 квітня 2026 року Кабмін повідомив про оновлення правил конкурсу на будівництво генеруючих потужностей та аукціонів з розподілу квот підтримки ВДЕ на 2026 рік.",
+        "en": "On 3 April 2026, the Cabinet reported updates to rules for generation-capacity tenders and renewable support quota auctions for 2026."
+      },
+      "company_context": [
+        {
+          "ua": "Офіційне повідомлення оприлюднене Кабінетом Міністрів України.",
+          "en": "The official announcement was published by the Cabinet of Ministers of Ukraine."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. Кабінет Міністрів 3 квітня 2026 року повідомив про оновлення правил проведення конкурсу на будівництво генеруючих потужностей і правил аукціонів з розподілу квот підтримки відновлюваної енергетики.\n\nКЛЮЧОВИЙ КОНТЕКСТ. Рішення охоплюють механізми нової генерації та аукціони підтримки ВДЕ на 2026 рік із прогнозними показниками на наступні роки.\n\nДЛЯ ІНВЕСТОРА. Перед розрахунком revenue model потрібно відокремити ринкову модель продажу електроенергії від проєктів, які можуть претендувати на механізми підтримки. Умови конкретного аукціону, квоти та строки слід перевіряти за офіційними документами.\n\nКОНТРОЛЬ IIG. У фінансовій моделі не можна автоматично закладати підтримку як гарантований дохід без підтвердження права участі та результату відповідної процедури.",
+        "en": "FACT. On 3 April 2026, the Cabinet announced updated rules for generation-capacity tenders and renewable support auctions.\n\nCONTEXT. The decisions cover new generation mechanisms and 2026 renewable support quotas with forward indicators.\n\nINVESTOR VIEW. Revenue models should distinguish merchant sales from support mechanisms and verify eligibility, quotas and deadlines.\n\nIIG CONTROL. Support must not be assumed as guaranteed revenue before eligibility and award are confirmed."
+      }
+    },
+    {
+      "slug": "law-4777-ix-energy-markets-resilience-2026",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-02-10",
+      "canonical_url": "https://zakon.rada.gov.ua/laws/show/4777-IX",
+      "title": {
+        "ua": "Закон №4777-IX: нові умови для енергоринків, ВДЕ та накопичення",
+        "en": "Law No. 4777-IX: new framework for energy markets, renewables and storage"
+      },
+      "summary": {
+        "ua": "Закон України №4777-IX від 10 лютого 2026 року стосується функціонування енергетичних ринків, конкурентних умов ВДЕ та енергетичної стійкості; набрав чинності 11 березня 2026 року.",
+        "en": "Law No. 4777-IX of 10 February 2026 addresses energy markets, competitive renewable generation and energy resilience; it entered into force on 11 March 2026."
+      },
+      "company_context": [
+        {
+          "ua": "Офіційний текст опублікований у базі законодавства Верховної Ради.",
+          "en": "The official text is published in the Verkhovna Rada legislation database."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. Закон України №4777-IX від 10 лютого 2026 року вносить зміни до законодавчих актів щодо функціонування енергетичних ринків, конкурентних умов виробництва електроенергії з альтернативних джерел та посилення енергетичної стійкості. В офіційній базі зазначено набрання чинності 11 березня 2026 року.\n\nПРОЄКТНИЙ КОНТЕКСТ. Закон є базою для подальших регуляторних змін, зокрема щодо приєднання, роботи установок зберігання енергії та розвитку розподіленої генерації.\n\nДЛЯ EPC / ІНВЕСТОРА. Технічна та фінансова модель проєкту має використовувати не лише текст закону, а й чинні підзаконні акти НКРЕКП, кодекси системи передачі/розподілу та правила приєднання.\n\nКОНТРОЛЬ IIG. Перед фінальним investment decision слід звірити повний набір актів, які вже набрали чинності на дату рішення.",
+        "en": "FACT. Law No. 4777-IX of 10 February 2026 amends legislation on energy-market functioning, competitive renewable generation and energy resilience. The official database records entry into force on 11 March 2026.\n\nPROJECT CONTEXT. It underpins subsequent regulatory changes affecting connection, storage and distributed generation.\n\nEPC / INVESTOR VIEW. Projects must use both the law and the applicable secondary regulation and grid codes.\n\nIIG CONTROL. Verify the complete set of acts in force at the investment-decision date."
+      }
+    },
+    {
+      "slug": "nkrekp-1461-bess-connection-2026",
+      "sector": "regulation",
+      "digest_rubric": "REGULATION",
+      "status": "APPROVED",
+      "admin_approved": true,
+      "primary_source_verified": true,
+      "publication_date": "2026-08-31",
+      "canonical_url": "https://www.nerc.gov.ua/acts/pro-vnesennia-zmin-do-postanovy-nkrekp-vid-26-bereznia-2022-roku-352",
+      "title": {
+        "ua": "НКРЕКП №1461: умови приєднання BESS до 1 січня 2027 року",
+        "en": "NEURC Resolution No. 1461: BESS connection conditions through 1 January 2027"
+      },
+      "summary": {
+        "ua": "НКРЕКП постановою №1461 від 31 серпня 2026 року зберегла до 1 січня 2027 року чинний підхід до розрахунку плати за приєднання установок зберігання за визначених умов запуску.",
+        "en": "NEURC Resolution No. 1461 of 31 August 2026 preserves the existing storage connection-charge approach through 1 January 2027 subject to specified commissioning/start conditions."
+      },
+      "company_context": [
+        {
+          "ua": "Постанова набрала чинності з 1 вересня 2026 року.",
+          "en": "The resolution entered into force on 1 September 2026."
+        }
+      ],
+      "body": {
+        "ua": "ФАКТ. Постановою НКРЕКП №1461 від 31 серпня 2026 року внесено зміни до тимчасового порядку приєднання електроустановок у період воєнного стану. Регулятор зберіг до 1 січня 2027 року чинний порядок розрахунку плати за приєднання установок зберігання енергії із застосуванням середнього значення ставок для потужності відбору та відпуску.\n\nУМОВА. Офіційне повідомлення НКРЕКП пов’язує застосування цього підходу з введенням УЗЕ в експлуатацію або запуском у роботу до 1 січня 2027 року.\n\nДЛЯ BESS-ПРОЄКТУ. Графік EPC, поставки батарей, інверторів, РЗА/SCADA, будівельно-монтажних робіт і процедури введення в експлуатацію мають бути синхронізовані з регуляторним дедлайном.\n\nКОНТРОЛЬ IIG. Необхідно перевірити конкретні технічні умови та розрахунок плати оператора мережі; загальне правило не замінює індивідуальний договір приєднання.",
+        "en": "FACT. NEURC Resolution No. 1461 of 31 August 2026 amended the temporary wartime connection framework and preserved through 1 January 2027 the existing storage connection-charge calculation using averaged import/export capacity rates.\n\nCONDITION. NEURC links this approach to commissioning or starting the storage facility by 1 January 2027.\n\nBESS PROJECT VIEW. EPC, battery/inverter delivery, protection/SCADA, construction and commissioning should be aligned to the regulatory deadline.\n\nIIG CONTROL. Project-specific connection conditions and network-operator charges still require verification."
       }
     }
   ]
