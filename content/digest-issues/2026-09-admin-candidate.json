@@ -9,7 +9,8 @@
     "general": 23,
     "finance": 7,
     "regulation": 7,
-    "advice": 8
+    "advice_pool": 8,
+    "advice_selected": 3
   },
   "items": {
     "general": [
@@ -64,6 +65,11 @@
       "bankability-guarantees-and-project-debt",
       "supplier-qualification-after-exhibition",
       "industrial-resilience-blackstart-segmentation"
+    ],
+    "advice_selected": [
+      "grid-connection-september-rules",
+      "bess-duty-before-mwh",
+      "onsite-power-for-ai-and-industry"
     ]
   },
   "rules": {
@@ -74,6 +80,8 @@
     "page3": "AUTO_PACK_FINANCE_REGULATION_PLUS_FIXED_ADVICE",
     "overflow": "CREATE_CONTINUATION_PAGE",
     "direct_links": "REQUIRED",
-    "final_exact_pdf_sha": "NOT_YET_APPROVED"
+    "final_exact_pdf_sha": "NOT_YET_APPROVED",
+    "advice_block": "FIXED_3_FROM_APPROVED_MONTH_POOL",
+    "digest_title": "USE_DIGEST_TITLE_FOR_LAYOUT_FULL_ARTICLE_TITLE_PRESERVED"
   }
 }
