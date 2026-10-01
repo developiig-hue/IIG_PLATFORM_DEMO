@@ -79,3 +79,9 @@ Portability is mandatory: hosting/domain changes MUST be implemented by changing
 
 ## OWNER CTA TYPOGRAPHY LOCK — 2026-10-01
 For the approved Digest component, the primary CTA labels `РОЗМІСТИТИ ПРОЄКТ` and `ПІДПИСАТИСЯ НА ДАЙДЖЕСТ` remain white uppercase DejaVu Sans Bold and centered. The Admin-approved display sizes are locked as follows: Page 1 bottom CTA row = 14 px; Page 3 bottom Chief Engineer CTA row = 12 px. Both values are 2× the previous MASTER v2 values. Any deployment, paid-hosting migration, PDF/HTML regeneration or CSS rebuild that restores 7 px / 6 px, changes white text, or makes the two buttons within a row typographically inconsistent fails visual QA and MUST NOT be released.
+
+
+## EXTENSIBLE DIGEST BUILDER — COVER + PAGES 4+ — 2026-10-01
+Robot #6 and Admin must support a working cover configuration plus optional additional pages after the core pages. The core MASTER remains a versioned read-only reference; custom working cover/background/copy and appended pages are inputs to a new final artifact, never an in-place mutation of an already approved SHA.
+
+Allowed extra-page classes: IIG_ORIGINAL, SUCCESS_PROJECT, PARTNER, SPONSORED, EDITORIAL. Sponsored/Partner material requires visible disclosure. Each page can carry a validated background asset, title, subtitle/announcement, body and up to two direct CTAs. Invalid configured CTA routes, missing title/body, failed image-quality validation or missing sponsorship disclosure are release blockers. Robot #6 must preserve page order and supplied content, and Robot #7 still requires ADMIN approval of the exact final artifact before mailing.
