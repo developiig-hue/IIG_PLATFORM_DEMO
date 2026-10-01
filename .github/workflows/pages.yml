@@ -37,12 +37,14 @@ jobs:
                   s=s.replace('</body>','<script src="download-pdf.js"></script></body>',1)
               p.write_text(s,encoding='utf-8')
           PY
+      - name: STEP 26 Admin MASTER acceptance
+        run: python scripts/check_step26_admin.py
       - name: Security exposure guard
         run: |
           ! grep -RqiE '(DATABASE_URL|REDIS_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|redis://)' --exclude-dir=.git --exclude-dir=.github index.html industry.html case.html advice.html financing.html finance-news.html news.html forms.html about.html digest .nojekyll README.md
       - name: Public surface smoke
         run: |
-          for f in index.html industry.html case.html advice.html financing.html finance-news.html news.html article.html forms.html about.html digest/2026-09-review.html digest/download-pdf.js assets/iig.css assets/iig.js assets/public-news.js content/public-news.json baze_foto_news/manifest.json; do test -s "$f"; done
+          for f in index.html industry.html case.html advice.html financing.html finance-news.html news.html article.html forms.html about.html admin.html admin-ua.html digest/2026-09-review.html digest/download-pdf.js assets/iig.css assets/iig.js assets/public-news.js content/public-news.json baze_foto_news/manifest.json; do test -s "$f"; done
           grep -q 'IIG' index.html
           grep -q 'ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА' index.html
           grep -q 'FINANCING INTELLIGENCE' financing.html
