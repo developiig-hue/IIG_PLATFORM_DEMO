@@ -19,6 +19,8 @@ need("digest/IIG-Monthly-Digest-2026-09.pdf" not in html and "DIGEST_MASTER_PDF"
 master=(root/"digest/admin-master-2026-09-v2.html").read_text(encoding="utf-8")
 need("IIG_Monthly_Digest_2026-09_FINAL_DEMO (2)" in master,"MASTER v2 source identity missing")
 need("УКРАЇНА ТА СВІТ — 15 ПОДІЙ У ФОКУСІ" in master and "ФІНАНСИ · РЕГУЛЮВАННЯ · ІНЖЕНЕРНА ПРАКТИКА" in master,"MASTER v2 pages 2/3 missing")
+need(".cta{padding:13px 8px;border-radius:7px;text-align:center;font-size:14px;font-weight:900;color:#fff}" in master,"Page 1 CTA white 2x font lock missing")
+need(".advctas div{padding:13px 6px;text-align:center;border-radius:4px;font-size:12px;font-weight:900;color:#fff}" in master,"Page 3 CTA white 2x font lock missing")
 need("projectRequests" in html and "subscribeRequests" in html and "engineerRequests" in html,"Request moderation cards missing")
 need("ADMIN_1" in html and "Igor Kryvoshei" in html and "develop.iig@gmail.com" in html,"ADMIN_1 profile missing")
 need("+38 067 5063591" in html,"ADMIN_1 phone missing")
