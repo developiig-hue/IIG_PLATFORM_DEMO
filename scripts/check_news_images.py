@@ -46,7 +46,15 @@ for audit_path in sorted((root / 'content/image-moderation').glob('*.json')):
     assert audit['decision'] == expected, f'{audit_path.name}: unsafe image decision {audit["decision"]}; expected {expected}'
     print(f'IMAGE MODERATION {audit["slug"]}: {statuses} -> {expected}')
 js = (root / 'assets/public-news.js').read_text(encoding='utf-8')
-for token in ('manifestURL', 'fallback(x.sector)', 'data-news-image', 'aspect-ratio:16/9', "page==='news.html'", "page==='industry.html'", "page==='index.html'", "page==='article.html'"):
+for token in ('manifestURL', 'fallback(x)', 'rubricPhotos', 'data-news-image', 'aspect-ratio:16/9', "page==='news.html'", "page==='industry.html'", "page==='index.html'", "page==='article.html'"):
     assert token in js, f'Missing image routing feature: {token}'
-print('PASS: nine CORE JPEG assets, nine same-sector mappings and supplemental Finance/Regulation content exempt from core-image quota')
+rubric = manifest.get('rubric_fallback', {})
+for key in ('FINANCE','REGULATION'):
+    assert key in rubric, f'Missing rubric fallback: {key}'
+    image = rubric[key]
+    path = root / image['image_url']
+    assert path.is_file() and path.stat().st_size > 1000, f'{key}: missing rubric fallback image'
+    assert image.get('image_rights_verified') is True, f'{key}: rubric fallback is not display-approved'
+    assert image.get('image_caption',{}).get('ua') and image.get('image_alt',{}).get('ua'), f'{key}: rubric fallback labels missing'
+print('PASS: nine CORE JPEG assets + labelled Finance/Regulation rubric fallbacks')
 print('NOTICE: rights flags are metadata, not legal evidence; confirm licenses separately.')
