@@ -172,7 +172,8 @@ need("assets/public-news.js?v=industry-advice-card-layout-20261002" in industry,
 need('id="industry-news-grid-v2"' in industry and "grid-template-columns:repeat(3" in industry,"Industry pages must use Advice-style card grid")
 need("industryCard=x=>" in pubnews and "ЧИТАТИ НОВИНУ" in pubnews,"Industry NEWS card renderer missing")
 need("renderItems();" not in industry[industry.find("window.addEventListener"):],"Legacy static industry demo renderer must not run")
-need("energy:{" in industry and "logistics:{" in industry and "waste:{" in industry,"Industry title map must cover all nine sectors")
+sector_keys=["energy","metallurgy","food","logistics","datacenters","chemical","agriculture","pharma","waste"]
+need(all(re.search(r"(?<![A-Za-z0-9_])"+re.escape(k)+r"\s*:\s*\{",industry) for k in sector_keys),"Industry title map must cover all nine sectors")
 
 # Digest pre-generation Red Team guards
 need('id="digestOperatorRole"' in html and "ADMIN_2 · Digest Builder" in html,"Digest ADMIN_2 builder role missing")
