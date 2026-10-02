@@ -609,3 +609,11 @@ Search source-of-truth is the union of:
 Search query normalization MUST ignore conjunction stopwords such as і, та, and and support bilingual aliases including ЄІБ ↔ EIB. Multi-term queries rank items matching all meaningful terms above partial matches. A public article that is visible through the Demo publication bridge but absent from search is a release-blocking defect.
 
 Example acceptance case: query `ЄІБ і BNP Paribas` must surface the published EIB/BNP Paribas NEWS item when it exists in the current public bridge/current approved registry, plus relevant finance destinations where applicable.
+
+
+## 43. PUBLIC SEARCH RUNTIME SAFETY — 2026-10-02
+The homepage search renderer MUST define and use a local HTML-escape helper before rendering result titles/summaries. A successful query must never fail at the presentation stage because of an undefined renderer helper.
+
+Search button click and Enter use the same guarded execution path. Any runtime exception is logged as SEARCH_RUNTIME_ERROR and must surface a visible error block instead of failing silently.
+
+Release acceptance verifies the renderer helper, guarded execution and cache-busting. The control query is: ЄІБ і BNP Paribas. When the corresponding ADMIN-published NEWS item exists in the Step-26 published bridge, results must include a direct link to that article.
