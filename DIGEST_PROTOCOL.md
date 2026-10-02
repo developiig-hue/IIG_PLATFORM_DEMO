@@ -121,3 +121,11 @@ A newly uploaded Digest cover background is a two-stage operation and MUST NOT s
 5. Rendering must preserve the uploaded data URL correctly. The HTML/CSS renderer must not quote a data URL in a way that breaks the inline style attribute; a technically accepted image that renders as a flat fallback color is a release-blocking bug.
 
 The approved MASTER v2 fallback remains valid without re-approval. Any new custom cover image is governed by the ADMIN_1 rights/apply gate above.
+
+
+## COVER MASTER LAYOUT LOCK — 2026-10-02
+When ADMIN_1 selects a new approved cover background, only the background asset/crop/dimming may change. The title-page composition remains locked to the approved MASTER v2 1:1: IIG brand header + UA/EN, MONTHLY DIGEST title, subtitle, issue badge, mission/slogan, four thematic linked blocks with icons and «Читати далі...», KPI strip, and two bottom primary CTAs.
+
+The four cover thematic links are active and must resolve to IIG content hubs: Ukraine industrial generation -> industry.html?sector=energy; world industrial energy practice -> news.html; financing/regulation -> finance-news.html; Chief Engineer Advice -> advice.html. Bottom CTAs are mandatory and fixed: «РОЗМІСТИТИ ПРОЄКТ» -> forms.html#project and «ПІДПИСАТИСЯ НА ДАЙДЖЕСТ» -> forms.html#subscribe.
+
+Custom-cover rendering may not collapse these blocks into cards, remove the IIG header, remove KPI/CTA areas, change typography hierarchy, or substitute a simplified layout. Any such drift is a visual-regression blocker.
