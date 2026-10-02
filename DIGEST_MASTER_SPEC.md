@@ -7,12 +7,12 @@ Approved master SHA-256: `6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef
 Admin read-only reference: `digest/admin-master-2026-09-v2.html`  
 The legacy public-site PDF is not normative unless its SHA exactly matches this approved master.
 
-## Immutable structure
+## Core structure
 1. Page 1 — COVER.
 2. Page 2 — 15 Ukraine/World content cards.
 3. Page 3 — Finance + Regulation + Chief Engineer Advice.
 
-Portrait presentation; vertical reading 1 → 2 → 3. No layout change without new User/Admin approval and protocol version.
+Core portrait flow is Page 1 → Page 2 → Page 3. Pages 4+ are optional approved extensions. The visual canvas of core pages is locked; content packing follows the current capacity rules below.
 
 ## Cover
 - Full-page real energy/industrial energy enterprise photo.
@@ -48,7 +48,7 @@ Canonical family: DejaVu Sans / DejaVu Sans Bold.
 Auto-fit may shrink text only to prevent collision. Text MUST NOT overlap arrows, CTA, adjacent cards, extension slot or footer.
 
 ## Page 2
-Exactly 15 content cards in approved vertical composition. No thumbnails/photos in cards. Each whole card is clickable. Safe-zone must separate card 15, extension slot, footer and Subscribe CTA. Do not fabricate content to fill a quota.
+Capacity-weighted packing is mandatory. The historical MASTER visual reference showed 15 cards, but the current approved Builder fills the available Page-2 canvas with as many approved items as fit without collision or unreadable shrinkage. Current Admin capacity model = 23 units; short headlines may fit more cards than the historical reference. No thumbnails/photos in cards. Each whole card is clickable. Do not leave avoidable blank space when approved current-issue content is available, and never fabricate content to fill space.
 
 ## Page 3
 Finance, Regulation and Chief Engineer are content areas with direct individual IIG links. Approved lower Chief Engineer + CTA block is locked.
@@ -73,12 +73,12 @@ If the exact individual IIG material does not exist with a valid HTTPS direct UR
 No hard dependency on GitHub Pages. All public routes derive from `IIG_PUBLIC_BASE_URL`. Local assets use repository-relative paths or a portable manifest. New hosting/domain MUST support HTTPS, Unicode, direct article routes, forms hashes and static PDF download.
 
 ## Release QA
-- 3 pages in fixed order.
+- Core pages 1–3 remain in fixed order; approved pages 4+ may follow.
 - visual regression against approved master.
 - Ukrainian Unicode renders without ????.
 - every content URL identity matches the represented item.
 - Subscribe → #subscribe; Project → #project; no cross-link.
-- public PDF download points to the current approved master.
+- Public Digest download is absent until the current issue has an ADMIN_1-approved final artifact/SHA; legacy PDFs must never remain linked.
 - Robot #6 outputs READY_FOR_ADMIN_APPROVAL / auto_send=false.
 - Robot #7 cannot send before Admin approval of exact digest artifact/SHA.
 
@@ -102,3 +102,11 @@ Optional pages 4+ may use ARTICLE_PAGE2_CANVAS for IIG original news, successful
 
 ## DEFAULT CANVAS FALLBACK — 2026-10-01
 Customization is opt-in. If no working-cover change is applied, the Digest uses the approved MASTER v2 Page 1 visual/canvas as the default. Core Page 2/Page 3 layout standards likewise remain the fallback when no explicit page-level customization exists. Missing optional customization must never create a blank page or replace an approved canvas with a generic placeholder.
+
+
+## ROLE SEPARATION — ADMIN_2 BUILD / ADMIN_1 FINAL APPROVAL — 2026-10-02
+ADMIN_2 may build a monthly Digest release-candidate from the current approved CMS/Approval Ledger, edit working cover/pages, run auto-pack, working preview, final preview and QA. ADMIN_2 MUST NOT grant final Digest approval, authorize public release or authorize mailing.
+
+ADMIN_1 may perform all Builder actions and is the sole role permitted to give final approval to the generated release-candidate. Final approval is valid only for the exact current issue/candidate and must occur after Final Preview and all release gates pass. Any material/issue/layout change after candidate generation invalidates the candidate and requires regeneration before ADMIN_1 approval.
+
+The public site must not expose a legacy/static Digest while a new issue is pending. Only an ADMIN_1-approved current final artifact may become the public download target.
