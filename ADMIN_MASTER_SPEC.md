@@ -448,3 +448,11 @@ ADMIN_1 may complete the full editorial acceptance cycle inside the Step 26 demo
 Demo publication is NOT production publication and does not mutate the paid-hosting/public production backend. Production publication remains a separate Step 27 server-side action protected by Password + MFA + RBAC + server session + immutable Audit. Editing text or changing/resetting an image after Demo publication invalidates the publication state and returns the item to REVIEW for fresh ADMIN_1 approval.
 
 The UI must not show the production-security modal when `Опублікувати у DEMO` succeeds. Successful Demo publication uses a non-blocking green Admin toast. The production-security modal is reserved for actual Step 27 operations.
+
+
+## 30. ADMIN_1 RIGHTS FAST-PATH FOR NEWS IMAGES — 2026-10-02
+ADMIN_1 is the accountable person who personally verifies whether an image may be used. For a locally uploaded NEWS image, the editorial image-rights gate is satisfied by one explicit ADMIN_1 confirmation that the official/source rights were personally checked. The separate `Credit / rights owner` text field is optional for ADMIN_1 and must not block image approval.
+
+When ADMIN_1 confirms rights, the editorial state records at minimum: `rights_verified_by=ADMIN_1`, `rights_verification=OWNER_CONFIRMED`, timestamp, selected image metadata and the article/source URL when available. If ADMIN_1 supplies a credit, it is preserved; otherwise the system records a neutral audit value such as `Rights verified by ADMIN_1`.
+
+This fast-path does not remove responsibility or the Audit requirement. It removes duplicate manual entry after ADMIN_1 has already performed the legal/source check. Production Step 27 must persist the image, source/reference and rights-verification metadata in server-side storage/Audit.
