@@ -203,3 +203,16 @@ missing_schematics=[x.get("slug") for x in approved_advice if ("'"+str(x.get("sl
 need(not missing_schematics,"Every approved Advice must have a dedicated conceptual schematic: "+",".join(missing_schematics))
 need("MISSING_CONCEPTUAL_SCHEMATIC" in advice_js,"Advice renderer must fail closed when schematic is missing")
 need("if(!d)return url('assets/iig-editorial-illustration.svg')" not in advice_js,"Published Advice generic illustration fallback is forbidden")
+
+# Public UX regression: Advice cache, Digest public CTA and bilingual search
+home=(root/"index.html").read_text(encoding="utf-8")
+iig=(root/"assets/iig.js").read_text(encoding="utf-8")
+advice_html=(root/"advice.html").read_text(encoding="utf-8")
+advice_article=(root/"advice-article.html").read_text(encoding="utf-8")
+need("advice-schematics-v2-20261002" in advice_html and "advice-schematics-v2-20261002" in advice_article and "advice-schematics-v2-20261002" in home,"Advice conceptual-schematic cache version not advanced everywhere")
+need("ПУБЛІКУЄТЬСЯ ТІЛЬКИ ПІСЛЯ ЗАТВЕРДЖЕННЯ ADMIN_1" not in home,"Internal ADMIN_1 Digest text must not be public")
+need('<div class="download-circle">↓</div>' in home,"Digest CTA arrow must point downward")
+need("digest/IIG-Monthly-Digest-2026-09.pdf" not in iig,"Public JS must not restore deleted legacy Digest PDF")
+need("function initPublicSearch()" in iig and "runPublicSearch" in iig and "content/public-news.json" in iig and "content/public-advice.json" in iig,"Public bilingual search must be functional")
+need("title?.ua" in iig and "title?.en" in iig and "summary?.ua" in iig and "summary?.en" in iig,"Search index must include both UA and EN content")
+need("industry.html?sector=chemical" in iig and "Хімічна промисловість" in iig and "Chemical industry" in iig,"Search must index bilingual sector keywords")
