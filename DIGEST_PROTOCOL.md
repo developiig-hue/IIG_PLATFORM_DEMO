@@ -151,3 +151,20 @@ For the public demo, final ADMIN_1 approval is the authorization point for the c
 Current public release route: `digest/releases/IIG-Monthly-Digest-2026-09-PUBLIC.pdf`.
 
 The Pages deployment builds this PDF from the approved Digest release template and validates that the artifact exists before deployment. Public download and mailing are separate: the PDF may be publicly downloadable after ADMIN_1 final approval, while Robot #7 mailing remains a separately authorized action. Legacy `digest/IIG-Monthly-Digest-2026-09.pdf` remains forbidden.
+
+
+## ADMIN-ONLY DIGEST ARTIFACT GENERATION — SUPERSEDING RULE — 2026-10-02
+This rule supersedes the temporary public-PDF/Pages-generation experiment recorded earlier the same day.
+
+The Digest artifact MUST be generated only from the live Admin Digest Builder state after ADMIN_1 Final Preview and final approval. Hosting, GitHub Pages, CI, deployment workflows and the public website MUST NOT independently rebuild or synthesize the Digest.
+
+Canonical path:
+ADMIN uploads/approves cover -> approved CMS/LEDGER content -> Build release-candidate -> Final Preview -> ADMIN_1 final approval -> Admin-only artifact export.
+
+Admin export modes:
+1. «ЗАВАНТАЖИТИ ФАЙЛ ДАЙДЖЕСТУ» creates a self-contained HTML artifact from the exact approved in-browser state, including the approved custom cover background and current Digest pages/content/links.
+2. «PDF · ДРУК / ЗБЕРЕГТИ» opens the exact same approved artifact in print layout so ADMIN can save it as PDF from the browser.
+
+The export is fingerprint-locked: if layout/content changes after Preview/approval, export is blocked until a new candidate is generated, previewed and approved. The artifact is portable to a future paid hosting/domain and does not depend on a GitHub-specific build step.
+
+Mailing Robot #7 remains separate. Public website download routing is configured only after ADMIN exports and deploys the chosen artifact to the target hosting.
