@@ -651,3 +651,9 @@ The Admin cover editor may edit background, cover text and issue content but may
 The Admin workflow separates inspection from authorization. ADMIN_2 or ADMIN_1 builds a release-candidate from eligible approved content. The exact candidate then opens in «ФІНАЛЬНИЙ ПЕРЕГЛЯД ВЕРСТКИ» across all pages before approval. QA blockers may be visible in Preview and must be corrected before approval, but they do not prevent visual inspection itself. Unapproved NEWS outside the candidate are not release blockers for this candidate.
 
 Final approval by ADMIN_1 requires preview_completed=true and preview_fingerprint equal to the current digestFingerprint(). Any material/layout edit after preview invalidates the approval path and requires a fresh candidate and fresh Final Preview.
+
+
+## 34. DIGEST CANDIDATE BROWSER STORAGE SAFETY — 2026-10-02
+The release-candidate must be lightweight. Embedded base64/data-URL image bytes from the custom cover, article pages or promotional pages are excluded from the persisted fingerprint and replaced by deterministic compact markers. This prevents QuotaExceededError during «СФОРМУВАТИ НОВИЙ ДАЙДЖЕСТ».
+
+Admin persistence order: localStorage first, sessionStorage fallback for the current session. A successful sessionStorage fallback is accepted for Demo QA and is surfaced to the operator. Final production persistence remains server-side in Step 27.
