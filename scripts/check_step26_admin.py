@@ -54,7 +54,7 @@ need("Фон обкладинки підтверджено ADMIN_1" in js,"Final
 need("digestcover-brand" in js and "digestcover-kpis" in js and "digestcover-ctas" in js,"Custom Digest cover must preserve approved MASTER v2 composition")
 need("forms.html#project" in js and "forms.html#subscribe" in js,"Digest cover primary CTA routes missing")
 need("industry.html?sector=energy" in js and "finance-news.html" in js and "advice.html" in js,"Digest cover thematic links missing")
-need("DIGEST COVER — APPROVED MASTER v2 LOCKED GEOMETRY" in css,"Digest cover MASTER geometry CSS lock missing")
+need("DIGEST COVER — APPROVED MASTER v2 LOCKED GEOMETRY" in (root/"assets/admin.css").read_text(encoding="utf-8"),"Digest cover MASTER geometry CSS lock missing")
 need("IMAGE_RULES" in js and "validateDigestImage" in js and "1200" in js and "1697" in js,"Digest background image quality gate missing")
 need("extraPageEditor" in html and "extraPageType" in html and "saveExtraPage" in html,"Flexible page 4+ editor missing")
 need("IIG_ORIGINAL" in html and "SUCCESS_PROJECT" in html and "SPONSORED" in html,"Page 4+ content types missing")
