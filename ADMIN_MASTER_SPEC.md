@@ -657,3 +657,7 @@ Final approval by ADMIN_1 requires preview_completed=true and preview_fingerprin
 The release-candidate must be lightweight. Embedded base64/data-URL image bytes from the custom cover, article pages or promotional pages are excluded from the persisted fingerprint and replaced by deterministic compact markers. This prevents QuotaExceededError during «СФОРМУВАТИ НОВИЙ ДАЙДЖЕСТ».
 
 Admin persistence order: localStorage first, sessionStorage fallback for the current session. A successful sessionStorage fallback is accepted for Demo QA and is surfaced to the operator. Final production persistence remains server-side in Step 27.
+
+
+## 35. FINAL DIGEST APPROVAL -> PUBLIC PDF ROUTE — 2026-10-02
+After the exact candidate has been Final-Previewed and ADMIN_1 approves it, Admin records the canonical public PDF path and exposes an «OPEN / DOWNLOAD PDF» link. The public website homepage Digest card points to the same versioned artifact. Pages deployment must build and verify that PDF before publishing the site. Mailing remains separate and must not be auto-triggered by PDF publication.
