@@ -635,3 +635,9 @@ Before a monthly Digest is generated from Admin, these invariants are mandatory:
 - legacy Digest HTML/PDF routes remain absent.
 
 Passing CI with these invariants establishes READY TO GENERATE. It does not authorize publication or mailing.
+
+
+## 31. DIGEST COVER BACKGROUND — ADMIN_1 RIGHTS + APPLY CONFIRMATION — 2026-10-02
+The Digest cover editor separates image technical validation from editorial authorization. Selecting a file only creates a pending background. ADMIN_1 must explicitly confirm rights before the image can be applied to the working cover. The approval action is guarded by requireAdmin1() and records actor, rights basis, timestamp, filename and dimensions in Audit/editorial state.
+
+«Застосувати до титульної» must fail closed for a pending/unapproved custom background. On success the UI gives an explicit non-blocking confirmation that the background was applied, and all working/final previews must render that exact image. The MASTER v2 fallback remains pre-approved. A flat navy fallback appearing after an approved custom upload is considered a rendering regression and release blocker.
