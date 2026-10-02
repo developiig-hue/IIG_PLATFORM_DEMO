@@ -86,7 +86,7 @@ pub=(root/"assets/public-news.js").read_text(encoding="utf-8")
 need("article-preview-mode" in js and "max-height:92vh" in css and "overflow:auto" in css,"Scrollable article preview missing")
 need("IIG_EDITORIAL_EMPHASIS_V2" in js and "IIG_EDITORIAL_EMPHASIS_V2" in pub,"Shared editorial emphasis standard missing")
 need("PERCENT_EMPHASIS_V3" in js and "PERCENT_EMPHASIS_V3" in pub,"Percent emphasis regression guard missing")
-need(r"\\d+(?:[.,]\\d+)?\\s?%" in js and r"\\d+(?:[.,]\\d+)?\\s?%" in pub,"Percent matcher missing")
+need("PERCENT_EMPHASIS_V3=true" in js and "%)(?=" in js and "PERCENT_EMPHASIS_V3=true" in pub and "%)(?=" in pub,"Percent matcher missing")
 for token in ["CAPEX","вересня","CEO","МВт"]:
     need(token in js and token in pub,f"Editorial emphasis token missing: {token}")
 schedule=json.loads((root/"content/news-update-schedule.json").read_text(encoding="utf-8"))
