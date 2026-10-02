@@ -517,3 +517,11 @@ For every NEWS item that reaches `PUBLISHED`, two destinations are mandatory and
 If `homepage_top5=true`, the same already-published NEWS receives one additional destination/priority: homepage TOP-5. If the flag is false, the NEWS still remains published in its sector and in `Новини та інсайти`.
 
 Admin UI wording must make this separation explicit so the operator never interprets the TOP-5 checkbox as controlling sector/global publication.
+
+
+## 35. ADVICE PUBLICATION MUST NOT DEPEND ON CUSTOM DIAGRAM SLUG — 2026-10-02
+Chief Engineer Advice publication is driven by editorial approval state and complete structured content, not by the presence of a pre-authored illustration keyed to the article slug.
+
+Any Advice with status APPROVED/PUBLISHED, admin_approved=true, bilingual title/summary and valid structured sections MUST appear on `advice.html`. If a bespoke conceptual diagram exists for that slug it may be used; otherwise the renderer MUST use the approved generic IIG editorial illustration fallback. Missing custom artwork must never silently suppress a published Advice item.
+
+An empty public Advice page while the registry contains approved Advice is a release-blocking defect.
