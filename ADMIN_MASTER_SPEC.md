@@ -527,9 +527,24 @@ Any Advice with status APPROVED/PUBLISHED, admin_approved=true, bilingual title/
 An empty public Advice page while the registry contains approved Advice is a release-blocking defect.
 
 
-## 36. HOMEPAGE MUST SHOW LATEST 3 ADVICE — 2026-10-02
-The homepage block `3 ОСТАННІ ПОРАДИ` is mandatory dynamic content. It MUST load from the canonical `content/public-advice.json` registry through the same public Advice renderer used by `advice.html`.
+## 36. HOMEPAGE MUST SHOW LATEST 6 ADVICE — 2026-10-02
+The homepage block `6 ОСТАННІХ ПОРАД` is mandatory dynamic content. It MUST load from the canonical `content/public-advice.json` registry through the same public Advice renderer used by `advice.html`.
 
-Selection rule: include only Advice with `status=APPROVED/PUBLISHED` and `admin_approved=true`, sort descending by `publication_date`, and render exactly the three newest available items. No manual homepage curation is required.
+Selection rule: include only Advice with `status=APPROVED/PUBLISHED` and `admin_approved=true`, sort descending by `publication_date`, and render exactly the six newest available items. No manual homepage curation is required.
 
-After every new approved Advice publication, the homepage block must update automatically so the newest three replace older entries. The block must never remain empty when the canonical Advice registry contains approved items. Missing renderer connection, stale ordering or zero homepage Advice while approved Advice exist are release-blocking defects.
+After every new approved Advice publication, the homepage block must update automatically so the newest six replace older entries. The block must never remain empty when the canonical Advice registry contains approved items. Missing renderer connection, stale ordering or zero homepage Advice while approved Advice exist are release-blocking defects.
+
+
+## 37. INDUSTRY NEWS USE ADVICE-STYLE CARDS / HOMEPAGE SIX VS DIGEST THREE — 2026-10-02
+### 37.1 Industry NEWS presentation
+Every industrial-sector page MUST render real PUBLISHED NEWS through the canonical public NEWS registry/ADMIN publication bridge. Legacy hard-coded demo cases must not populate the live sector feed.
+
+Within each sector, NEWS uses the same editorial card principle as Chief Engineer Advice: image on top, compact taxonomy/date metadata, strong headline, short summary and a clear `ЧИТАТИ НОВИНУ →` action. Desktop layout is a three-column responsive grid, collapsing to two and then one column. This is a presentation rule only; the material remains NEWS and links to the NEWS article renderer.
+
+All nine canonical sectors must resolve correctly: energy, metallurgy, food, logistics, datacenters, chemical, agriculture, pharma, waste.
+
+### 37.2 Homepage Advice count
+The homepage right rail MUST show the six newest approved/published Chief Engineer Advice items, sorted descending by publication_date. The two CTA controls below the list remain permanently visible: `ЗАДАТИ ПИТАННЯ ГОЛОВНОМУ ІНЖЕНЕРУ` and `НАДІСЛАТИ ПРОЄКТ`.
+
+### 37.3 Digest remains fixed at three Advice
+Increasing the homepage teaser list from 3 to 6 MUST NOT change Digest composition. The Digest fixed Advice block remains exactly **3** approved Advice items according to the existing Digest capacity and release rules. Homepage count and Digest count are independent presentation contracts.
