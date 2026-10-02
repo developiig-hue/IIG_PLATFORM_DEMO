@@ -17,8 +17,7 @@ on:
       - 'CONTENT_ENGINE_PROTOCOL.md'
       - '.github/workflows/content-engine.yml'
   schedule:
-    # Every Monday 06:15 UTC. Generation only; never publication.
-    - cron: '15 6 * * 1'
+    # Weekly schedule delegated to editorial-refresh.yml (Europe/Prague DST-aware guard).
     # First day monthly 06:30 UTC. Digest draft from approved monthly pool only.
     - cron: '30 6 1 * *'
   workflow_dispatch:
