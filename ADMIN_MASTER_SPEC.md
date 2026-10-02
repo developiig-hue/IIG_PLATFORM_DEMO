@@ -477,3 +477,16 @@ The NEWS renderer and Admin preview MUST automatically emphasize in bold, where 
 The canonical NEWS refresh window is every Monday, 08:00–09:00 local time in `Europe/Prague`. Robots #1 and #2 perform discovery/content preparation during that window, followed by Quality Gate #3 and Image/Rights #4. Newly prepared materials end in `REVIEW`; `auto_publish=false`. Publication occurs only after ADMIN_1 reviews text, source facts, image/rights, preview and explicitly approves/publishes the material. The scheduler must use the IANA timezone `Europe/Prague` so daylight-saving changes do not move the owner-facing window.
 
 Machine-readable contract: `content/news-update-schedule.json`.
+
+
+## 33. PUBLISHED VISIBILITY CONTRACT / NUMERIC EMPHASIS — 2026-10-02
+### 33.1 Status semantics
+After ADMIN_1 executes `Опублікувати у DEMO`, the NEWS list must immediately display **ОПУБЛІКОВАНО**. `PUBLISHED` must never be visually collapsed into `ЗАТВЕРДЖЕНО ДО ПУБЛІКАЦІЇ`; APPROVED and PUBLISHED are distinct workflow states.
+
+### 33.2 Mandatory publication destinations
+A NEWS item in `PUBLISHED` must automatically appear without a second editorial action in: (1) its canonical industrial-sector page; (2) the global `Новини та інсайти` feed; and (3) the homepage TOP-5 only when `homepage_top5=true`. Therefore a BASF NEWS item with `sector=chemical` must appear in `Хімічна промисловість` and the global feed immediately after publication. If any mandatory destination is absent, publication is incomplete.
+
+For Step 26, the browser Demo uses a dedicated `PUBLIC_DEMO_PUBLISHED_KEY` bridge for fully published ADMIN_1-approved NEWS. Uploaded images are resized to a browser-safe web representation before persistence. If the bridge cannot be stored, the action must fail visibly and the item must remain APPROVED rather than falsely claiming PUBLISHED. Step 27 replaces this browser bridge with durable backend publication.
+
+### 33.3 Numeric emphasis
+The common editorial formatter must bold subject-relevant percentages and numerical facts when paired with meaningful context/units: capacities and energy, years/durations, numbers of turbines/engines/installations/containers/blocks/units/projects/sites, distances/areas/flows and comparable technical quantities. It must not bold every standalone digit indiscriminately and must not invent facts absent from the source material.
