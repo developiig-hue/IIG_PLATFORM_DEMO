@@ -42,6 +42,11 @@ jobs:
           node --check assets/admin.js
           node --check assets/public-news.js
           node --check assets/admin-contacts.js
+      - name: Build current public Digest PDF
+        run: |
+          python -m pip install --quiet reportlab pillow
+          python scripts/build_public_digest_pdf.py
+          test -s digest/IIG-Monthly-Digest-2026-09.pdf
       - name: STEP 26 Admin MASTER acceptance
         run: python scripts/check_step26_admin.py
       - name: Security exposure guard
