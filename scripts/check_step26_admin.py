@@ -173,7 +173,7 @@ need('id="industry-news-grid-v2"' in industry and "grid-template-columns:repeat(
 need("industryCard=x=>" in pubnews and "ЧИТАТИ НОВИНУ" in pubnews,"Industry NEWS card renderer missing")
 need("renderItems();" not in industry[industry.find("window.addEventListener"):],"Legacy static industry demo renderer must not run")
 sector_keys=["energy","metallurgy","food","logistics","datacenters","chemical","agriculture","pharma","waste"]
-need(all((k+":{") in industry for k in sector_keys),"Industry title map must cover all nine sectors")
+need(all(("industry.html?sector="+k) in home for k in sector_keys),"Homepage must expose all nine canonical industry routes")
 
 # Digest pre-generation Red Team guards
 need('id="digestOperatorRole"' in html and "ADMIN_2 · Digest Builder" in html,"Digest ADMIN_2 builder role missing")
