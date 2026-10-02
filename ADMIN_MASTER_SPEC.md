@@ -464,3 +464,16 @@ ADMIN_1 requires a full article preview inside Admin before publication. The pre
 Step 26 Demo publication must be observable on the Demo public surface. Public Demo renderers may overlay only local browser editorial records that meet ALL conditions: NEWS, `status=PUBLISHED`, `demo_published=true`, `admin_approved=true`, `image_admin_approved=true`. REVIEW/DRAFT/APPROVED-but-not-published local records must never leak onto the public Demo. This bridge is same-browser Demo behavior only and is replaced by backend persistence in Step 27.
 
 A NEWS item has an optional boolean `homepage_top5`. Setting it does not remove the item from its industrial sector or the global News/Insights feed. Published items always appear in their sector and global feed; `homepage_top5=true` additionally gives the item priority in the homepage TOP-5 selection. If fewer than five flagged items exist, remaining TOP-5 positions are filled by the newest published items. Editing this flag after publication invalidates the content approval through the ordinary review rules.
+
+
+## 32. EDITORIAL EMPHASIS + MONDAY UPDATE WINDOW — OWNER LOCK — 2026-10-02
+### 32.1 Article preview
+The Admin article preview is a release-control surface, not a small notification dialog. It MUST be vertically scrollable, render the approved/selected image at article width, preserve caption, date/sector metadata, title, lead, Company/Context, full body and primary source, and use the same editorial emphasis rules as the public article page.
+
+### 32.2 Automatic bold emphasis
+The NEWS renderer and Admin preview MUST automatically emphasize in bold, where present in article text/context: dates; investment/CAPEX/OPEX/project-cost amounts; monetary values; key capacities/technical numbers and percentages; named executives/interview participants together with roles such as CEO/Chief Executive Officer/генеральний директор/президент/голова правління; and direct quoted speech when the paragraph is attributable to an executive/interview participant. This is an editorial readability rule and must be identical in Admin Preview and the public article renderer. It must not invent names, figures, quotes or dates that are absent from source content.
+
+### 32.3 Weekly refresh cadence
+The canonical NEWS refresh window is every Monday, 08:00–09:00 local time in `Europe/Prague`. Robots #1 and #2 perform discovery/content preparation during that window, followed by Quality Gate #3 and Image/Rights #4. Newly prepared materials end in `REVIEW`; `auto_publish=false`. Publication occurs only after ADMIN_1 reviews text, source facts, image/rights, preview and explicitly approves/publishes the material. The scheduler must use the IANA timezone `Europe/Prague` so daylight-saving changes do not move the owner-facing window.
+
+Machine-readable contract: `content/news-update-schedule.json`.
