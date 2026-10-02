@@ -122,3 +122,7 @@ Changing the cover image does not authorize a new cover design. The approved MAS
 
 ## FINAL PREVIEW / APPROVAL ORDER LOCK — 2026-10-02
 The complete Digest layout must be visually reviewable before ADMIN_1 approval. Final Preview is mandatory and precedes approval. It must not be blocked merely because other current-month NEWS remain in REVIEW outside the release-candidate. Approval applies to the exact candidate and requires proof that the same fingerprint was previewed. Layout or content changes after preview invalidate that preview and require regeneration/re-preview.
+
+
+## PUBLIC DOWNLOAD ARTIFACT — 2026-10-02
+An ADMIN_1-approved final Digest must have a public downloadable PDF route on the IIG website. The public homepage Digest CTA must point directly to the current versioned release PDF under `digest/releases/`. This is distinct from Robot #7 mailing authorization. A final approval state with no public downloadable artifact is a release-flow defect.
