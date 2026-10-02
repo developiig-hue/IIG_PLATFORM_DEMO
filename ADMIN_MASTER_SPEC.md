@@ -661,3 +661,9 @@ Admin persistence order: localStorage first, sessionStorage fallback for the cur
 
 ## 35. FINAL DIGEST APPROVAL -> PUBLIC PDF ROUTE — 2026-10-02
 After the exact candidate has been Final-Previewed and ADMIN_1 approves it, Admin records the canonical public PDF path and exposes an «OPEN / DOWNLOAD PDF» link. The public website homepage Digest card points to the same versioned artifact. Pages deployment must build and verify that PDF before publishing the site. Mailing remains separate and must not be auto-triggered by PDF publication.
+
+
+## 36. ADMIN-ONLY DIGEST EXPORT — SUPERSEDING RULE — 2026-10-02
+ADMIN_1 final approval unlocks two export actions inside Admin: self-contained HTML download and browser PDF print/save. Both are generated from the current exact digestFingerprint() state and are blocked if that state differs from the approved/previewed candidate.
+
+No Pages/CI/public-host generator may create the Digest. The Admin export contains the approved cover background (including uploaded data image), approved content and active links, making it portable to later paid hosting/domain deployment. Public publishing and mailing are downstream distribution steps, not generation steps.
