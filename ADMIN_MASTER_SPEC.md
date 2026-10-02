@@ -474,7 +474,7 @@ The Admin article preview is a release-control surface, not a small notification
 The NEWS renderer and Admin preview MUST automatically emphasize in bold, where present in article text/context: dates; investment/CAPEX/OPEX/project-cost amounts; monetary values; key capacities/technical numbers and percentages; named executives/interview participants together with roles such as CEO/Chief Executive Officer/генеральний директор/президент/голова правління; and direct quoted speech when the paragraph is attributable to an executive/interview participant. This is an editorial readability rule and must be identical in Admin Preview and the public article renderer. It must not invent names, figures, quotes or dates that are absent from source content.
 
 ### 32.3 Weekly refresh cadence
-The canonical NEWS refresh window is every Monday, 08:00–09:00 local time in `Europe/Prague`. Robots #1 and #2 perform discovery/content preparation during that window, followed by Quality Gate #3 and Image/Rights #4. Newly prepared materials end in `REVIEW`; `auto_publish=false`. Publication occurs only after ADMIN_1 reviews text, source facts, image/rights, preview and explicitly approves/publishes the material. The scheduler must use the IANA timezone `Europe/Prague` so daylight-saving changes do not move the owner-facing window.
+The canonical NEWS refresh window is every Monday, 09:00–10:00 local time in `Europe/Prague`. Robots #1 and #2 perform discovery/content preparation during that window, followed by Quality Gate #3 and Image/Rights #4. Newly prepared materials end in `REVIEW`; `auto_publish=false`. Publication occurs only after ADMIN_1 reviews text, source facts, image/rights, preview and explicitly approves/publishes the material. The scheduler must use the IANA timezone `Europe/Prague` so daylight-saving changes do not move the owner-facing window.
 
 Machine-readable contract: `content/news-update-schedule.json`.
 
@@ -494,3 +494,16 @@ The common editorial formatter must bold subject-relevant percentages and numeri
 
 ### 33.4 PERCENT EMPHASIS REGRESSION LOCK — 2026-10-02
 Percent values use a dedicated formatter and MUST render bold regardless of following punctuation or whitespace. Required examples: **30%**, **19%**, **12,5%**, including `30%.` and `19% пов’язане`. The matcher must not depend on a trailing word-boundary after the `%` symbol. The same rule applies in Admin Preview and the public article page, including summary/lead and full body.
+
+
+## 34. APPROVAL LEDGER + BULK FREEZE + MANUAL NEWS REFRESH — 2026-10-02
+### 34.1 Approval preservation
+ADMIN_1 approvals are durable editorial decisions and MUST NOT be reset by later NEWS refreshes, cache-version changes or additions of new material. Step 26 stores approved/published snapshots in the stable browser key `iig.admin.approval-ledger.v1`. This key is intentionally not versioned. On first load after this rule is deployed, the Admin automatically migrates already APPROVED/PUBLISHED records from the current editorial session into the Approval Ledger. New baseline data from main is merged underneath the ledger; previously approved content remains approved unless ADMIN_1 edits/rejects it, which explicitly invalidates the lock.
+
+### 34.2 Bulk freeze
+Admin provides `ЗАФІКСУВАТИ ВЕСЬ ЗАТВЕРДЖЕНИЙ МАТЕРІАЛ`. It snapshots every already APPROVED/PUBLISHED item (NEWS also requires approved image) into the Approval Ledger. It MUST NOT bulk-approve DRAFT/REVIEW material. This protects the owner's completed verification without weakening per-item moderation.
+
+### 34.3 Weekly and manual refresh
+The canonical automatic refresh window is Monday 09:00–10:00 `Europe/Prague`. In addition, ADMIN_1 may initiate a refresh at any time using `ОНОВИТИ НОВИНИ ЗАРАЗ`. Manual refresh uses the same pipeline: Discovery #1 → Content #2 → Quality #3 → Image/Rights #4 → ADMIN REVIEW. Manual or scheduled runs MUST preserve Approval Ledger records, MUST set newly generated content to REVIEW, and MUST keep `auto_publish=false`.
+
+Because Step 26 is static GitHub Pages, browser code must not contain a GitHub token. The Admin button records the ADMIN_1 request, freezes current approvals, reloads the current main registry and opens the protected GitHub Actions `editorial-refresh.yml` workflow for authenticated execution. Step 27 may replace this with a server-side one-click API action while preserving the same role/Audit contract.
