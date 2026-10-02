@@ -196,3 +196,7 @@ On static Demo hosting where the protected publication endpoint does not exist, 
 
 ### Mandatory last-page CTA
 Regardless of the number or type of pages, the actual final page of every Digest MUST end with two active buttons: `РОЗМІСТИТИ ПРОЄКТ` -> `forms.html#project` and `ПІДПИСАТИСЯ НА ДАЙДЖЕСТ` -> `forms.html#subscribe`. They are part of the canonical artifact and must survive HTML/PDF export and hosting migration.
+
+
+### Public CURRENT resolver — 2026-10-02
+The public website MUST NOT hardcode a monthly Digest filename. Public Digest download controls resolve the active issue from `GET /api/v1/digest/current`. The response returns at minimum `status=CURRENT`, `issue`, `public_url`, artifact identity/fingerprint and download readiness. After ADMIN_1 publishes a new issue, the public button therefore switches automatically to the new CURRENT artifact without editing the page template. Archive browsing uses backend release history; archived issues must never replace CURRENT in the main download control.
