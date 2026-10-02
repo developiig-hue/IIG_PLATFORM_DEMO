@@ -490,3 +490,7 @@ For Step 26, the browser Demo uses a dedicated `PUBLIC_DEMO_PUBLISHED_KEY` bridg
 
 ### 33.3 Numeric emphasis
 The common editorial formatter must bold subject-relevant percentages and numerical facts when paired with meaningful context/units: capacities and energy, years/durations, numbers of turbines/engines/installations/containers/blocks/units/projects/sites, distances/areas/flows and comparable technical quantities. It must not bold every standalone digit indiscriminately and must not invent facts absent from the source material.
+
+
+### 33.4 PERCENT EMPHASIS REGRESSION LOCK — 2026-10-02
+Percent values use a dedicated formatter and MUST render bold regardless of following punctuation or whitespace. Required examples: **30%**, **19%**, **12,5%**, including `30%.` and `19% пов’язане`. The matcher must not depend on a trailing word-boundary after the `%` symbol. The same rule applies in Admin Preview and the public article page, including summary/lead and full body.
