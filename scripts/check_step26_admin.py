@@ -161,3 +161,11 @@ need(len(approved_advice)>=1,"Approved Advice registry unexpectedly empty")
 need("diagrams[x.slug]&&" not in advice_js,"Advice renderer must not require hard-coded diagram slug")
 need("iig-editorial-illustration.svg" in advice_js,"Advice fallback illustration missing")
 need("['APPROVED','PUBLISHED'].includes(x.status)" in advice_js,"Advice public approval filter missing")
+
+# Homepage Chief Engineer Advice latest-3 regression guards
+home=(root/"index.html").read_text(encoding="utf-8")
+advice_js=(root/"assets/public-advice.js").read_text(encoding="utf-8")
+need('class="advice-mini"' in home,"Homepage Advice mini container missing")
+need("assets/public-advice.js?v=home-latest3-20261002" in home,"Homepage must load Advice renderer")
+need("items.sort((a,b)=>String(b.publication_date" in advice_js,"Advice must sort newest-first by publication_date")
+need("items.slice(0,3)" in advice_js,"Homepage must render exactly latest 3 Advice items")
