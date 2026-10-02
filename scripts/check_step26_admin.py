@@ -235,3 +235,7 @@ home=(root/"index.html").read_text(encoding="utf-8")
 need("const esc=s=>" in iig,"Search renderer HTML escape helper missing")
 need("runPublicSearchSafe" in iig and "SEARCH_RUNTIME_ERROR" in iig,"Search runtime error guard missing")
 need("public-search-v3-runtimefix-20261002" in home,"Homepage search runtime cache version not advanced")
+
+# About/contact project CTA routing
+about=(root/"about.html").read_text(encoding="utf-8")
+need('href="forms.html#project">SUBMIT YOUR PROJECT →</a>' in about,"About contact CTA must route to project form")
