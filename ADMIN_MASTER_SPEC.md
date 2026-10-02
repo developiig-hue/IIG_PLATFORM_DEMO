@@ -645,3 +645,9 @@ The Digest cover editor separates image technical validation from editorial auth
 
 ## 32. DIGEST COVER MASTER-LAYOUT INVARIANT — 2026-10-02
 The Admin cover editor may edit background, cover text and issue content but may not silently switch to an alternate title-page composition. For a custom approved background, the renderer must preserve the owner-approved MASTER v2 structure: IIG header/UA-EN, title/subtitle, issue badge, mission, four linked thematic rows with icons/read-more, KPI strip, Project CTA and Subscribe CTA. The CTA destinations are fixed to forms.html#project and forms.html#subscribe. Visual drift from this structure is release-blocking.
+
+
+## 33. DIGEST FINAL PREVIEW MUST PRECEDE FINAL APPROVAL — 2026-10-02
+The Admin workflow separates inspection from authorization. ADMIN_2 or ADMIN_1 builds a release-candidate from eligible approved content. The exact candidate then opens in «ФІНАЛЬНИЙ ПЕРЕГЛЯД ВЕРСТКИ» across all pages before approval. QA blockers may be visible in Preview and must be corrected before approval, but they do not prevent visual inspection itself. Unapproved NEWS outside the candidate are not release blockers for this candidate.
+
+Final approval by ADMIN_1 requires preview_completed=true and preview_fingerprint equal to the current digestFingerprint(). Any material/layout edit after preview invalidates the approval path and requires a fresh candidate and fresh Final Preview.
