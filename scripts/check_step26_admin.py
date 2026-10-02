@@ -153,3 +153,12 @@ if errors:
     sys.exit(1)
 print("STEP 26 ADMIN MASTER: 10/10 STATIC ACCEPTANCE GREEN")
 print("UA / UX / CMS / REVIEW / DIGEST / MAILING / RADAR / ROBOTS / SECURITY / E2E-CONTRACT = PASS")
+
+# Advice public renderer regression guards
+advice_js=(root/"assets/public-advice.js").read_text(encoding="utf-8")
+advice_data=json.loads((root/"content/public-advice.json").read_text(encoding="utf-8"))
+approved_advice=[x for x in advice_data.get("items",[]) if x.get("status") in {"APPROVED","PUBLISHED"} and x.get("admin_approved") is True]
+need(len(approved_advice)>=1,"Approved Advice registry unexpectedly empty")
+need("diagrams[x.slug]&&" not in advice_js,"Advice renderer must not require hard-coded diagram slug")
+need("iig-editorial-illustration.svg" in advice_js,"Advice fallback illustration missing")
+need("['APPROVED','PUBLISHED'].includes(x.status)" in advice_js,"Advice public approval filter missing")
