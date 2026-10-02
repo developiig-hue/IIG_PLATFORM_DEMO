@@ -1,7 +1,7 @@
 {
   "schema": "iig.digest-issue-candidate.v1",
   "issue": "2026-09",
-  "status": "AWAITING_ADMIN_REVIEW",
+  "status": "HISTORICAL_SNAPSHOT",
   "generated_by": "STEP26_ADMIN_RULESET",
   "generated_at": "2026-10-01",
   "master_fallback": "IIG_Monthly_Digest_2026-09_FINAL_DEMO (2)",
@@ -86,5 +86,9 @@
     "admin_approval": "ALL_SEPTEMBER_NEWS_REQUIRE_EXPLICIT_ADMIN_1_APPROVAL",
     "final_preview": "REQUIRED_BEFORE_FINAL_LAYOUT_APPROVAL",
     "publication": "ADMIN_1_ONLY_NOT_AUTO"
-  }
+  },
+  "historical_snapshot": true,
+  "release_authority": false,
+  "superseded_by": "ADMIN_DIGEST_BUILDER_CURRENT_APPROVAL_LEDGER",
+  "note": "Reference only. Must never override current Admin approvals or serve as release-candidate."
 }
