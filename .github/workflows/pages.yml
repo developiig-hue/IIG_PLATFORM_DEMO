@@ -37,6 +37,11 @@ jobs:
                   s=s.replace('</body>','<script src="download-pdf.js"></script></body>',1)
               p.write_text(s,encoding='utf-8')
           PY
+      - name: JavaScript syntax guard
+        run: |
+          node --check assets/admin.js
+          node --check assets/public-news.js
+          node --check assets/admin-contacts.js
       - name: STEP 26 Admin MASTER acceptance
         run: python scripts/check_step26_admin.py
       - name: Security exposure guard
