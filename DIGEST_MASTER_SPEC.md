@@ -118,3 +118,7 @@ A custom working-cover background is not considered active merely because the br
 
 ## CUSTOM BACKGROUND / MASTER COMPOSITION INVARIANT — 2026-10-02
 Changing the cover image does not authorize a new cover design. The approved MASTER v2 Page 1 composition, spacing hierarchy, four linked thematic rows, KPI strip and two bottom CTAs remain the canonical layout. A custom background is a skin only. The working preview and final preview must match the MASTER structure while showing the newly approved background.
+
+
+## FINAL PREVIEW / APPROVAL ORDER LOCK — 2026-10-02
+The complete Digest layout must be visually reviewable before ADMIN_1 approval. Final Preview is mandatory and precedes approval. It must not be blocked merely because other current-month NEWS remain in REVIEW outside the release-candidate. Approval applies to the exact candidate and requires proof that the same fingerprint was previewed. Layout or content changes after preview invalidate that preview and require regeneration/re-preview.
