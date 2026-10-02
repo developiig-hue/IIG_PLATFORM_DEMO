@@ -456,3 +456,11 @@ ADMIN_1 is the accountable person who personally verifies whether an image may b
 When ADMIN_1 confirms rights, the editorial state records at minimum: `rights_verified_by=ADMIN_1`, `rights_verification=OWNER_CONFIRMED`, timestamp, selected image metadata and the article/source URL when available. If ADMIN_1 supplies a credit, it is preserved; otherwise the system records a neutral audit value such as `Rights verified by ADMIN_1`.
 
 This fast-path does not remove responsibility or the Audit requirement. It removes duplicate manual entry after ADMIN_1 has already performed the legal/source check. Production Step 27 must persist the image, source/reference and rights-verification metadata in server-side storage/Audit.
+
+
+## 31. ADMIN ARTICLE PREVIEW / DEMO PUBLIC BRIDGE / TOP-5 — 2026-10-02
+ADMIN_1 requires a full article preview inside Admin before publication. The preview must render the selected/approved image, date, sector, title, lead, body and source URL in an article-like canvas without forcing navigation to the public website.
+
+Step 26 Demo publication must be observable on the Demo public surface. Public Demo renderers may overlay only local browser editorial records that meet ALL conditions: NEWS, `status=PUBLISHED`, `demo_published=true`, `admin_approved=true`, `image_admin_approved=true`. REVIEW/DRAFT/APPROVED-but-not-published local records must never leak onto the public Demo. This bridge is same-browser Demo behavior only and is replaced by backend persistence in Step 27.
+
+A NEWS item has an optional boolean `homepage_top5`. Setting it does not remove the item from its industrial sector or the global News/Insights feed. Published items always appear in their sector and global feed; `homepage_top5=true` additionally gives the item priority in the homepage TOP-5 selection. If fewer than five flagged items exist, remaining TOP-5 positions are filled by the newest published items. Editing this flag after publication invalidates the content approval through the ordinary review rules.
