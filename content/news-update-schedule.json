@@ -4,8 +4,8 @@
   "cadence": "WEEKLY",
   "weekday": "MO",
   "window_local": {
-    "start": "08:00",
-    "end": "09:00"
+    "start": "09:00",
+    "end": "10:00"
   },
   "discovery_robot": "#1 NEWS_SOURCE_DISCOVERY",
   "content_robot": "#2 CONTENT_ENGINE",
@@ -25,5 +25,16 @@
       "publish"
     ]
   },
-  "rule": "Weekly update window prepares material only. Publication occurs after ADMIN_1 review/approval."
+  "rule": "Weekly Monday 09:00-10:00 Europe/Prague or manual ADMIN_1 trigger prepares material only. Existing ADMIN_1 approvals are preserved. New material enters REVIEW; publication occurs only after ADMIN_1 review/approval.",
+  "manual_trigger": {
+    "enabled": true,
+    "role": "ADMIN_1",
+    "workflow": "editorial-refresh.yml",
+    "auto_publish": false
+  },
+  "approval_preservation": {
+    "ledger_key": "iig.admin.approval-ledger.v1",
+    "preserve_existing_approved": true,
+    "new_items_state": "REVIEW"
+  }
 }
