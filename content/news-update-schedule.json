@@ -1,0 +1,29 @@
+{
+  "schema": "iig.news-update-schedule.v1",
+  "timezone": "Europe/Prague",
+  "cadence": "WEEKLY",
+  "weekday": "MO",
+  "window_local": {
+    "start": "08:00",
+    "end": "09:00"
+  },
+  "discovery_robot": "#1 NEWS_SOURCE_DISCOVERY",
+  "content_robot": "#2 CONTENT_ENGINE",
+  "quality_chain": [
+    "#3 QUALITY_GATE",
+    "#4 IMAGE_RIGHTS"
+  ],
+  "output_state": "REVIEW",
+  "auto_publish": false,
+  "admin_gate": {
+    "required": true,
+    "role": "ADMIN_1",
+    "actions": [
+      "review_text",
+      "review_image_rights",
+      "approve",
+      "publish"
+    ]
+  },
+  "rule": "Weekly update window prepares material only. Publication occurs after ADMIN_1 review/approval."
+}
