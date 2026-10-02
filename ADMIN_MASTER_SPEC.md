@@ -617,3 +617,7 @@ The homepage search renderer MUST define and use a local HTML-escape helper befo
 Search button click and Enter use the same guarded execution path. Any runtime exception is logged as SEARCH_RUNTIME_ERROR and must surface a visible error block instead of failing silently.
 
 Release acceptance verifies the renderer helper, guarded execution and cache-busting. The control query is: ЄІБ і BNP Paribas. When the corresponding ADMIN-published NEWS item exists in the Step-26 published bridge, results must include a direct link to that article.
+
+
+## 44. CONTACT IIG PROJECT CTA ROUTING — 2026-10-02
+The public CONTACT IIG card button `SUBMIT YOUR PROJECT →` MUST route directly to `forms.html#project`. It must never point to the homepage `#project` fragment or any non-form placeholder. This route is a migration invariant for paid hosting/domain transfer.
