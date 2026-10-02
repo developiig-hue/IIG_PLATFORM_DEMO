@@ -80,6 +80,7 @@ need("finalPreviewDigest" in html and "finalPreviewState" in html and "openFinal
 need("newsImagePanel" in html and "newsImageMode" in html and "newsImageFile" in html and "newsImageRights" in html,"News image review panel missing")
 need("edHomepageTop5" in html and "homepage_top5" in js,"Homepage TOP-5 admin control missing")
 need("ПОПЕРЕДНІЙ ПЕРЕГЛЯД СТАТТІ" in js and "adminarticlepreview" in js,"Admin full article preview missing")
+need("newsTitlePreview" in js and "miniPreview" in js and "previewAdminArticle" in js,"Inline list article preview missing")
 pub=(root/"assets/public-news.js").read_text(encoding="utf-8")
 need("DEMO_EDITORIAL_KEY" in pub and "mergeDemoPublished" in pub and "demoPublished" in pub,"Published Admin Demo items are not bridged to public renderer")
 need("homepage_top5" in pub and "slice(0,5)" in pub,"Homepage TOP-5 renderer missing")
