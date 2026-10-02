@@ -671,3 +671,11 @@ No Pages/CI/public-host generator may create the Digest. The Admin export contai
 
 ## 37. DIGEST ADVICE — CLICKABLE + 1.5× TYPE — 2026-10-02
 Admin Final Preview and Admin-generated artifacts must render each fixed Advice item as one clickable anchor using publicUrl(ADVICE), with both title and «Детальніше →» inside the anchor. Font size is locked to 13.5 px, i.e. 1.5× the previous 9 px value. Project and Subscribe controls in the same block are real anchors, not spans. CI must reject regressions.
+
+
+## 38. DIGEST AUTO-PUBLISH / ARCHIVE ROTATION — 2026-10-02
+Production Admin contract: after exact candidate Final Preview and ADMIN_1 final approval, Admin serializes the exact approved artifact and POSTs it to `/api/v1/digest/releases`. The backend requires authenticated ADMIN_1/MFA/session/RBAC and performs one transaction: archive previous CURRENT, persist new artifact, promote new CURRENT, return public_url/archive_url, and mark download_state=READY_FOR_DOWNLOAD plus mailing_state=READY_FOR_MAILING. Failure rolls back the rotation and Admin reports publication failure; no partial CURRENT switch is allowed.
+
+The API accepts the already-generated Admin artifact and fingerprint. It MUST NOT regenerate Digest content from CMS or CI. Public site and Robot #7 consume the same artifact identity. Mailing remains separately executed, but it may start only from the READY_FOR_MAILING exact CURRENT artifact.
+
+The final page of the generated artifact always contains two real anchors: Project -> forms.html#project and Subscribe -> forms.html#subscribe. CI treats their absence from the true final page as release-blocking.
