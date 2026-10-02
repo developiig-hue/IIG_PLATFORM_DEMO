@@ -525,3 +525,11 @@ Chief Engineer Advice publication is driven by editorial approval state and comp
 Any Advice with status APPROVED/PUBLISHED, admin_approved=true, bilingual title/summary and valid structured sections MUST appear on `advice.html`. If a bespoke conceptual diagram exists for that slug it may be used; otherwise the renderer MUST use the approved generic IIG editorial illustration fallback. Missing custom artwork must never silently suppress a published Advice item.
 
 An empty public Advice page while the registry contains approved Advice is a release-blocking defect.
+
+
+## 36. HOMEPAGE MUST SHOW LATEST 3 ADVICE — 2026-10-02
+The homepage block `3 ОСТАННІ ПОРАДИ` is mandatory dynamic content. It MUST load from the canonical `content/public-advice.json` registry through the same public Advice renderer used by `advice.html`.
+
+Selection rule: include only Advice with `status=APPROVED/PUBLISHED` and `admin_approved=true`, sort descending by `publication_date`, and render exactly the three newest available items. No manual homepage curation is required.
+
+After every new approved Advice publication, the homepage block must update automatically so the newest three replace older entries. The block must never remain empty when the canonical Advice registry contains approved items. Missing renderer connection, stale ordering or zero homepage Advice while approved Advice exist are release-blocking defects.
