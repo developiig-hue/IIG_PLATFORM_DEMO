@@ -110,3 +110,7 @@ ADMIN_2 may build a monthly Digest release-candidate from the current approved C
 ADMIN_1 may perform all Builder actions and is the sole role permitted to give final approval to the generated release-candidate. Final approval is valid only for the exact current issue/candidate and must occur after Final Preview and all release gates pass. Any material/issue/layout change after candidate generation invalidates the candidate and requires regeneration before ADMIN_1 approval.
 
 The public site must not expose a legacy/static Digest while a new issue is pending. Only an ADMIN_1-approved current final artifact may become the public download target.
+
+
+## CUSTOM COVER IMAGE APPROVAL LOCK — 2026-10-02
+A custom working-cover background is not considered active merely because the browser accepted the file. Activation requires two explicit steps: (a) ADMIN_1 rights confirmation and (b) Apply to Cover. The rendered cover and final preview must show the selected image, not the navy fallback color. Final QA blocks any non-MASTER cover whose background is not marked OWNER_CONFIRMED by ADMIN_1. File intake and cover activation are separate auditable actions.
