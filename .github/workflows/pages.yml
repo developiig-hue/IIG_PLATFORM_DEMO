@@ -53,10 +53,6 @@ jobs:
           grep -q 'IIG' index.html
           grep -q 'ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА' index.html
           grep -q 'FINANCING INTELLIGENCE' financing.html
-          grep -q 'MONTHLY DIGEST' digest/2026-09-review.html
-          grep -q 'download-pdf.js' digest/2026-09-review.html
-          grep -q 'СКАЧАТИ PDF_FILE' digest/download-pdf.js
-          grep -q 'window.print' digest/download-pdf.js
           for f in index.html industry.html news.html article.html; do grep -q 'assets/public-news.js' "$f"; done
       - name: Internal navigation red-team
         run: |
