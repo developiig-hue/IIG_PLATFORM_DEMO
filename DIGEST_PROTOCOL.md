@@ -143,3 +143,11 @@ Final Preview must open for the exact current candidate even when QA contains am
 Digest release-candidate persistence MUST NOT serialize full embedded image data into browser localStorage. Cover/background/article images may exist as data URLs in the working editor, but candidate fingerprinting stores only a compact deterministic binary marker/metadata representation. This keeps exact-candidate change detection while preventing browser quota overflow.
 
 Primary persistence is localStorage for continuity; if localStorage quota is unavailable, the Admin may fall back to sessionStorage for the active browser session and must inform the operator. Failure of localStorage alone is not a reason to block candidate generation when safe session persistence succeeds. The candidate itself remains metadata-only; original image bytes stay in the working editor/media state until production materialization.
+
+
+## PUBLIC PDF RELEASE AFTER ADMIN_1 APPROVAL — 2026-10-02
+For the public demo, final ADMIN_1 approval is the authorization point for the current downloadable Digest artifact. The canonical public route is versioned under `digest/releases/` and MUST be exposed on the public website after the Pages release build. The homepage «НОВИЙ ДАЙДЖЕСТ IIG» control links directly to the current public PDF, not to a generic NEWS section.
+
+Current public release route: `digest/releases/IIG-Monthly-Digest-2026-09-PUBLIC.pdf`.
+
+The Pages deployment builds this PDF from the approved Digest release template and validates that the artifact exists before deployment. Public download and mailing are separate: the PDF may be publicly downloadable after ADMIN_1 final approval, while Robot #7 mailing remains a separately authorized action. Legacy `digest/IIG-Monthly-Digest-2026-09.pdf` remains forbidden.
