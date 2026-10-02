@@ -136,3 +136,9 @@ The portable Admin export is the canonical artifact source for migration to paid
 
 ## CHIEF ENGINEER ADVICE LINK + TYPE INVARIANT — 2026-10-02
 The final Digest Advice section uses active per-item links to exact Advice pages, not decorative text. Advice typography is 13.5 px (1.5× the former 9 px baseline) for readability, including the «Детальніше →» action. Bottom Project/Subscribe CTAs remain clickable. These properties must survive Admin export and later hosting migration.
+
+
+## CURRENT ISSUE ROTATION + FINAL CTA INVARIANT — 2026-10-02
+ADMIN_1 final approval authorizes publication of the exact Admin-generated artifact. Production publication is an atomic current/archive rotation: previous CURRENT -> ARCHIVE; new approved issue -> CURRENT + READY_FOR_DOWNLOAD + READY_FOR_MAILING. The hosting service persists and serves the artifact; it does not rebuild it.
+
+Every Digest, including issues with appended article/promo pages, ends on its true last page with active Project and Subscribe buttons. This last-page CTA footer is independent of the Advice block and is mandatory in Final Preview and Admin export.
