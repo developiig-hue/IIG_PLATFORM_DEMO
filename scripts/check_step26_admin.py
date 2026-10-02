@@ -216,3 +216,15 @@ need("digest/IIG-Monthly-Digest-2026-09.pdf" not in iig,"Public JS must not rest
 need("function initPublicSearch()" in iig and "runPublicSearch" in iig and "content/public-news.json" in iig and "content/public-advice.json" in iig,"Public bilingual search must be functional")
 need("title?.ua" in iig and "title?.en" in iig and "summary?.ua" in iig and "summary?.en" in iig,"Search index must include both UA and EN content")
 need("industry.html?sector=chemical" in iig and "Хімічна промисловість" in iig and "Chemical industry" in iig,"Search must index bilingual sector keywords")
+
+# Public search source-of-truth / migration guards
+iig=(root/"assets/iig.js").read_text(encoding="utf-8")
+home=(root/"index.html").read_text(encoding="utf-8")
+need("iig.step26.published.news.v1" in iig,"Search must include same-browser published NEWS bridge")
+need("mergedNews=new Map()" in iig and "localNews=bridge.filter" in iig,"Search must merge repo and Admin-published NEWS")
+need("SEARCH_STOPWORDS" in iig and "searchTokens" in iig,"Search must ignore conjunction stopwords")
+need("єіб eib" in iig and "eib єіб" in iig,"Search must support EIB/ЄІБ bilingual alias")
+need("finance-news.html?institution=eib" in iig,"Finance EIB page must be indexed")
+need("public-search-v2-20261002" in home,"Homepage search cache version not advanced")
+need("advice-schematics-v2-20261002" in home,"Homepage Advice schematic version must remain locked")
+need('<div class="download-circle">↓</div>' in home,"Digest down-arrow migration invariant broken")
