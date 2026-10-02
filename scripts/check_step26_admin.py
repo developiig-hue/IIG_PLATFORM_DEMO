@@ -70,7 +70,7 @@ need("EDITORIAL_SESSION_KEY" in js and "persistEditorial" in js and "restoreEdit
 need("releaseReadiness" in html and "renderReleaseReadiness" in js,"New-issue readiness panel missing")
 need("sourceHealthSummary" in html and "technical_url_verified" in js and "feed_verified" in js,"Source technical-health operator view missing")
 need('class="btn lock" data-locked=' in html,"Website locked controls remain inert")
-need("step26-digest-role-gate-20261002" in html,"Admin asset cache-busting version not advanced")
+need("digest-cover-autoresize-20261002" in html,"Admin asset cache-busting version not advanced")
 need(html.count('<option value="APPROVED">')==1,"Duplicate APPROVED status filter remains")
 need("issueMatches" in js and "publication_date" in js,"Monthly Digest issue filter missing")
 candidate=json.loads((root/"content/digest-issues/2026-09-admin-candidate.json").read_text(encoding="utf-8"))
