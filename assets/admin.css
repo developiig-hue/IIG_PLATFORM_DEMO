@@ -63,3 +63,4 @@
 
 /* DASHBOARD NEWS GENERATION CONTROL */
 .newsgenbox{margin:0 0 16px;padding:14px;border:1px solid #bcd5e5;border-left:4px solid #0f7b45;border-radius:9px;background:#f7fbfd}.newsgenbtn{width:100%;min-height:52px;font-size:13px;letter-spacing:.1px}.newsgenmeta{margin-top:10px;font-size:11px;line-height:1.5;color:#486277}.newsgenstatus{margin-top:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:12px}.newsgenstatus b{font-variant-numeric:tabular-nums}
+\n/* DIGEST ADMIN_2 -> ADMIN_1 ROLE GATE */\n.digestroles{margin:14px 0;border-left:4px solid #1475ad}.rolecontract{padding:12px;border-radius:8px;background:#eef7fd;line-height:1.55}.digestgenerate{min-height:48px;flex:1 1 420px}\n
