@@ -1,0 +1,98 @@
+name: IIG Editorial Refresh — Scheduled or ADMIN_1 Manual
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: ADMIN_1 reason for manual refresh
+        required: false
+        default: manual-admin-refresh
+  schedule:
+    # GitHub cron is UTC. Run at both DST candidates and guard by Europe/Prague local hour.
+    - cron: '5 7,8 * * 1'
+permissions:
+  contents: read
+concurrency:
+  group: iig-editorial-refresh
+  cancel-in-progress: false
+jobs:
+  editorial-refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Europe Prague Monday 09-10 guard
+        id: window
+        shell: bash
+        run: |
+          DAY="$(TZ=Europe/Prague date +%u)"
+          HOUR="$(TZ=Europe/Prague date +%H)"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || { [ "$DAY" = "1" ] && [ "$HOUR" = "09" ]; }; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Local Prague time: $(TZ=Europe/Prague date -Iseconds)"
+      - name: Verify portable source registry
+        if: steps.window.outputs.run == 'true'
+        run: |
+          python scripts/news_registry.py
+          python -m unittest tests.test_news_registry tests.test_news_source_discovery tests.test_content_engine tests.test_quality_gate tests.test_image_rights_robot
+      - name: Robot 1 — full source discovery
+        if: steps.window.outputs.run == 'true'
+        run: |
+          python scripts/news_source_discovery.py --workers 20 --timeout 5 --max-age-days 45
+          python scripts/verify_full_discovery.py
+      - name: Robot 2 — NEWS and Chief Engineer Advice generation
+        if: steps.window.outputs.run == 'true'
+        run: |
+          python scripts/content_engine.py weekly
+          python scripts/content_engine.py verify
+          python scripts/verify_content_engine.py
+      - name: Robot 3 — Quality Gate
+        if: steps.window.outputs.run == 'true'
+        run: |
+          python scripts/quality_gate.py run
+          python scripts/quality_gate.py verify
+          python scripts/verify_quality_gate.py
+      - name: Robot 4 — Image and Rights
+        if: steps.window.outputs.run == 'true'
+        run: |
+          python scripts/image_rights_robot.py run
+          python scripts/image_rights_robot.py verify
+          python scripts/verify_image_rights.py
+      - name: Prove ADMIN REVIEW handoff and no auto-publish
+        if: steps.window.outputs.run == 'true'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('content/image-rights-report.json').read_text())
+          a=json.loads(Path(r['artifact']).read_text())
+          assert r['next_state']=='ADMIN_REVIEW'
+          assert a['auto_publish'] is False
+          assert a['publish_authority']=='ADMIN_ONLY'
+          print('EDITORIAL_REFRESH_READY_FOR_ADMIN_REVIEW', {'evaluated':r['evaluated_total'],'passed':r['passed_total'],'blocked':r['blocked_total']})
+          PY
+      - name: Upload ADMIN review package
+        if: steps.window.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: iig-admin-review-refresh-${{ github.run_id }}
+          path: |
+            content/discovery-report.json
+            content/candidates/discovered-candidates.json
+            content/review-queue/*.json
+            content/content-engine-report.json
+            content/quality-gate-report.json
+            content/quality-gate/*.json
+            content/image-rights-report.json
+            content/image-rights/*.json
+          if-no-files-found: error
+          retention-days: 30
+# GOVERNANCE:
+# - Automatic window: Monday 09:00-10:00 Europe/Prague.
+# - ADMIN_1 can run this workflow manually at any time.
+# - Outputs remain REVIEW/ADMIN_REVIEW only. This workflow cannot publish the website, approve content or send the Digest.
