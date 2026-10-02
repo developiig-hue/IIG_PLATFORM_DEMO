@@ -7,7 +7,7 @@ from reportlab.lib.utils import ImageReader
 from reportlab.pdfbase.pdfmetrics import stringWidth
 
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/"digest"/"IIG-Monthly-Digest-2026-09.pdf"
+OUT=ROOT/"digest"/"releases"/"IIG-Monthly-Digest-2026-09-PUBLIC.pdf"\nOUT.parent.mkdir(parents=True,exist_ok=True)
 COVER=ROOT/"Вариант шапки сайта_промкомплекса на рассвете ( розово-фиалетовый).png"
 BASE="https://developiig-hue.github.io/IIG_PLATFORM_DEMO/"
 W,H=612,864
