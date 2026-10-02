@@ -74,3 +74,7 @@
 .digestcover-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px}.digestcover-cta{padding:13px 8px;border-radius:7px;text-align:center;font-size:14px;font-weight:900;color:#fff!important;text-decoration:none}.digestcover-cta.red{background:#ff3b35}.digestcover-cta.orange{background:#ec6b2c}.digestcover-bgmeta{position:absolute;right:10px;bottom:4px;font-size:5px;opacity:.55}
 .finaldigestpage .digestcover-master{height:100%;min-height:0!important}
 @media(max-width:700px){.digestcover-master{min-height:680px!important;padding:24px 20px 20px!important}.digestcover-big{font-size:30px}.digestcover-mission{max-width:90%}.digestcover-cta{font-size:12px}}
+
+
+/* DIGEST FINAL PAGE — MANDATORY PROJECT + SUBSCRIBE CTA FOOTER */
+.digest-end-ctas{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:12px}.digest-end-ctas a{display:block;background:#f06b2c;color:#fff!important;text-align:center;font-size:12px;font-weight:900;padding:13px 10px;border-radius:5px;text-decoration:none}.digest-end-ctas a:first-child{background:#ff3b35}.digest-end-ctas a:hover,.digest-end-ctas a:focus{filter:brightness(.96);text-decoration:none}.finaldigestpage>.digest-end-ctas{position:absolute;left:28px;right:28px;bottom:28px}.finaldigestpage:has(>.digest-end-ctas){padding-bottom:92px}
