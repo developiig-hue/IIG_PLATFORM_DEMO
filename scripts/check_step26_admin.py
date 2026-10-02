@@ -97,6 +97,11 @@ need("APPROVAL_LEDGER_KEY" in js and "iig.admin.approval-ledger.v1" in js and "r
 need("freezeApprovedSet" in js and "freezeApprovedSet" in html,"Bulk approved-material freeze missing")
 need("manualNewsRefresh" in js and "manualNewsRefresh" in html and "editorial-refresh.yml" in html,"Manual ADMIN_1 NEWS refresh control missing")
 need(schedule.get("manual_trigger",{}).get("enabled") is True and schedule.get("manual_trigger",{}).get("role")=="ADMIN_1","Manual refresh schedule contract missing")
+refresh=(root/".github/workflows/editorial-refresh.yml")
+need(refresh.is_file(),"Canonical editorial refresh workflow missing")
+refresh_text=refresh.read_text(encoding="utf-8")
+for token in ["workflow_dispatch","Europe/Prague","ADMIN_REVIEW","auto_publish","scripts/news_source_discovery.py","scripts/content_engine.py","scripts/quality_gate.py","scripts/image_rights_robot.py"]:
+    need(token in refresh_text,f"Editorial refresh workflow contract missing: {token}")
 pub=(root/"assets/public-news.js").read_text(encoding="utf-8")
 need("DEMO_EDITORIAL_KEY" in pub and "mergeDemoPublished" in pub and "demoPublished" in pub,"Published Admin Demo items are not bridged to public renderer")
 need("PUBLIC_DEMO_PUBLISHED_KEY" in js and "PUBLIC_DEMO_PUBLISHED_KEY" in pub and "persistPublishedBridge" in js,"Dedicated published Demo bridge missing")
