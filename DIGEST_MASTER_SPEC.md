@@ -142,3 +142,9 @@ The final Digest Advice section uses active per-item links to exact Advice pages
 ADMIN_1 final approval authorizes publication of the exact Admin-generated artifact. Production publication is an atomic current/archive rotation: previous CURRENT -> ARCHIVE; new approved issue -> CURRENT + READY_FOR_DOWNLOAD + READY_FOR_MAILING. The hosting service persists and serves the artifact; it does not rebuild it.
 
 Every Digest, including issues with appended article/promo pages, ends on its true last page with active Project and Subscribe buttons. This last-page CTA footer is independent of the Advice block and is mandatory in Final Preview and Admin export.
+
+
+## CANONICAL OUTPUT FORMAT: PDF WITH LIVE LINKS — 2026-10-02
+The final Admin-approved Digest is distributed as PDF. The PDF preserves the exact approved visual state and active links to corresponding IIG NEWS/Finance/Regulation/Advice pages plus Project and Subscribe CTAs. A PDF with flattened/non-clickable links is not release-ready.
+
+The server is allowed to convert the exact Admin artifact to PDF for storage/distribution, but is forbidden to re-author or regenerate layout/content. Only a verified PDF may be promoted to CURRENT.
