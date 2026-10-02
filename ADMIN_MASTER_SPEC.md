@@ -548,3 +548,11 @@ The homepage right rail MUST show the six newest approved/published Chief Engine
 
 ### 37.3 Digest remains fixed at three Advice
 Increasing the homepage teaser list from 3 to 6 MUST NOT change Digest composition. The Digest fixed Advice block remains exactly **3** approved Advice items according to the existing Digest capacity and release rules. Homepage count and Digest count are independent presentation contracts.
+
+
+## 38. DASHBOARD ONE-CLICK NEWS REFRESH CONTROL — 2026-10-02
+The Admin Dashboard quick-actions area MUST expose one prominent control labelled `СГЕНЕРИРОВАТЬ ОБНОВЛЕНИЕ КОНТЕНТА НОВОСТЕЙ САЙТА` so ADMIN_1 does not need to navigate to Robots first.
+
+The control represents the canonical manual editorial refresh chain: freeze/preserve current ADMIN_1 approvals -> Discovery #1 -> Content #2 -> Quality #3 -> Image/Rights #4 -> new material in REVIEW. It must never auto-publish.
+
+The Dashboard must show an operator-facing duration indicator. In Step 26 Demo it displays an indicative full-cycle estimate of approximately 10–20 minutes and a live elapsed timer starting when ADMIN_1 requests the run. Because GitHub credentials must not be stored in browser JavaScript, the Demo button opens the protected GitHub Actions workflow for the actual privileged dispatch. Production Step 27 replaces that handoff with authenticated backend/API dispatch while preserving the same Dashboard UX and live run-status/timing surface.
