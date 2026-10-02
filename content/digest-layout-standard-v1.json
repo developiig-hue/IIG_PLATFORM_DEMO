@@ -51,10 +51,14 @@
     }
   },
   "page2": {
-    "cards": 15,
     "thumbnails": false,
     "whole_card_clickable": true,
-    "safe_zone": true
+    "safe_zone": true,
+    "cards_fixed": false,
+    "historical_master_cards": 15,
+    "capacity_units": 23,
+    "packing": "ADMIN_PAGE_CAPACITY_WEIGHTED",
+    "fill_available_space": true
   },
   "direct_link_hard_rule": {
     "enabled": true,
@@ -94,7 +98,13 @@
     "robot6_auto_send": false,
     "admin_approval_required": true,
     "robot7_send_only_after_approval": true,
-    "change_requires_new_approval": true
+    "change_requires_new_approval": true,
+    "builder_roles": [
+      "ADMIN_2",
+      "ADMIN_1"
+    ],
+    "final_approver_role": "ADMIN_1",
+    "admin2_final_approval": false
   },
   "background_asset_gate": {
     "formats": [
@@ -192,7 +202,9 @@
     "explicit_retrospective_only": true
   },
   "release_candidate": {
-    "manifest_path": "content/digest-issues/2026-09-admin-candidate.json",
+    "manifest_path_pattern": "content/digest-issues/<YYYY-MM>-admin-candidate.json",
+    "source": "CURRENT_APPROVAL_LEDGER_AND_CMS",
+    "historical_snapshot_reuse": false,
     "input_freeze_only": true,
     "final_approval": false
   }
