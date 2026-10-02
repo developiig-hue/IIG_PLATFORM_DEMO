@@ -228,3 +228,10 @@ need("finance-news.html?institution=eib" in iig,"Finance EIB page must be indexe
 need("public-search-v2-20261002" in home,"Homepage search cache version not advanced")
 need("advice-schematics-v2-20261002" in home,"Homepage Advice schematic version must remain locked")
 need('<div class="download-circle">↓</div>' in home,"Digest down-arrow migration invariant broken")
+
+# Public search runtime regression guards
+iig=(root/"assets/iig.js").read_text(encoding="utf-8")
+home=(root/"index.html").read_text(encoding="utf-8")
+need("const esc=s=>" in iig,"Search renderer HTML escape helper missing")
+need("runPublicSearchSafe" in iig and "SEARCH_RUNTIME_ERROR" in iig,"Search runtime error guard missing")
+need("public-search-v3-runtimefix-20261002" in home,"Homepage search runtime cache version not advanced")
