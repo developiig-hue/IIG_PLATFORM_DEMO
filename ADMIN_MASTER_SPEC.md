@@ -621,3 +621,17 @@ Release acceptance verifies the renderer helper, guarded execution and cache-bus
 
 ## 44. CONTACT IIG PROJECT CTA ROUTING — 2026-10-02
 The public CONTACT IIG card button `SUBMIT YOUR PROJECT →` MUST route directly to `forms.html#project`. It must never point to the homepage `#project` fragment or any non-form placeholder. This route is a migration invariant for paid hosting/domain transfer.
+
+
+## 45. PRE-DIGEST GENERATION INTEGRITY GATE — 2026-10-02
+Before a monthly Digest is generated from Admin, these invariants are mandatory:
+- historical digest-issue candidate JSON files are reference snapshots only and must have release_authority=false;
+- ADMIN_2 may build, edit, preview and QA a release-candidate; ADMIN_1 alone grants final approval;
+- every release-candidate stores a deterministic fingerprint of issue, page structure, selected materials, direct links and cover/layout state;
+- any change after candidate generation invalidates final approval and requires regeneration;
+- Final Preview must render without undefined variables/runtime errors and show the exact current candidate layout;
+- Digest uses exactly 3 newest approved Advice items; the homepage 6-Advice rule is independent;
+- public pages must not expose internal ADMIN role workflow text;
+- legacy Digest HTML/PDF routes remain absent.
+
+Passing CI with these invariants establishes READY TO GENERATE. It does not authorize publication or mailing.
