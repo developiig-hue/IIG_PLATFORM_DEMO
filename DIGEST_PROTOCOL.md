@@ -200,3 +200,13 @@ Regardless of the number or type of pages, the actual final page of every Digest
 
 ### Public CURRENT resolver — 2026-10-02
 The public website MUST NOT hardcode a monthly Digest filename. Public Digest download controls resolve the active issue from `GET /api/v1/digest/current`. The response returns at minimum `status=CURRENT`, `issue`, `public_url`, artifact identity/fingerprint and download readiness. After ADMIN_1 publishes a new issue, the public button therefore switches automatically to the new CURRENT artifact without editing the page template. Archive browsing uses backend release history; archived issues must never replace CURRENT in the main download control.
+
+
+## CANONICAL PDF ARTIFACT + ACTIVE IIG LINKS — SUPERSEDING RULE — 2026-10-02
+The canonical released Digest file is PDF. After ADMIN_1 approves the exact Admin-generated Digest, production publication stores a PDF named from the issue, e.g. `IIG_Monthly_Digest_YYYY-MM_ADMIN1_APPROVED.pdf`.
+
+The PDF is derived 1:1 from the exact Admin-approved self-contained layout. The production backend may perform only technical HTML-to-PDF conversion; it MUST NOT select content, repack pages, change typography, replace images, alter the approved cover, or regenerate the Digest from CMS/CI.
+
+Every displayed NEWS/Finance/Regulation item in the PDF MUST retain an active hyperlink to its exact IIG site article. Every Chief Engineer Advice item MUST retain an active hyperlink to its exact IIG Advice page. The final Project and Subscribe CTA buttons MUST remain active. The publication endpoint must return `links_preserved=true`; otherwise publication is blocked and the new issue MUST NOT become CURRENT.
+
+Release transaction remains atomic: previous CURRENT PDF -> ARCHIVE; new ADMIN_1-approved PDF -> CURRENT + READY_FOR_DOWNLOAD + READY_FOR_MAILING. Robot #7 must use the same CURRENT PDF URL/artifact identity that users download from the site.
