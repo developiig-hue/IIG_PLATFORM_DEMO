@@ -667,3 +667,7 @@ After the exact candidate has been Final-Previewed and ADMIN_1 approves it, Admi
 ADMIN_1 final approval unlocks two export actions inside Admin: self-contained HTML download and browser PDF print/save. Both are generated from the current exact digestFingerprint() state and are blocked if that state differs from the approved/previewed candidate.
 
 No Pages/CI/public-host generator may create the Digest. The Admin export contains the approved cover background (including uploaded data image), approved content and active links, making it portable to later paid hosting/domain deployment. Public publishing and mailing are downstream distribution steps, not generation steps.
+
+
+## 37. DIGEST ADVICE — CLICKABLE + 1.5× TYPE — 2026-10-02
+Admin Final Preview and Admin-generated artifacts must render each fixed Advice item as one clickable anchor using publicUrl(ADVICE), with both title and «Детальніше →» inside the anchor. Font size is locked to 13.5 px, i.e. 1.5× the previous 9 px value. Project and Subscribe controls in the same block are real anchors, not spans. CI must reject regressions.
