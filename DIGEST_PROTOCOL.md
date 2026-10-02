@@ -137,3 +137,9 @@ The Final Preview is an inspection step, not an approval gate. Correct sequence:
 The release-candidate is built only from items already eligible for Digest input (APPROVED/PUBLISHED with required image approval). Unapproved monthly NEWS that are not included in the candidate MUST NOT block candidate generation or Final Preview.
 
 Final Preview must open for the exact current candidate even when QA contains amber/blocking findings; these findings are shown to ADMIN for correction but they block only FINAL APPROVAL, not visual inspection. Opening Final Preview records preview_completed=true, previewed_by, previewed_at and preview_fingerprint for the exact candidate. ADMIN_1 final approval MUST fail closed unless this exact candidate/fingerprint has been previewed first.
+
+
+## CANDIDATE STORAGE / EMBEDDED IMAGE RULE — 2026-10-02
+Digest release-candidate persistence MUST NOT serialize full embedded image data into browser localStorage. Cover/background/article images may exist as data URLs in the working editor, but candidate fingerprinting stores only a compact deterministic binary marker/metadata representation. This keeps exact-candidate change detection while preventing browser quota overflow.
+
+Primary persistence is localStorage for continuity; if localStorage quota is unavailable, the Admin may fall back to sessionStorage for the active browser session and must inform the operator. Failure of localStorage alone is not a reason to block candidate generation when safe session persistence succeeds. The candidate itself remains metadata-only; original image bytes stay in the working editor/media state until production materialization.
