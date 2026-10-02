@@ -138,7 +138,7 @@ need("function publishDemo()" in js and 'requireAdmin1("ОПУБЛІКУВАТИ
 need('n.status="PUBLISHED"' in js and "demo_published_by=ACTIVE_ADMIN.id" in js,"Demo publish state/audit identity missing")
 need('$("#publishProd")' not in js,"Invalid publish selector")
 need("Опублікувати у DEMO" in html and "productionGate" in js,"Demo publish label or production guard missing")
-need("DIGEST_RELEASE_BLOCKED: усі NEWS" in js,"Final approval must require ADMIN_1 news approvals")
+need("Матеріали candidate підтверджені ADMIN_1" in js and "Непідтверджені матеріали всередині candidate" in js,"Final approval must require ADMIN_1 approval for every included candidate item")
 need("iig.step26.editorial.sep2026.admin1.v2" in js,"Editorial session version reset missing")
 sept=[x for x in news_items if str(x.get("publication_date","")).startswith("2026-09") and not x.get("digest_exclude")]
 need(len(sept)>=30 and all(x.get("status")=="REVIEW" and x.get("admin_approved") is False for x in sept),"September NEWS must start unconfirmed for ADMIN_1 review")
