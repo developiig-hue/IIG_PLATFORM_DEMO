@@ -109,3 +109,15 @@ Canonical monthly flow: CURRENT APPROVED CMS/APPROVAL LEDGER → ADMIN_2 (or ADM
 ADMIN_2 has build/edit/preview/QA authority only. ADMIN_1 is the exclusive final approver. A stored historical candidate is never reusable after content approval changes; candidate input must be regenerated from the current approved state. PUBLISHED content is considered approved input when admin_approved=true and image approval requirements are satisfied.
 
 Legacy public Digest HTML/PDF routes are forbidden once superseded. Public download remains unavailable until a current issue artifact is finally approved by ADMIN_1.
+
+
+## COVER BACKGROUND RIGHTS + APPLY GATE — 2026-10-02
+A newly uploaded Digest cover background is a two-stage operation and MUST NOT silently replace the current cover.
+
+1. Technical intake validates JPG/PNG/WebP, <=10 MB, minimum 1200×1697 px; undersized images may be normalized to the recommended 1800×2546 px canvas.
+2. ADMIN_1 must explicitly confirm that IIG has the right to use the selected background. The state records bgApproved=true, bgApprovedBy=ADMIN_1, bgRightsVerification=OWNER_CONFIRMED, timestamp, file identity and dimensions.
+3. Only after that approval may «Застосувати до титульної» mutate the working cover. The UI must show a separate confirmation that the new background was actually applied.
+4. Preview may show a pending upload for inspection, but release-candidate/final QA MUST fail closed if a non-MASTER cover background lacks ADMIN_1 approval.
+5. Rendering must preserve the uploaded data URL correctly. The HTML/CSS renderer must not quote a data URL in a way that breaks the inline style attribute; a technically accepted image that renders as a flat fallback color is a release-blocking bug.
+
+The approved MASTER v2 fallback remains valid without re-approval. Any new custom cover image is governed by the ADMIN_1 rights/apply gate above.
