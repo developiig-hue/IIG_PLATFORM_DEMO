@@ -129,3 +129,11 @@ When ADMIN_1 selects a new approved cover background, only the background asset/
 The four cover thematic links are active and must resolve to IIG content hubs: Ukraine industrial generation -> industry.html?sector=energy; world industrial energy practice -> news.html; financing/regulation -> finance-news.html; Chief Engineer Advice -> advice.html. Bottom CTAs are mandatory and fixed: «РОЗМІСТИТИ ПРОЄКТ» -> forms.html#project and «ПІДПИСАТИСЯ НА ДАЙДЖЕСТ» -> forms.html#subscribe.
 
 Custom-cover rendering may not collapse these blocks into cards, remove the IIG header, remove KPI/CTA areas, change typography hierarchy, or substitute a simplified layout. Any such drift is a visual-regression blocker.
+
+
+## FINAL PREVIEW BEFORE APPROVAL — 2026-10-02
+The Final Preview is an inspection step, not an approval gate. Correct sequence: CURRENT APPROVED CMS/LEDGER -> BUILD RELEASE-CANDIDATE -> FINAL PREVIEW OF THE ENTIRE DIGEST -> FIX LAYOUT/QA ISSUES IF ANY -> ADMIN_1 FINAL APPROVAL -> exact artifact/SHA -> Robot #7.
+
+The release-candidate is built only from items already eligible for Digest input (APPROVED/PUBLISHED with required image approval). Unapproved monthly NEWS that are not included in the candidate MUST NOT block candidate generation or Final Preview.
+
+Final Preview must open for the exact current candidate even when QA contains amber/blocking findings; these findings are shown to ADMIN for correction but they block only FINAL APPROVAL, not visual inspection. Opening Final Preview records preview_completed=true, previewed_by, previewed_at and preview_fingerprint for the exact candidate. ADMIN_1 final approval MUST fail closed unless this exact candidate/fingerprint has been previewed first.
