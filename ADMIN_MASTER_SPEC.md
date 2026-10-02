@@ -591,3 +591,21 @@ Whenever conceptual schematic definitions are changed, every public surface load
 
 ### 41.3 Public Digest CTA privacy
 Internal workflow language such as ADMIN_1 approval state MUST NOT be exposed in the public Digest CTA. The public card may identify the monthly Digest, languages and cadence only. The circular Digest action icon uses a downward arrow for download-oriented semantics. Browser JavaScript MUST NOT rewrite the card to a deleted/superseded legacy PDF.
+
+
+## 42. PORTABLE PUBLIC UX + SEARCH SOURCE OF TRUTH — 2026-10-02
+The following public UX decisions are migration invariants and MUST survive transfer from GitHub Pages to paid hosting/domain:
+1. Chief Engineer Advice uses content-specific conceptual engineering schematics for every APPROVED/PUBLISHED Advice; generic placeholders are forbidden for final public Advice.
+2. The public Digest CTA uses the downward arrow (↓) and never exposes internal ADMIN_1/ADMIN_2 workflow text.
+3. Homepage public search is operational and bilingual UA+EN.
+
+Search source-of-truth is the union of:
+- approved/published repository NEWS;
+- same-browser Step-26 published NEWS bridge, so ADMIN-published Demo articles are searchable immediately;
+- approved Chief Engineer Advice;
+- Finance hub/institution destinations and bilingual aliases;
+- canonical industrial sectors and core public sections.
+
+Search query normalization MUST ignore conjunction stopwords such as і, та, and and support bilingual aliases including ЄІБ ↔ EIB. Multi-term queries rank items matching all meaningful terms above partial matches. A public article that is visible through the Demo publication bridge but absent from search is a release-blocking defect.
+
+Example acceptance case: query `ЄІБ і BNP Paribas` must surface the published EIB/BNP Paribas NEWS item when it exists in the current public bridge/current approved registry, plus relevant finance destinations where applicable.
