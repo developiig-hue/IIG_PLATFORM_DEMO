@@ -166,6 +166,15 @@ need("['APPROVED','PUBLISHED'].includes(x.status)" in advice_js,"Advice public a
 home=(root/"index.html").read_text(encoding="utf-8")
 advice_js=(root/"assets/public-advice.js").read_text(encoding="utf-8")
 need('class="advice-mini"' in home,"Homepage Advice mini container missing")
-need("assets/public-advice.js?v=home-latest3-20261002" in home,"Homepage must load Advice renderer")
+need("assets/public-advice.js?v=home-latest6-20261002" in home,"Homepage must load Advice renderer")
 need("items.sort((a,b)=>String(b.publication_date" in advice_js,"Advice must sort newest-first by publication_date")
-need("items.slice(0,3)" in advice_js,"Homepage must render exactly latest 3 Advice items")
+need("items.slice(0,6)" in advice_js,"Homepage must render exactly latest 6 Advice items")
+
+# Industry NEWS card-layout regression guards
+industry=(root/"industry.html").read_text(encoding="utf-8")
+pubnews=(root/"assets/public-news.js").read_text(encoding="utf-8")
+need("assets/public-news.js?v=industry-advice-card-layout-20261002" in industry,"Industry pages must load canonical published NEWS renderer")
+need('id="industry-news-grid-v2"' in industry and "grid-template-columns:repeat(3" in industry,"Industry pages must use Advice-style card grid")
+need("industryCard=x=>" in pubnews and "ЧИТАТИ НОВИНУ" in pubnews,"Industry NEWS card renderer missing")
+need("renderItems();" not in industry.split("window.addEventListener('load'")[1],"Legacy static industry demo renderer must not run")
+need("energy:{" in industry and "logistics:{" in industry and "waste:{" in industry,"Industry title map must cover all nine sectors")
