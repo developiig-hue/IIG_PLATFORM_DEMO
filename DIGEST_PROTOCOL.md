@@ -101,3 +101,11 @@ Every monthly Digest resolves content against the selected `YYYY-MM` issue. Appr
 
 ## ADMIN_1 FINAL PREVIEW / NO AUTO-PUBLISH — 2026-10-01
 The monthly Digest may only be assembled from NEWS explicitly approved by ADMIN_1. Newly collected monthly NEWS starts as REVIEW and is excluded from Robot #6 input until approval. Robot #6/Admin provides a final page-by-page visual preview after packing and before exact-artifact approval. Final Preview is non-mutating and does not publish/send. Website publication, exact PDF/SHA approval and Robot #7 mailing authorization remain separate protected ADMIN_1 actions. Missing news photography must resolve through the approved image hierarchy/fallback policy; an editorial fallback must be clearly illustrative and never mislabelled as the reported object.
+
+
+## ADMIN_2 BUILDER / ADMIN_1 FINAL GATE — 2026-10-02
+Canonical monthly flow: CURRENT APPROVED CMS/APPROVAL LEDGER → ADMIN_2 (or ADMIN_1) BUILD RELEASE-CANDIDATE → PREVIEW/QA → status AWAITING_ADMIN_1_APPROVAL → ADMIN_1 FINAL APPROVAL → exact artifact/SHA materialization → Robot #7 link check → mailing authorization.
+
+ADMIN_2 has build/edit/preview/QA authority only. ADMIN_1 is the exclusive final approver. A stored historical candidate is never reusable after content approval changes; candidate input must be regenerated from the current approved state. PUBLISHED content is considered approved input when admin_approved=true and image approval requirements are satisfied.
+
+Legacy public Digest HTML/PDF routes are forbidden once superseded. Public download remains unavailable until a current issue artifact is finally approved by ADMIN_1.
