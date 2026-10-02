@@ -679,3 +679,7 @@ Production Admin contract: after exact candidate Final Preview and ADMIN_1 final
 The API accepts the already-generated Admin artifact and fingerprint. It MUST NOT regenerate Digest content from CMS or CI. Public site and Robot #7 consume the same artifact identity. Mailing remains separately executed, but it may start only from the READY_FOR_MAILING exact CURRENT artifact.
 
 The final page of the generated artifact always contains two real anchors: Project -> forms.html#project and Subscribe -> forms.html#subscribe. CI treats their absence from the true final page as release-blocking.
+
+
+### 38.1 Public current/archive read contract
+Public site reads `GET /api/v1/digest/current` for the active download target and may read a paginated archive endpoint such as `GET /api/v1/digest/releases?status=ARCHIVE`. The public page never selects CURRENT by filename/date heuristics. Only the successful ADMIN_1 publication transaction changes CURRENT. Static Demo falls back to a non-download Digest information route when this backend is absent.
