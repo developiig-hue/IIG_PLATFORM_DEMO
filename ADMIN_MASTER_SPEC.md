@@ -507,3 +507,13 @@ Admin provides `ЗАФІКСУВАТИ ВЕСЬ ЗАТВЕРДЖЕНИЙ МАТ�
 The canonical automatic refresh window is Monday 09:00–10:00 `Europe/Prague`. In addition, ADMIN_1 may initiate a refresh at any time using `ОНОВИТИ НОВИНИ ЗАРАЗ`. Manual refresh uses the same pipeline: Discovery #1 → Content #2 → Quality #3 → Image/Rights #4 → ADMIN REVIEW. Manual or scheduled runs MUST preserve Approval Ledger records, MUST set newly generated content to REVIEW, and MUST keep `auto_publish=false`.
 
 Because Step 26 is static GitHub Pages, browser code must not contain a GitHub token. The Admin button records the ADMIN_1 request, freezes current approvals, reloads the current main registry and opens the protected GitHub Actions `editorial-refresh.yml` workflow for authenticated execution. Step 27 may replace this with a server-side one-click API action while preserving the same role/Audit contract.
+
+
+## 34. TOP-5 FLAG IS OPTIONAL ONLY — 2026-10-02
+The Admin checkbox `homepage_top5` controls ONLY priority placement in the homepage TOP-5. It must never control or gate ordinary publication destinations.
+
+For every NEWS item that reaches `PUBLISHED`, two destinations are mandatory and automatic: (1) the canonical industrial-sector page determined by `sector`; (2) the global site section `Новини та інсайти`. No extra checkbox or Admin action is required for these two destinations.
+
+If `homepage_top5=true`, the same already-published NEWS receives one additional destination/priority: homepage TOP-5. If the flag is false, the NEWS still remains published in its sector and in `Новини та інсайти`.
+
+Admin UI wording must make this separation explicit so the operator never interprets the TOP-5 checkbox as controlling sector/global publication.
