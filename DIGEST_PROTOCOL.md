@@ -176,3 +176,23 @@ In every Final Preview and Admin-generated Digest artifact, each item in «ПО�
 The Advice block typography is locked at 1.5× the previous 9 px baseline: 13.5 px for the section text/title rows and «Детальніше →», with line-height adjusted for readability. This rule applies to Final Preview and exported HTML/PDF print output.
 
 The two bottom CTA controls in this block also remain active links: «РОЗМІСТИТИ ПРОЄКТ» -> `forms.html#project`; «ПІДПИСАТИСЯ НА ДАЙДЖЕСТ» -> `forms.html#subscribe`. Any regression to non-clickable spans or 9 px Advice text is release-blocking.
+
+
+## CURRENT / ARCHIVE / READY-FOR-MAILING RELEASE RULE — SUPERSEDING RULE — 2026-10-02
+This rule is mandatory and supersedes any earlier Digest publication wording that allowed an approved issue to remain merely exported without becoming the current website issue.
+
+After the exact Digest candidate is built in Admin, Final-Previewed and approved by ADMIN_1, the Admin-generated exact artifact is submitted to the protected production endpoint `POST /api/v1/digest/releases`. The server transaction MUST perform all of the following atomically:
+1. validate ADMIN_1 authorization and exact artifact fingerprint;
+2. persist the new Admin-generated artifact without rebuilding it;
+3. move the previous website `CURRENT` Digest to `ARCHIVE`;
+4. promote the new issue to `CURRENT`;
+5. expose a stable public download URL for the new `CURRENT` issue;
+6. mark the same exact artifact `READY_FOR_DOWNLOAD` and `READY_FOR_MAILING` for Robot #7;
+7. record previous issue, new issue, actor, timestamp, fingerprint/artifact identity and public/archive URLs in Audit.
+
+The hosting/backend is a storage/publication layer only. It MUST NOT regenerate, re-layout or synthesize the Digest. The artifact originates only from the Admin Builder state approved by ADMIN_1.
+
+On static Demo hosting where the protected publication endpoint does not exist, Admin MUST fail closed: it may retain/export the approved artifact but MUST NOT claim public publication, CURRENT promotion, archive rotation or mailing readiness.
+
+### Mandatory last-page CTA
+Regardless of the number or type of pages, the actual final page of every Digest MUST end with two active buttons: `РОЗМІСТИТИ ПРОЄКТ` -> `forms.html#project` and `ПІДПИСАТИСЯ НА ДАЙДЖЕСТ` -> `forms.html#subscribe`. They are part of the canonical artifact and must survive HTML/PDF export and hosting migration.
