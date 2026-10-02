@@ -74,8 +74,8 @@ need("step26-digest-role-gate-20261002" in html,"Admin asset cache-busting versi
 need(html.count('<option value="APPROVED">')==1,"Duplicate APPROVED status filter remains")
 need("issueMatches" in js and "publication_date" in js,"Monthly Digest issue filter missing")
 candidate=json.loads((root/"content/digest-issues/2026-09-admin-candidate.json").read_text(encoding="utf-8"))
-need(candidate.get("issue")=="2026-09" and candidate.get("status")=="AWAITING_ADMIN_REVIEW","September Admin Digest candidate must await ADMIN_1 review")
-need(candidate["counts"].get("general",0)==23 and candidate["counts"].get("finance",0)==7 and candidate["counts"].get("regulation",0)==7 and candidate["counts"].get("advice_pool",0)>=3 and candidate["counts"].get("advice_selected",0)==3,"September candidate content pool incomplete")
+need(candidate.get("issue")=="2026-09" and candidate.get("historical_snapshot") is True and candidate.get("release_authority") is False,"September Digest snapshot must be historical/non-authoritative")
+need("content/digest-issues/2026-09-admin-candidate.json" not in js,"Admin runtime must not use historical Digest snapshot as release authority")
 need("digest_title" in js and "fullTitle" in js,"Digest digest_title policy missing")
 need("finalPreviewDigest" in html and "finalPreviewState" in html and "openFinalDigestPreview" in js,"Final Digest layout preview missing")
 need("newsImagePanel" in html and "newsImageMode" in html and "newsImageFile" in html and "newsImageRights" in html,"News image review panel missing")
@@ -148,27 +148,20 @@ need("password" not in html.lower() or "production" in html.lower(),"Unexpected 
 reg=json.loads((root/"content/discovery/IIG_news_source_registry_260.json").read_text(encoding="utf-8"))
 sources=reg if isinstance(reg,list) else reg.get("sources",[])
 need(len(sources)==260,f"Source registry expected 260, found {len(sources)}")
-if errors:
-    print("STEP 26 ADMIN MASTER: FAIL")
-    for e in errors: print("-",e)
-    sys.exit(1)
-print("STEP 26 ADMIN MASTER: 10/10 STATIC ACCEPTANCE GREEN")
-print("UA / UX / CMS / REVIEW / DIGEST / MAILING / RADAR / ROBOTS / SECURITY / E2E-CONTRACT = PASS")
-
 # Advice public renderer regression guards
 advice_js=(root/"assets/public-advice.js").read_text(encoding="utf-8")
 advice_data=json.loads((root/"content/public-advice.json").read_text(encoding="utf-8"))
 approved_advice=[x for x in advice_data.get("items",[]) if x.get("status") in {"APPROVED","PUBLISHED"} and x.get("admin_approved") is True]
 need(len(approved_advice)>=1,"Approved Advice registry unexpectedly empty")
-need("diagrams[x.slug]&&" not in advice_js,"Advice renderer must not require hard-coded diagram slug")
-need("iig-editorial-illustration.svg" in advice_js,"Advice fallback illustration missing")
+need("MISSING_CONCEPTUAL_SCHEMATIC" in advice_js,"Advice renderer must fail closed without content-specific schematic")
+need("if(!d)return url" not in advice_js,"Published Advice generic placeholder fallback must remain disabled")
 need("['APPROVED','PUBLISHED'].includes(x.status)" in advice_js,"Advice public approval filter missing")
 
 # Homepage Chief Engineer Advice latest-3 regression guards
 home=(root/"index.html").read_text(encoding="utf-8")
 advice_js=(root/"assets/public-advice.js").read_text(encoding="utf-8")
 need('class="advice-mini"' in home,"Homepage Advice mini container missing")
-need("assets/public-advice.js?v=home-latest6-20261002" in home,"Homepage must load Advice renderer")
+need("assets/public-advice.js?v=advice-schematics-v2-20261002" in home,"Homepage must load current Advice schematic renderer")
 need("items.sort((a,b)=>String(b.publication_date" in advice_js,"Advice must sort newest-first by publication_date")
 need("items.slice(0,6)" in advice_js,"Homepage must render exactly latest 6 Advice items")
 
@@ -225,7 +218,7 @@ need("mergedNews=new Map()" in iig and "localNews=bridge.filter" in iig,"Search 
 need("SEARCH_STOPWORDS" in iig and "searchTokens" in iig,"Search must ignore conjunction stopwords")
 need("єіб eib" in iig and "eib єіб" in iig,"Search must support EIB/ЄІБ bilingual alias")
 need("finance-news.html?institution=eib" in iig,"Finance EIB page must be indexed")
-need("public-search-v2-20261002" in home,"Homepage search cache version not advanced")
+need("public-search-v3-runtimefix-20261002" in home,"Homepage search cache version not advanced")
 need("advice-schematics-v2-20261002" in home,"Homepage Advice schematic version must remain locked")
 need('<div class="download-circle">↓</div>' in home,"Digest down-arrow migration invariant broken")
 
@@ -239,3 +232,18 @@ need("public-search-v3-runtimefix-20261002" in home,"Homepage search runtime cac
 # About/contact project CTA routing
 about=(root/"about.html").read_text(encoding="utf-8")
 need('href="forms.html#project">SUBMIT YOUR PROJECT →</a>' in about,"About contact CTA must route to project form")
+
+
+# Final pre-Digest runtime/integrity guards
+news_page=(root/"news.html").read_text(encoding="utf-8")
+need("+adviceMarkup+finalsubscribe" not in js,"Undefined finalsubscribe runtime reference remains in Final Preview")
+need("function digestFingerprint()" in js and "fingerprint:digestFingerprint()" in js,"Digest release-candidate fingerprint missing")
+need("digestCandidate.fingerprint!==digestFingerprint()" in js,"ADMIN_1 approval must reject stale/modified Digest candidate")
+need("Новий випуск публікується тільки після фінального затвердження ADMIN_1" not in news_page and "The new issue is published only after final ADMIN_1 approval" not in news_page,"Public News/Digest UI must not expose internal ADMIN_1 workflow text")
+
+if errors:
+    print("STEP 26 ADMIN MASTER: FAIL")
+    for e in errors: print("-",e)
+    sys.exit(1)
+print("STEP 26 ADMIN MASTER: 10/10 STATIC ACCEPTANCE GREEN")
+print("PRE-DIGEST GENERATION GATE = READY TO GENERATE")
