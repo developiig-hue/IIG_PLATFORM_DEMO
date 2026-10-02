@@ -14,8 +14,7 @@ on:
       - 'scripts/verify_content_engine.py'
       - 'tests/test_content_engine.py'
   workflow_dispatch:
-  schedule:
-    - cron: '45 5 * * 1'
+# Weekly schedule delegated to editorial-refresh.yml; workflow_dispatch remains available.
 concurrency:
   group: iig-news-discovery-production
   cancel-in-progress: true
