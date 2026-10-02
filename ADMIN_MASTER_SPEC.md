@@ -683,3 +683,9 @@ The final page of the generated artifact always contains two real anchors: Proje
 
 ### 38.1 Public current/archive read contract
 Public site reads `GET /api/v1/digest/current` for the active download target and may read a paginated archive endpoint such as `GET /api/v1/digest/releases?status=ARCHIVE`. The public page never selects CURRENT by filename/date heuristics. Only the successful ADMIN_1 publication transaction changes CURRENT. Static Demo falls back to a non-download Digest information route when this backend is absent.
+
+
+## 39. CANONICAL DIGEST PDF + LINK VERIFICATION — 2026-10-02
+After ADMIN_1 approval, Admin sends the exact self-contained approved artifact to `/api/v1/digest/releases` with `output_format=PDF` and a complete list of IIG links expected in the PDF. The backend renders that exact artifact to PDF and verifies PDF link annotations before returning success. Required response includes a `.pdf` `public_url` and `links_preserved=true`.
+
+If PDF creation or link verification fails, the transaction fails closed: previous CURRENT remains CURRENT and the candidate is not marked READY_FOR_DOWNLOAD or READY_FOR_MAILING. On success the backend atomically archives the previous CURRENT PDF, promotes the new PDF to CURRENT, and Robot #7 uses the same public PDF artifact. Content/layout generation remains Admin-only; backend conversion is technical serialization only.
