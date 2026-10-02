@@ -556,3 +556,11 @@ The Admin Dashboard quick-actions area MUST expose one prominent control labelle
 The control represents the canonical manual editorial refresh chain: freeze/preserve current ADMIN_1 approvals -> Discovery #1 -> Content #2 -> Quality #3 -> Image/Rights #4 -> new material in REVIEW. It must never auto-publish.
 
 The Dashboard must show an operator-facing duration indicator. In Step 26 Demo it displays an indicative full-cycle estimate of approximately 10–20 minutes and a live elapsed timer starting when ADMIN_1 requests the run. Because GitHub credentials must not be stored in browser JavaScript, the Demo button opens the protected GitHub Actions workflow for the actual privileged dispatch. Production Step 27 replaces that handoff with authenticated backend/API dispatch while preserving the same Dashboard UX and live run-status/timing surface.
+
+
+## 39. DIGEST ROLE SPLIT / CURRENT-CONTENT CANDIDATE — 2026-10-02
+Digest Builder supports two operational roles. ADMIN_2 is the Digest Builder: may generate/rebuild the release-candidate, manage layout/content, run previews and QA. ADMIN_1 is the final approver: may perform Builder actions and exclusively approves the final generated version. ADMIN_2 cannot approve final release or mailing.
+
+The Generate New Digest action MUST read only the current approved/published CMS + Approval Ledger state for the selected issue. Historical content/digest-issues/*-admin-candidate.json snapshots are not release authority and must not silently override current Admin approvals. Candidate state is AWAITING_ADMIN_1_APPROVAL until ADMIN_1 final approval.
+
+Public site policy: no old/static Digest file may remain linked after it is superseded. While the new issue is pending final approval, public Digest UI may offer subscription/status only; download is enabled only after ADMIN_1-approved exact artifact/SHA exists.
