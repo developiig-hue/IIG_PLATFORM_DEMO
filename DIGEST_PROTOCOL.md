@@ -168,3 +168,11 @@ Admin export modes:
 The export is fingerprint-locked: if layout/content changes after Preview/approval, export is blocked until a new candidate is generated, previewed and approved. The artifact is portable to a future paid hosting/domain and does not depend on a GitHub-specific build step.
 
 Mailing Robot #7 remains separate. Public website download routing is configured only after ADMIN exports and deploys the chosen artifact to the target hosting.
+
+
+## ADVICE CLICKABILITY + READABILITY LOCK — 2026-10-02
+In every Final Preview and Admin-generated Digest artifact, each item in «ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА» MUST remain an active hyperlink to its exact IIG Advice article route (`advice-article.html?slug=...`). Both the advice title and «Детальніше →» are part of the same clickable row.
+
+The Advice block typography is locked at 1.5× the previous 9 px baseline: 13.5 px for the section text/title rows and «Детальніше →», with line-height adjusted for readability. This rule applies to Final Preview and exported HTML/PDF print output.
+
+The two bottom CTA controls in this block also remain active links: «РОЗМІСТИТИ ПРОЄКТ» -> `forms.html#project`; «ПІДПИСАТИСЯ НА ДАЙДЖЕСТ» -> `forms.html#subscribe`. Any regression to non-clickable spans or 9 px Advice text is release-blocking.
