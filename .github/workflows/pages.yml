@@ -26,7 +26,7 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          pages=[Path(x) for x in ['index.html','industry.html','case.html','advice.html','financing.html','finance-news.html','news.html','article.html','forms.html','about.html','digest/2026-09-review.html']]
+          pages=[Path(x) for x in ['index.html','industry.html','case.html','advice.html','financing.html','finance-news.html','news.html','article.html','forms.html','about.html']]
           for p in pages:
               s=p.read_text(encoding='utf-8')
               s=s.replace('<html lang="uk">','<html lang="uk" translate="no">').replace('<html lang="uk" translate="no" translate="no">','<html lang="uk" translate="no">')
