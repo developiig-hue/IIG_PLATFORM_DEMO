@@ -194,3 +194,12 @@ need("digest/2026-09-review.html" not in (root/"case.html").read_text(encoding="
 need("digest/2026-09-review.html" not in (root/"industry.html").read_text(encoding="utf-8"),"Industry still links legacy Digest HTML")
 need("digest/IIG-Monthly-Digest-2026-09.pdf" not in (root/"news.html").read_text(encoding="utf-8"),"News page still links legacy Digest PDF")
 need("LEGACY_DIGEST_BUILD_DISABLED" in (root/".github/workflows/build-digest-pdf.yml").read_text(encoding="utf-8"),"Legacy Digest PDF workflow not disabled")
+
+# Chief Engineer Advice schematic-quality gate
+advice_js=(root/"assets/public-advice.js").read_text(encoding="utf-8")
+advice_data=json.loads((root/"content/public-advice.json").read_text(encoding="utf-8"))
+approved_advice=[x for x in advice_data.get("items",[]) if x.get("status") in {"APPROVED","PUBLISHED"} and x.get("admin_approved") is True]
+missing_schematics=[x.get("slug") for x in approved_advice if ("'"+str(x.get("slug"))+"'") not in advice_js]
+need(not missing_schematics,"Every approved Advice must have a dedicated conceptual schematic: "+",".join(missing_schematics))
+need("MISSING_CONCEPTUAL_SCHEMATIC" in advice_js,"Advice renderer must fail closed when schematic is missing")
+need("if(!d)return url('assets/iig-editorial-illustration.svg')" not in advice_js,"Published Advice generic illustration fallback is forbidden")
