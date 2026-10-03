@@ -236,3 +236,21 @@ The canonical distribution surface is the IIG website CURRENT PDF. Admin approva
 - Если после Final Preview изменена хотя бы одна строка, порядок, страница, CTA, cover или другой элемент fingerprint, красная кнопка блокируется и требует **только повторно открыть Final Preview**. Повторно формировать candidate нельзя и не требуется.
 - При успешном Final Approval текущий fingerprint считается одновременно зафиксированным и утверждённым ADMIN_1; затем разблокируются PDF/export/publication действия.
 - Workflow: **build candidate один раз → ручная редакция → Final Preview (lock revision) → red Final Approval → PDF → publish**.
+
+
+## FINAL_ADMIN_IIG — ADMIN_1 ATOMIC FINAL REVISION LOCK (2026-10-03)
+
+Канонический маршрут полномочий Digest:
+
+1. **ADMIN_2**: build candidate → edit current layout → Final Preview / QA.
+2. Final Preview создаёт immutable review snapshot текущей редакции: fingerprint, issue, page_count, item_count, timestamp, creator. Snapshot имеет статус **AWAITING_ADMIN_1_ATOMIC_LOCK** и сам по себе НЕ меняет canonical candidate fingerprint.
+3. **ADMIN_1**: красная кнопка **«ЗАТВЕРДИТИ ФІНАЛЬНИЙ МАКЕТ»** — единственная операция, которая одновременно:
+   - проверяет, что текущий layout fingerprint = latest Final Preview snapshot fingerprint;
+   - фиксирует этот fingerprint как canonical candidate fingerprint;
+   - увеличивает revision, если редакция изменилась относительно предыдущего candidate;
+   - фиксирует `layout_locked_by=ADMIN_1`;
+   - переводит review snapshot в **ADMIN_1_LOCKED_AND_APPROVED**;
+   - выставляет final approval и **READY_TO_PUBLISH**.
+4. Если после Final Preview ADMIN_2 или ADMIN_1 меняет хотя бы один элемент макета, красная кнопка должна fail-closed и требовать только **повторный Final Preview**. Повторный build candidate запрещён как лишний и не должен требоваться.
+5. Маршрут состояния: **candidate → edits → Final Preview snapshot → ADMIN_1 atomic lock + approval → PDF → publish**.
+6. Никакая роль кроме ADMIN_1 не имеет права переводить preview fingerprint в canonical approved candidate fingerprint.
