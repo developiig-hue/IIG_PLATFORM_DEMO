@@ -258,3 +258,13 @@ Chief Engineer Advice links use the canonical route `advice-article.html?id=<slu
 The public artifact is a PDF selected/generated from the exact ADMIN_1-approved Digest. Admin exposes a `PDF для публікації` file control and a separate `ЗАЛИТИ PDF ДАЙДЖЕСТ НА САЙТ` action. The action uploads the PDF itself as multipart form data to `POST /api/v1/digest/releases` together with metadata containing issue, exact fingerprint, ADMIN_1 approval, required IIG links, `make_current=true`, `archive_previous_current=true`, `READY_FOR_DOWNLOAD` and `READY_FOR_MAILING`.
 
 The server must not rebuild the Digest from HTML/CMS. It stores and validates the uploaded PDF, verifies active PDF link annotations, archives the previous CURRENT PDF, promotes the new PDF to CURRENT, and returns a `.pdf` public URL with `links_preserved=true`. The public website resolves the current download target through the CURRENT route/API and never falls back to the NEWS section.
+
+
+## NEWS ROW READ-MORE + SITE-PUBLISHED PDF — SUPERSEDING RULE — 2026-10-03
+Every NEWS / Finance / Regulation row in the Digest must show an explicit right-edge action label `Читати далі... →`. The title and this action are part of the same active hyperlink and resolve to the exact IIG article route. A row that is visually clickable but lacks the explicit action marker is a usability regression.
+
+Chief Engineer Advice uses the canonical route `advice-article.html?id=<slug>`. For backward compatibility, public Advice pages must also accept legacy `?slug=<slug>` and normalize it to `?id=<slug>` before content lookup. New Digest artifacts must never generate new `?slug=` Advice links.
+
+The user-facing Digest distribution artifact is PDF on the IIG website. After Final Preview and ADMIN_1 approval, Admin exposes a separate action `ЗАЛИТИ PDF ДАЙДЖЕСТ НА САЙТ`. That action publishes the exact approved Admin artifact through the protected Digest release endpoint, produces/persists the PDF, verifies active IIG links, archives the previous CURRENT PDF and promotes the new PDF to CURRENT + READY_FOR_DOWNLOAD + READY_FOR_MAILING.
+
+The public website download button resolves CURRENT and downloads the PDF. It must not fall back to `Новини та інсайти`, an HTML digest, or a ChatGPT/sandbox artifact. Chat output is never the publication destination for an approved Digest.
