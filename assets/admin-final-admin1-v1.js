@@ -78,7 +78,7 @@ let pendingArticleImport={fileName:"",title:"",lead:"",paragraphs:[],images:[]};
 const defaultCover=()=>({isDefault:true,title:"MONTHLY DIGEST",subtitle:"ПРОМИСЛОВОЇ ЕНЕРГЕТИКИ",slogan:"Енергія відновлення. Інвестиції в майбутнє промисловості України",announcements:["Генерація промисловості – Україна","Світова практика промислової енергетики","Фінансування та державне регулювання","Поради Головного інженера"],bgData:"",bgName:"APPROVED MASTER v2 · Page 1",bgPosition:"center",overlay:0.55,width:0,height:0,bgApproved:true,bgApprovedBy:"MASTER",bgRightsVerification:"MASTER_APPROVED",bgApprovedAt:"2026-09-29"});
 let coverDraft=defaultCover();
 let pendingCoverBg=null,pendingExtraBg=null;
-const PAGE_CAPACITY={cover:0,news:23,finance:14};
+const PAGE_CAPACITY={cover:0,news:19,finance:14};
 let digestPages=[
  {name:"Сторінка 1 — Обкладинка",kind:"cover",capacity:0,items:[],design:coverDraft},
  {name:"Сторінка 2 — Новини",kind:"news",capacity:PAGE_CAPACITY.news,items:[]},
