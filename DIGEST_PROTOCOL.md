@@ -412,3 +412,17 @@ This page has a unique filename, loads only `assets/admin-final-admin1-v1.js?v=A
 ### Release blocker
 
 Any runtime, acceptance rule or message that requires rebuilding a candidate because the manual Digest was edited is a release-blocking regression.
+
+
+## FINAL_ADMIN_IIG — MEASURED LAYOUT CAPACITY LOCK (2026-10-03)
+
+Headless-browser stress test with the approved static 32 px core row geometry found:
+
+- Page 2 at 23 rows overflowed the 864 px page canvas (scrollHeight 992 px) and pushed the Subscribe CTA outside the page.
+- Page 2 at 20 rows still produced scroll overflow; 21+ moved the CTA outside the page.
+- **Safe Page 2 capacity = 19 core rows** with the mandatory bottom Subscribe CTA.
+- **Safe Page 3 capacity = 14 core rows** with 3 Chief Engineer Advice rows and Project + Subscribe CTA; no overflow was observed in the stress test.
+- Page 2 and Page 3 core row geometry remains identical: 554 px measured inner row width in the test canvas and exactly 32 px row height.
+
+HARD runtime capacity: `PAGE_CAPACITY={cover:0,news:19,finance:14}`.
+Any increase of Page 2 above 19 without a new browser geometry test is a release blocker.
