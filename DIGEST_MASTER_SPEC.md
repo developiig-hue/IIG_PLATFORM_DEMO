@@ -176,3 +176,17 @@ The released website artifact is the exact ADMIN_1-approved PDF uploaded from Ad
 Each Digest content row ends with `Читати далі... →` aligned toward the right edge; the entire row link targets the specific IIG article. Advice links use canonical `advice-article.html?id=` routes, with legacy slug-route compatibility only for historical artifacts.
 
 The canonical distribution surface is the IIG website CURRENT PDF. Admin approval alone does not mean public availability; ADMIN_1 must execute the dedicated site-upload action. On success the public site points to the new PDF and the previous PDF is archived. No chat attachment or NEWS-page redirect is a valid substitute.
+
+
+## FINAL_ADMIN_IIG — PDF PUBLICATION + CANONICAL DIGEST LINKS + READ-MORE LOCK (2026-10-03)
+
+Обязательный финальный контракт:
+
+- После ADMIN_1 Final Preview и Final Approval публикуется **точно утверждённый PDF** через защищённое действие **«ЗАЛИТИ PDF ДАЙДЖЕСТ НА САЙТ»**. Новый выпуск становится CURRENT, предыдущий CURRENT переносится в Archive.
+- Публичная карточка на главной — **«ЗАВАНТАЖИТИ ДАЙДЖЕСТ PDF»** со стрелкой вниз. Она никогда не должна вести в «Новини та інсайти» или другой контент. Runtime принимает только CURRENT release с `.pdf` public_url; иначе остаётся dedicated resolver `digest/current.html`.
+- Каждая строка NEWS / Finance / Regulation в Digest целиком кликабельна и ведёт только на canonical `article.html?id=<slug>`.
+- Каждая строка «Поради Головного інженера» целиком кликабельна и ведёт только на canonical `advice-article.html?id=<slug>`.
+- Справа каждой кликабельной строки Digest обязателен единый видимый CTA: **«Читати далі... →»**. Для Advice запрещено возвращать отдельный текст «Детальніше →».
+- Final candidate, Final Preview и ADMIN_1 approval должны fail-closed при некорректном canonical route NEWS/Advice.
+- PDF export обязан сохранять активные IIG link annotations; publication backend обязан вернуть `links_preserved=true` и PDF public URL.
+- Эти правила являются migration-safe и должны сохраняться при переносе с GitHub Pages на production hosting/backend.
