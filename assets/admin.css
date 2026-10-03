@@ -91,3 +91,7 @@
 .digest-page-3 .finaladvice{margin-top:10px!important;position:static!important;align-self:stretch}
 .digest-page-3 .digest-end-ctas{margin-top:10px!important;position:static!important;align-self:stretch}
 .digest-page-3 .finaladvice-link{align-items:start}
+
+
+/* DIGEST PDF PUBLICATION CONTROL */
+.digestPdfUpload{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #cdd8df;border-radius:8px;background:#fff;font-size:10px;font-weight:900;color:#0b3158}.digestPdfUpload input{max-width:220px;font-size:10px}.finaldigest-readmore{white-space:nowrap;color:#0b5f99;font-size:8px;font-weight:900;text-align:right}
