@@ -282,3 +282,16 @@ The public website download button resolves CURRENT and downloads the PDF. It mu
 - Final candidate, Final Preview и ADMIN_1 approval должны fail-closed при некорректном canonical route NEWS/Advice.
 - PDF export обязан сохранять активные IIG link annotations; publication backend обязан вернуть `links_preserved=true` и PDF public URL.
 - Эти правила являются migration-safe и должны сохраняться при переносе с GitHub Pages на production hosting/backend.
+
+
+## FINAL_ADMIN_IIG — CORE ROW GEOMETRY INVARIANT / PAGE 2 SUBSCRIBE CTA (2026-10-03)
+
+Нерушимое правило верстки Digest:
+
+- Геометрия каждой строки NEWS / Finance / Regulation на всех core-страницах одинакова. Page 3 не имеет права увеличивать высоту строки, padding, font-size, grid gap или размер Read-more относительно Page 2.
+- Core row baseline: `grid-template-columns: 28px 1fr`, `gap: 8px`, `padding: 5px 7px`, `font-size: 9px`, Read-more `8px`.
+- Grid rows всегда content-sized: `align-content:start` + `grid-auto-rows:max-content`. Вертикальное растягивание строк запрещено.
+- Page 2 внизу всегда содержит отдельную кнопку **«ПІДПИСАТИСЯ НА ДАЙДЖЕСТ»** → `forms.html#subscribe`.
+- Page 3 и страницы 4+ сохраняют нижние CTA согласно утверждённому стандарту.
+- Page 3 compact capacity = **14** условных слотов; уменьшение capacity только из-за CSS-регресса запрещено. Finance/Regulation не должны уходить на Page 4, если помещаются при canonical compact-row geometry.
+- Любое изменение, нарушающее одинаковую геометрию строк Page 2 / Page 3, является release-blocker и должно ронять STEP 26 acceptance.
