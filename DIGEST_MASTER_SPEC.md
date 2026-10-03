@@ -182,7 +182,7 @@ The canonical distribution surface is the IIG website CURRENT PDF. Admin approva
 
 Обязательный финальный контракт:
 
-- После ADMIN_1 Final Preview и Final Approval публикуется **точно утверждённый PDF** через защищённое действие **«ЗАЛИТИ PDF ДАЙДЖЕСТ НА САЙТ»**. Новый выпуск становится CURRENT, предыдущий CURRENT переносится в Archive.
+- После ADMIN_1 Final Preview и Final Approval публикуется **точно утверждённый PDF** через защищённое действие **«ЗАВАНТАЖИТИ PDF ДАЙДЖЕСТ НА САЙТ»**. Новый выпуск становится CURRENT, предыдущий CURRENT переносится в Archive.
 - Публичная карточка на главной — **«ЗАВАНТАЖИТИ ДАЙДЖЕСТ PDF»** со стрелкой вниз. Она никогда не должна вести в «Новини та інсайти» или другой контент. Runtime принимает только CURRENT release с `.pdf` public_url; иначе остаётся dedicated resolver `digest/current.html`.
 - Каждая строка NEWS / Finance / Regulation в Digest целиком кликабельна и ведёт только на canonical `article.html?id=<slug>`.
 - Каждая строка «Поради Головного інженера» целиком кликабельна и ведёт только на canonical `advice-article.html?id=<slug>`.
