@@ -768,3 +768,16 @@ After ADMIN_1 final approval, the toolbar presents a separate enabled action `З
 - После фиксации workflow: **Final Preview → ADMIN_1 Final Approval → PDF → publish**.
 - Пока ручные изменения не зафиксированы, Admin показывает явный статус **«Є НЕЗАФІКСОВАНІ ЗМІНИ»** и блокирует approval/export/publish.
 - Если существует Page 4+ типа NEWS/Finance, Final Preview/approval блокируется как нарушение 3-page core standard.
+
+
+## FINAL_ADMIN_IIG — FINAL PREVIEW LOCK + RED FINAL APPROVAL (2026-10-03)
+
+Этот раздел заменяет прежнюю отдельную команду «ЗАФІКСУВАТИ ЗМІНИ МАКЕТУ».
+
+- Отдельной кнопки фиксации ручных изменений нет.
+- После любых ручных изменений оператор открывает **«ФІНАЛЬНИЙ ПЕРЕГЛЯД ВЕРСТКИ»**.
+- Final Preview выполняет две функции одновременно: визуальная проверка + фиксация exact текущего layout fingerprint как новой ревизии candidate. Auto-fill не запускается.
+- Красная кнопка **«ЗАТВЕРДИТИ ФІНАЛЬНИЙ МАКЕТ»** утверждает только тот exact layout, который был последним показан в Final Preview.
+- Если после Final Preview изменена хотя бы одна строка, порядок, страница, CTA, cover или другой элемент fingerprint, красная кнопка блокируется и требует **только повторно открыть Final Preview**. Повторно формировать candidate нельзя и не требуется.
+- При успешном Final Approval текущий fingerprint считается одновременно зафиксированным и утверждённым ADMIN_1; затем разблокируются PDF/export/publication действия.
+- Workflow: **build candidate один раз → ручная редакция → Final Preview (lock revision) → red Final Approval → PDF → publish**.
