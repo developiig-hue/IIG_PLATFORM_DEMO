@@ -715,3 +715,9 @@ After ADMIN_1 final approval, Admin enables: `PDF · ЗБЕРЕГТИ`, `PDF д�
 Backend success requires a `.pdf` public_url and `links_preserved=true`. On success: old CURRENT -> ARCHIVE, uploaded PDF -> CURRENT, READY_FOR_DOWNLOAD + READY_FOR_MAILING. On failure the previous CURRENT remains unchanged.
 
 Every news item in the PDF shows a right-edge `Читати далі... →` marker within its anchor. Every Advice link uses `advice-article.html?id=<slug>`; public Advice rendering must also normalize legacy `?slug=` links. The public homepage/current-Digest control must never redirect users to the News section when no PDF publication has occurred.
+
+
+## 42. DIGEST READ-MORE / PDF SITE UPLOAD CONTRACT — 2026-10-03
+Admin Final Preview and export render every item row as one anchor containing both `.finaldigest-title` and `.finaldigest-readmore` with text `Читати далі... →`. Advice URL generation is locked to `advice-article.html?id=<encoded slug>`.
+
+After ADMIN_1 final approval, the toolbar presents a separate enabled action `ЗАЛИТИ PDF ДАЙДЖЕСТ НА САЙТ`. It POSTs the exact approved artifact to `/api/v1/digest/releases` with `output_format=PDF`, `make_current=true`, `archive_previous_current=true`, `READY_FOR_DOWNLOAD` and `READY_FOR_MAILING`. Success requires a `.pdf` public URL plus `links_preserved=true`. The public CURRENT resolver must accept only PDF. No fallback redirect to NEWS is permitted.
