@@ -210,3 +210,19 @@ The PDF is derived 1:1 from the exact Admin-approved self-contained layout. The 
 Every displayed NEWS/Finance/Regulation item in the PDF MUST retain an active hyperlink to its exact IIG site article. Every Chief Engineer Advice item MUST retain an active hyperlink to its exact IIG Advice page. The final Project and Subscribe CTA buttons MUST remain active. The publication endpoint must return `links_preserved=true`; otherwise publication is blocked and the new issue MUST NOT become CURRENT.
 
 Release transaction remains atomic: previous CURRENT PDF -> ARCHIVE; new ADMIN_1-approved PDF -> CURRENT + READY_FOR_DOWNLOAD + READY_FOR_MAILING. Robot #7 must use the same CURRENT PDF URL/artifact identity that users download from the site.
+
+
+## PAGE 3 + PAGE 4+ CTA / BALANCED PACKING LOCK — SUPERSEDING RULE — 2026-10-03
+This rule is mandatory for every new Digest and supersedes any earlier footer behavior that placed Project/Subscribe buttons only on the last page.
+
+### Page 3
+Page 3 always reserves fixed vertical space for: (1) the fixed 3-item Chief Engineer Advice block, and (2) the two mandatory CTA buttons immediately below it. The buttons are always visible in Working Preview, Final Preview, HTML export and PDF output:
+- `РОЗМІСТИТИ ПРОЄКТ` -> `forms.html#project`
+- `ПІДПИСАТИСЯ НА ДАЙДЖЕСТ` -> `forms.html#subscribe`
+
+The Finance/Regulation content area above Advice is filled only up to the remaining safe capacity. The Page 3 packer must balance Finance and Regulation as evenly as possible (target 50/50; absolute count difference <=1 when both pools are available). It must not shrink typography, overlap Advice/CTA, or hide the CTA footer to fit more items. Overflow goes to Page 4+.
+
+### Every subsequent page
+Every page from Page 4 onward, regardless of type (news continuation, imported article, promo/IIG material, Page 5/6/etc.), ends with the same two active CTA buttons. They are page-level invariants, not a final-page-only footer. Links must survive Final Preview, Admin export and canonical PDF conversion.
+
+Any regression in which Page 3 lacks these buttons, Page 4+ omits them, or Page 3 becomes materially unbalanced between Finance and Regulation is release-blocking.
