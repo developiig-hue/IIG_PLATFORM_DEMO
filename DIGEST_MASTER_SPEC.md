@@ -170,3 +170,9 @@ After Final Preview and ADMIN_1 approval, Admin exposes a separate `ЗАЛИТИ
 Each Digest news row ends with visible `Читати далі... →` at the right edge, inside the same active link as the news title. Advice links use canonical `?id=` routes with compatibility for legacy `?slug=` links.
 
 The released website artifact is the exact ADMIN_1-approved PDF uploaded from Admin. Publication is a storage/current-archive transaction, not a second generation step. Public download must resolve to the CURRENT PDF, never to News & Insights.
+
+
+## EXPLICIT READ-MORE + WEBSITE PDF DISTRIBUTION — 2026-10-03
+Each Digest content row ends with `Читати далі... →` aligned toward the right edge; the entire row link targets the specific IIG article. Advice links use canonical `advice-article.html?id=` routes, with legacy slug-route compatibility only for historical artifacts.
+
+The canonical distribution surface is the IIG website CURRENT PDF. Admin approval alone does not mean public availability; ADMIN_1 must execute the dedicated site-upload action. On success the public site points to the new PDF and the previous PDF is archived. No chat attachment or NEWS-page redirect is a valid substitute.
