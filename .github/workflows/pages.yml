@@ -40,6 +40,7 @@ jobs:
       - name: JavaScript syntax guard
         run: |
           node --check assets/admin.js
+          node --check assets/admin-final-admin1-v1.js
           node --check assets/public-news.js
           node --check assets/admin-contacts.js
       - name: STEP 26 Admin MASTER acceptance
@@ -49,7 +50,7 @@ jobs:
           ! grep -RqiE '(DATABASE_URL|REDIS_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|redis://)' --exclude-dir=.git --exclude-dir=.github index.html industry.html case.html advice.html financing.html finance-news.html news.html forms.html about.html digest .nojekyll README.md
       - name: Public surface smoke
         run: |
-          for f in index.html industry.html case.html advice.html financing.html finance-news.html news.html article.html forms.html about.html admin.html admin-ua.html assets/iig.css assets/iig.js assets/public-news.js content/public-news.json baze_foto_news/manifest.json; do test -s "$f"; done
+          for f in index.html industry.html case.html advice.html financing.html finance-news.html news.html article.html forms.html about.html admin.html admin-ua.html admin-final-admin1-v1.html assets/admin-final-admin1-v1.js assets/iig.css assets/iig.js assets/public-news.js content/public-news.json baze_foto_news/manifest.json; do test -s "$f"; done
           grep -q 'IIG' index.html
           grep -q 'ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА' index.html
           grep -q 'FINANCING INTELLIGENCE' financing.html
