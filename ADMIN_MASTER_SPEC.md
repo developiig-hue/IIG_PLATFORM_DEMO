@@ -695,3 +695,7 @@ If PDF creation or link verification fails, the transaction fails closed: previo
 The Admin Builder reserves Page 3 capacity for enlarged Advice typography plus mandatory Project/Subscribe CTAs. Page 3 content capacity is therefore lower than ordinary NEWS pages and the auto-packer balances FINANCE and REGULATION counts with target parity; when both categories have available items, difference >1 is a QA blocker.
 
 Working Preview must render the CTA footer on Page 3 and every page index >=4. Final Preview/export uses the same rule. Project route is `forms.html#project`; Subscribe route is `forms.html#subscribe`. Additional pages created by overflow, imported articles or promo content cannot omit these controls. CI guards both routes, Page 3 balancing logic and Page 3+ CTA rendering.
+
+
+## 41. PAGE 3 ADVICE / CTA COLLISION GUARD — 2026-10-03
+Admin Page 3 rendering uses an explicit grid with four rows: header, digest items, Advice, CTA. The Advice and CTA rows are static-flow siblings. Finance/Regulation safe capacity is capped below ordinary NEWS-page capacity so enlarged Advice type and the footer always fit. If content exceeds safe capacity, it is continued on Page 4+.
