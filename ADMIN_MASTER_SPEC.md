@@ -721,3 +721,17 @@ Every news item in the PDF shows a right-edge `Читати далі... →` mar
 Admin Final Preview and export render every item row as one anchor containing both `.finaldigest-title` and `.finaldigest-readmore` with text `Читати далі... →`. Advice URL generation is locked to `advice-article.html?id=<encoded slug>`.
 
 After ADMIN_1 final approval, the toolbar presents a separate enabled action `ЗАЛИТИ PDF ДАЙДЖЕСТ НА САЙТ`. It POSTs the exact approved artifact to `/api/v1/digest/releases` with `output_format=PDF`, `make_current=true`, `archive_previous_current=true`, `READY_FOR_DOWNLOAD` and `READY_FOR_MAILING`. Success requires a `.pdf` public URL plus `links_preserved=true`. The public CURRENT resolver must accept only PDF. No fallback redirect to NEWS is permitted.
+
+
+## FINAL_ADMIN_IIG — PDF PUBLICATION + CANONICAL DIGEST LINKS + READ-MORE LOCK (2026-10-03)
+
+Обязательный финальный контракт:
+
+- После ADMIN_1 Final Preview и Final Approval публикуется **точно утверждённый PDF** через защищённое действие **«ЗАЛИТИ PDF ДАЙДЖЕСТ НА САЙТ»**. Новый выпуск становится CURRENT, предыдущий CURRENT переносится в Archive.
+- Публичная карточка на главной — **«ЗАВАНТАЖИТИ ДАЙДЖЕСТ PDF»** со стрелкой вниз. Она никогда не должна вести в «Новини та інсайти» или другой контент. Runtime принимает только CURRENT release с `.pdf` public_url; иначе остаётся dedicated resolver `digest/current.html`.
+- Каждая строка NEWS / Finance / Regulation в Digest целиком кликабельна и ведёт только на canonical `article.html?id=<slug>`.
+- Каждая строка «Поради Головного інженера» целиком кликабельна и ведёт только на canonical `advice-article.html?id=<slug>`.
+- Справа каждой кликабельной строки Digest обязателен единый видимый CTA: **«Читати далі... →»**. Для Advice запрещено возвращать отдельный текст «Детальніше →».
+- Final candidate, Final Preview и ADMIN_1 approval должны fail-closed при некорректном canonical route NEWS/Advice.
+- PDF export обязан сохранять активные IIG link annotations; publication backend обязан вернуть `links_preserved=true` и PDF public URL.
+- Эти правила являются migration-safe и должны сохраняться при переносе с GitHub Pages на production hosting/backend.
