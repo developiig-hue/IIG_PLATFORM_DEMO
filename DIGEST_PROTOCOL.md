@@ -226,3 +226,9 @@ The Finance/Regulation content area above Advice is filled only up to the remain
 Every page from Page 4 onward, regardless of type (news continuation, imported article, promo/IIG material, Page 5/6/etc.), ends with the same two active CTA buttons. They are page-level invariants, not a final-page-only footer. Links must survive Final Preview, Admin export and canonical PDF conversion.
 
 Any regression in which Page 3 lacks these buttons, Page 4+ omits them, or Page 3 becomes materially unbalanced between Finance and Regulation is release-blocking.
+
+
+## PAGE 3 NON-OVERLAP GEOMETRY LOCK — 2026-10-03
+Page 3 must use a sequential four-zone layout: header -> Finance/Regulation items -> Chief Engineer Advice -> Project/Subscribe CTA footer. Advice and CTA must never share absolute/floating space or overlap. CTA controls must render after the full Advice block and remain visible in Working Preview, Final Preview, Admin export and canonical PDF.
+
+Because Advice typography is locked at 13.5 px, Page 3 uses a reduced safe content capacity for Finance/Regulation. Overflow is moved to Page 4+; hiding or covering Advice text to keep more Page 3 items is forbidden. Any visual overlap between Advice and CTA is release-blocking.
