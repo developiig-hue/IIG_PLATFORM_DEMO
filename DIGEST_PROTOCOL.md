@@ -232,3 +232,18 @@ Any regression in which Page 3 lacks these buttons, Page 4+ omits them, or Page 
 Page 3 must use a sequential four-zone layout: header -> Finance/Regulation items -> Chief Engineer Advice -> Project/Subscribe CTA footer. Advice and CTA must never share absolute/floating space or overlap. CTA controls must render after the full Advice block and remain visible in Working Preview, Final Preview, Admin export and canonical PDF.
 
 Because Advice typography is locked at 13.5 px, Page 3 uses a reduced safe content capacity for Finance/Regulation. Overflow is moved to Page 4+; hiding or covering Advice text to keep more Page 3 items is forbidden. Any visual overlap between Advice and CTA is release-blocking.
+
+
+## ADVICE ROUTE + EXPLICIT PUBLISH BUTTON LOCK — 2026-10-03
+Two release-path invariants are mandatory.
+
+### 1. Chief Engineer Advice links
+The canonical public Advice route is `advice-article.html?id=<slug>`. Admin Builder, Final Preview, HTML export and PDF link annotations MUST emit `?id=`. The public Advice runtime may accept legacy `?slug=` only as backward compatibility for already exported artifacts; new releases must never generate `?slug=`.
+
+### 2. Explicit Admin publication action
+ADMIN_1 final approval and site publication are separate auditable actions. Final approval sets the exact candidate to `READY_TO_PUBLISH` and unlocks the button `⇧ ЗАЛИТИ ДАЙДЖЕСТ НА САЙТ`, placed beside the Admin export/download controls. Only this button may call `POST /api/v1/digest/releases` for the exact approved fingerprint.
+
+A successful publish transaction must: create/verify the linked PDF, archive the prior CURRENT, promote the new issue to CURRENT, return the public PDF URL, set READY_FOR_DOWNLOAD and READY_FOR_MAILING, and write Audit. A failed/unavailable backend must leave the old CURRENT untouched and must not show a false success state.
+
+### 3. Public download route
+The website download card must never fall back to `news.html#digest`. It resolves CURRENT through `GET /api/v1/digest/current`. If the API is unavailable, the fallback route is the dedicated `digest/current.html` status/resolver page, not News & Insights. Once a new issue is published, the public card points to the returned CURRENT artifact.
