@@ -354,3 +354,12 @@ The public website download button resolves CURRENT and downloads the PDF. It mu
 - The UI must visibly show **RUNTIME · ADMIN1 FINAL LOCK v1**.
 - Runtime marker: `window.IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1"`.
 - If this badge is absent, the browser is not running the authoritative ADMIN_1 atomic-final-lock runtime and acceptance is invalid.
+
+
+### Dedicated cache-proof FINAL_ADMIN_IIG route
+
+For acceptance and emergency cache bypass, canonical test route is:
+
+`/IIG_PLATFORM_DEMO/admin-final-admin1-v1.html#digest`
+
+This page has a unique filename, loads only `assets/admin-final-admin1-v1.js?v=ADMIN1-FINAL-LOCK-V1`, and carries `data-admin-runtime-page="ADMIN1_FINAL_LOCK_V1"`. It must be used when validating ADMIN_1 red-button behavior so no historical `admin-ua.html` or `admin.js` cache can affect the result.
