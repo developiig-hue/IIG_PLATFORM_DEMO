@@ -689,3 +689,9 @@ Public site reads `GET /api/v1/digest/current` for the active download target an
 After ADMIN_1 approval, Admin sends the exact self-contained approved artifact to `/api/v1/digest/releases` with `output_format=PDF` and a complete list of IIG links expected in the PDF. The backend renders that exact artifact to PDF and verifies PDF link annotations before returning success. Required response includes a `.pdf` `public_url` and `links_preserved=true`.
 
 If PDF creation or link verification fails, the transaction fails closed: previous CURRENT remains CURRENT and the candidate is not marked READY_FOR_DOWNLOAD or READY_FOR_MAILING. On success the backend atomically archives the previous CURRENT PDF, promotes the new PDF to CURRENT, and Robot #7 uses the same public PDF artifact. Content/layout generation remains Admin-only; backend conversion is technical serialization only.
+
+
+## 40. DIGEST PAGE 3 / PAGE 4+ PACKING AND CTA CONTRACT — 2026-10-03
+The Admin Builder reserves Page 3 capacity for enlarged Advice typography plus mandatory Project/Subscribe CTAs. Page 3 content capacity is therefore lower than ordinary NEWS pages and the auto-packer balances FINANCE and REGULATION counts with target parity; when both categories have available items, difference >1 is a QA blocker.
+
+Working Preview must render the CTA footer on Page 3 and every page index >=4. Final Preview/export uses the same rule. Project route is `forms.html#project`; Subscribe route is `forms.html#subscribe`. Additional pages created by overflow, imported articles or promo content cannot omit these controls. CI guards both routes, Page 3 balancing logic and Page 3+ CTA rendering.
