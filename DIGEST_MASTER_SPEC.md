@@ -148,3 +148,9 @@ Every Digest, including issues with appended article/promo pages, ends on its tr
 The final Admin-approved Digest is distributed as PDF. The PDF preserves the exact approved visual state and active links to corresponding IIG NEWS/Finance/Regulation/Advice pages plus Project and Subscribe CTAs. A PDF with flattened/non-clickable links is not release-ready.
 
 The server is allowed to convert the exact Admin artifact to PDF for storage/distribution, but is forbidden to re-author or regenerate layout/content. Only a verified PDF may be promoted to CURRENT.
+
+
+## PAGE 3 CAPACITY + CTA FOOTER INVARIANT — 2026-10-03
+Page 3 has a protected lower zone for 3 Chief Engineer Advice rows and two CTA buttons. Finance/Regulation items use only the safe area above that zone and are packed as close to 50/50 as available content permits. Overflow is continued on Page 4+ rather than compressing the protected lower zone.
+
+Page 3 and every page 4+ contain active Project and Subscribe buttons at the bottom. These are canonical layout components and must remain in Admin Working Preview, Final Preview and linked PDF output.
