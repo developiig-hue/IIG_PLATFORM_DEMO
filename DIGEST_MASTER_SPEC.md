@@ -164,3 +164,9 @@ The protected lower part of Page 3 is sequential, not layered: Advice block firs
 Advice links in every Digest use `advice-article.html?id=<slug>`. Legacy `?slug=` may be read, not generated.
 
 After Final Preview and ADMIN_1 approval, Admin exposes a separate `ЗАЛИТИ ДАЙДЖЕСТ НА САЙТ` control. Approval alone does not claim publication. Public download resolves the server CURRENT release and never redirects users to the News section when no Digest is published.
+
+
+## VISIBLE READ-MORE + PDF-TO-SITE INVARIANT — 2026-10-03
+Each Digest news row ends with visible `Читати далі... →` at the right edge, inside the same active link as the news title. Advice links use canonical `?id=` routes with compatibility for legacy `?slug=` links.
+
+The released website artifact is the exact ADMIN_1-approved PDF uploaded from Admin. Publication is a storage/current-archive transaction, not a second generation step. Public download must resolve to the CURRENT PDF, never to News & Insights.
