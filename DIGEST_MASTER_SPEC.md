@@ -158,3 +158,9 @@ Page 3 and every page 4+ contain active Project and Subscribe buttons at the bot
 
 ## PAGE 3 NON-OVERLAP LAYOUT — 2026-10-03
 The protected lower part of Page 3 is sequential, not layered: Advice block first, CTA footer second. The content list above may shrink in count but must never force the CTA over Advice text. Safe packing takes precedence over item count.
+
+
+## ADVICE DIRECT ROUTE + CURRENT DOWNLOAD ROUTE — 2026-10-03
+Advice links in every Digest use `advice-article.html?id=<slug>`. Legacy `?slug=` may be read, not generated.
+
+After Final Preview and ADMIN_1 approval, Admin exposes a separate `ЗАЛИТИ ДАЙДЖЕСТ НА САЙТ` control. Approval alone does not claim publication. Public download resolves the server CURRENT release and never redirects users to the News section when no Digest is published.
