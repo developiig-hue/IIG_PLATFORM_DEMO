@@ -2,6 +2,7 @@ from pathlib import Path
 import re, json, sys
 root=Path(".")
 html=(root/"admin-ua.html").read_text(encoding="utf-8")
+final_admin=(root/"admin-final-admin1-v1.html").read_text(encoding="utf-8")
 source_js=(root/"assets/admin.js").read_text(encoding="utf-8")
 live_js_path=root/"assets/admin-final-admin1-v1.js"
 js=live_js_path.read_text(encoding="utf-8")
@@ -14,6 +15,8 @@ def need(cond,msg):
     if not cond: errors.append(msg)
 need(live_js_path.is_file(),"Cache-proof live Admin runtime missing")
 need('assets/admin-final-admin1-v1.js' in html,"Admin HTML must load cache-proof live runtime")
+need('assets/admin-final-admin1-v1.js?v=ADMIN1-FINAL-LOCK-V1' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
+need('data-admin-runtime-page="ADMIN1_FINAL_LOCK_V1"' in final_admin,"Dedicated FINAL_ADMIN_IIG runtime marker missing")
 need("RUNTIME · ADMIN1 FINAL LOCK v1" in html,"Visible Admin runtime version badge missing")
 need('IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1"' in js,"Live runtime version marker missing")
 need(source_js==js,"Source admin.js and live cache-proof runtime must remain byte-identical")
