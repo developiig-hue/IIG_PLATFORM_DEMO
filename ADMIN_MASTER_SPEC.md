@@ -799,3 +799,11 @@ After ADMIN_1 final approval, the toolbar presents a separate enabled action `З
 4. Если после Final Preview ADMIN_2 или ADMIN_1 меняет хотя бы один элемент макета, красная кнопка должна fail-closed и требовать только **повторный Final Preview**. Повторный build candidate запрещён как лишний и не должен требоваться.
 5. Маршрут состояния: **candidate → edits → Final Preview snapshot → ADMIN_1 atomic lock + approval → PDF → publish**.
 6. Никакая роль кроме ADMIN_1 не имеет права переводить preview fingerprint в canonical approved candidate fingerprint.
+
+
+### Cache-proof runtime publication lock
+
+- `admin-ua.html` loads **`assets/admin-final-admin1-v1.js`** as the active Admin runtime, not the legacy cached `assets/admin.js` URL.
+- The UI must visibly show **RUNTIME · ADMIN1 FINAL LOCK v1**.
+- Runtime marker: `window.IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1"`.
+- If this badge is absent, the browser is not running the authoritative ADMIN_1 atomic-final-lock runtime and acceptance is invalid.
