@@ -247,3 +247,14 @@ A successful publish transaction must: create/verify the linked PDF, archive the
 
 ### 3. Public download route
 The website download card must never fall back to `news.html#digest`. It resolves CURRENT through `GET /api/v1/digest/current`. If the API is unavailable, the fallback route is the dedicated `digest/current.html` status/resolver page, not News & Insights. Once a new issue is published, the public card points to the returned CURRENT artifact.
+
+
+## NEWS ROW READ-MORE + SITE PDF UPLOAD LOCK — 2026-10-03
+Every news row in Final Preview, Admin export and the canonical PDF must display an explicit right-aligned action label `Читати далі... →`. The title and the action label belong to the same anchor and open the exact corresponding IIG article. A row that is clickable but does not visibly indicate the continuation action is a presentation regression.
+
+Chief Engineer Advice links use the canonical route `advice-article.html?id=<slug>`. For backward compatibility, public Advice pages must accept legacy `?slug=` links and normalize them to `?id=` before rendering. This is required so previously generated Digests do not break after route migrations.
+
+### PDF publication to the website
+The public artifact is a PDF selected/generated from the exact ADMIN_1-approved Digest. Admin exposes a `PDF для публікації` file control and a separate `ЗАЛИТИ PDF ДАЙДЖЕСТ НА САЙТ` action. The action uploads the PDF itself as multipart form data to `POST /api/v1/digest/releases` together with metadata containing issue, exact fingerprint, ADMIN_1 approval, required IIG links, `make_current=true`, `archive_previous_current=true`, `READY_FOR_DOWNLOAD` and `READY_FOR_MAILING`.
+
+The server must not rebuild the Digest from HTML/CMS. It stores and validates the uploaded PDF, verifies active PDF link annotations, archives the previous CURRENT PDF, promotes the new PDF to CURRENT, and returns a `.pdf` public URL with `links_preserved=true`. The public website resolves the current download target through the CURRENT route/API and never falls back to the NEWS section.
