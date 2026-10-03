@@ -748,3 +748,23 @@ After ADMIN_1 final approval, the toolbar presents a separate enabled action `З
 - Page 3 и страницы 4+ сохраняют нижние CTA согласно утверждённому стандарту.
 - Page 3 compact capacity = **14** условных слотов; уменьшение capacity только из-за CSS-регресса запрещено. Finance/Regulation не должны уходить на Page 4, если помещаются при canonical compact-row geometry.
 - Любое изменение, нарушающее одинаковую геометрию строк Page 2 / Page 3, является release-blocker и должно ронять STEP 26 acceptance.
+
+
+## FINAL_ADMIN_IIG — MANUAL LAYOUT LOCK / 3-PAGE CORE STANDARD (2026-10-03)
+
+Обязательный workflow после ручной редакции Digest:
+
+- Стандартный Monthly Digest имеет **3 core-страницы**: Page 1 cover, Page 2 NEWS, Page 3 Finance / Regulation / Advice.
+- Автоматический Auto-fill **не создаёт Page 4 для обычных NEWS / Finance / Regulation**. Материалы сверх вместимости остаются вне текущего выпуска и показываются как excluded by capacity.
+- Page 4+ допускается только как вручную добавленная IIG ORIGINAL / partner / sponsored / promo / article page.
+- Candidate формируется один раз. После ручного удаления лишних новостей, перестановки строк или другой корректировки **запрещено требовать повторный build candidate**, потому что это повторно запускает Auto-fill.
+- После ручной редакции оператор нажимает **«ЗАФІКСУВАТИ ЗМІНИ МАКЕТУ»**. Эта команда:
+  1. не запускает Auto-fill;
+  2. сохраняет текущий состав и порядок страниц;
+  3. обновляет fingerprint текущего candidate;
+  4. увеличивает revision;
+  5. сбрасывает старый Final Preview / Final Approval / PDF как устаревшие;
+  6. переводит candidate в AWAITING_ADMIN_1_PREVIEW.
+- После фиксации workflow: **Final Preview → ADMIN_1 Final Approval → PDF → publish**.
+- Пока ручные изменения не зафиксированы, Admin показывает явный статус **«Є НЕЗАФІКСОВАНІ ЗМІНИ»** и блокирует approval/export/publish.
+- Если существует Page 4+ типа NEWS/Finance, Final Preview/approval блокируется как нарушение 3-page core standard.
