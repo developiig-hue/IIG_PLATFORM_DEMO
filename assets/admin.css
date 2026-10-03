@@ -94,5 +94,4 @@
 
 
 /* DIGEST PDF PUBLICATION CONTROL */
-.digestlayoutlock{margin-top:14px;border:2px solid #0f7b45;background:#f4fbf7}.digestlayoutlock .sectionhead{margin-bottom:0}.digestlayoutlock h2{margin:0 0 6px;color:#0b3158}.digestlayoutlock .toolbar{justify-content:space-between;align-items:center}.digestlayoutlock #lockDigestChanges{min-width:290px}.digestlayoutlock #lockDigestChanges:disabled{opacity:.45;cursor:not-allowed}
 .digestPdfUpload{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #cdd8df;border-radius:8px;background:#fff;font-size:10px;font-weight:900;color:#0b3158}.digestPdfUpload input{max-width:220px;font-size:10px}.finaldigest-readmore{white-space:nowrap;color:#0b5f99;font-size:8px;font-weight:900;text-align:right}
