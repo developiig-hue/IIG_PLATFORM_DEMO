@@ -254,3 +254,24 @@ The canonical distribution surface is the IIG website CURRENT PDF. Admin approva
 4. Если после Final Preview ADMIN_2 или ADMIN_1 меняет хотя бы один элемент макета, красная кнопка должна fail-closed и требовать только **повторный Final Preview**. Повторный build candidate запрещён как лишний и не должен требоваться.
 5. Маршрут состояния: **candidate → edits → Final Preview snapshot → ADMIN_1 atomic lock + approval → PDF → publish**.
 6. Никакая роль кроме ADMIN_1 не имеет права переводить preview fingerprint в canonical approved candidate fingerprint.
+
+
+## FINAL_ADMIN_IIG — MANUAL LAYOUT AUTHORITY + STATIC CORE ROWS V2 (2026-10-03)
+
+### Root cause fixed
+
+1. The previous runtime called `autoFillDigest(false)` from editorial approve/publish/reject and from content reload. That allowed the approved-content pool to overwrite ADMIN_2 manual Digest edits after candidate creation.
+2. Candidate persistence stored a fingerprint but not the current manual page layout. Reload could therefore reconstruct the Digest from Auto-fill instead of restoring the editor's exact version.
+3. Page 3 had a dedicated stretching grid (`minmax(0,1fr)` / stretch behavior), violating the rule that core news rows must have identical geometry on Page 2 and Page 3.
+
+### HARD rules
+
+- Auto-fill is authoritative **only** during the first candidate build or after the operator explicitly presses the Auto-fill button.
+- Once a candidate exists, **manual Digest layout has priority over the approved-content pool**. Editorial approve/publish/reject, content refresh, role change, Final Preview and red Final Approval MUST NOT call Auto-fill.
+- Manual layout is persisted under a dedicated layout state and restored before any fallback Auto-fill on page reload.
+- Every manual delete, reorder, move, page edit, cover edit or extra-page edit invalidates the previous Final Preview and preserves the exact current layout.
+- Final Preview snapshots the exact manual layout. ADMIN_1 red **«ЗАТВЕРДИТИ ФІНАЛЬНИЙ МАКЕТ»** promotes that exact snapshot fingerprint to canonical candidate and sets `layout_authority=ADMIN_1_APPROVED_MANUAL_LAYOUT`.
+- After ADMIN_1 approval, automatic refill authority is disabled for that candidate. A new Auto-fill requires an explicit destructive action by the operator and a new Final Preview.
+- Page 2 and Page 3 NEWS / Finance / Regulation rows share one immutable geometry: full width, **32 px row height**, identical columns/gap/padding/font/read-more sizing. No page-specific stretch override is allowed.
+- Page 3 Advice and CTA blocks follow the fixed news rows; they cannot resize or stretch the rows above them.
+- Any reintroduction of automatic `autoFillDigest(false)` into approve/publish/reject/load paths, or any Page-3-only news-row geometry override, is a **release blocker**.
