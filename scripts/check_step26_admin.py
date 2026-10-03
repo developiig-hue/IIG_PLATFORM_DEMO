@@ -2,13 +2,20 @@ from pathlib import Path
 import re, json, sys
 root=Path(".")
 html=(root/"admin-ua.html").read_text(encoding="utf-8")
-js=(root/"assets/admin.js").read_text(encoding="utf-8")
+source_js=(root/"assets/admin.js").read_text(encoding="utf-8")
+live_js_path=root/"assets/admin-final-admin1-v1.js"
+js=live_js_path.read_text(encoding="utf-8")
+need_live_runtime=True
 pub=(root/"assets/public-news.js").read_text(encoding="utf-8")
 contacts=(root/"assets/admin-contacts.js").read_text(encoding="utf-8")
 spec=(root/"ADMIN_MASTER_SPEC.md").read_text(encoding="utf-8")
 errors=[]
 def need(cond,msg):
     if not cond: errors.append(msg)
+need(live_js_path.is_file(),"Cache-proof live Admin runtime missing")
+need('assets/admin-final-admin1-v1.js' in html,"Admin HTML must load cache-proof live runtime")
+need(source_js==js,"Source admin.js and live cache-proof runtime must remain byte-identical")
+
 for s in ["Новини та публікації","Дайджест","Розсилка та база","Користувачі та права","Безпека"]:
     need(s in html,f"UA navigation missing: {s}")
 need("contentTypeFilter" in html,"Content type filter missing")
@@ -94,6 +101,10 @@ need("ADMIN_1_ATOMIC_FINAL_LOCK" in js and "layout_locked_by=\"ADMIN_1\"" in js,
 need('snap.fingerprint!==fp' in js and 'preview_fingerprint!==fp' in js,"ADMIN_1 must approve only the exact latest Final Preview snapshot")
 need("Fingerprint Final Preview snapshot став canonical candidate fingerprint" in js,"Red approval must promote preview fingerprint to canonical candidate")
 need("ADMIN_1_LOCKED_AND_APPROVED" in js,"Approved snapshot terminal state missing")
+need("Сформуйте release-candidate повторно" not in js,"Live Admin runtime still contains forbidden candidate rebuild message")
+need("Сформуйте candidate повторно" not in js,"Live Admin runtime still contains forbidden candidate rebuild message")
+need("Формувати candidate повторно не потрібно" in js or "Повторно формувати candidate не потрібно" in js,"Live Admin runtime must explicitly avoid candidate rebuild after edits")
+
 need("digestCandidateChecks" in js,"Candidate build checks must be separate from final approval checks")
 need("спочатку ADMIN_1 має підтвердити всі NEWS поточного місяця" not in js,"Final Preview must not be blocked by unrelated monthly NEWS")
 need("перед затвердженням ADMIN_1 зобов’язаний відкрити" in js,"Final approval must require exact Final Preview first")
