@@ -15,7 +15,7 @@ def need(cond,msg):
     if not cond: errors.append(msg)
 need(live_js_path.is_file(),"Cache-proof live Admin runtime missing")
 need('assets/admin-final-admin1-v1.js' in html,"Admin HTML must load cache-proof live runtime")
-need('assets/admin-final-admin1-v1.js?v=MANUAL-LAYOUT-AUTHORITY-V2' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
+need('assets/admin-final-admin1-v1.js?v=MANUAL-FIRST-NO-REBUILD-V3' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
 need('data-admin-runtime-page="ADMIN1_FINAL_LOCK_V1"' in final_admin,"Dedicated FINAL_ADMIN_IIG runtime marker missing")
 need("RUNTIME · ADMIN1 FINAL LOCK v1" in html,"Visible Admin runtime version badge missing")
 need('IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1"' in js,"Live runtime version marker missing")
@@ -118,6 +118,12 @@ need("renderReleaseReadiness();autoFillDigest(false)" not in js,"Editorial appro
 need("const restoredLayout=restoreDigestLayout();if(restoredLayout){renderDigest()}else{autoFillDigest(false)}" in js,"Admin load must restore manual layout before any auto-fill")
 need("Автозаповнення ПЕРЕЗБЕРЕ поточний ручний макет" in js,"Explicit Auto-fill must warn that it replaces manual layout")
 need("commitManualDigestEdit" in js and "invalidatePreviewAfterManualEdit" in js,"Manual Digest edits must persist and invalidate stale Preview")
+need("ensureManualCandidateFromCurrentLayout" in js and "MANUAL_CURRENT_DIGEST_BOOTSTRAP" in js,"CURRENT manual Digest must bootstrap technical release envelope automatically")
+need('auto_fill_policy:"FORBIDDEN_FOR_BOOTSTRAP"' in js,"Manual bootstrap must forbid Auto-fill")
+need("РУЧНИЙ МАКЕТ · READY FOR FINAL PREVIEW" in js,"Missing-candidate state must defer to current manual Digest")
+need("Спочатку один раз сформуйте актуальний release-candidate" not in js,"Final Preview must never require candidate rebuild")
+need("спочатку один раз сформуйте release-candidate" not in js,"Red Final Approval must never require candidate rebuild")
+
 
 need("спочатку ADMIN_1 має підтвердити всі NEWS поточного місяця" not in js,"Final Preview must not be blocked by unrelated monthly NEWS")
 need("поточна редакція не збігається з останнім Final Preview snapshot" in js,"Final approval must require exact latest Final Preview snapshot")
