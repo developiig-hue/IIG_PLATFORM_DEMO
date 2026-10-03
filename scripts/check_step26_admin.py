@@ -231,7 +231,7 @@ need("mergedNews=new Map()" in iig and "localNews=bridge.filter" in iig,"Search 
 need("SEARCH_STOPWORDS" in iig and "searchTokens" in iig,"Search must ignore conjunction stopwords")
 need("єіб eib" in iig and "eib єіб" in iig,"Search must support EIB/ЄІБ bilingual alias")
 need("finance-news.html?institution=eib" in iig,"Finance EIB page must be indexed")
-need("public-search-v3-runtimefix-20261002" in home,"Homepage search cache version not advanced")
+need("digest-current-route-v3-20261003" in home,"Homepage search cache version not advanced")
 need("advice-id-route-v4-20261003" in home,"Homepage Advice route/schematic version must remain locked")
 need('<div class="download-circle">↓</div>' in home,"Digest down-arrow migration invariant broken")
 
@@ -240,7 +240,7 @@ iig=(root/"assets/iig.js").read_text(encoding="utf-8")
 home=(root/"index.html").read_text(encoding="utf-8")
 need("const esc=s=>" in iig,"Search renderer HTML escape helper missing")
 need("runPublicSearchSafe" in iig and "SEARCH_RUNTIME_ERROR" in iig,"Search runtime error guard missing")
-need("public-search-v3-runtimefix-20261002" in home,"Homepage search runtime cache version not advanced")
+need("digest-current-route-v3-20261003" in home,"Homepage search runtime cache version not advanced")
 
 # About/contact project CTA routing
 about=(root/"about.html").read_text(encoding="utf-8")
