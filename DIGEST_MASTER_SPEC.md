@@ -275,3 +275,31 @@ The canonical distribution surface is the IIG website CURRENT PDF. Admin approva
 - Page 2 and Page 3 NEWS / Finance / Regulation rows share one immutable geometry: full width, **32 px row height**, identical columns/gap/padding/font/read-more sizing. No page-specific stretch override is allowed.
 - Page 3 Advice and CTA blocks follow the fixed news rows; they cannot resize or stretch the rows above them.
 - Any reintroduction of automatic `autoFillDigest(false)` into approve/publish/reject/load paths, or any Page-3-only news-row geometry override, is a **release blocker**.
+
+
+## FINAL_ADMIN_IIG — CURRENT MANUAL DIGEST IS PRIMARY / NO CANDIDATE REBUILD V3 (2026-10-03)
+
+### Canonical authority
+
+- The **CURRENT manual Digest visible in Admin** is the primary working source-of-truth.
+- A release-candidate is only a technical release envelope. It must never outrank or overwrite ADMIN_2 / ADMIN_1 manual edits.
+- After any manual edit there is **no requirement to press “Form new candidate” again**.
+
+### Required route
+
+1. ADMIN_2 edits CURRENT Digest.
+2. ADMIN_2 opens **Final Preview**.
+3. If no technical candidate exists for the issue, Final Preview automatically creates it from the exact CURRENT manual layout with source `MANUAL_CURRENT_DIGEST_BOOTSTRAP` and `auto_fill_policy=FORBIDDEN_FOR_BOOTSTRAP`.
+4. This bootstrap MUST NOT call Auto-fill and MUST NOT change page composition, order, deleted items, cover, additional pages or current row layout.
+5. Final Preview snapshots the exact current manual fingerprint.
+6. ADMIN_1 red **«ЗАТВЕРДИТИ ФІНАЛЬНИЙ МАКЕТ»** locks and approves that exact Preview snapshot.
+7. If the layout changes after Preview, only a new Final Preview is required. A candidate rebuild is forbidden and must never be requested.
+
+### UI meaning
+
+- The old “Form new Digest / candidate” action is a destructive new auto-build/reset action only. It is not part of the normal edit → approve route.
+- When no candidate exists but a manual Digest exists, Admin state must show **РУЧНИЙ МАКЕТ · READY FOR FINAL PREVIEW**, not “candidate missing”.
+
+### Release blocker
+
+Any runtime, acceptance rule or message that requires rebuilding a candidate because the manual Digest was edited is a release-blocking regression.
