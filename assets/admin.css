@@ -85,10 +85,16 @@
 .finaldigestpage .digest-end-subscribe{margin-top:auto;padding-top:12px}.finaldigestpage .digest-end-subscribe a{display:block;background:#f06b2c;color:#fff!important;text-align:center;font-size:12px;font-weight:900;padding:13px 10px;border-radius:5px;text-decoration:none}.finaldigestpage .digest-end-ctas{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:12px}.finaldigestpage .digest-end-ctas a{display:block;background:#f06b2c;color:#fff!important;text-align:center;font-size:12px;font-weight:900;padding:13px 10px;border-radius:5px;text-decoration:none}.finaldigestpage .digest-end-ctas a:first-child{background:#ff3b35}.digest-page-3 .finaladvice{margin-top:auto}.digest-page-3 .digest-end-ctas{margin-top:10px}.finaldigestpage:has(.digest-end-ctas){padding-bottom:28px}
 
 
-/* PAGE 3 NON-OVERLAP GRID — Advice and CTA are sequential, never layered */
-.digest-page-3{display:grid!important;grid-template-rows:auto minmax(0,1fr) auto auto;align-content:stretch}
-.digest-page-3 .finaldigestitems{min-height:0;overflow:hidden;align-content:start;grid-auto-rows:max-content}.digest-page-3 .finaldigestitem{grid-template-columns:28px 1fr;gap:8px;padding:5px 7px;font-size:9px;font-weight:800}.digest-page-3 .finaldigestitem a{grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center}.digest-page-3 .finaldigest-readmore{font-size:8px}
-.digest-page-3 .finaladvice{margin-top:10px!important;position:static!important;align-self:stretch}
+/* CORE DIGEST ROW GEOMETRY LOCK — Page 2 and Page 3 are identical */
+.finalcorepage{display:flex!important;flex-direction:column}
+.finalcorepage .finaldigestitems{display:grid;gap:5px;align-content:start;grid-auto-rows:32px;width:100%}
+.finalcorepage .finaldigestitem{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;width:100%;height:32px;min-height:32px;max-height:32px;box-sizing:border-box;padding:5px 7px;font-size:9px;font-weight:800;overflow:hidden}
+.finalcorepage .finaldigestitem>a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;min-width:0}
+.finalcorepage .finaldigest-title{display:block;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.finalcorepage .finaldigest-readmore{font-size:8px;white-space:nowrap}
+.digest-page-3{display:flex!important;flex-direction:column;align-content:initial}
+.digest-page-3 .finaldigestitems{flex:0 0 auto}
+.digest-page-3 .finaladvice{margin-top:auto!important;position:static!important;align-self:stretch}
 .digest-page-3 .digest-end-ctas{margin-top:10px!important;position:static!important;align-self:stretch}
 .digest-page-3 .finaladvice-link{align-items:start}
 
