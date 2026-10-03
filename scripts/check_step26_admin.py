@@ -318,7 +318,7 @@ need("pi===1" in js and "digestbuilder-subscribe" in js,"Working Preview Page 2 
 need("pi>=2" in js and "digestbuilder-ctas" in js,"Working Preview must show dual CTA footer on Page 3 and every page 4+")
 need("endCtas=i===1?digestSubscribeCta():(i>=2?digestEndCtas():"")" in js and "digestEndCtas" in js,"Final Preview/export must show CTA footer on Page 3 and every page 4+")
 need(".digestbuilder-ctas" in css and ".digest-page-3 .digest-end-ctas" in css,"Page 3+ CTA layout CSS missing")
-need("PAGE_CAPACITY={cover:0,news:23,finance:14}" in js,"Page 3 compact-row capacity must remain 14")
+need("PAGE_CAPACITY={cover:0,news:19,finance:14}" in js,"Measured safe Digest capacities must remain Page 2 = 19, Page 3 = 14")
 need("CORE DIGEST ROW GEOMETRY LOCK" in css and "grid-auto-rows:32px" in css,"Core Digest rows must use one immutable static geometry")
 need(".digest-page-3 .finaladvice{margin-top:auto!important;position:static!important" in css,"Page 3 Advice must stay below identical fixed-height news rows")
 need(".digest-page-3 .digest-end-ctas{margin-top:10px!important;position:static!important" in css,"Page 3 CTA must stay below Advice in normal flow")
