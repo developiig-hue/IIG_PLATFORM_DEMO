@@ -154,3 +154,7 @@ The server is allowed to convert the exact Admin artifact to PDF for storage/dis
 Page 3 has a protected lower zone for 3 Chief Engineer Advice rows and two CTA buttons. Finance/Regulation items use only the safe area above that zone and are packed as close to 50/50 as available content permits. Overflow is continued on Page 4+ rather than compressing the protected lower zone.
 
 Page 3 and every page 4+ contain active Project and Subscribe buttons at the bottom. These are canonical layout components and must remain in Admin Working Preview, Final Preview and linked PDF output.
+
+
+## PAGE 3 NON-OVERLAP LAYOUT — 2026-10-03
+The protected lower part of Page 3 is sequential, not layered: Advice block first, CTA footer second. The content list above may shrink in count but must never force the CTA over Advice text. Safe packing takes precedence over item count.
