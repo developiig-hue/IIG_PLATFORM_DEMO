@@ -77,4 +77,9 @@
 
 
 /* DIGEST FINAL PAGE — MANDATORY PROJECT + SUBSCRIBE CTA FOOTER */
-.digest-end-ctas{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:12px}.digest-end-ctas a{display:block;background:#f06b2c;color:#fff!important;text-align:center;font-size:12px;font-weight:900;padding:13px 10px;border-radius:5px;text-decoration:none}.digest-end-ctas a:first-child{background:#ff3b35}.digest-end-ctas a:hover,.digest-end-ctas a:focus{filter:brightness(.96);text-decoration:none}.finaldigestpage>.digest-end-ctas{position:absolute;left:28px;right:28px;bottom:28px}.finaldigestpage:has(>.digest-end-ctas){padding-bottom:92px}
+.digest-end-ctas{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:12px}.digest-end-ctas a{display:block;background:#f06b2c;color:#fff!important;text-align:center;font-size:12px;font-weight:900;padding:13px 10px;border-radius:5px;text-decoration:none}.digest-end-ctas a:first-child{background:#ff3b35}.digest-end-ctas a:hover,.digest-end-ctas a:focus{filter:brightness(.96);text-decoration:none}
+
+
+/* DIGEST PAGE 3+ CTA LOCK */
+.digestbuilder-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.digestbuilder-ctas a{display:block;background:#f06b2c;color:#fff!important;text-align:center;font-size:12px;font-weight:900;padding:13px 10px;border-radius:5px;text-decoration:none}.digestbuilder-ctas a:first-child{background:#ff3b35}.digestbuilder-ctas a:hover,.digestbuilder-ctas a:focus{text-decoration:none;filter:brightness(.96)}
+.finaldigestpage .digest-end-ctas{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:12px}.finaldigestpage .digest-end-ctas a{display:block;background:#f06b2c;color:#fff!important;text-align:center;font-size:12px;font-weight:900;padding:13px 10px;border-radius:5px;text-decoration:none}.finaldigestpage .digest-end-ctas a:first-child{background:#ff3b35}.digest-page-3 .finaladvice{margin-top:auto}.digest-page-3 .digest-end-ctas{margin-top:10px}.finaldigestpage:has(.digest-end-ctas){padding-bottom:28px}
