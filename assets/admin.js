@@ -1,4 +1,5 @@
 (()=>{"use strict";
+window.IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1";
 const $=id=>document.getElementById(id);
 const ACTIVE_ADMIN={id:"ADMIN_1",name:"Igor Kryvoshei",role:"PRIMARY_ADMIN",editorial_authority:true,production_authenticated:false};
 function requireAdmin1(action){if(ACTIVE_ADMIN.id!=="ADMIN_1"||ACTIVE_ADMIN.editorial_authority!==true){gate("Дія «"+action+"» дозволена лише активній ролі ADMIN_1.");return false}return true}
