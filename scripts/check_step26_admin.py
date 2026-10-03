@@ -298,11 +298,18 @@ need("data-digest-current" in home,"Homepage current Digest control marker missi
 need('href="digest/current.html"' in home and 'href="news.html#digest"' not in home,"Digest download fallback must use dedicated CURRENT route, never NEWS")
 need((root/"digest/current.html").is_file(),"Dedicated CURRENT Digest resolver page missing")
 need('fetch("/api/v1/digest/current"' in public_runtime and 'd.status!=="CURRENT"' in public_runtime,"Public Digest card must resolve the server CURRENT release")
-need("digest-current-route-v3-20261003" in home,"Public CURRENT Digest runtime cache-busting version not advanced")
+need("digest-current-route-v4-20261003" in home,"Public CURRENT Digest runtime cache-busting version not advanced")
 need("public_release_path" not in js and "IIG-Monthly-Digest-2026-09-PUBLIC.pdf" not in js,"Admin runtime must not hardcode a hosting/public PDF release")
 need("Build current public Digest PDF" not in (root/".github/workflows/pages.yml").read_text(encoding="utf-8"),"Pages/CI must not build Digest artifacts")
 need(not (root/"scripts/build_public_digest_pdf.py").exists(),"Server-side Digest PDF generator must remain absent")
 need("Новий випуск публікується тільки після фінального затвердження ADMIN_1" not in news_page and "The new issue is published only after final ADMIN_1 approval" not in news_page,"Public News/Digest UI must not expose internal ADMIN_1 workflow text")
+
+need('finaladvice-more">Читати далі... →</span>' in js,"Every Digest Advice row must use the same visible Read-more CTA")
+need("badAdvice=advice.filter" in js and 'advice-article.html?id=' in js,"Digest release gate must validate canonical Advice routes")
+need('x.url!==publicUrl({content_type:x.type,slug:x.slug})' in js,"Digest release gate must validate canonical NEWS/Finance/Regulation routes")
+need("ЗАВАНТАЖИТИ ДАЙДЖЕСТ PDF" in home,"Homepage must expose an explicit PDF Digest download button")
+need('/\\.pdf(?:$|[?#])/i.test(d.public_url)' in public_runtime,"Public Digest binding must reject non-PDF CURRENT URLs")
+need("digest-current-route-v4-20261003" in home,"Public CURRENT Digest runtime cache-busting version not advanced to FINAL_ADMIN_IIG")
 
 if errors:
     print("STEP 26 ADMIN MASTER: FAIL")
