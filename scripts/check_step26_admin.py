@@ -232,7 +232,7 @@ need("SEARCH_STOPWORDS" in iig and "searchTokens" in iig,"Search must ignore con
 need("єіб eib" in iig and "eib єіб" in iig,"Search must support EIB/ЄІБ bilingual alias")
 need("finance-news.html?institution=eib" in iig,"Finance EIB page must be indexed")
 need("public-search-v3-runtimefix-20261002" in home,"Homepage search cache version not advanced")
-need("advice-schematics-v2-20261002" in home,"Homepage Advice schematic version must remain locked")
+need("advice-id-route-v4-20261003" in home,"Homepage Advice route/schematic version must remain locked")
 need('<div class="download-circle">↓</div>' in home,"Digest down-arrow migration invariant broken")
 
 # Public search runtime regression guards
