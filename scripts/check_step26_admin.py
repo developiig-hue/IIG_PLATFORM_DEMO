@@ -14,6 +14,8 @@ def need(cond,msg):
     if not cond: errors.append(msg)
 need(live_js_path.is_file(),"Cache-proof live Admin runtime missing")
 need('assets/admin-final-admin1-v1.js' in html,"Admin HTML must load cache-proof live runtime")
+need("RUNTIME · ADMIN1 FINAL LOCK v1" in html,"Visible Admin runtime version badge missing")
+need('IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1"' in js,"Live runtime version marker missing")
 need(source_js==js,"Source admin.js and live cache-proof runtime must remain byte-identical")
 
 for s in ["Новини та публікації","Дайджест","Розсилка та база","Користувачі та права","Безпека"]:
