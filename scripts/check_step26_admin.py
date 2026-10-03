@@ -262,7 +262,7 @@ need("finaladvice-link" in js and "publicUrl(a)" in js,"Digest Advice items must
 need("forms.html#project" in js and "forms.html#subscribe" in js,"Digest Advice CTA routes missing")
 need("font-size:13.5px" in css and ".finaladvice-link" in css,"Digest Advice typography must remain 1.5x readable baseline")
 need("digestEndCtas" in js and "digest-end-ctas" in css,"True final Digest page must contain mandatory Project + Subscribe CTA footer")
-need("isLast=i===digestPages.length-1" in js,"Digest last-page CTA must follow actual final page, including page 4+")
+need("needsCtas=i>=2" in js,"Digest Page 3 and every page 4+ must contain Project + Subscribe CTA footer")
 need("forms.html#project" in js and "forms.html#subscribe" in js,"Mandatory Digest final CTA routes missing")
 need('const DIGEST_PUBLISH_ENDPOINT="/api/v1/digest/releases"' in js,"Protected Digest publication endpoint contract missing")
 need("archive_previous_current:true" in js and 'make_current:true' in js,"Digest publish must atomically archive previous CURRENT and promote new CURRENT")
