@@ -889,3 +889,24 @@ Any increase of Page 2 above 19 without a new browser geometry test is a release
 - Before rendering the print frame, the export injects a `<base href="...">` pointing to the current IIG Admin/site origin so relative NEWS / Advice / CTA links resolve to valid IIG URLs and can be written as active PDF link annotations by Chromium.
 - Export source remains the exact ADMIN_1-approved manual-layout fingerprint; no Auto-fill/rebuild is allowed during PDF export.
 - Regression blocker: reintroducing blank-window `window.open()`, a pop-up permission dependency, or stripping the anchor `href` routes from PDF HTML is forbidden.
+
+
+## FINAL_ADMIN_IIG — PDF VISUAL FIDELITY V5 (2026-10-05)
+
+### Root cause
+
+Chrome/Edge Save-as-PDF can suppress CSS `background-image` when Background graphics is disabled, and nested iframe content is not a reliable print source. This caused the approved cover photo / visual substrate to disappear in the PDF preview.
+
+### HARD export rules
+
+- Critical Digest imagery MUST NOT rely on CSS background printing.
+- Cover and promo background photos are materialized as foreground `<img class="pdf-visual-bg">` elements inside the printable DOM.
+- Dark cover/promo overlays are materialized as foreground SVG layers (`pdf-visual-overlay`), not as print-dependent CSS background gradients.
+- DEFAULT MASTER cover MUST NOT be printed through the nested MASTER iframe. PDF export reconstructs the approved MASTER visual using the approved master background image and the same cover content/CTA structure.
+- Article photos remain ordinary `<img>` elements and must be visible in PDF.
+- PDF CSS sets `-webkit-print-color-adjust: exact` and `print-color-adjust: exact`.
+- Before invoking `print()`, Admin waits for every image plus `document.fonts.ready`; printing before asset readiness is forbidden.
+- The PDF must preserve the exact ADMIN_1-approved manual-layout fingerprint and all active NEWS / Advice / CTA hyperlinks.
+- User should NOT need to enable the browser «Background graphics / Фон» option for critical approved imagery to appear.
+
+Any return to iframe-only cover printing or CSS-background-only critical imagery is a release-blocking regression.
