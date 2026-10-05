@@ -297,7 +297,7 @@ need("ЗМІНИ ПІСЛЯ PREVIEW" in js,"Admin must visibly flag edits made a
 need("fingerprintSafe" in js and "__BINARY_DATA__" in js,"Digest fingerprint must exclude embedded image bytes")
 need('window.open("","_blank","noopener")' not in js,"PDF print must not depend on window.open / pop-up permission")
 need('id="iigDigestPrintFrame"' not in html and "iigDigestPrintFrame" in js and "frame.srcdoc=html" in js,"PDF print iframe runtime missing")
-need("IFRAME PRINT · EXACT APPROVED STATE · ACTIVE LINKS · NO POPUP" in js,"No-popup PDF audit marker missing")
+need("PRINT-SAFE IMG LAYERS · EXACT APPROVED STATE · ACTIVE LINKS · NO POPUP" in js,"No-popup PDF audit marker missing")
 need("baseTag='<base href=" in js,"PDF export must set base URL so relative IIG links resolve correctly")
 need("DIGEST_MASTER_COVER_IMAGE" in js and "pdf-visual-bg" in js and "pdf-visual-overlay" in js,"PDF cover/promo visuals must use foreground image layers")
 need("printableCoverMarkup" in js and "printableExtraPageMarkup" in js and "printableFinalPageMarkup" in js,"Print-specific Digest visual renderer missing")
