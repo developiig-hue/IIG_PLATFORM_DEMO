@@ -33,7 +33,7 @@ jobs:
           cat .digest-upload/part*.txt | tr -d '\n\r ' | base64 --decode | xz --decompress > digest/current.pdf
           test "$(head -c 5 digest/current.pdf)" = "%PDF-"
           SHA="$(sha256sum digest/current.pdf | awk '{print $1}')"
-          EXPECTED="5acafc9cce416a8ab448970db7f4b7aca4c0b20e0f4f5d476610f5d7e3697102"
+          EXPECTED="86b51bfaec8e3dc76c1a68e7c4db2838564e743c44310d32b663c20be7927c75"
           test "$SHA" = "$EXPECTED"
           REV="${SHA:0:16}"
           BYTES="$(stat -c%s digest/current.pdf)"
