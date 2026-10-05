@@ -305,6 +305,8 @@ need("digestPages.map(printableFinalPageMarkup)" in js,"Standalone PDF HTML must
 need("-webkit-print-color-adjust:exact" in js and "print-color-adjust:exact" in js,"PDF exact color printing guard missing")
 need("waitForDigestPrintAssets" in js and "await waitForDigestPrintAssets(frame.contentDocument)" in js,"PDF print must wait for images/fonts before invoking print")
 need("PRINT-SAFE IMG LAYERS" in js,"PDF visual-fidelity audit marker missing")
+need('u.searchParams.set("source","iig-admin1-digest")' in js and 'u.searchParams.set("issue",currentDigestIssueKey())' in js,"Cross-device Digest release marker missing")
+
 
 
 need("sessionStorage.setItem(DIGEST_CANDIDATE_KEY" in js,"Digest candidate sessionStorage quota fallback missing")
@@ -351,12 +353,17 @@ need("pendingDigestPdf" in js and "new FormData()" in js and 'form.append("pdf",
 advice_runtime=(root/"assets/public-advice.js").read_text(encoding="utf-8")
 need("q.get('id')||q.get('slug')" in advice_runtime,"Public Advice must accept canonical id and legacy slug routes")
 public_runtime=(root/"assets/iig.js").read_text(encoding="utf-8")
+public_news_runtime=(root/"assets/public-news.js").read_text(encoding="utf-8")
 home=(root/"index.html").read_text(encoding="utf-8")
 need("data-digest-current" in home,"Homepage current Digest control marker missing")
 need('href="digest/current.html"' in home and 'href="news.html#digest"' not in home,"Digest download fallback must use dedicated CURRENT route, never NEWS")
 need((root/"digest/current.html").is_file(),"Dedicated CURRENT Digest resolver page missing")
 need('fetch("/api/v1/digest/current"' in public_runtime and 'd.status!=="CURRENT"' in public_runtime,"Public Digest card must resolve the server CURRENT release")
 need("digest-current-route-v4-20261003" in home,"Public CURRENT Digest runtime cache-busting version not advanced")
+need("digestReleaseRequest" in public_news_runtime and "digestReleaseValid" in public_news_runtime,"Digest release article bridge missing")
+need("registryItems.find(x=>x.slug===id&&digestReleaseValid(x))" in public_news_runtime,"Cross-device article fallback must resolve exact registry slug")
+need("source')==='iig-admin1-digest" in public_news_runtime,"Public article bridge must require explicit ADMIN_1 Digest source marker")
+
 need("public_release_path" not in js and "IIG-Monthly-Digest-2026-09-PUBLIC.pdf" not in js,"Admin runtime must not hardcode a hosting/public PDF release")
 need("Build current public Digest PDF" not in (root/".github/workflows/pages.yml").read_text(encoding="utf-8"),"Pages/CI must not build Digest artifacts")
 need(not (root/"scripts/build_public_digest_pdf.py").exists(),"Server-side Digest PDF generator must remain absent")
