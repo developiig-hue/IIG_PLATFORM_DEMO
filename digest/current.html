@@ -1,9 +1,9 @@
 <!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><title>IIG Monthly Digest — current</title><style>
 body{font-family:Arial,sans-serif;margin:0;background:#f3f6f8;color:#0b3158}.wrap{max-width:720px;margin:12vh auto;padding:28px}.card{background:#fff;border:1px solid #d5e0e7;border-radius:14px;padding:28px;box-shadow:0 8px 28px #0b315815}h1{margin-top:0}.btn{display:inline-block;margin-top:14px;padding:13px 18px;border-radius:8px;background:#0b5f99;color:#fff;text-decoration:none;font-weight:800}.muted{color:#607789}
- .btn[hidden]{display:none!important}</style></head><body><main class="wrap"><section class="card"><h1>IIG MONTHLY DIGEST</h1><p id="state">Перевіряємо актуальний випуск…</p><a id="download" class="btn" hidden>ЗАВАНТАЖИТИ PDF ↓</a></section></main><script>
-(async()=>{const s=document.getElementById('state'),a=document.getElementById('download');
-const activate=(url)=>{a.href=url;a.hidden=false;a.setAttribute('download','IIG_Monthly_Digest_CURRENT.pdf');s.textContent='Актуальний випуск готовий до завантаження.'};
+</style></head><body><main class="wrap"><section class="card"><h1>IIG MONTHLY DIGEST</h1><p id="state">Перевіряємо актуальний випуск…</p><div id="downloadHost"></div></section></main><script>
+(async()=>{const s=document.getElementById('state'),host=document.getElementById('downloadHost');
+const activate=(url)=>{s.textContent='Актуальний випуск готовий до завантаження.';const a=document.createElement('a');a.className='btn';a.href=url;a.download='IIG_Monthly_Digest_CURRENT.pdf';a.textContent='ЗАВАНТАЖИТИ PDF ↓';host.replaceChildren(a)};
 try{const meta=await fetch('current.json?t='+Date.now(),{cache:'no-store'});if(meta.ok){const d=await meta.json();const rev=d.revision||d.updated_at||Date.now();const r=await fetch('current.pdf?v='+encodeURIComponent(rev),{method:'HEAD',cache:'no-store'});if(r.ok){activate('current.pdf?v='+encodeURIComponent(rev));return}}}catch(e){}
 try{const r=await fetch('current.pdf?t='+Date.now(),{method:'HEAD',cache:'no-store'});if(r.ok){activate('current.pdf?t='+Date.now());return}}catch(e){}
-s.innerHTML='<b>Актуальний випуск тимчасово недоступний.</b><br><span class="muted">Будь ласка, спробуйте пізніше.</span>';
+host.replaceChildren();s.innerHTML='<b>Актуальний випуск тимчасово недоступний.</b><br><span class="muted">Будь ласка, спробуйте пізніше.</span>';
 })();</script></body></html>
