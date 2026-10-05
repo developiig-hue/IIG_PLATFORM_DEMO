@@ -119,7 +119,6 @@ async function sendCurrentPdf(req,reply){
   return reply.send(pdf);
 }
 app.get("/digest/current.pdf",sendCurrentPdf);
-app.head("/digest/current.pdf",sendCurrentPdf);
 
 const port=Number(process.env.PORT||8787),host=process.env.HOST||"0.0.0.0";
 await app.listen({port,host});
