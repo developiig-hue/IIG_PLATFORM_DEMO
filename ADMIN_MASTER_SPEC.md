@@ -927,3 +927,36 @@ The public news renderer merged ADMIN demo-published items from browser `localSt
 - Chief Engineer Advice continues to use the shared approved advice registry and canonical `advice-article.html?id=<slug>` route.
 - Cross-device behavior must not depend on `localStorage`, `sessionStorage`, browser profile, ADMIN workstation or previous local publication state.
 - Any PDF link that resolves only because of ADMIN-browser local storage is a release-blocking defect.
+
+
+## FINAL_ADMIN_IIG — ADMIN_2 PDF RE-UPLOAD / REPLACE CURRENT V7 (2026-10-05)
+
+### Authority split
+
+- **ADMIN_1** remains the only role that can approve/fix the Digest content/layout fingerprint.
+- After that approval, **ADMIN_1 or ADMIN_2** may upload or re-upload the already-generated PDF binary for the exact approved fingerprint.
+- ADMIN_2 PDF re-upload is a technical publication action only. It does not authorize editing or approving Digest content.
+- Re-upload does **not** require a new Final Preview / Final Approval while the approved fingerprint is unchanged.
+- If the layout fingerprint changes after approval, PDF publication is blocked until Final Preview + ADMIN_1 approval are repeated.
+
+### Replacement semantics
+
+This section supersedes all older Digest publication clauses that said previous CURRENT must be archived.
+
+- New upload is **REPLACE CURRENT**, not append/archive.
+- Backend request contract: `replace_current=true`, `delete_previous_current=true`, `archive_previous_current=false`.
+- The previous CURRENT PDF must be physically removed or made unreachable before the new transaction is reported successful.
+- Backend success MUST return `previous_current_deleted=true`.
+- Exactly one public CURRENT PDF may exist at a time.
+- Public URL must carry a new immutable revision/hash or explicit cache-busting revision so browser/CDN caches cannot serve the superseded PDF.
+- Admin sends `X-IIG-Digest-Revision`; public resolver appends `?v=<revision>` when necessary.
+- A successful replacement keeps `READY_FOR_DOWNLOAD` and `READY_FOR_MAILING` and preserves active PDF link annotations.
+
+### Static-host limitation
+
+- GitHub Pages is static and cannot accept a browser file upload by itself.
+- The protected endpoint `POST /api/v1/digest/releases` (or an equivalent authenticated production storage API) is therefore mandatory for true Admin-to-site upload.
+- The Admin UI must not claim publication success when that endpoint is absent.
+- Static fallback may serve `digest/current.pdf` if such a file was deployed by another authenticated mechanism; it is not a substitute for the upload API.
+
+Any return to ADMIN_1-only technical PDF re-upload, blocking replacement after status PUBLISHED, retaining multiple CURRENT files, or serving an unversioned stale CURRENT PDF is a release-blocking regression.
