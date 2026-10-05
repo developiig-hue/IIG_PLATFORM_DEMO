@@ -2,6 +2,8 @@ name: Deploy IIG Public Demo to GitHub Pages
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - ".digest-upload/**"
   workflow_dispatch:
 permissions:
   contents: read
