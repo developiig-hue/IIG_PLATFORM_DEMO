@@ -1071,3 +1071,22 @@ Public flow:
 GitHub Pages does not provide a browser write endpoint. Therefore the demo MUST NOT report successful site publication after a local file selection. On static hosting it may prepare a package, but true publication requires a write-capable storage/API or committing `digest/current.pdf` into the deployed artifact through an authenticated mechanism.
 
 Any implementation that labels a locally selected file as “published” before the binary is physically accessible from the public site is a release-blocking defect.
+
+
+## FINAL_ADMIN_IIG — PDF FILE NAMING + PHYSICAL CURRENT REQUIREMENT V12 (2026-10-05)
+
+### PDF filename
+
+- The browser Save-as-PDF default filename MUST follow `IIG_Digest_MM_YYYY.pdf`.
+- Example: September 2026 → `IIG_Digest_09_2026.pdf`; October 2026 → `IIG_Digest_10_2026.pdf`.
+- Admin page titles such as “IIG Адмін-панель — Крок 26 • Демо” must never be used as the PDF filename.
+- Before print, both the print-frame document title and the temporary parent document title are set to the deterministic Digest basename; the parent title is restored after printing.
+
+### Physical CURRENT binary
+
+- A public download is possible only when the exact approved PDF binary physically exists in public hosting/storage as `digest/current.pdf` (or an equivalent versioned storage URL returned by production API).
+- A locally selected or downloaded PDF on an ADMIN workstation is not sufficient and must never be treated as public publication.
+- If CURRENT is physically absent, the public download button must remain hidden/inactive and only neutral unavailability text may be shown.
+- Once CURRENT exists, the homepage must bind directly to its versioned PDF URL and download it without exposing Admin workflow.
+
+Any return to an Admin-derived PDF filename or a visible/active public download control when CURRENT is absent is a release-blocking regression.
