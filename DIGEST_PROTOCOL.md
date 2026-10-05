@@ -708,3 +708,15 @@ The canonical repository contains:
 When moving IIG to a paid domain/hosting, deploy this service (or a contract-compatible implementation) behind the same domain. No Digest UI rewrite is permitted/required.
 
 Any implementation that reverts to browser-local publication, requires manual public-file replacement after a successful production upload, exposes secrets client-side, or changes these stable public/API routes is a portability regression and release blocker.
+
+
+## FINAL_ADMIN_IIG — PUBLIC CURRENT PHYSICAL GATE V14 (2026-10-05)
+
+- Public download controls MUST NOT be rendered/activated before the CURRENT PDF binary is physically verified in public storage.
+- `digest/current.html` creates its download anchor dynamically only after a successful HEAD/metadata check of `current.pdf`.
+- If CURRENT is absent, the page shows only neutral unavailability text; there is no clickable download control.
+- Homepage Digest CTA is disabled and loses its href when CURRENT is absent. It must not route users to a dead resolver page.
+- When CURRENT exists, homepage binds directly to the versioned PDF URL and enables the normal browser download flow.
+- This rule is hosting-agnostic and must survive migration to any paid domain/storage implementation.
+
+A visible or clickable public Digest download control without a physically available CURRENT PDF is a release-blocking regression.
