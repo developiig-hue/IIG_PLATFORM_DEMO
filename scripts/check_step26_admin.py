@@ -15,7 +15,7 @@ def need(cond,msg):
     if not cond: errors.append(msg)
 need(live_js_path.is_file(),"Cache-proof live Admin runtime missing")
 need('assets/admin-final-admin1-v1.js' in html,"Admin HTML must load cache-proof live runtime")
-need('assets/admin-final-admin1-v1.js?v=UPLOAD-IIG-CURRENT-V11' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
+need('assets/admin-final-admin1-v1.js?v=PDF-NAME-DIRECT-DOWNLOAD-V12' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
 need('data-admin-runtime-page="ADMIN1_FINAL_LOCK_V1"' in final_admin,"Dedicated FINAL_ADMIN_IIG runtime marker missing")
 need("RUNTIME · ADMIN1 FINAL LOCK v1" in html,"Visible Admin runtime version badge missing")
 need('IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1"' in js,"Live runtime version marker missing")
@@ -304,6 +304,9 @@ need("printableCoverMarkup" in js and "printableExtraPageMarkup" in js and "prin
 need("digestPages.map(printableFinalPageMarkup)" in js,"Standalone PDF HTML must use print-specific renderer")
 need("-webkit-print-color-adjust:exact" in js and "print-color-adjust:exact" in js,"PDF exact color printing guard missing")
 need("waitForDigestPrintAssets" in js and "await waitForDigestPrintAssets(frame.contentDocument)" in js,"PDF print must wait for images/fonts before invoking print")
+need("function digestPdfBaseName()" in js and '"IIG_Digest_"+String(digestIssue.month).padStart(2,"0")+"_"+digestIssue.year' in js,"Deterministic PDF filename helper missing")
+need("frame.contentDocument.title=pdfTitle" in js and "document.title=pdfTitle" in js,"Print dialog must receive IIG_Digest_MM_YYYY title")
+
 need("PRINT-SAFE IMG LAYERS" in js,"PDF visual-fidelity audit marker missing")
 need('u.searchParams.set("source","iig-admin1-digest")' in js and 'u.searchParams.set("issue",currentDigestIssueKey())' in js,"Cross-device Digest release marker missing")
 
@@ -381,6 +384,8 @@ need((root/"digest/current.html").is_file(),"Dedicated CURRENT Digest resolver p
 current=(root/"digest/current.html").read_text(encoding="utf-8")
 need("ADMIN_1" not in current and "ADMIN_2" not in current and "/api/v1/digest/releases" not in current,"Public CURRENT page must not expose Admin workflow")
 need("Актуальний випуск тимчасово недоступний" in current,"Public CURRENT unavailable state must be neutral")
+need(".btn[hidden]{display:none!important}" in current,"Unavailable CURRENT must not show an active download button")
+
 need("current.pdf" in current and "current.json" in current,"Public CURRENT resolver must use current.pdf/current.json only")
 
 need("current.pdf?v=" in current and "cache:'no-store'" in current,"Static CURRENT PDF fallback missing or cache-prone")
