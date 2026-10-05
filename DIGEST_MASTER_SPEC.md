@@ -449,3 +449,28 @@ When moving from GitHub Pages to a paid domain/hosting, preserve the same separa
 **Admin publication layer → physical CURRENT PDF in storage → public direct-download layer.** Public pages never expose Admin controls or backend diagnostics.
 
 Any public redirect to Admin workflow, any Admin/API error text visible to users, or any “published” state without a physical CURRENT PDF is a release-blocking regression.
+
+
+## FINAL_ADMIN_IIG — ADMIN_2 RE-UPLOAD OF PREVIOUSLY APPROVED PDF V10 (2026-10-05)
+
+### Canonical rule
+
+- If a Digest PDF was already generated from a layout that ADMIN_1 previously approved, **ADMIN_2 may select that existing PDF from a local folder and upload/re-upload it without regenerating the Digest, without a new Final Preview and without a new ADMIN_1 approval**.
+- This is permitted only when the current Digest layout fingerprint matches a persisted ADMIN_1 approval receipt for the same issue/revision.
+- ADMIN_2 receives publication/re-upload authority only; ADMIN_2 does not receive content-approval authority.
+
+### Approval receipt
+
+- ADMIN_1 Final Approval stores a durable approval receipt containing issue, approved fingerprint, preview fingerprint, revision, approver and approval timestamp.
+- The re-upload gate accepts either the current live ADMIN_1-approved candidate or a valid persisted approval receipt whose fingerprint exactly matches the current manual Digest.
+- If the layout changes after approval, the receipt no longer authorizes re-upload. A new Final Preview + ADMIN_1 approval is required only because the content changed, not because the PDF file is being re-uploaded.
+
+### Operator workflow
+
+**Previously approved PDF already exists:**
+1. ADMIN_2 opens Digest Admin.
+2. Selects the existing PDF from the local file catalog using **«Раніше згенерований / готовий PDF»**.
+3. Presses **«ОПУБЛІКУВАТИ / ЗАМІНИТИ CURRENT PDF»**.
+4. No candidate rebuild, no new PDF generation and no repeated Final Preview/approval are required while the approved fingerprint is unchanged.
+
+Any rule that forces regeneration or a repeated approval solely because ADMIN_2 is re-uploading the same previously approved PDF is a release-blocking regression.
