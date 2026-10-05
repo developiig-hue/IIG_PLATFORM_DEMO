@@ -99,6 +99,9 @@ const val=(o,k)=>o&&typeof o==="object"?(o[k]||o.ua||o.en||""):(o||"");
 const titleOf=n=>val(n.title,"ua")||n.slug||"Без назви";
 const summaryOf=n=>val(n.summary,"ua");
 const bodyOf=n=>n.content_type==="ADVICE"?(n.sections||[]).map(s=>val(s.heading,"ua")+"\n"+val(s.body,"ua")).join("\n\n"):val(n.body,"ua");
+const digestVal=o=>val(o,digestLangCode())||val(o,digestLanguage==="EN"?"ua":"en");
+const digestTitleOf=n=>digestVal(n&&n.title)||((n&&n.slug)|| (digestLanguage==="EN"?"Untitled":"Без назви"));
+const digestItemTitle=it=>digestLanguage==="EN"?(it.title_en||it.title_ua||it.title):(it.title_ua||it.title||it.title_en);
 const EDITORIAL_SESSION_KEY="iig.step26.editorial.sep2026.admin1.v2";
 const APPROVAL_LEDGER_KEY="iig.admin.approval-ledger.v1";
 let approvalLedger=new Map();
@@ -123,12 +126,12 @@ const effective=n=>{const d=drafts.get(n.slug),l=approvalLedger.get(n.slug);if(d
 const sectorUA=v=>({energy:"Енергетика",metallurgy:"Металургія",agriculture:"Агросектор",pharma:"Фармацевтика",food:"Харчова промисловість",logistics:"Логістика",datacenters:"Дата-центри",chemical:"Хімічна промисловість",waste:"Waste-to-Energy",finance:"Фінанси",regulation:"Регулювання",other:"Інше",NEWS:"Новини",advice:"Інженерна порада"}[v]||v||"Інше");
 const RUBRIC_LABEL={GENERAL:"УКРАЇНА / СВІТ",FINANCE:"ФІНАНСИ",REGULATION:"ЗАКОНОДАВСТВО / РЕГУЛЮВАННЯ",ADVICE:"ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА"};
 function digestRubric(n){if(n.content_type==="ADVICE")return "ADVICE";if(["GENERAL","FINANCE","REGULATION"].includes(n.digest_rubric))return n.digest_rubric;const s=String(n.sector||n.topic||"").toLowerCase();if(s.includes("financ")||s.includes("bank")||s.includes("eca")||s.includes("project finance"))return "FINANCE";if(s.includes("regulat")||s.includes("law")||s.includes("legislat")||s.includes("нкрекп"))return "REGULATION";return "GENERAL"}
-function slotCost(item){const len=String(item.title||titleOf(item)||"").length;return len>135?1.65:len>100?1.4:len>72?1.2:1}
+function slotCost(item){const len=String(digestItemTitle(item)||"").length;return len>135?1.65:len>100?1.4:len>72?1.2:1}
 function pageUsed(p){return p.items.reduce((s,x)=>s+slotCost(x),0)}
 function pageFree(p){return Math.max(0,(p.capacity||0)-pageUsed(p))}
 function pageFits(p,item){if(p.kind==="cover")return false;if(p.kind==="finance"&&!["FINANCE","REGULATION"].includes(item.rubric))return false;return pageFree(p)+0.001>=slotCost(item)}
 function issueMatches(n){if(n.digest_exclude)return false;if(n.content_type==="ADVICE")return !n.publication_date||n.publication_date.slice(0,7)===String(digestIssue.year)+"-"+String(digestIssue.month).padStart(2,"0");return String(n.publication_date||"").slice(0,7)===String(digestIssue.year)+"-"+String(digestIssue.month).padStart(2,"0")}
-function makeDigestItem(n){return {slug:n.slug,title:val(n.digest_title,"ua")||titleOf(n),fullTitle:titleOf(n),type:n.content_type,url:publicUrl(n),rubric:digestRubric(n),sector:n.sector||n.topic||"other"}}
+function makeDigestItem(n){const title_ua=val(n.digest_title,"ua")||val(n.title,"ua")||titleOf(n),title_en=val(n.digest_title,"en")||val(n.title,"en")||title_ua;return {slug:n.slug,title:digestLanguage==="EN"?title_en:title_ua,title_ua,title_en,fullTitle:digestLanguage==="EN"?title_en:title_ua,type:n.content_type,url:publicUrl(n),rubric:digestRubric(n),sector:n.sector||n.topic||"other"}}
 function ensureNewsPage(){let p=digestPages.find(x=>x.kind==="news"&&pageFree(x)>=1);if(p)return p;const idx=digestPages.length+1;p={name:"Сторінка "+idx+" — Новини",kind:"news",capacity:PAGE_CAPACITY.news,items:[]};digestPages.push(p);return p}
 function placePacked(item){let candidates=[];if(["FINANCE","REGULATION"].includes(item.rubric))candidates=digestPages.filter(p=>p.kind==="finance");candidates.push(...digestPages.filter(p=>p.kind==="news"));let p=candidates.find(x=>pageFits(x,item));if(!p){p=ensureNewsPage();while(!pageFits(p,item)){p={name:"Сторінка "+(digestPages.length+1)+" — Новини",kind:"news",capacity:PAGE_CAPACITY.news,items:[]};digestPages.push(p)}}p.items.push(item)}
 function updateIssueUI(){const label=MONTHS_UA[digestIssue.month-1]+" "+digestIssue.year;const b=$("digestIssueBadge"),t=$("digestWorkingTitle");if(b)b.textContent=label;if(t)t.textContent="IIG Monthly Digest • "+MONTHS_UA[digestIssue.month-1][0]+MONTHS_UA[digestIssue.month-1].slice(1).toLowerCase()+" "+digestIssue.year+" • робоча версія"}
