@@ -272,7 +272,7 @@ need("mergedNews=new Map()" in iig and "localNews=bridge.filter" in iig,"Search 
 need("SEARCH_STOPWORDS" in iig and "searchTokens" in iig,"Search must ignore conjunction stopwords")
 need("єіб eib" in iig and "eib єіб" in iig,"Search must support EIB/ЄІБ bilingual alias")
 need("finance-news.html?institution=eib" in iig,"Finance EIB page must be indexed")
-need("digest-current-route-v4-20261003" in home,"Homepage search cache version not advanced")
+need("DIRECT-CURRENT-PDF-V9" in home,"Homepage direct-current runtime cache version not advanced")
 need("advice-route-canonical-id-20261003" in home,"Homepage Advice route/schematic version must remain locked")
 need('class="download-circle"' in home and "↓" in home,"Digest down-arrow migration invariant broken")
 
@@ -281,7 +281,7 @@ iig=(root/"assets/iig.js").read_text(encoding="utf-8")
 home=(root/"index.html").read_text(encoding="utf-8")
 need("const esc=s=>" in iig,"Search renderer HTML escape helper missing")
 need("runPublicSearchSafe" in iig and "SEARCH_RUNTIME_ERROR" in iig,"Search runtime error guard missing")
-need("digest-current-route-v4-20261003" in home,"Homepage search runtime cache version not advanced")
+need("DIRECT-CURRENT-PDF-V9" in home,"Homepage direct-current runtime cache version not advanced")
 
 # About/contact project CTA routing
 about=(root/"about.html").read_text(encoding="utf-8")
@@ -376,7 +376,7 @@ need("current.pdf" in current and "current.json" in current,"Public CURRENT reso
 
 need("current.pdf?v=" in current and "cache:'no-store'" in current,"Static CURRENT PDF fallback missing or cache-prone")
 need("d.revision||d.updated_at||Date.now()" in current,"API CURRENT resolver must cache-bust by revision")
-need('fetch("/api/v1/digest/current"' in public_runtime and 'd.status!=="CURRENT"' in public_runtime,"Public Digest card must resolve the server CURRENT release")
+need('fetch("/api/v1/digest/current"' in public_runtime and 'digest/current.pdf?v=' in public_runtime,"Public Digest card must resolve API or physical CURRENT PDF directly")
 need("DIRECT-CURRENT-PDF-V9" in home,"Homepage must load direct CURRENT PDF runtime")
 need("digest/current.pdf?v=" in public_runtime and "digest/current.json?t=" in public_runtime,"Homepage Digest binding must resolve physical CURRENT PDF directly")
 need('a.setAttribute("download","IIG_Monthly_Digest_CURRENT.pdf")' in public_runtime,"Homepage Digest button must download PDF directly")
@@ -397,7 +397,7 @@ need("ЗАВАНТАЖИТИ ДАЙДЖЕСТ PDF" in home,"Homepage must expose
 need("ADMIN_1" not in current and "upload endpoint" not in current.lower(),"Public website must never display Admin/API instructions")
 
 need('/\\.pdf(?:$|[?#])/i.test(d.public_url)' in public_runtime,"Public Digest binding must reject non-PDF CURRENT URLs")
-need("digest-current-route-v4-20261003" in home,"Public CURRENT Digest runtime cache-busting version not advanced to FINAL_ADMIN_IIG")
+need("DIRECT-CURRENT-PDF-V9" in home,"Public CURRENT Digest runtime cache-busting version not advanced to FINAL_ADMIN_IIG")
 
 if errors:
     print("STEP 26 ADMIN MASTER: FAIL")
