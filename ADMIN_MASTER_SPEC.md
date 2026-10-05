@@ -981,3 +981,33 @@ Any return to ADMIN_1-only technical PDF re-upload, blocking replacement after s
 - On a production host with `/api/v1/digest/releases`, Admin continues to use authenticated REPLACE CURRENT semantics: delete previous CURRENT, publish new PDF, verify links, return a new revision URL.
 
 Returning to a GitHub-Pages API POST attempt or showing a backend-missing modal on the static host is a release-blocking regression.
+
+
+## FINAL_ADMIN_IIG — PUBLIC DIRECT CURRENT PDF DOWNLOAD V9 (2026-10-05)
+
+### Public-user contract
+
+- The homepage action **«ЗАВАНТАЖИТИ ДАЙДЖЕСТ PDF»** is a user download action, not an Admin workflow entry point.
+- If a physical CURRENT PDF exists, the homepage binds directly to that PDF and sets a download filename. The user must not be routed through ADMIN, approval, API, upload-endpoint, or publication diagnostics.
+- Public users must never see the terms ADMIN_1, ADMIN_2, upload endpoint, approval workflow, production backend or repository publication instructions.
+- `digest/current.html` is a public-only fallback resolver. It may show only neutral availability text and the direct PDF download button.
+- The resolver checks `current.json` for revision metadata and `current.pdf` for the actual binary. If unavailable, it shows only **«Актуальний випуск тимчасово недоступний. Будь ласка, спробуйте пізніше.»**
+
+### Source-of-truth rule
+
+- A PDF is considered **published** only when its binary physically exists in public hosting/storage as CURRENT. Preparing/downloading `current.pdf` on an Admin workstation is not publication.
+- GitHub Pages static publication requires `digest/current.pdf` (and preferably `digest/current.json`) to be committed/deployed to the Pages artifact.
+- Production hosting may implement the same contract through authenticated storage/API, but the public result must remain a physical/versioned PDF URL.
+
+### Replacement/cache rule
+
+- Exactly one CURRENT PDF is publicly addressable.
+- Replacing CURRENT must invalidate the previous cache identity using an immutable revision/hash or `?v=<revision>`.
+- The public homepage and resolver use cache-bypassing metadata checks before binding the download URL.
+
+### Migration invariant
+
+When moving from GitHub Pages to a paid domain/hosting, preserve the same separation:
+**Admin publication layer → physical CURRENT PDF in storage → public direct-download layer.** Public pages never expose Admin controls or backend diagnostics.
+
+Any public redirect to Admin workflow, any Admin/API error text visible to users, or any “published” state without a physical CURRENT PDF is a release-blocking regression.
