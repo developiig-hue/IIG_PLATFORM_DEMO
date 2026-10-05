@@ -528,3 +528,74 @@ Any implementation that labels a locally selected file as “published” before
 - Once CURRENT exists, the homepage must bind directly to its versioned PDF URL and download it without exposing Admin workflow.
 
 Any return to an Admin-derived PDF filename or a visible/active public download control when CURRENT is absent is a release-blocking regression.
+
+
+## FINAL_ADMIN_IIG — PORTABLE AUTOMATIC DIGEST PUBLICATION BACKEND V13 (2026-10-05)
+
+### Canonical publication pipeline
+
+The IIG Digest publication flow is now standardized as:
+
+**ADMIN_1 Final Approval → server-side approval receipt → ADMIN_1/ADMIN_2 PDF upload → PDF validation/link verification → atomic CURRENT replacement → public direct download.**
+
+### Stable portable API
+
+Every future IIG hosting/domain migration MUST preserve these URLs (or reverse-proxy them unchanged):
+
+- `POST /api/v1/digest/approvals` — ADMIN_1 stores the approved issue/fingerprint/revision on the server.
+- `POST /api/v1/digest/releases` — ADMIN_1 or ADMIN_2 uploads an already approved PDF.
+- `GET /api/v1/digest/current` — public/runtime metadata for the current release.
+- `GET /digest/current.pdf` — direct public PDF download.
+
+### ADMIN_2 re-upload rule
+
+ADMIN_2 may upload a previously generated PDF from a local catalog without regenerating the Digest and without repeating Final Preview/ADMIN_1 approval when the server-side ADMIN_1 approval receipt still matches the exact issue/fingerprint.
+
+### Backend validation
+
+A release is accepted only when:
+
+1. authenticated role is ADMIN_1 or ADMIN_2;
+2. uploaded binary is a valid PDF signature and within the size limit;
+3. issue/fingerprint match the server-side ADMIN_1 approval receipt;
+4. expected IIG NEWS / Advice / CTA links are present as active HTTP(S) PDF annotations;
+5. storage write succeeds.
+
+Only then backend reports `CURRENT` and returns a versioned public URL.
+
+### Storage portability
+
+The backend supports:
+
+- **LOCAL** persistent filesystem for VPS/classic paid hosting;
+- **S3-compatible** object storage for AWS S3, Cloudflare R2, MinIO, Backblaze B2 S3 API, or equivalent.
+
+Switching storage is environment configuration only. Admin/public frontend routes do not change.
+
+### CURRENT replacement/cache behavior
+
+- Exactly one logical CURRENT exists.
+- New upload replaces the current binary and metadata.
+- Public metadata is `no-store`.
+- PDF response is `public, max-age=0, must-revalidate` and carries an ETag/revision.
+- Homepage resolves the current metadata and binds directly to `/digest/current.pdf?v=<revision>`.
+- Public users never see Admin/backend diagnostics.
+
+### Security portability
+
+Preferred deployment uses a trusted reverse proxy/auth layer that removes any client-supplied `X-IIG-Admin-Role` and injects ADMIN_1/ADMIN_2 only after successful authentication. Optional bearer tokens are supported for integration, but secrets must never be embedded in public JavaScript.
+
+### Deployment package
+
+The canonical repository contains:
+
+- `backend/Dockerfile`
+- `backend/docker-compose.yml`
+- `backend/.env.example`
+- `backend/nginx.iig-digest.conf`
+- `backend/README.md`
+- local/S3 storage adapters, server-side approval receipts and PDF hyperlink verification.
+
+When moving IIG to a paid domain/hosting, deploy this service (or a contract-compatible implementation) behind the same domain. No Digest UI rewrite is permitted/required.
+
+Any implementation that reverts to browser-local publication, requires manual public-file replacement after a successful production upload, exposes secrets client-side, or changes these stable public/API routes is a portability regression and release blocker.
