@@ -1,0 +1,70 @@
+name: Materialize CURRENT Digest PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".digest-upload/READY"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: iig-current-digest-materialize
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Materialize CURRENT PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f .digest-upload/READY
+          test -n "$(find .digest-upload -maxdepth 1 -name 'part*.txt' -print -quit)"
+          mkdir -p digest
+          cat .digest-upload/part*.txt | tr -d '\n\r ' | base64 --decode | xz --decompress > digest/current.pdf
+          test "$(head -c 5 digest/current.pdf)" = "%PDF-"
+          SHA="$(sha256sum digest/current.pdf | awk '{print $1}')"
+          EXPECTED="9abc398e67a1c2ea4073e571447cd473eaa144d5d85209aee3a25df1740b6bad"
+          test "$SHA" = "$EXPECTED"
+          REV="${SHA:0:16}"
+          BYTES="$(stat -c%s digest/current.pdf)"
+          cat > digest/current.json <<EOF
+          {
+            "schema": "iig.digest-current.v1",
+            "status": "CURRENT",
+            "issue": "2026-09",
+            "filename": "IIG_Digest_09_2026.pdf",
+            "revision": "$REV",
+            "sha256": "$SHA",
+            "bytes": $BYTES,
+            "public_url": "/IIG_PLATFORM_DEMO/digest/current.pdf",
+            "links_preserved": true,
+            "link_count": 45,
+            "approved_by": "ADMIN_1",
+            "uploaded_by": "CURRENT_MATERIALIZER"
+          }
+          EOF
+          rm -rf .digest-upload
+
+      - name: Commit CURRENT
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "IIG Digest Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A digest/current.pdf digest/current.json .digest-upload
+          if git diff --cached --quiet; then
+            echo "CURRENT already materialized"
+            exit 0
+          fi
+          git commit -m "DIGEST: publish CURRENT PDF 2026-09"
+          git push origin HEAD:main
