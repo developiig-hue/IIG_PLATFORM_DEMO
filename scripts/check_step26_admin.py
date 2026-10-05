@@ -15,7 +15,7 @@ def need(cond,msg):
     if not cond: errors.append(msg)
 need(live_js_path.is_file(),"Cache-proof live Admin runtime missing")
 need('assets/admin-final-admin1-v1.js' in html,"Admin HTML must load cache-proof live runtime")
-need('assets/admin-final-admin1-v1.js?v=PDF-VISUAL-FIDELITY-V5' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
+need('assets/admin-final-admin1-v1.js?v=DIGEST-CROSS-DEVICE-V6' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
 need('data-admin-runtime-page="ADMIN1_FINAL_LOCK_V1"' in final_admin,"Dedicated FINAL_ADMIN_IIG runtime marker missing")
 need("RUNTIME · ADMIN1 FINAL LOCK v1" in html,"Visible Admin runtime version badge missing")
 need('IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1"' in js,"Live runtime version marker missing")
@@ -217,7 +217,7 @@ need("items.slice(0,6)" in advice_js,"Homepage must render exactly latest 6 Advi
 # Industry NEWS card-layout regression guards
 industry=(root/"industry.html").read_text(encoding="utf-8")
 pubnews=(root/"assets/public-news.js").read_text(encoding="utf-8")
-need("assets/public-news.js?v=industry-advice-card-layout-20261002" in industry,"Industry pages must load canonical published NEWS renderer")
+need("assets/public-news.js?v=digest-cross-device-v6-20261005" in industry,"Industry pages must load canonical published NEWS renderer")
 need('id="industry-news-grid-v2"' in industry and "grid-template-columns:repeat(3" in industry,"Industry pages must use Advice-style card grid")
 need("industryCard=x=>" in pubnews and "ЧИТАТИ НОВИНУ" in pubnews,"Industry NEWS card renderer missing")
 need("renderItems();" not in industry[industry.find("window.addEventListener"):],"Legacy static industry demo renderer must not run")
