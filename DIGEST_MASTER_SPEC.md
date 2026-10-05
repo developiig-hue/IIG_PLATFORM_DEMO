@@ -348,3 +348,20 @@ Chrome/Edge Save-as-PDF can suppress CSS `background-image` when Background grap
 - User should NOT need to enable the browser «Background graphics / Фон» option for critical approved imagery to appear.
 
 Any return to iframe-only cover printing or CSS-background-only critical imagery is a release-blocking regression.
+
+
+## FINAL_ADMIN_IIG — CROSS-DEVICE DIGEST LINKS V6 (2026-10-05)
+
+### Root cause
+
+The public news renderer merged ADMIN demo-published items from browser `localStorage`. Therefore a link could work on the ADMIN workstation but fail on another computer where that local browser state did not exist. The public repository registry could contain the same article in REVIEW state, so the ordinary public filter hid it and returned “verified/approved news unavailable”.
+
+### HARD link contract
+
+- PDF NEWS links must be absolute HTTPS IIG links and carry an explicit release marker: `source=iig-admin1-digest&issue=YYYY-MM`.
+- This marker is added only by export from an ADMIN_1-approved Digest artifact.
+- `article.html` may resolve the exact requested slug from the shared `content/public-news.json` registry when that marker is present and the record passes source/date/slug/content validation.
+- This fallback is limited to the requested article route. Homepage, News lists and industry listings continue to use ordinary APPROVED/PUBLISHED filtering and MUST NOT mass-publish REVIEW items.
+- Chief Engineer Advice continues to use the shared approved advice registry and canonical `advice-article.html?id=<slug>` route.
+- Cross-device behavior must not depend on `localStorage`, `sessionStorage`, browser profile, ADMIN workstation or previous local publication state.
+- Any PDF link that resolves only because of ADMIN-browser local storage is a release-blocking defect.
