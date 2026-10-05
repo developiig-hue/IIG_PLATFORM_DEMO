@@ -399,7 +399,7 @@ need((root/"digest/current.html").is_file(),"Dedicated CURRENT Digest resolver p
 current=(root/"digest/current.html").read_text(encoding="utf-8")
 need("ADMIN_1" not in current and "ADMIN_2" not in current and "/api/v1/digest/releases" not in current,"Public CURRENT page must not expose Admin workflow")
 need("Актуальний випуск тимчасово недоступний" in current,"Public CURRENT unavailable state must be neutral")
-need(".btn[hidden]{display:none!important}" in current,"Unavailable CURRENT must not show an active download button")
+need("downloadHost" in current and "document.createElement('a')" in current and "if(r.ok){activate" in current,"Unavailable CURRENT must not render a download button before physical verification")
 
 need("current.pdf" in current and "current.json" in current,"Public CURRENT resolver must use current.pdf/current.json only")
 need("downloadHost" in current and "document.createElement('a')" in current and "if(r.ok){activate" in current,"Public CURRENT button must be created only after physical file verification")
@@ -412,7 +412,7 @@ need('fetch("/api/v1/digest/current"' in public_runtime and 'digest/current.pdf?
 need("PUBLIC-CURRENT-GATE-V14" in home,"Homepage must load direct CURRENT PDF runtime")
 need("digest/current.pdf?v=" in public_runtime and "digest/current.json?t=" in public_runtime,"Homepage Digest binding must resolve physical CURRENT PDF directly")
 need('a.setAttribute("download","IIG_Monthly_Digest_CURRENT.pdf")' in public_runtime,"Homepage Digest button must download PDF directly")
-need('a.href="digest/current.html"' in public_runtime,"Homepage may use public-only resolver only as missing-file fallback")
+need('a.removeAttribute("href")' in public_runtime and 'a.setAttribute("aria-disabled","true")' in public_runtime,"Homepage must disable Digest CTA when CURRENT is absent")
 need("digestReleaseRequest" in public_news_runtime and "digestReleaseValid" in public_news_runtime,"Digest release article bridge missing")
 need("registryItems.find(x=>x.slug===id&&digestReleaseValid(x))" in public_news_runtime,"Cross-device article fallback must resolve exact registry slug")
 need("source')==='iig-admin1-digest" in public_news_runtime,"Public article bridge must require explicit ADMIN_1 Digest source marker")
