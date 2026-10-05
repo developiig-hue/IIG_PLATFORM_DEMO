@@ -76,7 +76,11 @@ $("robotRows").innerHTML=robots.map(r=>'<div class="row"><span><i class="statusd
 let items=[],selected=null,drafts=new Map(),imageCatalog=[],pendingNewsImageUpload=null;
 const NEWS_IMAGE_RULES={maxBytes:10*1024*1024,minW:900,minH:500,types:["image/jpeg","image/png","image/webp"]};
 const MONTHS_UA=["СІЧЕНЬ","ЛЮТИЙ","БЕРЕЗЕНЬ","КВІТЕНЬ","ТРАВЕНЬ","ЧЕРВЕНЬ","ЛИПЕНЬ","СЕРПЕНЬ","ВЕРЕСЕНЬ","ЖОВТЕНЬ","ЛИСТОПАД","ГРУДЕНЬ"];
-let digestIssue={month:9,year:2026};
+const MONTHS_EN=["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+let digestIssue={month:9,year:2026},digestLanguage="UA";
+const digestLangCode=()=>digestLanguage==="EN"?"en":"ua";
+const digestMonths=()=>digestLanguage==="EN"?MONTHS_EN:MONTHS_UA;
+const digestStorageKey=base=>base+"."+currentDigestIssueKey()+"."+digestLanguage;
 const IMAGE_RULES={maxBytes:10*1024*1024,minW:1200,minH:1697,recommendedW:1800,recommendedH:2546,types:["image/jpeg","image/png","image/webp"]};
 const ARTICLE_PAGE_CAPACITY=100,ARTICLE_IMAGE_MIN_LONG_SIDE=900;
 let pendingArticleImport={fileName:"",title:"",lead:"",paragraphs:[],images:[]};
