@@ -879,3 +879,13 @@ Headless-browser stress test with the approved static 32 px core row geometry fo
 
 HARD runtime capacity: `PAGE_CAPACITY={cover:0,news:19,finance:14}`.
 Any increase of Page 2 above 19 without a new browser geometry test is a release blocker.
+
+
+## FINAL_ADMIN_IIG — PDF EXPORT WITHOUT POP-UP V4 (2026-10-05)
+
+- The Admin action **PDF · ЗБЕРЕГТИ** MUST NOT use `window.open()` and MUST NOT require browser pop-up permission.
+- Approved Digest HTML is printed from an internal same-origin iframe (`iigDigestPrintFrame`) and invokes the browser system print dialog from that frame.
+- The operator selects **Save as PDF / Зберегти як PDF** in the system print dialog.
+- Before rendering the print frame, the export injects a `<base href="...">` pointing to the current IIG Admin/site origin so relative NEWS / Advice / CTA links resolve to valid IIG URLs and can be written as active PDF link annotations by Chromium.
+- Export source remains the exact ADMIN_1-approved manual-layout fingerprint; no Auto-fill/rebuild is allowed during PDF export.
+- Regression blocker: reintroducing blank-window `window.open()`, a pop-up permission dependency, or stripping the anchor `href` routes from PDF HTML is forbidden.
