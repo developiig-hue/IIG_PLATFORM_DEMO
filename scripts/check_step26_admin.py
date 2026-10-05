@@ -370,10 +370,17 @@ need("data-digest-current" in home,"Homepage current Digest control marker missi
 need('href="digest/current.html"' in home and 'href="news.html#digest"' not in home,"Digest download fallback must use dedicated CURRENT route, never NEWS")
 need((root/"digest/current.html").is_file(),"Dedicated CURRENT Digest resolver page missing")
 current=(root/"digest/current.html").read_text(encoding="utf-8")
+need("ADMIN_1" not in current and "ADMIN_2" not in current and "/api/v1/digest/releases" not in current,"Public CURRENT page must not expose Admin workflow")
+need("Актуальний випуск тимчасово недоступний" in current,"Public CURRENT unavailable state must be neutral")
+need("current.pdf" in current and "current.json" in current,"Public CURRENT resolver must use current.pdf/current.json only")
+
 need("current.pdf?v=" in current and "cache:'no-store'" in current,"Static CURRENT PDF fallback missing or cache-prone")
 need("d.revision||d.updated_at||Date.now()" in current,"API CURRENT resolver must cache-bust by revision")
 need('fetch("/api/v1/digest/current"' in public_runtime and 'd.status!=="CURRENT"' in public_runtime,"Public Digest card must resolve the server CURRENT release")
-need("digest-current-route-v4-20261003" in home,"Public CURRENT Digest runtime cache-busting version not advanced")
+need("DIRECT-CURRENT-PDF-V9" in home,"Homepage must load direct CURRENT PDF runtime")
+need("digest/current.pdf?v=" in public_runtime and "digest/current.json?t=" in public_runtime,"Homepage Digest binding must resolve physical CURRENT PDF directly")
+need('a.setAttribute("download","IIG_Monthly_Digest_CURRENT.pdf")' in public_runtime,"Homepage Digest button must download PDF directly")
+need('a.href="digest/current.html"' in public_runtime,"Homepage may use public-only resolver only as missing-file fallback")
 need("digestReleaseRequest" in public_news_runtime and "digestReleaseValid" in public_news_runtime,"Digest release article bridge missing")
 need("registryItems.find(x=>x.slug===id&&digestReleaseValid(x))" in public_news_runtime,"Cross-device article fallback must resolve exact registry slug")
 need("source')==='iig-admin1-digest" in public_news_runtime,"Public article bridge must require explicit ADMIN_1 Digest source marker")
@@ -387,6 +394,8 @@ need('finaladvice-more">Читати далі... →</span>' in js,"Every Digest
 need("badAdvice=advice.filter" in js and 'advice-article.html?id=' in js,"Digest release gate must validate canonical Advice routes")
 need('x.url!==publicUrl({content_type:x.type,slug:x.slug})' in js,"Digest release gate must validate canonical NEWS/Finance/Regulation routes")
 need("ЗАВАНТАЖИТИ ДАЙДЖЕСТ PDF" in home,"Homepage must expose an explicit PDF Digest download button")
+need("ADMIN_1" not in current and "upload endpoint" not in current.lower(),"Public website must never display Admin/API instructions")
+
 need('/\\.pdf(?:$|[?#])/i.test(d.public_url)' in public_runtime,"Public Digest binding must reject non-PDF CURRENT URLs")
 need("digest-current-route-v4-20261003" in home,"Public CURRENT Digest runtime cache-busting version not advanced to FINAL_ADMIN_IIG")
 
