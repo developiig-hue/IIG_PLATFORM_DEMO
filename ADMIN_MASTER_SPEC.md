@@ -1036,3 +1036,38 @@ Any public redirect to Admin workflow, any Admin/API error text visible to users
 4. No candidate rebuild, no new PDF generation and no repeated Final Preview/approval are required while the approved fingerprint is unchanged.
 
 Any rule that forces regeneration or a repeated approval solely because ADMIN_2 is re-uploading the same previously approved PDF is a release-blocking regression.
+
+
+## FINAL_ADMIN_IIG — CANONICAL «ЗАЛИТИ ДАЙДЖЕСТ НА САЙТ IIG» V11 (2026-10-05)
+
+### Operator rule
+
+- The canonical publication action is **«ЗАЛИТИ ДАЙДЖЕСТ НА САЙТ IIG»**.
+- ADMIN_1 or ADMIN_2 may use this action for a previously generated PDF when the same Digest revision was already approved by ADMIN_1 and the approval receipt still matches the current fingerprint.
+- Re-upload of the already-approved PDF does not require regeneration, candidate rebuild, Final Preview, or repeated ADMIN_1 approval.
+
+### Success definition
+
+Publication is successful only after the PDF binary physically exists in public hosting/storage as the single CURRENT artifact and is reachable through a public versioned HTTPS URL. Selecting a local file, downloading a static package, or creating metadata in the browser is not publication.
+
+### Portable production contract
+
+The paid-domain/hosting implementation MUST preserve this API contract:
+
+`POST /api/v1/digest/releases`
+- authenticated ADMIN_1 or ADMIN_2;
+- multipart PDF + metadata;
+- verify unchanged ADMIN_1-approved fingerprint;
+- replace CURRENT atomically;
+- delete previous CURRENT;
+- verify active PDF hyperlinks;
+- return `public_url`, `revision`, `previous_current_deleted=true`, `links_preserved=true`.
+
+Public flow:
+**homepage → direct versioned CURRENT PDF download**. No Admin or backend diagnostics may ever be exposed publicly.
+
+### Static GitHub Pages limitation
+
+GitHub Pages does not provide a browser write endpoint. Therefore the demo MUST NOT report successful site publication after a local file selection. On static hosting it may prepare a package, but true publication requires a write-capable storage/API or committing `digest/current.pdf` into the deployed artifact through an authenticated mechanism.
+
+Any implementation that labels a locally selected file as “published” before the binary is physically accessible from the public site is a release-blocking defect.
