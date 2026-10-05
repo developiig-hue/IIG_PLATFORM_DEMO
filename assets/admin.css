@@ -101,3 +101,7 @@
 
 /* DIGEST PDF PUBLICATION CONTROL */
 .digestPdfUpload{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #cdd8df;border-radius:8px;background:#fff;font-size:10px;font-weight:900;color:#0b3158}.digestPdfUpload input{max-width:220px;font-size:10px}.finaldigest-readmore{white-space:nowrap;color:#0b5f99;font-size:8px;font-weight:900;text-align:right}
+
+.digestLanguageControl{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#0b3158}
+.digestLanguageControl .input{min-width:210px;width:auto;padding:10px 12px}
+@media(max-width:900px){.digestLanguageControl{width:100%;align-items:flex-start;flex-direction:column}.digestLanguageControl .input{width:100%}}
