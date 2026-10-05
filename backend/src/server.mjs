@@ -49,14 +49,14 @@ app.post("/api/v1/digest/releases",async(req,reply)=>{
   let pdf=null,meta=null;
   for await (const part of req.parts()){
     if(part.type==="file"){
-      if(part.fieldname!=="pdf") continue;
-      pdf=await part.toBuffer();
+      if(part.fieldname==="pdf") pdf=await part.toBuffer();
+      else if(part.fieldname==="metadata"){
+        try{meta=JSON.parse((await part.toBuffer()).toString("utf8"))}catch{}
+      }
     }else if(part.fieldname==="metadata"){
-      try{meta=JSON.parse(part.value)}catch{ /* may arrive as multipart file below */ }
+      try{meta=JSON.parse(part.value)}catch{}
     }
   }
-  // Fastify multipart can expose metadata.json as file. Re-read via saved body field is not possible,
-  // so clients SHOULD send metadata as a normal text field. Compatibility fallback below uses headers.
   meta=meta||{};
   const issue=String(meta.issue||req.headers["x-iig-digest-issue"]||"");
   const fingerprint=String(meta.fingerprint||req.headers["x-iig-digest-fingerprint"]||"");
