@@ -1,0 +1,14 @@
+{
+  "schema": "iig.digest-current.v1",
+  "status": "CURRENT",
+  "issue": "2026-09",
+  "filename": "IIG_Digest_09_2026.pdf",
+  "revision": "c107321c2355da3b",
+  "sha256": "c107321c2355da3bf6c09d1ec7c1a70b4dba2c9f854adf50f30af38e2d8da7d3",
+  "bytes": 400116,
+  "public_url": "/IIG_PLATFORM_DEMO/digest/current.pdf",
+  "links_preserved": true,
+  "link_count": 45,
+  "approved_by": "ADMIN_1",
+  "uploaded_by": "CHATGPT_GITHUB_CONNECTOR"
+}
