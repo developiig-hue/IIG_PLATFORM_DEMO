@@ -720,3 +720,42 @@ Any implementation that reverts to browser-local publication, requires manual pu
 - This rule is hosting-agnostic and must survive migration to any paid domain/storage implementation.
 
 A visible or clickable public Digest download control without a physically available CURRENT PDF is a release-blocking regression.
+
+
+## FINAL_ADMIN_IIG — BILINGUAL DIGEST EDITIONS UA/EN V15 (2026-10-05)
+
+### Canonical language rule
+
+- **UA is the primary/default Digest language.**
+- ADMIN may explicitly switch the working Digest to **EN** using the Digest language selector.
+- UA and EN are independent editorial/release editions of the same monthly issue. Switching language must never overwrite the other language's manual layout, release-candidate, Final Preview snapshot, ADMIN_1 approval receipt or PDF artifact.
+
+### Persistence / approval separation
+
+- Digest persistence keys are language-scoped by issue and language.
+- Candidate/fingerprint includes the selected language.
+- ADMIN_1 approval for UA does not approve EN automatically, and EN approval does not replace UA approval.
+- Returning from EN to UA restores the previously saved UA edition exactly, and vice versa.
+
+### Content selection
+
+- Digest NEWS/Advice output uses the matching localized fields: UA edition prefers `ua`, EN edition prefers `en`.
+- If an EN field is absent, the system may fall back to the UA value so the material is not silently lost; the fallback remains visible editorial content and may be edited before approval.
+- Layout geometry, page capacities, link routes and approval rules stay identical across languages.
+
+### Required English UI inside the generated Digest
+
+EN output uses English cover/subtitle, month names, section headers, Chief Engineer Advice label, **Read more...**, **SUBMIT A PROJECT**, and **SUBSCRIBE TO THE DIGEST**.
+
+### Artifact naming
+
+- UA: `IIG_Digest_MM_YYYY.pdf`
+- EN: `IIG_Digest_MM_YYYY_EN.pdf`
+
+The EN artifact must not overwrite the UA artifact merely because month/year are identical.
+
+### Portability invariant
+
+Any future paid-domain/hosting migration must preserve the language selector, UA-default behavior, language-scoped layout/candidate/approval state, localized PDF rendering, and non-colliding UA/EN artifact names.
+
+A regression that merges UA/EN state, makes EN overwrite UA, or silently forces Digest generation back to UA-only is a release blocker.
