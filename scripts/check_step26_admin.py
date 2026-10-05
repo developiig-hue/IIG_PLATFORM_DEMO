@@ -336,7 +336,7 @@ need('u.searchParams.set("source","iig-admin1-digest")' in js and 'u.searchParam
 
 
 
-need("sessionStorage.setItem(DIGEST_CANDIDATE_KEY" in js,"Digest candidate sessionStorage quota fallback missing")
+need("sessionStorage.setItem(key,raw)" in js and "digestStorageKey(DIGEST_CANDIDATE_KEY)" in js,"Digest candidate language-scoped sessionStorage fallback missing")
 need("localStorage.getItem(DIGEST_CANDIDATE_KEY)||sessionStorage.getItem" in js,"Digest candidate restore fallback missing")
 need("downloadDigestHtml" in html and "printDigestPdf" in html,"Admin-only Digest export controls missing")
 need("buildStandaloneDigestHtml" in js and "downloadApprovedDigestHtml" in js and "printApprovedDigestPdf" in js,"Admin-only Digest artifact generator missing")
@@ -431,7 +431,7 @@ need("Build current public Digest PDF" not in (root/".github/workflows/pages.yml
 need(not (root/"scripts/build_public_digest_pdf.py").exists(),"Server-side Digest PDF generator must remain absent")
 need("Новий випуск публікується тільки після фінального затвердження ADMIN_1" not in news_page and "The new issue is published only after final ADMIN_1 approval" not in news_page,"Public News/Digest UI must not expose internal ADMIN_1 workflow text")
 
-need('finaladvice-more">Читати далі... →</span>' in js,"Every Digest Advice row must use the same visible Read-more CTA")
+need("finaladvice-more" in js and "L.read" in js and "Read more... →" in js and "Читати далі... →" in js,"Every Digest Advice row must use the language-aware visible Read-more CTA")
 need("badAdvice=advice.filter" in js and 'advice-article.html?id=' in js,"Digest release gate must validate canonical Advice routes")
 need('x.url!==publicUrl({content_type:x.type,slug:x.slug})' in js,"Digest release gate must validate canonical NEWS/Finance/Regulation routes")
 need("ЗАВАНТАЖИТИ ДАЙДЖЕСТ PDF" in home,"Homepage must expose an explicit PDF Digest download button")
