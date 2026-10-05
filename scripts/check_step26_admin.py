@@ -15,7 +15,7 @@ def need(cond,msg):
     if not cond: errors.append(msg)
 need(live_js_path.is_file(),"Cache-proof live Admin runtime missing")
 need('assets/admin-final-admin1-v1.js' in html,"Admin HTML must load cache-proof live runtime")
-need('assets/admin-final-admin1-v1.js?v=PDF-IFRAME-NO-POPUP-V4' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
+need('assets/admin-final-admin1-v1.js?v=PDF-VISUAL-FIDELITY-V5' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
 need('data-admin-runtime-page="ADMIN1_FINAL_LOCK_V1"' in final_admin,"Dedicated FINAL_ADMIN_IIG runtime marker missing")
 need("RUNTIME · ADMIN1 FINAL LOCK v1" in html,"Visible Admin runtime version badge missing")
 need('IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1"' in js,"Live runtime version marker missing")
@@ -299,6 +299,13 @@ need('window.open("","_blank","noopener")' not in js,"PDF print must not depend 
 need('id="iigDigestPrintFrame"' not in html and "iigDigestPrintFrame" in js and "frame.srcdoc=html" in js,"PDF print iframe runtime missing")
 need("IFRAME PRINT · EXACT APPROVED STATE · ACTIVE LINKS · NO POPUP" in js,"No-popup PDF audit marker missing")
 need("baseTag='<base href=" in js,"PDF export must set base URL so relative IIG links resolve correctly")
+need("DIGEST_MASTER_COVER_IMAGE" in js and "pdf-visual-bg" in js and "pdf-visual-overlay" in js,"PDF cover/promo visuals must use foreground image layers")
+need("printableCoverMarkup" in js and "printableExtraPageMarkup" in js and "printableFinalPageMarkup" in js,"Print-specific Digest visual renderer missing")
+need("digestPages.map(printableFinalPageMarkup)" in js,"Standalone PDF HTML must use print-specific renderer")
+need("-webkit-print-color-adjust:exact" in js and "print-color-adjust:exact" in js,"PDF exact color printing guard missing")
+need("waitForDigestPrintAssets" in js and "await waitForDigestPrintAssets(frame.contentDocument)" in js,"PDF print must wait for images/fonts before invoking print")
+need("PRINT-SAFE IMG LAYERS" in js,"PDF visual-fidelity audit marker missing")
+
 
 need("sessionStorage.setItem(DIGEST_CANDIDATE_KEY" in js,"Digest candidate sessionStorage quota fallback missing")
 need("localStorage.getItem(DIGEST_CANDIDATE_KEY)||sessionStorage.getItem" in js,"Digest candidate restore fallback missing")
