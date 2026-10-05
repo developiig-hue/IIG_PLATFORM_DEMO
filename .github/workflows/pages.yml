@@ -43,6 +43,11 @@ jobs:
           node --check assets/admin-final-admin1-v1.js
           node --check assets/public-news.js
           node --check assets/admin-contacts.js
+          node --check backend/src/server.mjs
+          node --check backend/src/storage.mjs
+          node --check backend/src/auth.mjs
+          node --check backend/src/approval-store.mjs
+          node --check backend/src/pdf-links.mjs
       - name: STEP 26 Admin MASTER acceptance
         run: python scripts/check_step26_admin.py
       - name: Security exposure guard
