@@ -84,15 +84,16 @@ const digestStorageKey=base=>base+"."+currentDigestIssueKey()+"."+digestLanguage
 const IMAGE_RULES={maxBytes:10*1024*1024,minW:1200,minH:1697,recommendedW:1800,recommendedH:2546,types:["image/jpeg","image/png","image/webp"]};
 const ARTICLE_PAGE_CAPACITY=100,ARTICLE_IMAGE_MIN_LONG_SIDE=900;
 let pendingArticleImport={fileName:"",title:"",lead:"",paragraphs:[],images:[]};
-const defaultCover=()=>({isDefault:true,title:"MONTHLY DIGEST",subtitle:"ПРОМИСЛОВОЇ ЕНЕРГЕТИКИ",slogan:"Енергія відновлення. Інвестиції в майбутнє промисловості України",announcements:["Генерація промисловості – Україна","Світова практика промислової енергетики","Фінансування та державне регулювання","Поради Головного інженера"],bgData:"",bgName:"APPROVED MASTER v2 · Page 1",bgPosition:"center",overlay:0.55,width:0,height:0,bgApproved:true,bgApprovedBy:"MASTER",bgRightsVerification:"MASTER_APPROVED",bgApprovedAt:"2026-09-29"});
+const defaultCover=()=>digestLanguage==="EN"?({isDefault:true,title:"MONTHLY DIGEST",subtitle:"INDUSTRIAL ENERGY",slogan:"Energy for recovery. Investment in the future of Ukrainian industry",announcements:["Industrial generation — Ukraine","Global industrial energy practice","Finance and regulation","Chief Engineer Advice"],bgData:"",bgName:"APPROVED MASTER v2 · Page 1",bgPosition:"center",overlay:0.55,width:0,height:0,bgApproved:true,bgApprovedBy:"MASTER",bgRightsVerification:"MASTER_APPROVED",bgApprovedAt:"2026-09-29"}):({isDefault:true,title:"MONTHLY DIGEST",subtitle:"ПРОМИСЛОВОЇ ЕНЕРГЕТИКИ",slogan:"Енергія відновлення. Інвестиції в майбутнє промисловості України",announcements:["Генерація промисловості – Україна","Світова практика промислової енергетики","Фінансування та державне регулювання","Поради Головного інженера"],bgData:"",bgName:"APPROVED MASTER v2 · Page 1",bgPosition:"center",overlay:0.55,width:0,height:0,bgApproved:true,bgApprovedBy:"MASTER",bgRightsVerification:"MASTER_APPROVED",bgApprovedAt:"2026-09-29"});
 let coverDraft=defaultCover();
 let pendingCoverBg=null,pendingExtraBg=null;
 const PAGE_CAPACITY={cover:0,news:19,finance:14};
-let digestPages=[
- {name:"Сторінка 1 — Обкладинка",kind:"cover",capacity:0,items:[],design:coverDraft},
- {name:"Сторінка 2 — Новини",kind:"news",capacity:PAGE_CAPACITY.news,items:[]},
- {name:"Сторінка 3 — Фінанси / Законодавство / Поради",kind:"finance",capacity:PAGE_CAPACITY.finance,items:[]}
+const freshDigestPages=()=>[
+ {name:digestLanguage==="EN"?"Page 1 — Cover":"Сторінка 1 — Обкладинка",kind:"cover",capacity:0,items:[],design:coverDraft},
+ {name:digestLanguage==="EN"?"Page 2 — News":"Сторінка 2 — Новини",kind:"news",capacity:PAGE_CAPACITY.news,items:[]},
+ {name:digestLanguage==="EN"?"Page 3 — Finance / Regulation / Advice":"Сторінка 3 — Фінанси / Законодавство / Поради",kind:"finance",capacity:PAGE_CAPACITY.finance,items:[]}
 ];
+let digestPages=freshDigestPages();
 let digestOverflowExcluded=[];
 const val=(o,k)=>o&&typeof o==="object"?(o[k]||o.ua||o.en||""):(o||"");
 const titleOf=n=>val(n.title,"ua")||n.slug||"Без назви";
