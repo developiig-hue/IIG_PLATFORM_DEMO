@@ -1,0 +1,11 @@
+services:
+  iig-digest:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - iig-digest-data:/app/data/digest
+    ports:
+      - "127.0.0.1:8787:8787"
+volumes:
+  iig-digest-data:
