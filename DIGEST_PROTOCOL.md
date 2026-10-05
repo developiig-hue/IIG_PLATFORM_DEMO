@@ -507,3 +507,24 @@ This section supersedes all older Digest publication clauses that said previous 
 - Static fallback may serve `digest/current.pdf` if such a file was deployed by another authenticated mechanism; it is not a substitute for the upload API.
 
 Any return to ADMIN_1-only technical PDF re-upload, blocking replacement after status PUBLISHED, retaining multiple CURRENT files, or serving an unversioned stale CURRENT PDF is a release-blocking regression.
+
+
+## FINAL_ADMIN_IIG — STATIC CURRENT PACKAGE V8 (2026-10-05)
+
+### GitHub Pages behavior
+
+- GitHub Pages has no server-side upload endpoint and MUST NOT call `POST /api/v1/digest/releases` from the Admin publish button.
+- On a `*.github.io` host, Admin short-circuits before the API call and creates a deterministic static publication package from the already ADMIN_1-approved PDF.
+- The package contains:
+  - `current.pdf` — the exact selected approved PDF, renamed for canonical static publication;
+  - `current.json` — issue/fingerprint/revision/approval metadata.
+- The static flow must never show the obsolete **UPLOAD BACKEND NOT CONNECTED** error modal.
+- ADMIN_1 and ADMIN_2 may prepare this package for the unchanged approved fingerprint.
+- Deploying the package means replacing `digest/current.pdf` and `digest/current.json`; the previous files are overwritten/removed so exactly one CURRENT remains.
+- `digest/current.html` requests CURRENT with cache bypass/revision, so a replaced PDF cannot be served under the old browser/CDN cache identity.
+
+### Production behavior
+
+- On a production host with `/api/v1/digest/releases`, Admin continues to use authenticated REPLACE CURRENT semantics: delete previous CURRENT, publish new PDF, verify links, return a new revision URL.
+
+Returning to a GitHub-Pages API POST attempt or showing a backend-missing modal on the static host is a release-blocking regression.
