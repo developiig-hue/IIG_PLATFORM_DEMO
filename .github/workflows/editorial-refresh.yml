@@ -1,5 +1,9 @@
 name: IIG Editorial Refresh — Scheduled or ADMIN_1 Manual
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/editorial-trigger.json'
   workflow_dispatch:
     inputs:
       reason:
