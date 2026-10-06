@@ -1264,3 +1264,20 @@ This rule is part of the portable MASTER. Any new hosting/domain implementation 
 A duplicated CTA pair on Page 4+, or removal of the canonical bottom footer CTA pair, is a RELEASE-BLOCKING regression.
 
 **Status:** FIXED / PROTOCOL LOCKED / PORTABLE.
+
+
+## HARD RULE — NEWS CONTENT DEPTH / EVENT TAG / DECISION-MAKER VALUE V18 (2026-10-06)
+
+**OWNER RED TEAM DECISION — MANDATORY FOR ALL NEW NEWS.**
+
+1. **EVENT classification.** Exhibitions, conferences, forums, summits, congresses, public technology presentations and comparable professional industry/energy events use public `editorial_tag=EVENT`. The technical sector remains separate for search/routing; the public article/card must show **EVENT**, not a generic ENERGY tag.
+2. **Content depth.** A NEWS full article below **600 characters per language** is release-blocking. Target is normally **900–1200+ characters** when the primary source supports it. Long primary sources must be materially mined for facts, participants, scale, dates, numbers, agenda, technology and project context; do not reduce them to a few generic sentences.
+3. **Verified direct speech.** Search for a short relevant statement from an organizer, participant, project/company executive or authorized official. Use it when verified. Never fabricate or paraphrase inside quotation marks. If none exists, record `quote_search_status=NOT_FOUND`; absence of a quote alone does not block publication.
+4. **Dates and numbers.** Decision-useful dates and numeric facts are rendered in bold: investment/capacity/percentages plus company, country, delegate, participant, visitor and B2B/G2B meeting counts.
+5. **IIG recommendation required.** Every NEWS article ends with **ПОРАДА IIG / IIG RECOMMENDATION**, explaining why the item matters to company management, investors/financiers and/or technical specialists, and what practical next step follows.
+6. **EVENT image rule.** When a rights-cleared actual event image is unavailable, ADMIN may approve/generate a representative event visual. It must be labelled representative/generated and must not claim to depict the actual event.
+7. **Fail-closed QA.** Content Engine and Quality Gate must block: `news_body_min_600`, `news_iig_advice_required`, and `event_tag_must_be_EVENT`. A verified quote is optional, but quote-search status is mandatory.
+
+**Portable invariant:** these rules belong to the repository policy/runtime, not to one hosting provider. They MUST survive domain/hosting migration.
+
+**Status:** HARD RULE / RELEASE BLOCKING / PORTABLE.
