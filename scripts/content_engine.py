@@ -92,6 +92,69 @@ def discovery_intake():
         if why:errors.append({"index":i,"reasons":why})
         else:items.append({"source_id":x.get("source_id"),"source_name":x.get("source_name"),"sector":x.get("sector"),"title":x.get("title"),"primary_url":x["url"],"published_at":x.get("published_at"),"supplementary_leads":x["supplementary_search"]["leads"],"primary_source_excerpt":x.get("primary_source_excerpt",""),"primary_source_capture":x.get("primary_source_capture",{}),"state":"NEEDS_CONTENT_ENRICHMENT","publishable":False})
     return {"present":True,"received":len(raw),"accepted":len(items),"rejected":len(errors),"items":items,"errors":errors}
+
+EVENT_HINTS=("exhibition","conference","forum","summit","congress","expo","fair","presentation","kioge","вистав","конференц","форум","саміт","конгрес","презентац")
+def _clean_source_text(v):
+    s=re.sub(r"\s+"," ",str(v or "")).strip()
+    parts=re.split(r"(?<=[.!?])\s+",s)
+    out=[];seen=set()
+    for p in parts:
+        p=p.strip()
+        key=re.sub(r"\W+","",p.lower())[:180]
+        if len(p)<35 or key in seen:continue
+        if any(x in p.lower() for x in ("cookie","privacy policy","accept all","javascript","subscribe newsletter")):continue
+        seen.add(key);out.append(p)
+    return out
+def _event_type(packet):
+    hay=(str(packet.get("title") or "")+" "+str(packet.get("source_name") or "")+" "+str(packet.get("primary_source_excerpt") or "")[:1200]).lower()
+    return "INDUSTRY_EVENT" if any(k in hay for k in EVENT_HINTS) else None
+def synthesize_news_from_research(packet):
+    url=str(packet.get("primary_url") or "").strip()
+    if not https_url(url):return None
+    sentences=_clean_source_text(packet.get("primary_source_excerpt"))
+    leads=packet.get("supplementary_leads") or []
+    for z in leads:
+        if isinstance(z,dict):
+            sentences.extend(_clean_source_text((z.get("title") or "")+". "+(z.get("snippet") or "")))
+    uniq=[];seen=set()
+    for s in sentences:
+        k=re.sub(r"\W+","",s.lower())[:220]
+        if k and k not in seen:seen.add(k);uniq.append(s)
+    et=_event_type(packet);minimum=EVENT_MIN_CHARS if et else NEWS_MIN_CHARS
+    source=[]
+    total=0
+    for s in uniq:
+        source.append(s);total+=len(s)+1
+        if total>=max(minimum,2400 if et else 1600):break
+    source_text=" ".join(source).strip()
+    if len(source_text)<minimum:return None
+    title=str(packet.get("title") or "Industry update").strip()
+    src=str(packet.get("source_name") or "Primary source").strip()
+    sector=str(packet.get("sector") or "other").strip()
+    date=str(packet.get("published_at") or "")[:10]
+    if not re.match(r"^\d{4}-\d{2}-\d{2}$",date):date=datetime.now(timezone.utc).date().isoformat()
+    event_note=" Подія класифікована IIG як EVENT; технічна галузь зберігається окремо для пошуку та маршрутизації." if et else ""
+    body=("ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. "+source_text+
+          "\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень."+event_note+
+          "\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.")
+    if len(body)<minimum:return None
+    ctx=(f"{src} опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\n"
+         f"IIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\n"
+         f"Матеріал віднесено до сектору {sector}; публікація залишається REVIEW до затвердження ADMIN_1.")
+    return {
+      "type":"news","title":title,"company_name":src,"company_activity":"Industry / energy market participant",
+      "project":title,"technology":"Industrial / energy technology and market development",
+      "project_status":"Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+      "project_status_evidence":"Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+      "date":date,"canonical_url":url,"primary_source_verified":True,"company_context":ctx[:590],
+      "evidence":4,"practical_value":4,"transferability":4,"technology_diversity":4,"decision_maker_value":4,
+      "sector":sector,"body":body,
+      "iig_advice":"Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+      "quote_search_status":"NOT_FOUND","editorial_tag":"EVENT" if et else sector.upper(),"event_type":et,
+      "supplementary_sources":[z.get("url") for z in leads if isinstance(z,dict) and https_url(z.get("url",""))][:5],
+      "generated_from":"DISCOVERY_PRIMARY_SOURCE_CAPTURE","source_capture_characters":len(str(packet.get("primary_source_excerpt") or ""))
+    }
+
 def curated_pool():
     accepted=[];rejected=[];seen=set()
     for p in sorted(CAND.glob("*.json")):
@@ -119,7 +182,17 @@ def route(items):
 def make(kind,now):
     pol=policy();pool,rejected=curated_pool();intake=discovery_intake()
     if intake["present"] and intake["errors"] and intake["accepted"]==0:raise SystemExit("CONTENT_ENGINE_BLOCKED: invalid Discovery handoff")
-    if kind=="weekly":selected=sorted(pool,key=lambda x:(score(x),x["date"]),reverse=True)[:int(pol["weekly"]["max_candidates"])]
+    generated=[]
+    if kind=="weekly":
+        for packet in intake.get("items",[]):
+            item=synthesize_news_from_research(packet)
+            if item and not validate_curated(item):generated.append(item)
+        combined=[];seen=set()
+        for x in generated+pool:
+            key=(x.get("canonical_url","").lower(),x.get("type"))
+            if key in seen:continue
+            seen.add(key);combined.append(x)
+        selected=sorted(combined,key=lambda x:(score(x),x["date"]),reverse=True)[:int(pol["weekly"]["max_candidates"])]
     else:
         month=(now.replace(day=1)-timedelta(days=1)).strftime("%Y-%m");selected=[];seen=set()
         for q in existing_weekly():
@@ -128,7 +201,7 @@ def make(kind,now):
                 if not validate_curated(x) and x["date"].startswith(month) and x["canonical_url"].lower() not in seen:seen.add(x["canonical_url"].lower());selected.append(x)
         selected=sorted(selected,key=score,reverse=True)[:int(pol["monthly"]["max_items"])]
     outputs=route(selected);stamp=now.strftime("%Y%m%dT%H%M%SZ");ident=hashlib.sha256((kind+stamp+"|".join(x["canonical_url"] for x in selected)).encode()).hexdigest()[:16]
-    doc={"schema":SCHEMA,"id":ident,"kind":kind,"generated_at":now.isoformat(),"status":"READY_FOR_REVIEW","publish_authority":"ADMIN_ONLY","auto_publish":False,"items":selected,"outputs":outputs,"output_counts":{k:len(v) for k,v in outputs.items()},"discovery_intake":{k:v for k,v in intake.items() if k!="items"}|{"research_packets":intake["items"],"raw_discovery_never_publishable":True},"validation":{"curated_accepted":len(pool),"curated_rejected":len(rejected),"rejections":rejected},"pipeline":{"input":"NEWS_SOURCE_DISCOVERY","engine":"CONTENT_ENGINE","outputs":["NEWS","CHIEF_ENGINEER_ADVICE"],"next":"QUALITY_GATE","robot_count":7,"new_robot_created":False},"moderation":{"reviewed_by":None,"reviewed_at":None,"decision":None},"audit":{"generator":"scripts/content_engine.py","rule":"NO_AUTO_PUBLISH","input_schema":DISCOVERY_SCHEMA,"output_schema":SCHEMA}}
+    doc={"schema":SCHEMA,"id":ident,"kind":kind,"generated_at":now.isoformat(),"status":"READY_FOR_REVIEW","publish_authority":"ADMIN_ONLY","auto_publish":False,"items":selected,"outputs":outputs,"output_counts":{k:len(v) for k,v in outputs.items()},"discovery_intake":{k:v for k,v in intake.items() if k!="items"}|{"research_packets":intake["items"],"raw_discovery_never_publishable":True},"validation":{"curated_accepted":len(pool),"curated_rejected":len(rejected),"discovery_generated_news":len(generated),"rejections":rejected},"pipeline":{"input":"NEWS_SOURCE_DISCOVERY","engine":"CONTENT_ENGINE","outputs":["NEWS","CHIEF_ENGINEER_ADVICE"],"next":"QUALITY_GATE","robot_count":7,"new_robot_created":False},"moderation":{"reviewed_by":None,"reviewed_at":None,"decision":None},"audit":{"generator":"scripts/content_engine.py","rule":"NO_AUTO_PUBLISH","input_schema":DISCOVERY_SCHEMA,"output_schema":SCHEMA}}
     path=QUEUE/f"{kind}-{stamp}.json";atomic_json(path,doc)
     report={"schema":"iig.content-engine-report.v1","generated_at":now.isoformat(),"kind":kind,"artifact":str(path.relative_to(ROOT)),"discovery_received":intake["received"],"discovery_research_packets":intake["accepted"],"discovery_rejected":intake["rejected"],"curated_accepted":len(pool),"curated_rejected":len(rejected),"news_output":len(outputs["news"]),"chief_engineer_advice_output":len(outputs["chief_engineer_advice"]),"status":"PASS","next_state":"QUALITY_GATE_REVIEW"}
     atomic_json(ROOT/"content/content-engine-report.json",report);print(path.relative_to(ROOT));print(json.dumps(report,ensure_ascii=False))
