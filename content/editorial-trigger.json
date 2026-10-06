@@ -1,0 +1,6 @@
+{
+  "schema": "iig.editorial-trigger.v1",
+  "requested_at": "2026-10-06T14:32:42.317Z",
+  "requested_by": "ADMIN_1",
+  "reason": "one-session verification after V22 dispatch fix"
+}
