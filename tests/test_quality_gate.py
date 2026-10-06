@@ -4,6 +4,7 @@ from scripts import quality_gate as q
 class QualityGateTests(unittest.TestCase):
  def base(self,t="chief-engineer-advice"):
   x={"type":t,"title":"Engineering item","company_name":"Example Energy","project":"Industrial project","technology":"CHP","project_status":"announced","project_status_evidence":"Official source confirms announcement","date":"2026-09-20","canonical_url":"https://example.com/news/a","primary_source_verified":True,"company_context":"Verified company and project context."}
+  if t=="news":x.update({"body":"FACT. "+("Verified event/project source detail. "*25)+" IIG RECOMMENDATION. Management should validate technical scope, commercial relevance and implementation timing before acting.","iig_advice":"Management, investors and technical specialists should validate technical scope, implementation timing and commercial relevance before acting.","editorial_tag":"ENERGY","quote_search_status":"NOT_FOUND"})
   if t=="chief-engineer-advice":x["advice"]={"problem":"Industrial interfaces can be incorrectly assessed when design packages are separated.","checks":"Verify load profiles, operating cases, interfaces and redundancy before the design basis is frozen.","technical_solution":"Model the integrated system and define verified interface limits before major equipment is sized.","management_decision":"Do not approve procurement until the integrated design basis and interface register are approved."}
   return x
  def doc(self,items=None):
@@ -32,6 +33,10 @@ class QualityGateTests(unittest.TestCase):
   x=self.base();x["date"]="not-a-date";_,r=q.gate(self.doc([x]));self.assertIn("invalid_date",r[0]["reasons"])
  def test_bad_advice_blocked(self):
   x=self.base();x["advice"]["checks"]="short";_,r=q.gate(self.doc([x]));self.assertIn("advice_four_block_contract",r[0]["reasons"])
+ def test_event_news_requires_EVENT_tag(self):
+  x=self.base("news");x["sector"]="energy";x["event_type"]="EXHIBITION";x["editorial_tag"]="ENERGY";d=self.doc();d["outputs"]={"news":[x],"chief_engineer_advice":[]};_,r=q.gate(d);self.assertIn("event_tag_must_be_EVENT",r[0]["reasons"])
+ def test_short_news_blocked(self):
+  x=self.base("news");x["sector"]="energy";x["body"]="short";d=self.doc();d["outputs"]={"news":[x],"chief_engineer_advice":[]};_,r=q.gate(d);self.assertIn("news_body_min_600",r[0]["reasons"])
  def test_news_requires_sector_and_image_evidence(self):
   x=self.base("news");d=self.doc();d["outputs"]={"news":[x],"chief_engineer_advice":[]};_,r=q.gate(d);self.assertIn("news_sector_missing",r[0]["reasons"])
  def test_workflow_is_read_only_and_nonpublishing(self):
