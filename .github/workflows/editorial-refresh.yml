@@ -10,7 +10,7 @@ on:
     # GitHub cron is UTC. Run at both DST candidates and guard by Europe/Prague local hour.
     - cron: '5 7,8 * * 1'
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: iig-editorial-refresh
   cancel-in-progress: false
@@ -76,6 +76,24 @@ jobs:
           assert a['publish_authority']=='ADMIN_ONLY'
           print('EDITORIAL_REFRESH_READY_FOR_ADMIN_REVIEW', {'evaluated':r['evaluated_total'],'passed':r['passed_total'],'blocked':r['blocked_total']})
           PY
+      - name: Publish latest ADMIN_REVIEW handoff
+        if: steps.window.outputs.run == 'true'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          rr=json.loads(Path("content/image-rights-report.json").read_text())
+          src=json.loads(Path(rr["artifact"]).read_text())
+          out={"schema":"iig.admin-review-latest.v1","generated_at":src["generated_at"],"status":"ADMIN_REVIEW","run_id":"${{ github.run_id }}","items":src.get("admin_review_queue",[]),"results":src.get("results",[]),"auto_publish":False}
+          p=Path("content/admin-review/latest.json");p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
+          PY
+          git config user.name "iig-editorial-robot"
+          git config user.email "develop.iig@gmail.com"
+          git add content/admin-review/latest.json content/discovery-report.json content/content-engine-report.json content/quality-gate-report.json content/image-rights-report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "robot: publish latest editorial ADMIN_REVIEW handoff"
+            git push
+          fi
       - name: Upload ADMIN review package
         if: steps.window.outputs.run == 'true'
         uses: actions/upload-artifact@v4
