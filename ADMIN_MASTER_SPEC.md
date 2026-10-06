@@ -1336,3 +1336,24 @@ RELEASE BLOCKER: external GitHub redirect, false STARTED status without backend 
 - Robot #2 must reject obvious non-industrial/non-energy Discovery noise before NEWS synthesis.
 
 This separation is portable: **CONTENT QA and IMAGE PUBLICATION QA are separate gates** on any future paid hosting/domain.
+
+
+## HARD RULE — NEWS ADMIN_2 EDITORIAL AUTHORITY V25 (2026-10-06)
+
+**Owner-approved editorial contract.**
+
+1. Every NEWS item in ADMIN REVIEW must be editable before final approval.
+2. ADMIN_2 may edit and save: title, summary, full body, sector/rubric, publication date, source URL, slug and other editorial fields exposed by the CMS.
+3. ADMIN_2 save always returns/keeps the material in `REVIEW`, sets `admin_approved=false`, invalidates prior publication approval and records `editorial_edited_by=ADMIN_2` + timestamp.
+4. ADMIN_2 cannot finally approve a NEWS item, approve publication, or publish it.
+5. ADMIN_1 is the only final approval/publication authority.
+6. Production portability: editorial revisions persist through `POST /api/v1/editorial/drafts/:slug` (or equivalent transactional DB implementation), never only in browser localStorage.
+7. GitHub Pages DEMO may fall back to localStorage for testing, but this is not production persistence.
+
+### Reader-centric wording
+Public NEWS must explain relevance to the reader, not to IIG itself. Avoid formulations such as **«Для IIG це важливо…»** in the reader-facing article. Prefer **«Для керівника підприємства…»**, **«Для інвестора…»**, **«Для технічного директора / спеціаліста…»** as appropriate.
+
+### Portability gate
+Migration is blocked unless ADMIN_2 can edit + save REVIEW revisions, ADMIN_1 alone can approve/publish, saved revisions survive restart/deployment, and Audit identifies editor + time.
+
+**Status:** HARD RULE / RBAC / PORTABLE.
