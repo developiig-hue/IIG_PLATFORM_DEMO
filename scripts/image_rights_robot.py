@@ -68,7 +68,7 @@ def run():
     known={x.get("source_page"):x for x in rows}
     for item in news:
         if item.get("canonical_url") not in known:
-            rows.append({"audit_file":None,"slug":item.get("title"),"source_page":item.get("canonical_url"),"decision":"BLOCK","selected_image":None,"reasons":["image_audit_missing"],"quality_gate_eligible":False})
+            rows.append({"audit_file":None,"slug":item.get("title"),"source_page":item.get("canonical_url"),"decision":"ADMIN_IMAGE_REQUIRED","selected_image":None,"reasons":["image_audit_missing_admin_must_generate_or_approve"],"quality_gate_eligible":True,"publication_eligible":False})
     now=datetime.now(timezone.utc);ident=hashlib.sha256(now.isoformat().encode()).hexdigest()[:16]
     by_source={x.get("source_page"):x for x in rows}
     admin=[]
@@ -76,8 +76,8 @@ def run():
     for x in approved:
         if x.get("route")!="news":continue
         ir=by_source.get(x["item"].get("canonical_url"))
-        if ir and ir.get("quality_gate_eligible"):admin.append({"route":"news","item":x["item"],"item_sha256":x["item_sha256"],"image_required":True,"image_decision":ir["decision"],"selected_image":ir["selected_image"]})
-    o={"schema":"iig.image-rights.v1","id":ident,"generated_at":now.isoformat(),"status":"READY_FOR_ADMIN_REVIEW","publish_authority":"ADMIN_ONLY","auto_publish":False,"results":rows,"admin_review_queue":admin,"advice_passthrough_total":len(advice),"news_admin_eligible_total":sum(x["route"]=="news" for x in admin),"passed_total":sum(x["quality_gate_eligible"] for x in rows),"blocked_total":sum(not x["quality_gate_eligible"] for x in rows),"pipeline":{"robot":"IMAGE_RIGHTS","robot_number":4,"next":"ADMIN_REVIEW","robot_count":7}}
+        if ir and ir.get("quality_gate_eligible"):admin.append({"route":"news","item":x["item"],"item_sha256":x["item_sha256"],"image_required":True,"image_decision":ir["decision"],"selected_image":ir.get("selected_image"),"publication_eligible":bool(ir.get("selected_image")) and ir.get("decision")!="ADMIN_IMAGE_REQUIRED"})
+    o={"schema":"iig.image-rights.v1","id":ident,"generated_at":now.isoformat(),"status":"READY_FOR_ADMIN_REVIEW","publish_authority":"ADMIN_ONLY","auto_publish":False,"results":rows,"admin_review_queue":admin,"advice_passthrough_total":len(advice),"news_admin_eligible_total":sum(x["route"]=="news" for x in admin),"news_waiting_for_admin_image_total":sum(x.get("route")=="news" and x.get("image_decision")=="ADMIN_IMAGE_REQUIRED" for x in admin),"passed_total":sum(x["quality_gate_eligible"] for x in rows),"blocked_total":sum(not x["quality_gate_eligible"] for x in rows),"pipeline":{"robot":"IMAGE_RIGHTS","robot_number":4,"next":"ADMIN_REVIEW","robot_count":7}}
     ap=OUT/f"image-rights-{ident}.json";atomic(ap,o)
     r={"schema":"iig.image-rights-report.v1","status":"PASS","generated_at":now.isoformat(),"artifact":str(ap.relative_to(ROOT)),"evaluated_total":len(rows),"passed_total":o["passed_total"],"blocked_total":o["blocked_total"],"next_state":"ADMIN_REVIEW"}
     atomic(ROOT/"content/image-rights-report.json",r);print("IMAGE_RIGHTS_RUN_PASS",json.dumps(r))
