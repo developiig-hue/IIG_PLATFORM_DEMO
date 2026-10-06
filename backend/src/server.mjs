@@ -4,10 +4,16 @@ import {requireAdmin} from "./auth.mjs";
 import {putCurrent,getCurrentMeta,getCurrentPdf,revisionFor,sha256} from "./storage.mjs";
 import {saveApproval,getApproval} from "./approval-store.mjs";
 import {verifyPdfLinks} from "./pdf-links.mjs";
+import fs from "node:fs/promises";
+import path from "node:path";
 
 const app=Fastify({logger:true,bodyLimit:30*1024*1024});
 await app.register(multipart,{limits:{fileSize:25*1024*1024,files:1,fields:8}});
 const normLang=v=>String(v||"UA").toUpperCase()==="EN"?"EN":"UA";
+const editorialDraftDir=path.resolve(process.env.IIG_EDITORIAL_DRAFT_DIR||"./var/editorial-drafts");
+const safeSlug=v=>String(v||"").toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,160);
+async function saveEditorialDraft(slug,record){await fs.mkdir(editorialDraftDir,{recursive:true});const tmp=path.join(editorialDraftDir,slug+".tmp"),dst=path.join(editorialDraftDir,slug+".json");await fs.writeFile(tmp,JSON.stringify(record,null,2)+"\n",{mode:0o600});await fs.rename(tmp,dst)}
+
 
 const EDITORIAL_REFRESH_REQUESTS=new Map();
 const ghRepo=String(process.env.IIG_GITHUB_REPO||"developiig-hue/IIG_PLATFORM_DEMO");
@@ -81,6 +87,16 @@ app.post("/api/v1/digest/releases",async(req,reply)=>{
   return record;
 });
 
+
+
+app.post("/api/v1/editorial/drafts/:slug",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  if(!["ADMIN_1","ADMIN_2"].includes(role))return reply.code(403).send({error:"EDITOR_ROLE_REQUIRED"});
+  const slug=safeSlug(req.params?.slug),item=req.body?.item;
+  if(!slug||!item||typeof item!=="object")return reply.code(400).send({error:"INVALID_EDITORIAL_DRAFT"});
+  const record={schema:"iig.editorial-draft.v1",slug,status:"REVIEW",edited_by:role,edited_at:new Date().toISOString(),item:{...item,slug,status:"REVIEW",admin_approved:false,demo_published:false,editorial_edited_by:role}};
+  await saveEditorialDraft(slug,record);reply.header("Cache-Control","no-store");return {status:"SAVED",slug,edited_by:role,edited_at:record.edited_at};
+});
 
 app.post("/api/v1/editorial/refresh",async(req,reply)=>{
   const role=requireAdmin(req,reply);if(!role)return;
