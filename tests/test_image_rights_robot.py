@@ -30,3 +30,6 @@ class ImageRightsTests(unittest.TestCase):
   if p.exists():
    w=p.read_text().lower();self.assertIn("contents: read",w);self.assertNotIn("contents: write",w);self.assertNotIn("deploy-pages",w)
 if __name__=="__main__":unittest.main()
+
+# V23 invariant: missing source-image audit must not remove NEWS from ADMIN REVIEW.
+# Publication remains blocked until ADMIN_1 generates/approves an image.
