@@ -100,3 +100,8 @@ The verified production contract is bilingual:
 - PDF link verification applies independently to both language editions.
 
 Owner acceptance on 2026-10-06 confirmed that EN translation and EN Digest links work correctly. A hosting/domain migration must re-run the UA/EN switch, translation, state isolation and PDF/direct-link checks before cutover.
+
+## Editorial Robot refresh
+- `POST /api/v1/editorial/refresh` — ADMIN_1 dispatches the editorial workflow server-side.
+- `GET /api/v1/editorial/refresh/:id` — returns QUEUED/RUNNING/COMPLETE/FAILED.
+Configure `IIG_GITHUB_ACTIONS_TOKEN` only on the server. Never expose it in browser JavaScript. GitHub Pages cannot host this API.
