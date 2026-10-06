@@ -1,5 +1,5 @@
 {
-  "schema": "iig.content-policy.v8",
+  "schema": "iig.content-policy.v9",
   "weekly": {
     "schedule": "Monday",
     "max_candidates": 12,
@@ -149,7 +149,7 @@
       ],
       "citations": "Record URLs and publication/access dates for factual background, ownership, site, technology and executive statements; retain multiple source links in the full article. Do not use Wikipedia as sole support for a disputed or time-sensitive claim.",
       "executive_quote": "Actively search the project release, company newsroom, official interview and reputable secondary reporting for a relevant direct statement about THIS project by a named CEO, project director, operations executive or authorized official. Quote verbatim in original language, identify full name, role, date and direct source URL, and provide a faithful clearly labelled translation UA/EN when needed. Keep quotations short and within applicable quotation limits. Never fabricate, splice, paraphrase inside quotation marks, or repurpose an unrelated executive quote. If no verified project-specific quotation exists, explicitly mark 'Project-specific executive quotation not found' in internal editorial metadata and publish sourced indirect speech without quotation marks; do not block a factual article solely for lack of a quote.",
-      "full_article": "Go beyond the 600-character company profile: develop a sourced narrative covering investment, capacity and technical solution where reported, location, implementation schedule, stage, energy implications and limitations; include a verified executive statement when available, distinguishing source facts from IIG technical analysis. Never invent energy consumption, project KPIs or operating status."
+      "full_article": "NEWS HARD RULE: full public article must be at least 600 characters per language and should normally reach 900–1200+ characters when the source supports it. Use substantially more verified material from the primary source, include a short verified direct statement when available, distinguish source facts from IIG analysis, and end with a practical IIG recommendation for management/investors/technical specialists."
     },
     "source": {
       "primary_source_required": true,
@@ -207,7 +207,46 @@
       "error_fallback": "On source-photo load failure switch to matching verified local baze_foto_news JPEG; never restore SVG placeholder. A missing local image is release-blocking.",
       "release_gate": "Verify each approved article's source-photo rights or correct sector fallback, live asset URL, bilingual captions, rendered home/news/industry/article images, and five latest approved homepage articles. Policy filenames do not prove upload."
     },
-    "navigation": "Every published card links to full approved article. No hardcoded demo news. Audit nine sectors and honest empty states."
+    "navigation": "Every published card links to full approved article. No hardcoded demo news. Audit nine sectors and honest empty states.",
+    "news_content_hard_rule": {
+      "version": "V1_2026-10-06",
+      "status": "HARD_RULE",
+      "public_editorial_tag": {
+        "event_rule": "Exhibitions, conferences, forums, summits, public technology presentations, industry congresses and comparable professional energy/industrial events MUST use editorial_tag=EVENT in public UI. Technical sector remains a separate field for routing/search/image fallback.",
+        "event_types": [
+          "EXHIBITION",
+          "CONFERENCE",
+          "FORUM",
+          "SUMMIT",
+          "CONGRESS",
+          "PUBLIC_PRESENTATION",
+          "INDUSTRY_EVENT"
+        ]
+      },
+      "full_article": {
+        "minimum_characters_per_language": 600,
+        "target_characters_per_language": "900-1200+ when the primary source supports it",
+        "source_use": "Use materially more verified information from the primary source; do not compress a long source into a few generic sentences.",
+        "minimum_sections": [
+          "FACTS_AND_EVENT_CONTEXT",
+          "WHY_IT_MATTERS",
+          "IIG_RECOMMENDATION"
+        ],
+        "iig_recommendation_required": true
+      },
+      "direct_speech": {
+        "policy": "Actively look for a short verified statement by an organizer, participant, project/company executive or authorized official. Use it when present and relevant; never invent a quotation. If no verified quote is available, record quote_search_status=NOT_FOUND and continue with sourced indirect speech."
+      },
+      "typography": {
+        "dates_and_numbers": "Public article renderer MUST emphasize dates and decision-useful numeric facts in bold, including capacities, investment, percentages, company/country/delegate/visitor/meeting counts and event dates."
+      },
+      "audience_value": {
+        "required": "End every NEWS article with an IIG recommendation explaining why the item matters to at least one of: company management, investors/financiers, engineering/technical specialists."
+      },
+      "event_images": {
+        "rule": "For EVENT items, Admin may approve/generate a representative event visual when no rights-cleared source-event image is available; it must be labelled as representative/generated and must not imply it is an actual event photograph."
+      }
+    }
   },
   "publication": {
     "auto_publish": false,
