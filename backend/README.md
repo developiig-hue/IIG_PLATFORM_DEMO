@@ -85,3 +85,18 @@ The public/admin frontend depends only on the stable URLs:
 - `/digest/current.pdf`
 
 Therefore changing domain, VPS provider, S3 vendor or hosting platform requires environment/proxy changes only; no Digest UI rewrite is needed.
+
+
+## Bilingual UA/EN portability
+
+The verified production contract is bilingual:
+- UA is the default language.
+- EN is a separate language-scoped edition of the same issue.
+- Approval and release metadata MUST carry `language`.
+- UA CURRENT: `/digest/current.pdf`.
+- EN CURRENT: `/digest/current-en.pdf`.
+- `GET /api/v1/digest/current?language=UA` and `?language=EN` resolve language-specific metadata.
+- UA and EN approval receipts/storage objects MUST remain separate.
+- PDF link verification applies independently to both language editions.
+
+Owner acceptance on 2026-10-06 confirmed that EN translation and EN Digest links work correctly. A hosting/domain migration must re-run the UA/EN switch, translation, state isolation and PDF/direct-link checks before cutover.
