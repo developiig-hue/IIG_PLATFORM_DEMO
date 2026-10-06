@@ -498,3 +498,7 @@ need("NEWS_RICH_BODY_V26" in pub and "safeRichHTML" in pub,"Public rich body san
 
 need("DEMO_PUBLISH_COMPACT_V27" in js and "compactPublishedBridgeArray" in js,"DEMO compact publish persistence missing")
 need("preview_data" not in js[js.index("function publicBridgeItem"):js.index("function compactPublishedBridgeArray")],"DEMO public bridge must not persist preview_data")
+
+need("primary_source_verified:n.primary_source_verified===true" in js,"Compact DEMO snapshot must retain primary_source_verified")
+need("DEMO_ARTICLE_CONSISTENCY_V28" in pub and "const prev=map.get(x.slug)||{}" in pub,"DEMO full-article consistency contract missing")
+need("DEMO-ARTICLE-CONSISTENCY-V28" in (root/"article.html").read_text(encoding="utf-8"),"Article page must load V28 public-news runtime")
