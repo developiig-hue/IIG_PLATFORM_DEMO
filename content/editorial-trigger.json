@@ -1,6 +1,6 @@
 {
   "schema": "iig.editorial-trigger.v1",
-  "requested_at": "2026-10-06T14:51:05.502Z",
+  "requested_at": "2026-10-06T14:55:21.679Z",
   "requested_by": "ADMIN_1",
-  "reason": "final V23 validation: generated NEWS must reach ADMIN REVIEW"
+  "reason": "final V24 acceptance after ADMIN_IMAGE_REQUIRED verifier fix"
 }
