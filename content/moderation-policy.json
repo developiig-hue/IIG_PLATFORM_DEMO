@@ -1,5 +1,5 @@
 {
-  "schema": "iig.content-policy.v9",
+  "schema": "iig.content-policy.v10",
   "weekly": {
     "schedule": "Monday",
     "max_candidates": 12,
@@ -209,7 +209,7 @@
     },
     "navigation": "Every published card links to full approved article. No hardcoded demo news. Audit nine sectors and honest empty states.",
     "news_content_hard_rule": {
-      "version": "V1_2026-10-06",
+      "version": "V2_2026-10-06",
       "status": "HARD_RULE",
       "public_editorial_tag": {
         "event_rule": "Exhibitions, conferences, forums, summits, public technology presentations, industry congresses and comparable professional energy/industrial events MUST use editorial_tag=EVENT in public UI. Technical sector remains a separate field for routing/search/image fallback.",
@@ -224,11 +224,13 @@
         ]
       },
       "full_article": {
-        "minimum_characters_per_language": 600,
-        "target_characters_per_language": "900-1200+ when the primary source supports it",
-        "source_use": "Use materially more verified information from the primary source; do not compress a long source into a few generic sentences.",
+        "minimum_characters_per_language": 1200,
+        "event_minimum_characters_per_language": 1800,
+        "target_characters_per_language": "2200-4000+ for information-rich primary sources; do not impose an artificial maximum when additional verified source material is decision-useful",
+        "source_use": "Mine the primary source deeply. A long release must not be reduced to a few generic paragraphs. Preserve decision-useful scale, geography, participants, agenda, technologies, dates, investment/project stage, quotes and business-negotiation information.",
         "minimum_sections": [
-          "FACTS_AND_EVENT_CONTEXT",
+          "FACTS",
+          "SOURCE_CONTEXT",
           "WHY_IT_MATTERS",
           "IIG_RECOMMENDATION"
         ],
@@ -245,6 +247,20 @@
       },
       "event_images": {
         "rule": "For EVENT items, Admin may approve/generate a representative event visual when no rights-cleared source-event image is available; it must be labelled as representative/generated and must not imply it is an actual event photograph."
+      },
+      "source_capture": {
+        "required": true,
+        "rule": "Robot #1 MUST capture a substantive plain-text extract of the primary publication itself (not only title/URL/search leads) and hand it to Content Engine. Target 4,000-16,000 characters when available. If source capture is materially empty, enrichment remains NEEDS_RESEARCH and cannot be treated as rich-source complete."
+      },
+      "event_source_coverage": {
+        "required_topics": [
+          "scale_and_participant_counts",
+          "geography",
+          "conference_or_event_agenda",
+          "technology_topics",
+          "named_operators_or_participants_when_source_provides_them",
+          "business_meetings_or_practical_next_steps_when_source_provides_them"
+        ]
       }
     }
   },
