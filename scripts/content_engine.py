@@ -93,6 +93,7 @@ def discovery_intake():
         else:items.append({"source_id":x.get("source_id"),"source_name":x.get("source_name"),"sector":x.get("sector"),"title":x.get("title"),"primary_url":x["url"],"published_at":x.get("published_at"),"supplementary_leads":x["supplementary_search"]["leads"],"primary_source_excerpt":x.get("primary_source_excerpt",""),"primary_source_capture":x.get("primary_source_capture",{}),"state":"NEEDS_CONTENT_ENRICHMENT","publishable":False})
     return {"present":True,"received":len(raw),"accepted":len(items),"rejected":len(errors),"items":items,"errors":errors}
 
+INDUSTRIAL_RELEVANCE_HINTS=("energy","power","electric","grid","gas","oil","hydrogen","solar","wind","battery","bess","chp","cogen","turbine","generator","boiler","steel","metallurg","cement","mining","industrial","infrastructure","data center","datacenter","heat","steam","decarbon","refiner","petrochem","газ","енерг","електр","мереж","водень","турбін","генерац","котел","металург","цемент","гірнич","промисл","інфраструктур","дата-центр","тепл","пара","нафт","нафтогаз")
 EVENT_HINTS=("exhibition","conference","forum","summit","congress","expo","fair","presentation","kioge","вистав","конференц","форум","саміт","конгрес","презентац")
 def _clean_source_text(v):
     s=re.sub(r"\s+"," ",str(v or "")).strip()
@@ -111,6 +112,8 @@ def _event_type(packet):
 def synthesize_news_from_research(packet):
     url=str(packet.get("primary_url") or "").strip()
     if not https_url(url):return None
+    raw=str(packet.get("title") or "")+" "+str(packet.get("primary_source_excerpt") or "")[:3500]
+    if not any(k in raw.lower() for k in INDUSTRIAL_RELEVANCE_HINTS):return None
     sentences=_clean_source_text(packet.get("primary_source_excerpt"))
     leads=packet.get("supplementary_leads") or []
     for z in leads:
