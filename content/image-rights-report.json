@@ -1,0 +1,10 @@
+{
+  "schema": "iig.image-rights-report.v1",
+  "status": "PASS",
+  "generated_at": "2026-10-06T14:48:03.973492+00:00",
+  "artifact": "content/image-rights/image-rights-b82d16e75f8b53d7.json",
+  "evaluated_total": 5,
+  "passed_total": 0,
+  "blocked_total": 5,
+  "next_state": "ADMIN_REVIEW"
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "iig.quality-gate-report.v1",
+  "generated_at": "2026-10-06T14:48:03.841115+00:00",
+  "status": "PASS",
+  "input_id": "cded86240bce9d17",
+  "evaluated_total": 6,
+  "passed_total": 6,
+  "blocked_total": 0,
+  "news_evaluated": 4,
+  "advice_evaluated": 2,
+  "artifact": "content/quality-gate/quality-44c9527af4ed0f1e.json",
+  "next_state": "IMAGE_RIGHTS"
+}

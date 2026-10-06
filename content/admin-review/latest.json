@@ -1,0 +1,126 @@
+{
+  "schema": "iig.admin-review-latest.v1",
+  "generated_at": "2026-10-06T14:48:03.973492+00:00",
+  "status": "ADMIN_REVIEW",
+  "run_id": "37481527711",
+  "items": [
+    {
+      "route": "chief_engineer_advice",
+      "item": {
+        "type": "chief-engineer-advice",
+        "title": "EAF + ASU: assess electrical demand and oxygen supply as one system",
+        "company_name": "U. S. Steel Košice / Nippon Steel",
+        "company_activity": "Integrated steelmaking and industrial manufacturing",
+        "project": "Engineering lesson derived from the announced EAF + ASU investment programme",
+        "technology": "EAF electrical load integration + ASU utility integration",
+        "project_status": "Engineering guidance based on an announced, not yet commissioned, investment programme",
+        "project_status_evidence": "Nippon Steel official release confirms the EAF and ASU investment decision and target dates; the engineering recommendation is IIG analysis.",
+        "date": "2026-09-16",
+        "canonical_url": "https://www.nipponsteel.com/en/newsroom/news/2026/20260916_100.html",
+        "primary_source_verified": true,
+        "company_context": "U. S. Steel Košice is a Slovak steelworks within Nippon Steel.\n\nThe project combines a major electric arc furnace investment with an air separation unit.\n\nFor FEED and grid studies, EAF demand, ASU demand, connection capacity and operating profiles should be assessed together.",
+        "evidence": 5,
+        "practical_value": 5,
+        "transferability": 5,
+        "technology_diversity": 5,
+        "decision_maker_value": 5,
+        "advice": {
+          "problem": "EAF and ASU loads can be underestimated when electrical and utility interfaces are studied separately.",
+          "checks": "Verify coincident EAF and ASU load profiles, grid connection limits, power quality, redundancy philosophy and operating modes before design freeze.",
+          "technical_solution": "Develop one integrated electrical and utility design basis, model coincident demand and disturbances, and size connection and reserve architecture against verified operating cases.",
+          "management_decision": "Do not approve grid capacity, major electrical procurement or final interface limits until the integrated EAF–ASU study and design basis are signed."
+        }
+      },
+      "item_sha256": "b1e848cfeab63c93fc511f20a4b1cc6c2b04635e334f50e28e41b8eca0405eed",
+      "image_required": false
+    },
+    {
+      "route": "chief_engineer_advice",
+      "item": {
+        "type": "chief-engineer-advice",
+        "title": "AI data centers: lock grid, backup and heat-reuse assumptions before CAPEX",
+        "company_name": "Google",
+        "company_activity": "Cloud, AI and data-center infrastructure",
+        "project": "Engineering lesson derived from the announced Finnish AI infrastructure programme",
+        "technology": "Grid connection + backup generation + waste-heat integration",
+        "project_status": "Engineering guidance based on an announced investment programme; site-specific design remains prospective",
+        "project_status_evidence": "Google's official release establishes the investment programme; the engineering checklist is IIG analysis, not a Google performance claim.",
+        "date": "2026-09-09",
+        "canonical_url": "https://www.googlecloudpresscorner.com/2026-09-09-Google-Deepens-Commitment-to-Finland-with-Two-Year-EUR13-Billion-investment-in-AI-Infrastructure",
+        "primary_source_verified": true,
+        "company_context": "Google operates cloud, AI and data-center infrastructure.\n\nAI infrastructure creates material electrical connection, redundancy and cooling requirements.\n\nBefore fixing CAPEX, industrial data-center studies should reconcile grid capacity, backup philosophy, load profile and recoverable heat.",
+        "evidence": 5,
+        "practical_value": 5,
+        "transferability": 5,
+        "technology_diversity": 4,
+        "decision_maker_value": 5,
+        "advice": {
+          "problem": "AI data-center CAPEX can be fixed before grid capacity, backup philosophy, cooling demand and recoverable heat are reconciled.",
+          "checks": "Verify utility connection capacity, phased IT load, redundancy level, backup runtime, cooling architecture, BESS role and heat-reuse boundary conditions.",
+          "technical_solution": "Build a staged energy balance and reliability model linking grid, backup generation, BESS, cooling and heat-reuse interfaces before equipment sizing.",
+          "management_decision": "Do not freeze electrical CAPEX or procure major backup and storage equipment until the load cases and resilience design basis are approved."
+        }
+      },
+      "item_sha256": "6770aecaeb011c78150452abf1974d97afd1be010461cf3f327ef55907b23a45",
+      "image_required": false
+    }
+  ],
+  "results": [
+    {
+      "audit_file": "content/image-moderation/google-finland-ai-grid-2026.json",
+      "slug": "google-finland-ai-grid-2026",
+      "source_page": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/google-ai-commitment-to-finland/",
+      "decision": "BLOCK",
+      "selected_image": null,
+      "reasons": [
+        "fallback_rights_unproven"
+      ],
+      "quality_gate_eligible": false
+    },
+    {
+      "audit_file": null,
+      "slug": "The Economist Energy Grid Intelligence Summit",
+      "source_page": "https://www.entsoe.eu/events/2026/10/07/the-economist-energy-grid-intelligence-summit",
+      "decision": "BLOCK",
+      "selected_image": null,
+      "reasons": [
+        "image_audit_missing"
+      ],
+      "quality_gate_eligible": false
+    },
+    {
+      "audit_file": null,
+      "slug": "Prada-Owned Pastry Shop Marchesi 1824 Names New CEO",
+      "source_page": "https://wwd.com/business-news/human-resources/prada-pastry-shop-marchesi-1824-new-ceo-ivan-haller-1239315328",
+      "decision": "BLOCK",
+      "selected_image": null,
+      "reasons": [
+        "image_audit_missing"
+      ],
+      "quality_gate_eligible": false
+    },
+    {
+      "audit_file": null,
+      "slug": "Nicole Kidman Turned the Chanel Show Into a Stylish Mother-Daughter Moment",
+      "source_page": "https://wwd.com/pop-culture/celebrity-news/nicole-kidman-daughter-faith-urban-chanel-spring-2027-show-1239315217",
+      "decision": "BLOCK",
+      "selected_image": null,
+      "reasons": [
+        "image_audit_missing"
+      ],
+      "quality_gate_eligible": false
+    },
+    {
+      "audit_file": null,
+      "slug": "183 south expressway design build austin texas",
+      "source_page": "https://www.fluor.com/projects/183-south-expressway-design-build-austin-texas",
+      "decision": "BLOCK",
+      "selected_image": null,
+      "reasons": [
+        "image_audit_missing"
+      ],
+      "quality_gate_eligible": false
+    }
+  ],
+  "auto_publish": false
+}
