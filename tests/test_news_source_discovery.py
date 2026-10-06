@@ -19,6 +19,8 @@ class DiscoveryTests(unittest.TestCase):
  def test_dedup_prefers_first_priority_order(self):
   rs=[{"id":"1","name":"A","priority":"P1","sector":"energy","website_url":"https://a.com","candidates":[{"url":"https://x.com/news","title":"100 MW power project","published_at":NOW.isoformat(),"method":"RSS_ATOM"}]},{"id":"2","name":"B","priority":"P2","sector":"energy","website_url":"https://b.com","candidates":[{"url":"https://x.com/news","title":"100 MW power project","published_at":NOW.isoformat(),"method":"HTML"}]}]
   x,n=d.dedup(rs);self.assertEqual((len(x),n),(1,1));self.assertEqual(x[0]["priority"],"P1")
+ def test_primary_source_text_parser(self):
+  p=d.SourceText();p.feed("<html><body><script>bad()</script><h1>KIOGE 2026</h1><p>501 companies from 22 countries and practical technology agenda for industrial energy.</p></body></html>");self.assertIn("501 companies", " ".join(p.parts));self.assertNotIn("bad()", " ".join(p.parts))
  def test_registry_contract(self):
   s=d.load_registry()["sources"];self.assertEqual(len(s),260);self.assertEqual(sum(x["priority"]=="P1" for x in s),160);self.assertEqual(sum(x["priority"]=="P2" for x in s),100)
 if __name__=="__main__":unittest.main()
