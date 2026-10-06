@@ -27,7 +27,7 @@ function loadSearchData(){if(searchDataPromise)return searchDataPromise;searchDa
  let bridge=[];try{bridge=JSON.parse(localStorage.getItem('iig.step26.published.news.v1')||'[]');if(!Array.isArray(bridge))bridge=[]}catch(e){bridge=[]}
  const repoNews=(news.items||[]).filter(x=>['APPROVED','PUBLISHED'].includes(x.status)&&x.admin_approved===true);
  const localNews=bridge.filter(x=>x&&x.content_type==='NEWS'&&x.status==='PUBLISHED'&&x.demo_published===true&&x.admin_approved===true&&x.image_admin_approved===true);
- const mergedNews=new Map();for(const x of [...repoNews,...localNews])mergedNews.set(x.slug,x);
+ const mergedNews=new Map();for(const x of localNews)mergedNews.set(x.slug,x);for(const b of repoNews){const local=mergedNews.get(b.slug);mergedNews.set(b.slug,local?{...local,...b,status:local.status,admin_approved:local.admin_approved,demo_published:local.demo_published,image_admin_approved:local.image_admin_approved,image_choice:local.image_choice||b.image_choice}:b);}
  const n=[...mergedNews.values()].map(x=>({
   type:'news',href:'article.html?id='+encodeURIComponent(x.slug),ua:searchText([x.title?.ua,x.summary?.ua,x.body?.ua,x.company_context?.map?.(v=>v.ua)||'',x.sector,x.digest_rubric]),en:searchText([x.title?.en,x.summary?.en,x.body?.en,x.company_context?.map?.(v=>v.en)||'',x.sector,x.digest_rubric]),titleUa:x.title?.ua||x.slug,titleEn:x.title?.en||x.title?.ua||x.slug,summaryUa:x.summary?.ua||'',summaryEn:x.summary?.en||x.summary?.ua||''
  }));
