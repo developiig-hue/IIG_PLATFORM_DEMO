@@ -1364,7 +1364,7 @@ Migration is blocked unless ADMIN_2 can edit + save REVIEW revisions, ADMIN_1 al
 1. Clicking a NEWS card, its title, or **✎ Редагувати** MUST open the complete article in the right-hand editor. Only **👁 Перегляд** opens preview.
 2. ADMIN_2 must see the entire full-text NEWS body, not a truncated excerpt.
 3. The editor must expose an explicit formatting toolbar: **Bold, Italic, uppercase/lowercase/sentence case, font family, font size**.
-4. The bottom action is **«СОХРАНИТЬ КОРРЕКТИРОВКИ»**. ADMIN_2 authority is sufficient.
+4. The bottom action is **«ЗБЕРЕГТИ КОРИГУВАННЯ»**. ADMIN_2 authority is sufficient.
 5. Saving corrections MUST preserve a plain-text canonical body for search/QA and a sanitized rich-text representation for presentation. Saved state = `REVIEW`, `admin_approved=false`, editor identity + timestamp recorded.
 6. ADMIN_2 cannot final-approve or publish. ADMIN_1 remains the only final approver.
 7. Rich text is allowlist-only. Scripts, event handlers, executable URLs, iframes, forms and arbitrary HTML are forbidden. Public renderer sanitizes again before display.
@@ -1372,3 +1372,17 @@ Migration is blocked unless ADMIN_2 can edit + save REVIEW revisions, ADMIN_1 al
 9. A hosting/domain migration is blocked if clicking NEWS does not open the complete editor, formatting is lost, corrections do not survive persistence, or ADMIN_2 can escalate to approval/publication.
 
 **PORTABLE / RBAC / SECURITY / RELEASE-BLOCKING.**
+
+
+## HARD RULE — DEMO PUBLISH COMPACT PERSISTENCE V27 (2026-10-06)
+
+- `Опублікувати у DEMO` MUST NOT persist the complete internal editorial/research object to browser storage.
+- DEMO bridge stores only the compact public article snapshot required by the public renderer: identity, publication state, title/summary/context/body/body_html, classification, source URL, approved image metadata and TOP-5 flag.
+- Heavy research packets, audit data, image preview blobs/data URLs, robot reports and internal workflow metadata are forbidden in the public DEMO bridge.
+- Existing legacy bridge entries are compacted/deduplicated by slug before every write.
+- On browser quota pressure, the runtime retries with the current compact published item instead of reverting an approved article to a false failure state.
+- Production migration MUST use server/database persistence and MUST NOT depend on browser localStorage quotas.
+
+ADMIN_2 correction button canonical label: **ЗБЕРЕГТИ КОРИГУВАННЯ**.
+
+**PORTABLE / STORAGE-SAFE / RELEASE-BLOCKING.**
