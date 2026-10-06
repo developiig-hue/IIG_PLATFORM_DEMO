@@ -105,3 +105,12 @@ Owner acceptance on 2026-10-06 confirmed that EN translation and EN Digest links
 - `POST /api/v1/editorial/refresh` — ADMIN_1 dispatches the editorial workflow server-side.
 - `GET /api/v1/editorial/refresh/:id` — returns QUEUED/RUNNING/COMPLETE/FAILED.
 Configure `IIG_GITHUB_ACTIONS_TOKEN` only on the server. Never expose it in browser JavaScript. GitHub Pages cannot host this API.
+
+
+## NEWS editorial drafts (ADMIN_2)
+
+- `POST /api/v1/editorial/drafts/:slug` accepts ADMIN_2 or ADMIN_1.
+- Saved revisions are always forced back to `REVIEW`, `admin_approved=false`.
+- ADMIN_2 can edit/save but cannot grant final approval or publish.
+- ADMIN_1 remains the only final approval/publication authority.
+- Draft storage is portable via `IIG_EDITORIAL_DRAFT_DIR`; production should mount it on persistent storage or replace it with a transactional database.
