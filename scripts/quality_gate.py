@@ -5,7 +5,9 @@ from datetime import datetime,timezone
 from pathlib import Path
 from urllib.parse import urlparse
 ROOT=Path(__file__).resolve().parents[1];QUEUE=ROOT/"content/review-queue";OUT=ROOT/"content/quality-gate";IMG=ROOT/"content/image-moderation"
-IN_SCHEMA="iig.content-engine.v3";OUT_SCHEMA="iig.quality-gate.v1";REPORT_SCHEMA="iig.quality-gate-report.v1"
+EVENT_TYPES={"EXHIBITION","CONFERENCE","FORUM","SUMMIT","CONGRESS","PUBLIC_PRESENTATION","INDUSTRY_EVENT"}
+NEWS_MIN_CHARS=600
+IN_SCHEMA="iig.content-engine.v4";OUT_SCHEMA="iig.quality-gate.v1";REPORT_SCHEMA="iig.quality-gate-report.v1"
 def load(p):
     try:return json.loads(p.read_text(encoding="utf-8"))
     except (OSError,json.JSONDecodeError) as e:raise ValueError(f"{p.name}: invalid JSON: {e}")
@@ -83,6 +85,12 @@ def validate_item(x,audits):
         if not isinstance(a,dict) or any(not isinstance(a.get(k),str) or len(a[k].strip())<40 for k in ("problem","checks","technical_solution","management_decision")):reasons.append("advice_four_block_contract")
     if typ=="news":
         if not x.get("sector"):reasons.append("news_sector_missing")
+        body=x.get("body")
+        if not isinstance(body,str) or len(body.strip())<NEWS_MIN_CHARS:reasons.append("news_body_min_600")
+        if not isinstance(x.get("iig_advice"),str) or len(x["iig_advice"].strip())<80:reasons.append("news_iig_advice_required")
+        et=str(x.get("event_type") or "").upper()
+        if et in EVENT_TYPES and str(x.get("editorial_tag") or "").upper()!="EVENT":reasons.append("event_tag_must_be_EVENT")
+        if not x.get("executive_quote") and x.get("quote_search_status") not in ("NOT_FOUND","NOT_APPLICABLE"):reasons.append("quote_search_status_required")
     return sorted(set(reasons))
 def gate(doc):
     fatal=[]
