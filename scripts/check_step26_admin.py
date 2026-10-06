@@ -15,7 +15,7 @@ def need(cond,msg):
     if not cond: errors.append(msg)
 need(live_js_path.is_file(),"Cache-proof live Admin runtime missing")
 need('assets/admin-final-admin1-v1.js' in html,"Admin HTML must load cache-proof live runtime")
-need('assets/admin-final-admin1-v1.js?v=ADMIN-NEWS-REFRESH-V21' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
+need('assets/admin-final-admin1-v1.js?v=EDITORIAL-BACKEND-V22' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
 need('data-admin-runtime-page="ADMIN1_FINAL_LOCK_V1"' in final_admin,"Dedicated FINAL_ADMIN_IIG runtime marker missing")
 need("RUNTIME · ADMIN1 FINAL LOCK v1" in html,"Visible Admin runtime version badge missing")
 need('IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1"' in js,"Live runtime version marker missing")
@@ -476,3 +476,8 @@ need("ADMIN_NEWS_REFRESH_NO_EXTERNAL_NAVIGATION_V21" in js,"No-external-navigati
 need('window.open("https://github.com/developiig-hue/IIG_PLATFORM_DEMO/actions/workflows/editorial-refresh.yml"' not in js,"NEWS refresh must never auto-open GitHub")
 need('EDITORIAL_REFRESH_ENDPOINT="/api/v1/editorial/refresh"' in js,"Portable editorial refresh backend endpoint missing")
 need("Robot-run · через backend/API" in html,"Admin must expose backend/API refresh contract instead of GitHub navigation")
+
+need('fetch("/api/v1/editorial/refresh"' in js,"REAL editorial dispatch endpoint missing")
+need("pollEditorialRefresh" in js and "loadAdminReviewHandoff" in js,"Editorial run polling/review handoff missing")
+need("ADMIN_NEWS_REFRESH_NO_EXTERNAL_NAVIGATION_V22" in js,"Editorial V22 runtime marker missing")
+need('window.open("https://github.com/developiig-hue/IIG_PLATFORM_DEMO/actions/workflows/editorial-refresh.yml"' not in js,"Admin refresh must not auto-open GitHub")
