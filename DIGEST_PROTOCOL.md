@@ -759,3 +759,34 @@ The EN artifact must not overwrite the UA artifact merely because month/year are
 Any future paid-domain/hosting migration must preserve the language selector, UA-default behavior, language-scoped layout/candidate/approval state, localized PDF rendering, and non-colliding UA/EN artifact names.
 
 A regression that merges UA/EN state, makes EN overwrite UA, or silently forces Digest generation back to UA-only is a release blocker.
+
+
+## FINAL_ADMIN_IIG — BILINGUAL DIGEST OWNER ACCEPTANCE + PORTABILITY GATE V16 (2026-10-06)
+
+**OWNER ACCEPTANCE: PASSED.** The owner verified the bilingual Digest flow in Admin:
+- UA remains the primary/default edition.
+- Switching to EN produces the English edition correctly.
+- EN translation rendering is accepted as correct.
+- Internal Digest links and content redirects in EN were manually checked and work correctly.
+- Returning between UA and EN must preserve the corresponding language-scoped edition/state.
+
+### Portable migration contract
+
+Any migration to another domain, paid hosting, VPS, container platform or S3-compatible storage MUST preserve this verified behavior without redesigning the Digest workflow:
+1. language selector exposes UA and EN;
+2. UA is selected by default on a new Digest session;
+3. language is carried through Admin state, candidate/fingerprint, Final Preview, ADMIN_1 approval, PDF rendering, release metadata and storage;
+4. UA and EN CURRENT artifacts are isolated and never overwrite one another;
+5. EN uses the same approved content identity/link targets as the corresponding localized material;
+6. PDF hyperlinks remain active after generation/upload;
+7. migration configuration is environment/proxy/storage based — no hardcoded old domain is permitted in bilingual workflow logic;
+8. post-migration regression test MUST generate/preview both UA and EN, verify language-specific artifact identity, and click-test NEWS, Advice and CTA links before production cutover.
+
+### Acceptance gate after migration
+
+Migration is NOT accepted until all of the following pass:
+`UA_DEFAULT=PASS + EN_SWITCH=PASS + EN_TRANSLATION=PASS + UA_EN_STATE_ISOLATION=PASS + PDF_LINKS=PASS + DIRECT_CONTENT_LINKS=PASS + CTA_LINKS=PASS + PUBLIC_DOWNLOAD_UA=PASS + PUBLIC_DOWNLOAD_EN=PASS`.
+
+Any loss of EN translation, fallback to UA-only operation, cross-language overwrite, broken link annotation, old-domain hardcoding, or wrong-language public artifact is a RELEASE BLOCKER.
+
+**Status:** VERIFIED / OWNER APPROVED / PORTABLE.
