@@ -15,7 +15,7 @@ def need(cond,msg):
     if not cond: errors.append(msg)
 need(live_js_path.is_file(),"Cache-proof live Admin runtime missing")
 need('assets/admin-final-admin1-v1.js' in html,"Admin HTML must load cache-proof live runtime")
-need('assets/admin-final-admin1-v1.js?v=NEWS-CONTENT-V18' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
+need('assets/admin-final-admin1-v1.js?v=NEWS-CONTENT-V19' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
 need('data-admin-runtime-page="ADMIN1_FINAL_LOCK_V1"' in final_admin,"Dedicated FINAL_ADMIN_IIG runtime marker missing")
 need("RUNTIME · ADMIN1 FINAL LOCK v1" in html,"Visible Admin runtime version badge missing")
 need('IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1"' in js,"Live runtime version marker missing")
@@ -57,7 +57,7 @@ reg_items=[x for x in news_items if x.get("digest_rubric")=="REGULATION"]
 need(len(finance_items)>=5 and len(reg_items)>=5,"Finance/Regulation editorial pool missing")
 need("editorialTag" in js and "EVENT_TYPES" in js,"Admin EVENT editorial tag renderer missing")
 need("editorialTag" in pub and "EVENT_TYPES" in pub,"Public EVENT editorial tag renderer missing")
-need("ПОРАДА IIG" in spec and "news_body_min_600" in spec and "event_tag_must_be_EVENT" in spec,"NEWS content-depth HARD RULE missing from protocol")
+need("ПОРАДА IIG" in spec and "news_body_min_1200" in spec and "event_tag_must_be_EVENT" in spec,"NEWS content-depth HARD RULE missing from protocol")
 event_items=[x for x in news_items if x.get("event_type") in ("EXHIBITION","CONFERENCE","FORUM","SUMMIT","CONGRESS","PUBLIC_PRESENTATION","INDUSTRY_EVENT")]
 need(all(x.get("editorial_tag")=="EVENT" for x in event_items),"EVENT news must use public EVENT tag")
 need(any(x.get("slug")=="kioge-2026-opening-58-countries-280-meetings" and x.get("status")=="REVIEW" for x in news_items),"KIOGE V18 test EVENT news missing")
@@ -465,3 +465,9 @@ need("digestPdfFile" in html and "publishDigestSite" in html and "ЗАЛИТИ �
 need("pendingDigestPdf" in js and "new FormData()" in js and 'form.append("pdf",pendingDigestPdf' in js,"Admin must upload exact PDF binary, not rebuild on server")
 need('replace_current:true' in js and 'delete_previous_current:true' in js and 'archive_previous_current:false' in js,"PDF publication must replace CURRENT and delete previous CURRENT")
 need('links_preserved!==true' in js and "PUBLIC_PDF_URL_REQUIRED" in js,"PDF publication must verify active links and PDF public URL")
+
+need("function mergeDemoPublished(baseItems)" in pub and "status:local.status" in pub and "...local,...b" in pub,"canonical repository content must override stale browser DEMO text while preserving local publish state")
+need("NEWS-CONTENT-V19" in (root/"article.html").read_text(encoding="utf-8"),"Article public-news cache bust missing")
+need("NEWS-CONTENT-V19" in (root/"index.html").read_text(encoding="utf-8"),"Homepage dynamic public-news runtime missing")
+need("NEWS-CONTENT-V19" in (root/"news.html").read_text(encoding="utf-8"),"News hub dynamic public-news runtime missing")
+need("event_body_min_1800" in spec and "news_body_min_1200" in spec,"V19 NEWS/EVENT depth blockers missing from protocol")
