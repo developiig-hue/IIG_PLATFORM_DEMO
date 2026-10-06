@@ -6,7 +6,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 ROOT=Path(__file__).resolve().parents[1];QUEUE=ROOT/"content/review-queue";OUT=ROOT/"content/quality-gate";IMG=ROOT/"content/image-moderation"
 EVENT_TYPES={"EXHIBITION","CONFERENCE","FORUM","SUMMIT","CONGRESS","PUBLIC_PRESENTATION","INDUSTRY_EVENT"}
-NEWS_MIN_CHARS=600
+NEWS_MIN_CHARS=1200
+EVENT_MIN_CHARS=1800
 IN_SCHEMA="iig.content-engine.v4";OUT_SCHEMA="iig.quality-gate.v1";REPORT_SCHEMA="iig.quality-gate-report.v1"
 def load(p):
     try:return json.loads(p.read_text(encoding="utf-8"))
@@ -86,7 +87,8 @@ def validate_item(x,audits):
     if typ=="news":
         if not x.get("sector"):reasons.append("news_sector_missing")
         body=x.get("body")
-        if not isinstance(body,str) or len(body.strip())<NEWS_MIN_CHARS:reasons.append("news_body_min_600")
+        min_chars=EVENT_MIN_CHARS if str(x.get("event_type") or "").upper() in EVENT_TYPES else NEWS_MIN_CHARS
+        if not isinstance(body,str) or len(body.strip())<min_chars:reasons.append("event_body_min_1800" if min_chars==EVENT_MIN_CHARS else "news_body_min_1200")
         if not isinstance(x.get("iig_advice"),str) or len(x["iig_advice"].strip())<80:reasons.append("news_iig_advice_required")
         et=str(x.get("event_type") or "").upper()
         if et in EVENT_TYPES and str(x.get("editorial_tag") or "").upper()!="EVENT":reasons.append("event_tag_must_be_EVENT")
