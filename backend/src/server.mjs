@@ -9,6 +9,22 @@ const app=Fastify({logger:true,bodyLimit:30*1024*1024});
 await app.register(multipart,{limits:{fileSize:25*1024*1024,files:1,fields:8}});
 const normLang=v=>String(v||"UA").toUpperCase()==="EN"?"EN":"UA";
 
+const EDITORIAL_REFRESH_REQUESTS=new Map();
+const ghRepo=String(process.env.IIG_GITHUB_REPO||"developiig-hue/IIG_PLATFORM_DEMO");
+const ghWorkflow=String(process.env.IIG_GITHUB_EDITORIAL_WORKFLOW||"editorial-refresh.yml");
+const ghBranch=String(process.env.IIG_GITHUB_BRANCH||"main");
+const ghToken=()=>String(process.env.IIG_GITHUB_ACTIONS_TOKEN||"").trim();
+async function githubApi(path,options={}){
+  const token=ghToken();if(!token)throw new Error("GITHUB_ACTIONS_TOKEN_NOT_CONFIGURED");
+  const headers={"Accept":"application/vnd.github+json","Authorization":"Bearer "+token,"X-GitHub-Api-Version":"2022-11-28","User-Agent":"IIG-Editorial-Backend"};
+  Object.assign(headers,options.headers||{});
+  const r=await fetch("https://api.github.com"+path,{method:options.method||"GET",headers,body:options.body});
+  const txt=await r.text();let body=null;try{body=txt?JSON.parse(txt):null}catch{body=txt}
+  if(!r.ok)throw new Error("GITHUB_API_"+r.status+":"+String((body&&body.message)||txt||"ERROR").slice(0,180));
+  return {status:r.status,body};
+}
+
+
 const allowedOrigins=new Set(String(process.env.IIG_ALLOWED_ORIGINS||"").split(",").map(x=>x.trim()).filter(Boolean));
 app.addHook("onRequest",async(req,reply)=>{
   const origin=req.headers.origin;
@@ -63,6 +79,32 @@ app.post("/api/v1/digest/releases",async(req,reply)=>{
   await putCurrent(pdf,record);
   reply.header("Cache-Control","no-store");
   return record;
+});
+
+
+app.post("/api/v1/editorial/refresh",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  if(role!=="ADMIN_1")return reply.code(403).send({error:"ADMIN_1_REQUIRED"});
+  if(!ghToken())return reply.code(503).send({error:"EDITORIAL_BACKEND_NOT_CONFIGURED",detail:"IIG_GITHUB_ACTIONS_TOKEN is required"});
+  const requestId="edr-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8),requestedAt=new Date().toISOString();
+  const reason=String((req.body&&req.body.reason)||"admin-ui-refresh").slice(0,120);
+  await githubApi("/repos/"+ghRepo+"/actions/workflows/"+encodeURIComponent(ghWorkflow)+"/dispatches",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ref:ghBranch,inputs:{reason:requestId+":"+reason}})});
+  EDITORIAL_REFRESH_REQUESTS.set(requestId,{requestId,requestedAt,role,status:"QUEUED"});
+  reply.header("Cache-Control","no-store");
+  return reply.code(202).send({request_id:requestId,status:"QUEUED",requested_at:requestedAt});
+});
+app.get("/api/v1/editorial/refresh/:id",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  const id=String((req.params&&req.params.id)||""),rec=EDITORIAL_REFRESH_REQUESTS.get(id);
+  if(!rec)return reply.code(404).send({error:"EDITORIAL_REFRESH_REQUEST_NOT_FOUND"});
+  try{
+    const q="/repos/"+ghRepo+"/actions/workflows/"+encodeURIComponent(ghWorkflow)+"/runs?event=workflow_dispatch&branch="+encodeURIComponent(ghBranch)+"&per_page=10";
+    const out=await githubApi(q),runs=((out.body&&out.body.workflow_runs)||[]).filter(x=>Date.parse(x.created_at)>=Date.parse(rec.requestedAt)-30000).sort((a,b)=>Date.parse(b.created_at)-Date.parse(a.created_at));
+    const run=runs[0];if(!run)return {request_id:id,status:"QUEUED",requested_at:rec.requestedAt};
+    const status=run.status==="completed"?(run.conclusion==="success"?"COMPLETE":"FAILED"):"RUNNING";
+    rec.status=status;rec.run_id=run.id;rec.conclusion=run.conclusion||null;
+    return {request_id:id,status,run_id:run.id,conclusion:run.conclusion||null,created_at:run.created_at,updated_at:run.updated_at};
+  }catch(e){return reply.code(502).send({error:"EDITORIAL_STATUS_FAILED",detail:String(e.message||e)})}
 });
 
 app.get("/api/v1/digest/current",async(req,reply)=>{
