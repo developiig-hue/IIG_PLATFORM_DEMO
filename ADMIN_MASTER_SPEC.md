@@ -1281,3 +1281,20 @@ A duplicated CTA pair on Page 4+, or removal of the canonical bottom footer CTA 
 **Portable invariant:** these rules belong to the repository policy/runtime, not to one hosting provider. They MUST survive domain/hosting migration.
 
 **Status:** HARD RULE / RELEASE BLOCKING / PORTABLE.
+
+
+## HARD RULE — NEWS SOURCE DEPTH / EVENT CANONICAL CONTENT V19 (2026-10-06)
+
+**OWNER RED TEAM: prior 600-character rule was insufficient. Upgraded.**
+
+1. Exhibitions, conferences, forums, summits, congresses and public industry/technology presentations MUST display `EVENT`. Technical sector stays separate for routing/image fallback.
+2. For an existing slug, current canonical repository title/summary/context/body/tag/event metadata MUST override stale browser DEMO text. Local DEMO may preserve publication/approval/image state only.
+3. NEWS full body: minimum **1200 characters per language**. EVENT: minimum **1800 characters per language**. Information-rich sources target **2200–4000+ characters** with no artificial truncation of useful verified facts.
+4. Robot #1 MUST capture and hand off substantive text from the PRIMARY source itself, not just URL/title/search leads. Target **4,000–16,000 characters** when available; failed/empty capture remains `NEEDS_RESEARCH`.
+5. EVENT coverage must include, when supplied by the source: scale/participants, geography, agenda, technologies, named operators/participants, B2B/G2B or other practical negotiation format.
+6. Every article ends with **ПОРАДА IIG / IIG RECOMMENDATION**, translating facts into a next step for management, investor/financier and/or technical specialist.
+7. Public renderer bolds dates and decision-useful numeric facts.
+
+Release blockers: `news_body_min_1200`, `event_body_min_1800`, `news_iig_advice_required`, `event_tag_must_be_EVENT`.
+
+**PORTABLE / RELEASE-BLOCKING / HARD RULE.**
