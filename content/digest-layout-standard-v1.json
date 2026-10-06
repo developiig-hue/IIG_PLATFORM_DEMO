@@ -176,7 +176,18 @@
         "PARTNER",
         "SPONSORED"
       ]
-    }
+    },
+    "inline_content_cta_pair": false,
+    "canonical_bottom_cta_pair": true,
+    "bottom_cta_source": "digestEndCtas",
+    "inline_cta_labels_forbidden": [
+      "Детальніше",
+      "Розмістити проєкт",
+      "Read more...",
+      "Submit a project"
+    ],
+    "cta_dedup_rule_version": "V17_2026-10-06",
+    "preserve_on_hosting_migration": true
   },
   "fallback_resolution": {
     "customization_opt_in": true,
