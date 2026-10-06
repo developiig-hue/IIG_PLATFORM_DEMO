@@ -89,11 +89,18 @@ app.post("/api/v1/digest/releases",async(req,reply)=>{
 
 
 
+function validateEditorialRichHtml(item){
+  const h=String(item?.body_html?.ua||"");
+  if(!h)return true;
+  if(/<\s*(script|style|iframe|object|embed|svg|math|form|input|button|a)\b/i.test(h))return false;
+  if(/\son\w+\s*=|javascript:|data:text\/html/i.test(h))return false;
+  return true;
+}
 app.post("/api/v1/editorial/drafts/:slug",async(req,reply)=>{
   const role=requireAdmin(req,reply);if(!role)return;
   if(!["ADMIN_1","ADMIN_2"].includes(role))return reply.code(403).send({error:"EDITOR_ROLE_REQUIRED"});
   const slug=safeSlug(req.params?.slug),item=req.body?.item;
-  if(!slug||!item||typeof item!=="object")return reply.code(400).send({error:"INVALID_EDITORIAL_DRAFT"});
+  if(!slug||!item||typeof item!=="object")return reply.code(400).send({error:"INVALID_EDITORIAL_DRAFT"});if(!validateEditorialRichHtml(item))return reply.code(400).send({error:"UNSAFE_EDITORIAL_HTML"});
   const record={schema:"iig.editorial-draft.v1",slug,status:"REVIEW",edited_by:role,edited_at:new Date().toISOString(),item:{...item,slug,status:"REVIEW",admin_approved:false,demo_published:false,editorial_edited_by:role}};
   await saveEditorialDraft(slug,record);reply.header("Cache-Control","no-store");return {status:"SAVED",slug,edited_by:role,edited_at:record.edited_at};
 });
