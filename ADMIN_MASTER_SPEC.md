@@ -1386,3 +1386,15 @@ Migration is blocked unless ADMIN_2 can edit + save REVIEW revisions, ADMIN_1 al
 ADMIN_2 correction button canonical label: **ЗБЕРЕГТИ КОРИГУВАННЯ**.
 
 **PORTABLE / STORAGE-SAFE / RELEASE-BLOCKING.**
+
+
+## HARD RULE — DEMO CARD / FULL ARTICLE CONSISTENCY V28 (2026-10-06)
+
+- Any NEWS item visible as a published DEMO card/search result MUST resolve by the same slug to a full `article.html?id=<slug>` article.
+- The compact DEMO bridge MUST retain every field required by the public validation contract, including `primary_source_verified=true`.
+- Compact bridge data MUST merge with the full editorial record for the same slug; it may override publication state and public fields but MUST NOT erase required verification metadata.
+- A card that renders while its full article resolves to the empty/not-found state is a RELEASE-BLOCKING regression.
+- Legacy compact records created before this rule must self-heal by merging with the full editorial record, without requiring the operator to republish the item.
+- Production hosting must use one canonical published-news record/DB transaction for list, search and full-article rendering.
+
+**PORTABLE / CONSISTENCY / RELEASE-BLOCKING.**
