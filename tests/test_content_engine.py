@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 class ContentEngineTests(unittest.TestCase):
     def good(self,t="news"):
-        x={"type":t,"title":"100 MW industrial project","company_name":"Example Energy","company_activity":"Industrial energy","project":"100 MW project","technology":"Generation","project_status":"Investment decision announced","project_status_evidence":"Official release confirms decision","date":"2026-09-20","canonical_url":"https://example.com/news/project","primary_source_verified":True,"company_context":"Example Energy develops industrial projects.\n\nOwnership context is source verified.\n\nThe project is announced and not commissioned.","evidence":5,"practical_value":4,"transferability":4,"technology_diversity":3,"decision_maker_value":5,"body":"FACT. "+("Verified source context and project details. "*22)+" IIG RECOMMENDATION. Management should compare the verified project stage, technical interfaces and commercial implications before using the case as a benchmark.","iig_advice":"Management, investors and technical specialists should compare verified project stage, interfaces, delivery terms and implementation risk before using the case as a benchmark.","editorial_tag":"ENERGY","quote_search_status":"NOT_FOUND"}
+        x={"type":t,"title":"100 MW industrial project","company_name":"Example Energy","company_activity":"Industrial energy","project":"100 MW project","technology":"Generation","project_status":"Investment decision announced","project_status_evidence":"Official release confirms decision","date":"2026-09-20","canonical_url":"https://example.com/news/project","primary_source_verified":True,"company_context":"Example Energy develops industrial projects.\n\nOwnership context is source verified.\n\nThe project is announced and not commissioned.","evidence":5,"practical_value":4,"transferability":4,"technology_diversity":3,"decision_maker_value":5,"body":"FACT. "+("Verified source context and project details. "*50)+" IIG RECOMMENDATION. Management should compare the verified project stage, technical interfaces and commercial implications before using the case as a benchmark.","iig_advice":"Management, investors and technical specialists should compare verified project stage, interfaces, delivery terms and implementation risk before using the case as a benchmark.","editorial_tag":"ENERGY","quote_search_status":"NOT_FOUND"}
         if t=="chief-engineer-advice":
             x["advice"]={"problem":"Electrical demand can be understated when interfaces are assessed separately.","checks":"Verify load profiles, connection limits, redundancy criteria and operating modes before design freeze.","technical_solution":"Model coincident demand and interfaces, then size connection and reserve architecture against verified cases.","management_decision":"Do not approve procurement or connection capacity until the interface study and design basis are signed."}
         return x
@@ -22,10 +22,10 @@ class ContentEngineTests(unittest.TestCase):
     def test_bad_date_blocked(self):
         x=self.good();x["date"]="not-a-date";self.assertIn("invalid_date",c.validate_curated(x))
     def test_event_requires_event_tag(self):
-        x=self.good();x["event_type"]="EXHIBITION";x["editorial_tag"]="ENERGY";self.assertIn("event_tag_must_be_EVENT",c.validate_curated(x))
+        x=self.good();x["body"]="FACT. "+("Verified exhibition source detail, agenda, participant scale and technology context. "*35)+" IIG RECOMMENDATION. Management should use the event for structured vendor qualification.";x["event_type"]="EXHIBITION";x["editorial_tag"]="ENERGY";self.assertIn("event_tag_must_be_EVENT",c.validate_curated(x))
         x["editorial_tag"]="EVENT";self.assertNotIn("event_tag_must_be_EVENT",c.validate_curated(x))
     def test_short_news_blocked(self):
-        x=self.good();x["body"]="short";self.assertIn("news_body_min_600",c.validate_curated(x))
+        x=self.good();x["body"]="short";self.assertIn("news_body_min_1200",c.validate_curated(x))
     def test_advice_four_blocks(self):
         x=self.good("chief-engineer-advice");self.assertEqual(c.validate_curated(x),[])
         x["advice"]["checks"]="short";self.assertIn("advice_four_block_contract",c.validate_curated(x))
