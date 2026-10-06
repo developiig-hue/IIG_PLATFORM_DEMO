@@ -15,7 +15,7 @@ def need(cond,msg):
     if not cond: errors.append(msg)
 need(live_js_path.is_file(),"Cache-proof live Admin runtime missing")
 need('assets/admin-final-admin1-v1.js' in html,"Admin HTML must load cache-proof live runtime")
-need('assets/admin-final-admin1-v1.js?v=PROMO-CTA-DEDUP-V16' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
+need('assets/admin-final-admin1-v1.js?v=NEWS-CONTENT-V18' in final_admin,"Dedicated FINAL_ADMIN_IIG page missing cache-proof runtime")
 need('data-admin-runtime-page="ADMIN1_FINAL_LOCK_V1"' in final_admin,"Dedicated FINAL_ADMIN_IIG runtime marker missing")
 need("RUNTIME · ADMIN1 FINAL LOCK v1" in html,"Visible Admin runtime version badge missing")
 need('IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1"' in js,"Live runtime version marker missing")
@@ -55,6 +55,13 @@ news_items=news_data if isinstance(news_data,list) else news_data.get("items",[]
 finance_items=[x for x in news_items if x.get("digest_rubric")=="FINANCE"]
 reg_items=[x for x in news_items if x.get("digest_rubric")=="REGULATION"]
 need(len(finance_items)>=5 and len(reg_items)>=5,"Finance/Regulation editorial pool missing")
+need("editorialTag" in js and "EVENT_TYPES" in js,"Admin EVENT editorial tag renderer missing")
+need("editorialTag" in pub and "EVENT_TYPES" in pub,"Public EVENT editorial tag renderer missing")
+need("ПОРАДА IIG" in spec and "news_body_min_600" in spec and "event_tag_must_be_EVENT" in spec,"NEWS content-depth HARD RULE missing from protocol")
+event_items=[x for x in news_items if x.get("event_type") in ("EXHIBITION","CONFERENCE","FORUM","SUMMIT","CONGRESS","PUBLIC_PRESENTATION","INDUSTRY_EVENT")]
+need(all(x.get("editorial_tag")=="EVENT" for x in event_items),"EVENT news must use public EVENT tag")
+need(any(x.get("slug")=="kioge-2026-opening-58-countries-280-meetings" and x.get("status")=="REVIEW" for x in news_items),"KIOGE V18 test EVENT news missing")
+
 need("ФІНАНСИ" in js and "ЗАКОНОДАВСТВО / РЕГУЛЮВАННЯ" in js,"Finance/Legislation rubric labels missing")
 need("digest_rubric" in js,"Explicit digest rubric override missing")
 need("article.html?id=" in js,"NEWS direct-link route must use article.html?id")
