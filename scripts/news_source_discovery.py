@@ -7,7 +7,7 @@ try:
 except ImportError:
     from news_registry import REGISTRY_URI,load_registry
 ROOT=Path(__file__).resolve().parents[1]; UA=os.getenv("IIG_DISCOVERY_UA","IIG-News-Discovery/2.0")
-MAX_BYTES=700000; MAX_LINKS=80
+MAX_BYTES=700000; MAX_LINKS=80; SOURCE_TEXT_MAX=16000
 HINT=re.compile(r"(news|press|media|release|project|invest|energy|power|plant|factory|construction|commission|capacity|mw|mwh|solar|wind|battery|bess|chp|hydrogen|steel|data.?cent|chemical|pharma|logistics|agri|waste|новин|прес|проєкт|проект|інвест|енерг)",re.I)
 NOISE=re.compile(r"(privacy|cookie|career|jobs|contact|about|login|register|newsletter|tag/|category/|author/)",re.I)
 URLDATE=re.compile(r"/(20\d{2})[/-](0?[1-9]|1[0-2])(?:[/-]([0-3]?\d))?")
@@ -68,6 +68,24 @@ class Page(html.parser.HTMLParser):
         if self.href:self.txt.append(d)
     def handle_endtag(self,t):
         if t=="a" and self.href:self.links.append((self.href," ".join(" ".join(self.txt).split())));self.href=None;self.txt=[]
+class SourceText(html.parser.HTMLParser):
+    def __init__(self):super().__init__();self.parts=[];self.skip=0
+    def handle_starttag(self,t,a):
+        if t in ("script","style","noscript","svg"):self.skip+=1
+    def handle_endtag(self,t):
+        if t in ("script","style","noscript","svg") and self.skip:self.skip-=1
+    def handle_data(self,d):
+        if not self.skip:
+            s=" ".join(d.split())
+            if len(s)>=2:self.parts.append(s)
+def primary_source_text(u,timeout):
+    try:
+        st,final,body=fetch(u,timeout,"text/html,application/xhtml+xml,*/*;q=0.1")
+        p=SourceText();p.feed(body.decode("utf-8",errors="replace"))
+        text=re.sub(r"\s+"," "," ".join(p.parts)).strip()
+        return {"status":"CAPTURED" if len(text)>=800 else "TOO_SHORT","final_url":final,"characters":len(text),"text":text[:SOURCE_TEXT_MAX]}
+    except Exception as e:return {"status":"ERROR","characters":0,"text":"","error":f"{type(e).__name__}: {str(e)[:120]}"}
+
 def feed_items(body,base,now,days):
     out=[];root=ET.fromstring(body)
     for n in (root.findall(".//item")+root.findall(".//{*}entry"))[:100]:
@@ -175,13 +193,15 @@ def main():
     # All 260 are checked; newest 24 candidates are the bounded handoff window.
     # Each handoff candidate receives the required search outside the 260 registry.
     for item in items[:24]:
+        item["primary_source_capture"]=primary_source_text(item["url"],z.timeout)
+        item["primary_source_excerpt"]=item["primary_source_capture"].get("text","")
         item["supplementary_search"]=external_search(item,z.timeout)
-        item["handoff_ready"]=bool(item["supplementary_search"]["leads"])
-        item["enrichment_status"]="SUPPLEMENTARY_LEADS_FOUND" if item["handoff_ready"] else "NEEDS_RESEARCH"
+        item["handoff_ready"]=bool(item["supplementary_search"]["leads"]) and item["primary_source_capture"].get("status")=="CAPTURED"
+        item["enrichment_status"]="PRIMARY_TEXT_AND_SUPPLEMENTARY_LEADS_FOUND" if item["handoff_ready"] else "NEEDS_RESEARCH"
     for item in items[24:]:item["handoff_ready"]=False;item["enrichment_status"]="NOT_SELECTED_FOR_HANDOFF"
     handoff=[x for x in items[:24] if x["handoff_ready"]]
     counts={k:sum(x["status"]==k for x in results) for k in ("DISCOVERED","NO_MATCH","ERROR")}
-    report={"schema":"iig.discovery-report.v2","run_type":"FULL_DISCOVERY","registry_uri":REGISTRY_URI,"run_finished_at":dt.datetime.now(dt.timezone.utc).isoformat(),"registry_total":260,"checked_total":260,"p1_checked":160,"p2_checked":100,"accessible":260-counts["ERROR"],"unavailable":counts["ERROR"],"discovered_sources":counts["DISCOVERED"],"no_match_sources":counts["NO_MATCH"],"error_sources":counts["ERROR"],"publications_found":len(items),"rejected":rejected,"news_output":0,"chief_engineer_advice_output":0,"handoff_candidates":len(handoff),"external_search_attempted":min(24,len(items)),"enrichment_gate_passed":bool(handoff) and all(x["supplementary_search"]["attempted"] and x["supplementary_search"]["leads"] for x in handoff),"pipeline_ready":True,"external_enrichment_required_for_routed_items":True,"sources":results}
+    report={"schema":"iig.discovery-report.v2","run_type":"FULL_DISCOVERY","registry_uri":REGISTRY_URI,"run_finished_at":dt.datetime.now(dt.timezone.utc).isoformat(),"registry_total":260,"checked_total":260,"p1_checked":160,"p2_checked":100,"accessible":260-counts["ERROR"],"unavailable":counts["ERROR"],"discovered_sources":counts["DISCOVERED"],"no_match_sources":counts["NO_MATCH"],"error_sources":counts["ERROR"],"publications_found":len(items),"rejected":rejected,"news_output":0,"chief_engineer_advice_output":0,"handoff_candidates":len(handoff),"external_search_attempted":min(24,len(items)),"enrichment_gate_passed":bool(handoff) and all(x["supplementary_search"]["attempted"] and x["supplementary_search"]["leads"] for x in handoff),"pipeline_ready":True,"external_enrichment_required_for_routed_items":True,"primary_source_text_capture_required":True,"sources":results}
     rp=ROOT/z.report;atomic_json(rp,report)
     cp=ROOT/z.candidates;atomic_json(cp,{"schema":"iig.discovery-candidates.v1","generated_at":report["run_finished_at"],"items":items,"handoff_items":handoff})
     print("FULL_DISCOVERY_COMPLETE",json.dumps({k:report[k] for k in ("checked_total","p1_checked","p2_checked","discovered_sources","no_match_sources","error_sources","publications_found","rejected")}))
