@@ -7,6 +7,22 @@ function requireNewsEditor(action){if(!["ADMIN_2","ADMIN_1"].includes(newsWorkfl
 function requireNewsFinalApprover(action){if(newsWorkflowRole!=="ADMIN_1"||ACTIVE_ADMIN.id!=="ADMIN_1"||ACTIVE_ADMIN.editorial_authority!==true){gate("Дія «"+action+"» дозволена тільки ADMIN_1. Перемкніть роль редактора на ADMIN_1 після завершення редакції ADMIN_2.");return false}return true}
 function requireAdmin1(action){if(ACTIVE_ADMIN.id!=="ADMIN_1"||ACTIVE_ADMIN.editorial_authority!==true){gate("Дія «"+action+"» дозволена лише активній ролі ADMIN_1.");return false}return true}
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const NEWS_RICH_TEXT_EDITOR_V26=true;
+const RICH_ALLOWED_TAGS=new Set(["P","DIV","BR","STRONG","B","EM","I","SPAN","FONT"]);
+function plainToRich(s){return String(s||"").split(/\n\n+/).map(p=>"<p>"+esc(p).replace(/\n/g,"<br>")+"</p>").join("")}
+function sanitizeRichHTML(raw){
+ const t=document.createElement("template");t.innerHTML=String(raw||"");
+ const walk=node=>{[...node.childNodes].forEach(ch=>{if(ch.nodeType===8){ch.remove();return}if(ch.nodeType!==1)return;if(!RICH_ALLOWED_TAGS.has(ch.tagName)){const f=document.createDocumentFragment();while(ch.firstChild)f.appendChild(ch.firstChild);ch.replaceWith(f);walk(node);return}
+ [...ch.attributes].forEach(a=>{const n=a.name.toLowerCase();if(n!=="style"&&n!=="face"&&n!=="size")ch.removeAttribute(a.name)});
+ if(ch.hasAttribute("style")){const safe=[];for(const part of (ch.getAttribute("style")||"").split(";")){const bits=part.split(":"),key=(bits.shift()||"").trim().toLowerCase(),v=bits.join(":").trim();if(key==="font-size"&&/^(?:1[0-9]|2[0-4])px$/.test(v))safe.push("font-size:"+v);if(key==="font-family"&&/^(Arial|Georgia|Verdana|Tahoma|Times New Roman)$/i.test(v))safe.push("font-family:"+v)}if(safe.length)ch.setAttribute("style",safe.join(";"));else ch.removeAttribute("style")}
+ walk(ch)})};walk(t.content);return t.innerHTML
+}
+function richTextPlain(){const e=$("edBodyRich");return e?e.innerText.replace(/\n{3,}/g,"\n\n").trim():($("#edBody")?.value||"")}
+function syncRichToHidden(){const h=$("edBody");if(h)h.value=richTextPlain()}
+function richCommand(cmd,val=null){const e=$("edBodyRich");if(!e)return;e.focus();document.execCommand(cmd,false,val);syncRichToHidden()}
+function transformRichCase(mode){const e=$("edBodyRich");if(!e)return;e.focus();const s=window.getSelection();if(!s||!s.rangeCount||s.isCollapsed)return;const r=s.getRangeAt(0);if(!e.contains(r.commonAncestorContainer))return;const txt=r.toString(),out=mode==="upper"?txt.toUpperCase():mode==="lower"?txt.toLowerCase():txt.replace(/(^|[.!?]\s+)(\p{L})/gu,(m,a,b)=>a+b.toUpperCase());r.deleteContents();const n=document.createTextNode(out);r.insertNode(n);s.removeAllRanges();const nr=document.createRange();nr.selectNodeContents(n);s.addRange(nr);syncRichToHidden()}
+function setRichFontSize(px){const e=$("edBodyRich");if(!e)return;e.focus();document.execCommand("fontSize",false,"7");e.querySelectorAll('font[size="7"]').forEach(n=>{n.removeAttribute("size");n.style.fontSize=px+"px"});syncRichToHidden()}
+function setRichFontFamily(name){richCommand("fontName",name)}
 const IIG_EDITORIAL_EMPHASIS_V2=true;
 const EDITORIAL_ROLE_RE=/(?:CEO|Chief Executive Officer|генеральн(?:ий|а) директор|виконавч(?:ий|а) директор|президент|голова правління|керівник|директор)\s+[A-ZА-ЯІЇЄ][A-Za-zА-Яа-яІіЇїЄє'’.-]+(?:\s+[A-ZА-ЯІЇЄ][A-Za-zА-Яа-яІіЇїЄє'’.-]+){1,2}/g;
 function emphasizeEditorial(s){const raw=String(s??""),hasExecutive=/(?:CEO|Chief Executive Officer|генеральн(?:ий|а) директор|виконавч(?:ий|а) директор|президент|голова правління|керівник)/i.test(raw);let out=esc(raw);
