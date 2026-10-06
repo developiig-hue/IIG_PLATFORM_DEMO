@@ -1298,3 +1298,17 @@ A duplicated CTA pair on Page 4+, or removal of the canonical bottom footer CTA 
 Release blockers: `news_body_min_1200`, `event_body_min_1800`, `news_iig_advice_required`, `event_tag_must_be_EVENT`.
 
 **PORTABLE / RELEASE-BLOCKING / HARD RULE.**
+
+
+## HARD RULE — ADMIN NEWS REFRESH NO EXTERNAL NAVIGATION V21 (2026-10-06)
+
+**BUG FOUND BY OWNER — FIXED.**
+
+- Clicking **«СГЕНЕРИРОВАТЬ ОБНОВЛЕНИЕ КОНТЕНТА НОВОСТЕЙ САЙТА»** or **«ОНОВИТИ НОВИНИ ЗАРАЗ»** MUST NEVER automatically open GitHub, GitHub Actions, another tab or another domain.
+- Admin must remain on the IIG Admin page and show in-place status/progress/result.
+- Static GitHub Pages MUST NOT pretend to securely dispatch a protected workflow from browser JavaScript.
+- Production full editorial run is invoked through portable same-origin backend endpoint: `POST /api/v1/editorial/refresh` with authenticated ADMIN_1, RBAC, CSRF protection and Audit.
+- GitHub Actions may remain an infrastructure executor behind the backend, but its URL is not part of the Admin user workflow and must not be auto-opened.
+- Any `window.open("https://github.com/...editorial-refresh...")` or equivalent automatic external redirect in NEWS refresh handlers is a RELEASE-BLOCKING regression.
+
+**Status:** FIXED / PORTABLE / RELEASE-BLOCKING.
