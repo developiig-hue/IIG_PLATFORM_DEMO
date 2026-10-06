@@ -1312,3 +1312,16 @@ Release blockers: `news_body_min_1200`, `event_body_min_1800`, `news_iig_advice_
 - Any `window.open("https://github.com/...editorial-refresh...")` or equivalent automatic external redirect in NEWS refresh handlers is a RELEASE-BLOCKING regression.
 
 **Status:** FIXED / PORTABLE / RELEASE-BLOCKING.
+
+
+## HARD RULE — REAL EDITORIAL ROBOT DISPATCH V22 (2026-10-06)
+
+The NEWS refresh button is a real server action, not navigation.
+- Admin calls same-origin `POST /api/v1/editorial/refresh`.
+- Backend authenticates ADMIN_1 and dispatches `editorial-refresh.yml` server-side using `IIG_GITHUB_ACTIONS_TOKEN`.
+- Admin polls `GET /api/v1/editorial/refresh/:id` and shows QUEUED/RUNNING/COMPLETE/FAILED without leaving IIG.
+- Workflow writes REVIEW-only handoff to `content/admin-review/latest.json`; Admin loads it after COMPLETE.
+- GitHub Pages static DEMO cannot securely dispatch Actions. It must show BACKEND NOT CONNECTED and never open GitHub or pretend generation started.
+- Generated results remain REVIEW and require ADMIN_1.
+
+RELEASE BLOCKER: external GitHub redirect, false STARTED status without backend 202, or completed workflow whose ADMIN_REVIEW handoff is unavailable.
