@@ -227,7 +227,7 @@ need("items.slice(0,6)" in advice_js,"Homepage must render exactly latest 6 Advi
 # Industry NEWS card-layout regression guards
 industry=(root/"industry.html").read_text(encoding="utf-8")
 pubnews=(root/"assets/public-news.js").read_text(encoding="utf-8")
-need("assets/public-news.js?v=digest-cross-device-v6-20261005" in industry,"Industry pages must load canonical published NEWS renderer")
+need("assets/public-news.js?v=NEWS-CONTENT-V20" in industry,"Industry pages must load canonical published NEWS renderer")
 need('id="industry-news-grid-v2"' in industry and "grid-template-columns:repeat(3" in industry,"Industry pages must use Advice-style card grid")
 need("industryCard=x=>" in pubnews and "ЧИТАТИ НОВИНУ" in pubnews,"Industry NEWS card renderer missing")
 need("renderItems();" not in industry[industry.find("window.addEventListener"):],"Legacy static industry demo renderer must not run")
