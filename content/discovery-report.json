@@ -2,21 +2,21 @@
   "schema": "iig.discovery-report.v2",
   "run_type": "FULL_DISCOVERY",
   "registry_uri": "repo://content/discovery/IIG_news_source_registry_260.json",
-  "run_finished_at": "2026-10-06T14:48:03.536919+00:00",
+  "run_finished_at": "2026-10-06T14:58:49.047440+00:00",
   "registry_total": 260,
   "checked_total": 260,
   "p1_checked": 160,
   "p2_checked": 100,
-  "accessible": 210,
-  "unavailable": 50,
-  "discovered_sources": 86,
-  "no_match_sources": 124,
-  "error_sources": 50,
-  "publications_found": 1728,
-  "rejected": 55,
+  "accessible": 208,
+  "unavailable": 52,
+  "discovered_sources": 88,
+  "no_match_sources": 120,
+  "error_sources": 52,
+  "publications_found": 1772,
+  "rejected": 59,
   "news_output": 0,
   "chief_engineer_advice_output": 0,
-  "handoff_candidates": 4,
+  "handoff_candidates": 10,
   "external_search_attempted": 24,
   "enrichment_gate_passed": true,
   "pipeline_ready": true,
@@ -113,7 +113,7 @@
           "method": "HTML"
         }
       ],
-      "elapsed_seconds": 4.23,
+      "elapsed_seconds": 4.39,
       "problem": null
     },
     {
@@ -157,7 +157,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.44,
+      "elapsed_seconds": 2.47,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -202,7 +202,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.85,
+      "elapsed_seconds": 6.68,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -239,7 +239,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.43,
+      "elapsed_seconds": 0.62,
       "problem": null
     },
     {
@@ -284,7 +284,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.9,
+      "elapsed_seconds": 3.02,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -352,7 +352,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 4.14,
+      "elapsed_seconds": 4.46,
       "problem": null
     },
     {
@@ -420,7 +420,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 4.07,
+      "elapsed_seconds": 4.41,
       "problem": null
     },
     {
@@ -452,7 +452,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 2.94,
+      "elapsed_seconds": 3.32,
       "problem": null
     },
     {
@@ -496,7 +496,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 4.51,
+      "elapsed_seconds": 3.8,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -534,7 +534,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.73,
+      "elapsed_seconds": 0.71,
       "problem": null
     },
     {
@@ -582,7 +582,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 2.71,
+      "elapsed_seconds": 1.45,
       "problem": null
     },
     {
@@ -632,7 +632,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 5.04,
+      "elapsed_seconds": 5.22,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -1148,7 +1148,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 1.22,
+      "elapsed_seconds": 0.68,
       "problem": null
     },
     {
@@ -1192,7 +1192,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.58,
+      "elapsed_seconds": 2.43,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -1236,7 +1236,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.99,
+      "elapsed_seconds": 0.48,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -1280,7 +1280,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.27,
+      "elapsed_seconds": 1.99,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -1319,7 +1319,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 8.77,
+      "elapsed_seconds": 5.4,
       "problem": "all access methods failed"
     },
     {
@@ -1328,13 +1328,13 @@
       "name": "Harbin Electric",
       "sector": "energy",
       "website_url": "https://www.harbin-electric.com/",
-      "status": "NO_MATCH",
-      "method": "RSS_ATOM>SITEMAP>HTML",
+      "status": "ERROR",
+      "method": "FAILED_ALL",
       "attempts": [
         {
           "method": "HOME",
           "url": "https://www.harbin-electric.com/",
-          "http_status": 200
+          "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
         },
         {
           "method": "RSS_ATOM",
@@ -1354,17 +1354,12 @@
         {
           "method": "SITEMAP",
           "url": "https://www.harbin-electric.com/sitemap_index.xml",
-          "error": "HTTPError: HTTP Error 404: Not Found"
-        },
-        {
-          "method": "HTML",
-          "url": "https://www.harbin-electric.com/",
-          "result_count": 0
+          "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 8.29,
-      "problem": "methods completed; no recent relevant publication matched"
+      "elapsed_seconds": 20.09,
+      "problem": "all access methods failed"
     },
     {
       "id": "IIG-019",
@@ -1407,7 +1402,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 11.13,
+      "elapsed_seconds": 11.11,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -1446,7 +1441,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.48,
+      "elapsed_seconds": 0.64,
       "problem": "all access methods failed"
     },
     {
@@ -1500,7 +1495,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 1.22,
+      "elapsed_seconds": 1.15,
       "problem": null
     },
     {
@@ -1544,7 +1539,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 5.3,
+      "elapsed_seconds": 5.37,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -1588,7 +1583,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 14.05,
+      "elapsed_seconds": 10.98,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -1635,7 +1630,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.86,
+      "elapsed_seconds": 1.91,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -1679,7 +1674,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.81,
+      "elapsed_seconds": 5.4,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -1724,7 +1719,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 18.33,
+      "elapsed_seconds": 18.72,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -1754,7 +1749,7 @@
         {
           "method": "SITEMAP",
           "url": "https://www.energoatom.com.ua/sitemap.xml",
-          "error": "HTTPError: HTTP Error 404: Not Found"
+          "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
           "method": "SITEMAP",
@@ -1763,7 +1758,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.11,
+      "elapsed_seconds": 0.35,
       "problem": "all access methods failed"
     },
     {
@@ -1854,7 +1849,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 3.38,
+      "elapsed_seconds": 2.59,
       "problem": null
     },
     {
@@ -1893,7 +1888,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.28,
+      "elapsed_seconds": 0.21,
       "problem": "all access methods failed"
     },
     {
@@ -1939,7 +1934,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 11.93,
+      "elapsed_seconds": 13.44,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -1983,7 +1978,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.49,
+      "elapsed_seconds": 3.39,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -2022,7 +2017,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.23,
+      "elapsed_seconds": 0.15,
       "problem": "all access methods failed"
     },
     {
@@ -2079,7 +2074,7 @@
           "method": "HTML"
         }
       ],
-      "elapsed_seconds": 2.83,
+      "elapsed_seconds": 2.89,
       "problem": null
     },
     {
@@ -2118,7 +2113,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.07,
+      "elapsed_seconds": 2.16,
       "problem": "all access methods failed"
     },
     {
@@ -2165,7 +2160,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 8.27,
+      "elapsed_seconds": 8.55,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -2202,7 +2197,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 1.8,
+      "elapsed_seconds": 2.68,
       "problem": null
     },
     {
@@ -2423,7 +2418,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 10.93,
+      "elapsed_seconds": 13.66,
       "problem": null
     },
     {
@@ -2468,7 +2463,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 5.0,
+      "elapsed_seconds": 6.2,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -2507,7 +2502,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.61,
+      "elapsed_seconds": 2.78,
       "problem": "all access methods failed"
     },
     {
@@ -2547,7 +2542,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 4.27,
+      "elapsed_seconds": 2.32,
       "problem": "all access methods failed"
     },
     {
@@ -2586,7 +2581,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 26.41,
+      "elapsed_seconds": 25.99,
       "problem": "all access methods failed"
     },
     {
@@ -2631,7 +2626,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.05,
+      "elapsed_seconds": 5.77,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -2688,7 +2683,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 32.92,
+      "elapsed_seconds": 29.67,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -2727,7 +2722,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 27.86,
+      "elapsed_seconds": 35.73,
       "problem": "all access methods failed"
     },
     {
@@ -2769,7 +2764,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 0.37,
+      "elapsed_seconds": 0.36,
       "problem": null
     },
     {
@@ -2808,7 +2803,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.91,
+      "elapsed_seconds": 0.94,
       "problem": "all access methods failed"
     },
     {
@@ -2853,7 +2848,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 18.9,
+      "elapsed_seconds": 19.2,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -2892,7 +2887,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.01,
+      "elapsed_seconds": 0.98,
       "problem": "all access methods failed"
     },
     {
@@ -3054,7 +3049,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 5.96,
+      "elapsed_seconds": 6.69,
       "problem": null
     },
     {
@@ -3097,7 +3092,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 9.23,
+      "elapsed_seconds": 9.6,
       "problem": null
     },
     {
@@ -3147,7 +3142,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.46,
+      "elapsed_seconds": 0.4,
       "problem": null
     },
     {
@@ -3286,7 +3281,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 6.65,
+      "elapsed_seconds": 7.09,
       "problem": null
     },
     {
@@ -3331,7 +3326,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 7.57,
+      "elapsed_seconds": 6.95,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -3387,7 +3382,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 15.76,
+      "elapsed_seconds": 14.96,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -3431,7 +3426,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.49,
+      "elapsed_seconds": 1.9,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -3489,7 +3484,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 25.6,
+      "elapsed_seconds": 26.06,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -3528,7 +3523,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.29,
+      "elapsed_seconds": 0.28,
       "problem": "all access methods failed"
     },
     {
@@ -3565,7 +3560,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.79,
+      "elapsed_seconds": 1.21,
       "problem": null
     },
     {
@@ -3604,7 +3599,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.15,
+      "elapsed_seconds": 0.19,
       "problem": "all access methods failed"
     },
     {
@@ -3643,7 +3638,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.65,
+      "elapsed_seconds": 1.14,
       "problem": "all access methods failed"
     },
     {
@@ -3692,7 +3687,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.29,
+      "elapsed_seconds": 6.44,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -4208,7 +4203,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 0.89,
+      "elapsed_seconds": 0.5,
       "problem": null
     },
     {
@@ -4254,7 +4249,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.97,
+      "elapsed_seconds": 5.29,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -4584,7 +4579,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 4.14,
+      "elapsed_seconds": 3.91,
       "problem": null
     },
     {
@@ -4794,7 +4789,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 3.59,
+      "elapsed_seconds": 3.44,
       "problem": null
     },
     {
@@ -4838,7 +4833,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.6,
+      "elapsed_seconds": 0.59,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -4882,7 +4877,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.95,
+      "elapsed_seconds": 6.64,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -4927,7 +4922,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.53,
+      "elapsed_seconds": 7.67,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -4972,7 +4967,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 7.98,
+      "elapsed_seconds": 7.76,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -5017,7 +5012,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 5.94,
+      "elapsed_seconds": 6.04,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -5061,7 +5056,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.23,
+      "elapsed_seconds": 2.26,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -5105,7 +5100,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 5.87,
+      "elapsed_seconds": 5.3,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -5219,7 +5214,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 2.24,
+      "elapsed_seconds": 1.48,
       "problem": null
     },
     {
@@ -5261,7 +5256,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 2.18,
+      "elapsed_seconds": 1.82,
       "problem": null
     },
     {
@@ -5322,7 +5317,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.45,
+      "elapsed_seconds": 0.41,
       "problem": null
     },
     {
@@ -5378,7 +5373,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 1.12,
+      "elapsed_seconds": 0.31,
       "problem": null
     },
     {
@@ -5474,7 +5469,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 3.2,
+      "elapsed_seconds": 3.06,
       "problem": null
     },
     {
@@ -5513,7 +5508,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.82,
+      "elapsed_seconds": 2.48,
       "problem": "all access methods failed"
     },
     {
@@ -5552,7 +5547,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.35,
+      "elapsed_seconds": 0.25,
       "problem": "all access methods failed"
     },
     {
@@ -5584,7 +5579,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 10.16,
+      "elapsed_seconds": 2.54,
       "problem": null
     },
     {
@@ -5609,6 +5604,12 @@
         }
       ],
       "candidates": [
+        {
+          "url": "https://inventure.com.ua/uk/news/world/amerikanski-cdandr-i-mckesson-kupuyut-postachalnika-infuzijnoyi-terapiyi-za-dollar58-mlrd",
+          "title": "Американські CD&amp;R і McKesson купують постачальника інфузійної терапії за $5,8 млрд",
+          "published_at": "2026-10-06T14:52:59+00:00",
+          "method": "RSS_ATOM"
+        },
         {
           "url": "https://inventure.com.ua/uk/news/ukraine/ukrayina-otrimaye-dollar1162-mln-na-rozvitok-vde-ta-sistem-nakopichennya-energiyi",
           "title": "Україна отримає $116,2 млн на розвиток ВДЕ та систем накопичення енергії",
@@ -5662,15 +5663,9 @@
           "title": "Кабмін передав ФДМУ 12 державних вугільних підприємств для пошуку приватних інвесторів",
           "published_at": "2026-10-05T05:48:54+00:00",
           "method": "RSS_ATOM"
-        },
-        {
-          "url": "https://inventure.com.ua/uk/news/ukraine/amerikansko-ukrayinskij-fond-investuye-ponad-dollar60-mln-u-energetiku-ta-kritichni-minerali",
-          "title": "Американсько-український фонд інвестує понад $60 млн у енергетику та критичні мінерали",
-          "published_at": "2026-10-05T05:37:13+00:00",
-          "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 1.39,
+      "elapsed_seconds": 0.94,
       "problem": null
     },
     {
@@ -5743,109 +5738,109 @@
         {
           "url": "https://reform.energy/news/rf-za-dobu-chotiri-razi-obstrilyala-zaporizhzhyaoblenergo-zalishivshi-bez-svitla-42-tis-spozhivachiv-v-oblasnomu-tsentri-24714",
           "title": "РФ за добу чотири рази обстріляла &quot;Запоріжжяобленерго&quot;, залишивши без світла 42 тис. споживачів в обласному центрі",
-          "published_at": "2026-10-06T14:37:17+00:00",
+          "published_at": "2026-10-06T14:47:58+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/ukrenergo-6-zhovtnya-vvodit-u-kilkokh-regionakh-obmezhennya-elektropostachannya-dlya-biznesu-i-naselennya-z-1500-24713",
           "title": "&quot;Укренерго&quot; 6 жовтня вводить у кількох регіонах обмеження електропостачання для бізнесу і населення з 15:00",
-          "published_at": "2026-10-06T14:37:19+00:00",
+          "published_at": "2026-10-06T14:47:56+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/biznes-modeli-praktichniy-dosvid-ta-perspektivi-rozvitku-bess-v-ukraini-vidkrite-zasidannya-komitetu-uze-aseu-24712",
           "title": "Бізнес-моделі, практичний досвід та перспективи розвитку BESS в Україні – відкрите засідання Комітету УЗЕ АСЕУ",
-          "published_at": "2026-10-06T14:37:22+00:00",
+          "published_at": "2026-10-06T14:47:53+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/zaporizhzhyaoblenergo-otrimae-vid-ge-vernova-dvi-mobilni-elektropidstantsii-dlya-operativnogo-povernennya-svitla-pislya-obstriliv-24711",
           "title": "&quot;Запоріжжяобленерго&quot; отримає від GE Vernova дві мобільні електропідстанції для оперативного повернення світла після обстрілів",
-          "published_at": "2026-10-06T14:37:39+00:00",
+          "published_at": "2026-10-06T14:47:38+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/starsha-partnerka-yuk-altelawsempra-olga-savchenko-novi-pravila-dlya-rinku-biopaliva-ta-alternativnikh-vidiv-iz-zakonom-4963-ix-24710",
           "title": "Старша партнерка ЮК Altelaw&amp;Sempra Ольга Савченко: Нові правила для ринку біопалива та альтернативних видів із законом № 4963-IX",
-          "published_at": "2026-10-06T14:37:40+00:00",
+          "published_at": "2026-10-06T14:47:37+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/rf-fpv-dronom-atakuvala-avtivku-gazmerezh-z-pyatma-pratsivnikami-ale-obiyshlosya-bez-postrazhdalikh-naftogaz-24705",
           "title": "РФ FPV-дроном атакувала автівку &quot;Газмереж&quot; з п’ятьма працівниками, але обійшлося без постраждалих – &quot;Нафтогаз&quot;",
-          "published_at": "2026-10-06T14:37:43+00:00",
+          "published_at": "2026-10-06T14:47:34+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/dtek-ta-dragon-capital-stvorili-investitsiyniy-khab-dlya-energetiki-ukraini-24706",
           "title": "ДТЕК та Dragon Capital створили &quot;Інвестиційний хаб&quot; для енергетики України",
-          "published_at": "2026-10-06T14:37:41+00:00",
+          "published_at": "2026-10-06T14:47:35+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/ebrr-mozhe-chastkovo-kredituvati-ukrenergo-dlya-ozdorovlennya-balansuyuchogo-rinku-reno-basso-24709",
           "title": "ЄБРР може частково кредитувати &quot;Укренерго&quot; для оздоровлення балансуючого ринку – Рено-Бассо",
-          "published_at": "2026-10-06T14:37:20+00:00",
+          "published_at": "2026-10-06T14:47:54+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/rf-vdarila-fpv-dronami-po-azk-ukrnafta-v-dnipropetrovskiy-oblasti-golova-pravlinnya-24704",
           "title": "РФ вдарила FPV-дронами по АЗК UKRNAFTA в Дніпропетровській області – голова правління",
-          "published_at": "2026-10-06T14:37:36+00:00",
+          "published_at": "2026-10-06T14:47:42+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/okupanti-vdarili-po-adminbudivli-vugilnogo-pidpriemstva-dtek-na-dnipropetrovshchini-e-postrazhdaliy-24708",
           "title": "Окупанти вдарили по адмінбудівлі вугільного підприємства ДТЕК на Дніпропетровщині, є постраждалий",
-          "published_at": "2026-10-06T14:37:37+00:00",
+          "published_at": "2026-10-06T14:47:40+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/top-menedzher-atmosfera-oleksandr-kovpak-ses-100-kvt-de-khovayutsya-golovni-riziki-dlya-biznesu-ta-chomu-sama-potuzhnist-stantsii-ne-golovne-24703",
           "title": "Топ-менеджер Atmosfera Олександр Ковпак: СЕС 100+ кВт – де ховаються головні ризики для бізнесу та чому сама потужність станції не головне",
-          "published_at": "2026-10-06T14:37:34+00:00",
+          "published_at": "2026-10-06T14:47:43+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/socar-dozvolila-za-zhovtogo-rivnya-trivogi-samostiynu-zapravku-avto-za-dopomogoyu-spetsservisiv-24707",
           "title": "SOCAR дозволила за жовтого рівня тривоги самостійну заправку авто за допомогою спецсервісів",
-          "published_at": "2026-10-06T14:37:23+00:00",
+          "published_at": "2026-10-06T14:47:51+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/udar-po-institutu-yadernikh-doslidzhen-u-kievi-e-chergovim-viyskovim-zlochinom-rf-diyaru-24702",
           "title": "Удар по Інституту ядерних досліджень у Києві є черговим військовим злочином РФ – ДІЯРУ",
-          "published_at": "2026-10-06T14:37:33+00:00",
+          "published_at": "2026-10-06T14:47:45+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/peremozhtsi-auktsionu-na-budivnitstvo-700-mvt-ves-zaproponuvali-tsinu-ee-298-74-evrotsentakvtgod-proti-startovikh-8-evrotsentiv-24701",
           "title": "Переможці аукціону на будівництво 700 МВт ВЕС запропонували ціну е/е 2,98-7,4 євроцента/кВт*год проти стартових 8 євроцентів",
-          "published_at": "2026-10-06T14:37:29+00:00",
+          "published_at": "2026-10-06T14:47:46+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/ataka-rf-prizvela-do-poshkodzhennya-generuyuchogo-obladnannya-tripilskoi-tes-tsentrenergo-24699",
           "title": "Атака РФ призвела до пошкодження генеруючого обладнання Трипільської ТЕС – &quot;Центренерго&quot;",
-          "published_at": "2026-10-06T14:43:55+00:00",
+          "published_at": "2026-10-06T14:47:31+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/direktorka-rse-group-ukraine-ganna-pozdnyakova-bank-finansue-ne-megavati-shcho-robit-energoproekt-investitsiyno-zhittezdatnim-24698",
           "title": "Директорка RSE Group Ukraine Ганна Позднякова: Банк фінансує не мегавати – що робить енергопроєкт інвестиційно життєздатним",
-          "published_at": "2026-10-06T14:37:25+00:00",
+          "published_at": "2026-10-06T14:47:50+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/aseu-provede-vidkrite-zasidannya-komitetu-z-pitan-agrovoltaiki-24697",
           "title": "АСЕУ проведе відкрите засідання Комітету з питань агровольтаїки",
-          "published_at": "2026-10-06T14:37:26+00:00",
+          "published_at": "2026-10-06T14:47:49+00:00",
           "method": "RSS_ATOM"
         },
         {
           "url": "https://reform.energy/news/naglyadova-rada-ta-pravlinnya-energoatoma-proveli-spilnu-zustrich-24695",
           "title": "Наглядова рада та правління &quot;Енергоатома&quot; провели спільну зустріч",
-          "published_at": "2026-10-06T14:37:28+00:00",
+          "published_at": "2026-10-06T14:47:47+00:00",
           "method": "RSS_ATOM"
         },
         {
@@ -5921,7 +5916,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 3.44,
+      "elapsed_seconds": 3.79,
       "problem": null
     },
     {
@@ -6001,7 +5996,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 2.62,
+      "elapsed_seconds": 2.57,
       "problem": null
     },
     {
@@ -6040,7 +6035,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.75,
+      "elapsed_seconds": 0.62,
       "problem": "all access methods failed"
     },
     {
@@ -6120,7 +6115,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.13,
+      "elapsed_seconds": 0.15,
       "problem": null
     },
     {
@@ -6159,7 +6154,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.39,
+      "elapsed_seconds": 0.36,
       "problem": "all access methods failed"
     },
     {
@@ -6198,7 +6193,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.39,
+      "elapsed_seconds": 0.44,
       "problem": "all access methods failed"
     },
     {
@@ -6260,7 +6255,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 2.12,
+      "elapsed_seconds": 0.92,
       "problem": null
     },
     {
@@ -6536,7 +6531,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 4.21,
+      "elapsed_seconds": 4.9,
       "problem": null
     },
     {
@@ -6580,7 +6575,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.72,
+      "elapsed_seconds": 2.57,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -6625,7 +6620,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 4.2,
+      "elapsed_seconds": 3.82,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -6669,7 +6664,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.21,
+      "elapsed_seconds": 0.27,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -6721,7 +6716,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 23.1,
+      "elapsed_seconds": 24.33,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -6765,7 +6760,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.77,
+      "elapsed_seconds": 2.4,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -6807,7 +6802,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 1.86,
+      "elapsed_seconds": 1.54,
       "problem": null
     },
     {
@@ -6852,7 +6847,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.78,
+      "elapsed_seconds": 0.75,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -6897,7 +6892,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.49,
+      "elapsed_seconds": 2.02,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -6942,7 +6937,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 17.18,
+      "elapsed_seconds": 11.21,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -6986,7 +6981,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.99,
+      "elapsed_seconds": 6.44,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -7030,7 +7025,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.12,
+      "elapsed_seconds": 5.3,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -7069,7 +7064,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.45,
+      "elapsed_seconds": 0.46,
       "problem": "all access methods failed"
     },
     {
@@ -7114,7 +7109,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 7.39,
+      "elapsed_seconds": 6.72,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -7159,7 +7154,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.84,
+      "elapsed_seconds": 6.17,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -7206,7 +7201,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 11.89,
+      "elapsed_seconds": 15.56,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -7251,7 +7246,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 13.44,
+      "elapsed_seconds": 14.11,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -7296,7 +7291,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.85,
+      "elapsed_seconds": 2.64,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -7341,7 +7336,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.6,
+      "elapsed_seconds": 1.99,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -7380,7 +7375,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.86,
+      "elapsed_seconds": 0.95,
       "problem": "all access methods failed"
     },
     {
@@ -7400,7 +7395,7 @@
         {
           "method": "RSS_ATOM",
           "url": "https://www.agriland.ie/feed",
-          "error": "ParseError: unclosed CDATA section: line 12721, column 0"
+          "error": "ParseError: unclosed CDATA section: line 12689, column 48"
         },
         {
           "method": "RSS_ATOM",
@@ -7410,8 +7405,7 @@
         {
           "method": "SITEMAP",
           "url": "https://www.agriland.ie/sitemap.xml",
-          "http_status": 200,
-          "result_count": 0
+          "error": "TimeoutError: The read operation timed out"
         },
         {
           "method": "SITEMAP",
@@ -7426,7 +7420,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 24.59,
+      "elapsed_seconds": 14.71,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -7584,7 +7578,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.23,
+      "elapsed_seconds": 0.26,
       "problem": null
     },
     {
@@ -7716,7 +7710,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 3.75,
+      "elapsed_seconds": 3.62,
       "problem": null
     },
     {
@@ -7886,7 +7880,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.74,
+      "elapsed_seconds": 0.34,
       "problem": null
     },
     {
@@ -7931,15 +7925,9 @@
       ],
       "candidates": [
         {
-          "url": "https://www.worldoil.com/news/2026/9/26/exxonmobil-to-operate-azerbaijan-shale-venture-with-socar",
-          "title": "ExxonMobil to operate Azerbaijan shale venture with SOCAR",
-          "published_at": "2026-09-26T00:00:00+00:00",
-          "method": "HTML"
-        },
-        {
-          "url": "https://www.worldoil.com/news/2026/9/15/atcc-targets-u-s-vaca-muerta-investment-partnerships-with-october-trade-mission",
-          "title": "ATCC targets U.S.-Vaca Muerta investment, partnerships with October trade mission",
-          "published_at": "2026-09-15T00:00:00+00:00",
+          "url": "https://www.worldoil.com/news/2026/9/28/comstock-socar-advance-1-65-billion-haynesville-partnership-with-framework-agreement",
+          "title": "Comstock, SOCAR advance $1.65-billion Haynesville partnership with framework agreement",
+          "published_at": "2026-09-28T00:00:00+00:00",
           "method": "HTML"
         },
         {
@@ -7949,15 +7937,15 @@
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/9/21/kolibri-completes-three-well-frac-program-targets-new-oklahoma-production-interval",
-          "title": "Kolibri completes three-well frac program, targets new Oklahoma production interval",
-          "published_at": "2026-09-21T00:00:00+00:00",
-          "method": "HTML"
-        },
-        {
           "url": "https://www.worldoil.com/news/2026/9/26/exxonmobil-to-operate-azerbaijan-shale-venture-with-socar",
           "title": "ExxonMobil to operate Azerbaijan shale venture with SOCAR",
           "published_at": "2026-09-26T00:00:00+00:00",
+          "method": "HTML"
+        },
+        {
+          "url": "https://www.worldoil.com/news/2026/9/21/kolibri-completes-three-well-frac-program-targets-new-oklahoma-production-interval",
+          "title": "Kolibri completes three-well frac program, targets new Oklahoma production interval",
+          "published_at": "2026-09-21T00:00:00+00:00",
           "method": "HTML"
         },
         {
@@ -8027,51 +8015,27 @@
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/8/24/cb-i-wins-three-year-fpso-operations-contract-offshore-cote-d-ivoire",
-          "title": "CB&I wins three-year FPSO operations contract offshore Côte d’Ivoire",
-          "published_at": "2026-08-24T00:00:00+00:00",
+          "url": "https://www.worldoil.com/news/2026/8/26/cnooc-reports-record-h1-production-advances-offshore-china-exploration",
+          "title": "CNOOC reports record H1 production, advances offshore China exploration",
+          "published_at": "2026-08-26T00:00:00+00:00",
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/9/22/north-sea-oil-and-gas-decline-threatens-115-000-job-workforce-report-says",
-          "title": "North Sea oil and gas decline threatens 115,000-job workforce, report says",
-          "published_at": "2026-09-22T00:00:00+00:00",
+          "url": "https://www.worldoil.com/news/2026/9/16/mdl-technology-supports-deepwater-decommissioning-in-brazil-s-campos-basin",
+          "title": "MDL technology supports deepwater decommissioning in Brazil’s Campos basin",
+          "published_at": "2026-09-16T00:00:00+00:00",
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/9/11/angola-signs-new-deepwater-exploration-deals-with-shell-chevron-totalenergies",
-          "title": "Angola signs new deepwater exploration deals with Shell, Chevron, TotalEnergies",
-          "published_at": "2026-09-11T00:00:00+00:00",
+          "url": "https://www.worldoil.com/news/2026/9/17/coremarine-acquires-bravocean-expands-brazil-subsea-operations",
+          "title": "CoreMarine acquires BravOcean, expands Brazil subsea operations",
+          "published_at": "2026-09-17T00:00:00+00:00",
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/9/22/petrobras-shell-qualify-strohm-tcp-flowline-for-brazil-ultra-deepwater-operations",
-          "title": "Petrobras, Shell qualify Strohm TCP flowline for Brazil ultra-deepwater operations",
-          "published_at": "2026-09-22T00:00:00+00:00",
-          "method": "HTML"
-        },
-        {
-          "url": "https://www.worldoil.com/news/2026/9/23/subsea7-wins-sakarya-phase-3-contract-extension-offshore-turkiye",
-          "title": "Subsea7 wins Sakarya Phase 3 contract extension offshore Türkiye",
-          "published_at": "2026-09-23T00:00:00+00:00",
-          "method": "HTML"
-        },
-        {
-          "url": "https://www.worldoil.com/news/2026/9/8/mcdermott-wins-500-750-million-subsea-contract-for-eni-s-cronos-gas-field",
-          "title": "McDermott wins $500–750 million subsea contract for Eni’s Cronos gas field",
-          "published_at": "2026-09-08T00:00:00+00:00",
-          "method": "HTML"
-        },
-        {
-          "url": "https://www.worldoil.com/news/2026/9/11/angola-signs-new-deepwater-exploration-deals-with-shell-chevron-totalenergies",
-          "title": "Angola signs new deepwater exploration deals with Shell, Chevron, TotalEnergies",
-          "published_at": "2026-09-11T00:00:00+00:00",
-          "method": "HTML"
-        },
-        {
-          "url": "https://www.worldoil.com/news/2026/9/2/shell-takes-stakes-in-bp-exploration-prospects-offshore-brazil-u-s-gulf",
-          "title": "Shell takes stakes in bp exploration prospects offshore Brazil, U.S. Gulf",
-          "published_at": "2026-09-02T00:00:00+00:00",
+          "url": "https://www.worldoil.com/news/2026/9/24/saipem-awards-sca-20-million-offshore-cable-contract-for-caspian-project",
+          "title": "Saipem awards SCA $20 million offshore cable contract for Caspian project",
+          "published_at": "2026-09-24T00:00:00+00:00",
           "method": "HTML"
         },
         {
@@ -8081,15 +8045,15 @@
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/8/26/aker-bp-starts-production-from-120-mmboe-skarv-satellites-in-norwegian-sea",
-          "title": "Aker BP starts production from 120-MMboe Skarv Satellites in Norwegian Sea",
-          "published_at": "2026-08-26T00:00:00+00:00",
+          "url": "https://www.worldoil.com/news/2026/9/10/totalenergies-fast-tracks-angola-oil-discovery-to-first-production-in-three-months",
+          "title": "TotalEnergies fast-tracks Angola oil discovery to first production in three months",
+          "published_at": "2026-09-10T00:00:00+00:00",
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/8/25/bp-awards-halliburton-drilling-services-contract-for-bumerangue-appraisal",
-          "title": "bp awards Halliburton drilling services contract for Bumerangue appraisal",
-          "published_at": "2026-08-25T00:00:00+00:00",
+          "url": "https://www.worldoil.com/news/2026/8/26/cnooc-reports-record-h1-production-advances-offshore-china-exploration",
+          "title": "CNOOC reports record H1 production, advances offshore China exploration",
+          "published_at": "2026-08-26T00:00:00+00:00",
           "method": "HTML"
         },
         {
@@ -8099,15 +8063,21 @@
           "method": "HTML"
         },
         {
+          "url": "https://www.worldoil.com/news/2026/8/25/bp-awards-halliburton-drilling-services-contract-for-bumerangue-appraisal",
+          "title": "bp awards Halliburton drilling services contract for Bumerangue appraisal",
+          "published_at": "2026-08-25T00:00:00+00:00",
+          "method": "HTML"
+        },
+        {
           "url": "https://www.worldoil.com/news/2026/9/7/decom-engineering-secures-nine-offshore-mooring-chain-projects-in-2026",
           "title": "Decom Engineering secures nine offshore mooring chain projects in 2026",
           "published_at": "2026-09-07T00:00:00+00:00",
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/9/14/hornbeck-offshore-wins-multi-year-north-sea-well-decommissioning-contract",
-          "title": "Hornbeck Offshore wins multi-year North Sea well decommissioning contract",
-          "published_at": "2026-09-14T00:00:00+00:00",
+          "url": "https://www.worldoil.com/news/2026/9/16/mdl-technology-supports-deepwater-decommissioning-in-brazil-s-campos-basin",
+          "title": "MDL technology supports deepwater decommissioning in Brazil’s Campos basin",
+          "published_at": "2026-09-16T00:00:00+00:00",
           "method": "HTML"
         },
         {
@@ -8249,15 +8219,15 @@
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/9/29/shell-takes-fid-to-double-lng-canada-capacity-to-28-mmtpa",
-          "title": "Shell takes FID to double LNG Canada capacity to 28 MMtpa",
+          "url": "https://www.worldoil.com/news/2026/9/29/slb-onesubsea-wins-exxonmobil-subsea-systems-contract-for-rovuma-lng",
+          "title": "SLB OneSubsea wins ExxonMobil subsea systems contract for Rovuma LNG",
           "published_at": "2026-09-29T00:00:00+00:00",
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/9/29/slb-onesubsea-wins-exxonmobil-subsea-systems-contract-for-rovuma-lng",
-          "title": "SLB OneSubsea wins ExxonMobil subsea systems contract for Rovuma LNG",
-          "published_at": "2026-09-29T00:00:00+00:00",
+          "url": "https://www.worldoil.com/news/2026/8/28/sapphire-gas-solutions-acquires-edge-lng-adds-200-000-gal-day-liquefaction-capacity",
+          "title": "Sapphire Gas Solutions acquires EDGE LNG, adds 200,000 gal/day liquefaction capacity",
+          "published_at": "2026-08-28T00:00:00+00:00",
           "method": "HTML"
         },
         {
@@ -8267,15 +8237,15 @@
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/8/25/slb-selected-for-feed-work-on-havstjerne-carbon-storage-project",
-          "title": "SLB selected for FEED work on Havstjerne carbon storage project",
-          "published_at": "2026-08-25T00:00:00+00:00",
+          "url": "https://www.worldoil.com/news/2026/9/18/ineos-launches-eu-s-first-full-scale-offshore-co2-storage-operation",
+          "title": "INEOS launches EU’s first full-scale offshore CO₂ storage operation",
+          "published_at": "2026-09-18T00:00:00+00:00",
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/9/9/canada-s-largest-carbon-capture-project-set-to-start-operations-in-january",
-          "title": "Canada’s largest carbon capture project set to start operations in January",
-          "published_at": "2026-09-09T00:00:00+00:00",
+          "url": "https://www.worldoil.com/news/2026/9/7/africa-eyes-depleted-oil-and-gas-reservoirs-for-carbon-storage",
+          "title": "Africa eyes depleted oil and gas reservoirs for carbon storage",
+          "published_at": "2026-09-07T00:00:00+00:00",
           "method": "HTML"
         },
         {
@@ -8351,18 +8321,6 @@
           "method": "HTML"
         },
         {
-          "url": "https://www.worldoil.com/news/2026/9/15/totalenergies-mistral-launch-ai-program-for-oil-and-gas-exploration",
-          "title": "TotalEnergies, Mistral launch AI program for oil and gas exploration",
-          "published_at": "2026-09-15T00:00:00+00:00",
-          "method": "HTML"
-        },
-        {
-          "url": "https://www.worldoil.com/news/2026/9/16/modec-deploys-shape-digital-ai-flare-technology-across-10-brazil-fpsos",
-          "title": "MODEC deploys Shape Digital AI flare technology across 10 Brazil FPSOs",
-          "published_at": "2026-09-16T00:00:00+00:00",
-          "method": "HTML"
-        },
-        {
           "url": "https://www.worldoil.com/news/2026/9/16/square-robot-tank-inspection-technology-wins-niosh-safety-award",
           "title": "Square Robot tank inspection technology wins NIOSH safety award",
           "published_at": "2026-09-16T00:00:00+00:00",
@@ -8409,9 +8367,45 @@
           "title": "Oxy, Valaris win 2026 offshore safety awards for AI, digital technologies",
           "published_at": "2026-09-28T00:00:00+00:00",
           "method": "HTML"
+        },
+        {
+          "url": "https://www.worldoil.com/news/2026/9/25/subsea-leaders-target-ai-digitalization-challenges-with-blue-digital-ecosystem",
+          "title": "Subsea leaders target AI, digitalization challenges with Blue Digital Ecosystem",
+          "published_at": "2026-09-25T00:00:00+00:00",
+          "method": "HTML"
+        },
+        {
+          "url": "https://www.worldoil.com/news/2026/9/16/modec-deploys-shape-digital-ai-flare-technology-across-10-brazil-fpsos",
+          "title": "MODEC deploys Shape Digital AI flare technology across 10 Brazil FPSOs",
+          "published_at": "2026-09-16T00:00:00+00:00",
+          "method": "HTML"
+        },
+        {
+          "url": "https://www.worldoil.com/news/2026/9/15/totalenergies-mistral-launch-ai-program-for-oil-and-gas-exploration",
+          "title": "TotalEnergies, Mistral launch AI program for oil and gas exploration",
+          "published_at": "2026-09-15T00:00:00+00:00",
+          "method": "HTML"
+        },
+        {
+          "url": "https://www.worldoil.com/news/2026/9/16/square-robot-tank-inspection-technology-wins-niosh-safety-award",
+          "title": "Square Robot tank inspection technology wins NIOSH safety award",
+          "published_at": "2026-09-16T00:00:00+00:00",
+          "method": "HTML"
+        },
+        {
+          "url": "https://www.worldoil.com/news/2026/9/24/texas-rrc-warns-oil-and-gas-operators-of-growing-cyber-threats",
+          "title": "Texas RRC warns oil and gas operators of growing cyber threats",
+          "published_at": "2026-09-24T00:00:00+00:00",
+          "method": "HTML"
+        },
+        {
+          "url": "https://www.worldoil.com/news/2026/8/27/dnv-launches-resilience-framework-as-threats-to-critical-energy-infrastructure-grow",
+          "title": "DNV launches resilience framework as threats to critical energy infrastructure grow",
+          "published_at": "2026-08-27T00:00:00+00:00",
+          "method": "HTML"
         }
       ],
-      "elapsed_seconds": 1.72,
+      "elapsed_seconds": 1.69,
       "problem": null
     },
     {
@@ -8455,7 +8449,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.96,
+      "elapsed_seconds": 1.62,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -8529,7 +8523,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 1.95,
+      "elapsed_seconds": 2.49,
       "problem": null
     },
     {
@@ -8610,7 +8604,7 @@
           "method": "HTML"
         }
       ],
-      "elapsed_seconds": 2.05,
+      "elapsed_seconds": 1.71,
       "problem": null
     },
     {
@@ -8669,7 +8663,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 17.38,
+      "elapsed_seconds": 9.74,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -8731,7 +8725,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 1.07,
+      "elapsed_seconds": 1.11,
       "problem": null
     },
     {
@@ -8770,7 +8764,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 25.46,
+      "elapsed_seconds": 25.48,
       "problem": "all access methods failed"
     },
     {
@@ -8809,7 +8803,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.55,
+      "elapsed_seconds": 0.4,
       "problem": "all access methods failed"
     },
     {
@@ -8853,7 +8847,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.87,
+      "elapsed_seconds": 1.77,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -9029,7 +9023,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 1.5,
+      "elapsed_seconds": 1.59,
       "problem": null
     },
     {
@@ -9073,7 +9067,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.91,
+      "elapsed_seconds": 2.51,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -9111,7 +9105,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.33,
+      "elapsed_seconds": 0.36,
       "problem": null
     },
     {
@@ -9158,7 +9152,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.6,
+      "elapsed_seconds": 3.41,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -9209,7 +9203,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 22.17,
+      "elapsed_seconds": 21.84,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -9218,19 +9212,18 @@
       "name": "Bioenergy Insight",
       "sector": "waste",
       "website_url": "https://www.bioenergy-news.com/",
-      "status": "NO_MATCH",
-      "method": "RSS_ATOM>SITEMAP>HTML",
+      "status": "ERROR",
+      "method": "FAILED_ALL",
       "attempts": [
         {
           "method": "HOME",
           "url": "https://www.bioenergy-news.com/",
-          "http_status": 200
+          "error": "TimeoutError: The read operation timed out"
         },
         {
           "method": "RSS_ATOM",
           "url": "https://www.bioenergy-news.com/feed",
-          "http_status": 200,
-          "result_count": 0
+          "error": "TimeoutError: The read operation timed out"
         },
         {
           "method": "RSS_ATOM",
@@ -9248,16 +9241,11 @@
           "url": "https://www.bioenergy-news.com/sitemap_index.xml",
           "http_status": 200,
           "result_count": 0
-        },
-        {
-          "method": "HTML",
-          "url": "https://www.bioenergy-news.com/",
-          "result_count": 0
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 58.15,
-      "problem": "methods completed; no recent relevant publication matched"
+      "elapsed_seconds": 60.77,
+      "problem": "all access methods failed"
     },
     {
       "id": "IIG-129",
@@ -9301,7 +9289,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.17,
+      "elapsed_seconds": 2.38,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -9333,7 +9321,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.25,
+      "elapsed_seconds": 0.21,
       "problem": null
     },
     {
@@ -9377,7 +9365,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.98,
+      "elapsed_seconds": 3.44,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -9421,7 +9409,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.92,
+      "elapsed_seconds": 4.35,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -9466,7 +9454,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.15,
+      "elapsed_seconds": 2.28,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -9792,7 +9780,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.92,
+      "elapsed_seconds": 0.81,
       "problem": null
     },
     {
@@ -9836,7 +9824,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.42,
+      "elapsed_seconds": 2.46,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -9880,7 +9868,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 4.4,
+      "elapsed_seconds": 4.63,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -9986,7 +9974,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.47,
+      "elapsed_seconds": 0.64,
       "problem": null
     },
     {
@@ -10026,7 +10014,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 14.12,
+      "elapsed_seconds": 14.64,
       "problem": "all access methods failed"
     },
     {
@@ -10075,7 +10063,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.43,
+      "elapsed_seconds": 2.46,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -10143,7 +10131,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 2.01,
+      "elapsed_seconds": 1.71,
       "problem": null
     },
     {
@@ -10199,7 +10187,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 2.12,
+      "elapsed_seconds": 2.29,
       "problem": null
     },
     {
@@ -10258,7 +10246,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 21.07,
+      "elapsed_seconds": 18.86,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -10320,7 +10308,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 5.64,
+      "elapsed_seconds": 3.67,
       "problem": null
     },
     {
@@ -10364,7 +10352,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.68,
+      "elapsed_seconds": 0.71,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -10700,7 +10688,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 6.28,
+      "elapsed_seconds": 6.33,
       "problem": null
     },
     {
@@ -10752,7 +10740,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 64.06,
+      "elapsed_seconds": 6.93,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -10796,7 +10784,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.11,
+      "elapsed_seconds": 6.78,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -11062,7 +11050,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 1.63,
+      "elapsed_seconds": 1.68,
       "problem": null
     },
     {
@@ -11364,7 +11352,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.56,
+      "elapsed_seconds": 0.54,
       "problem": null
     },
     {
@@ -11409,7 +11397,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.05,
+      "elapsed_seconds": 3.59,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -11461,7 +11449,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 63.2,
+      "elapsed_seconds": 5.07,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -11505,7 +11493,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.92,
+      "elapsed_seconds": 1.19,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -11591,7 +11579,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 4.61,
+      "elapsed_seconds": 3.35,
       "problem": null
     },
     {
@@ -11621,7 +11609,8 @@
         {
           "method": "SITEMAP",
           "url": "https://www.automotivemanufacturingsolutions.com/sitemap.xml",
-          "error": "ParseError: not well-formed (invalid token): line 7, column 22"
+          "http_status": 200,
+          "result_count": 0
         },
         {
           "method": "SITEMAP",
@@ -11635,7 +11624,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.21,
+      "elapsed_seconds": 2.68,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -11709,7 +11698,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.27,
+      "elapsed_seconds": 0.17,
       "problem": null
     },
     {
@@ -11729,22 +11718,22 @@
         {
           "method": "RSS_ATOM",
           "url": "https://www.automotivelogistics.media/feed",
-          "error": "ParseError: not well-formed (invalid token): line 7, column 22"
+          "error": "HTTPError: HTTP Error 404: Not Found"
         },
         {
           "method": "RSS_ATOM",
           "url": "https://www.automotivelogistics.media/rss.xml",
-          "error": "ParseError: not well-formed (invalid token): line 7, column 22"
+          "error": "HTTPError: HTTP Error 404: Not Found"
         },
         {
           "method": "SITEMAP",
           "url": "https://www.automotivelogistics.media/sitemap.xml",
-          "error": "ParseError: not well-formed (invalid token): line 7, column 22"
+          "error": "ParseError: no element found: line 2, column 699961"
         },
         {
           "method": "SITEMAP",
           "url": "https://www.automotivelogistics.media/sitemap_index.xml",
-          "error": "ParseError: not well-formed (invalid token): line 7, column 22"
+          "error": "HTTPError: HTTP Error 404: Not Found"
         },
         {
           "method": "HTML",
@@ -11753,7 +11742,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.39,
+      "elapsed_seconds": 1.87,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -11792,7 +11781,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.78,
+      "elapsed_seconds": 0.49,
       "problem": "all access methods failed"
     },
     {
@@ -11824,7 +11813,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 1.16,
+      "elapsed_seconds": 1.42,
       "problem": null
     },
     {
@@ -11910,7 +11899,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.9,
+      "elapsed_seconds": 0.89,
       "problem": null
     },
     {
@@ -11963,7 +11952,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 19.04,
+      "elapsed_seconds": 20.75,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -12002,7 +11991,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.28,
+      "elapsed_seconds": 2.12,
       "problem": "all access methods failed"
     },
     {
@@ -12518,7 +12507,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 4.38,
+      "elapsed_seconds": 4.95,
       "problem": null
     },
     {
@@ -12563,7 +12552,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.04,
+      "elapsed_seconds": 0.92,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -13079,7 +13068,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 18.09,
+      "elapsed_seconds": 0.95,
       "problem": null
     },
     {
@@ -13124,7 +13113,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 33.77,
+      "elapsed_seconds": 38.79,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -13168,7 +13157,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.17,
+      "elapsed_seconds": 1.84,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -13212,7 +13201,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.24,
+      "elapsed_seconds": 4.19,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -13232,12 +13221,12 @@
         {
           "method": "RSS_ATOM",
           "url": "https://www.atlascopco.com/feed",
-          "error": "TimeoutError: The read operation timed out"
+          "error": "HTTPError: HTTP Error 404: Not Found"
         },
         {
           "method": "RSS_ATOM",
           "url": "https://www.atlascopco.com/rss.xml",
-          "error": "TimeoutError: The read operation timed out"
+          "error": "HTTPError: HTTP Error 404: Not Found"
         },
         {
           "method": "SITEMAP",
@@ -13728,7 +13717,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 13.2,
+      "elapsed_seconds": 5.62,
       "problem": null
     },
     {
@@ -13775,7 +13764,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 9.1,
+      "elapsed_seconds": 9.67,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -13819,7 +13808,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 5.36,
+      "elapsed_seconds": 6.01,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -13863,7 +13852,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.4,
+      "elapsed_seconds": 1.21,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -13894,10 +13883,436 @@
           "method": "SITEMAP",
           "url": "https://www.hitachienergy.com/sitemap.xml",
           "http_status": 200,
-          "result_count": 116
+          "result_count": 82
         }
       ],
       "candidates": [
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/asset-and-work-management/enterprise-asset-management/ellipse-eam",
+          "title": "ellipse eam",
+          "published_at": "2026-09-09T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substation-automation-protection-and-control",
+          "title": "substation automation protection and control",
+          "published_at": "2026-09-30T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substation-automation-protection-and-control/substation-automation-systems",
+          "title": "substation automation systems",
+          "published_at": "2026-10-04T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substation-automation-protection-and-control/products/partner-portals",
+          "title": "partner portals",
+          "published_at": "2026-09-30T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substation-automation-protection-and-control/products/protection-and-control/medium-voltage-protection-relays-ps640-series",
+          "title": "medium voltage protection relays ps640 series",
+          "published_at": "2026-09-09T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substation-automation-protection-and-control/products/protection-and-control/medium-voltage-protection-relays-ps640-series/medium-voltage-protection-relay-psf640",
+          "title": "medium voltage protection relay psf640",
+          "published_at": "2026-09-09T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/capacitors-and-filters/low-voltage-capacitors-and-filters",
+          "title": "low voltage capacitors and filters",
+          "published_at": "2026-10-01T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/capacitors-and-filters/low-voltage-capacitors-and-filters/power-quality-filters",
+          "title": "power quality filters",
+          "published_at": "2026-08-25T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/communication-networks",
+          "title": "communication networks",
+          "published_at": "2026-09-30T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/communication-networks/rail-communications",
+          "title": "rail communications",
+          "published_at": "2026-09-11T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/communication-networks/wired-networks/nsd-teleprotection/nsd670-teleprotection",
+          "title": "nsd670 teleprotection",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/cooling-systems",
+          "title": "cooling systems",
+          "published_at": "2026-09-17T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/cybersecurity/certificates",
+          "title": "certificates",
+          "published_at": "2026-09-11T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/energystorage/battery-energy-storage-system",
+          "title": "battery energy storage system",
+          "published_at": "2026-09-21T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/facts/statcom/svc-light-enhanced",
+          "title": "svc light enhanced",
+          "published_at": "2026-09-07T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/generator-circuit-breakers/generator-circuit-breakers/digital-gcb",
+          "title": "digital gcb",
+          "published_at": "2026-09-08T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/hvdc/multi-terminal",
+          "title": "multi terminal",
+          "published_at": "2026-09-04T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/high-voltage-switchgear-and-breakers/gas-insulated-switchgear",
+          "title": "gas insulated switchgear",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/high-voltage-switchgear-and-breakers/gas-insulated-switchgear/gis-for-72-5-1200-kv/econiq-gis-elk-14-300-kv",
+          "title": "econiq gis elk 14 300 kv",
+          "published_at": "2026-09-04T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/high-voltage-switchgear-and-breakers/air-insulated-switchgear",
+          "title": "air insulated switchgear",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/high-voltage-switchgear-and-breakers/air-insulated-switchgear/econiq-dtb-245-kv",
+          "title": "econiq dtb 245 kv",
+          "published_at": "2026-09-04T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/high-voltage-switchgear-and-breakers/monitoring-and-controlled-switching/modular-switchgear-monitoring-msm",
+          "title": "modular switchgear monitoring msm",
+          "published_at": "2026-10-02T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/high-voltage-switchgear-and-breakers/econiq-eco-efficient-hv-portfolio",
+          "title": "econiq eco efficient hv portfolio",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/high-voltage-switchgear-and-breakers/econiq-eco-efficient-hv-portfolio/campaigns/carbon-neutrality",
+          "title": "carbon neutrality",
+          "published_at": "2026-08-26T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/high-voltage-switchgear-and-breakers/econiq-eco-efficient-hv-portfolio/campaigns/digitalization",
+          "title": "digitalization",
+          "published_at": "2026-08-26T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/instrument-transformers/station-service-voltage-transformers/econiq-ssvt",
+          "title": "econiq ssvt",
+          "published_at": "2026-08-27T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/insulation-and-components",
+          "title": "insulation and components",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/insulation-and-components/transformer-insulation-components",
+          "title": "transformer insulation components",
+          "published_at": "2026-10-02T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/insulation-and-components/transformer-insulation-components/delivery-times-for-transformer-components",
+          "title": "delivery times for transformer components",
+          "published_at": "2026-10-06T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/insulation-and-components/transformer-insulation-components/tap-changers/vacuum-on-load-tap-changers/on-load-tap-changers-type-vucg",
+          "title": "on load tap changers type vucg",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/power-conversion",
+          "title": "power conversion",
+          "published_at": "2026-09-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/power-conversion/medium-voltage-power-stations",
+          "title": "medium voltage power stations",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/power-conversion/active-front-end-power-converter",
+          "title": "active front end power converter",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/power-quality",
+          "title": "power quality",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/semiconductors",
+          "title": "semiconductors",
+          "published_at": "2026-10-06T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/semiconductors/insulated-gate-bipolar-transistor-igbt-and-diode-modules",
+          "title": "insulated gate bipolar transistor igbt and diode modules",
+          "published_at": "2026-10-06T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/semiconductors/diodes/welding-diodes",
+          "title": "welding diodes",
+          "published_at": "2026-08-25T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substations",
+          "title": "substations",
+          "published_at": "2026-09-29T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substations/railway-traction-power-supply/grid-emotion-charging-solutions-for-e-mobility",
+          "title": "grid emotion charging solutions for e mobility",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substations/railway-traction-power-supply/grid-emotion-charging-solutions-for-e-mobility/grid-emotion-fleet",
+          "title": "grid emotion fleet",
+          "published_at": "2026-09-23T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substations/railway-traction-power-supply/grid-emotion-charging-solutions-for-e-mobility/grid-emotion-flash",
+          "title": "grid emotion flash",
+          "published_at": "2026-09-23T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substations/railway-traction-power-supply/grid-emotion-charging-solutions-for-e-mobility/grid-emotion-flash-2",
+          "title": "grid emotion flash 2",
+          "published_at": "2026-09-15T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substations/railway-traction-power-supply/grid-emotion-charging-solutions-for-e-mobility/grid-emotion-fleet-2",
+          "title": "grid emotion fleet 2",
+          "published_at": "2026-09-15T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substations/grid-expand/grid-expand-mobile",
+          "title": "grid expand mobile",
+          "published_at": "2026-09-23T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/substations/emobility-solutions",
+          "title": "emobility solutions",
+          "published_at": "2026-09-28T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/surge-arresters/high-voltage-surge-arresters/excount-ii",
+          "title": "excount ii",
+          "published_at": "2026-09-01T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/surge-arresters/medium-voltage-surge-arresters/spark-prevention-unit",
+          "title": "spark prevention unit",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers",
+          "title": "transformers",
+          "published_at": "2026-10-02T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/power-transformers",
+          "title": "power transformers",
+          "published_at": "2026-09-04T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/distribution-transformers/compact-line-voltage-regulator-clvr",
+          "title": "compact line voltage regulator clvr",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/by-customer-segment/transformers-for-marine",
+          "title": "transformers for marine",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/by-customer-segment/transformers-for-railway",
+          "title": "transformers for railway",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/by-customer-segment/transformers-for-solar",
+          "title": "transformers for solar",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/by-customer-segment/transformers-for-wind-power",
+          "title": "transformers for wind power",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/by-customer-segment/transformers-for-wind-power/transformers-for-wind-power-collection--connection---transmissio",
+          "title": "transformers for wind power collection  connection   transmissio",
+          "published_at": "2026-10-04T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/by-customer-segment/transformers-for-industries",
+          "title": "transformers for industries",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/by-customer-segment/transformers-for-hydrogen",
+          "title": "transformers for hydrogen",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/by-customer-segment/transformers-for-nuclear-power",
+          "title": "transformers for nuclear power",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/by-customer-segment/transformers-for-utilities",
+          "title": "transformers for utilities",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/by-customer-segment/transformers-for-semiconductors",
+          "title": "transformers for semiconductors",
+          "published_at": "2026-08-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/transformers-highlights-april-june-2021",
+          "title": "transformers highlights april june 2021",
+          "published_at": "2026-10-04T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/transformers/where-partnership-meets-performance",
+          "title": "where partnership meets performance",
+          "published_at": "2026-09-08T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/grid-and-generation-management-network-manager",
+          "title": "grid and generation management network manager",
+          "published_at": "2026-08-31T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/grid-and-generation-management-network-manager/network-manager-energy-management-system-ems",
+          "title": "network manager energy management system ems",
+          "published_at": "2026-08-31T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/grid-and-generation-management-network-manager/network-manager-advanced-distribution-management-system-adms",
+          "title": "network manager advanced distribution management system adms",
+          "published_at": "2026-10-04T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/grid-and-generation-management-network-manager/network-manager-distributed-energy-resource-management-system-derms",
+          "title": "network manager distributed energy resource management system derms",
+          "published_at": "2026-08-27T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/grid-and-generation-management-network-manager/network-manager-generation-management-system-gms",
+          "title": "network manager generation management system gms",
+          "published_at": "2026-08-27T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/grid-and-generation-management-network-manager/network-manager-supervisory-control-and-data-acquisition-scada",
+          "title": "network manager supervisory control and data acquisition scada",
+          "published_at": "2026-08-27T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/grid-and-generation-management-network-manager/network-manager-market-management-system-mms",
+          "title": "network manager market management system mms",
+          "published_at": "2026-08-27T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/energy-industry-software-solutions/energy-industry-software-services/maintenance-and-support",
+          "title": "maintenance and support",
+          "published_at": "2026-09-15T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.hitachienergy.com/products-and-solutions/featured-portfolios",
+          "title": "featured portfolios",
+          "published_at": "2026-09-04T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
         {
           "url": "https://www.hitachienergy.com/services-and-consulting/consulting-solutions-/power-consulting",
           "title": "power consulting",
@@ -13951,435 +14366,9 @@
           "title": "energy distribution",
           "published_at": "2026-09-10T00:00:00+00:00",
           "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/markets/renewable-energy/solar-power/power-conversion",
-          "title": "power conversion",
-          "published_at": "2026-09-16T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/markets/data-centers/power-conversion-solutions-for-data-centers",
-          "title": "power conversion solutions for data centers",
-          "published_at": "2026-09-16T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/sustainability",
-          "title": "sustainability",
-          "published_at": "2026-09-16T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/sustainability/sustainability-at-hitachi-energy/our-commitment-to-human-rights",
-          "title": "our commitment to human rights",
-          "published_at": "2026-09-30T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/sustainability/sustainability-reporting-center",
-          "title": "sustainability reporting center",
-          "published_at": "2026-10-05T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/sustainability/sustainability-reporting-center/sustainability-report-2026",
-          "title": "sustainability report 2026",
-          "published_at": "2026-10-05T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/sustainability/sustainability-reporting-center/sustainability-report-2026/introduction",
-          "title": "introduction",
-          "published_at": "2026-10-05T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/sustainability/sustainability-reporting-center/sustainability-report-2026/environment",
-          "title": "environment",
-          "published_at": "2026-10-05T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/sustainability/sustainability-reporting-center/sustainability-report-2026/governance",
-          "title": "governance",
-          "published_at": "2026-10-05T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information",
-          "title": "country and regional information",
-          "published_at": "2026-08-25T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information/australia",
-          "title": "australia",
-          "published_at": "2026-09-29T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information/belgium-fr",
-          "title": "belgium fr",
-          "published_at": "2026-09-24T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information/belgium-nl",
-          "title": "belgium nl",
-          "published_at": "2026-09-24T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information/czech-republic",
-          "title": "czech republic",
-          "published_at": "2026-09-16T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information/finland/yhtiotietoja",
-          "title": "yhtiotietoja",
-          "published_at": "2026-09-08T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information/finland/yhtiotietoja/our-company-in-finland",
-          "title": "our company in finland",
-          "published_at": "2026-09-08T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information/finland/uutiskirje",
-          "title": "uutiskirje",
-          "published_at": "2026-09-30T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information/finland/hitachi-energy-park",
-          "title": "hitachi energy park",
-          "published_at": "2026-09-14T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information/netherlands",
-          "title": "netherlands",
-          "published_at": "2026-09-24T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information/netherlands-nl",
-          "title": "netherlands nl",
-          "published_at": "2026-09-24T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/company-profile/country-and-regional-information/south-korea",
-          "title": "south korea",
-          "published_at": "2026-08-31T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000182763",
-          "title": "1000182763",
-          "published_at": "2026-09-25T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000305511",
-          "title": "1000305511",
-          "published_at": "2026-09-28T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000304228",
-          "title": "1000304228",
-          "published_at": "2026-09-23T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000369580",
-          "title": "1000369580",
-          "published_at": "2026-09-25T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000105845",
-          "title": "1000105845",
-          "published_at": "2026-10-05T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000341591",
-          "title": "1000341591",
-          "published_at": "2026-09-17T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000269168",
-          "title": "1000269168",
-          "published_at": "2026-09-28T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000266982",
-          "title": "1000266982",
-          "published_at": "2026-09-27T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000460560",
-          "title": "1000460560",
-          "published_at": "2026-10-01T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000182723",
-          "title": "1000182723",
-          "published_at": "2026-10-05T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000273008",
-          "title": "1000273008",
-          "published_at": "2026-09-10T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/partners-search/search/details/1000282030",
-          "title": "1000282030",
-          "published_at": "2026-09-30T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/partners/channel-partner-program",
-          "title": "channel partner program",
-          "published_at": "2026-09-03T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/supplying/supplier-invoicing",
-          "title": "supplier invoicing",
-          "published_at": "2026-09-10T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/supplying/supplier-invoicing/e-invoicing-pagero-supplier-onboarding",
-          "title": "e invoicing pagero supplier onboarding",
-          "published_at": "2026-08-26T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/supplying/conditions-of-purchase",
-          "title": "conditions of purchase",
-          "published_at": "2026-09-17T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/supplying/supply-quality",
-          "title": "supply quality",
-          "published_at": "2026-09-11T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/company/supplying/supplier-compliance",
-          "title": "supplier compliance",
-          "published_at": "2026-08-26T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/hitachi-deepens-commitment-to-u-s-manufacturing-with-528-million-mississippi-transformer-factory",
-          "title": "hitachi deepens commitment to u s manufacturing with 528 million mississippi transformer factory",
-          "published_at": "2026-09-15T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/testimonials/2026/03/dr-shivani-sharma-powering-india-sustainable-energy-future",
-          "title": "dr shivani sharma powering india sustainable energy future",
-          "published_at": "2026-09-03T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/08/authorities-and-business-leaders-explore-how-digitalization-can-unlock-the-next-phase-of-public-transport-in-chile",
-          "title": "authorities and business leaders explore how digitalization can unlock the next phase of public transport in chile",
-          "published_at": "2026-09-08T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/hitachi-energy-and-enedis-have-signed-350-million-agreements-to-power-france-s-energy-future",
-          "title": "hitachi energy and enedis have signed 350 million agreements to power france s energy future",
-          "published_at": "2026-09-24T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/features/2024/09/hitachi-energy-to-provide-expertise-for-new-green-hydrogen-plants-in-brazil",
-          "title": "hitachi energy to provide expertise for new green hydrogen plants in brazil",
-          "published_at": "2026-09-21T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/04/hitachi-energy-unveils-ecospace-its-new-digital-sustainability-platform",
-          "title": "hitachi energy unveils ecospace its new digital sustainability platform",
-          "published_at": "2026-09-02T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/08/hitachi-energy-leads-dialogue-on-future-of-grid-resilience-at-the-wec-chile-energy-forum-2026",
-          "title": "hitachi energy leads dialogue on future of grid resilience at the wec chile energy forum 2026",
-          "published_at": "2026-09-08T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2020/07/hitachi-abb-power-grids-launches-game-changing-ev-charging-syste",
-          "title": "hitachi abb power grids launches game changing ev charging syste",
-          "published_at": "2026-08-26T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/hitachi-energy-delivers-shunt-reactors-for-humelink-project-australia",
-          "title": "hitachi energy delivers shunt reactors for humelink project australia",
-          "published_at": "2026-09-21T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/features/2026/09/hitachi-energy-s-battery-energy-storage-system-qualifies-as-nvidia-dsx-ready-bess",
-          "title": "hitachi energy s battery energy storage system qualifies as nvidia dsx ready bess",
-          "published_at": "2026-09-22T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2017/05/abb-wins-30-million-order-for-hvdc-power-link-upgrade-in-africa",
-          "title": "abb wins 30 million order for hvdc power link upgrade in africa",
-          "published_at": "2026-08-25T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/features/2026/08/hitachi-energy-honors-its-channel-champions-at-global-distributor-awards-2026",
-          "title": "hitachi energy honors its channel champions at global distributor awards 2026",
-          "published_at": "2026-09-08T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/features/2026/08/premiaci-n-proyectos-kaizen-2026",
-          "title": "premiaci n proyectos kaizen 2026",
-          "published_at": "2026-08-25T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/hyvolution-2026-hitachi-energy-highlights-energy-planning-for-green-hydrogen-growth-in-chile",
-          "title": "hyvolution 2026 hitachi energy highlights energy planning for green hydrogen growth in chile",
-          "published_at": "2026-09-15T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/testimonials/2026/09/meet-our-people-jilly-jingli-zhang",
-          "title": "meet our people jilly jingli zhang",
-          "published_at": "2026-09-30T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/hitachi-energy-leverages-global-technology-expertise-to-advance-shaanxi-s-position-as-a-clean-energy-innovation-hub",
-          "title": "hitachi energy leverages global technology expertise to advance shaanxi s position as a clean energy innovation hub",
-          "published_at": "2026-09-03T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/features/2026/08/hitachi-energy-launches-sealiq-to-help-utilities-reduce-emissions-while-maintaining-grid-reliability",
-          "title": "hitachi energy launches sealiq to help utilities reduce emissions while maintaining grid reliability",
-          "published_at": "2026-09-02T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/perspectives/2022/08/offshore-grids-the-energy-transition-s-next-frontier",
-          "title": "offshore grids the energy transition s next frontier",
-          "published_at": "2026-09-21T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/08/hitachi-energy-helps-customers-accelerate-sf6-free-grid-modernization-with-new-econiq-wins",
-          "title": "hitachi energy helps customers accelerate sf6 free grid modernization with new econiq wins",
-          "published_at": "2026-08-24T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/features/2026/10/linxon-hitachi-energy-and-ftc-solar-announce-strategic-collaboration-",
-          "title": "linxon hitachi energy and ftc solar announce strategic collaboration ",
-          "published_at": "2026-09-29T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/08/hitachi-energy-boosts-generadora-metropolitana-s-efficiency-in-chile-through-its-ai-powered-suite-of-services-and-solutions",
-          "title": "hitachi energy boosts generadora metropolitana s efficiency in chile through its ai powered suite of services and solutions",
-          "published_at": "2026-09-21T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/features/2026/10/waratah-super-battery-enters-service-as-a-critical-grid-asset",
-          "title": "waratah super battery enters service as a critical grid asset",
-          "published_at": "2026-09-29T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/testimonials/2026/07/from-day-one-to-leadership-a-story-of-growth-and-possibilities",
-          "title": "from day one to leadership a story of growth and possibilities",
-          "published_at": "2026-09-03T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/08/hitachi-energy-marks-20-years-of-powering-rail-innovation-from-china",
-          "title": "hitachi energy marks 20 years of powering rail innovation from china",
-          "published_at": "2026-08-24T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/waratah-super-battery-reaches-full-capacity-australia-hitachi",
-          "title": "waratah super battery reaches full capacity australia hitachi",
-          "published_at": "2026-09-28T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/features/2026/09/hitachi-energy-s-hvdc-sales-leader-receives-women-in-energy-award-at-cigre-in-paris",
-          "title": "hitachi energy s hvdc sales leader receives women in energy award at cigre in paris",
-          "published_at": "2026-09-02T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/hitachi-energy-leverages-global-innovation-experience-to-support-chongqing-s-energy-transition-and-international-collaboration",
-          "title": "hitachi energy leverages global innovation experience to support chongqing s energy transition and international collaboration",
-          "published_at": "2026-09-23T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2020/01/world-s-biggest-beet-sugar-factory-in-egypt-to-be-powered-by-abb-s-distribution-transformers",
-          "title": "world s biggest beet sugar factory in egypt to be powered by abb s distribution transformers",
-          "published_at": "2026-08-25T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/features/2026/08/distribution-grid-3-0-why-the-last-mile-of-electrification-is-becoming-the-front-line-of-the-energy-transition",
-          "title": "distribution grid 3 0 why the last mile of electrification is becoming the front line of the energy transition",
-          "published_at": "2026-08-25T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/no-hitachi-energy-i-drammen-vant-drammens-mangfoldspris-2026",
-          "title": "no hitachi energy i drammen vant drammens mangfoldspris 2026",
-          "published_at": "2026-09-24T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/critical-gas-for-sustainable-high-voltage-grids-now-made-in-germany",
-          "title": "critical gas for sustainable high voltage grids now made in germany",
-          "published_at": "2026-09-03T00:00:00+00:00",
-          "method": "SITEMAP"
-        },
-        {
-          "url": "https://www.hitachienergy.com/news-and-events/features/2026/06/fi-hitachi-energy-named-among-europe-s-climate-leaders-2026",
-          "title": "fi hitachi energy named among europe s climate leaders 2026",
-          "published_at": "2026-09-10T00:00:00+00:00",
-          "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 14.35,
+      "elapsed_seconds": 1.9,
       "problem": null
     },
     {
@@ -14436,7 +14425,7 @@
           "method": "HTML"
         }
       ],
-      "elapsed_seconds": 4.15,
+      "elapsed_seconds": 3.63,
       "problem": null
     },
     {
@@ -14481,7 +14470,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 4.98,
+      "elapsed_seconds": 4.47,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -14518,7 +14507,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 8.04,
+      "elapsed_seconds": 7.96,
       "problem": null
     },
     {
@@ -14557,12 +14546,12 @@
         },
         {
           "method": "HTML",
-          "url": "https://www.thermaxglobal.com/",
+          "url": "https://www.thermaxglobal.com/global-presence/americas",
           "result_count": 0
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 7.38,
+      "elapsed_seconds": 9.18,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -14606,7 +14595,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 8.0,
+      "elapsed_seconds": 6.41,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -14615,13 +14604,13 @@
       "name": "WEG",
       "sector": "energy",
       "website_url": "https://www.weg.net/",
-      "status": "NO_MATCH",
-      "method": "RSS_ATOM>SITEMAP>HTML",
+      "status": "ERROR",
+      "method": "FAILED_ALL",
       "attempts": [
         {
           "method": "HOME",
           "url": "https://www.weg.net/",
-          "http_status": 200
+          "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
           "method": "RSS_ATOM",
@@ -14642,16 +14631,11 @@
           "method": "SITEMAP",
           "url": "https://www.weg.net/sitemap_index.xml",
           "error": "HTTPError: HTTP Error 404: Not Found"
-        },
-        {
-          "method": "HTML",
-          "url": "https://www.weg.net/",
-          "result_count": 0
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 4.02,
-      "problem": "methods completed; no recent relevant publication matched"
+      "elapsed_seconds": 3.64,
+      "problem": "all access methods failed"
     },
     {
       "id": "IIG-180",
@@ -14695,7 +14679,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 7.1,
+      "elapsed_seconds": 6.76,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -14704,8 +14688,8 @@
       "name": "AGL Energy",
       "sector": "energy",
       "website_url": "https://www.agl.com.au/",
-      "status": "NO_MATCH",
-      "method": "RSS_ATOM>SITEMAP>HTML",
+      "status": "DISCOVERED",
+      "method": "SITEMAP",
       "attempts": [
         {
           "method": "HOME",
@@ -14726,22 +14710,295 @@
           "method": "SITEMAP",
           "url": "https://www.agl.com.au/sitemap.xml",
           "http_status": 200,
-          "result_count": 0
-        },
-        {
-          "method": "SITEMAP",
-          "url": "https://www.agl.com.au/sitemap_index.xml",
-          "error": "ParseError: not well-formed (invalid token): line 109, column 280"
-        },
-        {
-          "method": "HTML",
-          "url": "https://www.agl.com.au/",
-          "result_count": 0
+          "result_count": 47
         }
       ],
-      "candidates": [],
-      "elapsed_seconds": 10.39,
-      "problem": "methods completed; no recent relevant publication matched"
+      "candidates": [
+        {
+          "url": "https://www.agl.com.au/residential/energy/compare-plans",
+          "title": "compare plans",
+          "published_at": "2026-09-28T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/energy/compare-plans/solar-savers",
+          "title": "solar savers",
+          "published_at": "2026-09-06T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/energy/compare-plans/night-saver-ev-plan",
+          "title": "night saver ev plan",
+          "published_at": "2026-09-06T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/energy/compare-plans/three-free-plan/how-to-save",
+          "title": "how to save",
+          "published_at": "2026-09-18T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/energy/compare-plans/change-plan",
+          "title": "change plan",
+          "published_at": "2026-09-24T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/energy/peak-energy-rewards",
+          "title": "peak energy rewards",
+          "published_at": "2026-08-31T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/energy/solar-sharer-offer",
+          "title": "solar sharer offer",
+          "published_at": "2026-09-14T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/energy/midday-power-saver",
+          "title": "midday power saver",
+          "published_at": "2026-09-15T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/solar-and-batteries",
+          "title": "solar and batteries",
+          "published_at": "2026-09-08T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/solar-and-batteries/feed-in-tariffs",
+          "title": "feed in tariffs",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/solar-and-batteries/batteries",
+          "title": "batteries",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/solar-and-batteries/batteries/sungrow-high-voltage-battery",
+          "title": "sungrow high voltage battery",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/solar-and-batteries/batteries/tesla-powerwall-3",
+          "title": "tesla powerwall 3",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/solar-and-batteries/batteries/solar-panels-and-inverter",
+          "title": "solar panels and inverter",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/solar-and-batteries/savings-explained",
+          "title": "savings explained",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/solar-and-batteries/rebates-incentives",
+          "title": "rebates incentives",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/solar-and-batteries/how-solar-works",
+          "title": "how solar works",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/solar-and-batteries/virtual-power-plant",
+          "title": "virtual power plant",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/residential/solar-and-batteries/solar-battery-energy-plans",
+          "title": "solar battery energy plans",
+          "published_at": "2026-09-29T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/help-support/billing-payments/solar-billing",
+          "title": "solar billing",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects",
+          "title": "industry projects",
+          "published_at": "2026-09-23T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/port-adelaide-football-club",
+          "title": "port adelaide football club",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/rob-dolan",
+          "title": "rob dolan",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/reynella-mazda",
+          "title": "reynella mazda",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/northway-honda",
+          "title": "northway honda",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/heritage-fine-chocolates",
+          "title": "heritage fine chocolates",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/japanese-school-melbourne",
+          "title": "japanese school melbourne",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/ten-pin-bowling-australia",
+          "title": "ten pin bowling australia",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/coca-cola-europacific-partners",
+          "title": "coca cola europacific partners",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/cadell-orchards",
+          "title": "cadell orchards",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/piber-plastics-solar",
+          "title": "piber plastics solar",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/st-kilda-football-club",
+          "title": "st kilda football club",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/jbs-biogas",
+          "title": "jbs biogas",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/lineage-logistics",
+          "title": "lineage logistics",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/salvation-army",
+          "title": "salvation army",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/john-holland-sydney-water-commercial-solar",
+          "title": "john holland sydney water commercial solar",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/evoenergy-community-batteries",
+          "title": "evoenergy community batteries",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/koompartu-farms-microgrid",
+          "title": "koompartu farms microgrid",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/industry-projects/bega-rooftop-solar",
+          "title": "bega rooftop solar",
+          "published_at": "2026-10-05T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/solar-and-batteries/project-funding",
+          "title": "project funding",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/solar-and-batteries/project-funding/government-rebates",
+          "title": "government rebates",
+          "published_at": "2026-10-01T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/business/sustainability/solar-and-batteries/project-funding/government-rebates/talk-to-an-expert",
+          "title": "talk to an expert",
+          "published_at": "2026-09-17T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/campaigns/energy-allowance",
+          "title": "energy allowance",
+          "published_at": "2026-09-10T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/terms-conditions/agl-essentials-energy-plan-terms-and-conditions",
+          "title": "agl essentials energy plan terms and conditions",
+          "published_at": "2026-09-29T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/terms-conditions/peak-energy-rewards",
+          "title": "peak energy rewards",
+          "published_at": "2026-10-01T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/terms-conditions/solar-command-subscription-terms",
+          "title": "solar command subscription terms",
+          "published_at": "2026-09-29T00:00:00+00:00",
+          "method": "SITEMAP"
+        },
+        {
+          "url": "https://www.agl.com.au/rates-contracts/information-for-solar-customers",
+          "title": "information for solar customers",
+          "published_at": "2026-10-02T00:00:00+00:00",
+          "method": "SITEMAP"
+        }
+      ],
+      "elapsed_seconds": 9.44,
+      "problem": null
     },
     {
       "id": "IIG-182",
@@ -14779,7 +15036,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.58,
+      "elapsed_seconds": 3.6,
       "problem": "all access methods failed"
     },
     {
@@ -15085,7 +15342,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 3.04,
+      "elapsed_seconds": 2.23,
       "problem": null
     },
     {
@@ -15094,13 +15351,13 @@
       "name": "CS Energy",
       "sector": "energy",
       "website_url": "https://www.csenergy.com.au/",
-      "status": "ERROR",
-      "method": "FAILED_ALL",
+      "status": "NO_MATCH",
+      "method": "RSS_ATOM>SITEMAP>HTML",
       "attempts": [
         {
           "method": "HOME",
           "url": "https://www.csenergy.com.au/",
-          "error": "TimeoutError: The read operation timed out"
+          "http_status": 200
         },
         {
           "method": "RSS_ATOM",
@@ -15121,11 +15378,16 @@
           "method": "SITEMAP",
           "url": "https://www.csenergy.com.au/sitemap_index.xml",
           "error": "HTTPError: HTTP Error 404: Not Found"
+        },
+        {
+          "method": "HTML",
+          "url": "https://www.csenergy.com.au/",
+          "result_count": 0
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 7.96,
-      "problem": "all access methods failed"
+      "elapsed_seconds": 2.69,
+      "problem": "methods completed; no recent relevant publication matched"
     },
     {
       "id": "IIG-185",
@@ -15640,7 +15902,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 0.86,
+      "elapsed_seconds": 0.5,
       "problem": null
     },
     {
@@ -15730,7 +15992,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 8.1,
+      "elapsed_seconds": 10.81,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -15775,7 +16037,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.77,
+      "elapsed_seconds": 2.67,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -15814,7 +16076,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.18,
+      "elapsed_seconds": 0.99,
       "problem": "all access methods failed"
     },
     {
@@ -15859,7 +16121,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.75,
+      "elapsed_seconds": 2.24,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -15898,7 +16160,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.73,
+      "elapsed_seconds": 0.7,
       "problem": "all access methods failed"
     },
     {
@@ -15942,7 +16204,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 20.18,
+      "elapsed_seconds": 15.56,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -15986,7 +16248,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 9.03,
+      "elapsed_seconds": 8.95,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -16025,7 +16287,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.59,
+      "elapsed_seconds": 0.56,
       "problem": "all access methods failed"
     },
     {
@@ -16057,7 +16319,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 5.04,
+      "elapsed_seconds": 5.05,
       "problem": null
     },
     {
@@ -16096,7 +16358,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.14,
+      "elapsed_seconds": 0.2,
       "problem": "all access methods failed"
     },
     {
@@ -16135,7 +16397,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.15,
+      "elapsed_seconds": 3.78,
       "problem": "all access methods failed"
     },
     {
@@ -16185,7 +16447,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.3,
+      "elapsed_seconds": 10.11,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -16235,7 +16497,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 14.02,
+      "elapsed_seconds": 17.81,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -16279,7 +16541,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 7.72,
+      "elapsed_seconds": 7.38,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -16311,7 +16573,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 3.63,
+      "elapsed_seconds": 3.52,
       "problem": null
     },
     {
@@ -16364,7 +16626,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 30.98,
+      "elapsed_seconds": 26.33,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -16454,7 +16716,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 6.67,
+      "elapsed_seconds": 7.17,
       "problem": null
     },
     {
@@ -16498,7 +16760,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.56,
+      "elapsed_seconds": 0.8,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -16537,7 +16799,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.41,
+      "elapsed_seconds": 0.55,
       "problem": "all access methods failed"
     },
     {
@@ -16754,7 +17016,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 8.53,
+      "elapsed_seconds": 6.79,
       "problem": null
     },
     {
@@ -16793,7 +17055,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.54,
+      "elapsed_seconds": 1.96,
       "problem": "all access methods failed"
     },
     {
@@ -17172,7 +17434,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 5.52,
+      "elapsed_seconds": 1.94,
       "problem": null
     },
     {
@@ -17251,7 +17513,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 3.04,
+      "elapsed_seconds": 3.24,
       "problem": null
     },
     {
@@ -17295,7 +17557,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.34,
+      "elapsed_seconds": 1.41,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -17367,7 +17629,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 8.75,
+      "elapsed_seconds": 8.15,
       "problem": null
     },
     {
@@ -17406,7 +17668,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.62,
+      "elapsed_seconds": 0.51,
       "problem": "all access methods failed"
     },
     {
@@ -17450,7 +17712,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.82,
+      "elapsed_seconds": 4.05,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -17489,7 +17751,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.72,
+      "elapsed_seconds": 0.87,
       "problem": "all access methods failed"
     },
     {
@@ -17533,7 +17795,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 10.89,
+      "elapsed_seconds": 12.14,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -17589,7 +17851,7 @@
           "method": "HTML"
         }
       ],
-      "elapsed_seconds": 12.25,
+      "elapsed_seconds": 12.45,
       "problem": null
     },
     {
@@ -17628,7 +17890,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.21,
+      "elapsed_seconds": 0.4,
       "problem": "all access methods failed"
     },
     {
@@ -17672,7 +17934,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.66,
+      "elapsed_seconds": 4.26,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -17716,7 +17978,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 10.47,
+      "elapsed_seconds": 9.15,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -17748,7 +18010,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 2.11,
+      "elapsed_seconds": 2.14,
       "problem": null
     },
     {
@@ -17757,38 +18019,36 @@
       "name": "EPRA",
       "sector": "energy",
       "website_url": "https://www.epra.go.ke/",
-      "status": "ERROR",
-      "method": "FAILED_ALL",
+      "status": "DISCOVERED",
+      "method": "RSS_ATOM",
       "attempts": [
         {
           "method": "HOME",
           "url": "https://www.epra.go.ke/",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
+          "http_status": 200
         },
         {
           "method": "RSS_ATOM",
           "url": "https://www.epra.go.ke/feed",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
+          "error": "HTTPError: HTTP Error 404: Not Found"
         },
         {
           "method": "RSS_ATOM",
           "url": "https://www.epra.go.ke/rss.xml",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
-        },
-        {
-          "method": "SITEMAP",
-          "url": "https://www.epra.go.ke/sitemap.xml",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
-        },
-        {
-          "method": "SITEMAP",
-          "url": "https://www.epra.go.ke/sitemap_index.xml",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
+          "http_status": 200,
+          "result_count": 1
         }
       ],
-      "candidates": [],
-      "elapsed_seconds": 6.46,
-      "problem": "all access methods failed"
+      "candidates": [
+        {
+          "url": "https://www.epra.go.ke/energy-petroleum-statistics-report-2026",
+          "title": "Energy & Petroleum Statistics Report 2026",
+          "published_at": "2026-09-28T10:43:40+00:00",
+          "method": "RSS_ATOM"
+        }
+      ],
+      "elapsed_seconds": 4.68,
+      "problem": null
     },
     {
       "id": "IIG-222",
@@ -17839,7 +18099,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 40.88,
+      "elapsed_seconds": 33.51,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -17883,7 +18143,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.6,
+      "elapsed_seconds": 2.49,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -17929,7 +18189,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 9.98,
+      "elapsed_seconds": 9.88,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -17959,7 +18219,7 @@
         {
           "method": "SITEMAP",
           "url": "https://www.ieso.ca/sitemap.xml",
-          "error": "TimeoutError: The read operation timed out"
+          "error": "ParseError: no element found: line 14288, column 64"
         },
         {
           "method": "SITEMAP",
@@ -17973,7 +18233,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.05,
+      "elapsed_seconds": 5.12,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -18018,7 +18278,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 9.12,
+      "elapsed_seconds": 9.14,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -18456,7 +18716,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 1.29,
+      "elapsed_seconds": 1.07,
       "problem": null
     },
     {
@@ -18515,7 +18775,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 8.91,
+      "elapsed_seconds": 8.14,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -18559,7 +18819,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.67,
+      "elapsed_seconds": 3.64,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -18603,7 +18863,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 18.39,
+      "elapsed_seconds": 10.42,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -18642,7 +18902,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 5.6,
+      "elapsed_seconds": 4.02,
       "problem": "all access methods failed"
     },
     {
@@ -18687,7 +18947,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 10.32,
+      "elapsed_seconds": 10.42,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -18774,7 +19034,7 @@
           "method": "HTML"
         }
       ],
-      "elapsed_seconds": 46.34,
+      "elapsed_seconds": 42.25,
       "problem": null
     },
     {
@@ -18833,7 +19093,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 10.22,
+      "elapsed_seconds": 9.23,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -19349,7 +19609,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 1.8,
+      "elapsed_seconds": 1.3,
       "problem": null
     },
     {
@@ -19393,7 +19653,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 4.78,
+      "elapsed_seconds": 4.27,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -19437,7 +19697,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 7.61,
+      "elapsed_seconds": 10.0,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -19476,7 +19736,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 4.59,
+      "elapsed_seconds": 7.54,
       "problem": "all access methods failed"
     },
     {
@@ -19516,7 +19776,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.8,
+      "elapsed_seconds": 1.89,
       "problem": "all access methods failed"
     },
     {
@@ -19561,7 +19821,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 7.21,
+      "elapsed_seconds": 7.14,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -19600,7 +19860,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.46,
+      "elapsed_seconds": 0.37,
       "problem": "all access methods failed"
     },
     {
@@ -19644,7 +19904,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 7.91,
+      "elapsed_seconds": 7.5,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -19687,7 +19947,7 @@
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 11.76,
+      "elapsed_seconds": 11.19,
       "problem": null
     },
     {
@@ -19731,7 +19991,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.38,
+      "elapsed_seconds": 1.92,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -19761,6 +20021,18 @@
         }
       ],
       "candidates": [
+        {
+          "url": "https://idbinvest.org/en/news-media/idb-invest-and-idb-lab-join-forces-one-communications-expand-connectivity-guyana-first",
+          "title": "IDB Invest and IDB Lab Join Forces with One Communications to Expand Connectivity in Guyana in First Caribbean Telecommunications Project",
+          "published_at": "2026-10-05T15:02:30+00:00",
+          "method": "RSS_ATOM"
+        },
+        {
+          "url": "https://idbinvest.org/en/publications/mdb-joint-methodologies-measuring-private-finance-development",
+          "title": "MDB Joint Methodologies for Measuring Private Finance for Development",
+          "published_at": "2026-10-01T14:41:39+00:00",
+          "method": "RSS_ATOM"
+        },
         {
           "url": "https://idbinvest.org/en/news-media/joint-statement-updated-mdb-methodologies-measuring-mobilization-and-private-finance",
           "title": "Joint Statement on the Updated MDB Methodologies for Measuring Mobilization and Private Finance for Development",
@@ -19808,21 +20080,9 @@
           "title": "IDB Invest and Banco Unión Expand Access to Financial Services for Older Adults in Colombia",
           "published_at": "2026-09-10T20:41:33+00:00",
           "method": "RSS_ATOM"
-        },
-        {
-          "url": "https://idbinvest.org/en/news-media/idb-invest-issues-tenth-bond-paraguay-new-milestone-supporting-local-capital-market",
-          "title": "IDB Invest Issues Tenth Bond in Paraguay, a New Milestone in Supporting Local Capital Market Development",
-          "published_at": "2026-09-08T12:49:53+00:00",
-          "method": "RSS_ATOM"
-        },
-        {
-          "url": "https://idbinvest.org/en/news-media/idb-invest-supports-atis-group-expand-shared-telecom-tower-infrastructure-southern-cone",
-          "title": "IDB Invest Supports Atis Group to Expand Shared Telecom Tower Infrastructure in the Southern Cone",
-          "published_at": "2026-09-01T14:56:52+00:00",
-          "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.97,
+      "elapsed_seconds": 0.78,
       "problem": null
     },
     {
@@ -19890,7 +20150,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.36,
+      "elapsed_seconds": 0.31,
       "problem": null
     },
     {
@@ -19931,7 +20191,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 3.94,
+      "elapsed_seconds": 3.16,
       "problem": "all access methods failed"
     },
     {
@@ -19970,7 +20230,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.51,
+      "elapsed_seconds": 0.54,
       "problem": "all access methods failed"
     },
     {
@@ -20014,7 +20274,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 3.32,
+      "elapsed_seconds": 3.48,
       "problem": null
     },
     {
@@ -20057,293 +20317,293 @@
         {
           "url": "https://nangluongvietnam.vn/cuc-dien-luc-va-lien-minh-nang-luong-toan-cau-thuc-day-hien-dai-hoa-luoi-dien-va-phat-trien-bess-tai-viet-nam-36712.html",
           "title": "cuc dien luc va lien minh nang luong toan cau thuc day hien dai hoa luoi dien va phat trien bess tai viet nam 36712.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/gg-power-ra-mat-pin-luu-tru-quoc-dan-energy-hub-s16-new-36708.html",
           "title": "gg power ra mat pin luu tru quoc dan energy hub s16 new 36708.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/vinh-tan-1-tpp-releases-sustainability-report-promoting-environmental-social-and-governance-esg-practices-36705.html",
           "title": "vinh tan 1 tpp releases sustainability report promoting environmental social and governance esg practices 36705.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/evnnpc-dong-dien-5-du-an-lap-dat-he-thong-pin-luu-tru-nang-luong-bess-tai-lang-son-36698.html",
           "title": "evnnpc dong dien 5 du an lap dat he thong pin luu tru nang luong bess tai lang son 36698.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/overview-of-the-scientific-workshop-developing-nuclear-power-for-green-growth-and-national-energy-security-36678.html",
           "title": "overview of the scientific workshop developing nuclear power for green growth and national energy security 36678.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/gg-power-va-mai-son-solar-hop-luc-thuc-day-xu-huong-tu-chu-nang-luong-xanh-36671.html",
           "title": "gg power va mai son solar hop luc thuc day xu huong tu chu nang luong xanh 36671.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/agribank-pvep-ky-hop-dong-tin-dung-tai-tro-du-an-lo-b4895-va-lo-5297-ngoai-khoi-tay-nam-viet-nam-36666.html",
           "title": "agribank pvep ky hop dong tin dung tai tro du an lo b4895 va lo 5297 ngoai khoi tay nam viet nam 36666.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/akrocean-successfully-deploys-floating-lidar-system-for-ree-truong-thanhs-nam-bo-3-offshore-wind-project-nam-bo-3-offshore-wind-project-36646.html",
           "title": "akrocean successfully deploys floating lidar system for ree truong thanhs nam bo 3 offshore wind project nam bo 3 offshore wind project 36646.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/investment-policy-and-investor-approved-for-hong-loc-solar-power-plant-project-in-ha-tinh-province-36640.html",
           "title": "investment policy and investor approved for hong loc solar power plant project in ha tinh province 36640.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/an-minh-energy-la-doi-tac-chien-luoc-phan-phoi-pin-luu-tru-nang-luong-bess-gg-power-tai-phia-nam-36630.html",
           "title": "an minh energy la doi tac chien luoc phan phoi pin luu tru nang luong bess gg power tai phia nam 36630.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/pv-gas-va-totalenergies-gas-power-activities-ban-hop-tac-ve-lng-lpg-ha-tang-va-chuyen-dich-nang-luong-36627.html",
           "title": "pv gas va totalenergies gas power activities ban hop tac ve lng lpg ha tang va chuyen dich nang luong 36627.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/hop-tac-chien-luoc-toan-dien-giua-gg-power-va-cornex-trong-linh-vuc-luu-tru-nang-luong-bess-36621.html",
           "title": "hop tac chien luoc toan dien giua gg power va cornex trong linh vuc luu tru nang luong bess 36621.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/greenroof-energy-va-vietcombank-phoi-hop-thuc-day-phat-trien-dien-mat-troi-va-he-thong-luu-tru-nang-luong-tai-viet-nam-36605.html",
           "title": "greenroof energy va vietcombank phoi hop thuc day phat trien dien mat troi va he thong luu tru nang luong tai viet nam 36605.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/evnnpc-dua-vao-van-hanh-he-thong-pin-luu-tru-nang-luong-bess-tai-hai-phong-36616.html",
           "title": "evnnpc dua vao van hanh he thong pin luu tru nang luong bess tai hai phong 36616.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/evnnpc-approved-as-investor-for-dong-van-220-kv-substation-and-ha-dong-phu-ly-hanoi-transmission-line-project-36610.html",
           "title": "evnnpc approved as investor for dong van 220 kv substation and ha dong phu ly hanoi transmission line project 36610.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/investment-policy-and-investor-approved-for-expansion-of-se-san-4-hydropower-plant-36591.html",
           "title": "investment policy and investor approved for expansion of se san 4 hydropower plant 36591.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/construction-begins-on-solar-power-project-on-trung-thu-hydropower-reservoir-36592.html",
           "title": "construction begins on solar power project on trung thu hydropower reservoir 36592.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/ca-mau-approves-investment-policies-and-investors-for-four-wind-power-projects-36573.html",
           "title": "ca mau approves investment policies and investors for four wind power projects 36573.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/national-assembly-adopts-resolution-to-separate-ninh-thuan-nuclear-power-project-into-independent-projects-36572.html",
           "title": "national assembly adopts resolution to separate ninh thuan nuclear power project into independent projects 36572.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/viet-nam-muon-phat-trien-dien-gio-ngoai-khoi-nang-luc-logistics-cung-phai-san-sang-36561.html",
           "title": "viet nam muon phat trien dien gio ngoai khoi nang luc logistics cung phai san sang 36561.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/evnnpc-dua-vao-van-hanh-he-thong-pin-luu-tru-nang-luong-bess-dau-tien-tai-ninh-binh-36547.html",
           "title": "evnnpc dua vao van hanh he thong pin luu tru nang luong bess dau tien tai ninh binh 36547.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/nghe-an-breaks-ground-on-us-160-million-waste-to-energy-plant-36536.html",
           "title": "nghe an breaks ground on us 160 million waste to energy plant 36536.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/mo-hinh-rut-gon-mo-phong-btb-vsc-bess-dap-ung-quan-tinh-ao-va-may-phat-dong-bo-ao-trong-luoi-dien-yeu-36477.html",
           "title": "mo hinh rut gon mo phong btb vsc bess dap ung quan tinh ao va may phat dong bo ao trong luoi dien yeu 36477.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/evn-reports-july-power-operations-sets-priorities-for-august-2026-36485.html",
           "title": "evn reports july power operations sets priorities for august 2026 36485.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/lang-son-approves-investment-policy-and-investor-for-50-mw-dinh-lap-11-wind-power-project-36486.html",
           "title": "lang son approves investment policy and investor for 50 mw dinh lap 11 wind power project 36486.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/tuyen-quang-approves-investment-policy-and-investor-for-120-mw-hydropower-expansion-project-36481.html",
           "title": "tuyen quang approves investment policy and investor for 120 mw hydropower expansion project 36481.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/ha-tinh-approves-investment-policies-and-investors-for-four-ky-anh-wind-power-projects-36469.html",
           "title": "ha tinh approves investment policies and investors for four ky anh wind power projects 36469.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/the-6th-vietnam-clean-energy-forum-36457.html",
           "title": "the 6th vietnam clean energy forum 36457.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/climateworks-foundation-strengthens-industry-associations-to-advance-viet-nams-energy-transition-36454.html",
           "title": "climateworks foundation strengthens industry associations to advance viet nams energy transition 36454.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/vai-tro-cua-luu-tru-nang-luong-bess-va-cong-nghe-tao-luoi-gfm-trong-he-thong-dien-tuong-lai-36446.html",
           "title": "vai tro cua luu tru nang luong bess va cong nghe tao luoi gfm trong he thong dien tuong lai 36446.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/neovest-shares-international-experience-and-development-models-for-vietnams-bess-market-36455.html",
           "title": "neovest shares international experience and development models for vietnams bess market 36455.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/construction-starts-on-450-mw-dau-tieng-5-solar-power-plant-36470.html",
           "title": "construction starts on 450 mw dau tieng 5 solar power plant 36470.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/neovest-chia-se-kinh-nghiem-quoc-te-goi-y-mo-hinh-phat-trien-bess-tai-viet-nam-36445.html",
           "title": "neovest chia se kinh nghiem quoc te goi y mo hinh phat trien bess tai viet nam 36445.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/tong-cong-ty-dien-luc-mien-bac-dong-dien-he-thong-luu-tru-nang-luong-bess-dau-tien-36436.html",
           "title": "tong cong ty dien luc mien bac dong dien he thong luu tru nang luong bess dau tien 36436.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/evn-and-vinachem-discuss-roadmap-for-cooperation-on-battery-energy-storage-systems-36434.html",
           "title": "evn and vinachem discuss roadmap for cooperation on battery energy storage systems 36434.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/ministry-of-industry-and-trade-approves-2026-electricity-generation-price-framework-for-natural-gas-fired-power-plants-36432.html",
           "title": "ministry of industry and trade approves 2026 electricity generation price framework for natural gas fired power plants 36432.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/governments-position-on-resolving-wind-power-projects-in-lam-dong-overlapping-with-mineral-planning-36433.html",
           "title": "governments position on resolving wind power projects in lam dong overlapping with mineral planning 36433.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/evn-va-vinachem-ban-lo-trinh-hop-tac-lam-chu-cong-nghe-pin-luu-tru-nang-luong-bess-36422.html",
           "title": "evn va vinachem ban lo trinh hop tac lam chu cong nghe pin luu tru nang luong bess 36422.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/danh-gia-ket-qua-hoat-dong-san-xuat-va-cac-muc-tieu-trong-ngan-han-cua-pv-power-cap-nhat-2772026-36419.html",
           "title": "danh gia ket qua hoat dong san xuat va cac muc tieu trong ngan han cua pv power cap nhat 2772026 36419.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/gia-lai-approves-investment-policy-for-42-mw-ia-le-2-wind-power-project-36406.html",
           "title": "gia lai approves investment policy for 42 mw ia le 2 wind power project 36406.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/battery-energy-storage-systems-in-viet-nam-market-outlook-policy-challenges-and-business-opportunities-36403.html",
           "title": "battery energy storage systems in viet nam market outlook policy challenges and business opportunities 36403.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/bao-cao-dinh-huong-chien-luoc-va-giai-phap-chinh-sach-phat-trien-he-thong-luu-tru-nang-luong-bess-tai-viet-nam-36387.html",
           "title": "bao cao dinh huong chien luoc va giai phap chinh sach phat trien he thong luu tru nang luong bess tai viet nam 36387.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/progress-reviewed-on-preparatory-investment-for-ninh-thuan-nuclear-power-projects-1-and-2-36380.html",
           "title": "progress reviewed on preparatory investment for ninh thuan nuclear power projects 1 and 2 36380.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/deputy-prime-minister-receives-rushydro-delegation-to-enhance-vietnam-russia-energy-cooperation-36379.html",
           "title": "deputy prime minister receives rushydro delegation to enhance vietnam russia energy cooperation 36379.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/vietnam-atomic-energy-institute-half-a-century-of-pioneering-and-a-vision-for-the-future-36347.html",
           "title": "vietnam atomic energy institute half a century of pioneering and a vision for the future 36347.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/tinh-hinh-trien-khai-dau-tu-he-thong-luu-tru-nang-luong-bess-cua-evnnpc-36345.html",
           "title": "tinh hinh trien khai dau tu he thong luu tru nang luong bess cua evnnpc 36345.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/ja-solar-cung-co-vi-the-tien-phong-dong-nam-a-voi-he-sinh-thai-dien-mat-troi-luu-tru-nang-luong-x-36333.html",
           "title": "ja solar cung co vi the tien phong dong nam a voi he sinh thai dien mat troi luu tru nang luong x 36333.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         },
         {
           "url": "https://nangluongvietnam.vn/building-vietnams-nuclear-energy-future-through-codes-qualification-and-quality-management-36321.html",
           "title": "building vietnams nuclear energy future through codes qualification and quality management 36321.html",
-          "published_at": "2026-10-06T14:00:05+00:00",
+          "published_at": "2026-10-06T14:50:03+00:00",
           "method": "SITEMAP"
         }
       ],
-      "elapsed_seconds": 13.16,
+      "elapsed_seconds": 13.44,
       "problem": null
     },
     {
@@ -20662,7 +20922,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 1.55,
+      "elapsed_seconds": 1.44,
       "problem": null
     },
     {
@@ -20817,7 +21077,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 0.59,
+      "elapsed_seconds": 0.53,
       "problem": null
     },
     {
@@ -20861,7 +21121,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.72,
+      "elapsed_seconds": 4.29,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -20906,7 +21166,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 1.47,
+      "elapsed_seconds": 1.48,
       "problem": "methods completed; no recent relevant publication matched"
     },
     {
@@ -20945,7 +21205,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.63,
+      "elapsed_seconds": 0.29,
       "problem": "all access methods failed"
     },
     {
@@ -21024,7 +21284,7 @@
           "method": "RSS_ATOM"
         }
       ],
-      "elapsed_seconds": 2.15,
+      "elapsed_seconds": 2.11,
       "problem": null
     },
     {
@@ -21063,7 +21323,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 6.23,
+      "elapsed_seconds": 5.77,
       "problem": "all access methods failed"
     },
     {
@@ -21072,13 +21332,13 @@
       "name": "CanadaBuys",
       "sector": "energy",
       "website_url": "https://canadabuys.canada.ca/en/tender-opportunities",
-      "status": "NO_MATCH",
-      "method": "RSS_ATOM>SITEMAP>HTML",
+      "status": "ERROR",
+      "method": "FAILED_ALL",
       "attempts": [
         {
           "method": "HOME",
           "url": "https://canadabuys.canada.ca/en/tender-opportunities",
-          "http_status": 200
+          "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
           "method": "RSS_ATOM",
@@ -21099,16 +21359,11 @@
           "method": "SITEMAP",
           "url": "https://canadabuys.canada.ca/sitemap_index.xml",
           "error": "HTTPError: HTTP Error 404: Not Found"
-        },
-        {
-          "method": "HTML",
-          "url": "https://canadabuys.canada.ca/en/tender-opportunities",
-          "result_count": 0
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 2.6,
-      "problem": "methods completed; no recent relevant publication matched"
+      "elapsed_seconds": 2.3,
+      "problem": "all access methods failed"
     },
     {
       "id": "IIG-260",
@@ -21146,7 +21401,7 @@
         }
       ],
       "candidates": [],
-      "elapsed_seconds": 0.17,
+      "elapsed_seconds": 0.27,
       "problem": "all access methods failed"
     }
   ]

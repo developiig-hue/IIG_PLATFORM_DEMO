@@ -1,8 +1,8 @@
 {
   "schema": "iig.admin-review-latest.v1",
-  "generated_at": "2026-10-06T14:48:03.973492+00:00",
+  "generated_at": "2026-10-06T14:58:49.598739+00:00",
   "status": "ADMIN_REVIEW",
-  "run_id": "37481527711",
+  "run_id": "37483025422",
   "items": [
     {
       "route": "chief_engineer_advice",
@@ -63,6 +63,394 @@
       },
       "item_sha256": "6770aecaeb011c78150452abf1974d97afd1be010461cf3f327ef55907b23a45",
       "image_required": false
+    },
+    {
+      "route": "news",
+      "item": {
+        "type": "news",
+        "title": "The Economist Energy Grid Intelligence Summit",
+        "company_name": "ENTSO-E",
+        "company_activity": "Industry / energy market participant",
+        "project": "The Economist Energy Grid Intelligence Summit",
+        "technology": "Industrial / energy technology and market development",
+        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+        "date": "2026-10-07",
+        "canonical_url": "https://www.entsoe.eu/events/2026/10/07/the-economist-energy-grid-intelligence-summit",
+        "primary_source_verified": true,
+        "company_context": "ENTSO-E опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
+        "evidence": 4,
+        "practical_value": 4,
+        "transferability": 4,
+        "technology_diversity": 4,
+        "decision_maker_value": 4,
+        "sector": "energy",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. The Economist Energy Grid Intelligence Summit Browse Network Codes & CEP Data & Standardisation Innovation Outlooks Regions Publications About Login Network Codes & CEP Data & Standardisation Innovation Outlooks Regions Publications About Transparency Platform Common Information Model Standardisation EU Grid Map News Events Careers Our Staff Extranet Go to Network Codes News Stakeholder Committees Consultations Active Library Monitoring & Reports Network Codes Development Process DCC HVDC RFG ER SOGL CACM EB FCA CEP NCCS Go to Data & Standardisation Grid Map Transparency Platform EIC Codes Power Statistics ECCo SP OPC / STA Go to Innovation Projects Technopedia Innovation Hub RDI Reports Go to Outlooks Seasonal ERAA Longterm - TYNDP Offshore Hub Scenarios Regional Investment Plans Grid Planning Hub Go to Regions FAQs on Regional Coordination CCR Regions CCR Regions Map CCR Core CCR CE CCR IN Go to Publications Position Papers Offshore Development Vision Market Research & Innovation Development TYNDP Operations TSO/DSO CIM Go to News News Events Former Associations Go to About Market Research & Innovation System Development Operations Information and Communication Technologies Legal Careers Oct 2026 The Economist Energy Grid Intelligence Summit Amsterdam City Centre ENTSO-E ENTSO-E is pleased to be partnering with The Economist for the Energy Grid Intelligence Summit to be held on 7 October 2026 in Amsterdam. ENTSO-E Chair of the Board Damian Cortinas will bring the collective perspective of European TSOs to the 10:30 panel examining “Why the energy transition depends on energy transmission”. He will be joined by representatives from TenneT Germany and PSE. Europe’s energy transition will be won or lost on the grid. With electricity demand rising, infrastructure constraints intensifying and security risks growing, the decisions made now will shape Europe’s competitiveness for decades. Event details Event: The Economist Energy Grid Intelligence Summit Date: 7 October 2026 Location: Mövenpick Hotel, Amsterdam City Centre M﻿ore information and registration Share this article GET THE MOST POWERFUL NEWSLETTER IN BRUSSELS Please enter a valid email address. First Name Please enter your first name. Last Name Please enter your last name. Organisation Please enter your organisation. By subscribing, I consent to the processing of my personal data for the purpose of sending the newsletter.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень. Подія класифікована IIG як EVENT; технічна галузь зберігається окремо для пошуку та маршрутизації.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+        "quote_search_status": "NOT_FOUND",
+        "editorial_tag": "EVENT",
+        "event_type": "INDUSTRY_EVENT",
+        "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMimwFBVV95cUxPa3YzRFZiUkk4X3FJa01TSTYtRUFYUmpZQ28wNFUtNXR2Z2FlOXBHc2g2SE1lX01XTngxVS11eVZoel9QV3hnMk4yYkgzR2xrTW5EY1Q4MkVaaElkbFhzWjQ1ZFJ2Qkl5Q1hQLVBXbF9pRDN5MDJ0QXQzaHloVmJCLVdrU2pLUE9rSWFkLTJDQ3Z6VE85UmR3TmZTSQ?oc=5"
+        ],
+        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
+        "source_capture_characters": 3019
+      },
+      "item_sha256": "0758d940ed79faae7ba3a9f6ddf5cc1dc2a196822d2b4e3c9fd464e3a224ee41",
+      "image_required": true,
+      "image_decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "publication_eligible": false
+    },
+    {
+      "route": "news",
+      "item": {
+        "type": "news",
+        "title": "cuc dien luc va lien minh nang luong toan cau thuc day hien dai hoa luoi dien va phat trien bess tai viet nam 36712.html",
+        "company_name": "Vietnam Energy",
+        "company_activity": "Industry / energy market participant",
+        "project": "cuc dien luc va lien minh nang luong toan cau thuc day hien dai hoa luoi dien va phat trien bess tai viet nam 36712.html",
+        "technology": "Industrial / energy technology and market development",
+        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+        "date": "2026-10-06",
+        "canonical_url": "https://nangluongvietnam.vn/cuc-dien-luc-va-lien-minh-nang-luong-toan-cau-thuc-day-hien-dai-hoa-luoi-dien-va-phat-trien-bess-tai-viet-nam-36712.html",
+        "primary_source_verified": true,
+        "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
+        "evidence": 4,
+        "practical_value": 4,
+        "transferability": 4,
+        "technology_diversity": 4,
+        "decision_maker_value": 4,
+        "sector": "energy",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. Cục Điện lực và Liên minh Năng lượng Toàn cầu thúc đẩy hiện đại hóa lưới điện và phát triển BESS tại Việt Nam | Tạp chí Năng lượng Việt Nam Liên hệ tòa soạn Kiến giải tồn tại Nhận định, Phản biện Nhận định - Dự báo Phản biện Điện lực Dầu khí Công nghiệp than Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo Năng lượng nguyên tử Khoa học, công nghệ, môi trường Văn hóa doanh nghiệp Thứ ba 06/10/2026 21:53 TRANG TTĐT CỦA TẠP CHÍ NĂNG LƯỢNG VIỆT NAM Khoa học, công nghệ, môi trường Cục Điện lực và Liên minh Năng lượng Toàn cầu thúc đẩy hiện đại hóa lưới điện và phát triển BESS tại Việt Nam 07:54 02/10/2026 - Ngày 1/10/2026, tại Hà Nội, tiếp nối Tọa đàm “Xây dựng Lưới điện Tương lai” diễn ra ngày 30/9 - nơi các chuyên gia và đối tác phát triển trao đổi với báo chí về các yêu cầu mới đối với hệ thống điện Việt Nam, Cục Điện lực, Bộ Công Thương và Liên minh Năng lượng Toàn cầu vì Con người và Hành tinh (hay còn gọi là Liên minh Năng lượng Toàn cầu) đã tổ chức Phiên họp Tổ công tác triển khai Biên bản ghi nhớ (MOU) về hợp tác trong chuyển dịch năng lượng đã được hai bên ký kết gần đây. Vai trò của lưu trữ năng lượng (BESS) và công nghệ tạo lưới (GFM) trong hệ thống điện tương lai Bài viết trình bày về xu hướng tất yếu của việc áp dụng công nghệ tạo lưới (Grid-Forming - GFM) cho các hệ thống pin lưu trữ năng lượng (BESS) trong hệ thống điện. Trong bối cảnh gia tăng mạnh mẽ các nguồn năng lượng tái tạo sử dụng biến tần như điện mặt trời, điện gió, việc ứng dụng BESS kết hợp GFM là giải pháp then chốt để khắc phục các rào cản về tính ổn định, bù đắp sự suy giảm quán tính cơ học và đảm bảo an ninh năng lượng cho hệ thống điện hiện đại.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+        "quote_search_status": "NOT_FOUND",
+        "editorial_tag": "ENERGY",
+        "event_type": null,
+        "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMikgFBVV95cUxQY2J0dVEyYWpPV1Y1blhmRkVaSDdxeTh6aTdsLUhUcjd0ZGNsSkpyU3UteWhmek5PcnBvaDB1SGQ3RWxjZXB1eWxDZTZRajA2Y0RlMkxXUUJEMHNQWFNZUkgzdTk4YnBVTThmYWFqWnpra0Z4UlhtS0FYaWdXY3hhVDlnLVFXb1NKYzZwNnZuOHV6dw?oc=5",
+          "https://news.google.com/rss/articles/CBMimgFBVV95cUxONUtYZGNnWmhiSklublVQWHR0R2ZrNVlOT3pLQnlGcFdKUkp1Unk0bVRucUhBRHZXXzltRWhJRHVvU3RWemtVdUxJZXRNcGZ6bDBRUGRxT010X21BY2JUZ01Ea25UTWtvclZNWFpCeWlDY0ZKQ29KY3dmNDlPcmZWc0NrOVJyODY0c2k3ZTFVNXNSS1dZN1JnOExB?oc=5",
+          "https://news.google.com/rss/articles/CBMicEFVX3lxTE96OXBJcXdScUdVemZPVXpxdnlGek9EYVVDT0p2ZW9sQ0wwbUpVd1ZiTVJlZTVULUNhZmJncDg3TDFnZWpva3M4TFQ1XzV3NVA3OHVVQ0ljUWZrbVNPOEpuZkQzaHFNYWwzYW52QzhmM3U?oc=5"
+        ],
+        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
+        "source_capture_characters": 14602
+      },
+      "item_sha256": "30114ab2fd74b4430114219477b55951364a6fec3e7467328c38f3dd324634f3",
+      "image_required": true,
+      "image_decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "publication_eligible": false
+    },
+    {
+      "route": "news",
+      "item": {
+        "type": "news",
+        "title": "evnnpc dong dien 5 du an lap dat he thong pin luu tru nang luong bess tai lang son 36698.html",
+        "company_name": "Vietnam Energy",
+        "company_activity": "Industry / energy market participant",
+        "project": "evnnpc dong dien 5 du an lap dat he thong pin luu tru nang luong bess tai lang son 36698.html",
+        "technology": "Industrial / energy technology and market development",
+        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+        "date": "2026-10-06",
+        "canonical_url": "https://nangluongvietnam.vn/evnnpc-dong-dien-5-du-an-lap-dat-he-thong-pin-luu-tru-nang-luong-bess-tai-lang-son-36698.html",
+        "primary_source_verified": true,
+        "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
+        "evidence": 4,
+        "practical_value": 4,
+        "transferability": 4,
+        "technology_diversity": 4,
+        "decision_maker_value": 4,
+        "sector": "energy",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. EVNNPC đóng điện 5 dự án lắp đặt hệ thống pin lưu trữ năng lượng (BESS) tại Lạng Sơn | Tạp chí Năng lượng Việt Nam Liên hệ tòa soạn Kiến giải tồn tại Nhận định, Phản biện Nhận định - Dự báo Phản biện Điện lực Dầu khí Công nghiệp than Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo Năng lượng nguyên tử Khoa học, công nghệ, môi trường Văn hóa doanh nghiệp Thứ ba 06/10/2026 21:49 TRANG TTĐT CỦA TẠP CHÍ NĂNG LƯỢNG VIỆT NAM Điện lực EVNNPC đóng điện 5 dự án lắp đặt hệ thống pin lưu trữ năng lượng (BESS) tại Lạng Sơn 15:11 29/09/2026 - Trong tháng 9/2026, Ban Quản lý dự án Xây dựng điện miền Bắc - BA3 (đơn vị thành viên của Tổng công ty Điện lực miền Bắc - EVNNPC) tiếp tục ghi dấu ấn với kết quả nổi bật khi hoàn thành đóng điện 5 dự án lắp đặt hệ thống pin lưu trữ năng lượng (BESS) tại các trạm biến áp (TBA) 110 kV trên địa bàn tỉnh Lạng Sơn. EVNNPC đưa vào vận hành hệ thống pin lưu trữ năng lượng (BESS) đầu tiên tại Ninh Bình Ngày 21/8/2026, tại Ninh Bình, Tổng công ty Điện lực miền Bắc (EVNNPC) nghiệm thu, đóng điện, chính thức đưa vào vận hành hệ thống hệ thống pin lưu trữ năng lượng đầu tiên (BESS) trên địa bàn tỉnh Ninh Bình. EVNNPC đưa vào vận hành hệ thống pin lưu trữ năng lượng (BESS) tại Hải Phòng Ban Quản lý dự án Xây dựng điện miền Bắc - BA3 (thuộc Tổng công ty Điện lực miền Bắc - EVNNPC) vừa tổ chức đóng điện đưa vào vận hành dự án lắp đặt hệ thống pin lưu trữ năng lượng (BESS) tại Trạm biến áp (TBA) 110 kV Cửu Long, TP. Công tác chuẩn bị đóng điện dự án lắp đặt hệ thống BESS tại TBA 110 kV Tràng Định, tỉnh Lạng Sơn. Cụ thể, BA3 đã lần lượt hoàn thành đóng điện các dự án BESS tại: TBA 110 kV Lộc Bình, ngày 10/9; TBA 110 kV Tràng Định, ngày 12/9; TBA 110 kV Hữu Lũng, ngày 14/9; TBA 110 kV Đồng Đăng, ngày 20/9 và TBA 110 kV Đồng Mỏ, ngày 26/9.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+        "quote_search_status": "NOT_FOUND",
+        "editorial_tag": "ENERGY",
+        "event_type": null,
+        "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcmFqbF9KS0JtMUpqbnVjaldxYkF6YXpwemk2di1ONWdjem0xdGQwX2h5Z2hJY1VXSzZ3NkxZOF84bEdoNExEYU1Ed3ptaWxlT1p4ZElaaFlKVG5GWDNjX2I4NjZPRkhPM09sUkprck53bElfM3cxc1RhV19GYmxIWDFkRkdMbkV4b3l2UHNMbmpiWFNWSGNIcXB3TTF2UmNIb0E?oc=5"
+        ],
+        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
+        "source_capture_characters": 6887
+      },
+      "item_sha256": "a620d40892f55d57d795b539859033ec321cd61d713948673cf7ee39439e31ab",
+      "image_required": true,
+      "image_decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "publication_eligible": false
+    },
+    {
+      "route": "news",
+      "item": {
+        "type": "news",
+        "title": "overview of the scientific workshop developing nuclear power for green growth and national energy security 36678.html",
+        "company_name": "Vietnam Energy",
+        "company_activity": "Industry / energy market participant",
+        "project": "overview of the scientific workshop developing nuclear power for green growth and national energy security 36678.html",
+        "technology": "Industrial / energy technology and market development",
+        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+        "date": "2026-10-06",
+        "canonical_url": "https://nangluongvietnam.vn/overview-of-the-scientific-workshop-developing-nuclear-power-for-green-growth-and-national-energy-security-36678.html",
+        "primary_source_verified": true,
+        "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
+        "evidence": 4,
+        "practical_value": 4,
+        "transferability": 4,
+        "technology_diversity": 4,
+        "decision_maker_value": 4,
+        "sector": "energy",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. Overview of the Scientific Workshop \"Developing Nuclear Power for Green Growth and National Energy Security\" | Tạp chí Năng lượng Việt Nam Contact Electricity Coal - Mineral Oil & Gas Nuclear - Renewable Policy - Planning Invest - Events Invest - Event Social Activity Sci - Tech - Env October 06, 2026 21:53 Vietnam Energy Forum Policy - Planning Overview of the Scientific Workshop \"Developing Nuclear Power for Green Growth and National Energy Security\" 14:47 25/09/2026 - On 21 September 2026, in Khanh Hoa Province, the Central Propaganda and Education Commission, in coordination with the Ministry of Science and Technology, the Khanh Hoa Provincial Party Committee and relevant agencies, successfully organized a national scientific workshop entitled “Developing Nuclear Power for Green Growth and National Energy Security”. Overview of the national scientific workshop on “Developing Nuclear Power for Green Growth and National Energy Security\". Vietnam Electricity (EVN), Vietnam National Industry - Energy Group (Petrovietnam), and Military Industry - Telecommunications Group (Viettel) supported the workshop, with Vietnam Energy Review providing technical and communications support. The Workshop was co-chaired by Ngô Đông Hải, Member of the Party Central Committee and Deputy Head of the Central Propaganda and Education Commission; Le Xuan Dinh, Deputy Minister of Science and Technology; and Ho Xuan Truong, Alternate Member of the Party Central Committee and Standing Deputy Secretary of the Khanh Hoa Provincial Party Committee. After the statement of purpose and delegate introductions, the Workshop heard a welcome address by Ho Xuan Truong, Standing Deputy Secretary of the Khanh Hoa Provincial Party Committee, followed by opening and keynote remarks by Le Xuan Dinh, Deputy Minister of Science and Technology. Le Xuan Dinh, Deputy Minister of Science and Technology. PURPOSE OF THE WORKSHOP: The Workshop was held as Viet Nam entered a new stage of development, marked by the need for rapid and sustainable growth, accelerated industrialization and modernization, digital transformation, and a comprehensive energy transition. Electricity demand for production, digital infrastructure, urban development, transport, and people’s daily lives continues to grow rapidly. Against this backdrop, Viet Nam must pursue its commitment to achieving net-zero emissions by 2050 and reducing its dependence on fossil fuels, while safeguarding national energy security amid significant international uncertainties.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень. Подія класифікована IIG як EVENT; технічна галузь зберігається окремо для пошуку та маршрутизації.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+        "quote_search_status": "NOT_FOUND",
+        "editorial_tag": "EVENT",
+        "event_type": "INDUSTRY_EVENT",
+        "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNMkthM29jelNCemZlZXBPRXQyUzFpekswZnMweFZLQWxuUUlWS1h3cU5PcE55WE5rUDNGd0M3am9CUzFzZUxXSnRFVHIyeUtxTVFRQ2x0TWtXT01PWGNIY1JjY0RIcDQzWUVMMlVxaUZ6UGFod3J3YWpyMjVxd0tTZkVSNTJuS1JYcVZCLTN3Y0lPem1nZkRLeE9FbnF3SXNaTVJ2cXVxU2p0ODhwV3ZleWhKMmx4ZWFTdWpFcHZsV1J4QQ?oc=5",
+          "https://news.google.com/rss/articles/CBMiswFBVV95cUxORi1yZUVRTXl1TkI0TzJTaWJpMnVQMmpGMGZ1TEtZa05MbGR0am5kTlBzXzNpcWs0OVQyMFVfWFllMW1yNmhlUE1RRlZpV29DVlFLSV9MQ0c0Slc5QXdEUnBwZmo5N1FWSnlWZ25MVzY5UmtVeTZEeXdOY2VNT0VhRVNoOHpreGhNSG8wR2tBY0tEc3QxZVJZbEpXc01zaWdTWVYyRE9qV0JzdnBmaDhFTlpxTQ?oc=5",
+          "https://news.google.com/rss/articles/CBMijgFBVV95cUxOdnBiOTZucnc5bGdxdzRBanFTVzl6MU15aGVnS3RzSWF4N3NiUlo4T0lOUkRiZHhBbGNfM0l2ZUhDTkNUZHV2ZUtWNlN6eXZ6MjVrSVE1ejV0ZTNEdVJ5dmxpVjlhY2ZzekJ4aFkwT19NUXp5ZmhwNEtnSE5USEJQZTR6aTdjaHUwWFJ2ZEF3?oc=5"
+        ],
+        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
+        "source_capture_characters": 16000
+      },
+      "item_sha256": "b21783f8a8d25940a74b9d8dca2d71ff2e8e326fc86d48b66f3956458957c126",
+      "image_required": true,
+      "image_decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "publication_eligible": false
+    },
+    {
+      "route": "news",
+      "item": {
+        "type": "news",
+        "title": "investment policy and investor approved for hong loc solar power plant project in ha tinh province 36640.html",
+        "company_name": "Vietnam Energy",
+        "company_activity": "Industry / energy market participant",
+        "project": "investment policy and investor approved for hong loc solar power plant project in ha tinh province 36640.html",
+        "technology": "Industrial / energy technology and market development",
+        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+        "date": "2026-10-06",
+        "canonical_url": "https://nangluongvietnam.vn/investment-policy-and-investor-approved-for-hong-loc-solar-power-plant-project-in-ha-tinh-province-36640.html",
+        "primary_source_verified": true,
+        "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
+        "evidence": 4,
+        "practical_value": 4,
+        "transferability": 4,
+        "technology_diversity": 4,
+        "decision_maker_value": 4,
+        "sector": "energy",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. Investment Policy and Investor Approved for Hong Loc Solar Power Plant Project in Ha Tinh Province | Tạp chí Năng lượng Việt Nam Contact Electricity Coal - Mineral Oil & Gas Nuclear - Renewable Policy - Planning Invest - Events Invest - Event Social Activity Sci - Tech - Env October 06, 2026 21:53 Vietnam Energy Forum Nuclear - Renewable Investment Policy and Investor Approved for Hong Loc Solar Power Plant Project in Ha Tinh Province 11:00 16/09/2026 - According to information from the People’s Committee of Ha Tinh Province, the provincial authority has issued a decision approving the investment policy for the Hong Loc Solar Power Plant Project and approving HLT Green Technology Joint Stock Company as the investor. 35/QĐ-UBND dated September 14, 2026, issued by the People’s Committee of Ha Tinh Province, the investment policy for the Hong Loc Solar Power Plant Project was approved and HLT Green Technology Joint Stock Company was approved as the investor. The project has the following key details: The project will be implemented in Hong Loc Commune. The project is expected to use approximately 55.5 hectares of land, including the solar power plant area, auxiliary facilities, grid connection facilities, and the expansion of a feeder bay at the Can Loc 110 kV Substation. The project will have a designed capacity of 49 MW, with an expected average annual electricity output of approximately 68.62 million kWh. The total investment capital is estimated at VND 763.312 billion. The project will have an operating term of 50 years, starting from the date on which the State allocates or leases the land. The project will have an implementation period of 12 months from the date on which the land is allocated or leased. The project is expected to be completed in Q4 2027. To ensure that the project is implemented in accordance with regulations and on schedule, the People’s Committee of Ha Tinh Province has requested the following: Requirements for the investor First, before the State allocates or leases the land, the investor must complete the procedures for making a security deposit or implementing other measures to secure project implementation in accordance with investment laws, within a period of no more than six months from the effective date of the Decision. Second, the investor must complete all required documents and procedures and commence construction of the project within six months from the effective date of the Decision.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень. Подія класифікована IIG як EVENT; технічна галузь зберігається окремо для пошуку та маршрутизації.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+        "quote_search_status": "NOT_FOUND",
+        "editorial_tag": "EVENT",
+        "event_type": "INDUSTRY_EVENT",
+        "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMizwFBVV95cUxPeDdqQ1dYZWNMbTFhNURoVnd0Wl9oeGFhZUp4Y3J3cl9DeTlNRnN3MmhOM2VZQW5YZkZLSzNMM3NKTno3dEpNOXVSbzdJWU1MQ1pjNUNIQWI4MWRXd1FPbExTTFpzcksxU3MydFJIenhudXZ2WWF5OWhHRWJYYVhCU0hEWmxUcXYydW9NdmJzb1NIQ3RKdmFZaGJXUmh6N0FaQk1UQzV5Nkc5UlhXMmZTTno5RnFOcms2V0xIUkFQcFlmVmdPam8tWnM2T1U1Qzg?oc=5",
+          "https://news.google.com/rss/articles/CBMilgFBVV95cUxNY1lwbHRkcGhtcjZWeUNpTks1Yk5rbXphX1F1aWs1NW5tUldqVnpDM2xCTnVOYXVFc2hReHN5QU40NTJSUS1YOFhlQnI0YWVUajl4R2h2d2NMbV9Pbk1sbVJtclpvTDlZS3dUdWZZbkdtVFpBYmtMbXZzcmNZSm12WmEtUWljZDRVSlA5OGpUajdmSFVoTHc?oc=5",
+          "https://news.google.com/rss/articles/CBMipgFBVV95cUxOR3RTSkpORnhWOVY4S0o1aTc3V19lRTFIRUtxYXRNTU1VZVdnSUVWMURNVzFTUVhFYjRQTXF6blBoZ0JqYldXcWQyN2NmWXJuTzBCRmt1UjlKMWE3NS1COVplVDNNTmhxR1BEcm5pZ2RDbE1PbXhaR1RNUHN2WUdtRE42dGhYVWF0bnFheXRRZmNoT3h1dFNqdlkxRnpjMmVpV2hHWERR?oc=5"
+        ],
+        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
+        "source_capture_characters": 6628
+      },
+      "item_sha256": "f8dfe16866f6398221bb5812654ecc2e7bed4afabc78892a3cbbca638db5b52f",
+      "image_required": true,
+      "image_decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "publication_eligible": false
+    },
+    {
+      "route": "news",
+      "item": {
+        "type": "news",
+        "title": "an minh energy la doi tac chien luoc phan phoi pin luu tru nang luong bess gg power tai phia nam 36630.html",
+        "company_name": "Vietnam Energy",
+        "company_activity": "Industry / energy market participant",
+        "project": "an minh energy la doi tac chien luoc phan phoi pin luu tru nang luong bess gg power tai phia nam 36630.html",
+        "technology": "Industrial / energy technology and market development",
+        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+        "date": "2026-10-06",
+        "canonical_url": "https://nangluongvietnam.vn/an-minh-energy-la-doi-tac-chien-luoc-phan-phoi-pin-luu-tru-nang-luong-bess-gg-power-tai-phia-nam-36630.html",
+        "primary_source_verified": true,
+        "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
+        "evidence": 4,
+        "practical_value": 4,
+        "transferability": 4,
+        "technology_diversity": 4,
+        "decision_maker_value": 4,
+        "sector": "energy",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. An Minh Energy là đối tác chiến lược phân phối pin lưu trữ năng lượng (BESS) GG Power tại phía Nam | Tạp chí Năng lượng Việt Nam Liên hệ tòa soạn Kiến giải tồn tại Nhận định, Phản biện Nhận định - Dự báo Phản biện Điện lực Dầu khí Công nghiệp than Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo Năng lượng nguyên tử Khoa học, công nghệ, môi trường Văn hóa doanh nghiệp Thứ ba 06/10/2026 21:53 TRANG TTĐT CỦA TẠP CHÍ NĂNG LƯỢNG VIỆT NAM Điện lực An Minh Energy là đối tác chiến lược phân phối pin lưu trữ năng lượng (BESS) GG Power tại phía Nam 07:34 15/09/2026 - GG Power và An Minh Energy chính thức ký kết hợp tác chiến lược, mở rộng mạng lưới phân phối pin lưu trữ năng lượng (BESS) tại khu vực phía Nam, đồng thời tăng cường các chính sách hỗ trợ nhà phân phối, đại lý và đội ngũ kỹ thuật nhằm thúc đẩy thị trường BESS Việt Nam. Hợp tác chiến lược toàn diện giữa GG Power và Cornex trong lĩnh vực lưu trữ năng lượng (BESS) Ngày 10/09/2026, tại Nhà máy GG Power (Lô CN-01.4B, KCN số 5, Xuân Trúc, Hưng Yên, Việt Nam), GG Power và Cornex chính thức ký kết thỏa thuận hợp tác chiến lược toàn diện về lưu trữ năng lượng (BESS). GG Power sản xuất pin lưu trữ năng lượng (BESS) chuẩn quốc tế tại Việt Nam GG Power đã chính thức giới thiệu Nhà máy sản xuất pin lưu trữ năng lượng (Battery Energy Storage System - BESS) tại Khu công nghiệp số 5, Xuân Trúc, Hưng Yên. Sự kiện đánh dấu cột mốc của GG Power trong việc tiên phong phát triển năng lượng sạch và tự chủ năng lượng quốc gia, từng bước đưa Việt Nam trở thành một trung tâm sản xuất hệ thống lưu trữ năng lượng tại Đông Nam Á. Mở rộng mạng lưới phân phối Bess GG Power tại khu vực phía Nam: Sáng ngày 12/9/2026, An Minh Energy đã đến thăm và làm việc tại nhà máy của Công ty Cổ phần Công nghiệp GG - GG Power (đặt tại Lô CN-01.4B, KCN số 5, Xuân Trúc, Hưng Yên).\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+        "quote_search_status": "NOT_FOUND",
+        "editorial_tag": "ENERGY",
+        "event_type": null,
+        "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMikgFBVV95cUxQY2J0dVEyYWpPV1Y1blhmRkVaSDdxeTh6aTdsLUhUcjd0ZGNsSkpyU3UteWhmek5PcnBvaDB1SGQ3RWxjZXB1eWxDZTZRajA2Y0RlMkxXUUJEMHNQWFNZUkgzdTk4YnBVTThmYWFqWnpra0Z4UlhtS0FYaWdXY3hhVDlnLVFXb1NKYzZwNnZuOHV6dw?oc=5"
+        ],
+        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
+        "source_capture_characters": 10404
+      },
+      "item_sha256": "9a8dc9ef8ee73e95481958dc286a438a3cf6ff288d93768235c8b47323e8dece",
+      "image_required": true,
+      "image_decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "publication_eligible": false
+    },
+    {
+      "route": "news",
+      "item": {
+        "type": "news",
+        "title": "greenroof energy va vietcombank phoi hop thuc day phat trien dien mat troi va he thong luu tru nang luong tai viet nam 36605.html",
+        "company_name": "Vietnam Energy",
+        "company_activity": "Industry / energy market participant",
+        "project": "greenroof energy va vietcombank phoi hop thuc day phat trien dien mat troi va he thong luu tru nang luong tai viet nam 36605.html",
+        "technology": "Industrial / energy technology and market development",
+        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+        "date": "2026-10-06",
+        "canonical_url": "https://nangluongvietnam.vn/greenroof-energy-va-vietcombank-phoi-hop-thuc-day-phat-trien-dien-mat-troi-va-he-thong-luu-tru-nang-luong-tai-viet-nam-36605.html",
+        "primary_source_verified": true,
+        "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
+        "evidence": 4,
+        "practical_value": 4,
+        "transferability": 4,
+        "technology_diversity": 4,
+        "decision_maker_value": 4,
+        "sector": "energy",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. GreenRoof Energy và Vietcombank phối hợp thúc đẩy phát triển điện mặt trời và hệ thống lưu trữ năng lượng tại Việt Nam | Tạp chí Năng lượng Việt Nam Liên hệ tòa soạn Kiến giải tồn tại Nhận định, Phản biện Nhận định - Dự báo Phản biện Điện lực Dầu khí Công nghiệp than Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo Năng lượng nguyên tử Khoa học, công nghệ, môi trường Văn hóa doanh nghiệp Thứ ba 06/10/2026 21:49 TRANG TTĐT CỦA TẠP CHÍ NĂNG LƯỢNG VIỆT NAM Điện hạt nhân, năng lượng tái tạo GreenRoof Energy và Vietcombank phối hợp thúc đẩy phát triển điện mặt trời và hệ thống lưu trữ năng lượng tại Việt Nam 20:20 12/09/2026 - GreenRoof Energy và Ngân hàng TMCP Ngoại thương Việt Nam - Chi nhánh Nam Thăng Long (Vietcombank Nam Thăng Long) định hướng phối hợp nghiên cứu và thúc đẩy phát triển các dự án điện mặt trời kết hợp hệ thống lưu trữ năng lượng bằng pin (BESS) tại các khu công nghiệp và nhà máy trên cả nước. Sự phối hợp hướng tới việc kết nối năng lực phát triển, đầu tư và triển khai các giải pháp năng lượng của GreenRoof Energy với kinh nghiệm cung cấp dịch vụ tài chính của Vietcombank Nam Thăng Long. Qua đó, hai bên kỳ vọng góp phần mở rộng khả năng tiếp cận các giải pháp năng lượng sạch, hiệu quả và phù hợp với nhu cầu của cộng đồng doanh nghiệp tại Việt Nam. Trung tâm Năng lượng Tái tạo (RE Hub) - Thông điệp định hướng chiến lược và triển khai thực tiễn tại Việt Nam Nhằm góp phần tuyên truyền thúc đẩy phát triển Trung tâm Năng lượng Tái tạo tại Việt Nam (Renewable Energy Hubs - RE Hub), chuyên gia Tạp chí Năng lượng Việt Nam thực hiện chuyên đề thảo luận, phân tích bài học kinh nghiệm quốc tế, các điều kiện cần có của chúng ta và thông điệp, khuyến nghị áp dụng mô hình này ở Việt Nam.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+        "quote_search_status": "NOT_FOUND",
+        "editorial_tag": "ENERGY",
+        "event_type": null,
+        "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcmFqbF9KS0JtMUpqbnVjaldxYkF6YXpwemk2di1ONWdjem0xdGQwX2h5Z2hJY1VXSzZ3NkxZOF84bEdoNExEYU1Ed3ptaWxlT1p4ZElaaFlKVG5GWDNjX2I4NjZPRkhPM09sUkprck53bElfM3cxc1RhV19GYmxIWDFkRkdMbkV4b3l2UHNMbmpiWFNWSGNIcXB3TTF2UmNIb0E?oc=5"
+        ],
+        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
+        "source_capture_characters": 10394
+      },
+      "item_sha256": "021cb5fd8c6e4cd3693f1eefe0a92faeee1817e08a6244b317a4b81cfcfa5a28",
+      "image_required": true,
+      "image_decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "publication_eligible": false
+    },
+    {
+      "route": "news",
+      "item": {
+        "type": "news",
+        "title": "evnnpc dua vao van hanh he thong pin luu tru nang luong bess tai hai phong 36616.html",
+        "company_name": "Vietnam Energy",
+        "company_activity": "Industry / energy market participant",
+        "project": "evnnpc dua vao van hanh he thong pin luu tru nang luong bess tai hai phong 36616.html",
+        "technology": "Industrial / energy technology and market development",
+        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+        "date": "2026-10-06",
+        "canonical_url": "https://nangluongvietnam.vn/evnnpc-dua-vao-van-hanh-he-thong-pin-luu-tru-nang-luong-bess-tai-hai-phong-36616.html",
+        "primary_source_verified": true,
+        "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
+        "evidence": 4,
+        "practical_value": 4,
+        "transferability": 4,
+        "technology_diversity": 4,
+        "decision_maker_value": 4,
+        "sector": "energy",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. EVNNPC đưa vào vận hành hệ thống pin lưu trữ năng lượng (BESS) tại Hải Phòng | Tạp chí Năng lượng Việt Nam Liên hệ tòa soạn Kiến giải tồn tại Nhận định, Phản biện Nhận định - Dự báo Phản biện Điện lực Dầu khí Công nghiệp than Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo Năng lượng nguyên tử Khoa học, công nghệ, môi trường Văn hóa doanh nghiệp Thứ ba 06/10/2026 21:54 TRANG TTĐT CỦA TẠP CHÍ NĂNG LƯỢNG VIỆT NAM Điện lực EVNNPC đưa vào vận hành hệ thống pin lưu trữ năng lượng (BESS) tại Hải Phòng 14:53 10/09/2026 - Ban Quản lý dự án Xây dựng điện miền Bắc - BA3 (thuộc Tổng công ty Điện lực miền Bắc - EVNNPC) vừa tổ chức đóng điện đưa vào vận hành dự án lắp đặt hệ thống pin lưu trữ năng lượng (BESS) tại Trạm biến áp (TBA) 110 kV Cửu Long, TP. Trung tâm Năng lượng Tái tạo (RE Hub) - Thông điệp định hướng chiến lược và triển khai thực tiễn tại Việt Nam Nhằm góp phần tuyên truyền thúc đẩy phát triển Trung tâm Năng lượng Tái tạo tại Việt Nam (Renewable Energy Hubs - RE Hub), chuyên gia Tạp chí Năng lượng Việt Nam thực hiện chuyên đề thảo luận, phân tích bài học kinh nghiệm quốc tế, các điều kiện cần có của chúng ta và thông điệp, khuyến nghị áp dụng mô hình này ở Việt Nam. Bài viết đầu của chuyên đề tóm lược một số thông điệp được mang tải từ kết quả tham luận, trao đổi tại Hội thảo với chủ đề “Thúc đẩy phát triển Trung tâm Năng lượng Tái tạo tại Việt Nam” do Cục Điện lực phối hợp với Tổ chức Hợp tác Quốc tế Đức (GIZ) tổ chức ngày 8/9/2026 tại trụ sở Bộ Công Thương. Dự án lắp đặt hệ thống pin lưu trữ năng lượng (BESS) tại Trạm biến áp (TBA) 110 kV Cửu Long, TP. Quy mô đầu tư xây dựng dự án gồm: - Lắp đặt hệ thống pin lưu trữ công suất 10 MW, dung lượng 20 MWh, bao gồm: Pin lưu trữ, hệ thống chuyển đổi năng lượng, máy biến áp, tủ RMU, cáp lực và các hệ thống phụ trợ kèm theo.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+        "quote_search_status": "NOT_FOUND",
+        "editorial_tag": "ENERGY",
+        "event_type": null,
+        "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcmFqbF9KS0JtMUpqbnVjaldxYkF6YXpwemk2di1ONWdjem0xdGQwX2h5Z2hJY1VXSzZ3NkxZOF84bEdoNExEYU1Ed3ptaWxlT1p4ZElaaFlKVG5GWDNjX2I4NjZPRkhPM09sUkprck53bElfM3cxc1RhV19GYmxIWDFkRkdMbkV4b3l2UHNMbmpiWFNWSGNIcXB3TTF2UmNIb0E?oc=5"
+        ],
+        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
+        "source_capture_characters": 8593
+      },
+      "item_sha256": "55e38a66ed180efbdd70d91820b935ae6461891f4d06c6e612eb444070069c4a",
+      "image_required": true,
+      "image_decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "publication_eligible": false
+    },
+    {
+      "route": "news",
+      "item": {
+        "type": "news",
+        "title": "national assembly adopts resolution to separate ninh thuan nuclear power project into independent projects 36572.html",
+        "company_name": "Vietnam Energy",
+        "company_activity": "Industry / energy market participant",
+        "project": "national assembly adopts resolution to separate ninh thuan nuclear power project into independent projects 36572.html",
+        "technology": "Industrial / energy technology and market development",
+        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+        "date": "2026-10-06",
+        "canonical_url": "https://nangluongvietnam.vn/national-assembly-adopts-resolution-to-separate-ninh-thuan-nuclear-power-project-into-independent-projects-36572.html",
+        "primary_source_verified": true,
+        "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
+        "evidence": 4,
+        "practical_value": 4,
+        "transferability": 4,
+        "technology_diversity": 4,
+        "decision_maker_value": 4,
+        "sector": "energy",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. National Assembly Adopts Resolution to Separate Ninh Thuan Nuclear Power Project into Independent Projects | Tạp chí Năng lượng Việt Nam Contact Electricity Coal - Mineral Oil & Gas Nuclear - Renewable Policy - Planning Invest - Events Invest - Event Social Activity Sci - Tech - Env October 06, 2026 21:54 Vietnam Energy Forum Nuclear - Renewable National Assembly Adopts Resolution to Separate Ninh Thuan Nuclear Power Project into Independent Projects 10:15 27/08/2026 - With 476 out of 481 participating National Assembly deputies voting in favor, equivalent to 95.2%, the National Assembly on August 24, 2026, adopted the Resolution on separating the Ninh Thuan Nuclear Power Project into independent projects at the First Extraordinary Session of the 16th National Assembly. Under the Resolution, the Ninh Thuan Nuclear Power Project will be separated into three independent projects: 1. The compensation, support and resettlement project for the Ninh Thuan nuclear power plants; 2. The Ninh Thuan 1 Nuclear Power Plant Project; 3. The Ninh Thuan 2 Nuclear Power Plant Project. Following the separation, the projects will make use of the data and results of previously approved work to ensure continuity and avoid waste. Before the National Assembly voted on the draft Resolution, Minister of Finance Ngo Van Tuan, on behalf of the Government and the drafting body, presented a report explaining and incorporating comments on the draft Resolution and outlining the revisions made to the draft. Approval of investment policies following the separation Regarding the authority to decide on or approve the investment policy for each project following the separation, Minister Ngo Van Tuan said that, under the Law on Public Investment and the Law on Investment, nuclear power plant projects fall under the Prime Minister’s authority for approval of their investment policies. For the Ninh Thuan 1 and Ninh Thuan 2 nuclear power projects, if special mechanisms and policies falling under the authority of the National Assembly are proposed, the authority to approve the investment policies will rest with the National Assembly. The relevant procedures will be carried out in accordance with the provisions of the law on public investment or the law on investment, as applicable. Regarding the implementation of new procedures for approval of the investment policies, rather than procedures for adjusting the existing investment policy of each project following the separation, Minister Ngo Van Tuan explained that National Assembly Resolution No.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень. Подія класифікована IIG як EVENT; технічна галузь зберігається окремо для пошуку та маршрутизації.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+        "quote_search_status": "NOT_FOUND",
+        "editorial_tag": "EVENT",
+        "event_type": "INDUSTRY_EVENT",
+        "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMibkFVX3lxTE5hN1JOeEE4cWIwMUxWeEFnTmFabDZac0w2VmVCRDkzeERCeHRPM0FNcTZrMmpzQjljR1dNaEtsTWxWcmNMNmIza2tqM0ViYXdXREZJZVBDcTFyajlJeHVpdFRhUjBEY1FJU0pVOHNB?oc=5",
+          "https://news.google.com/rss/articles/CBMiogFBVV95cUxQYTZJNkY3aHpiLXl1ZUxURjlERXVSMTZyR09WU0hsT0ZoYnlUcDh5S0xQbHpsQl9iOTlrOGhVTHMydzRaX1lQTFFZQUdKWktDTUFuSkMzcVVLd0FFYVF6a21MekRodFRLcm4xaUNFZEp6anM3OWVYb09fZmVHVV9MQldXSmptTkYzMzBrUVM0c3JwZFZkV0FqdU1JdXpaT0wxdHc?oc=5",
+          "https://news.google.com/rss/articles/CBMisgFBVV95cUxNTEJQX2xUTkRJMGJLcW5paGpkclZhZURFTlBkQ0h4UHNRaWlNbm1NdkNqa3JrTzVHZ2V1REF6cjhoMkVfRW1jaTJSdmtmeXpuR25PUDJVS3JLUktfdG5CdFZZZXJpZ1k3MWEtREVNQW1HQ29hU3pkdWF2M3RwbEt1OHE3NThFTG1MTnFDWGRfZTVJQ1hONnpfRi13SzlBWW1EX0FCNkFzVlFsdFd6d01SdmdR?oc=5"
+        ],
+        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
+        "source_capture_characters": 10043
+      },
+      "item_sha256": "8fa4247e355b4fb154eadea178ecdaeb15a210a8d3ecf7e375468a0e104c7a2a",
+      "image_required": true,
+      "image_decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "publication_eligible": false
+    },
+    {
+      "route": "news",
+      "item": {
+        "type": "news",
+        "title": "evnnpc dua vao van hanh he thong pin luu tru nang luong bess dau tien tai ninh binh 36547.html",
+        "company_name": "Vietnam Energy",
+        "company_activity": "Industry / energy market participant",
+        "project": "evnnpc dua vao van hanh he thong pin luu tru nang luong bess dau tien tai ninh binh 36547.html",
+        "technology": "Industrial / energy technology and market development",
+        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+        "date": "2026-10-06",
+        "canonical_url": "https://nangluongvietnam.vn/evnnpc-dua-vao-van-hanh-he-thong-pin-luu-tru-nang-luong-bess-dau-tien-tai-ninh-binh-36547.html",
+        "primary_source_verified": true,
+        "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
+        "evidence": 4,
+        "practical_value": 4,
+        "transferability": 4,
+        "technology_diversity": 4,
+        "decision_maker_value": 4,
+        "sector": "energy",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. EVNNPC đưa vào vận hành hệ thống pin lưu trữ năng lượng (BESS) đầu tiên tại Ninh Bình | Tạp chí Năng lượng Việt Nam Liên hệ tòa soạn Kiến giải tồn tại Nhận định, Phản biện Nhận định - Dự báo Phản biện Điện lực Dầu khí Công nghiệp than Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo Năng lượng nguyên tử Khoa học, công nghệ, môi trường Văn hóa doanh nghiệp Thứ ba 06/10/2026 21:54 TRANG TTĐT CỦA TẠP CHÍ NĂNG LƯỢNG VIỆT NAM Điện lực EVNNPC đưa vào vận hành hệ thống pin lưu trữ năng lượng (BESS) đầu tiên tại Ninh Bình 08:00 22/08/2026 - Ngày 21/8/2026, tại Ninh Bình, Tổng công ty Điện lực miền Bắc (EVNNPC) nghiệm thu, đóng điện, chính thức đưa vào vận hành hệ thống hệ thống pin lưu trữ năng lượng đầu tiên (BESS) trên địa bàn tỉnh Ninh Bình. Báo cáo tổng hợp kiến nghị từ Diễn đàn năng lượng sạch Việt Nam (lần thứ 6) tới Chính phủ Từ các tham luận, thảo luận tại “Diễn đàn Năng lượng sạch Việt Nam lần thứ 6”, do Hiệp hội Năng lượng Việt Nam (VEA) phối hợp với các cơ quản lý nhà nước chủ trì, Tạp chí Năng lượng Việt Nam tổ chức thực hiện, với chủ đề “Điện mặt trời, lưu trữ năng lượng ở Việt Nam - Thành tựu, thách thức và cơ hội phát triển giai đoạn 2026-2030” [*], Ban tổ chức Diễn đàn vừa có Báo cáo tổng hợp gửi tới Thủ tướng Chính phủ Lê Minh Hưng xem xét, chỉ đạo việc thúc đẩy phát triển năng lượng sạch, lưu trữ năng lượng và nâng cao khả năng chống chịu của hệ thống điện Việt Nam. Dưới đây là một số nội dung chính của Báo cáo. Hệ thống BESS tại Trạm biến áp 110 kV Phúc Sơn trước khi nghiệm thu, đóng điện. Hệ thống được lắp đặt tại Trạm biến áp 110 kV Phúc Sơn (E23.17), có công suất 5 MW và dung lượng lưu trữ 10 MWh.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+        "quote_search_status": "NOT_FOUND",
+        "editorial_tag": "ENERGY",
+        "event_type": null,
+        "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcmFqbF9KS0JtMUpqbnVjaldxYkF6YXpwemk2di1ONWdjem0xdGQwX2h5Z2hJY1VXSzZ3NkxZOF84bEdoNExEYU1Ed3ptaWxlT1p4ZElaaFlKVG5GWDNjX2I4NjZPRkhPM09sUkprck53bElfM3cxc1RhV19GYmxIWDFkRkdMbkV4b3l2UHNMbmpiWFNWSGNIcXB3TTF2UmNIb0E?oc=5"
+        ],
+        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
+        "source_capture_characters": 7088
+      },
+      "item_sha256": "898c07582e7d752694eddbbed45d7507ab7f8c4e43e49b61543949680a920c82",
+      "image_required": true,
+      "image_decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "publication_eligible": false
     }
   ],
   "results": [
@@ -81,45 +469,121 @@
       "audit_file": null,
       "slug": "The Economist Energy Grid Intelligence Summit",
       "source_page": "https://www.entsoe.eu/events/2026/10/07/the-economist-energy-grid-intelligence-summit",
-      "decision": "BLOCK",
+      "decision": "ADMIN_IMAGE_REQUIRED",
       "selected_image": null,
       "reasons": [
-        "image_audit_missing"
+        "image_audit_missing_admin_must_generate_or_approve"
       ],
-      "quality_gate_eligible": false
+      "quality_gate_eligible": true,
+      "publication_eligible": false
     },
     {
       "audit_file": null,
-      "slug": "Prada-Owned Pastry Shop Marchesi 1824 Names New CEO",
-      "source_page": "https://wwd.com/business-news/human-resources/prada-pastry-shop-marchesi-1824-new-ceo-ivan-haller-1239315328",
-      "decision": "BLOCK",
+      "slug": "cuc dien luc va lien minh nang luong toan cau thuc day hien dai hoa luoi dien va phat trien bess tai viet nam 36712.html",
+      "source_page": "https://nangluongvietnam.vn/cuc-dien-luc-va-lien-minh-nang-luong-toan-cau-thuc-day-hien-dai-hoa-luoi-dien-va-phat-trien-bess-tai-viet-nam-36712.html",
+      "decision": "ADMIN_IMAGE_REQUIRED",
       "selected_image": null,
       "reasons": [
-        "image_audit_missing"
+        "image_audit_missing_admin_must_generate_or_approve"
       ],
-      "quality_gate_eligible": false
+      "quality_gate_eligible": true,
+      "publication_eligible": false
     },
     {
       "audit_file": null,
-      "slug": "Nicole Kidman Turned the Chanel Show Into a Stylish Mother-Daughter Moment",
-      "source_page": "https://wwd.com/pop-culture/celebrity-news/nicole-kidman-daughter-faith-urban-chanel-spring-2027-show-1239315217",
-      "decision": "BLOCK",
+      "slug": "evnnpc dong dien 5 du an lap dat he thong pin luu tru nang luong bess tai lang son 36698.html",
+      "source_page": "https://nangluongvietnam.vn/evnnpc-dong-dien-5-du-an-lap-dat-he-thong-pin-luu-tru-nang-luong-bess-tai-lang-son-36698.html",
+      "decision": "ADMIN_IMAGE_REQUIRED",
       "selected_image": null,
       "reasons": [
-        "image_audit_missing"
+        "image_audit_missing_admin_must_generate_or_approve"
       ],
-      "quality_gate_eligible": false
+      "quality_gate_eligible": true,
+      "publication_eligible": false
     },
     {
       "audit_file": null,
-      "slug": "183 south expressway design build austin texas",
-      "source_page": "https://www.fluor.com/projects/183-south-expressway-design-build-austin-texas",
-      "decision": "BLOCK",
+      "slug": "overview of the scientific workshop developing nuclear power for green growth and national energy security 36678.html",
+      "source_page": "https://nangluongvietnam.vn/overview-of-the-scientific-workshop-developing-nuclear-power-for-green-growth-and-national-energy-security-36678.html",
+      "decision": "ADMIN_IMAGE_REQUIRED",
       "selected_image": null,
       "reasons": [
-        "image_audit_missing"
+        "image_audit_missing_admin_must_generate_or_approve"
       ],
-      "quality_gate_eligible": false
+      "quality_gate_eligible": true,
+      "publication_eligible": false
+    },
+    {
+      "audit_file": null,
+      "slug": "investment policy and investor approved for hong loc solar power plant project in ha tinh province 36640.html",
+      "source_page": "https://nangluongvietnam.vn/investment-policy-and-investor-approved-for-hong-loc-solar-power-plant-project-in-ha-tinh-province-36640.html",
+      "decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "reasons": [
+        "image_audit_missing_admin_must_generate_or_approve"
+      ],
+      "quality_gate_eligible": true,
+      "publication_eligible": false
+    },
+    {
+      "audit_file": null,
+      "slug": "an minh energy la doi tac chien luoc phan phoi pin luu tru nang luong bess gg power tai phia nam 36630.html",
+      "source_page": "https://nangluongvietnam.vn/an-minh-energy-la-doi-tac-chien-luoc-phan-phoi-pin-luu-tru-nang-luong-bess-gg-power-tai-phia-nam-36630.html",
+      "decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "reasons": [
+        "image_audit_missing_admin_must_generate_or_approve"
+      ],
+      "quality_gate_eligible": true,
+      "publication_eligible": false
+    },
+    {
+      "audit_file": null,
+      "slug": "greenroof energy va vietcombank phoi hop thuc day phat trien dien mat troi va he thong luu tru nang luong tai viet nam 36605.html",
+      "source_page": "https://nangluongvietnam.vn/greenroof-energy-va-vietcombank-phoi-hop-thuc-day-phat-trien-dien-mat-troi-va-he-thong-luu-tru-nang-luong-tai-viet-nam-36605.html",
+      "decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "reasons": [
+        "image_audit_missing_admin_must_generate_or_approve"
+      ],
+      "quality_gate_eligible": true,
+      "publication_eligible": false
+    },
+    {
+      "audit_file": null,
+      "slug": "evnnpc dua vao van hanh he thong pin luu tru nang luong bess tai hai phong 36616.html",
+      "source_page": "https://nangluongvietnam.vn/evnnpc-dua-vao-van-hanh-he-thong-pin-luu-tru-nang-luong-bess-tai-hai-phong-36616.html",
+      "decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "reasons": [
+        "image_audit_missing_admin_must_generate_or_approve"
+      ],
+      "quality_gate_eligible": true,
+      "publication_eligible": false
+    },
+    {
+      "audit_file": null,
+      "slug": "national assembly adopts resolution to separate ninh thuan nuclear power project into independent projects 36572.html",
+      "source_page": "https://nangluongvietnam.vn/national-assembly-adopts-resolution-to-separate-ninh-thuan-nuclear-power-project-into-independent-projects-36572.html",
+      "decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "reasons": [
+        "image_audit_missing_admin_must_generate_or_approve"
+      ],
+      "quality_gate_eligible": true,
+      "publication_eligible": false
+    },
+    {
+      "audit_file": null,
+      "slug": "evnnpc dua vao van hanh he thong pin luu tru nang luong bess dau tien tai ninh binh 36547.html",
+      "source_page": "https://nangluongvietnam.vn/evnnpc-dua-vao-van-hanh-he-thong-pin-luu-tru-nang-luong-bess-dau-tien-tai-ninh-binh-36547.html",
+      "decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "reasons": [
+        "image_audit_missing_admin_must_generate_or_approve"
+      ],
+      "quality_gate_eligible": true,
+      "publication_eligible": false
     }
   ],
   "auto_publish": false
