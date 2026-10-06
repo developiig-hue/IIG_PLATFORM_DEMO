@@ -15,7 +15,8 @@ if d.get("schema")!="iig.image-rights.v1" or d.get("auto_publish") is not False 
 if d.get("pipeline")!={"robot":"IMAGE_RIGHTS","robot_number":4,"next":"ADMIN_REVIEW","robot_count":7}:fail("pipeline")
 for a in d.get("admin_review_queue",[]):
  if not isinstance(a.get("item"),dict) or len(a.get("item_sha256",""))!=64:fail("admin payload integrity")
- if a.get("route")=="news" and not a.get("selected_image"):fail("news image missing")
+ if a.get("route")=="news" and not a.get("selected_image"):
+  if a.get("image_decision")!="ADMIN_IMAGE_REQUIRED" or a.get("publication_eligible") is not False:fail("news image missing")
 for x in d.get("results",[]):
  if x["decision"]=="BLOCK" and x.get("quality_gate_eligible") is not False:fail("blocked escaped")
  if x["decision"]!="BLOCK" and x.get("quality_gate_eligible") is not True:fail("pass not eligible")
