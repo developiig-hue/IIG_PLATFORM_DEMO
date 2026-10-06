@@ -5,9 +5,11 @@ from datetime import datetime,timezone,timedelta
 from pathlib import Path
 from urllib.parse import urlparse
 ROOT=Path(__file__).resolve().parents[1];QUEUE=ROOT/"content/review-queue";POLICY=ROOT/"content/moderation-policy.json";CAND=ROOT/"content/candidates"
-SCHEMA="iig.content-engine.v3"; DISCOVERY_SCHEMA="iig.discovery-candidates.v1"
+SCHEMA="iig.content-engine.v4"; DISCOVERY_SCHEMA="iig.discovery-candidates.v1"
 TYPES={"news":"news","chief-engineer-advice":"chief_engineer_advice"}
 REQ=("title","company_name","company_activity","project","technology","project_status","project_status_evidence","date","canonical_url","company_context")
+EVENT_TYPES={"EXHIBITION","CONFERENCE","FORUM","SUMMIT","CONGRESS","PUBLIC_PRESENTATION","INDUSTRY_EVENT"}
+NEWS_MIN_CHARS=600
 def load_json(p):
     try:return json.loads(p.read_text(encoding="utf-8"))
     except (OSError,json.JSONDecodeError) as e:raise ValueError(f"{p.name}: invalid JSON: {e}")
@@ -52,6 +54,14 @@ def validate_curated(x):
     if q:
         if not isinstance(q,dict) or any(not q.get(k) for k in ("verbatim","full_name","position","source_url")):errors.append("invalid_quote")
         elif not https_url(q["source_url"]):errors.append("unsafe_quote_url")
+    if x.get("type")=="news":
+        body=x.get("body")
+        if not isinstance(body,str) or len(body.strip())<NEWS_MIN_CHARS:errors.append("news_body_min_600")
+        if not isinstance(x.get("iig_advice"),str) or len(x["iig_advice"].strip())<80:errors.append("news_iig_advice_required")
+        et=str(x.get("event_type") or "").upper()
+        tag=str(x.get("editorial_tag") or "").upper()
+        if et in EVENT_TYPES and tag!="EVENT":errors.append("event_tag_must_be_EVENT")
+        if not x.get("executive_quote") and x.get("quote_search_status") not in ("NOT_FOUND","NOT_APPLICABLE"):errors.append("quote_search_status_required")
     if x.get("type")=="chief-engineer-advice":
         a=x.get("advice")
         if a is not None:
@@ -133,6 +143,7 @@ def verify():
         assert all(x.get("type")=="news" for x in r["outputs"]["news"])
         assert all(x.get("type")=="chief-engineer-advice" for x in r["outputs"]["chief_engineer_advice"])
         assert r["pipeline"]["next"]=="QUALITY_GATE" and r["pipeline"]["robot_count"]==7
+        assert r["schema"]==SCHEMA
         assert all(x.get("publishable") is False for x in r["discovery_intake"]["research_packets"])
     print("CONTENT_ENGINE_VERIFY_PASS")
 def main():
