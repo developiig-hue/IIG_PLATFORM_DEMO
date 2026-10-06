@@ -54,3 +54,5 @@ class ContentEngineTests(unittest.TestCase):
         s=(ROOT/"scripts/content_engine.py").read_text();self.assertIn("iig.content-engine.v4",s);self.assertIn("QUALITY_GATE",s);self.assertIn("raw_discovery_never_publishable",s)
 
 if __name__=="__main__":unittest.main()
+
+# V23 invariant: Discovery synthesis requires industrial/energy relevance before NEWS generation.
