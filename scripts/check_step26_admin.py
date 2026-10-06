@@ -467,7 +467,7 @@ need('replace_current:true' in js and 'delete_previous_current:true' in js and '
 need('links_preserved!==true' in js and "PUBLIC_PDF_URL_REQUIRED" in js,"PDF publication must verify active links and PDF public URL")
 
 need("function mergeDemoPublished(baseItems)" in pub and "status:local.status" in pub and "...local,...b" in pub,"canonical repository content must override stale browser DEMO text while preserving local publish state")
-need("NEWS-CONTENT-V19" in (root/"article.html").read_text(encoding="utf-8"),"Article public-news cache bust missing")
-need("NEWS-CONTENT-V19" in (root/"index.html").read_text(encoding="utf-8"),"Homepage dynamic public-news runtime missing")
-need("NEWS-CONTENT-V19" in (root/"news.html").read_text(encoding="utf-8"),"News hub dynamic public-news runtime missing")
+need("NEWS-CONTENT-V20" in (root/"article.html").read_text(encoding="utf-8"),"Article public-news cache bust missing")
+need("NEWS-CONTENT-V20" in (root/"index.html").read_text(encoding="utf-8"),"Homepage dynamic public-news runtime missing")
+need("NEWS-CONTENT-V20" in (root/"news.html").read_text(encoding="utf-8"),"News hub dynamic public-news runtime missing")
 need("event_body_min_1800" in spec and "news_body_min_1200" in spec,"V19 NEWS/EVENT depth blockers missing from protocol")
