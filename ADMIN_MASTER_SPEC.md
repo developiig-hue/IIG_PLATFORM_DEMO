@@ -1325,3 +1325,14 @@ The NEWS refresh button is a real server action, not navigation.
 - Generated results remain REVIEW and require ADMIN_1.
 
 RELEASE BLOCKER: external GitHub redirect, false STARTED status without backend 202, or completed workflow whose ADMIN_REVIEW handoff is unavailable.
+
+
+## HARD RULE — CONTENT MUST SURVIVE MISSING IMAGE V23 (2026-10-06)
+
+- A NEWS item that passes Content Engine + Quality Gate MUST reach ADMIN REVIEW even when no reusable source image exists.
+- Missing/uncertain image rights produce `ADMIN_IMAGE_REQUIRED`, not content deletion.
+- `ADMIN_IMAGE_REQUIRED` means: content visible to ADMIN_1, publication_eligible=false, Admin must generate/upload/approve a representative image before publishing.
+- Auto-publish remains prohibited.
+- Robot #2 must reject obvious non-industrial/non-energy Discovery noise before NEWS synthesis.
+
+This separation is portable: **CONTENT QA and IMAGE PUBLICATION QA are separate gates** on any future paid hosting/domain.
