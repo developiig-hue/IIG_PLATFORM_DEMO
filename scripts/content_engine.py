@@ -9,7 +9,8 @@ SCHEMA="iig.content-engine.v4"; DISCOVERY_SCHEMA="iig.discovery-candidates.v1"
 TYPES={"news":"news","chief-engineer-advice":"chief_engineer_advice"}
 REQ=("title","company_name","company_activity","project","technology","project_status","project_status_evidence","date","canonical_url","company_context")
 EVENT_TYPES={"EXHIBITION","CONFERENCE","FORUM","SUMMIT","CONGRESS","PUBLIC_PRESENTATION","INDUSTRY_EVENT"}
-NEWS_MIN_CHARS=600
+NEWS_MIN_CHARS=1200
+EVENT_MIN_CHARS=1800
 def load_json(p):
     try:return json.loads(p.read_text(encoding="utf-8"))
     except (OSError,json.JSONDecodeError) as e:raise ValueError(f"{p.name}: invalid JSON: {e}")
@@ -56,7 +57,8 @@ def validate_curated(x):
         elif not https_url(q["source_url"]):errors.append("unsafe_quote_url")
     if x.get("type")=="news":
         body=x.get("body")
-        if not isinstance(body,str) or len(body.strip())<NEWS_MIN_CHARS:errors.append("news_body_min_600")
+        min_chars=EVENT_MIN_CHARS if str(x.get("event_type") or "").upper() in EVENT_TYPES else NEWS_MIN_CHARS
+        if not isinstance(body,str) or len(body.strip())<min_chars:errors.append("event_body_min_1800" if min_chars==EVENT_MIN_CHARS else "news_body_min_1200")
         if not isinstance(x.get("iig_advice"),str) or len(x["iig_advice"].strip())<80:errors.append("news_iig_advice_required")
         et=str(x.get("event_type") or "").upper()
         tag=str(x.get("editorial_tag") or "").upper()
@@ -88,7 +90,7 @@ def discovery_intake():
             if key in seen:why.append("duplicate_url")
             seen.add(key)
         if why:errors.append({"index":i,"reasons":why})
-        else:items.append({"source_id":x.get("source_id"),"source_name":x.get("source_name"),"sector":x.get("sector"),"title":x.get("title"),"primary_url":x["url"],"published_at":x.get("published_at"),"supplementary_leads":x["supplementary_search"]["leads"],"state":"NEEDS_CONTENT_ENRICHMENT","publishable":False})
+        else:items.append({"source_id":x.get("source_id"),"source_name":x.get("source_name"),"sector":x.get("sector"),"title":x.get("title"),"primary_url":x["url"],"published_at":x.get("published_at"),"supplementary_leads":x["supplementary_search"]["leads"],"primary_source_excerpt":x.get("primary_source_excerpt",""),"primary_source_capture":x.get("primary_source_capture",{}),"state":"NEEDS_CONTENT_ENRICHMENT","publishable":False})
     return {"present":True,"received":len(raw),"accepted":len(items),"rejected":len(errors),"items":items,"errors":errors}
 def curated_pool():
     accepted=[];rejected=[];seen=set()
