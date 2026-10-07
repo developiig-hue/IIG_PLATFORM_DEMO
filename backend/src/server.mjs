@@ -4,8 +4,10 @@ import {requireAdmin} from "./auth.mjs";
 import {putCurrent,getCurrentMeta,getCurrentPdf,revisionFor,sha256} from "./storage.mjs";
 import {saveApproval,getApproval} from "./approval-store.mjs";
 import {verifyPdfLinks} from "./pdf-links.mjs";
+import {createRequest,listRequests,markDownloaded,markProcessed,promoteContact,lifetimeStats} from "./request-store.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
+import crypto from "node:crypto";
 
 const app=Fastify({logger:true,bodyLimit:30*1024*1024});
 await app.register(multipart,{limits:{fileSize:25*1024*1024,files:1,fields:8}});
@@ -31,6 +33,22 @@ async function githubApi(path,options={}){
 }
 
 
+const REQUEST_RATE=new Map();
+function requestIp(req){return String(req.headers["x-forwarded-for"]||req.ip||"").split(",")[0].trim()}
+function hashIp(ip){return crypto.createHash("sha256").update(String(ip||"")+"|"+String(process.env.IIG_REQUESTS_IP_SALT||"iig")).digest("hex").slice(0,32)}
+function rateLimitPublic(req){
+  const key=requestIp(req)||"unknown",now=Date.now(),windowMs=10*60*1000,limit=12;
+  const xs=(REQUEST_RATE.get(key)||[]).filter(t=>now-t<windowMs);xs.push(now);REQUEST_RATE.set(key,xs);
+  return xs.length<=limit;
+}
+function xmlEsc(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+function requestExcelXml(type,rows){
+  const heads=["ID","Тип","Дата отримання","Ім’я","Компанія","E-mail","Телефон / Посада","Галузь / Мова","Технологія","Текст звернення","Згода","Завантажено","Завантажив","Оброблено","Обробив","Передано до бази IIG"];
+  const cell=v=>'<Cell><Data ss:Type="String">'+xmlEsc(v)+'</Data></Cell>';
+  const tr=a=>'<Row>'+a.map(cell).join("")+'</Row>';
+  const body=rows.map(x=>tr([x.id,x.type,x.received_at,x.name,x.company,x.email,x.phone||x.position||"",x.industry||x.language||"",x.solution||"",x.message||"",x.consent_text||"",x.downloaded_at||"",x.downloaded_by||"",x.processed_at||"",x.processed_by||"",x.promoted_at||""])).join("");
+  return '<?xml version="1.0" encoding="UTF-8"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Worksheet ss:Name="'+xmlEsc(type)+'"><Table>'+tr(heads)+body+'</Table></Worksheet></Workbook>';
+}
 const allowedOrigins=new Set(String(process.env.IIG_ALLOWED_ORIGINS||"").split(",").map(x=>x.trim()).filter(Boolean));
 app.addHook("onRequest",async(req,reply)=>{
   const origin=req.headers.origin;
@@ -48,6 +66,52 @@ app.addHook("onRequest",async(req,reply)=>{
 });
 
 app.get("/healthz",async()=>({ok:true,service:"iig-digest-publication-service"}));
+
+app.post("/api/v1/requests",async(req,reply)=>{
+  if(!rateLimitPublic(req))return reply.code(429).send({error:"RATE_LIMIT"});
+  try{
+    const item=await createRequest(req.body||{},{ip_hash:hashIp(requestIp(req)),user_agent:req.headers["user-agent"]||""});
+    reply.header("Cache-Control","no-store");
+    return reply.code(201).send({status:"RECEIVED",id:item.id,type:item.type,received_at:item.received_at});
+  }catch(e){
+    const code=e.code||e.message||"INVALID_REQUEST";
+    const status=code==="BOT_REJECTED"?400:422;
+    return reply.code(status).send({error:code});
+  }
+});
+app.get("/api/v1/requests",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  const out=await listRequests(String(req.query?.type||""));
+  reply.header("Cache-Control","no-store");return out;
+});
+app.get("/api/v1/requests/stats",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  reply.header("Cache-Control","no-store");return await lifetimeStats();
+});
+app.get("/api/v1/requests/export/:type.xls",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  const type=String(req.params?.type||"").toLowerCase();
+  try{
+    const out=await markDownloaded(type,role),xml=requestExcelXml(type,out.rows);
+    reply.header("Content-Type","application/vnd.ms-excel; charset=utf-8");
+    reply.header("Content-Disposition",'attachment; filename="IIG_'+type+'_requests_'+new Date().toISOString().slice(0,10)+'.xls"');
+    reply.header("Cache-Control","no-store");
+    return reply.send(xml);
+  }catch(e){return reply.code(e.code==="INVALID_TYPE"?400:500).send({error:e.code||"EXPORT_FAILED"})}
+});
+app.post("/api/v1/requests/:id/processed",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  if(role!=="ADMIN_2")return reply.code(403).send({error:"ADMIN_2_REQUIRED"});
+  try{return await markProcessed(String(req.params.id||""),role,req.body?.processed!==false)}
+  catch(e){return reply.code(e.code==="DOWNLOAD_REQUIRED"?409:e.code==="NOT_FOUND"?404:400).send({error:e.code||"PROCESSING_FAILED"})}
+});
+app.post("/api/v1/requests/:id/promote-contact",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  if(role!=="ADMIN_2")return reply.code(403).send({error:"ADMIN_2_REQUIRED"});
+  try{return await promoteContact(String(req.params.id||""),role)}
+  catch(e){return reply.code(e.code==="PROCESSING_REQUIRED"?409:e.code==="NOT_FOUND"?404:400).send({error:e.code||"PROMOTE_FAILED"})}
+});
+
 
 app.post("/api/v1/digest/approvals",async(req,reply)=>{
   const role=requireAdmin(req,reply);if(!role)return;
