@@ -540,6 +540,7 @@ need("DOWNLOAD_REQUIRED" in request_store and "downloaded_at" in request_store a
 need("promoteContact" in request_store and 'status:marketing?"ACTIVE":"PENDING"' in request_store,"Request-to-contact consolidation rule missing")
 need("IIG_REQUESTS_DIR" in (root/"backend/.env.example").read_text(encoding="utf-8"),"Portable private request storage config missing")
 need("PII MUST NOT be committed to Git" in req_protocol,"Request PII protocol missing")
+need("REQUESTS-V32" in forms,"Public intake cache version V32 missing")
 need("REQUESTS-V31" in html,"Admin request-processing asset cache version missing")
 need("OWNER_VERIFIED_SUBSCRIBE_E2E_V32" in forms_js,"Owner-verified Subscribe E2E marker missing")
 need("OWNER-VERIFIED E2E PASS — SUBSCRIBE" in req_protocol,"Owner-verified Subscribe E2E protocol evidence missing")
