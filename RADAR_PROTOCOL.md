@@ -102,3 +102,41 @@ Paid hosting must preserve:
 Any implementation that changes RADAR back into an accumulating cloud lead registry is a RELEASE BLOCKER.
 
 Marker: `IIG_RADAR_DEMO_EPHEMERAL_V39`.
+
+
+## CONTACT-COMPLETE DOWNLOADABLE SET
+
+The accepted generated RADAR table is a practical contact list, not a generic company-signal list.
+
+Each downloadable row must show:
+- company;
+- full name;
+- position / role;
+- email;
+- one concise relevance sentence;
+- source URL.
+
+If full name, position or email cannot be verified, RADAR must not invent it. That discovery is omitted from the downloadable target-contact set.
+
+## MANUAL IIG-BASE TRANSFER
+
+There is no RADAR auto-promote button in the accepted workflow.
+
+After Excel download, ADMIN_2 manually adds/imports only the selected useful contacts into the common IIG contact base.
+
+Mailing Center reads only the common IIG base. A contact manually entered by ADMIN_2 participates in mailing only when its common-base status is ACTIVE. PENDING remains excluded; UNSUBSCRIBE/SUPPRESSED remains blocked.
+
+## NO GENERATED-BASE HISTORY
+
+Neither DEMO nor production may maintain a visible or hidden history of generated RADAR client bases.
+
+Allowed:
+- current in-memory browser rows;
+- downloaded Excel on ADMIN_2's computer;
+- non-PII audit metadata.
+
+Forbidden:
+- localStorage generated-base cache;
+- PostgreSQL generated candidate rows for this ADMIN workflow;
+- object/cloud file copy;
+- automatic CRM/mailing insertion.
