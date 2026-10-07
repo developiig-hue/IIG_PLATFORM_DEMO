@@ -46,11 +46,12 @@ jobs:
           grep -q 'RADAR · ЦІЛЬОВИЙ ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ' admin-ua.html
           grep -q '/api/v1/radar/search' assets/admin-radar.js
           grep -q 'DEMO TEST · READY' assets/admin-radar.js
-          grep -q 'radar-test-latest.json' assets/admin-radar.js
+          grep -q 'const DEMO_ROWS=' assets/admin-radar.js
           grep -q 'radarExportExcel' admin-ua.html
           grep -q 'radarResetGeneration' admin-ua.html
           grep -q 'IIG_RADAR_Target_Search_' assets/admin-radar.js
           grep -q 'IIG_RADAR_DEMO_EPHEMERAL_V39' RADAR_PROTOCOL.md
+          test ! -f data/radar-test-latest.json
           grep -q 'IIG_CONTACT_BASE_IMPORT_V34' MAILING_PROTOCOL.md
           grep -q 'app.post("/api/v1/contacts/import"' backend/src/server.mjs
           grep -q 'ADMIN_2_REQUIRED' backend/src/server.mjs
