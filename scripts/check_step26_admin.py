@@ -573,3 +573,11 @@ need("nodemailer" in backend_pkg and "@fastify/formbody" in backend_pkg,"Mail tr
 for key in ["IIG_SMTP_HOST","IIG_SMTP_USER","IIG_SMTP_PASS","IIG_MAIL_FROM","IIG_UNSUBSCRIBE_SECRET","IIG_MAILING_DIR"]:
     need(key in env_example,f"Mailing environment contract missing: {key}")
 need("IIG_MAILING_V33" in mailing_protocol,"Mailing protocol marker missing")
+
+
+# Contact-base import V34
+need("importRecipientBase" in (root/"assets/admin-contacts.js").read_text(encoding="utf-8"),"ADMIN_2 recipient MASTER import runtime missing")
+need("importRecipientBase" in html and "ІМПОРТ БАЗИ · ADMIN_2" in html,"ADMIN_2 recipient MASTER import UI missing")
+need("ЗАПУСТИТИ РОЗСИЛКУ · ADMIN_1" in html and 'id="massSendProd"' in html,"Final mass-send must remain visibly locked to ADMIN_1")
+need('app.post("/api/v1/contacts/import"' in backend and "importContactsBase" in request_store,"Server-side contact-base import API missing")
+need("IIG_CONTACT_BASE_IMPORT_V34" in mailing_protocol,"Contact-base import protocol marker missing")
