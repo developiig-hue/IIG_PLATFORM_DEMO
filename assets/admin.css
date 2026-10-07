@@ -119,3 +119,9 @@
 
 /* DIGEST EVENT TAG V29 */
 .finaldigest-tag{display:inline-flex;align-items:center;width:max-content;margin:0 0 4px;padding:2px 7px;border-radius:999px;background:#e9f2f8;border:1px solid #9ebbd0;color:#07365e;font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+
+/* DIGEST NEWS ROW OWNER-APPROVED STANDARD V30 — verified 2026-10-07\n   Locked composition: page header + numbered white row + visible tag pill + title + direct-link/read-more.\n   Preview and printable/PDF renderers use the same .finaldigest* classes. */
+.finalcorepage .finaldigestitems{display:grid;gap:5px;align-content:start;grid-auto-rows:max-content}
+.finalcorepage .finaldigestitem{display:grid;grid-template-columns:28px 1fr;gap:8px;border:1px solid #d5e0e7;background:#fff;border-radius:5px;padding:5px 7px;font-size:9px;font-weight:800}
+.finalcorepage .finaldigestitem>a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;color:#082f51;text-decoration:none}
+.finalcorepage .finaldigest-tag{display:inline-flex;align-items:center;width:max-content;margin:0 0 4px;padding:2px 7px;border-radius:999px;background:#e9f2f8;border:1px solid #9ebbd0;color:#07365e;font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
