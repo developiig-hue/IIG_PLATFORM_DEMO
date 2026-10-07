@@ -158,3 +158,19 @@ The number of final contacts may be much lower than 1000; 1000 is the minimum di
 Fake DEMO contacts, static snapshots and cached pre-generated contact lists cannot satisfy this requirement.
 
 Marker: `IIG_RADAR_LIVE_1000_V40`.
+
+
+## ACTIVE RUN REPLACEMENT — OWNER VERIFIED
+
+When ADMIN_2 changes industry/query and starts RADAR again while another run is active:
+- the old run is superseded;
+- old polling is ignored;
+- the old crawler is cancelled on backend;
+- the new run starts without a 409 conflict;
+- only the latest run may render results.
+
+Owner E2E pass:
+Energy active → Agro launch → Energy superseded → Agro success.
+Agro run `live-3c4f59fa519d475e`: 1006 pages processed, 716 external domains discovered, 18 seeds, 7 contact rows.
+
+Marker: `IIG_RADAR_RUN_REPLACEMENT_V46`.
