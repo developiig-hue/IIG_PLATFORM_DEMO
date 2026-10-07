@@ -1,110 +1,96 @@
 (()=>{"use strict";
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let currentRunKey=null,pollTimer=null;
+let currentRows=[];
 async function api(url,opts={}){
  const r=await fetch(url,{credentials:"same-origin",cache:"no-store",...opts,headers:{...(opts.headers||{})}});
  let data=null;try{data=await r.json()}catch{data={}};
  if(!r.ok)throw Object.assign(new Error(data.error||data.detail||("HTTP "+r.status)),{status:r.status,data});
  return data;
 }
-function setState(text,kind="amber"){
- const x=$("radarRunState");if(!x)return;
- x.textContent=text;x.classList.remove("green","red","amber","blue");x.classList.add(kind);
-}
 function isPages(){return location.hostname.endsWith("github.io")}
-function sourceLink(url){
- if(!url)return "—";
- const safe=String(url);return '<a href="'+esc(safe)+'" target="_blank" rel="noopener">відкрити джерело ↗</a>';
+function setState(text,kind="amber"){
+ const x=$("radarRunState");if(!x)return;x.textContent=text;x.classList.remove("green","red","amber","blue");x.classList.add(kind);
 }
+function setButtons(){
+ const has=currentRows.length>0;
+ if($("radarExportExcel"))$("radarExportExcel").disabled=!has;
+ if($("radarResetGeneration"))$("radarResetGeneration").disabled=!has;
+}
+function sourceLink(url){return url?'<a href="'+esc(url)+'" target="_blank" rel="noopener">відкрити ↗</a>':"—"}
 function renderRows(rows){
+ currentRows=Array.isArray(rows)?rows.slice():[];
  const body=$("radarRows");if(!body)return;
- $("radarPending").textContent=rows.length;
- body.innerHTML=rows.length?rows.map(x=>{
-  const contact=[x.contact_name||"",x.email||""].filter(Boolean).map(esc).join("<br>")||"—";
-  const signal=[x.signal||"",x.industry||"",x.country||"",x.confidence!=null?("confidence "+x.confidence):""].filter(Boolean).map(esc).join(" · ");
-  const demo=isPages();
-  return '<tr><td><b>'+esc(x.company_name||"Без назви")+'</b><br><small>'+signal+'</small></td><td>'+contact+'</td><td>'+sourceLink(x.source_url)+'</td><td><button class="iconbtn radarPromoteServer" data-id="'+esc(x.id)+'">'+(demo?'Перевірено':'До бази IIG')+'</button> <button class="iconbtn radarRejectServer" data-id="'+esc(x.id)+'">Відхилити</button></td></tr>';
- }).join(""):'<tr><td colspan="4">Нових пропозицій RADAR немає.</td></tr>';
- document.querySelectorAll(".radarPromoteServer").forEach(b=>b.onclick=()=>promote(b.dataset.id));
- document.querySelectorAll(".radarRejectServer").forEach(b=>b.onclick=()=>reject(b.dataset.id));
+ $("radarPending").textContent=currentRows.length;
+ body.innerHTML=currentRows.length?currentRows.map(x=>{
+   const name=x.contact_name||"Не знайдено";
+   const position=x.position||"Не зазначено";
+   const email=x.email||"Не знайдено";
+   const relevance=x.relevance||x.signal||"Потребує ручної перевірки";
+   return '<tr><td><b>'+esc(x.company_name||"Без назви")+'</b></td><td><b>'+esc(name)+'</b><br><small>'+esc(position)+'</small></td><td>'+esc(email)+'</td><td>'+esc(relevance)+'</td><td>'+sourceLink(x.source_url)+'</td></tr>';
+ }).join(""):'<tr><td colspan="5">Генерацію ще не запускали.</td></tr>';
+ setButtons();
 }
-async function loadProspects(){
- if(isPages())return;
- try{
-  const x=await api("/api/v1/radar/prospects?state=pending&limit=100");
-  renderRows(Array.isArray(x.rows)?x.rows:[]);
- }catch(e){
-  $("radarRunInfo").innerHTML="<b>RADAR:</b> не вдалося отримати кандидатів · "+esc(e.data?.detail||e.data?.error||e.message);
- }
+function xmlCell(v){
+ const s=String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+ return '<Cell><Data ss:Type="String">'+s+'</Data></Cell>';
+}
+function exportExcel(){
+ if(!currentRows.length)return alert("Немає згенерованих даних для скачування.");
+ const headers=["Компанія","ПІБ","Посада","Email","Країна","Галузь","Актуальність","Джерело"];
+ const rows=currentRows.map(x=>[
+   x.company_name||"",x.contact_name||"",x.position||"",x.email||"",x.country||"",x.industry||"",
+   x.relevance||x.signal||"",x.source_url||""
+ ]);
+ const xml='<?xml version="1.0"?><?mso-application progid="Excel.Sheet"?>'+
+ '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">'+
+ '<Worksheet ss:Name="RADAR"><Table>'+
+ '<Row>'+headers.map(xmlCell).join("")+'</Row>'+
+ rows.map(r=>'<Row>'+r.map(xmlCell).join("")+'</Row>').join("")+
+ '</Table></Worksheet></Workbook>';
+ const blob=new Blob([xml],{type:"application/vnd.ms-excel;charset=utf-8"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+ const d=new Date().toISOString().slice(0,10);
+ a.download="IIG_RADAR_Target_Search_"+d+".xls";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href);
+ $("radarRunInfo").innerHTML="<b>✓ Excel сформовано.</b> Після перевірки ADMIN_2 вручну додає потрібні контакти до загальної бази IIG. RADAR нічого не переносить автоматично.";
+}
+function resetGeneration(){
+ if(!currentRows.length)return;
+ if(!confirm("Скинути поточну RADAR-генерацію? Після цього результати залишаться тільки у вже скачаному Excel."))return;
+ currentRows=[];
+ renderRows([]);
+ setState("ГОТОВО ДО НОВОГО ПОШУКУ","blue");
+ $("radarRunInfo").innerHTML="<b>✓ Генерацію скинуто.</b> Тимчасова вибірка очищена. Можна запускати новий цільовий пошук.";
 }
 async function start(){
  const query=$("radarQuery")?.value.trim()||"",industry=$("radarIndustry")?.value||"",country=$("radarCountry")?.value.trim()||"",limit=Number($("radarLimit")?.value||20);
  if(query.length<3)return alert("Опишіть, яких потенційних клієнтів потрібно знайти.");
- if(isPages()){
-   setState("TEST SEARCH…","amber");
-   try{
-     const r=await fetch("data/radar-test-latest.json",{cache:"no-store"});
-     if(!r.ok)throw new Error("TEST_RADAR_DATA_UNAVAILABLE");
-     const x=await r.json(),rows=(Array.isArray(x.rows)?x.rows:[]).filter(y=>{
+ // Every run replaces the previous transient set.
+ currentRows=[];renderRows([]);setState("ПОШУК…","amber");
+ try{
+   let rows=[];
+   if(isPages()){
+     const r=await fetch("data/radar-test-latest.json",{cache:"no-store"});if(!r.ok)throw new Error("TEST_RADAR_DATA_UNAVAILABLE");
+     const x=await r.json();
+     rows=(Array.isArray(x.rows)?x.rows:[]).filter(y=>{
        const sameIndustry=!industry||industry==="other"||String(y.industry||"").toLowerCase()===String(industry).toLowerCase();
        const sameCountry=!country||String(y.country||"").toLowerCase()===String(country).toLowerCase();
        return sameIndustry&&sameCountry;
      }).slice(0,limit);
-     renderRows(rows);
-     setState("✓ TEST SUCCESS · "+rows.length,"green");
-     $("radarRunInfo").innerHTML="<b>✓ DEMO TEST RADAR завершено:</b> знайдено "+esc(rows.length)+" кандидатів · галузь "+esc(industry||"all")+" · ринок "+esc(country||"all")+"<br><small>Джерела перевіряються через публічний тестовий snapshot. На paid hosting ця ж кнопка запускає приватний backend і live search-provider.</small>";
-   }catch(e){
-     setState("TEST FAILED","red");
-     $("radarRunInfo").innerHTML="<b>DEMO TEST RADAR:</b> "+esc(e.message);
+   }else{
+     const x=await api("/api/v1/radar/search",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query,industry,country,limit})});
+     rows=Array.isArray(x.rows)?x.rows:[];
    }
-   return;
- }
- setState("ЗАПУСК…","amber");
- try{
-   const x=await api("/api/v1/radar/runs",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query,industry,country,limit})});
-   currentRunKey=x.run_key;setState("QUEUED","amber");
-   $("radarRunInfo").innerHTML="<b>RADAR запущено:</b> "+esc(currentRunKey)+"<br>Запит: "+esc(query);
-   startPolling();
+   renderRows(rows);
+   setState("✓ ЗГЕНЕРОВАНО · "+rows.length,"green");
+   $("radarRunInfo").innerHTML="<b>✓ Цільовий пошук завершено:</b> "+esc(rows.length)+" результатів. Перевірте ФІО/посаду/email/актуальність, скачайте Excel і після цього скиньте генерацію.";
  }catch(e){
-   setState("ПОМИЛКА","red");
-   $("radarRunInfo").innerHTML="<b>RADAR не запущено:</b> "+esc(e.data?.detail||e.data?.error||e.message);
+   renderRows([]);setState("ПОМИЛКА","red");
+   $("radarRunInfo").innerHTML="<b>RADAR не виконав пошук:</b> "+esc(e.data?.detail||e.data?.error||e.message);
  }
-}
-async function poll(){
- if(!currentRunKey||isPages())return;
- try{
-   const x=await api("/api/v1/radar/runs/"+encodeURIComponent(currentRunKey));
-   const state=String(x.state||"").toLowerCase(),kind=state==="success"?"green":state==="failed"?"red":"amber";
-   setState(state.toUpperCase(),kind);
-   $("radarRunInfo").innerHTML="<b>Run:</b> "+esc(currentRunKey)+" · "+esc(state.toUpperCase())+" · кандидатів: "+esc(x.prospects||0);
-   if(state==="success"||state==="failed"){
-     clearInterval(pollTimer);pollTimer=null;await loadProspects();
-   }
- }catch(e){
-   setState("STATUS ERROR","red");
- }
-}
-function startPolling(){if(pollTimer)clearInterval(pollTimer);pollTimer=setInterval(poll,2500);void poll()}
-async function promote(id){
- if(isPages())return alert("DEMO TEST: кандидат показаний для перевірки джерела. Реальне перенесення до CRM виконується тільки через production backend і створює PENDING, не ACTIVE.");
- if(!confirm("Перевірено джерело? Передати цей RADAR-контакт до єдиної бази IIG як PENDING?"))return;
- try{
-   await api("/api/v1/radar/prospects/"+encodeURIComponent(id)+"/decision",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({decision:"approved"})});
-   const x=await api("/api/v1/radar/prospects/"+encodeURIComponent(id)+"/promote",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});
-   $("radarRunInfo").innerHTML="<b>✓ Передано до бази IIG:</b> CRM lead "+esc(x.lead_id)+" · mailing status "+esc(x.mailing_status);
-   await loadProspects();
- }catch(e){alert("Не вдалося передати контакт: "+(e.data?.detail||e.data?.error||e.message))}
-}
-async function reject(id){
- if(isPages()){const b=document.querySelector('.radarRejectServer[data-id="'+CSS.escape(String(id))+'"]');if(b){const tr=b.closest("tr");tr&&tr.remove();$("radarPending").textContent=document.querySelectorAll("#radarRows tr").length}return}
- if(!confirm("Відхилити цього кандидата RADAR?"))return;
- try{await api("/api/v1/radar/prospects/"+encodeURIComponent(id)+"/decision",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({decision:"rejected"})});await loadProspects()}
- catch(e){alert("Не вдалося відхилити: "+(e.data?.detail||e.data?.error||e.message))}
 }
 $("radarStartRobot")&&($("radarStartRobot").onclick=start);
-$("radarRefreshRobot")&&($("radarRefreshRobot").onclick=()=>{void loadProspects();if(currentRunKey)void poll()});
-if(isPages()){
- setState("DEMO TEST · READY","blue");
- $("radarRunInfo").innerHTML="<b>DEMO TEST RADAR READY:</b> натисніть «ЗАПУСТИТИ RADAR · ADMIN_2», щоб виконати тестовий пошук по актуальному публічному snapshot. На paid hosting ця ж кнопка запускає live backend.";
-}else{void loadProspects()}
+$("radarExportExcel")&&($("radarExportExcel").onclick=exportExcel);
+$("radarResetGeneration")&&($("radarResetGeneration").onclick=resetGeneration);
+renderRows([]);
+setState(isPages()?"DEMO TEST · READY":"READY","blue");
 })();
