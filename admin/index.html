@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IIG Admin — Обробка Заяв та Підписки</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#172033;background:#f4f6f8}*{box-sizing:border-box}
+body{margin:0;display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+aside{background:#101c35;color:#fff;padding:24px 18px} .brand{font-size:28px;font-weight:800;letter-spacing:2px;margin-bottom:30px}
+nav a{display:block;color:#cbd5e1;text-decoration:none;padding:11px 12px;border-radius:8px;margin:3px 0}
+nav a.active{background:#f1c40f;color:#101c35;font-weight:700}
+main{padding:28px;overflow:auto}h1{margin:0 0 6px}.lead{color:#667085;margin:0 0 18px}
+.toolbar{display:flex;gap:10px;align-items:center;margin-bottom:18px}.toolbar input{min-width:360px;padding:10px;border:1px solid #cdd3da;border-radius:8px}
+button{border:0;border-radius:8px;padding:10px 12px;font-weight:700;cursor:pointer}.primary{background:#f1c40f;color:#101c35}.ghost{background:#e9edf2;color:#172033}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(360px,1fr));gap:18px;align-items:start}
+.col{background:#fff;border:1px solid #dfe3e8;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px #0000000a}
+.colhead{padding:16px;border-bottom:1px solid #e6e9ee;background:#fafbfc}.colhead h2{font-size:18px;margin:0 0 10px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.stat{background:#eef2f6;border-radius:7px;padding:8px;text-align:center}.stat b{display:block;font-size:20px}.stat span{font-size:10px;color:#667085}
+.rows{max-height:58vh;overflow:auto}.row{padding:12px 14px;border-bottom:1px solid #edf0f3;font-size:13px}.row-top{display:flex;justify-content:space-between;gap:8px}.date{color:#667085;font-size:11px}.name{font-weight:700}.meta{margin-top:5px;color:#475467;word-break:break-word}.msg{margin-top:7px;padding:8px;background:#f7f8fa;border-radius:6px;white-space:pre-wrap}
+.check{display:flex;gap:8px;align-items:center;margin-top:9px;font-size:12px}.check input{width:18px;height:18px}.locked{color:#b54708}.done{color:#027a48;font-weight:700}
+.foot{padding:14px;background:#fafbfc}.foot button{width:100%}.error{color:#b42318;font-weight:700;margin-left:8px}
+@media(max-width:1250px){.grid{grid-template-columns:1fr}body{grid-template-columns:210px 1fr}}
+</style>
+</head>
+<body>
+<aside>
+<div class="brand" translate="no">IIG</div>
+<nav>
+<a href="#">Панель</a>
+<a href="#">Новини</a>
+<a href="#">Дайджест</a>
+<a href="#" class="active">Обробка Заяв та Підписки</a>
+<a href="#">RADAR</a>
+<a href="#">Розсилки</a>
+<a href="#">Роботи</a>
+<a href="#">Система / Ролі / Аудит</a>
+</nav>
+</aside>
+<main>
+<h1>Обробка Заяв та Підписки</h1>
+<p class="lead">Публічна форма → захищений backend → єдиний реєстр → ручна обробка ADMIN_2 → база контактів IIG</p>
+<div class="toolbar">
+<input id="token" type="password" placeholder="Bearer token адміністратора">
+<button class="ghost" onclick="saveToken()">Зберегти токен</button>
+<button class="primary" onclick="loadAll()">Оновити дані</button>
+<span id="error" class="error"></span>
+</div>
+<div class="grid" id="grid"></div>
+</main>
+<script>
+const TYPES=[
+ {key:'project',title:'Розмістити проект'},
+ {key:'engineer',title:'Задати питання гл. інженеру'},
+ {key:'subscribe',title:'Підписка'}
+];
+const tokenInput=document.getElementById('token');
+tokenInput.value=localStorage.getItem('iig_admin_token')||'';
+function saveToken(){localStorage.setItem('iig_admin_token',tokenInput.value.trim());loadAll()}
+function headers(){return {'Authorization':'Bearer '+(tokenInput.value.trim()||localStorage.getItem('iig_admin_token')||'')}}
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function value(p,...keys){for(const k of keys){if(p&&p[k]!=null&&String(p[k]).trim())return String(p[k])}return ''}
+async function api(url,opts={}){const r=await fetch(url,{...opts,headers:{...headers(),...(opts.headers||{})}});if(!r.ok){throw new Error((await r.text())||r.status)}return r}
+async function loadAll(){
+ document.getElementById('error').textContent='';
+ try{
+  const summary=await (await api('/api/v1/admin/submissions/summary')).json();
+  const lists=await Promise.all(TYPES.map(t=>api('/api/v1/admin/submissions?form_type='+t.key).then(r=>r.json())));
+  document.getElementById('grid').innerHTML=TYPES.map((t,i)=>column(t,summary[t.key],lists[i])).join('');
+ }catch(e){document.getElementById('error').textContent='Помилка: '+e.message}
+}
+function column(t,s,items){
+ const rows=items.length?items.map(row).join(''):'<div class="row">Заявок поки немає.</div>';
+ return `<section class="col">
+  <div class="colhead"><h2>${t.title}</h2><div class="stats">
+   <div class="stat"><b>${s.total}</b><span>ВСЬОГО</span></div>
+   <div class="stat"><b>${s.downloaded}</b><span>ЗАВАНТАЖЕНО</span></div>
+   <div class="stat"><b>${s.processed}</b><span>ОБРОБЛЕНО</span></div>
+   <div class="stat"><b>${s.pending}</b><span>ОЧІКУЄ</span></div>
+  </div></div>
+  <div class="rows">${rows}</div>
+  <div class="foot"><button class="primary" onclick="downloadExcel('${t.key}')">⬇ Завантажити Excel — ${t.title}</button></div>
+ </section>`;
+}
+function row(x){
+ const p=x.payload||{};
+ const who=[value(p,'name','contact_name'),value(p,'company','company_name')].filter(Boolean).join(' · ');
+ const contact=[value(p,'email'),value(p,'phone')].filter(Boolean).join(' · ');
+ const msg=value(p,'message','question','project','details');
+ const disabled=!x.can_process||x.processed_at?'disabled':'';
+ const status=x.processed_at?'<span class="done">✓ ADMIN_2 — оброблено</span>':x.downloaded_at?'<span>Excel завантажено — можна обробити</span>':'<span class="locked">Спочатку завантажте Excel</span>';
+ return `<div class="row">
+  <div class="row-top"><span class="name">${esc(who||contact||'Без імені')}</span><span class="date">${esc(new Date(x.created_at).toLocaleString('uk-UA'))}</span></div>
+  <div class="meta">${esc(contact)}</div>
+  ${msg?'<div class="msg">'+esc(msg)+'</div>':''}
+  <label class="check"><input type="checkbox" ${x.processed_at?'checked':''} ${disabled} onchange="processOne('${x.id}',this)"> ${status}</label>
+ </div>`;
+}
+async function downloadExcel(type){
+ try{
+  const r=await api('/api/v1/admin/submissions/export.xlsx?form_type='+type);
+  const blob=await r.blob();const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='IIG_'+type+'_submissions.xlsx';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href);
+  await loadAll();
+ }catch(e){document.getElementById('error').textContent='Excel: '+e.message}
+}
+async function processOne(id,el){
+ try{
+  await api('/api/v1/admin/submissions/'+id+'/process',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({processed:true})});
+  await loadAll();
+ }catch(e){el.checked=false;document.getElementById('error').textContent='Обробка: '+e.message}
+}
+document.getElementById('grid').innerHTML=TYPES.map(t=>column(t,{total:0,downloaded:0,processed:0,pending:0},[])).join('');
+loadAll();
+</script>
+</body></html>
