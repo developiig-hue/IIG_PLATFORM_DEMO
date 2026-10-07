@@ -554,3 +554,22 @@ need("✓ DEMO: звернення збережено" not in forms_js,"Public f
 need('status.textContent=""' in forms_js,"Static demo intake must keep internal fallback silent for public user")
 need("downloaded_at" in requests_js and "processed_at" in requests_js and "promoteContact" in requests_js,"Accepted Admin processing chain must retain download/process/contact stages")
 need("Excel served/downloaded_at" in req_protocol and "ADMIN_2 checkbox" in req_protocol,"Accepted download-before-processing sequence missing from protocol")
+
+
+# Mailing Center V33
+mailing_js=(root/"assets/admin-mailing.js").read_text(encoding="utf-8")
+mailing_protocol=(root/"MAILING_PROTOCOL.md").read_text(encoding="utf-8")
+backend_pkg=(root/"backend/package.json").read_text(encoding="utf-8")
+env_example=(root/"backend/.env.example").read_text(encoding="utf-8")
+need("uploadMailDigest" in html and "mailDigestFile" in html and "massSendProd" in html,"Mailing Center controls missing")
+need("/api/v1/mailing/digest" in mailing_js and "/api/v1/mailing/send" in mailing_js and "/api/v1/mailing/test" in mailing_js,"Mailing Admin API wiring missing")
+need("IIG_MAILING_V1" in backend and 'app.post("/api/v1/mailing/digest"' in backend,"Approved Digest mailing backend missing")
+need("PDF_NOT_EQUAL_TO_ADMIN1_APPROVED_CURRENT" in backend,"Exact approved PDF SHA gate missing")
+need('ADMIN_1_REQUIRED_TO_START_MAILING' in backend,"ADMIN_1 mass-send authorization gate missing")
+need("mailingEligibleContacts" in request_store and "markUnsubscribed" in request_store,"Eligibility/unsubscribe persistence missing")
+need("UNSUBSCRIBE / SUPPRESSED" in (root/"assets/admin-contacts.js").read_text(encoding="utf-8"),"Red unsubscribe Admin state missing")
+need('app.get("/unsubscribe"' in backend and 'app.post("/unsubscribe"' in backend,"Public unsubscribe confirmation flow missing")
+need("nodemailer" in backend_pkg and "@fastify/formbody" in backend_pkg,"Mail transport/form parser dependencies missing")
+for key in ["IIG_SMTP_HOST","IIG_SMTP_USER","IIG_SMTP_PASS","IIG_MAIL_FROM","IIG_UNSUBSCRIBE_SECRET","IIG_MAILING_DIR"]:
+    need(key in env_example,f"Mailing environment contract missing: {key}")
+need("IIG_MAILING_V33" in mailing_protocol,"Mailing protocol marker missing")
