@@ -46,7 +46,9 @@ jobs:
           grep -q 'RADAR · ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ' admin-ua.html
           grep -q '/api/v1/radar/runs' assets/admin-radar.js
           grep -q '/api/v1/radar/prospects' assets/admin-radar.js
-          grep -q 'PRODUCTION BACKEND REQUIRED' assets/admin-radar.js
+          grep -q 'DEMO TEST RADAR' assets/admin-radar.js
+          grep -q 'radar-test-latest.json' assets/admin-radar.js
+          grep -q 'IIG_RADAR_DEMO_TEST_V38' RADAR_PROTOCOL.md
           grep -q 'IIG_CONTACT_BASE_IMPORT_V34' MAILING_PROTOCOL.md
           grep -q 'app.post("/api/v1/contacts/import"' backend/src/server.mjs
           grep -q 'ADMIN_2_REQUIRED' backend/src/server.mjs
