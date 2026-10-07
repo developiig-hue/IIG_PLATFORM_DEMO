@@ -35,7 +35,7 @@ out=out.replace(/\b(CAPEX|OPEX|інвестиці(?:я|ї|й|ями|ях)|кап
 out=out.replace(EDITORIAL_ROLE_RE,"<strong>$&</strong>");
 if(hasExecutive)out=out.replace(/(«[^»]{2,600}»|&quot;[^&]{2,600}&quot;)/g,"<strong>$1</strong>");
 return out}
-const titles={dashboard:["ЦЕНТР КЕРУВАННЯ САЙТОМ","IIG • Адміністрування сайту • Крок 26"],content:["НОВИНИ ТА ПУБЛІКАЦІЇ","Редагування → Перегляд → Модерація → Публікація"],digest:["КОНСТРУКТОР ДАЙДЖЕСТУ","Схвалені матеріали → QA → PDF → схвалення"],mailing:["РОЗСИЛКА ТА БАЗА","Єдина база • згода • перевірка • захищений запуск"],requests:["ЗАЯВКИ","Проєкти • підписники • звернення до інженера"],robots:["АВТОМАТИЗАЦІЯ ТА ДЖЕРЕЛА","Роботи #1–#7 • реєстр 260 джерел"],website:["КЕРУВАННЯ САЙТОМ","Сторінки • медіа • мови • SEO"],users:["КОРИСТУВАЧІ ТА ПРАВА","Ролі • дозволи • MFA"],security:["ЦЕНТР БЕЗПЕКИ","Авторизація • сесії • захист даних"],audit:["ЖУРНАЛ / РЕЗЕРВ / РОЗГОРТАННЯ","Audit • резервні копії • відновлення"]};
+const titles={dashboard:["ЦЕНТР КЕРУВАННЯ САЙТОМ","IIG • Адміністрування сайту • Крок 26"],content:["НОВИНИ ТА ПУБЛІКАЦІЇ","Редагування → Перегляд → Модерація → Публікація"],digest:["КОНСТРУКТОР ДАЙДЖЕСТУ","Схвалені матеріали → QA → PDF → схвалення"],mailing:["РОЗСИЛКА ТА БАЗА","Єдина база • згода • перевірка • захищений запуск"],requests:["ОБРОБКА ЗАЯВ ТА ПІДПИСКИ","Проєкти • питання Головному інженеру • підписки • lifetime контроль"],robots:["АВТОМАТИЗАЦІЯ ТА ДЖЕРЕЛА","Роботи #1–#7 • реєстр 260 джерел"],website:["КЕРУВАННЯ САЙТОМ","Сторінки • медіа • мови • SEO"],users:["КОРИСТУВАЧІ ТА ПРАВА","Ролі • дозволи • MFA"],security:["ЦЕНТР БЕЗПЕКИ","Авторизація • сесії • захист даних"],audit:["ЖУРНАЛ / РЕЗЕРВ / РОЗГОРТАННЯ","Audit • резервні копії • відновлення"]};
 const STATE={DRAFT:"Чернетка",REVIEW:"На перевірці",APPROVED:"Схвалено",PUBLISHED:"Опубліковано",REJECTED:"Відхилено",BLOCKED:"Заблоковано"};
 const TYPE={NEWS:"Новина",ADVICE:"Порада Головного інженера"};
 const audit=[];
@@ -55,6 +55,7 @@ async function json(path){const r=await fetch(path,{cache:"no-store"});if(!r.ok)
 const gates=["UA LANGUAGE","NAVIGATION / UX","NEWS + ADVICE CMS","ADMIN REVIEW / NO AUTO-PUBLISH","DIGEST BUILDER","MAILING DATABASE","RADAR / SUBSCRIBERS / REQUESTS","ROBOTS / 260 SOURCES","SECURITY / AUDIT / SYSTEM","OWNER E2E"];
 if($("gate10"))$("gate10").innerHTML=gates.map((g,i)=>'<div class="gateitem"><span>'+(i+1)+'. '+g+'</span><span class="pill green">GREEN MASTER</span></div>').join("");
 
+const REQUEST_PROCESSING_V31=true;
 const DIGEST_MASTER_VIEW="digest/admin-master-2026-09-v2.html";
 const DIGEST_CANDIDATE_KEY="iig.digest.release-candidate.v2";
 const DIGEST_LAYOUT_KEY="iig.digest.manual-layout.v1";
