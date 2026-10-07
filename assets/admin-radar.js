@@ -67,6 +67,7 @@ function exportExcel(){
 }
 async function resetGeneration(){
  if(!currentRows.length&&!liveRunId)return;
+ radarPollEpoch+=1;
  if(!confirm("Скинути поточну RADAR-генерацію? Після цього результати залишаться тільки у вже скачаному Excel."))return;
  if(radarApiBase&&liveRunId){try{await api(radarApiBase+"/api/v1/radar/test-runs/"+encodeURIComponent(liveRunId),{method:"DELETE"})}catch{}}
  liveRunId=null;currentRows=[];renderRows([]);
@@ -119,6 +120,7 @@ async function start(){
    setState("✓ ЗГЕНЕРОВАНО · "+rows.length,"green");
    $("radarRunInfo").innerHTML+="<br><b>Результат готовий:</b> перевірте ФІО/посаду/email/актуальність, скачайте Excel і після цього скиньте генерацію.";
  }catch(e){
+   if(myEpoch!==radarPollEpoch)return;
    renderRows([]);setState("ПОМИЛКА","red");
    $("radarRunInfo").innerHTML="<b>RADAR не виконав пошук:</b> "+esc(e.data?.detail||e.data?.error||e.message);
  }
