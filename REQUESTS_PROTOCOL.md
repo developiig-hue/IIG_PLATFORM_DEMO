@@ -122,3 +122,48 @@ The canonical staging entry point is:
 The short `/admin/` route may only redirect to that canonical view until a production reverse proxy maps the same ADMIN MASTER shell server-side.
 
 Any future redesign that changes the accepted layout or processing sequence requires explicit owner approval and is otherwise a RELEASE BLOCKER.
+
+
+## OWNER-VERIFIED E2E PASS — SUBSCRIBE
+
+Date: 2026-10-07  
+Status: **OWNER VERIFIED / ACCEPTED / MUST SURVIVE HOSTING MIGRATION**
+
+The IIG owner physically executed the Subscribe intake flow in the accepted GitHub Pages ADMIN MASTER demo and confirmed the following end-to-end behavior:
+
+1. A public visitor submitted the `SUBSCRIBE` form with real test data.
+2. The submission appeared in `Admin → Обробка Заяв та Підписки → ПІДПИСКА НА DIGEST`.
+3. The request preserved the submitted identity/contact fields, submission timestamp, language and consent evidence.
+4. The per-column Excel export downloaded successfully with the submitted data.
+5. The export established the download audit (`downloaded_at` / ADMIN_2 download state).
+6. ADMIN_2 processing completed successfully and the request became `ОБРОБЛЕНО`.
+7. The processed record was consolidated into the IIG contacts workflow and displayed `У БАЗІ IIG`.
+8. The lifetime request remains visible/auditable; processing does not delete the source submission.
+
+This observed sequence is accepted as the canonical behavior:
+
+`PUBLIC SUBSCRIBE → REQUEST REGISTRY → ADMIN SUBSCRIBE LANE → EXCEL DOWNLOAD → downloaded_at → ADMIN_2 PROCESSED → IIG CONTACTS`
+
+### Public UX privacy rule
+
+Internal environment/debug text MUST NOT be shown to the public visitor after a successful form submission. In particular, the former GitHub Pages message beginning with `✓ DEMO:` is prohibited on the public form.
+
+The static DEMO fallback may continue storing the test record in browser-local storage for ADMIN MASTER workflow verification, but that implementation detail is not reader-facing.
+
+### Paid-hosting preservation rule
+
+When moving IIG to paid hosting, the implementation MAY replace browser-local demo persistence with PostgreSQL/private transactional storage, but the owner-verified business sequence above MUST NOT change.
+
+Migration is RELEASE-BLOCKED if any of these regress:
+- subscribe submission does not enter the canonical request registry;
+- Admin Subscribe lane does not receive it;
+- exact submitted fields/consent/timestamp are lost;
+- Excel does not contain the record;
+- Excel delivery does not create a download audit;
+- processing is possible before download;
+- ADMIN_2 processing state/timestamp is lost;
+- processed Subscribe cannot enter the unified IIG contact base;
+- source request disappears after processing;
+- internal DEMO/backend/debug implementation text becomes visible to the public user.
+
+Machine guard marker: `OWNER_VERIFIED_SUBSCRIBE_E2E_V32`.
