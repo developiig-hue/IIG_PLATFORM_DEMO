@@ -50,3 +50,7 @@ jobs:
           grep -q 'saveMailTemplate' backend/src/mailing-store.mjs
           grep -q 'mailTemplateLanguage' admin-ua.html
           grep -q 'data-mail-cmd="bold"' admin-ua.html
+          grep -q 'IIG_UA_MAIL_MASTER_V36' MAILING_PROTOCOL.md
+          grep -q '{{name}}' backend/src/mailing-store.mjs
+          grep -q 'Шановний {{name}} !' backend/src/mailing-store.mjs
+          grep -q 'РОЗМІСТИТИ ПРОЄКТ' backend/src/mailing-store.mjs
