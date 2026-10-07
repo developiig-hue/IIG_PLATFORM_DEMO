@@ -42,16 +42,16 @@ The common IIG client base and Mailing Center remain separate from RADAR generat
 
 ## DEMO TEST mode
 
-GitHub Pages uses `data/radar-test-latest.json` only as a safe operator test snapshot.
+GitHub Pages uses only a synthetic in-code acceptance fixture with clearly fake test contacts. No real RADAR-generated client snapshot is committed to Git, cloud storage or browser localStorage.
 
-At button press the selected test rows are copied into JavaScript memory only.
+At button press the synthetic rows exist in JavaScript memory only.
 
 The DEMO Admin can:
-- see contact name / role / email / relevance / source;
-- download the current generated set as an Excel-compatible file;
+- verify the visible contact name / role / email / relevance / source columns;
+- download the current temporary set as an Excel-compatible file;
 - reset the generation.
 
-The DEMO does not create CRM/contact records.
+The DEMO does not create or store real client/contact records.
 
 ## Production mode
 
