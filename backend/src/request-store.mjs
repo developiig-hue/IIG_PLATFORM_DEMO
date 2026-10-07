@@ -126,3 +126,66 @@ export async function mailingEligibleContacts(){
   const db=await read();
   return structuredClone(db.contacts.filter(x=>x.status==="ACTIVE"&&x.marketing_consent===true&&!x.unsubscribed_at));
 }
+
+
+const truthy=v=>["1","true","yes","y","так","да","active","confirmed","підтверджено"].includes(clean(v).toLowerCase());
+const suppressedValue=v=>["suppressed","unsubscribed","blocked","bounced","відписано","заблоковано"].includes(clean(v).toLowerCase());
+export async function importContactsBase(rows,role,source="ADMIN_2_XLSX"){
+  if(role!=="ADMIN_2")throw Object.assign(new Error("ADMIN_2_REQUIRED"),{code:"ADMIN_2_REQUIRED"});
+  if(!Array.isArray(rows))throw Object.assign(new Error("ROWS_REQUIRED"),{code:"ROWS_REQUIRED"});
+  return mutate(db=>{
+    const now=new Date().toISOString();
+    const result={total:rows.length,added:0,updated:0,invalid:0,preserved_suppressed:0,suppressed:0,active:0,pending:0};
+    for(const raw of rows){
+      const e=email(raw.email);
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){result.invalid++;continue}
+      const statusRaw=clean(raw.status).toLowerCase();
+      const consentOk=raw.marketing_consent===true||truthy(raw.marketing_consent)||truthy(raw.consent);
+      const evidence=clean(raw.consent_evidence||raw.consentEvidence).slice(0,800);
+      const wantsSuppressed=suppressedValue(statusRaw)||raw.unsubscribed===true;
+      const wantsActive=(statusRaw==="active"||consentOk)&&!wantsSuppressed;
+      let x=db.contacts.find(y=>y.email===e);
+      if(!x){
+        x={
+          id:"CNT-"+crypto.randomBytes(6).toString("hex").toUpperCase(),
+          email:e,
+          name:clean(raw.name).slice(0,160),
+          company:clean(raw.company).slice(0,220),
+          position:clean(raw.position).slice(0,160),
+          language:String(raw.language||raw.lang||"UA").toUpperCase()==="EN"?"EN":"UA",
+          status:wantsSuppressed?"SUPPRESSED":(wantsActive&&(consentOk||evidence)?"ACTIVE":"PENDING"),
+          marketing_consent:!wantsSuppressed&&wantsActive&&(consentOk||!!evidence),
+          consent_evidence:evidence,
+          source_request_ids:[],
+          source:clean(raw.source||source).slice(0,240),
+          created_at:now,
+          imported_at:now,
+          imported_by:role,
+          import_source:source
+        };
+        if(wantsSuppressed){x.unsubscribed_at=now;x.unsubscribe_reason="IMPORTED_SUPPRESSION";x.unsubscribe_source=source}
+        db.contacts.push(x);result.added++;
+      }else{
+        x.name=clean(raw.name)||x.name;
+        x.company=clean(raw.company)||x.company;
+        x.position=clean(raw.position)||x.position;
+        x.language=String(raw.language||raw.lang||x.language||"UA").toUpperCase()==="EN"?"EN":"UA";
+        x.source=clean(raw.source)||x.source||source;
+        x.imported_at=now;x.imported_by=role;x.import_source=source;
+        if(evidence)x.consent_evidence=evidence;
+        if(x.unsubscribed_at||x.status==="SUPPRESSED"){
+          result.preserved_suppressed++;
+        }else if(wantsSuppressed){
+          x.status="SUPPRESSED";x.marketing_consent=false;x.unsubscribed_at=now;x.unsubscribe_reason="IMPORTED_SUPPRESSION";x.unsubscribe_source=source;result.suppressed++;
+        }else if(wantsActive&&(consentOk||evidence)){
+          x.status="ACTIVE";x.marketing_consent=true;result.active++;
+        }
+        result.updated++;
+      }
+      if(x.status==="ACTIVE")result.active++;
+      else if(x.status==="PENDING")result.pending++;
+      else if(x.status==="SUPPRESSED"&&!wantsSuppressed)result.suppressed++;
+    }
+    return {status:"IMPORTED",imported_at:now,imported_by:role,source,...result,contacts_total:db.contacts.length};
+  });
+}
