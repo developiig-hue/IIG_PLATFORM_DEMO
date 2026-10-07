@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node src/server.mjs",
     "test": "node --test test/*.test.mjs",
-    "check": "node --check src/server.mjs && node --check src/storage.mjs && node --check src/auth.mjs"
+    "check": "node --check src/server.mjs && node --check src/storage.mjs && node --check src/auth.mjs && node --check src/request-store.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.922.0",
