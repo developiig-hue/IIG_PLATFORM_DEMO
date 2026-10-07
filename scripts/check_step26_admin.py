@@ -614,11 +614,14 @@ radar_protocol=(root/"RADAR_PROTOCOL.md").read_text(encoding="utf-8")
 need("radarStartRobot" in html and "RADAR · ЦІЛЬОВИЙ ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ" in html,"RADAR robot launch UI missing")
 need("/api/v1/radar/search" in radar_js,"RADAR ephemeral production API wiring missing")
 need("radarExportExcel" in html and "radarResetGeneration" in html and "IIG_RADAR_Target_Search_" in radar_js,"RADAR Excel export/reset flow missing")
-need("DEMO TEST · READY" in radar_js and "const DEMO_ROWS=" in radar_js,"Working GitHub Pages synthetic DEMO TEST RADAR mode missing")
+need("LIVE RADAR · BACKEND REQUIRED" in radar_js,"GitHub Pages must expose honest live-backend-required RADAR state")
 need("IIG_RADAR_EPHEMERAL_V39" in radar_protocol,"RADAR ephemeral V39 protocol marker missing")
 need("IIG_RADAR_DEMO_EPHEMERAL_V39" in radar_protocol,"RADAR DEMO ephemeral V39 protocol marker missing")
 need(not (root/"data/radar-test-latest.json").exists(),"Stored RADAR client snapshot is forbidden")
 need("no generated lead-base accumulation" in radar_protocol.lower() or "no-cloud accumulation" in radar_protocol.lower() or "cloud storage" in radar_protocol.lower(),"RADAR no-cloud accumulation contract missing")
 
 # RADAR synthetic DEMO fixture must expose required columns without real client persistence
-need("olena.test@example.com" in radar_js and "Energy Manager" in radar_js and "relevance" in radar_js,"Synthetic RADAR demo fixture incomplete")
+need("DEMO_ROWS" not in radar_js and "@example.com" not in radar_js,"Fake/preloaded RADAR demo contacts are forbidden")
+
+need("IIG_RADAR_LIVE_1000_V40" in radar_protocol,"RADAR live 1000-source V40 marker missing")
+need("min_sources:1000" in radar_js and "scanned_sources" in radar_js,"RADAR UI 1000-source scan enforcement missing")
