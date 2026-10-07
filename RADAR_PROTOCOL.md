@@ -1,59 +1,104 @@
 # IIG RADAR ADMIN SEARCH — ADMIN MASTER UI CONTRACT
 
 Status: OWNER REQUESTED / IMPLEMENTED — 2026-10-07  
-Marker: `IIG_RADAR_ADMIN_SEARCH_V37`
+Marker: `IIG_RADAR_EPHEMERAL_V39`
 
 ## Accepted UI location
-`ADMIN MASTER → Розсилка та база → RADAR · ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ`.
 
-## Operator flow
-1. ADMIN_2 enters search query.
+`ADMIN MASTER → Розсилка та база → RADAR · ЦІЛЬОВИЙ ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ`.
+
+## Accepted operator flow
+
+`1 пошук → тимчасова таблиця → Excel → скидання → ручне рішення ADMIN_2`.
+
+1. ADMIN_2 enters target query.
 2. ADMIN_2 chooses country/market, industry and maximum candidates.
 3. ADMIN_2 presses `▶ ЗАПУСТИТИ RADAR · ADMIN_2`.
-4. Admin calls relative endpoint `POST /api/v1/radar/runs`.
-5. Backend dispatches Redis queue `radar`.
-6. Robot calls the private configured search provider.
-7. Candidates are persisted to PostgreSQL `radar_prospects` as PENDING.
-8. Admin polls `GET /api/v1/radar/runs/{run_key}`.
-9. Candidate table is loaded through `GET /api/v1/radar/prospects`.
-10. ADMIN_2 manually checks the source and chooses `До бази IIG` or `Відхилити`.
-11. Promotion creates an internal CRM lead/contact with mailing status PENDING.
-12. RADAR discovery alone never creates ACTIVE marketing consent.
+4. A new run replaces any previous generated set.
+5. Results are shown only in the current Admin session.
+6. Required visible fields:
+   - company;
+   - full name;
+   - position;
+   - email;
+   - short relevance/current signal;
+   - source.
+7. ADMIN_2 checks the result.
+8. ADMIN_2 presses `⬇ СКАЧАТИ ЗГЕНЕРОВАНУ БАЗУ В EXCEL`.
+9. ADMIN_2 presses `✕ СКИНУТИ ГЕНЕРАЦІЮ`.
+10. If useful, ADMIN_2 manually adds selected rows to the common IIG client base through the accepted contact-base import/edit workflow.
 
-## GitHub Pages behavior
-GitHub Pages remains visual/demo staging and MUST NOT contain search-provider secrets.
+## No automatic accumulation
 
-For operator acceptance testing, the RADAR button runs a safe **DEMO TEST SEARCH** against the repository artifact `data/radar-test-latest.json`. That artifact is a current public-evidence snapshot generated outside the browser and contains no private provider token. It allows the owner to verify the full Admin interaction: launch → results → source review → reject/check candidate.
+RADAR must NOT automatically:
+- add candidates to the common IIG contact base;
+- add candidates to mailing recipients;
+- create ACTIVE subscribers;
+- accumulate generated sets on the site;
+- persist the generated list in cloud storage;
+- save generated rows to browser localStorage.
 
-The DEMO TEST snapshot is not the production search engine and must never be represented as a live provider call. Paid hosting switches the same button to the private `/api/v1/radar/runs` backend.
+The common IIG client base and Mailing Center remain separate from RADAR generation.
 
-The manual CSV/JSON import remains a fallback/recovery path; it is not the primary production RADAR mechanism.
+## DEMO TEST mode
+
+GitHub Pages uses `data/radar-test-latest.json` only as a safe operator test snapshot.
+
+At button press the selected test rows are copied into JavaScript memory only.
+
+The DEMO Admin can:
+- see contact name / role / email / relevance / source;
+- download the current generated set as an Excel-compatible file;
+- reset the generation.
+
+The DEMO does not create CRM/contact records.
+
+## Production mode
+
+Paid hosting uses:
+- `POST /api/v1/radar/search`;
+- private server-side search provider;
+- response `mode=EPHEMERAL`;
+- `persisted=false`.
+
+Provider configuration remains server-side:
+- `IIG_RADAR_SEARCH_ENDPOINT`;
+- `IIG_RADAR_SEARCH_TOKEN`.
+
+## Excel contract
+
+File name pattern:
+`IIG_RADAR_Target_Search_YYYY-MM-DD.xls`.
+
+Columns:
+- Компанія
+- ПІБ
+- Посада
+- Email
+- Країна
+- Галузь
+- Актуальність
+- Джерело
+
+## Reset contract
+
+`СКИНУТИ ГЕНЕРАЦІЮ`:
+- clears the current in-memory rows;
+- disables Excel/reset buttons;
+- returns the block to “ready for new search”;
+- does not delete or alter the manually maintained common IIG client base.
 
 ## Migration hard lock
+
 Paid hosting must preserve:
-- this Admin block and launch button;
-- relative `/api/v1/radar/*` endpoints;
-- ADMIN_2 operational launch/moderation;
-- ADMIN_1 oversight;
-- Redis radar queue;
-- PostgreSQL run/prospect history;
-- private provider configuration;
-- manual review;
-- PENDING-not-ACTIVE rule;
-- source URL visibility;
-- FAILED state when provider is unavailable.
+- one-search/one-temporary-set behavior;
+- contact detail fields;
+- Excel download;
+- reset generation;
+- no automatic RADAR → mailing transfer;
+- no generated lead-base accumulation in cloud storage;
+- manual ADMIN_2 transfer into the common IIG client base only.
 
-Replacing the robot with static upload-only behavior is a RELEASE BLOCKER.
+Any implementation that changes RADAR back into an accumulating cloud lead registry is a RELEASE BLOCKER.
 
-
-## DEMO TEST RADAR V38 — 2026-10-07
-
-Accepted test behavior:
-- `▶ ЗАПУСТИТИ RADAR · ADMIN_2` works on GitHub Pages;
-- it filters the current public-evidence snapshot by selected industry/country and requested result limit;
-- the run state becomes `TEST SEARCH…` and then `✓ TEST SUCCESS · N`;
-- candidate company, signal, confidence and source link are visible;
-- test rejection can be exercised locally;
-- promotion to the real IIG CRM remains server-only and therefore cannot create fake production records.
-
-Marker: `IIG_RADAR_DEMO_TEST_V38`.
+Marker: `IIG_RADAR_DEMO_EPHEMERAL_V39`.
