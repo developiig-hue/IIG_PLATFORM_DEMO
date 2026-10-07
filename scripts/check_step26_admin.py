@@ -589,3 +589,11 @@ need('data-mail-cmd="bold"' in html and 'data-mail-cmd="italic"' in html and 'da
 need("IIG_MAIL_TEMPLATE_EDITOR_V35" in mailing_protocol,"Mail template editor protocol marker missing")
 need('app.get("/api/v1/mailing/template/:language"' in backend and 'app.post("/api/v1/mailing/template/:language"' in backend,"Mail template API missing")
 need("sanitizeMailHtml" in backend and "{{greeting}}" in backend,"Mail template safety/personalization contract missing")
+
+
+# Owner-approved UA address mail V36
+mail_store=(root/"backend/src/mailing-store.mjs").read_text(encoding="utf-8")
+need("IIG_UA_MAIL_MASTER_V36" in mailing_protocol,"Owner-approved UA mail master protocol marker missing")
+need("Шановний {{name}} !" in mail_store,"UA mail master automatic name token missing")
+need("Вересень 2026" in mail_store and "РОЗМІСТИТИ ПРОЄКТ" in mail_store,"UA mail master approved copy incomplete")
+need("contactName" in backend and 'replaceAll("{{name}}"' in backend,"Server-side recipient name personalization missing")
