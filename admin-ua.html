@@ -197,7 +197,7 @@
 <div id="mailBodyRich" class="richBody" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="true"></div>
 </div>
 <div class="toolbar"><button class="btn primary" id="saveMailTemplate">💾 ЗБЕРЕГТИ ТЕКСТ · ADMIN_2</button><button class="btn primary" id="resetMailTemplate">↺ ПОВЕРНУТИ ЗАТВЕРДЖЕНИЙ ТЕКСТ</button></div>
-<div class="miniwarn"><b>Системні елементи:</b> персональне звернення <code>{{greeting}}</code> можна залишити у тексті; якщо ADMIN_2 його видалить, сервер автоматично додасть звернення на початок. Посилання «Відписатися» сервер додає до кожного реального листа автоматично і його неможливо прибрати редактором.</div>
+<div class="miniwarn"><b>Системні елементи:</b> у рядку <code>Шановний {{name}} !</code> backend автоматично підставляє поле «Ім’я» з бази IIG. Якщо ім’я відсутнє — використовується «Шановний колего !». У production тестове mailto-відписування автоматично замінюється персональним HTTPS unsubscribe та suppression.</div>
 </div>
 <div class="row"><span>ACTIVE отримувачів у базі IIG</span><b id="campaignRecipients">0</b></div>
 <div class="row"><span>Відписані / виключені</span><span class="pill red" id="mailSuppressed">0</span></div>
@@ -258,4 +258,4 @@
 </div></main></div>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2 id="modalTitle">ПОВІДОМЛЕННЯ ADMIN</h2><p id="modalText"></p><p class="muted hidden" id="modalProductionHint">У демоверсії ця production-дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
 <script src="assets/admin-final-admin1-v1.js?v=REQUESTS-PROCESSING-V31"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V34"></script><!-- digest-publish-route-final-20261003 -->
-<script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V35"></script></body></html>
+<script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V36"></script></body></html>
