@@ -21,7 +21,7 @@ function requestCard(r){
  return '<article class="requestcard processingcard '+(processed?"processed":"")+'"><div class="requestid"><b>'+esc(r.id)+'</b><span class="pill '+(processed?"green":downloaded?"blue":"amber")+'">'+(processed?"ОБРОБЛЕНО":downloaded?"ЗАВАНТАЖЕНО":"НОВА")+'</span></div><div class="requestfields">'+details+'</div>'+
  '<div class="requestaudit"><span>Завантажено: <b>'+esc(fmtDate(r.downloaded_at))+'</b></span><span>ADMIN: <b>'+esc(r.downloaded_by||"—")+'</b></span><span>Оброблено: <b>'+esc(fmtDate(r.processed_at))+'</b></span></div>'+
  '<label class="processedcheck '+(!downloaded?"disabled":"")+'"><input type="checkbox" class="markProcessed" data-id="'+esc(r.id)+'" '+(processed?"checked":"")+' '+(!downloaded||role!=="ADMIN_2"?"disabled":"")+'> ADMIN_2 · дані оброблено</label>'+
- (processed?'<button class="btn primary promoteContact" data-id="'+esc(r.id)+'" '+(promoted?"disabled":"")+'>'+(promoted?"✓ У БАЗІ IIG":"→ ПЕРЕДАТИ ДО БАЗИ КОНТАКТІВ IIG")+'</button>':'')+
+ (processed?'<button class="btn primary '+(promoted?"openContactBase":"promoteContact")+'" data-id="'+esc(r.id)+'">'+(promoted?"✓ У БАЗІ IIG":"→ ПЕРЕДАТИ ДО БАЗИ КОНТАКТІВ IIG")+'</button>':'')+
  (!downloaded?'<div class="reqhint">Спочатку скачайте Excel цієї колонки. До цього заявка не може вважатися обробленою.</div>':'')+'</article>';
 }
 function render(){
@@ -36,7 +36,7 @@ function render(){
  $("requestsAllProcessed").textContent=stats.all.processed;
  $("requestsSourceMode").textContent=mode==="BACKEND"?"PRODUCTION BACKEND":"DEMO · ЦЕЙ БРАУЗЕР";
  document.querySelectorAll(".markProcessed").forEach(x=>x.onchange=()=>toggleProcessed(x.dataset.id,x.checked,x));
- document.querySelectorAll(".promoteContact").forEach(x=>x.onclick=()=>promote(x.dataset.id,x));
+ document.querySelectorAll(".promoteContact").forEach(x=>x.onclick=()=>promote(x.dataset.id,x));document.querySelectorAll(".openContactBase").forEach(x=>x.onclick=()=>{const r=rows.find(y=>y.id===x.dataset.id);if(r&&window.IIGContacts?.focusContact)window.IIGContacts.focusContact(r.email);else location.hash="#mailing"});
 }
 async function refresh(){
  try{
