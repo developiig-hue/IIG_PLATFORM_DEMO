@@ -227,7 +227,7 @@ need("items.slice(0,6)" in advice_js,"Homepage must render exactly latest 6 Advi
 # Industry NEWS card-layout regression guards
 industry=(root/"industry.html").read_text(encoding="utf-8")
 pubnews=(root/"assets/public-news.js").read_text(encoding="utf-8")
-need("assets/public-news.js?v=DEMO-ARTICLE-CONSISTENCY-V28" in industry,"Industry pages must load canonical published NEWS renderer")
+need("assets/public-news.js?v=DEMO-IMAGE-TOP5-V29" in industry,"Industry pages must load canonical published NEWS renderer")
 need('id="industry-news-grid-v2"' in industry and "grid-template-columns:repeat(3" in industry,"Industry pages must use Advice-style card grid")
 need("industryCard=x=>" in pubnews and "ЧИТАТИ НОВИНУ" in pubnews,"Industry NEWS card renderer missing")
 need("renderItems();" not in industry[industry.find("window.addEventListener"):],"Legacy static industry demo renderer must not run")
@@ -502,3 +502,11 @@ need("preview_data" not in js[js.index("function publicBridgeItem"):js.index("fu
 need("primary_source_verified:n.primary_source_verified===true" in js,"Compact DEMO snapshot must retain primary_source_verified")
 need("DEMO_ARTICLE_CONSISTENCY_V28" in pub and "const prev=map.get(x.slug)||{}" in pub,"DEMO full-article consistency contract missing")
 need("DEMO-ARTICLE-CONSISTENCY-V28" in (root/"article.html").read_text(encoding="utf-8"),"Article page must load V28 public-news runtime")
+
+need("DEMO_UPLOAD_IMAGE_TOP5_V29" in js and "DEMO_UPLOAD_IMAGE_TOP5_V29" in pub,"Uploaded image/TOP-5 V29 runtime marker missing")
+need("image_rights_verified:n.image_choice.image_rights_verified===true" in js,"Uploaded NEWS image must preserve image_rights_verified")
+need("prevVerified&&!curVerified?prevChoice" in pub,"Legacy DEMO uploaded-image self-heal missing")
+need("mergeDemoPublished(registryItems).filter(valid)" in pub,"DEMO published items must merge against full registry metadata before validation")
+kioge=[x for x in news_items if x.get("slug")=="kioge-2026-opening-58-countries-280-meetings"][0]
+need(kioge.get("homepage_top5") is True and kioge.get("editorial_tag")=="EVENT" and kioge.get("digest_rubric")=="GENERAL","KIOGE must be TOP-5 EVENT in GENERAL Digest rubric")
+need("DIGEST_EVENT_TAG_V29" in js and "finaldigest-tag" in js and "tag:editorialTag(n)" in js,"Digest EVENT tag route/render missing")
