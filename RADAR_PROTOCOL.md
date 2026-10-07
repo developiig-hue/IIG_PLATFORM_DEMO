@@ -40,18 +40,17 @@ RADAR must NOT automatically:
 
 The common IIG client base and Mailing Center remain separate from RADAR generation.
 
-## DEMO TEST mode
+## DEMO / GitHub Pages mode
 
-GitHub Pages uses only a synthetic in-code acceptance fixture with clearly fake test contacts. No real RADAR-generated client snapshot is committed to Git, cloud storage or browser localStorage.
+GitHub Pages must not simulate a successful RADAR run with invented or preloaded client contacts.
 
-At button press the synthetic rows exist in JavaScript memory only.
+On GitHub Pages:
+- the real RADAR controls remain visible for acceptance/UI review;
+- pressing RUN must not fabricate companies, names, positions or emails;
+- the UI explains that the real live scan requires the private backend;
+- no real generated contact list is stored in Git, localStorage or another demo file.
 
-The DEMO Admin can:
-- verify the visible contact name / role / email / relevance / source columns;
-- download the current temporary set as an Excel-compatible file;
-- reset the generation.
-
-The DEMO does not create or store real client/contact records.
+A green RADAR success state is permitted only when the production backend confirms a real external scan.
 
 ## Production mode
 
@@ -140,3 +139,22 @@ Forbidden:
 - PostgreSQL generated candidate rows for this ADMIN workflow;
 - object/cloud file copy;
 - automatic CRM/mailing insertion.
+
+
+## LIVE RADAR 1000+ SOURCES — V40
+
+A production run is successful only when the backend receives provider evidence that at least 1000 real external web sources were processed.
+
+Required request:
+- min_sources >= 1000
+- deep_scan = true
+
+Required response:
+- scanned_sources >= 1000
+- rows[] containing only contact-complete verified output rows
+
+The number of final contacts may be much lower than 1000; 1000 is the minimum discovery/source-processing depth.
+
+Fake DEMO contacts, static snapshots and cached pre-generated contact lists cannot satisfy this requirement.
+
+Marker: `IIG_RADAR_LIVE_1000_V40`.
