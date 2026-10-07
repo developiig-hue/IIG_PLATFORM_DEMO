@@ -170,10 +170,10 @@
 </div>
 <div class="form2">
 <label>Галузь<select class="input" id="radarIndustry"><option value="energy">Енергетика</option><option value="metallurgy">Металургія / Mining</option><option value="agriculture">Агро</option><option value="food">Харчова промисловість</option><option value="logistics">Логістика</option><option value="datacenters">Data Centers</option><option value="other">Інше</option></select></label>
-<label>Максимум кандидатів<select class="input" id="radarLimit"><option>10</option><option selected>20</option><option>50</option><option>100</option></select></label>
+<label>Максимум кандидатів<select class="input" id="radarLimit"><option>10</option><option>20</option><option selected>50</option><option>100</option></select></label>
 </div>
-<div class="toolbar"><button class="btn success" id="radarStartRobot">▶ ЗАПУСТИТИ RADAR · ADMIN_2</button><button class="btn primary" id="radarExportExcel" disabled>⬇ СКАЧАТИ ЗГЕНЕРОВАНУ БАЗУ В EXCEL</button><button class="btn danger" id="radarResetGeneration" disabled>✕ СКИНУТИ ГЕНЕРАЦІЮ</button><span class="pill blue" id="radarRunState">DEMO TEST · READY</span></div>
-<div id="radarRunInfo" class="miniwarn"><b>Правило:</b> новий запуск повністю замінює попередню тимчасову вибірку. Після скачування Excel натисніть «СКИНУТИ ГЕНЕРАЦІЮ». Автоматичного перенесення у базу розсилки немає.</div>
+<div class="toolbar"><button class="btn success" id="radarStartRobot">▶ ЗАПУСТИТИ RADAR · ADMIN_2</button><button class="btn primary" id="radarExportExcel" disabled>⬇ СКАЧАТИ ЗГЕНЕРОВАНУ БАЗУ В EXCEL</button><button class="btn danger" id="radarResetGeneration" disabled>✕ СКИНУТИ ГЕНЕРАЦІЮ</button><span class="pill blue" id="radarRunState">LIVE RADAR · 1000+ SOURCES</span></div>
+<div id="radarRunInfo" class="miniwarn"><b>LIVE RADAR:</b> production-запуск має реально обробити щонайменше 1000 зовнішніх web-джерел. Лише після підтвердженого scan_count ≥ 1000 вибірка вважається успішною. Новий запуск замінює попередній; автоматичного перенесення у базу розсилки немає.</div>
 <div class="row"><span>Згенеровано у поточній сесії</span><b id="radarPending">0</b></div>
 <div class="tablewrap recipientpreview"><table class="table"><thead><tr><th>Компанія</th><th>ПІБ / посада</th><th>Email</th><th>Коротко: актуальність</th><th>Джерело</th></tr></thead><tbody id="radarRows"><tr><td colspan="5">Генерацію ще не запускали.</td></tr></tbody></table></div>
 <div class="miniwarn"><b>Після Excel:</b> ADMIN_2 сам вирішує, які контакти потрібні IIG, і вручну додає їх у блок «КЕРУВАННЯ БАЗОЮ КОНТАКТІВ» вище. RADAR не має кнопки автоматичного перенесення у mailing/CRM.</div>
@@ -270,4 +270,4 @@
 </div></main></div>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2 id="modalTitle">ПОВІДОМЛЕННЯ ADMIN</h2><p id="modalText"></p><p class="muted hidden" id="modalProductionHint">У демоверсії ця production-дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
 <script src="assets/admin-final-admin1-v1.js?v=REQUESTS-PROCESSING-V31"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V34"></script><!-- digest-publish-route-final-20261003 -->
-<script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V36"></script><script src="assets/admin-radar.js?v=RADAR-V39"></script></body></html>
+<script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V36"></script><script src="assets/admin-radar.js?v=RADAR-V40"></script></body></html>
