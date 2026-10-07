@@ -4,7 +4,7 @@
 <button class="active" data-tab="dashboard">▦ <span>Головна</span></button>
 <button data-tab="content">▤ <span>Новини та публікації</span></button>
 <button data-tab="digest">◫ <span>Дайджест</span></button>
-<button data-tab="mailing">✉ <span>Розсилка та база</span></button><button data-tab="requests">☷ <span>Заявки</span></button>
+<button data-tab="mailing">✉ <span>Розсилка та база</span></button><button data-tab="requests">☷ <span>Обробка Заяв та Підписки</span></button>
 <button data-tab="robots">⚙ <span>Роботи та джерела</span></button>
 <button data-tab="website">⌂ <span>Керування сайтом</span></button>
 <button data-tab="users">♙ <span>Користувачі та права</span></button>
@@ -169,7 +169,40 @@
 <div class="toolbar"><button class="btn primary" id="mailDryRun">Перевірити розсилку</button><button class="btn danger" id="testSendProd">Тестовий лист</button><button class="btn danger" id="massSendProd">Запустити розсилку</button></div>
 <div id="mailCheck" class="miniwarn">Перед реальною розсилкою система автоматично перевірить затверджений Digest SHA, згоду отримувачів, відписки та виключення, дублікати, сервіс відправлення, сесію Admin/MFA і захист від повторної відправки.</div></div></div></section>
 
-<section class="tab" id="requests"><div class="requestintro card"><h2>ВХІДНІ ЗАЯВКИ ТА МОДЕРАЦІЯ</h2><p class="muted">У production тут автоматично з’являються заповнені форми з публічного сайту. На STEP 26 показано повну структуру карток і workflow модерації без збереження персональних даних у Git.</p></div><div class="grid3 requestgrid"><div class="card module"><div class="sectionhead"><h2>ЗАЯВКИ НА ПРОЄКТИ</h2><span class="pill amber" id="projectReqCount">1 НА ПЕРЕВІРЦІ</span></div><div id="projectRequests"></div></div><div class="card module"><div class="sectionhead"><h2>ПІДПИСКИ НА DIGEST</h2><span class="pill amber" id="subscribeReqCount">2 ЗАПИСИ</span></div><div id="subscribeRequests"></div></div><div class="card module"><div class="sectionhead"><h2>ПИТАННЯ ГОЛОВНОМУ ІНЖЕНЕРУ</h2><span class="pill amber" id="engineerReqCount">1 НА ПЕРЕВІРЦІ</span></div><div id="engineerRequests"></div></div></div><div class="miniwarn">Після модерації контакт можна передати до єдиної бази IIG. Для підписки на Digest статус ACTIVE дозволяється лише за наявності явної згоди. Відписка негайно переводить контакт у SUPPRESSED і відображається червоним; повторний імпорт не має права активувати його автоматично.</div></section>
+<section class="tab" id="requests">
+<div class="card requestscommand">
+  <div class="sectionhead"><div><h2>ОБРОБКА ЗАЯВ ТА ПІДПИСКИ</h2><p class="muted">Public Form → protected backend → єдиний реєстр → ADMIN_2 download + processing → єдина база контактів IIG. Дані не зберігаються у Git.</p></div><span class="pill blue" id="requestsSourceMode">ЗАВАНТАЖЕННЯ…</span></div>
+  <div class="requestslifetime">
+    <div><small>УСЬОГО ЗВЕРНЕНЬ ВІД ПОЧАТКУ</small><b id="requestsAllTotal">0</b></div>
+    <div><small>ЩЕ НЕ ОБРОБЛЕНО</small><b id="requestsAllPending">0</b></div>
+    <div><small>ОБРОБЛЕНО ADMIN_2</small><b id="requestsAllProcessed">0</b></div>
+    <label>Роль обробки<select class="input" id="requestsRole"><option value="ADMIN_2" selected>ADMIN_2 · Processing Operator</option><option value="ADMIN_1">ADMIN_1 · Read / Control</option></select></label>
+  </div>
+  <div class="miniwarn"><b>HARD RULE:</b> заявка НЕ вважається обробленою, доки її дані не були скачані з IIG. Excel‑експорт фіксує <code>downloaded_at</code>. Лише після цього ADMIN_2 може поставити галочку «дані оброблено». ADMIN_1 бачить lifetime‑лічильники незалежно від поточної черги.</div>
+  <div class="toolbar"><button class="btn primary" id="requestsRefresh">↻ Оновити реєстр</button></div>
+</div>
+<div class="requests3">
+  <div class="card requestlane" data-request-type="project">
+    <div class="requestlanehead"><div><span class="requestlaneicon">▣</span><h2>РОЗМІСТИТИ ПРОЄКТ</h2></div><div class="lifetimebubble"><b id="projectTotal">0</b><small>усього</small></div></div>
+    <div class="requeststats"><span>Нові <b id="projectPending">0</b></span><span>Скачано <b id="projectDownloaded">0</b></span><span>Оброблено <b id="projectProcessed">0</b></span></div>
+    <div id="projectRequestList" class="requeststream"><div class="empty">Завантаження…</div></div>
+    <button class="btn success requestexport" id="projectExport">⬇ СКАЧАТИ ПРОЄКТИ В EXCEL</button>
+  </div>
+  <div class="card requestlane" data-request-type="engineer">
+    <div class="requestlanehead"><div><span class="requestlaneicon">⚙</span><h2>ЗАДАТИ ПИТАННЯ ГОЛОВНОМУ ІНЖЕНЕРУ</h2></div><div class="lifetimebubble"><b id="engineerTotal">0</b><small>усього</small></div></div>
+    <div class="requeststats"><span>Нові <b id="engineerPending">0</b></span><span>Скачано <b id="engineerDownloaded">0</b></span><span>Оброблено <b id="engineerProcessed">0</b></span></div>
+    <div id="engineerRequestList" class="requeststream"><div class="empty">Завантаження…</div></div>
+    <button class="btn success requestexport" id="engineerExport">⬇ СКАЧАТИ ПИТАННЯ В EXCEL</button>
+  </div>
+  <div class="card requestlane" data-request-type="subscribe">
+    <div class="requestlanehead"><div><span class="requestlaneicon">✉</span><h2>ПІДПИСКА НА DIGEST</h2></div><div class="lifetimebubble"><b id="subscribeTotal">0</b><small>усього</small></div></div>
+    <div class="requeststats"><span>Нові <b id="subscribePending">0</b></span><span>Скачано <b id="subscribeDownloaded">0</b></span><span>Оброблено <b id="subscribeProcessed">0</b></span></div>
+    <div id="subscribeRequestList" class="requeststream"><div class="empty">Завантаження…</div></div>
+    <button class="btn success requestexport" id="subscribeExport">⬇ СКАЧАТИ ПІДПИСКИ В EXCEL</button>
+  </div>
+</div>
+<div class="card"><h2>ПРАВИЛО КОНСОЛІДАЦІЇ</h2><p class="muted">Після download та обробки ADMIN_2 може передати контакт до єдиної бази IIG. Для PROJECT / ENGINEER він потрапляє як <b>PENDING</b> — згода на відповідь не є маркетинговою згодою. Для SUBSCRIBE з явною згодою — як <b>ACTIVE</b>. Первинна заявка при цьому залишається у lifetime‑реєстрі та не видаляється.</p></div>
+</section>
 
 <section class="tab" id="robots"><div class="grid"><div class="card module"><h2>РОБОТИ ТА АВТОМАТИЗАЦІЯ</h2><p class="muted">Статус показує фактичний стан у main. Наявність коду не дорівнює production GREEN.</p><div class="schedulelock"><b>РЕДАКЦІЙНИЙ ЦИКЛ:</b> ЩОПОНЕДІЛКА · 09:00–10:00 · Europe/Prague → Robot #1/#2 оновлюють матеріали → статус REVIEW → публікація лише після перевірки та затвердження ADMIN_1.</div><div id="robotRows"></div><div class="toolbar"><button class="btn success" id="manualNewsRefresh">▶ ОНОВИТИ НОВИНИ ЗАРАЗ</button><button class="btn lock" id="manualWorkflowLink" data-locked="Production Robot-run запускається через захищений backend/API /api/v1/editorial/refresh. GitHub не відкривається автоматично.">Robot-run · через backend/API</button><button class="btn danger" data-locked="Запуск окремого production-робота потребує захищеного server-side Audit">Запустити вибраного робота</button><button class="btn danger" data-locked="Аварійна зупинка потребує авторизованої захищеної дії через backend">Аварійна зупинка</button></div></div>
 <div class="miniwarn"><b>Ручний запуск ADMIN_1:</b> кнопка «ОНОВИТИ НОВИНИ ЗАРАЗ» фіксує поточні approvals і оновлює Admin без зовнішньої навігації. Повний Discovery → Content → Quality → Image/Rights цикл у production запускається через захищений backend/API, а не переходом на GitHub. Токени GitHub у браузері не зберігаються. Усі нові результати — тільки REVIEW, auto-publish заборонено.</div></div><div class="card"><h2>РЕЄСТР 260 ДЖЕРЕЛ</h2><div class="row"><span>Кількість за протоколом</span><b>260</b></div><div class="row"><span>Завантажено в демоверсії</span><b id="sourceCount2">…</b></div><div class="row"><span>Системне джерело даних</span><code>repo://content/discovery/…</code></div><p class="muted">Реєстр відображається без необхідності відкривати JSON. У production зміни джерел потребують прав та Audit.</p><div class="toolbar"><input class="input grow" id="sourceSearch" placeholder="Пошук джерела"><select class="input" id="sourceStateFilter"><option value="all">Усі</option><option value="verified">Технічно перевірені</option><option value="unverified">Потребують технічної перевірки</option></select></div><div id="sourceHealthSummary" class="miniwarn">Перевірка технічного стану реєстру…</div><div id="sourceRegistryPreview" class="tablewrap recipientpreview"></div></div></div></section>
@@ -185,4 +218,4 @@
 </div></main></div>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2 id="modalTitle">ПОВІДОМЛЕННЯ ADMIN</h2><p id="modalText"></p><p class="muted hidden" id="modalProductionHint">У демоверсії ця production-дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
 <script src="assets/admin-final-admin1-v1.js?v=DEMO-PUBLISH-COMPACT-V27"></script><script defer src="assets/admin-contacts.js?v=step26-review-20261001-2"></script><!-- digest-publish-route-final-20261003 -->
-</body></html>
+<script src="assets/admin-requests.js?v=REQUESTS-V31"></script></body></html>
