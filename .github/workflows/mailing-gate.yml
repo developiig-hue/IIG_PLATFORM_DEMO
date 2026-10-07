@@ -1,0 +1,42 @@
+name: IIG Mailing Center Gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'assets/admin-mailing.js'
+      - 'assets/admin-contacts.js'
+      - 'admin-ua.html'
+      - 'MAILING_PROTOCOL.md'
+      - '.github/workflows/mailing-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mailing-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install production dependencies
+        run: npm install --omit=dev
+      - name: Backend syntax gate
+        run: npm run check
+      - name: Verify mail dependencies
+        run: node -e "Promise.all([import('nodemailer'),import('@fastify/formbody')]).then(()=>console.log('MAILING_DEPENDENCIES_OK'))"
+      - name: Storage tests
+        run: npm test
+      - name: Mailing contract markers
+        working-directory: .
+        run: |
+          grep -q 'IIG_MAILING_V1' backend/src/server.mjs
+          grep -q 'PDF_NOT_EQUAL_TO_ADMIN1_APPROVED_CURRENT' backend/src/server.mjs
+          grep -q 'ADMIN_1_REQUIRED_TO_START_MAILING' backend/src/server.mjs
+          grep -q 'UNSUBSCRIBE / SUPPRESSED' assets/admin-contacts.js
+          grep -q 'IIG_MAILING_V33' MAILING_PROTOCOL.md
