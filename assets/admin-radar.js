@@ -1,9 +1,10 @@
 (()=>{"use strict";
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let currentRows=[];
+let currentRows=[];let liveRunId=null;const radarApiParam=new URLSearchParams(location.search).get("radar_api")||"";const radarApiBase=/^https:\/\/[-a-z0-9]+\.trycloudflare\.com$/i.test(radarApiParam)?radarApiParam.replace(/\/$/,""):"";
 
 async function api(url,opts={}){
- const r=await fetch(url,{credentials:"same-origin",cache:"no-store",...opts,headers:{...(opts.headers||{})}});
+ const cross=/^https:\/\//i.test(url);
+ const r=await fetch(url,{credentials:cross?"omit":"same-origin",cache:"no-store",...opts,headers:{...(opts.headers||{})}});
  let data=null;try{data=await r.json()}catch{data={}};
  if(!r.ok)throw Object.assign(new Error(data.error||data.detail||("HTTP "+r.status)),{status:r.status,data});
  return data;
@@ -54,31 +55,51 @@ function exportExcel(){
  a.download="IIG_RADAR_Target_Search_"+d+".xls";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href);
  $("radarRunInfo").innerHTML="<b>✓ Excel сформовано.</b> Після перевірки ADMIN_2 вручну додає потрібні контакти до загальної бази IIG. RADAR нічого не переносить автоматично.";
 }
-function resetGeneration(){
- if(!currentRows.length)return;
+async function resetGeneration(){
+ if(!currentRows.length&&!liveRunId)return;
  if(!confirm("Скинути поточну RADAR-генерацію? Після цього результати залишаться тільки у вже скачаному Excel."))return;
- currentRows=[];
- renderRows([]);
+ if(radarApiBase&&liveRunId){try{await api(radarApiBase+"/api/v1/radar/test-runs/"+encodeURIComponent(liveRunId),{method:"DELETE"})}catch{}}
+ liveRunId=null;currentRows=[];renderRows([]);
  setState("ГОТОВО ДО НОВОГО ПОШУКУ","blue");
  $("radarRunInfo").innerHTML="<b>✓ Генерацію скинуто.</b> Тимчасова вибірка очищена. Можна запускати новий цільовий пошук.";
+}
+function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
+async function runTemporaryBackend(payload){
+ const started=await api(radarApiBase+"/api/v1/radar/test-runs",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+ liveRunId=started.id;
+ for(let i=0;i<300;i++){
+   await wait(2000);
+   const x=await api(radarApiBase+"/api/v1/radar/test-runs/"+encodeURIComponent(liveRunId));
+   const state=String(x.state||"").toLowerCase();
+   if(state==="failed")throw new Error(x.error||"RADAR_LIVE_RUN_FAILED");
+   if(state==="success"){
+     if(Number(x.scanned_sources||0)<1000)throw new Error("RADAR_SCAN_UNDER_1000_SOURCES");
+     $("radarRunInfo").innerHTML="<b>✓ LIVE RADAR завершено:</b> оброблено "+esc(x.scanned_sources||0)+" сторінок · доменів "+esc(x.scanned_domains||0)+" · контактів "+esc(x.count||0)+".";
+     return Array.isArray(x.rows)?x.rows:[];
+   }
+   setState("LIVE ПОШУК…","amber");
+   $("radarRunInfo").innerHTML="<b>LIVE RADAR працює.</b> Реальний web-crawl виконується на тимчасовому backend. Run: "+esc(liveRunId);
+ }
+ throw new Error("RADAR_LIVE_RUN_TIMEOUT");
 }
 async function start(){
  const query=$("radarQuery")?.value.trim()||"",industry=$("radarIndustry")?.value||"",country=$("radarCountry")?.value.trim()||"",limit=Number($("radarLimit")?.value||20);
  if(query.length<3)return alert("Опишіть, яких потенційних клієнтів потрібно знайти.");
- // Every run replaces the previous transient set.
  currentRows=[];renderRows([]);setState("ПОШУК…","amber");
  try{
    let rows=[];
+   const payload={query,industry,country,limit,min_sources:1000,deep_scan:true};
    if(isPages()){
-     throw new Error("LIVE_RADAR_REQUIRES_PRIVATE_BACKEND");
+     if(!radarApiBase)throw new Error("LIVE_RADAR_REQUIRES_PRIVATE_BACKEND");
+     rows=await runTemporaryBackend(payload);
    }else{
-     const x=await api("/api/v1/radar/search",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query,industry,country,limit,min_sources:1000,deep_scan:true})});
+     const x=await api("/api/v1/radar/search",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
      rows=Array.isArray(x.rows)?x.rows:[];
      if(Number(x.scanned_sources||0)<1000)throw new Error("RADAR_SCAN_UNDER_1000_SOURCES");
    }
    renderRows(rows);
    setState("✓ ЗГЕНЕРОВАНО · "+rows.length,"green");
-   $("radarRunInfo").innerHTML="<b>✓ Цільовий пошук завершено:</b> "+esc(rows.length)+" результатів. Перевірте ФІО/посаду/email/актуальність, скачайте Excel і після цього скиньте генерацію.";
+   $("radarRunInfo").innerHTML+="<br><b>Результат готовий:</b> перевірте ФІО/посаду/email/актуальність, скачайте Excel і після цього скиньте генерацію.";
  }catch(e){
    renderRows([]);setState("ПОМИЛКА","red");
    $("radarRunInfo").innerHTML="<b>RADAR не виконав пошук:</b> "+esc(e.data?.detail||e.data?.error||e.message);
@@ -88,6 +109,6 @@ $("radarStartRobot")&&($("radarStartRobot").onclick=start);
 $("radarExportExcel")&&($("radarExportExcel").onclick=exportExcel);
 $("radarResetGeneration")&&($("radarResetGeneration").onclick=resetGeneration);
 renderRows([]);
-setState(isPages()?"LIVE RADAR · BACKEND REQUIRED":"READY · 1000+ SOURCES","blue");
-if(isPages()&&$("radarRunInfo"))$("radarRunInfo").innerHTML="<b>LIVE RADAR:</b> GitHub Pages не виконує реальний масовий web-scan. Вигадані DEMO-контакти вимкнено. На paid-hosting запуск вважається успішним тільки якщо backend підтвердив обхід мінімум 1000 зовнішніх джерел.";
+setState(isPages()?(radarApiBase?"LIVE RADAR · ПІДКЛЮЧЕНО":"LIVE RADAR · BACKEND REQUIRED"):"READY · 1000+ SOURCES","blue");
+if(isPages()&&$("radarRunInfo"))$("radarRunInfo").innerHTML=radarApiBase?"<b>✓ LIVE RADAR backend підключено.</b> Можна запускати реальний web-crawl через ADMIN MASTER.":"<b>LIVE RADAR:</b> для реального web-scan потрібне підключення backend.";
 })();
