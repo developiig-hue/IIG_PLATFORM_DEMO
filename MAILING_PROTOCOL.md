@@ -111,3 +111,12 @@ Migration/deployment is blocked if:
 - SMTP secrets or PII leak to Git/static assets.
 
 Marker: `IIG_MAILING_V33`.
+
+
+## FIXED SENDER IDENTITY — OWNER APPROVED 2026-10-07
+
+The canonical From header for all IIG Monthly Digest messages is:
+
+`IIG Monthly Digest <digest@iig.energy>`
+
+The sender display name and mailbox must be preserved across staging, production, hosting changes and UA/EN campaigns. Set `IIG_MAIL_FROM="IIG Monthly Digest <digest@iig.energy>"` server-side. SPF, DKIM, DMARC and mailbox/SMTP authorization for `iig.energy` must be verified before sending; do not assume ownership or live mailbox provisioning merely from this protocol.
