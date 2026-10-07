@@ -1,0 +1,71 @@
+{
+  "schema": "iig.radar-demo-test.v1",
+  "generated_at": "2026-10-07T15:29:00+03:00",
+  "mode": "DEMO_TEST_SEARCH",
+  "query": "промислова генерація CHP BESS енергетичний проєкт",
+  "industry": "energy",
+  "country": "UA",
+  "source_note": "Public test evidence snapshot. Production RADAR uses private server-side search provider.",
+  "rows": [
+    {
+      "id": "demo-radar-ukrnafta-60mw",
+      "company_name": "Ukrnafta PJSC",
+      "contact_name": "",
+      "email": "",
+      "country": "UA",
+      "industry": "energy",
+      "source_url": "https://ecepp.ebrd.com/delta/noticeSearchResults.html",
+      "confidence": 96,
+      "signal": "Газопоршневі електростанції на 4 майданчиках, близько 60 MW сумарної електричної потужності; відкритий двоетапний тендер.",
+      "state": "pending"
+    },
+    {
+      "id": "demo-radar-ukrnafta-chp250",
+      "company_name": "Ukrnafta PJSC",
+      "contact_name": "",
+      "email": "",
+      "country": "UA",
+      "industry": "energy",
+      "source_url": "https://ecepp.ebrd.com/delta/viewNotice.html?displayNoticeId=46295125&locale=fr",
+      "confidence": 94,
+      "signal": "Будівництво нової CHP до 250 MW; EBRD prequalification / open tender two stage.",
+      "state": "pending"
+    },
+    {
+      "id": "demo-radar-zhytomyr-chp",
+      "company_name": "Zhytomyrteplokomunenergo ME",
+      "contact_name": "",
+      "email": "",
+      "country": "UA",
+      "industry": "energy",
+      "source_url": "https://ecepp.ebrd.com/delta/viewNotice.html?displayNoticeId=46067756&locale=fr",
+      "confidence": 95,
+      "signal": "Поставка двох модульних CHP приблизно по 4.5 MWe кожна з утилізаційними котлами та супутніми послугами.",
+      "state": "pending"
+    },
+    {
+      "id": "demo-radar-kyivteploenergo",
+      "company_name": "КП «Київтеплоенерго»",
+      "contact_name": "",
+      "email": "",
+      "country": "UA",
+      "industry": "energy",
+      "source_url": "https://prozorro.gov.ua/uk/tender/UA-2026-04-20-000013-a",
+      "confidence": 88,
+      "signal": "Реконструкція з когенерацією; пусконалагодження 3 × Jenbacher JMS 620 GS-N.L.",
+      "state": "pending"
+    },
+    {
+      "id": "demo-radar-dtek-ccgt",
+      "company_name": "DTEK Group",
+      "contact_name": "",
+      "email": "",
+      "country": "UA",
+      "industry": "energy",
+      "source_url": "https://dtek.com/en/media-center/news/dtek-and-ge-vernova-sign-mou-to-advance-major-gas-power-project-in-ukraine/",
+      "confidence": 84,
+      "signal": "Новий 650 MW CCGT на майданчику Бурштинської ТЕС; MoU з GE Vernova, flagship reconstruction project.",
+      "state": "pending"
+    }
+  ]
+}
