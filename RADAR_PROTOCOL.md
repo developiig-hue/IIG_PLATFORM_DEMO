@@ -21,7 +21,11 @@ Marker: `IIG_RADAR_ADMIN_SEARCH_V37`
 12. RADAR discovery alone never creates ACTIVE marketing consent.
 
 ## GitHub Pages behavior
-GitHub Pages is visual/demo staging only. It MUST NOT contain search-provider secrets or execute the real external client search. The RADAR button remains visible and explains that paid-hosting backend is required.
+GitHub Pages remains visual/demo staging and MUST NOT contain search-provider secrets.
+
+For operator acceptance testing, the RADAR button runs a safe **DEMO TEST SEARCH** against the repository artifact `data/radar-test-latest.json`. That artifact is a current public-evidence snapshot generated outside the browser and contains no private provider token. It allows the owner to verify the full Admin interaction: launch → results → source review → reject/check candidate.
+
+The DEMO TEST snapshot is not the production search engine and must never be represented as a live provider call. Paid hosting switches the same button to the private `/api/v1/radar/runs` backend.
 
 The manual CSV/JSON import remains a fallback/recovery path; it is not the primary production RADAR mechanism.
 
@@ -40,3 +44,16 @@ Paid hosting must preserve:
 - FAILED state when provider is unavailable.
 
 Replacing the robot with static upload-only behavior is a RELEASE BLOCKER.
+
+
+## DEMO TEST RADAR V38 — 2026-10-07
+
+Accepted test behavior:
+- `▶ ЗАПУСТИТИ RADAR · ADMIN_2` works on GitHub Pages;
+- it filters the current public-evidence snapshot by selected industry/country and requested result limit;
+- the run state becomes `TEST SEARCH…` and then `✓ TEST SUCCESS · N`;
+- candidate company, signal, confidence and source link are visible;
+- test rejection can be exercised locally;
+- promotion to the real IIG CRM remains server-only and therefore cannot create fake production records.
+
+Marker: `IIG_RADAR_DEMO_TEST_V38`.
