@@ -597,3 +597,12 @@ need("IIG_UA_MAIL_MASTER_V36" in mailing_protocol,"Owner-approved UA mail master
 need("Шановний {{name}} !" in mail_store,"UA mail master automatic name token missing")
 need("Вересень 2026" in mail_store and "РОЗМІСТИТИ ПРОЄКТ" in mail_store,"UA mail master approved copy incomplete")
 need("contactName" in backend and 'replaceAll("{{name}}"' in backend,"Server-side recipient name personalization missing")
+
+
+# Paid-hosting migration lock for owner-approved UA address mail
+need("IIG_UA_MAIL_MASTER_V36_MIGRATION_LOCK" in mailing_protocol,"UA mail master paid-hosting migration lock missing")
+need("IIG Monthly Digest <digest@iig.energy>" in mailing_protocol,"Canonical IIG Digest sender identity missing from migration contract")
+need("Шановний {{name}} !" in mail_store,"Owner-approved personalized UA salutation missing")
+need("Шановний колего !" in mailing_protocol,"Missing-name fallback missing from migration contract")
+need("ADMIN_1 alone" in mailing_protocol or "ADMIN_1 remains the only role" in mailing_protocol,"ADMIN_1 final-send authority migration lock missing")
+need("signed HTTPS" in mailing_protocol and "SUPPRESSED" in mailing_protocol,"Production unsubscribe/suppression migration lock missing")
