@@ -45,7 +45,7 @@ jobs:
           grep -q 'IIG_RADAR_EPHEMERAL_V39' RADAR_PROTOCOL.md
           grep -q 'RADAR · ЦІЛЬОВИЙ ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ' admin-ua.html
           grep -q '/api/v1/radar/search' assets/admin-radar.js
-          grep -q 'DEMO TEST RADAR' assets/admin-radar.js
+          grep -q 'DEMO TEST · READY' assets/admin-radar.js
           grep -q 'radar-test-latest.json' assets/admin-radar.js
           grep -q 'radarExportExcel' admin-ua.html
           grep -q 'radarResetGeneration' admin-ua.html
