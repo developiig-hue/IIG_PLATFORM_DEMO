@@ -94,3 +94,31 @@ Migration is RELEASE-BLOCKED if any of the following fail:
 
 ## Status
 **HARD RULE / COMMERCIAL INTAKE / PII / RBAC / PORTABLE / RELEASE-BLOCKING.**
+
+
+## ADMIN MASTER UI HARD LOCK
+
+Approved working visual reference: `admin-ua.html#requests` as accepted by IIG owner on 2026-10-07.
+
+This requests/subscriptions screen is now a HARD-LOCKED UI contract. Future changes MUST preserve:
+- the existing IIG ADMIN MASTER shell and left navigation;
+- the section title `ОБРОБКА ЗАЯВ ТА ПІДПИСКИ`;
+- ADMIN_1 oversight and ADMIN_2 processing-role separation;
+- top lifetime counters;
+- the HARD RULE notice;
+- the refresh-registry action;
+- exactly three operational lanes in the current order: PROJECT → ENGINEER → SUBSCRIBE;
+- per-lane TOTAL / NEW / DOWNLOADED / PROCESSED counters;
+- request stream inside each lane;
+- Excel export action at the bottom of each lane;
+- the rule that processing is impossible before download;
+- promotion to the unified IIG contacts base only after processing.
+
+Do NOT replace this accepted ADMIN MASTER screen with a separate simplified `/admin/` application, a new layout, or an alternate navigation model.
+
+The canonical staging entry point is:
+`/admin-ua.html#requests`
+
+The short `/admin/` route may only redirect to that canonical view until a production reverse proxy maps the same ADMIN MASTER shell server-side.
+
+Any future redesign that changes the accepted layout or processing sequence requires explicit owner approval and is otherwise a RELEASE BLOCKER.
