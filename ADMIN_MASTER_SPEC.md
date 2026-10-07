@@ -1398,3 +1398,28 @@ ADMIN_2 correction button canonical label: **ЗБЕРЕГТИ КОРИГУВАН
 - Production hosting must use one canonical published-news record/DB transaction for list, search and full-article rendering.
 
 **PORTABLE / CONSISTENCY / RELEASE-BLOCKING.**
+
+
+## HARD RULE — UPLOADED NEWS IMAGE + TOP-5 + DIGEST EVENT TAG V29 (2026-10-07)
+
+### A. Uploaded image publication
+- An ADMIN_1-approved uploaded NEWS image MUST survive the complete path: `UPLOAD → IMAGE REVIEW → APPROVED → DEMO bridge → full article → NEWS card → homepage TOP-5`.
+- The canonical rights flag is `image_rights_verified=true`. Legacy `rights_verified=true` is accepted only for backward compatibility.
+- A compact DEMO snapshot must preserve the uploaded `image_url` (browser-safe data URL in DEMO; media/CDN URL in production), `image_type`, alt/caption/credit, source URL and rights verification.
+- The public renderer must self-heal older DEMO records by preferring the verified full editorial image choice when a compact legacy record lost rights metadata.
+- A published article that shows fallback/old artwork while an ADMIN_1-approved upload exists is RELEASE-BLOCKING.
+
+### B. TOP-5
+- `homepage_top5=true` is canonical editorial metadata and must survive DEMO merge.
+- The KIOGE 2026 EVENT item `kioge-2026-opening-58-countries-280-meetings` is explicitly TOP-5 eligible.
+- TOP-5 card and full article must use the SAME approved image and same slug.
+
+### C. Digest EVENT route
+- EVENT is an editorial tag independent of the industrial sector.
+- `makeDigestItem()` must carry `tag=EVENT` for EVENT items.
+- The Digest news row must visibly render the tag **EVENT**.
+- EVENT items with `digest_rubric=GENERAL` belong to the **УКРАЇНА ТА СВІТ / UKRAINE AND THE WORLD** news section.
+- KIOGE 2026 is fixed to `digest_rubric=GENERAL`, so when the September 2026 Digest is regenerated from the approved pool it must appear in **УКРАЇНА ТА СВІТ** with tag **EVENT** and its direct IIG article link.
+- UA/EN Digest editions preserve the EVENT tag unchanged.
+
+**PORTABLE / IMAGE-CONSISTENCY / DIGEST-CONSISTENCY / RELEASE-BLOCKING.**
