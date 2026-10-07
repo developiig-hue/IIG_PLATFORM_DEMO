@@ -11,7 +11,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import nodemailer from "nodemailer";
 import * as XLSX from "xlsx";
-import {saveValidatedDigest,getValidatedDigest,beginCampaign,completeCampaign,listCampaigns} from "./mailing-store.mjs";
+import {saveValidatedDigest,getValidatedDigest,beginCampaign,completeCampaign,listCampaigns,getMailTemplate,saveMailTemplate,resetMailTemplate} from "./mailing-store.mjs";
 
 const app=Fastify({logger:true,bodyLimit:30*1024*1024});
 await app.register(multipart,{limits:{fileSize:25*1024*1024,files:1,fields:8}});
@@ -186,20 +186,27 @@ function smtpTransport(){
 }
 function mailingFrom(){return String(process.env.IIG_MAIL_FROM||"").trim()}
 function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]))}
-function messageFor(contact,language,unsubscribeUrl){
+function sanitizeMailHtml(v){
+  let h=String(v||"").slice(0,20000);
+  if(/<\s*(script|style|iframe|object|embed|svg|math|form|input|button)\b/i.test(h))throw Object.assign(new Error("UNSAFE_MAIL_HTML"),{code:"UNSAFE_MAIL_HTML"});
+  if(/\son\w+\s*=|javascript:|data:text\/html/i.test(h))throw Object.assign(new Error("UNSAFE_MAIL_HTML"),{code:"UNSAFE_MAIL_HTML"});
+  h=h.replace(/<a\b[^>]*href\s*=\s*["'][^"']*["'][^>]*>/gi,"").replace(/<\/a>/gi,"");
+  return h;
+}
+function plainTextFromHtml(h){return String(h||"").replace(/<br\s*\/?>/gi,"\n").replace(/<\/p>/gi,"\n\n").replace(/<[^>]+>/g,"").replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/\n{3,}/g,"\n\n").trim()}
+function greetingFor(contact,language){
   const first=String(contact.name||"").trim().split(/\s+/)[0]||"";
-  if(language==="EN"){
-    const greeting=first?"Dear "+escapeHtml(first)+",":"Dear colleague,";
-    const subject="IIG Monthly Digest — Industrial Energy Intelligence";
-    const text=`${greeting.replace(/<[^>]+>/g,"")}\n\nThank you for subscribing to IIG Monthly Digest. Please find the latest ADMIN_1-approved issue attached.\n\nWe hope the selected industrial energy, financing and engineering updates are useful for your work.\n\nTo unsubscribe: ${unsubscribeUrl}\n\nBest regards,\nIIG — Industry Intelligence Generation`;
-    const html=`<p>${greeting}</p><p>Thank you for subscribing to <b>IIG Monthly Digest</b>. Please find the latest ADMIN_1-approved issue attached.</p><p>We hope the selected industrial energy, financing and engineering updates are useful for your work.</p><p><a href="${escapeHtml(unsubscribeUrl)}">Unsubscribe from IIG Monthly Digest</a></p><p>Best regards,<br><b>IIG — Industry Intelligence Generation</b></p>`;
-    return {subject,text,html};
-  }
-  const greeting=first?"Шановний "+escapeHtml(first)+",":"Шановний колего,";
-  const subject="IIG Monthly Digest — промислова енергетика";
-  const text=`${greeting.replace(/<[^>]+>/g,"")}\n\nДякуємо за підписку на IIG Monthly Digest. У вкладенні — актуальний випуск, попередньо затверджений ADMIN_1.\n\nСподіваємося, що добірка новин промислової енергетики, фінансування та інженерних матеріалів буде корисною у Вашій роботі.\n\nВідписатися: ${unsubscribeUrl}\n\nЗ повагою,\nIIG — Industry Intelligence Generation`;
-  const html=`<p>${greeting}</p><p>Дякуємо за підписку на <b>IIG Monthly Digest</b>. У вкладенні — актуальний випуск, попередньо затверджений ADMIN_1.</p><p>Сподіваємося, що добірка новин промислової енергетики, фінансування та інженерних матеріалів буде корисною у Вашій роботі.</p><p><a href="${escapeHtml(unsubscribeUrl)}">Відписатися від IIG Monthly Digest</a></p><p>З повагою,<br><b>IIG — Industry Intelligence Generation</b></p>`;
-  return {subject,text,html};
+  return language==="EN"?(first?"Dear "+escapeHtml(first)+",":"Dear colleague,"):(first?"Шановний "+escapeHtml(first)+",":"Шановний колего,");
+}
+async function messageFor(contact,language,unsubscribeUrl){
+  const lang=normLang(language),template=await getMailTemplate(lang),greeting=greetingFor(contact,lang);
+  let html=sanitizeMailHtml(template.html||"");
+  html=html.replaceAll("{{greeting}}",greeting);
+  if(!html.includes(greeting))html="<p>"+greeting+"</p>"+html;
+  const unsubscribeHtml=lang==="EN"?'<p><a href="'+escapeHtml(unsubscribeUrl)+'">Unsubscribe from IIG Monthly Digest</a></p>':'<p><a href="'+escapeHtml(unsubscribeUrl)+'">Відписатися від IIG Monthly Digest</a></p>';
+  html+=unsubscribeHtml;
+  const text=plainTextFromHtml(html)+(lang==="EN"?"\n\nUnsubscribe: ":"\n\nВідписатися: ")+unsubscribeUrl;
+  return {subject:String(template.subject||"").slice(0,240),text,html,template_updated_at:template.updated_at||null};
 }
 
 function normalizedHeader(v){
@@ -252,6 +259,31 @@ app.post("/api/v1/contacts/import",async(req,reply)=>{
   }
 });
 
+app.get("/api/v1/mailing/template/:language",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  const language=normLang(req.params?.language);
+  reply.header("Cache-Control","no-store");
+  return await getMailTemplate(language);
+});
+app.post("/api/v1/mailing/template/:language",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  if(!["ADMIN_1","ADMIN_2"].includes(role))return reply.code(403).send({error:"ADMIN_ROLE_REQUIRED"});
+  const language=normLang(req.params?.language),subject=String(req.body?.subject||"").trim(),html=String(req.body?.html||"");
+  if(subject.length<3||subject.length>240)return reply.code(422).send({error:"MAIL_SUBJECT_REQUIRED"});
+  if(html.length<20)return reply.code(422).send({error:"MAIL_BODY_REQUIRED"});
+  try{
+    const safe=sanitizeMailHtml(html);
+    const saved=await saveMailTemplate(language,{subject,html:safe},role);
+    reply.header("Cache-Control","no-store");return {status:"SAVED",...saved};
+  }catch(e){return reply.code(422).send({error:e.code||"MAIL_TEMPLATE_INVALID"})}
+});
+app.post("/api/v1/mailing/template/:language/reset",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  if(!["ADMIN_1","ADMIN_2"].includes(role))return reply.code(403).send({error:"ADMIN_ROLE_REQUIRED"});
+  const saved=await resetMailTemplate(normLang(req.params?.language),role);
+  reply.header("Cache-Control","no-store");return {status:"RESET",...saved};
+});
+
 app.get("/api/v1/contacts",async(req,reply)=>{
   const role=requireAdmin(req,reply);if(!role)return;
   reply.header("Cache-Control","no-store");
@@ -299,7 +331,7 @@ app.post("/api/v1/mailing/test",async(req,reply)=>{
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return reply.code(400).send({error:"VALID_TEST_EMAIL_REQUIRED"});
   const validated=await getValidatedDigest(language),pdf=await getCurrentPdf(language),meta=await getCurrentMeta(language);
   if(!validated||!pdf||!meta||validated.sha256!==sha256(pdf))return reply.code(409).send({error:"VALIDATED_DIGEST_REQUIRED",language});
-  const fake={id:"TEST",email,name:"IIG Admin",language},unsubscribeUrl=publicBaseUrl()+"/unsubscribe-test",msg=messageFor(fake,language,unsubscribeUrl);
+  const fake={id:"TEST",email,name:"IIG Admin",language},unsubscribeUrl=publicBaseUrl()+"/unsubscribe-test",msg=await messageFor(fake,language,unsubscribeUrl);
   await transport.sendMail({from,to:email,subject:"[TEST] "+msg.subject,text:msg.text,html:msg.html,attachments:[{filename:language==="EN"?"IIG_Monthly_Digest_EN.pdf":"IIG_Monthly_Digest_UA.pdf",content:pdf,contentType:"application/pdf"}],headers:{"X-IIG-Test":"true","X-IIG-Digest-Revision":String(meta.revision||"")}});
   return {status:"TEST_SENT",to:email,language,revision:meta.revision};
 });
@@ -319,7 +351,7 @@ app.post("/api/v1/mailing/send",async(req,reply)=>{
   for(const contact of contacts){
     const lang=normLang(contact.language),validated=await getValidatedDigest(lang),pdf=await getCurrentPdf(lang),meta=await getCurrentMeta(lang);
     if(!validated||!pdf||!meta||validated.sha256!==sha256(pdf)){failed++;failures.push({email:contact.email,error:"DIGEST_VALIDATION_CHANGED"});continue}
-    const token=unsubscribeToken(contact),unsubscribeUrl=publicBaseUrl()+"/unsubscribe?token="+encodeURIComponent(token),msg=messageFor(contact,lang,unsubscribeUrl);
+    const token=unsubscribeToken(contact),unsubscribeUrl=publicBaseUrl()+"/unsubscribe?token="+encodeURIComponent(token),msg=await messageFor(contact,lang,unsubscribeUrl);
     try{
       await transport.sendMail({
         from,
