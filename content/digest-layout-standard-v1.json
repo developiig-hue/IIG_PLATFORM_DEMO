@@ -255,5 +255,57 @@
       "PUBLIC_DOWNLOAD_UA",
       "PUBLIC_DOWNLOAD_EN"
     ]
+  },
+  "news_row_visual_standard": {
+    "version": "V30_2026-10-07",
+    "status": "OWNER_VERIFIED_APPROVED_LOCKED",
+    "owner_acceptance": {
+      "date": "2026-10-07",
+      "result": "PASS",
+      "verified_example": "KIOGE 2026 displayed in UKRAINE_AND_WORLD with EVENT tag"
+    },
+    "applies_to": [
+      "working_preview",
+      "final_preview",
+      "printable_html",
+      "pdf"
+    ],
+    "section": {
+      "ua": "УКРАЇНА ТА СВІТ",
+      "en": "UKRAINE AND THE WORLD"
+    },
+    "row_structure": [
+      "ordinal_number",
+      "editorial_tag_pill",
+      "news_title",
+      "direct_article_link",
+      "read_more"
+    ],
+    "tag_source": "editorial_tag via editorialTag(news)",
+    "tag_required_for_news": true,
+    "event_rule": {
+      "tag": "EVENT",
+      "digest_rubric": "GENERAL",
+      "destination_section": "UKRAINE_AND_WORLD",
+      "preserve_tag_in_ua_and_en": true
+    },
+    "geometry": {
+      "thumbnails": false,
+      "row_background": "#FFFFFF",
+      "row_border": "#D5E0E7",
+      "row_radius_px": 5,
+      "row_gap_px": 5,
+      "ordinal_column_px": 28,
+      "tag_pill": true
+    },
+    "post_edit_invariant": "ADMIN_2/ADMIN_1 text corrections do not remove editorial_tag, digest_rubric, slug or direct link unless explicitly edited as metadata",
+    "regeneration_invariant": "new digest generation must reproduce this row composition from current approved CMS/ledger data",
+    "portability_required": true,
+    "release_blockers": [
+      "NEWS_ROW_WITHOUT_TAG",
+      "EVENT_OUTSIDE_UKRAINE_AND_WORLD",
+      "PREVIEW_PDF_ROW_SHAPE_MISMATCH",
+      "CARD_WITHOUT_DIRECT_ARTICLE_LINK"
+    ]
   }
 }
