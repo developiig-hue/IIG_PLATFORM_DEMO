@@ -702,3 +702,39 @@ This rule is part of the portable MASTER. Any new hosting/domain implementation 
 A duplicated CTA pair on Page 4+, or removal of the canonical bottom footer CTA pair, is a RELEASE-BLOCKING regression.
 
 **Status:** FIXED / PROTOCOL LOCKED / PORTABLE.
+
+
+## FINAL_ADMIN_IIG — OWNER-VERIFIED DIGEST NEWS ROW VISUAL STANDARD V30 (2026-10-07)
+
+**OWNER ACCEPTANCE: PASSED.** The newly generated September 2026 Digest was visually checked and accepted. KIOGE 2026 appeared in **УКРАЇНА ТА СВІТ** with the visible **EVENT** tag, and the other news rows displayed their corresponding editorial tags.
+
+### Canonical visual form
+For the NEWS page of every newly generated Digest:
+- page header is **УКРАЇНА ТА СВІТ** in UA and **UKRAINE AND THE WORLD** in EN;
+- each NEWS item is a separate compact white rounded row;
+- the row starts with a two-digit ordinal number (01, 02, ...);
+- every NEWS row contains a visible editorial tag pill;
+- the news title is shown in the same row and links directly to the IIG article;
+- the canonical direct-link / «Читати далі...» behavior remains active;
+- thumbnails are not used on the canonical NEWS row page;
+- Preview, Final Preview, printable HTML and PDF MUST use the same row structure and CSS contract.
+
+### Tag contract
+The visible pill is sourced from canonical `editorial_tag`, not from the technical sector label alone. Examples include `EVENT`, `ЕНЕРГЕТИКА`, `ДАТА-ЦЕНТРИ`, `ХІМІЧНА ПРОМИСЛОВІСТЬ`, etc.
+
+For EVENT: `editorial_tag=EVENT → digest_rubric=GENERAL → section=УКРАЇНА ТА СВІТ`. The string **EVENT** remains unchanged in UA and EN editions.
+
+### Post-edit / regeneration invariant
+ADMIN_2 or ADMIN_1 may correct article text before approval. Text editing MUST NOT silently remove or rewrite `editorial_tag`, `digest_rubric`, slug, or the direct article link. On the next Digest generation, Robot #6 / Admin builder rebuilds the NEWS rows from the current approved CMS/Approval Ledger and reproduces the V30 visual form automatically.
+
+The Digest fingerprint and release-candidate carry `visual_standard=OWNER_APPROVED_2026-10-07`, so a layout produced under a different visual contract requires a fresh Final Preview / ADMIN_1 approval.
+
+### Release blockers
+The Digest is not releasable if:
+- a NEWS row has no visible tag;
+- an EVENT item is placed outside **УКРАЇНА ТА СВІТ / UKRAINE AND THE WORLD**;
+- Preview and PDF use different NEWS row geometry;
+- a row loses its direct article link;
+- a hosting/domain migration changes this approved form without a new owner approval.
+
+**Status:** VERIFIED / OWNER APPROVED / STANDARD VISUAL FORM / PORTABLE.
