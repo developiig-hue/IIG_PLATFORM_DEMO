@@ -45,3 +45,8 @@ jobs:
           grep -q 'ADMIN_2_REQUIRED' backend/src/server.mjs
           grep -q 'importRecipientBase' assets/admin-contacts.js
           grep -q 'ЗАПУСТИТИ РОЗСИЛКУ · ADMIN_1' admin-ua.html
+          grep -q 'IIG_MAIL_TEMPLATE_EDITOR_V35' MAILING_PROTOCOL.md
+          grep -q 'app.get("/api/v1/mailing/template/:language"' backend/src/server.mjs
+          grep -q 'saveMailTemplate' backend/src/mailing-store.mjs
+          grep -q 'mailTemplateLanguage' admin-ua.html
+          grep -q 'data-mail-cmd="bold"' admin-ua.html
