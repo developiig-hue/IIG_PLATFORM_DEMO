@@ -1,10 +1,7 @@
 (()=>{"use strict";
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let currentRows=[];
-const DEMO_ROWS=[
- {company_name:"DEMO ENERGY PLANT A",contact_name:"Олена Тестова",position:"Energy Manager",email:"olena.test@example.com",country:"UA",industry:"energy",relevance:"Тестовий сигнал: модернізація CHP / власної генерації.",source_url:"https://example.com/demo-energy-a"},
- {company_name:"DEMO INDUSTRIAL GROUP B",contact_name:"Андрій Тестовий",position:"Technical Director",email:"andrii.test@example.com",country:"UA",industry:"energy",relevance:"Тестовий сигнал: BESS та резервна генерація для виробництва.",source_url:"https://example.com/demo-energy-b"}
-];
+
 async function api(url,opts={}){
  const r=await fetch(url,{credentials:"same-origin",cache:"no-store",...opts,headers:{...(opts.headers||{})}});
  let data=null;try{data=await r.json()}catch{data={}};
@@ -73,14 +70,11 @@ async function start(){
  try{
    let rows=[];
    if(isPages()){
-     rows=DEMO_ROWS.filter(y=>{
-       const sameIndustry=!industry||industry==="other"||String(y.industry||"").toLowerCase()===String(industry).toLowerCase();
-       const sameCountry=!country||String(y.country||"").toLowerCase()===String(country).toLowerCase();
-       return sameIndustry&&sameCountry;
-     }).slice(0,limit);
+     throw new Error("LIVE_RADAR_REQUIRES_PRIVATE_BACKEND");
    }else{
-     const x=await api("/api/v1/radar/search",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query,industry,country,limit})});
+     const x=await api("/api/v1/radar/search",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query,industry,country,limit,min_sources:1000,deep_scan:true})});
      rows=Array.isArray(x.rows)?x.rows:[];
+     if(Number(x.scanned_sources||0)<1000)throw new Error("RADAR_SCAN_UNDER_1000_SOURCES");
    }
    renderRows(rows);
    setState("✓ ЗГЕНЕРОВАНО · "+rows.length,"green");
@@ -94,5 +88,6 @@ $("radarStartRobot")&&($("radarStartRobot").onclick=start);
 $("radarExportExcel")&&($("radarExportExcel").onclick=exportExcel);
 $("radarResetGeneration")&&($("radarResetGeneration").onclick=resetGeneration);
 renderRows([]);
-setState(isPages()?"DEMO TEST · READY":"READY","blue");
+setState(isPages()?"LIVE RADAR · BACKEND REQUIRED":"READY · 1000+ SOURCES","blue");
+if(isPages()&&$("radarRunInfo"))$("radarRunInfo").innerHTML="<b>LIVE RADAR:</b> GitHub Pages не виконує реальний масовий web-scan. Вигадані DEMO-контакти вимкнено. На paid-hosting запуск вважається успішним тільки якщо backend підтвердив обхід мінімум 1000 зовнішніх джерел.";
 })();
