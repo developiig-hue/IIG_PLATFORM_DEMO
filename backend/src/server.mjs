@@ -5,11 +5,12 @@ import {requireAdmin} from "./auth.mjs";
 import {putCurrent,getCurrentMeta,getCurrentPdf,revisionFor,sha256} from "./storage.mjs";
 import {saveApproval,getApproval} from "./approval-store.mjs";
 import {verifyPdfLinks} from "./pdf-links.mjs";
-import {createRequest,listRequests,markDownloaded,markProcessed,promoteContact,lifetimeStats,listContacts,getContactById,markUnsubscribed,mailingEligibleContacts} from "./request-store.mjs";
+import {createRequest,listRequests,markDownloaded,markProcessed,promoteContact,lifetimeStats,listContacts,getContactById,markUnsubscribed,mailingEligibleContacts,importContactsBase} from "./request-store.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import crypto from "node:crypto";
 import nodemailer from "nodemailer";
+import * as XLSX from "xlsx";
 import {saveValidatedDigest,getValidatedDigest,beginCampaign,completeCampaign,listCampaigns} from "./mailing-store.mjs";
 
 const app=Fastify({logger:true,bodyLimit:30*1024*1024});
@@ -200,6 +201,56 @@ function messageFor(contact,language,unsubscribeUrl){
   const html=`<p>${greeting}</p><p>Дякуємо за підписку на <b>IIG Monthly Digest</b>. У вкладенні — актуальний випуск, попередньо затверджений ADMIN_1.</p><p>Сподіваємося, що добірка новин промислової енергетики, фінансування та інженерних матеріалів буде корисною у Вашій роботі.</p><p><a href="${escapeHtml(unsubscribeUrl)}">Відписатися від IIG Monthly Digest</a></p><p>З повагою,<br><b>IIG — Industry Intelligence Generation</b></p>`;
   return {subject,text,html};
 }
+
+function normalizedHeader(v){
+  return String(v||"").trim().toLowerCase().replace(/[’']/g,"'").replace(/[^a-zа-яіїєґ0-9]+/gi,"_").replace(/^_+|_+$/g,"");
+}
+function contactImportRows(buffer,filename=""){
+  const book=XLSX.read(buffer,{type:"buffer",raw:false});
+  const sheet=book.Sheets[book.SheetNames[0]];
+  const rows=XLSX.utils.sheet_to_json(sheet,{defval:"",raw:false});
+  const aliases={
+    "email":"email","e_mail":"email","e-mail":"email","електронна_пошта":"email",
+    "ім_я":"name","імя":"name","name":"name","full_name":"name","контакт":"name",
+    "компанія":"company","організація":"company","company":"company","organization":"company",
+    "посада":"position","position":"position","role":"position",
+    "мова":"language","language":"language","lang":"language",
+    "джерело":"source","source":"source",
+    "статус":"status","статус_розсилки":"status","status":"status",
+    "згода":"consent","статус_згоди":"consent","consent":"consent","marketing_consent":"marketing_consent",
+    "підтвердження_згоди":"consent_evidence","підтвердження":"consent_evidence","consent_evidence":"consent_evidence",
+    "примітка":"note","note":"note"
+  };
+  return rows.map(row=>{
+    const out={};
+    for(const [k,v] of Object.entries(row)){
+      const nk=normalizedHeader(k),key=aliases[nk]||nk;out[key]=v;
+    }
+    return out;
+  }).filter(x=>Object.values(x).some(v=>String(v||"").trim()));
+}
+
+app.post("/api/v1/contacts/import",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  if(role!=="ADMIN_2")return reply.code(403).send({error:"ADMIN_2_REQUIRED"});
+  let file=null,filename="";
+  for await(const part of req.parts()){
+    if(part.type==="file"&&part.fieldname==="file"){file=await part.toBuffer();filename=String(part.filename||"")}
+  }
+  if(!file||!file.length)return reply.code(400).send({error:"CONTACT_BASE_FILE_REQUIRED"});
+  if(file.length>10*1024*1024)return reply.code(413).send({error:"CONTACT_BASE_TOO_LARGE"});
+  if(!/\.(xlsx|xls|csv)$/i.test(filename))return reply.code(400).send({error:"CONTACT_BASE_FORMAT_UNSUPPORTED"});
+  try{
+    const rows=contactImportRows(file,filename);
+    if(!rows.length)return reply.code(422).send({error:"CONTACT_BASE_EMPTY"});
+    const result=await importContactsBase(rows,role,"ADMIN_2_UPLOAD:"+filename.slice(0,120));
+    reply.header("Cache-Control","no-store");
+    return result;
+  }catch(e){
+    req.log.error(e);
+    return reply.code(e.code==="ADMIN_2_REQUIRED"?403:422).send({error:e.code||"CONTACT_BASE_IMPORT_FAILED"});
+  }
+});
 
 app.get("/api/v1/contacts",async(req,reply)=>{
   const role=requireAdmin(req,reply);if(!role)return;
