@@ -120,3 +120,34 @@ The canonical From header for all IIG Monthly Digest messages is:
 `IIG Monthly Digest <digest@iig.energy>`
 
 The sender display name and mailbox must be preserved across staging, production, hosting changes and UA/EN campaigns. Set `IIG_MAIL_FROM="IIG Monthly Digest <digest@iig.energy>"` server-side. SPF, DKIM, DMARC and mailbox/SMTP authorization for `iig.energy` must be verified before sending; do not assume ownership or live mailbox provisioning merely from this protocol.
+
+
+## ADMIN_2 MASTER CONTACT-BASE IMPORT — OWNER APPROVED 2026-10-07
+
+Before a Digest mailing, ADMIN_2 may upload the current approved IIG recipient MASTER in XLSX/XLS/CSV. The file may contain contacts consolidated from:
+- public website applications/subscriptions;
+- approved RADAR contacts;
+- contacts added manually by IIG;
+- a previously exported IIG MASTER updated offline.
+
+Production endpoint: `POST /api/v1/contacts/import`.
+
+Role contract:
+- **ADMIN_2** — upload/merge recipient MASTER and review import report;
+- **ADMIN_1** — final control and the only role permitted to press the red `ЗАПУСТИТИ РОЗСИЛКУ · ADMIN_1` action.
+
+Import is a merge, never a destructive replacement:
+- canonical key is normalized e-mail;
+- new valid contacts are added;
+- existing contacts are updated;
+- invalid rows are rejected and counted;
+- ACTIVE requires explicit marketing consent / consent evidence;
+- PENDING contacts are not mailed;
+- existing `UNSUBSCRIBE / SUPPRESSED` contacts remain suppressed even when an uploaded file marks them ACTIVE;
+- imported data never deletes request history or unsubscribe evidence.
+
+The Admin must display an import result with total / added / updated / invalid / preserved-suppressed counts and refresh the unified contact base immediately after a successful import.
+
+This role separation is release-blocking: base import may be delegated to ADMIN_2; mass mailing authority remains ADMIN_1 only.
+
+Marker: `IIG_CONTACT_BASE_IMPORT_V34`.
