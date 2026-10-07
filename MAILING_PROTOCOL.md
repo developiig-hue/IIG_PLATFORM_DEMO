@@ -151,3 +151,41 @@ The Admin must display an import result with total / added / updated / invalid /
 This role separation is release-blocking: base import may be delegated to ADMIN_2; mass mailing authority remains ADMIN_1 only.
 
 Marker: `IIG_CONTACT_BASE_IMPORT_V34`.
+
+
+## BILINGUAL EMAIL LETTER EDITOR — OWNER APPROVED 2026-10-07
+
+ADMIN_2 may prepare and edit the accompanying email text independently for UA and EN before a Digest campaign.
+
+Default behavior:
+- opening the Mailing Center automatically loads the previously approved standard text for the selected language;
+- UA and EN templates are stored separately;
+- subject and rich HTML body are persisted server-side on paid hosting;
+- GitHub Pages DEMO stores editor changes only in browser-local storage for UI verification.
+
+ADMIN_2 rich-text controls include:
+- bold;
+- italic;
+- underline;
+- upper/lower/sentence case;
+- heading;
+- bulleted and numbered lists;
+- HTTPS link insertion;
+- remove formatting.
+
+System-protected behavior:
+- `{{greeting}}` is the personalization token; if ADMIN_2 removes it, backend prepends a polite personalized greeting automatically;
+- unsubscribe is NOT part of editable content authority: backend appends the signed unsubscribe link to every real email after template rendering;
+- unsafe HTML/scripts/forms/event handlers are rejected by backend;
+- recipient language selects the corresponding saved UA or EN template automatically.
+
+Production API:
+- `GET /api/v1/mailing/template/:language`;
+- `POST /api/v1/mailing/template/:language`;
+- `POST /api/v1/mailing/template/:language/reset`.
+
+Role boundary remains unchanged:
+- ADMIN_2 edits/saves UA and EN email text and can send a test;
+- ADMIN_1 alone starts final mass mailing.
+
+Marker: `IIG_MAIL_TEMPLATE_EDITOR_V35`.
