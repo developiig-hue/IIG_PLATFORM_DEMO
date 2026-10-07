@@ -238,6 +238,21 @@ app.get("/api/v1/mailing/status",async(req,reply)=>{
   };
 });
 
+app.post("/api/v1/mailing/test",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  if(!["ADMIN_1","ADMIN_2"].includes(role))return reply.code(403).send({error:"ADMIN_ROLE_REQUIRED"});
+  const transport=smtpTransport(),from=mailingFrom();
+  if(!transport||!from)return reply.code(503).send({error:"SMTP_NOT_CONFIGURED"});
+  if(!unsubscribeSecret()||!publicBaseUrl())return reply.code(503).send({error:"UNSUBSCRIBE_NOT_CONFIGURED"});
+  const email=String(req.body?.email||"").trim().toLowerCase(),language=normLang(req.body?.language);
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return reply.code(400).send({error:"VALID_TEST_EMAIL_REQUIRED"});
+  const validated=await getValidatedDigest(language),pdf=await getCurrentPdf(language),meta=await getCurrentMeta(language);
+  if(!validated||!pdf||!meta||validated.sha256!==sha256(pdf))return reply.code(409).send({error:"VALIDATED_DIGEST_REQUIRED",language});
+  const fake={id:"TEST",email,name:"IIG Admin",language},unsubscribeUrl=publicBaseUrl()+"/unsubscribe-test",msg=messageFor(fake,language,unsubscribeUrl);
+  await transport.sendMail({from,to:email,subject:"[TEST] "+msg.subject,text:msg.text,html:msg.html,attachments:[{filename:language==="EN"?"IIG_Monthly_Digest_EN.pdf":"IIG_Monthly_Digest_UA.pdf",content:pdf,contentType:"application/pdf"}],headers:{"X-IIG-Test":"true","X-IIG-Digest-Revision":String(meta.revision||"")}});
+  return {status:"TEST_SENT",to:email,language,revision:meta.revision};
+});
+
 app.post("/api/v1/mailing/send",async(req,reply)=>{
   const role=requireAdmin(req,reply);if(!role)return;
   if(role!=="ADMIN_1")return reply.code(403).send({error:"ADMIN_1_REQUIRED_TO_START_MAILING"});
