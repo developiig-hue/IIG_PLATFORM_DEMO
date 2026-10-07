@@ -1,6 +1,16 @@
 (()=>{"use strict";
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let currentRows=[];let liveRunId=null;const radarParams=new URLSearchParams(location.search);const radarApiParam=radarParams.get("radar_api")||"";const radarRunParam=radarParams.get("radar_run")||"";const radarApiBase=/^https:\/\/[-a-z0-9]+\.trycloudflare\.com$/i.test(radarApiParam)?radarApiParam.replace(/\/$/,""):"";
+let currentRows=[];let liveRunId=null;
+const radarParams=new URLSearchParams(location.search);
+let radarApiParam=radarParams.get("radar_api")||"";
+let radarRunParam=radarParams.get("radar_run")||"";
+// Recovery for previously issued links where "&radar_run=..." was percent-encoded inside radar_api.
+if(!radarRunParam&&radarApiParam.includes("&radar_run=")){
+ const parts=radarApiParam.split("&radar_run=");
+ radarApiParam=parts[0]||"";
+ radarRunParam=parts[1]||"";
+}
+const radarApiBase=/^https:\/\/[-a-z0-9]+\.trycloudflare\.com$/i.test(radarApiParam)?radarApiParam.replace(/\/$/,""):"";
 
 async function api(url,opts={}){
  const cross=/^https:\/\//i.test(url);
