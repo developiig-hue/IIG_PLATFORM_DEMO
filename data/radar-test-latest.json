@@ -1,71 +1,76 @@
 {
-  "schema": "iig.radar-demo-test.v1",
-  "generated_at": "2026-10-07T15:29:00+03:00",
+  "schema": "iig.radar-demo-test.v2",
+  "generated_at": "2026-10-07T16:10:00+03:00",
   "mode": "DEMO_TEST_SEARCH",
   "query": "промислова генерація CHP BESS енергетичний проєкт",
   "industry": "energy",
   "country": "UA",
-  "source_note": "Public test evidence snapshot. Production RADAR uses private server-side search provider.",
+  "source_note": "Public test evidence snapshot. Production RADAR returns ephemeral search results to the browser and does not persist the generated base.",
   "rows": [
     {
       "id": "demo-radar-ukrnafta-60mw",
       "company_name": "Ukrnafta PJSC",
-      "contact_name": "",
-      "email": "",
+      "contact_name": "Yurii Zhuravkov",
+      "position": "Контакт замовника EBRD/ECEPP",
+      "email": "yurii.zhuravkov@ukrnafta.com",
       "country": "UA",
       "industry": "energy",
-      "source_url": "https://ecepp.ebrd.com/delta/noticeSearchResults.html",
+      "source_url": "https://ecepp.ebrd.com/delta/viewNotice.html?displayNoticeId=44973631&locale=ru",
       "confidence": 96,
-      "signal": "Газопоршневі електростанції на 4 майданчиках, близько 60 MW сумарної електричної потужності; відкритий двоетапний тендер.",
-      "state": "pending"
-    },
-    {
-      "id": "demo-radar-ukrnafta-chp250",
-      "company_name": "Ukrnafta PJSC",
-      "contact_name": "",
-      "email": "",
-      "country": "UA",
-      "industry": "energy",
-      "source_url": "https://ecepp.ebrd.com/delta/viewNotice.html?displayNoticeId=46295125&locale=fr",
-      "confidence": 94,
-      "signal": "Будівництво нової CHP до 250 MW; EBRD prequalification / open tender two stage.",
-      "state": "pending"
+      "relevance": "Висока актуальність: Ukrnafta розвиває distributed generation / газопоршневу генерацію; є активний procurement pipeline.",
+      "state": "generated"
     },
     {
       "id": "demo-radar-zhytomyr-chp",
       "company_name": "Zhytomyrteplokomunenergo ME",
-      "contact_name": "",
-      "email": "",
+      "contact_name": "Maksym Zhuk",
+      "position": "Контакт замовника EBRD/ECEPP",
+      "email": "effekt-plus@ukr.net",
       "country": "UA",
       "industry": "energy",
-      "source_url": "https://ecepp.ebrd.com/delta/viewNotice.html?displayNoticeId=46067756&locale=fr",
+      "source_url": "https://ecepp.ebrd.com/delta/viewNotice.html?displayNoticeId=27778336",
       "confidence": 95,
-      "signal": "Поставка двох модульних CHP приблизно по 4.5 MWe кожна з утилізаційними котлами та супутніми послугами.",
-      "state": "pending"
+      "relevance": "Висока актуальність: закупівля/реалізація CHP для теплопостачання; потенційний EPC/OEM контакт.",
+      "state": "generated"
     },
     {
       "id": "demo-radar-kyivteploenergo",
       "company_name": "КП «Київтеплоенерго»",
-      "contact_name": "",
-      "email": "",
+      "contact_name": "Чобану Руслана Василівна",
+      "position": "Контактна особа закупівлі",
+      "email": "chobanu.rv@kte.kmda.gov.ua",
       "country": "UA",
       "industry": "energy",
       "source_url": "https://prozorro.gov.ua/uk/tender/UA-2026-04-20-000013-a",
-      "confidence": 88,
-      "signal": "Реконструкція з когенерацією; пусконалагодження 3 × Jenbacher JMS 620 GS-N.L.",
-      "state": "pending"
+      "confidence": 93,
+      "relevance": "Висока актуальність: реконструкція з 3 × Jenbacher JMS 620; прямий профіль для CHP/EPC.",
+      "state": "generated"
+    },
+    {
+      "id": "demo-radar-kyivteploenergo-tec",
+      "company_name": "КП «Київтеплоенерго»",
+      "contact_name": "Пухальська Дар’яна Андріанівна",
+      "position": "Контактна особа закупівлі",
+      "email": "pukhalska.da@kte.kmda.gov.ua",
+      "country": "UA",
+      "industry": "energy",
+      "source_url": "https://prozorro.gov.ua/tender/UA-2026-01-02-004791-a",
+      "confidence": 82,
+      "relevance": "Середня/висока актуальність: технічна підтримка АСОЕ генерації ТЕЦ; контакт у діючій енергетичній інфраструктурі.",
+      "state": "generated"
     },
     {
       "id": "demo-radar-dtek-ccgt",
       "company_name": "DTEK Group",
       "contact_name": "",
+      "position": "Контакт не підтверджено у відкритому джерелі",
       "email": "",
       "country": "UA",
       "industry": "energy",
       "source_url": "https://dtek.com/en/media-center/news/dtek-and-ge-vernova-sign-mou-to-advance-major-gas-power-project-in-ukraine/",
       "confidence": 84,
-      "signal": "Новий 650 MW CCGT на майданчику Бурштинської ТЕС; MoU з GE Vernova, flagship reconstruction project.",
-      "state": "pending"
+      "relevance": "Висока стратегічна актуальність: заявлений 650 MW CCGT; контакт потребує окремого ручного пошуку.",
+      "state": "generated"
     }
   ]
 }
