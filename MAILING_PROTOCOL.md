@@ -189,3 +189,29 @@ Role boundary remains unchanged:
 - ADMIN_1 alone starts final mass mailing.
 
 Marker: `IIG_MAIL_TEMPLATE_EDITOR_V35`.
+
+
+## UA ADDRESS MAIL MASTER V36 — OWNER APPROVED 2026-10-07
+
+The automatic UA accompanying email default is owner-approved and loads into the ADMIN_2 editor by default.
+
+Personalization rule:
+- visible template starts with `Шановний {{name}} !`;
+- `{{name}}` is replaced at send time by the exact `name` field stored for the recipient in the IIG contacts base;
+- if the contact name is empty, fallback is `Шановний колего !`.
+
+Approved UA subject:
+`IIG Monthly Digest — промислова енергетика | Вересень 2026`
+
+Approved UA body contains:
+- announcement of the September 2026 IIG Monthly Digest;
+- practical overview description;
+- four bullet points: Ukrainian industrial generation, world industrial-energy practice, financing/regulation, Chief Engineer advice;
+- bold statement that the Digest is attached as PDF;
+- active `РОЗМІСТИТИ ПРОЄКТ` link;
+- signature: `Ігор Кривошей · Директор з розвитку IIG s.r.o.`;
+- visible unsubscribe line.
+
+DEMO unsubscribe may display the approved mailto fallback. In production, backend MUST replace that unsubscribe action with the recipient-specific signed HTTPS unsubscribe URL that moves the address to the suppression list after confirmation.
+
+Marker: `IIG_UA_MAIL_MASTER_V36`.
