@@ -581,3 +581,11 @@ need("importRecipientBase" in html and "ІМПОРТ БАЗИ · ADMIN_2" in htm
 need("ЗАПУСТИТИ РОЗСИЛКУ · ADMIN_1" in html and 'id="massSendProd"' in html,"Final mass-send must remain visibly locked to ADMIN_1")
 need('app.post("/api/v1/contacts/import"' in backend and "importContactsBase" in request_store,"Server-side contact-base import API missing")
 need("IIG_CONTACT_BASE_IMPORT_V34" in mailing_protocol,"Contact-base import protocol marker missing")
+
+
+# Mailing rich editor V35
+need("mailTemplateLanguage" in html and "mailBodyRich" in html and "saveMailTemplate" in html,"Bilingual email rich editor UI missing")
+need('data-mail-cmd="bold"' in html and 'data-mail-cmd="italic"' in html and 'data-mail-cmd="underline"' in html,"Email rich-format toolbar incomplete")
+need("IIG_MAIL_TEMPLATE_EDITOR_V35" in mailing_protocol,"Mail template editor protocol marker missing")
+need('app.get("/api/v1/mailing/template/:language"' in backend and 'app.post("/api/v1/mailing/template/:language"' in backend,"Mail template API missing")
+need("sanitizeMailHtml" in backend and "{{greeting}}" in backend,"Mail template safety/personalization contract missing")
