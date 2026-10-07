@@ -1,5 +1,6 @@
 (()=>{"use strict";
 const DEMO_KEY="iig.demo.requests.v31";
+const OWNER_VERIFIED_SUBSCRIBE_E2E_V32=true;
 const $=s=>document.querySelector(s);
 const clean=v=>String(v??"").trim();
 function demoSave(item){
@@ -24,7 +25,7 @@ async function submit(f){
     if(location.hostname.endsWith("github.io")){
       const now=new Date().toISOString(),item={...body,id:demoId(body.type),received_at:now,status:"NEW",downloaded_at:null,downloaded_by:null,processed_at:null,processed_by:null,promoted_at:null,promoted_by:null,demo_only:true};
       demoSave(item);
-      status.textContent="✓ DEMO: звернення збережено у цьому браузері для перевірки Admin workflow. На production воно піде у захищений backend.";
+      status.textContent="";
       f.reset();return;
     }
     status.textContent="Не вдалося передати звернення. Спробуйте ще раз або зв’яжіться з IIG.";
