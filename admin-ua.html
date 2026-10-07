@@ -162,10 +162,22 @@
 <div class="toolbar"><input class="input grow" id="contactSearch" placeholder="Пошук за назвою, ім’ям або email"><select class="input" id="contactFilter"><option value="all">Усі контакти</option><option value="active">З активною згодою</option><option value="pending">Очікують підтвердження</option><option value="blocked">Виключені з розсилки</option></select><button class="btn primary" id="addContact">+ Додати контакт</button><button class="btn success" id="exportContactsBase">⬇ СКАЧАТИ БАЗУ IIG В EXCEL</button></div>
 <div class="tablewrap recipientpreview"><table class="table"><thead><tr><th>Контакт / організація</th><th>Email</th><th>Статус</th><th>Дії</th></tr></thead><tbody id="contactRows"><tr><td colspan="4">Завантажте базу або додайте контакт.</td></tr></tbody></table></div>
 <div class="miniwarn">Контакти без підтвердженої згоди не можна включати до маркетингової розсилки. Відписані та заблоковані адреси не активуються повторним імпортом.</div></div>
-<div class="card module" id="radarContacts"><h2>RADAR → БАЗА КОНТАКТІВ</h2><p class="muted">Завантажте перевірені пропозиції контактів із RADAR у CSV або JSON. Знайдені RADAR контакти потрапляють на модерацію — не до списку розсилки.</p>
-<label class="uploadbox"><b>Імпортувати пропозиції RADAR</b><span>CSV: email, name, company, position, source, language, consent або JSON-масив з такими полями.</span><input id="radarFile" type="file" accept=".csv,.json,text/csv,application/json"></label>
-<div class="row"><span>На перевірці</span><b id="radarPending">0</b></div><div class="tablewrap recipientpreview"><table class="table"><thead><tr><th>Контакт / джерело</th><th>Email</th><th>Рішення</th></tr></thead><tbody id="radarRows"><tr><td colspan="3">Пропозицій RADAR поки немає.</td></tr></tbody></table></div>
-<div class="miniwarn">Інтеграція з автоматичним RADAR і захищеною єдиною базою IIG потребує приватного API на КРОЦІ 27. Ця демоверсія дозволяє перевірити імпорт, зіставлення дублікатів і ручне рішення адміністратора.</div></div>
+<div class="card module" id="radarContacts">
+<div class="sectionhead"><div><h2>RADAR · ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ</h2><p class="muted">ADMIN_2 запускає пошукового робота прямо з адмінки. Робот шукає потенційні промислові компанії/проєкти, записує кандидатів у приватний RADAR registry і передає їх тільки на ручну модерацію.</p></div><span class="pill blue">ROBOT → REVIEW → БАЗА IIG</span></div>
+<div class="form2">
+<label>Що шукати<input class="input" id="radarQuery" value="промислова генерація CHP BESS енергетичний проєкт"></label>
+<label>Країна / ринок<input class="input" id="radarCountry" value="UA"></label>
+</div>
+<div class="form2">
+<label>Галузь<select class="input" id="radarIndustry"><option value="energy">Енергетика</option><option value="metallurgy">Металургія / Mining</option><option value="agriculture">Агро</option><option value="food">Харчова промисловість</option><option value="logistics">Логістика</option><option value="datacenters">Data Centers</option><option value="other">Інше</option></select></label>
+<label>Максимум кандидатів<select class="input" id="radarLimit"><option>10</option><option selected>20</option><option>50</option><option>100</option></select></label>
+</div>
+<div class="toolbar"><button class="btn success" id="radarStartRobot">▶ ЗАПУСТИТИ RADAR · ADMIN_2</button><button class="btn primary" id="radarRefreshRobot">↻ ОНОВИТИ РЕЗУЛЬТАТИ</button><span class="pill amber" id="radarRunState">НЕ ЗАПУЩЕНО</span></div>
+<div id="radarRunInfo" class="miniwarn"><b>Правило:</b> знайдений роботом контакт не стає ACTIVE для розсилки. Спочатку ADMIN_2 перевіряє джерело та приймає рішення.</div>
+<div class="row"><span>На перевірці</span><b id="radarPending">0</b></div>
+<div class="tablewrap recipientpreview"><table class="table"><thead><tr><th>Компанія / сигнал</th><th>Контакт</th><th>Джерело</th><th>Рішення</th></tr></thead><tbody id="radarRows"><tr><td colspan="4">Пропозицій RADAR поки немає.</td></tr></tbody></table></div>
+<details><summary><b>Ручний імпорт RADAR CSV / JSON</b></summary><label class="uploadbox"><b>Імпортувати пропозиції RADAR</b><span>Резервний ручний канал. Знайдені контакти також потрапляють тільки на модерацію.</span><input id="radarFile" type="file" accept=".csv,.json,text/csv,application/json"></label></details>
+<div class="miniwarn"><b>Paid-hosting contract:</b> кнопка викликає <code>/api/v1/radar/runs</code> → Redis queue <code>radar</code> → search provider → PostgreSQL <code>radar_prospects</code>. GitHub Pages не зберігає токен пошукового провайдера.</div></div>
 <div class="card" id="mailingCenter"><h2>РОЗСИЛКА ДАЙДЖЕСТУ</h2>
 <p class="muted">ADMIN_2 завантажує з комп’ютера точний PDF, вже затверджений ADMIN_1. Сервер звіряє SHA-256 із затвердженим CURRENT Digest. Масову розсилку запускає ADMIN_1.</p>
 <div class="form2">
@@ -258,4 +270,4 @@
 </div></main></div>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2 id="modalTitle">ПОВІДОМЛЕННЯ ADMIN</h2><p id="modalText"></p><p class="muted hidden" id="modalProductionHint">У демоверсії ця production-дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
 <script src="assets/admin-final-admin1-v1.js?v=REQUESTS-PROCESSING-V31"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V34"></script><!-- digest-publish-route-final-20261003 -->
-<script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V36"></script></body></html>
+<script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V36"></script><script src="assets/admin-radar.js?v=RADAR-V37"></script></body></html>
