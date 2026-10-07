@@ -1459,3 +1459,28 @@ The Digest is not releasable if:
 - a hosting/domain migration changes this approved form without a new owner approval.
 
 **Status:** VERIFIED / OWNER APPROVED / STANDARD VISUAL FORM / PORTABLE.
+
+
+## HARD RULE — COMMERCIAL REQUEST INTAKE / PROCESSING V31 (2026-10-07)
+
+Canonical commercial path:
+**Public Form → protected backend → single request registry → Admin «Обробка Заяв та Підписки» → ADMIN_2 download + processed check → unified IIG contacts.**
+
+The Admin left navigation MUST expose **«Обробка Заяв та Підписки»** with three independent columns:
+1. **РОЗМІСТИТИ ПРОЄКТ**
+2. **ЗАДАТИ ПИТАННЯ ГОЛОВНОМУ ІНЖЕНЕРУ**
+3. **ПІДПИСКА НА DIGEST**
+
+Each column MUST show lifetime TOTAL, NEW, DOWNLOADED and PROCESSED counters and preserve received date + all canonical public-form data. Each column MUST have a bottom Excel export.
+
+A record is not processed by viewing it. Backend state transition is:
+`NEW → downloaded_at → ADMIN_2 processed checkbox → PROCESSED`.
+The backend MUST reject processing without prior download. ADMIN_1 must be able to see lifetime totals vs. ADMIN_2 processed totals.
+
+After processing, ADMIN_2 may promote the contact into the unified IIG contact base. PROJECT/ENGINEER remain PENDING for marketing; explicit Digest subscribers may become ACTIVE.
+
+PII MUST NOT be stored in Git. Production persistence uses `IIG_REQUESTS_DIR` or an equivalent private transactional DB. GitHub Pages localStorage is DEMO-only.
+
+Full machine contract: `REQUESTS_PROTOCOL.md`.
+
+**PORTABLE / PII / RBAC / COMMERCIAL CORE / RELEASE-BLOCKING.**
