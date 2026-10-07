@@ -510,3 +510,13 @@ need("mergeDemoPublished(registryItems).filter(valid)" in pub,"DEMO published it
 kioge=[x for x in news_items if x.get("slug")=="kioge-2026-opening-58-countries-280-meetings"][0]
 need(kioge.get("homepage_top5") is True and kioge.get("editorial_tag")=="EVENT" and kioge.get("digest_rubric")=="GENERAL","KIOGE must be TOP-5 EVENT in GENERAL Digest rubric")
 need("DIGEST_EVENT_TAG_V29" in js and "finaldigest-tag" in js and "tag:editorialTag(n)" in js,"Digest EVENT tag route/render missing")
+
+need("DIGEST_NEWS_ROW_VISUAL_STANDARD_V30" in js and "OWNER_APPROVED_2026-10-07" in js,"Digest NEWS row owner-approved V30 marker missing")
+need("visual_standard:DIGEST_NEWS_ROW_VISUAL_STANDARD_V30" in js,"Digest fingerprint/candidate must carry visual standard V30")
+need("NEWS rows мають видимі теги" in js and "EVENT маршрутизовано до УКРАЇНА ТА СВІТ" in js,"Digest candidate tag/EVENT route gates missing")
+need("Стандарт тегів новин V30" in js and "EVENT у секції УКРАЇНА ТА СВІТ" in js,"Digest final tag/EVENT route gates missing")
+need("DIGEST NEWS ROW OWNER-APPROVED STANDARD V30" in (root/"assets/admin.css").read_text(encoding="utf-8"),"Digest NEWS row V30 CSS lock missing")
+digest_cfg=json.loads((root/"content/digest-layout-standard-v1.json").read_text(encoding="utf-8"))
+v30=digest_cfg.get("news_row_visual_standard",{})
+need(v30.get("status")=="OWNER_VERIFIED_APPROVED_LOCKED" and v30.get("tag_required_for_news") is True,"Digest V30 machine-readable visual contract missing")
+need(v30.get("event_rule",{}).get("destination_section")=="UKRAINE_AND_WORLD","Digest EVENT route missing from V30 machine spec")
