@@ -96,3 +96,33 @@ export async function promoteContact(id,role){
   });
 }
 export async function lifetimeStats(){const db=await read();return {all:statsFor(db.requests),project:statsFor(db.requests.filter(x=>x.type==="project")),subscribe:statsFor(db.requests.filter(x=>x.type==="subscribe")),engineer:statsFor(db.requests.filter(x=>x.type==="engineer")),contacts:db.contacts.length}}
+
+
+export async function listContacts(){
+  const db=await read();
+  return structuredClone(db.contacts.slice().sort((a,b)=>String(a.email).localeCompare(String(b.email))));
+}
+
+export async function getContactById(id){
+  const db=await read();
+  const c=db.contacts.find(x=>x.id===id);
+  return c?structuredClone(c):null;
+}
+
+export async function markUnsubscribed(id,meta={}){
+  return mutate(db=>{
+    const c=db.contacts.find(x=>x.id===id);
+    if(!c)throw Object.assign(new Error("CONTACT_NOT_FOUND"),{code:"CONTACT_NOT_FOUND"});
+    c.status="SUPPRESSED";
+    c.marketing_consent=false;
+    c.unsubscribed_at=new Date().toISOString();
+    c.unsubscribe_reason=clean(meta.reason||"USER_REQUEST").slice(0,120);
+    c.unsubscribe_source=clean(meta.source||"email_link").slice(0,120);
+    return structuredClone(c);
+  });
+}
+
+export async function mailingEligibleContacts(){
+  const db=await read();
+  return structuredClone(db.contacts.filter(x=>x.status==="ACTIVE"&&x.marketing_consent===true&&!x.unsubscribed_at));
+}
