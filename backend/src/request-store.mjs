@@ -178,13 +178,13 @@ export async function importContactsBase(rows,role,source="ADMIN_2_XLSX"){
         }else if(wantsSuppressed){
           x.status="SUPPRESSED";x.marketing_consent=false;x.unsubscribed_at=now;x.unsubscribe_reason="IMPORTED_SUPPRESSION";x.unsubscribe_source=source;result.suppressed++;
         }else if(wantsActive&&(consentOk||evidence)){
-          x.status="ACTIVE";x.marketing_consent=true;result.active++;
+          x.status="ACTIVE";x.marketing_consent=true;
         }
         result.updated++;
       }
       if(x.status==="ACTIVE")result.active++;
       else if(x.status==="PENDING")result.pending++;
-      else if(x.status==="SUPPRESSED"&&!wantsSuppressed)result.suppressed++;
+      else if(x.status==="SUPPRESSED")result.suppressed++;
     }
     return {status:"IMPORTED",imported_at:now,imported_by:role,source,...result,contacts_total:db.contacts.length};
   });
