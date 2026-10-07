@@ -167,3 +167,21 @@ Migration is RELEASE-BLOCKED if any of these regress:
 - internal DEMO/backend/debug implementation text becomes visible to the public user.
 
 Machine guard marker: `OWNER_VERIFIED_SUBSCRIBE_E2E_V32`.
+
+
+## CONTACT BASE VISIBILITY / EXPORT CONTRACT
+
+Status: OWNER-REQUESTED / ACCEPTED EXTENSION — 2026-10-07.
+
+When a processed request has been promoted to the unified IIG contacts base and the request card shows `✓ У БАЗІ IIG`, that state MUST be directly verifiable by ADMIN:
+
+1. The `✓ У БАЗІ IIG` control opens `Розсилка та база → Керування базою контактів`.
+2. The exact promoted contact is searchable and visible there.
+3. The complete current IIG contacts base can be exported through `⬇ СКАЧАТИ БАЗУ IIG В EXCEL`.
+4. The export contains at minimum: email, name, company, position, source, language, contact status and consent evidence.
+5. In GitHub Pages DEMO, promoted contacts persist in browser-local storage under a dedicated contacts key and are reconstructed from request records carrying `promoted_at`.
+6. On paid hosting this browser persistence MUST be replaced by private transactional database storage, while preserving the same Admin visibility and export behavior.
+
+A visual `✓ У БАЗІ IIG` without a corresponding retrievable contact in the contact-base view is a RELEASE BLOCKER.
+
+Marker: `IIG_CONTACT_BASE_EXPORT_V32`.
