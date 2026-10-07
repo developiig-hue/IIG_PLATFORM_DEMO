@@ -1,6 +1,6 @@
 (()=>{"use strict";
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let currentRows=[];let liveRunId=null;
+let currentRows=[];let liveRunId=null;let radarPollEpoch=0;
 const radarParams=new URLSearchParams(location.search);
 let radarApiParam=radarParams.get("radar_api")||"";
 let radarRunParam=radarParams.get("radar_run")||"";
@@ -74,13 +74,15 @@ async function resetGeneration(){
  $("radarRunInfo").innerHTML="<b>✓ Генерацію скинуто.</b> Тимчасова вибірка очищена. Можна запускати новий цільовий пошук.";
 }
 function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
-async function pollTemporaryRun(runId){
+async function pollTemporaryRun(runId,epoch){
  liveRunId=runId;
  for(let i=0;i<300;i++){
+   if(epoch!==radarPollEpoch)return null;
    await wait(2000);
    const x=await api(radarApiBase+"/api/v1/radar/test-runs/"+encodeURIComponent(liveRunId));
    const state=String(x.state||"").toLowerCase();
    if(state==="failed")throw new Error(x.error||"RADAR_LIVE_RUN_FAILED");
+   if(state==="superseded"||state==="cancelled")return null;
    if(state==="success"){
      if(Number(x.scanned_sources||0)<1000)throw new Error("RADAR_SCAN_UNDER_1000_SOURCES");
      $("radarRunInfo").innerHTML="<b>✓ LIVE RADAR завершено:</b> оброблено "+esc(x.scanned_sources||0)+" сторінок · доменів "+esc(x.scanned_domains||0)+" · контактів "+esc(x.count||0)+".";
@@ -91,20 +93,23 @@ async function pollTemporaryRun(runId){
  }
  throw new Error("RADAR_LIVE_RUN_TIMEOUT");
 }
-async function runTemporaryBackend(payload){
+async function runTemporaryBackend(payload,epoch){
  const started=await api(radarApiBase+"/api/v1/radar/test-runs",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
- return await pollTemporaryRun(started.id);
+ return await pollTemporaryRun(started.id,epoch);
 }
 async function start(){
  const query=$("radarQuery")?.value.trim()||"",industry=$("radarIndustry")?.value||"",country=$("radarCountry")?.value.trim()||"",limit=Number($("radarLimit")?.value||20);
  if(query.length<3)return alert("Опишіть, яких потенційних клієнтів потрібно знайти.");
+ radarPollEpoch+=1;
+ const myEpoch=radarPollEpoch;
  currentRows=[];renderRows([]);setState("ПОШУК…","amber");
  try{
    let rows=[];
    const payload={query,industry,country,limit,min_sources:1000,deep_scan:true};
    if(isPages()){
      if(!radarApiBase)throw new Error("LIVE_RADAR_REQUIRES_PRIVATE_BACKEND");
-     rows=await runTemporaryBackend(payload);
+     rows=await runTemporaryBackend(payload,myEpoch);
+     if(rows===null||myEpoch!==radarPollEpoch)return;
    }else{
      const x=await api("/api/v1/radar/search",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
      rows=Array.isArray(x.rows)?x.rows:[];
@@ -126,10 +131,14 @@ setState(isPages()?(radarApiBase?"LIVE RADAR · ПІДКЛЮЧЕНО":"LIVE RADA
 if(isPages()&&$("radarRunInfo"))$("radarRunInfo").innerHTML=radarApiBase?"<b>✓ LIVE RADAR backend підключено.</b> Можна запускати реальний web-crawl через ADMIN MASTER.":"<b>LIVE RADAR:</b> для реального web-scan потрібне підключення backend.";
 if(isPages()&&radarApiBase&&radarRunParam){
  setState("LIVE RUN · ПІДКЛЮЧЕННЯ…","amber");
- pollTemporaryRun(radarRunParam).then(rows=>{
+ radarPollEpoch+=1;
+ const initialEpoch=radarPollEpoch;
+ pollTemporaryRun(radarRunParam,initialEpoch).then(rows=>{
+   if(rows===null||initialEpoch!==radarPollEpoch)return;
    renderRows(rows);setState("✓ ЗГЕНЕРОВАНО · "+rows.length,"green");
    $("radarRunInfo").innerHTML+="<br><b>Результат готовий:</b> можна перевірити контакти та скачати Excel.";
  }).catch(e=>{
+   if(initialEpoch!==radarPollEpoch)return;
    renderRows([]);setState("ПОМИЛКА","red");
    $("radarRunInfo").innerHTML="<b>Не вдалося підключити LIVE RADAR run:</b> "+esc(e.data?.detail||e.data?.error||e.message);
  });
