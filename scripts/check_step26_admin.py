@@ -611,10 +611,10 @@ need("signed HTTPS" in mailing_protocol and "SUPPRESSED" in mailing_protocol,"Pr
 # ADMIN-launched RADAR prospect search V37
 radar_js=(root/"assets/admin-radar.js").read_text(encoding="utf-8")
 radar_protocol=(root/"RADAR_PROTOCOL.md").read_text(encoding="utf-8")
-need("radarStartRobot" in html and "RADAR · ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ" in html,"RADAR robot launch UI missing")
+need("radarStartRobot" in html and "RADAR · ЦІЛЬОВИЙ ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ" in html,"RADAR robot launch UI missing")
 need("/api/v1/radar/search" in radar_js,"RADAR ephemeral production API wiring missing")
 need("radarExportExcel" in html and "radarResetGeneration" in html and "IIG_RADAR_Target_Search_" in radar_js,"RADAR Excel export/reset flow missing")
-need("DEMO TEST RADAR" in radar_js and "radar-test-latest.json" in radar_js,"Working GitHub Pages DEMO TEST RADAR mode missing")
+need("DEMO TEST · READY" in radar_js and "radar-test-latest.json" in radar_js,"Working GitHub Pages DEMO TEST RADAR mode missing")
 need("IIG_RADAR_EPHEMERAL_V39" in radar_protocol,"RADAR ephemeral V39 protocol marker missing")
 need("IIG_RADAR_DEMO_EPHEMERAL_V39" in radar_protocol,"RADAR DEMO ephemeral V39 protocol marker missing")
 need((root/"data/radar-test-latest.json").exists(),"RADAR DEMO TEST snapshot missing")
