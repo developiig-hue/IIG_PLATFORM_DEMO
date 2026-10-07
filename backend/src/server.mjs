@@ -190,21 +190,31 @@ function sanitizeMailHtml(v){
   let h=String(v||"").slice(0,20000);
   if(/<\s*(script|style|iframe|object|embed|svg|math|form|input|button)\b/i.test(h))throw Object.assign(new Error("UNSAFE_MAIL_HTML"),{code:"UNSAFE_MAIL_HTML"});
   if(/\son\w+\s*=|javascript:|data:text\/html/i.test(h))throw Object.assign(new Error("UNSAFE_MAIL_HTML"),{code:"UNSAFE_MAIL_HTML"});
-  h=h.replace(/<a\b[^>]*href\s*=\s*["'][^"']*["'][^>]*>/gi,"").replace(/<\/a>/gi,"");
+  h=h.replace(/<a\b([^>]*)>/gi,(m,attrs)=>{
+    const hit=attrs.match(/href\s*=\s*["']([^"']+)["']/i),href=hit?hit[1]:"";
+    if(!/^(https?:\/\/|mailto:)/i.test(href))return "";
+    return '<a href="'+escapeHtml(href)+'">';
+  });
   return h;
 }
 function plainTextFromHtml(h){return String(h||"").replace(/<br\s*\/?>/gi,"\n").replace(/<\/p>/gi,"\n\n").replace(/<[^>]+>/g,"").replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/\n{3,}/g,"\n\n").trim()}
-function greetingFor(contact,language){
-  const first=String(contact.name||"").trim().split(/\s+/)[0]||"";
-  return language==="EN"?(first?"Dear "+escapeHtml(first)+",":"Dear colleague,"):(first?"Шановний "+escapeHtml(first)+",":"Шановний колего,");
+function contactName(contact,language){
+  const n=String(contact.name||"").trim();
+  if(n)return escapeHtml(n);
+  return language==="EN"?"colleague":"колего";
+}
+function fallbackGreeting(contact,language){
+  return language==="EN"?"Dear "+contactName(contact,language)+"!":"Шановний "+contactName(contact,language)+" !";
 }
 async function messageFor(contact,language,unsubscribeUrl){
-  const lang=normLang(language),template=await getMailTemplate(lang),greeting=greetingFor(contact,lang);
+  const lang=normLang(language),template=await getMailTemplate(lang),name=contactName(contact,lang),greeting=fallbackGreeting(contact,lang);
   let html=sanitizeMailHtml(template.html||"");
-  html=html.replaceAll("{{greeting}}",greeting);
-  if(!html.includes(greeting))html="<p>"+greeting+"</p>"+html;
-  const unsubscribeHtml=lang==="EN"?'<p><a href="'+escapeHtml(unsubscribeUrl)+'">Unsubscribe from IIG Monthly Digest</a></p>':'<p><a href="'+escapeHtml(unsubscribeUrl)+'">Відписатися від IIG Monthly Digest</a></p>';
-  html+=unsubscribeHtml;
+  html=html.replaceAll("{{name}}",name).replaceAll("{{greeting}}",greeting);
+  if(!/Шановний|Dear/i.test(plainTextFromHtml(html)))html="<p><b>"+greeting+"</b></p>"+html;
+  const unsubLabel=lang==="EN"?"UNSUBSCRIBE FROM MAILING":"ВІДПИСАТИСЯ ВІД РОЗСИЛКИ";
+  const personal='<a href="'+escapeHtml(unsubscribeUrl)+'">'+unsubLabel+"</a>";
+  html=html.replace(/<a\b[^>]*href\s*=\s*["']mailto:[^"']+["'][^>]*>\s*ВІДПИСАТИСЯ ВІД РОЗСИЛКИ\s*<\/a>/gi,personal);
+  if(!html.includes(unsubscribeUrl))html+='<p>'+personal+'</p>';
   const text=plainTextFromHtml(html)+(lang==="EN"?"\n\nUnsubscribe: ":"\n\nВідписатися: ")+unsubscribeUrl;
   return {subject:String(template.subject||"").slice(0,240),text,html,template_updated_at:template.updated_at||null};
 }
