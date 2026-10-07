@@ -1,5 +1,5 @@
 {
-  "schema": "iig.radar-demo-test.v2",
+  "schema": "iig.radar-demo-test.v3",
   "generated_at": "2026-10-07T16:10:00+03:00",
   "mode": "DEMO_TEST_SEARCH",
   "query": "промислова генерація CHP BESS енергетичний проєкт",
@@ -17,7 +17,7 @@
       "industry": "energy",
       "source_url": "https://ecepp.ebrd.com/delta/viewNotice.html?displayNoticeId=44973631&locale=ru",
       "confidence": 96,
-      "relevance": "Висока актуальність: Ukrnafta розвиває distributed generation / газопоршневу генерацію; є активний procurement pipeline.",
+      "relevance": "Ukrnafta розвиває distributed generation / газопоршневу генерацію; є активний procurement pipeline.",
       "state": "generated"
     },
     {
@@ -30,7 +30,7 @@
       "industry": "energy",
       "source_url": "https://ecepp.ebrd.com/delta/viewNotice.html?displayNoticeId=27778336",
       "confidence": 95,
-      "relevance": "Висока актуальність: закупівля/реалізація CHP для теплопостачання; потенційний EPC/OEM контакт.",
+      "relevance": "закупівля/реалізація CHP для теплопостачання; потенційний EPC/OEM контакт.",
       "state": "generated"
     },
     {
@@ -43,7 +43,7 @@
       "industry": "energy",
       "source_url": "https://prozorro.gov.ua/uk/tender/UA-2026-04-20-000013-a",
       "confidence": 93,
-      "relevance": "Висока актуальність: реконструкція з 3 × Jenbacher JMS 620; прямий профіль для CHP/EPC.",
+      "relevance": "реконструкція з 3 × Jenbacher JMS 620; прямий профіль для CHP/EPC.",
       "state": "generated"
     },
     {
@@ -56,20 +56,7 @@
       "industry": "energy",
       "source_url": "https://prozorro.gov.ua/tender/UA-2026-01-02-004791-a",
       "confidence": 82,
-      "relevance": "Середня/висока актуальність: технічна підтримка АСОЕ генерації ТЕЦ; контакт у діючій енергетичній інфраструктурі.",
-      "state": "generated"
-    },
-    {
-      "id": "demo-radar-dtek-ccgt",
-      "company_name": "DTEK Group",
-      "contact_name": "",
-      "position": "Контакт не підтверджено у відкритому джерелі",
-      "email": "",
-      "country": "UA",
-      "industry": "energy",
-      "source_url": "https://dtek.com/en/media-center/news/dtek-and-ge-vernova-sign-mou-to-advance-major-gas-power-project-in-ukraine/",
-      "confidence": 84,
-      "relevance": "Висока стратегічна актуальність: заявлений 650 MW CCGT; контакт потребує окремого ручного пошуку.",
+      "relevance": "технічна підтримка АСОЕ генерації ТЕЦ; контакт у діючій енергетичній інфраструктурі.",
       "state": "generated"
     }
   ]
