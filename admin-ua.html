@@ -164,10 +164,24 @@
 <label class="uploadbox"><b>Імпортувати пропозиції RADAR</b><span>CSV: email, name, company, position, source, language, consent або JSON-масив з такими полями.</span><input id="radarFile" type="file" accept=".csv,.json,text/csv,application/json"></label>
 <div class="row"><span>На перевірці</span><b id="radarPending">0</b></div><div class="tablewrap recipientpreview"><table class="table"><thead><tr><th>Контакт / джерело</th><th>Email</th><th>Рішення</th></tr></thead><tbody id="radarRows"><tr><td colspan="3">Пропозицій RADAR поки немає.</td></tr></tbody></table></div>
 <div class="miniwarn">Інтеграція з автоматичним RADAR і захищеною єдиною базою IIG потребує приватного API на КРОЦІ 27. Ця демоверсія дозволяє перевірити імпорт, зіставлення дублікатів і ручне рішення адміністратора.</div></div>
-<div class="card"><h2>РОЗСИЛКА ДАЙДЖЕСТУ</h2><label>Дайджест для розсилки<select class="input" id="campaignDigest"><option>IIG Monthly Digest — поточний затверджений MASTER</option></select></label><label>Тема листа<input class="input" id="campaignSubject" value="IIG Monthly Digest — промислова енергетика"></label>
-<div class="row"><span>Отримувачів у завантаженій базі</span><b id="campaignRecipients">0</b></div><div class="row"><span>Відписка / виключення з розсилки</span><span class="pill red">ПОТРІБЕН PRODUCTION BACKEND</span></div><div class="row"><span>Сервіс відправлення</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div>
-<div class="toolbar"><button class="btn primary" id="mailDryRun">Перевірити розсилку</button><button class="btn danger" id="testSendProd">Тестовий лист</button><button class="btn danger" id="massSendProd">Запустити розсилку</button></div>
-<div id="mailCheck" class="miniwarn">Перед реальною розсилкою система автоматично перевірить затверджений Digest SHA, згоду отримувачів, відписки та виключення, дублікати, сервіс відправлення, сесію Admin/MFA і захист від повторної відправки.</div></div></div></section>
+<div class="card" id="mailingCenter"><h2>РОЗСИЛКА ДАЙДЖЕСТУ</h2>
+<p class="muted">ADMIN_2 завантажує з комп’ютера точний PDF, вже затверджений ADMIN_1. Сервер звіряє SHA-256 із затвердженим CURRENT Digest. Масову розсилку запускає ADMIN_1.</p>
+<div class="form2">
+<label>Мова PDF<select class="input" id="mailDigestLanguage"><option value="UA">UA — Українська</option><option value="EN">EN — English</option></select></label>
+<label>Завантажити затверджений Digest PDF<input class="input" id="mailDigestFile" type="file" accept="application/pdf,.pdf"></label>
+</div>
+<div class="toolbar"><button class="btn primary" id="uploadMailDigest">⬆ ЗАВАНТАЖИТИ ДАЙДЖЕСТ ДЛЯ РОЗСИЛКИ</button><span class="pill amber" id="mailDigestState">PDF НЕ ПЕРЕВІРЕНО</span></div>
+<label>Тема листа<input class="input" id="campaignSubject" value="IIG Monthly Digest — промислова енергетика | [Місяць, рік]" readonly></label>
+<div class="miniwarn"><b>LOCKED EMAIL MASTER:</b> тема/текст/підпис/відписка формуються сервером за затвердженим шаблоном. UA — за замовчуванням; EN — тільки для контактів із мовою EN. PDF надсилається вкладенням.</div>
+<div class="row"><span>ACTIVE отримувачів у базі IIG</span><b id="campaignRecipients">0</b></div>
+<div class="row"><span>Відписані / виключені</span><span class="pill red" id="mailSuppressed">0</span></div>
+<div class="row"><span>Сервіс відправлення</span><span class="pill red" id="mailTransportState">НЕ ПІДКЛЮЧЕНО</span></div>
+<div class="row"><span>Unsubscribe endpoint</span><span class="pill red" id="mailUnsubscribeState">НЕ ПІДКЛЮЧЕНО</span></div>
+<div class="form2"><label>Тестовий e-mail<input class="input" id="mailTestEmail" type="email" placeholder="email для тестового листа"></label><label>Мова тесту<select class="input" id="mailTestLanguage"><option value="UA">UA</option><option value="EN">EN</option></select></label></div>
+<div class="toolbar"><button class="btn primary" id="mailDryRun">Перевірити розсилку</button><button class="btn primary" id="testSendProd">Надіслати тестовий лист</button><button class="btn success" id="massSendProd">ЗАПУСТИТИ РОЗСИЛКУ</button></div>
+<div id="mailCheck" class="miniwarn">Перед реальною розсилкою система перевіряє: exact approved Digest SHA, ACTIVE consent, unsubscribe/suppression, SMTP, ADMIN role та захист від підміни PDF.</div>
+<div class="tablewrap recipientpreview"><table class="table"><thead><tr><th>Кампанія</th><th>Статус</th><th>Відправлено</th><th>Помилки</th><th>Дата</th></tr></thead><tbody id="mailCampaignRows"><tr><td colspan="5">Кампаній ще немає.</td></tr></tbody></table></div>
+</div></div></section>
 
 <section class="tab" id="requests">
 <div class="card requestscommand">
@@ -218,4 +232,4 @@
 </div></main></div>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2 id="modalTitle">ПОВІДОМЛЕННЯ ADMIN</h2><p id="modalText"></p><p class="muted hidden" id="modalProductionHint">У демоверсії ця production-дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
 <script src="assets/admin-final-admin1-v1.js?v=REQUESTS-PROCESSING-V31"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V32"></script><!-- digest-publish-route-final-20261003 -->
-<script src="assets/admin-requests.js?v=REQUESTS-V31"></script></body></html>
+<script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V33"></script></body></html>
