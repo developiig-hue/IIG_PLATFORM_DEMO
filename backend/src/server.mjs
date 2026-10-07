@@ -1,5 +1,6 @@
 import Fastify from "fastify";
 import multipart from "@fastify/multipart";
+import formbody from "@fastify/formbody";
 import {requireAdmin} from "./auth.mjs";
 import {putCurrent,getCurrentMeta,getCurrentPdf,revisionFor,sha256} from "./storage.mjs";
 import {saveApproval,getApproval} from "./approval-store.mjs";
@@ -13,6 +14,7 @@ import {saveValidatedDigest,getValidatedDigest,beginCampaign,completeCampaign,li
 
 const app=Fastify({logger:true,bodyLimit:30*1024*1024});
 await app.register(multipart,{limits:{fileSize:25*1024*1024,files:1,fields:8}});
+await app.register(formbody);
 const normLang=v=>String(v||"UA").toUpperCase()==="EN"?"EN":"UA";
 const editorialDraftDir=path.resolve(process.env.IIG_EDITORIAL_DRAFT_DIR||"./var/editorial-drafts");
 const safeSlug=v=>String(v||"").toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,160);
