@@ -114,3 +114,22 @@ Configure `IIG_GITHUB_ACTIONS_TOKEN` only on the server. Never expose it in brow
 - ADMIN_2 can edit/save but cannot grant final approval or publish.
 - ADMIN_1 remains the only final approval/publication authority.
 - Draft storage is portable via `IIG_EDITORIAL_DRAFT_DIR`; production should mount it on persistent storage or replace it with a transactional database.
+
+
+## Requests / subscriptions intake
+
+Commercial intake path:
+
+`Public Form → POST /api/v1/requests → private persistent registry → Admin / Requests → Excel download → ADMIN_2 processed → IIG contacts`.
+
+API:
+- `POST /api/v1/requests` — public same-origin form intake. Server validates type/required fields/consent, rate-limits by source, hashes the source IP and stores no raw IP.
+- `GET /api/v1/requests?type=project|engineer|subscribe` — authenticated ADMIN_1/ADMIN_2 registry view.
+- `GET /api/v1/requests/stats` — lifetime counters from the server registry.
+- `GET /api/v1/requests/export/:type.xls` — authenticated Excel-compatible export and atomic `downloaded_at` marker for that queue.
+- `POST /api/v1/requests/:id/processed` — ADMIN_2 only. Backend rejects processing until `downloaded_at` exists.
+- `POST /api/v1/requests/:id/promote-contact` — ADMIN_2 only, after processing. Project/Engineer contacts become PENDING; explicit Digest subscribers become ACTIVE.
+
+Persistence is controlled by `IIG_REQUESTS_DIR`. This path contains PII and MUST be private, backed up and excluded from Git/static hosting. Records are retained for lifetime counters; processing never deletes the original submission.
+
+GitHub Pages cannot provide the protected backend. Its frontend uses a same-browser local fallback only for UX testing; that fallback is never a production source of truth.
