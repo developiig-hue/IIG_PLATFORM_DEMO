@@ -173,8 +173,32 @@
 <label>Завантажити затверджений Digest PDF<input class="input" id="mailDigestFile" type="file" accept="application/pdf,.pdf"></label>
 </div>
 <div class="toolbar"><button class="btn primary" id="uploadMailDigest">⬆ ЗАВАНТАЖИТИ ДАЙДЖЕСТ ДЛЯ РОЗСИЛКИ</button><span class="pill amber" id="mailDigestState">PDF НЕ ПЕРЕВІРЕНО</span></div>
-<label>Тема листа<input class="input" id="campaignSubject" value="IIG Monthly Digest — промислова енергетика | [Місяць, рік]" readonly></label>
-<div class="miniwarn"><b>LOCKED EMAIL MASTER:</b> тема/текст/підпис/відписка формуються сервером за затвердженим шаблоном. UA — за замовчуванням; EN — тільки для контактів із мовою EN. PDF надсилається вкладенням.</div>
+<div class="card" id="mailLetterEditor">
+<div class="sectionhead"><div><h3>РЕДАКТОР СУПРОВОДЖУЮЧОГО EMAIL · ADMIN_2</h3><p class="muted">За замовчуванням автоматично завантажується раніше затверджений текст. ADMIN_2 може підготувати окремі UA та EN версії перед розсилкою.</p></div><span class="pill blue" id="mailTemplateState">MASTER DEFAULT</span></div>
+<div class="form2">
+<label>Мова листа<select class="input" id="mailTemplateLanguage"><option value="UA">UA — Українська</option><option value="EN">EN — English</option></select></label>
+<label>Тема листа<input class="input" id="campaignSubject" value="IIG Monthly Digest — промислова енергетика | [Місяць, рік]"></label>
+</div>
+<div class="richEditorShell" id="mailRichEditorShell">
+<div class="richToolbar" aria-label="Панель форматування email">
+<span class="richPencil">✎ РЕДАГУВАТИ EMAIL</span>
+<button type="button" class="richBtn" data-mail-cmd="bold" title="Жирний"><b>B</b></button>
+<button type="button" class="richBtn" data-mail-cmd="italic" title="Курсив"><i>I</i></button>
+<button type="button" class="richBtn" data-mail-cmd="underline" title="Підкреслення"><u>U</u></button>
+<button type="button" class="richBtn" data-mail-case="upper" title="ВЕРХНІЙ РЕГІСТР">AA</button>
+<button type="button" class="richBtn" data-mail-case="lower" title="нижній регістр">aa</button>
+<button type="button" class="richBtn" data-mail-case="sentence" title="Регістр речення">Aa</button>
+<button type="button" class="richBtn" data-mail-block="h2" title="Заголовок">H2</button>
+<button type="button" class="richBtn" data-mail-cmd="insertUnorderedList" title="Маркірований список">• Список</button>
+<button type="button" class="richBtn" data-mail-cmd="insertOrderedList" title="Нумерований список">1. Список</button>
+<button type="button" class="richBtn" id="mailAddLink" title="Додати посилання">🔗</button>
+<button type="button" class="richBtn" data-mail-cmd="removeFormat" title="Очистити форматування">Tx</button>
+</div>
+<div id="mailBodyRich" class="richBody" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="true"></div>
+</div>
+<div class="toolbar"><button class="btn primary" id="saveMailTemplate">💾 ЗБЕРЕГТИ ТЕКСТ · ADMIN_2</button><button class="btn primary" id="resetMailTemplate">↺ ПОВЕРНУТИ ЗАТВЕРДЖЕНИЙ ТЕКСТ</button></div>
+<div class="miniwarn"><b>Системні елементи:</b> персональне звернення <code>{{greeting}}</code> можна залишити у тексті; якщо ADMIN_2 його видалить, сервер автоматично додасть звернення на початок. Посилання «Відписатися» сервер додає до кожного реального листа автоматично і його неможливо прибрати редактором.</div>
+</div>
 <div class="row"><span>ACTIVE отримувачів у базі IIG</span><b id="campaignRecipients">0</b></div>
 <div class="row"><span>Відписані / виключені</span><span class="pill red" id="mailSuppressed">0</span></div>
 <div class="row"><span>Сервіс відправлення</span><span class="pill red" id="mailTransportState">НЕ ПІДКЛЮЧЕНО</span></div>
@@ -234,4 +258,4 @@
 </div></main></div>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2 id="modalTitle">ПОВІДОМЛЕННЯ ADMIN</h2><p id="modalText"></p><p class="muted hidden" id="modalProductionHint">У демоверсії ця production-дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
 <script src="assets/admin-final-admin1-v1.js?v=REQUESTS-PROCESSING-V31"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V34"></script><!-- digest-publish-route-final-20261003 -->
-<script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V33"></script></body></html>
+<script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V35"></script></body></html>
