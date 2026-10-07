@@ -46,6 +46,7 @@ jobs:
           node --check assets/public-news.js
           node --check assets/admin-contacts.js
           node --check assets/admin-mailing.js
+          node --check assets/admin-radar.js
           node --check backend/src/mailing-store.mjs
           node --check backend/src/server.mjs
           node --check backend/src/storage.mjs
