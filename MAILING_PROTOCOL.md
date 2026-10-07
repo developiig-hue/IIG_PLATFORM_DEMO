@@ -215,3 +215,25 @@ Approved UA body contains:
 DEMO unsubscribe may display the approved mailto fallback. In production, backend MUST replace that unsubscribe action with the recipient-specific signed HTTPS unsubscribe URL that moves the address to the suppression list after confirmation.
 
 Marker: `IIG_UA_MAIL_MASTER_V36`.
+
+
+## PAID-HOSTING MIGRATION LOCK — UA MAIL MASTER V36
+
+This behavior is a hard migration contract and MUST survive the move from GitHub Pages DEMO to paid hosting / production domain:
+
+- UA default accompanying email remains the OWNER-approved V36 MASTER.
+- The first line remains `Шановний {{name}} !`.
+- `{{name}}` is populated from the unified IIG contact-base `name` field for the exact recipient.
+- Empty name fallback remains `Шановний колего !`.
+- Subject remains the approved Digest subject for the current issue.
+- The body retains the approved structure, PDF notice, `РОЗМІСТИТИ ПРОЄКТ` CTA and signature `Ігор Кривошей · Директор з розвитку IIG s.r.o.`.
+- ADMIN_2 may edit/save UA and EN letter templates but cannot start final mass mailing.
+- ADMIN_1 remains the only role authorized to start the real mass campaign.
+- Production unsubscribe MUST be a recipient-specific signed HTTPS link and must place the address into suppression after confirmation.
+- A static/demo mailto unsubscribe MUST NOT be used as the production suppression mechanism.
+- Recipient language continues to select the matching UA/EN template automatically.
+- Sender identity remains `IIG Monthly Digest <digest@iig.energy>`.
+
+Any deployment that loses these invariants is a RELEASE BLOCKER.
+
+Migration marker: `IIG_UA_MAIL_MASTER_V36_MIGRATION_LOCK`.
