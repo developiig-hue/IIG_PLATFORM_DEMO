@@ -606,3 +606,14 @@ need("Шановний {{name}} !" in mail_store,"Owner-approved personalized UA
 need("Шановний колего !" in mailing_protocol,"Missing-name fallback missing from migration contract")
 need("ADMIN_1 alone" in mailing_protocol or "ADMIN_1 remains the only role" in mailing_protocol,"ADMIN_1 final-send authority migration lock missing")
 need("signed HTTPS" in mailing_protocol and "SUPPRESSED" in mailing_protocol,"Production unsubscribe/suppression migration lock missing")
+
+
+# ADMIN-launched RADAR prospect search V37
+radar_js=(root/"assets/admin-radar.js").read_text(encoding="utf-8")
+radar_protocol=(root/"RADAR_PROTOCOL.md").read_text(encoding="utf-8")
+need("radarStartRobot" in html and "RADAR · ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ" in html,"RADAR robot launch UI missing")
+need("/api/v1/radar/runs" in radar_js and "/api/v1/radar/prospects" in radar_js,"RADAR stable API wiring missing")
+need("До бази IIG" in radar_js and "decision" in radar_js and "promote" in radar_js,"RADAR moderation/promote flow missing")
+need("PRODUCTION BACKEND REQUIRED" in radar_js,"GitHub Pages RADAR secret-safe fail-closed behavior missing")
+need("IIG_RADAR_ADMIN_SEARCH_V37" in radar_protocol,"RADAR V37 protocol marker missing")
+need("PENDING" in radar_protocol and "ACTIVE" in radar_protocol,"RADAR mailing-consent separation contract missing")
