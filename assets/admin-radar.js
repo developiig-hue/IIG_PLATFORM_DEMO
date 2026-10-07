@@ -74,7 +74,7 @@ async function promote(id){
  if(isPages())return alert("У DEMO серверне просування вимкнене. На paid hosting контакт потрапить у CRM як PENDING, не в ACTIVE-розсилку.");
  if(!confirm("Перевірено джерело? Передати цей RADAR-контакт до єдиної бази IIG як PENDING?"))return;
  try{
-   await api("/api/v1/radar/prospects/"+encodeURIComponent(id)+"/decision",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({decision:"approve"})});
+   await api("/api/v1/radar/prospects/"+encodeURIComponent(id)+"/decision",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({decision:"approved"})});
    const x=await api("/api/v1/radar/prospects/"+encodeURIComponent(id)+"/promote",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});
    $("radarRunInfo").innerHTML="<b>✓ Передано до бази IIG:</b> CRM lead "+esc(x.lead_id)+" · mailing status "+esc(x.mailing_status);
    await loadProspects();
@@ -83,7 +83,7 @@ async function promote(id){
 async function reject(id){
  if(isPages())return alert("У DEMO server decision не виконується.");
  if(!confirm("Відхилити цього кандидата RADAR?"))return;
- try{await api("/api/v1/radar/prospects/"+encodeURIComponent(id)+"/decision",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({decision:"reject"})});await loadProspects()}
+ try{await api("/api/v1/radar/prospects/"+encodeURIComponent(id)+"/decision",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({decision:"rejected"})});await loadProspects()}
  catch(e){alert("Не вдалося відхилити: "+(e.data?.detail||e.data?.error||e.message))}
 }
 $("radarStartRobot")&&($("radarStartRobot").onclick=start);
