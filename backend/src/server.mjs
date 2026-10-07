@@ -183,7 +183,7 @@ function smtpTransport(){
     auth:{user,pass}
   });
 }
-function mailingFrom(){return String(process.env.IIG_MAIL_FROM||process.env.IIG_SMTP_USER||"").trim()}
+function mailingFrom(){return String(process.env.IIG_MAIL_FROM||"").trim()}
 function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]))}
 function messageFor(contact,language,unsubscribeUrl){
   const first=String(contact.name||"").trim().split(/\s+/)[0]||"";
