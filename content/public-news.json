@@ -51,7 +51,7 @@
       "quote_search_status": "NOT_FOUND",
       "image_admin_approved": false,
       "review_required_by": "ADMIN_1",
-      "homepage_top5": false,
+      "homepage_top5": true,
       "supplemental": true
     },
     {
