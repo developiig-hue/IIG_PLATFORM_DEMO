@@ -29,7 +29,7 @@ jobs:
       - name: Backend syntax gate
         run: npm run check
       - name: Verify mail dependencies
-        run: node -e "Promise.all([import('nodemailer'),import('@fastify/formbody')]).then(()=>console.log('MAILING_DEPENDENCIES_OK'))"
+        run: node -e "Promise.all([import('nodemailer'),import('@fastify/formbody'),import('xlsx')]).then(()=>console.log('MAILING_DEPENDENCIES_OK'))"
       - name: Storage tests
         run: npm test
       - name: Mailing contract markers
@@ -40,3 +40,8 @@ jobs:
           grep -q 'ADMIN_1_REQUIRED_TO_START_MAILING' backend/src/server.mjs
           grep -q 'UNSUBSCRIBE / SUPPRESSED' assets/admin-contacts.js
           grep -q 'IIG_MAILING_V33' MAILING_PROTOCOL.md
+          grep -q 'IIG_CONTACT_BASE_IMPORT_V34' MAILING_PROTOCOL.md
+          grep -q 'app.post("/api/v1/contacts/import"' backend/src/server.mjs
+          grep -q 'ADMIN_2_REQUIRED' backend/src/server.mjs
+          grep -q 'importRecipientBase' assets/admin-contacts.js
+          grep -q 'ЗАПУСТИТИ РОЗСИЛКУ · ADMIN_1' admin-ua.html
