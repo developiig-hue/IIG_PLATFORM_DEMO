@@ -1,6 +1,10 @@
 (()=>{"use strict";
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let currentRows=[];
+const DEMO_ROWS=[
+ {company_name:"DEMO ENERGY PLANT A",contact_name:"Олена Тестова",position:"Energy Manager",email:"olena.test@example.com",country:"UA",industry:"energy",relevance:"Тестовий сигнал: модернізація CHP / власної генерації.",source_url:"https://example.com/demo-energy-a"},
+ {company_name:"DEMO INDUSTRIAL GROUP B",contact_name:"Андрій Тестовий",position:"Technical Director",email:"andrii.test@example.com",country:"UA",industry:"energy",relevance:"Тестовий сигнал: BESS та резервна генерація для виробництва.",source_url:"https://example.com/demo-energy-b"}
+];
 async function api(url,opts={}){
  const r=await fetch(url,{credentials:"same-origin",cache:"no-store",...opts,headers:{...(opts.headers||{})}});
  let data=null;try{data=await r.json()}catch{data={}};
@@ -69,9 +73,7 @@ async function start(){
  try{
    let rows=[];
    if(isPages()){
-     const r=await fetch("data/radar-test-latest.json",{cache:"no-store"});if(!r.ok)throw new Error("TEST_RADAR_DATA_UNAVAILABLE");
-     const x=await r.json();
-     rows=(Array.isArray(x.rows)?x.rows:[]).filter(y=>{
+     rows=DEMO_ROWS.filter(y=>{
        const sameIndustry=!industry||industry==="other"||String(y.industry||"").toLowerCase()===String(industry).toLowerCase();
        const sameCountry=!country||String(y.country||"").toLowerCase()===String(country).toLowerCase();
        return sameIndustry&&sameCountry;
