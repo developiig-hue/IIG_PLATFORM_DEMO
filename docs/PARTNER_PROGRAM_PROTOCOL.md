@@ -170,3 +170,19 @@ Strategic partner logos must render fully on Android and iPhone browsers. Logo c
 Post-release QA must include at least two mobile-browser checks. A card frame that loads while the logo is clipped or only partially visible is a RELEASE DEFECT.
 
 Marker: `IIG_PARTNER_MOBILE_LOGO_FIX_V1`.
+
+
+## Binary media integrity hard rule
+
+Partner logos stored as repository image assets must be committed as real binary blobs, not as UTF-8/base64 text through a text-file API.
+
+Required QA before release:
+- decode the repository asset as an image;
+- verify the PNG/JPG/WebP signature and successful rendering;
+- compare expected dimensions/file size where known;
+- confirm the public page references the canonical binary asset;
+- bump the public asset cache key after replacement.
+
+The IIG strategic-partner logo incident was caused by an invalid/corrupted repository PNG while CSS/JS were otherwise able to render the card. Future fixes must validate the media binary before changing layout layers.
+
+Marker: `IIG_PARTNER_BINARY_MEDIA_INTEGRITY_V1`.
