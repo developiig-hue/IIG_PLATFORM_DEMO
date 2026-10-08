@@ -186,3 +186,52 @@ Required QA before release:
 The IIG strategic-partner logo incident was caused by an invalid/corrupted repository PNG while CSS/JS were otherwise able to render the card. Future fixes must validate the media binary before changing layout layers.
 
 Marker: `IIG_PARTNER_BINARY_MEDIA_INTEGRITY_V1`.
+
+
+## CLOSED INCIDENT — PARTNER LOGO BINARY ASSET CORRUPTION — 2026-10-08
+
+Status: FIXED / VERIFIED on desktop and mobile.
+
+Root cause:
+- the strategic partner PNG had been written incorrectly and the repository asset was not a valid decodable PNG;
+- the public partner card itself and its layout were functional;
+- multiple CSS/JS rendering workarounds could not solve the issue because the underlying media asset was corrupted.
+
+Permanent hard rules:
+
+1. Partner PNG/JPG/WebP files must be committed as real binary blobs.
+2. Never write or replace binary logo files through a UTF-8 text-file write path.
+3. Before changing CSS, z-index, background rendering or JavaScript, first validate the image binary itself.
+4. Binary validation must include:
+   - valid file signature;
+   - successful image decode/render;
+   - non-zero dimensions;
+   - correct repository blob;
+   - public URL/asset path resolves to the same valid media.
+5. After replacing a logo asset, bump the public cache/version key.
+6. Public Partner Program must use one canonical rendering path; do not stack simultaneous background + absolute + inline fallback approaches.
+7. Keep partner logo rendering simple:
+   - normal foreground `<img>`;
+   - `object-fit: contain`;
+   - centered inside the partner card;
+   - preserve aspect ratio.
+8. QA is mandatory on:
+   - desktop browser;
+   - Android mobile browser;
+   - a second independent mobile/browser device.
+9. A visible empty partner card is a RELEASE DEFECT even when the surrounding layout renders correctly.
+10. The bug is not considered fixed until the logo is visibly confirmed on both desktop and mobile.
+
+Verified fixed implementation:
+- canonical asset: `assets/partners/iig-group.png`;
+- repaired as a real binary PNG blob;
+- public renderer references the canonical asset;
+- desktop verification: PASS;
+- mobile verification: PASS.
+
+Do not regress to the previous corrupted-asset or multi-layer workaround implementation.
+
+Markers:
+- `IIG_PARTNER_BINARY_MEDIA_INTEGRITY_V2`
+- `IIG_PARTNER_LOGO_DESKTOP_MOBILE_VERIFIED_20261008`
+- `IIG_PARTNER_LOGO_INCIDENT_CLOSED_V1`
