@@ -135,3 +135,16 @@
 .processedcheck{display:flex;gap:7px;align-items:center;padding:8px;border-radius:7px;background:#e9f7ef;font-weight:900;font-size:12px}.processedcheck.disabled{background:#f3f3f3;color:#87919a}.reqhint{font-size:10px;color:#a44b33;margin-top:6px}.requestexport{width:100%;margin-top:12px}
 @media(max-width:1200px){.requests3{grid-template-columns:1fr}.requestlane{min-height:0}.requestslifetime{grid-template-columns:1fr 1fr}}
 @media(max-width:720px){.requestslifetime{grid-template-columns:1fr}.requestfields{grid-template-columns:1fr}}
+
+.partner-program-card{margin-top:14px}
+.partner-admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.partner-admin-slot{border:1px solid #dbe3ec;border-radius:10px;padding:12px;background:#f8fafc}
+.partner-slot-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.partner-slot-head label{font-size:12px}
+.partner-admin-preview{height:110px;background:#fff;border:1px dashed #b8c6d8;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;color:#6e7f91;font-size:12px;padding:8px}
+.partner-admin-preview img{max-width:100%;max-height:92px;object-fit:contain}
+.partner-admin-slot label{display:block;font-size:12px;font-weight:700;margin-top:8px}
+.partner-admin-slot .input{margin-top:5px;width:100%}
+.strategic-admin .partner-admin-preview{height:130px}
+.strategic-admin .partner-admin-preview img{max-height:112px}
+@media(max-width:900px){.partner-admin-grid{grid-template-columns:1fr}}
