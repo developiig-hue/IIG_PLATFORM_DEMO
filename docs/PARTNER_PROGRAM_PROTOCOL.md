@@ -162,3 +162,11 @@ Required checks:
 Any failure above is a migration defect.
 
 Marker: `IIG_PARTNER_PROGRAM_MIGRATION_LOCK_V1`.
+
+## Mobile rendering hard rule
+
+Strategic partner logos must render fully on Android and iPhone browsers. Logo cards use an explicit height and the logo image must use full-card `width:100%; height:100%; object-fit:contain; object-position:center`. Mobile CSS must not rely only on `max-width/max-height`, because that caused clipping/partial rendering on real phones.
+
+Post-release QA must include at least two mobile-browser checks. A card frame that loads while the logo is clipped or only partially visible is a RELEASE DEFECT.
+
+Marker: `IIG_PARTNER_MOBILE_LOGO_FIX_V1`.
