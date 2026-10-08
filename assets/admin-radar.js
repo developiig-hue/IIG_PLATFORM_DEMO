@@ -95,7 +95,7 @@ async function pollTemporaryRun(runId,epoch){
      return Array.isArray(x.rows)?x.rows:[];
    }
    setState("LIVE ПОШУК…","amber");
-   $("radarRunInfo").innerHTML="<b>LIVE RADAR працює.</b> Реальний web-crawl виконується на тимчасовому backend. Run: "+esc(liveRunId);
+   $("radarRunInfo").innerHTML="<b>LIVE RADAR працює.</b> Оброблено "+esc(x.scanned_sources||0)+" сторінок · виявлено доменів "+esc(x.discovered_domains||0)+" · Run: "+esc(liveRunId);
  }
  throw new Error("RADAR_LIVE_RUN_TIMEOUT");
 }
@@ -115,7 +115,7 @@ async function runProductionBackend(payload,epoch){
      return Array.isArray(x.rows)?x.rows:[];
    }
    setState("LIVE ПОШУК…","amber");
-   $("radarRunInfo").innerHTML="<b>LIVE RADAR працює.</b> Run: "+esc(liveRunId);
+   $("radarRunInfo").innerHTML="<b>LIVE RADAR працює.</b> Оброблено "+esc(x.scanned_sources||0)+" сторінок · виявлено доменів "+esc(x.discovered_domains||0)+" · Run: "+esc(liveRunId);
  }
  throw new Error("RADAR_LIVE_RUN_TIMEOUT");
 }
