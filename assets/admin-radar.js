@@ -108,7 +108,11 @@ async function start(){
    let rows=[];
    const payload={query,industry,country,limit,min_sources:1000,deep_scan:true};
    if(isPages()){
-     if(!radarApiBase)throw new Error("LIVE_RADAR_REQUIRES_PRIVATE_BACKEND");
+     if(!radarApiBase){
+       setState("LIVE BACKEND НЕ ПІДКЛЮЧЕНО","amber");
+       $("radarRunInfo").innerHTML="<b>RADAR crawler готовий, але GitHub Pages не може виконувати серверний web-crawl.</b> Для запуску через цю кнопку потрібен постійний backend IIG на VPS/paid hosting. Це не помилка пошуку і не порожній результат.";
+       return;
+     }
      rows=await runTemporaryBackend(payload,myEpoch);
      if(rows===null||myEpoch!==radarPollEpoch)return;
    }else{
@@ -129,7 +133,7 @@ $("radarStartRobot")&&($("radarStartRobot").onclick=start);
 $("radarExportExcel")&&($("radarExportExcel").onclick=exportExcel);
 $("radarResetGeneration")&&($("radarResetGeneration").onclick=resetGeneration);
 renderRows([]);
-setState(isPages()?(radarApiBase?"LIVE RADAR · ПІДКЛЮЧЕНО":"LIVE RADAR · BACKEND REQUIRED"):"READY · 1000+ SOURCES","blue");
+setState(isPages()?(radarApiBase?"LIVE RADAR · ПІДКЛЮЧЕНО":"LIVE BACKEND НЕ ПІДКЛЮЧЕНО"):"READY · 1000+ SOURCES",radarApiBase||!isPages()?"blue":"amber");
 if(isPages()&&$("radarRunInfo"))$("radarRunInfo").innerHTML=radarApiBase?"<b>✓ LIVE RADAR backend підключено.</b> Можна запускати реальний web-crawl через ADMIN MASTER.":"<b>LIVE RADAR:</b> для реального web-scan потрібне підключення backend.";
 if(isPages()&&radarApiBase&&radarRunParam){
  setState("LIVE RUN · ПІДКЛЮЧЕННЯ…","amber");
