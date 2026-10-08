@@ -45,13 +45,14 @@ jobs:
           grep -q 'IIG_RADAR_EPHEMERAL_V39' RADAR_PROTOCOL.md
           grep -q 'RADAR · ЦІЛЬОВИЙ ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ' admin-ua.html
           grep -q '/api/v1/radar/search' assets/admin-radar.js
-          grep -q 'LIVE RADAR · BACKEND REQUIRED' assets/admin-radar.js
+          grep -q 'LIVE BACKEND НЕ ПІДКЛЮЧЕНО' assets/admin-radar.js
           ! grep -q 'DEMO_ROWS' assets/admin-radar.js
           grep -q 'radarExportExcel' admin-ua.html
           grep -q 'radarResetGeneration' admin-ua.html
           grep -q 'IIG_RADAR_Target_Search_' assets/admin-radar.js
           grep -q 'IIG_RADAR_DEMO_EPHEMERAL_V39' RADAR_PROTOCOL.md
           grep -q 'IIG_RADAR_LIVE_1000_V40' RADAR_PROTOCOL.md
+          grep -q 'IIG_RADAR_RUN_REPLACEMENT_V46' RADAR_PROTOCOL.md
           grep -q 'min_sources:1000' assets/admin-radar.js
           grep -q 'scanned_sources' assets/admin-radar.js
           test ! -f data/radar-test-latest.json
