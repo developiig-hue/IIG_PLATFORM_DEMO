@@ -12,10 +12,21 @@ if(!radarRunParam&&radarApiParam.includes("&radar_run=")){
 }
 const radarApiBase=/^https:\/\/[-a-z0-9]+\.trycloudflare\.com$/i.test(radarApiParam)?radarApiParam.replace(/\/$/,""):"";
 
+function productionAuthHeader(){
+ if(isPages())return {};
+ let token=sessionStorage.getItem("iig.admin.api_token")||"";
+ if(!token){
+   token=(prompt("Введіть API token ADMIN_1 / ADMIN_2 для захищеного backend IIG:")||"").trim();
+   if(token)sessionStorage.setItem("iig.admin.api_token",token);
+ }
+ return token?{"Authorization":"Bearer "+token}:{};
+}
 async function api(url,opts={}){
  const cross=/^https:\/\//i.test(url);
- const r=await fetch(url,{credentials:cross?"omit":"same-origin",cache:"no-store",...opts,headers:{...(opts.headers||{})}});
+ const headers={...(opts.headers||{}),...(!cross?productionAuthHeader():{})};
+ const r=await fetch(url,{credentials:cross?"omit":"same-origin",cache:"no-store",...opts,headers});
  let data=null;try{data=await r.json()}catch{data={}};
+ if(r.status===401&&!cross)sessionStorage.removeItem("iig.admin.api_token");
  if(!r.ok)throw Object.assign(new Error(data.error||data.detail||("HTTP "+r.status)),{status:r.status,data});
  return data;
 }
