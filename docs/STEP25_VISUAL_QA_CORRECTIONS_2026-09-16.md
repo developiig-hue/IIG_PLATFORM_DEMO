@@ -37,3 +37,10 @@ Permanent correction:
 - Any future migration must render the approved static composition before JavaScript enhancement.
 
 Marker: `STEP26_STATIC_APPROVED_ARCHITECTURE_LOCK_V1`.
+
+
+## Advice tag contrast lock — 2026-10-09
+- Tags/meta above each Chief Engineer advice card on light/gray backgrounds MUST use dark navy `#0B2B5C`.
+- Light gray/blue tag text such as `#d7e3ef` is forbidden on the light right-rail advice background.
+- Canonical selector: `.advice-mini small{color:#0b2b5c!important;font-weight:700!important;opacity:1!important}`.
+- Marker: `STEP26_ADVICE_TAG_CONTRAST_LOCK_V1`.
