@@ -1,0 +1,90 @@
+{
+  "version": "STEP26_MASTER_SITE_ARCHITECTURE_HARD_RULE_V1",
+  "approved_on": "2026-10-09",
+  "precedence": "highest_visual_structural_source_of_truth",
+  "colors": {
+    "navy": "#06223D",
+    "navy_cta": "#062450",
+    "deep_blue": "#0B2B5C",
+    "link_blue": "#153F8A",
+    "yellow": "#FFC400",
+    "digest_border": "#F2BD00",
+    "light_cta": "#C9E8FF",
+    "soft": "#F5F7FA",
+    "right_rail": "#F4F6F9",
+    "white": "#FFFFFF"
+  },
+  "assets": {
+    "logo": "assets/iig-logo-white.svg",
+    "hero": "Вариант шапки сайта_промкомплекса на рассвете ( розово-фиалетовый).png",
+    "chief_engineer": "Принятое фото главного инженера в каске IIG.png"
+  },
+  "desktop": {
+    "shell_max_px": 1536,
+    "right_rail_px": 360,
+    "header_min_px": 76,
+    "hero_min_px": 330,
+    "digest_max_width_px": 245,
+    "digest_min_height_px": 58,
+    "finance_card_height_px": 102,
+    "engineer_photo_height_px": 245
+  },
+  "mobile": {
+    "breakpoint_px": 700,
+    "hero_min_px": 460,
+    "finance_columns": 2,
+    "industry_columns": 2,
+    "finance_card_height_px": 96,
+    "engineer_photo_height_px": 220
+  },
+  "nav": [
+    "ГОЛОВНА",
+    "ГАЛУЗІ",
+    "ФІНАНСУВАННЯ",
+    "ПОРАДИ ГОЛОВНОГО ІНЖЕНЕРА",
+    "НОВИНИ ТА ІНСАЙТИ",
+    "ПРО IIG",
+    "КОНТАКТИ",
+    "UA/EN",
+    "SEARCH"
+  ],
+  "home_order": [
+    "HERO",
+    "FINANCING",
+    "TOP5_NEWS",
+    "INDUSTRIES",
+    "BOTTOM_VALUES"
+  ],
+  "finance_order": [
+    "NRB",
+    "EBRD",
+    "EIFO",
+    "Bpifrance",
+    "EIB",
+    "World Bank",
+    "BII"
+  ],
+  "right_rail_order": [
+    "CHIEF_ENGINEER_PHOTO",
+    "CHIEF_ENGINEER_TITLE",
+    "VIEW_ALL_ADVICE",
+    "LATEST_6_ADVICE",
+    "ASK_CHIEF_ENGINEER",
+    "SUBMIT_PROJECT",
+    "PARTNER_PROGRAM",
+    "SOCIAL_PLACEHOLDERS"
+  ],
+  "advice_tag_color": "#0B2B5C",
+  "public_pages": [
+    "index.html",
+    "industry.html",
+    "case.html",
+    "advice.html",
+    "financing.html",
+    "finance-news.html",
+    "news.html",
+    "article.html",
+    "forms.html",
+    "about.html"
+  ]
+}
