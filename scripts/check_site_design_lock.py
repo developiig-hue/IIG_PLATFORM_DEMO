@@ -38,6 +38,13 @@ for m in markers:
 if all(p>=0 for p in pos) and pos!=sorted(pos):
     errors.append("index.html: HOME block order regression")
 
+news_id=index.find('id="homeTop5News"')
+industries_id=index.find('id="industries"')
+if news_id < 0 or industries_id < 0:
+    errors.append("index.html: protected HOME section IDs missing")
+elif not news_id < industries_id:
+    errors.append("index.html: #homeTop5News MUST precede #industries")
+
 runtime=(ROOT/"assets/iig.js").read_text(encoding="utf-8")
 if "insertBefore(industry,news)" in runtime:
     errors.append("assets/iig.js: runtime must not move industries before TOP-5 news")
