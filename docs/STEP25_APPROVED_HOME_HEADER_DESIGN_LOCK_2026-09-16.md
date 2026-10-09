@@ -29,3 +29,23 @@ Card in lower-right corner OVER the hero panorama, navy with yellow border/icon 
 5. Only after these checks set STEP 25 = GREEN. Commit alone is not GREEN. Record any unresolved issue explicitly.
 
 Principle: APPROVED COMPOSITION → SIMPLEST DIRECT PATH → ONE SOURCE OF TRUTH → VERIFY PUBLISHED RESULT. Minimal Delta → Maximum Verification.
+
+
+## MASTER precedence / paid-hosting portability lock — 2026-10-09
+
+The controlling visual/structural source of truth is:
+`docs/STEP26_MASTER_SITE_ARCHITECTURE_HARD_RULE_2026-10-09.md`
+
+Machine-readable contract:
+`config/site-design-lock.json`
+
+CI enforcement:
+`scripts/check_site_design_lock.py`
+
+If an older protocol conflicts with the MASTER on current HOME order, header/hero composition, right-rail placement, approved image identity, button sizing/colors or migration behavior, the STEP 26 MASTER governs.
+
+Publication MUST fail when the CI HARD LOCK detects a protected architecture regression.
+
+Markers:
+- `STEP26_MASTER_PRECEDENCE_V1`
+- `STEP26_PAID_HOSTING_VISUAL_PORTABILITY_LOCK_V1`
