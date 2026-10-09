@@ -66,9 +66,10 @@ function render(query,items){
  const el=box(); if(!el)return;
  const en=lang()==='en';
  const kind=x=>x.type==='news'?(en?'News':'Новина'):x.type==='advice'?(en?'Chief Engineer Advice':'Порада головного інженера'):x.type==='finance'?(en?'Financing':'Фінансування'):(en?'Section':'Розділ');
+ const resultHref=x=>x.type==='news'?x.href+(x.href.includes('?')?'&':'?')+'find='+encodeURIComponent(query)+'#search-hit':x.href;
  el.hidden=false;
  el.innerHTML='<div class="search-results-inner"><div class="search-results-head"><b>'+(en?'SEARCH RESULTS':'РЕЗУЛЬТАТИ ПОШУКУ')+': '+items.length+'</b><button type="button" class="search-close" aria-label="Close">×</button></div><div class="search-results-grid">'+
- (items.length?items.map(x=>'<a class="search-result-card" href="'+x.href+'"><small>'+kind(x)+'</small><strong>'+esc(en?(x.titleEn||x.titleUa):(x.titleUa||x.titleEn))+'</strong>'+((en?x.summaryEn:x.summaryUa)?'<span>'+esc(en?x.summaryEn:x.summaryUa)+'</span>':'')+'</a>').join(''):'<p>'+(en?'No results. Try another keyword.':'Нічого не знайдено. Спробуйте інше ключове слово.')+'</p>')+
+ (items.length?items.map(x=>'<a class="search-result-card" href="'+resultHref(x)+'"><small>'+kind(x)+'</small><strong>'+esc(en?(x.titleEn||x.titleUa):(x.titleUa||x.titleEn))+'</strong>'+((en?x.summaryEn:x.summaryUa)?'<span>'+esc(en?x.summaryEn:x.summaryUa)+'</span>':'')+'</a>').join(''):'<p>'+(en?'No results. Try another keyword.':'Нічого не знайдено. Спробуйте інше ключове слово.')+'</p>')+
  '</div></div>';
  $('.search-close',el)?.addEventListener('click',()=>{el.hidden=true});
  el.scrollIntoView({behavior:'smooth',block:'start'});
@@ -82,9 +83,10 @@ async function run(){
   const ranked=data.map(x=>{
     const hay=norm(text([x.ua,x.en,x.titleUa,x.titleEn,x.summaryUa,x.summaryEn]));
     const hit=ts.filter(t=>hay.includes(t));
+    const exact=hay.includes(q);
     let score=hit.length*10;
     if(hit.length===ts.length)score+=30;
-    if(hay.includes(q))score+=20;
+    if(exact)score+=250;
     return {x,score,hit:hit.length};
   }).filter(r=>r.hit>0).sort((a,b)=>b.score-a.score||b.hit-a.hit).slice(0,30).map(r=>r.x);
   render(raw,ranked);
