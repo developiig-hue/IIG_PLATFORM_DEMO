@@ -461,3 +461,18 @@ When the user searches an exact phrase that exists inside a published news artic
 - silent routing only to a generic news list is forbidden.
 
 Marker: `STEP26_EXACT_PHRASE_DEEPLINK_SEARCH_V1`.
+
+
+## HOME News-before-Industries DOM lock — 2026-10-09
+
+Protected static DOM IDs:
+- TOP-5 NEWS: `#homeTop5News`
+- INDUSTRIES: `#industries`
+
+Hard invariant:
+`#homeTop5News` MUST precede `#industries` in static HTML and remain before it after runtime initialization.
+
+A JavaScript reorder that places INDUSTRIES before TOP-5 NEWS is forbidden.
+Any change to `assets/iig.js` affecting HOME composition MUST also bump its public cache-key in `index.html`.
+
+Marker: `STEP26_HOME_NEWS_BEFORE_INDUSTRIES_LOCK_V2`.
