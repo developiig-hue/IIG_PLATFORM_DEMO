@@ -430,3 +430,23 @@ Markers:
 - `STEP26_MASTER_SITE_ARCHITECTURE_HARD_RULE_V1`
 - `STEP26_PAID_HOSTING_VISUAL_PORTABILITY_LOCK_V1`
 - `STEP26_STATIC_FIRST_RENDERING_RULE_V1`
+
+
+## Public search HARD RULE — 2026-10-09
+
+The public HOME search is a protected production function.
+
+Canonical standalone module:
+`assets/site-search.js`
+
+Required behavior:
+- button click and Enter MUST both launch search;
+- search MUST NOT depend on the rest of `assets/iig.js`;
+- search sources: `content/public-news.json`, `content/public-advice.json`, financing institutions and industry sections;
+- full news body/body_html/company_context must be searchable, not only headlines;
+- canonical finance aliases must include EIFO, EBRD/ЄБРР, EIB/ЄІБ, Bpifrance, World Bank and BII;
+- results render directly below HOME hero and link to the relevant article/advice/finance/industry route;
+- zero-result query must still visibly return a result panel; silent no-op is a RELEASE DEFECT;
+- CI checker: `scripts/check_site_search.py`.
+
+Marker: `STEP26_PUBLIC_SEARCH_HARD_RULE_V1`.
