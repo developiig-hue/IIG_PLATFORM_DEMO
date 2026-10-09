@@ -55,6 +55,8 @@ jobs:
           node --check backend/src/pdf-links.mjs
       - name: STEP 26 Admin MASTER acceptance
         run: python scripts/check_step26_admin.py
+      - name: STEP 26 Site Architecture HARD LOCK
+        run: python scripts/check_site_design_lock.py
       - name: Security exposure guard
         run: |
           ! grep -RqiE '(DATABASE_URL|REDIS_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|redis://)' --exclude-dir=.git --exclude-dir=.github index.html industry.html case.html advice.html financing.html finance-news.html news.html forms.html about.html digest .nojekyll README.md
