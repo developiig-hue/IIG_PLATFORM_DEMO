@@ -450,3 +450,14 @@ Required behavior:
 - CI checker: `scripts/check_site_search.py`.
 
 Marker: `STEP26_PUBLIC_SEARCH_HARD_RULE_V1`.
+
+
+### Exact phrase deep-link rule
+When the user searches an exact phrase that exists inside a published news article:
+- the exact phrase match MUST outrank token-only matches;
+- the search result MUST link directly to the matching article;
+- the query MUST be passed as `find=`;
+- the article MUST scroll to the matching text and highlight it;
+- silent routing only to a generic news list is forbidden.
+
+Marker: `STEP26_EXACT_PHRASE_DEEPLINK_SEARCH_V1`.
