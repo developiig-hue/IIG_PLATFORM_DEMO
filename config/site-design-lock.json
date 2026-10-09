@@ -86,5 +86,10 @@
     "article.html",
     "forms.html",
     "about.html"
-  ]
+  ],
+  "dom_order_lock": {
+    "top5_news_id": "homeTop5News",
+    "industries_id": "industries",
+    "rule": "homeTop5News MUST precede industries in static DOM and at runtime"
+  }
 }
