@@ -22,3 +22,18 @@ Date: 2026-09-16. Authority: user-supplied approved 1536×1024 home reference an
 
 ## Mandatory no-repeat gate
 Before saying `DONE`, `GREEN`, or `fixed`: read both STEP25 protocols, inspect all page templates and shared CSS/JS, implement missing changes, create commit, verify successful deployment for exact commit, visually compare published site with user reference on all relevant pages and breakpoints, test bilingual switch end-to-end, then state pass/fail per item. If any gate fails, explicitly report pending; never imply a commit or green CI is visual approval.
+
+
+## REGRESSION CLOSED — static approved architecture lock — 2026-10-09
+Root cause: approved STEP 25/26 home composition depended on runtime JS/shared-style injection. When that runtime path did not fully apply, the static fallback exposed a white legacy header, digest card in the financing row, and missing Chief Engineer portrait.
+
+Permanent correction:
+- Approved critical visual architecture is now present in static HTML/CSS and MUST NOT depend on JS execution.
+- Header source of truth: navy `#06223D`, white `assets/iig-logo-white.svg`, white navigation, yellow active item/language.
+- Hero source of truth: repository-root `Вариант шапки сайта_промкомплекса на рассвете ( розово-фиалетовый).png`; WEBP/Unsplash substitutions are forbidden.
+- Chief Engineer source of truth: repository-root `Принятое фото главного инженера в каске IIG.png`; generated, data-URI, WEBP or substitute portraits are forbidden.
+- Digest card is statically inside the hero lower-right and remains compact (245px max width); JS may bind the PDF URL but MUST NOT be required to place the card.
+- Financing logo changes MUST NOT alter the approved header/hero/right-rail architecture.
+- Any future migration must render the approved static composition before JavaScript enhancement.
+
+Marker: `STEP26_STATIC_APPROVED_ARCHITECTURE_LOCK_V1`.
