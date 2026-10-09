@@ -38,6 +38,10 @@ for m in markers:
 if all(p>=0 for p in pos) and pos!=sorted(pos):
     errors.append("index.html: HOME block order regression")
 
+runtime=(ROOT/"assets/iig.js").read_text(encoding="utf-8")
+if "insertBefore(industry,news)" in runtime:
+    errors.append("assets/iig.js: runtime must not move industries before TOP-5 news")
+
 # Digest must be inside hero and before financing section.
 hero_start=index.find('<section class="home-hero">')
 finance_start=index.find('ПРОГРАМИ ТА МОЖЛИВОСТІ ФІНАНСУВАННЯ')
