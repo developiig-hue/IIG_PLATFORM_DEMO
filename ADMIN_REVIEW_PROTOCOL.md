@@ -19,3 +19,8 @@ Admin approval is the authorization event. Robot #5 does not invent or edit cont
 
 ## Mailing boundary
 Robot #5 does **not** send email. Robot #6 builds the digest from approved material. Robot #7 Scheduler / Orchestration may trigger mailing only after the relevant digest has explicit Admin approval; the email transport is infrastructure, not an eighth robot.
+
+
+## Paid-hosting portability audit — 2026-10-10
+Marker: `IIG_ADMIN_REVIEW_PORTABILITY_AUDIT_2026_10_10`.
+No behavior change; this marker forces a fresh acceptance workflow on the current main branch.
