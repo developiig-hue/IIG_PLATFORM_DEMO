@@ -847,3 +847,8 @@ The Digest is not releasable if:
 - a hosting/domain migration changes this approved form without a new owner approval.
 
 **Status:** VERIFIED / OWNER APPROVED / STANDARD VISUAL FORM / PORTABLE.
+
+
+## Paid-hosting portability audit — 2026-10-10
+Marker: `IIG_DIGEST_PORTABILITY_AUDIT_2026_10_10`.
+No behavior change; this marker forces a fresh acceptance workflow on the current main branch.
