@@ -44,7 +44,7 @@ jobs:
           grep -q 'IIG_MAILING_V33' MAILING_PROTOCOL.md
           grep -q 'IIG_RADAR_EPHEMERAL_V39' RADAR_PROTOCOL.md
           grep -q 'RADAR · ЦІЛЬОВИЙ ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ' admin-ua.html
-          grep -q '/api/v1/radar/search' assets/admin-radar.js
+          grep -q '/api/v1/radar/runs' assets/admin-radar.js
           grep -q 'LIVE BACKEND НЕ ПІДКЛЮЧЕНО' assets/admin-radar.js
           ! grep -q 'DEMO_ROWS' assets/admin-radar.js
           grep -q 'radarExportExcel' admin-ua.html
