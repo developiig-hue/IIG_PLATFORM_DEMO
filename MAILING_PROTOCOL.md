@@ -237,3 +237,18 @@ This behavior is a hard migration contract and MUST survive the move from GitHub
 Any deployment that loses these invariants is a RELEASE BLOCKER.
 
 Migration marker: `IIG_UA_MAIL_MASTER_V36_MIGRATION_LOCK`.
+
+
+## RED TEAM MAILING GREEN CHECK — 2026-10-10
+
+Purpose: force a fresh CI validation of the current Digest mailing robot before OWNER single-address test send.
+
+Acceptance scope:
+- locked UA V36 standard letter remains default;
+- ADMIN_2 test-send path remains separate from ADMIN_1 mass send;
+- exact approved Digest SHA gate remains mandatory;
+- SMTP/unsubscribe/secrets remain backend-only;
+- contact suppression and consent tests remain release-blocking;
+- GitHub Pages DEMO must clearly report production backend as not connected rather than simulate delivery.
+
+Marker: `IIG_MAILING_REDTEAM_GREEN_CHECK_2026_10_10`.
