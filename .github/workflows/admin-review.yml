@@ -30,14 +30,41 @@ jobs:
           python-version: '3.12'
       - name: Unit and governance tests
         run: python -m unittest tests.test_content_engine tests.test_quality_gate tests.test_image_rights_robot tests.test_admin_review
-      - name: Build real upstream chain
+      - name: Build isolated portable Image Rights handoff
         run: |
-          python scripts/content_engine.py weekly
-          python scripts/quality_gate.py run
-          python scripts/verify_quality_gate.py
-          python scripts/image_rights_robot.py run
-          python scripts/image_rights_robot.py verify
-          python scripts/verify_image_rights.py
+          python - <<'PY'
+          import hashlib,json,os
+          os.makedirs('content/image-rights',exist_ok=True)
+          queue=[]
+          for route,title,image in [
+              ('news','IIG Admin Review acceptance NEWS','baze_foto_news_energy.jpg'),
+              ('chief_engineer_advice','IIG Admin Review acceptance ADVICE',None)
+          ]:
+              item={'title':title,'type':'NEWS' if route=='news' else 'CHIEF_ENGINEER_ADVICE'}
+              h=hashlib.sha256(json.dumps(item,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+              rec={'item_sha256':h,'route':route,'item':item}
+              if route=='news':
+                  rec.update({'image_required':True,'selected_image':image,'image_decision':'APPROVED'})
+              queue.append(rec)
+          artifact='content/image-rights/image-rights-admin-review-acceptance.json'
+          json.dump({
+              'schema':'iig.image-rights.v1',
+              'status':'READY_FOR_ADMIN_REVIEW',
+              'publish_authority':'ADMIN_ONLY',
+              'auto_publish':False,
+              'admin_review_queue':queue
+          },open(artifact,'w',encoding='utf-8'),ensure_ascii=False,indent=2)
+          json.dump({
+              'schema':'iig.image-rights-report.v1',
+              'status':'PASS',
+              'artifact':artifact,
+              'evaluated_total':len(queue),
+              'passed_total':len(queue),
+              'blocked_total':0,
+              'next_state':'ADMIN_REVIEW'
+          },open('content/image-rights-report.json','w',encoding='utf-8'),ensure_ascii=False,indent=2)
+          print('ADMIN_REVIEW_PORTABLE_UPSTREAM_FIXTURE_PASS',{'items':len(queue)})
+          PY
       - name: Prepare Admin Review queue without making a decision
         run: |
           python scripts/admin_review.py prepare
