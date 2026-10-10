@@ -90,6 +90,7 @@ async function uploadDigest(){
 }
 async function testSend(){
  const email=$("mailTestEmail")?.value.trim(),language=$("mailTestLanguage")?.value||"UA";if(!email)return alert("Вкажіть e-mail для тестового листа.");
+ if(location.hostname.endsWith("github.io")){const message="Тестова відправка недоступна в GitHub Pages: сервер розсилки не підключено. Лист не відправлено.";if($("mailCheck"))$("mailCheck").textContent=message;alert(message);return;}
  try{const x=await api("/api/v1/mailing/test",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,language})});$("mailCheck").innerHTML="<b>✓ ТЕСТОВИЙ ЛИСТ ВІДПРАВЛЕНО</b><br>"+esc(x.to)+" · "+esc(x.language)+" · revision "+esc(x.revision)}
  catch(e){alert("Тестовий лист не відправлено: "+(e.data?.error||e.message))}
 }
