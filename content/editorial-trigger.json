@@ -1,6 +1,6 @@
 {
   "schema": "iig.editorial-trigger.v1",
-  "requested_at": "2026-10-10T09:40:00Z",
+  "requested_at": "2026-10-10T09:46:00Z",
   "requested_by": "ADMIN_1",
-  "reason": "paid-hosting portability red-team audit 2026-10-10"
+  "reason": "paid-hosting portability audit rerun after handoff race fix"
 }
