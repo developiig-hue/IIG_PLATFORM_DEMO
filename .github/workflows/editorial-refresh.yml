@@ -96,7 +96,8 @@ jobs:
           git add content/admin-review/latest.json content/discovery-report.json content/content-engine-report.json content/quality-gate-report.json content/image-rights-report.json
           if ! git diff --cached --quiet; then
             git commit -m "robot: publish latest editorial ADMIN_REVIEW handoff"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
       - name: Upload ADMIN review package
         if: steps.window.outputs.run == 'true'
