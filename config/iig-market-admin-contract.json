@@ -1,5 +1,5 @@
 {
-  "version": "IIG_MARKET_ADMIN_PROTOCOL_V1",
+  "version": "IIG_MARKET_ADMIN_PROTOCOL_V2_MARKETPLACE_DIGEST",
   "public_status": "HIDDEN_UNTIL_CONTENT_READY",
   "admin_route": "/admin-ua.html#market",
   "public_route": "/market.html",
@@ -62,11 +62,19 @@
     "public_market_hidden_until_owner_activation": true,
     "digest_market_exact_listing_link": true,
     "digest_market_price_requires_admin_1": true,
-    "digest_market_never_auto_creates_page": true,
-    "digest_supplemental_pages_manual_only": true,
+    "digest_market_never_auto_creates_page": false,
+    "digest_supplemental_pages_manual_only": false,
     "market_urgent_red_ua_label": true,
     "market_digest_controls_single_location": true,
-    "market_digest_manual_composer_conflict_lock": true
+    "market_digest_manual_composer_conflict_lock": true,
+    "marketplace_material_type_required": true,
+    "marketplace_auto_pull_selected_only": true,
+    "marketplace_manual_reorder_after_pull": true,
+    "marketplace_remove_from_digest_not_market": true,
+    "marketplace_group_by_equipment_type": true,
+    "marketplace_each_item_deeplink": true,
+    "marketplace_page4plus_cta_pair_required": true,
+    "marketplace_changes_invalidate_approval": true
   },
   "digest_integration": {
     "selection_control": "РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ",
@@ -75,11 +83,11 @@
     "canonical_deeplink": "market.html?id={listing_id}#listing-{listing_id}",
     "price_rule": "Public price may appear in Digest only when price_state=ADMIN_1_APPROVED; ON REQUEST allowed without numeric price",
     "release_rule": "Listing must be public/not hidden before final PDF release",
-    "selection_semantics": "CANDIDATE_POOL_ONLY",
-    "auto_create_digest_page": false,
-    "auto_assign_page_number": false,
+    "selection_semantics": "AUTO_PULL_CANDIDATE_POOL_AFTER_EXPLICIT_ADMIN_BUILD",
+    "auto_create_digest_page": true,
+    "auto_assign_page_number": true,
     "standard_digest_pages": 3,
-    "additional_pages_mode": "MANUAL_ONLY",
+    "additional_pages_mode": "MARKETPLACE_AUTO_PULL_OR_MANUAL_OTHER_TYPES",
     "eligible_manual_page_numbers": [
       4,
       5,
@@ -88,6 +96,7 @@
       8
     ],
     "allowed_additional_page_types": [
+      "MARKETPLACE",
       "IIG_MARKET",
       "SPONSORED_MATERIAL",
       "PARTNER_MATERIAL",
@@ -97,7 +106,7 @@
     ],
     "page_type_selected_by": "ADMIN_2",
     "final_layout_approval": "ADMIN_1",
-    "conflict_rule": "MARKET candidates never reserve or displace supplemental Digest pages",
+    "conflict_rule": "Marketplace auto-pull never overwrites a non-Marketplace supplemental page; ADMIN resolves conflicts manually",
     "visible_controls": [
       "include_digest",
       "feature_digest",
@@ -106,8 +115,8 @@
     "duplicate_controls_forbidden": true,
     "manual_market_composer": {
       "admin_section": "DIGEST",
-      "title": "IIG MARKET · ДОДАТКОВА СТОРІНКА",
-      "source": "include_digest=true candidate pool",
+      "title": "IIG MARKET · DIGEST PAGE BUILDER / MANUAL FALLBACK",
+      "source": "include_digest=true + release gates",
       "category_filter": true,
       "target_pages": [
         4,
@@ -115,7 +124,27 @@
       ],
       "overwrite_non_market_page": false,
       "rebuild_existing_market_page": true,
-      "urgent_badge": "ТЕРМІНОВО"
+      "urgent_badge": "ТЕРМІНОВО",
+      "mode": "FALLBACK"
+    },
+    "marketplace_material_type": "MARKETPLACE",
+    "marketplace_default_pages": [
+      4,
+      5
+    ],
+    "marketplace_continue_page6plus": true,
+    "marketplace_manual_controls": [
+      "UP",
+      "DOWN",
+      "MOVE",
+      "EXCLUDE_FROM_ISSUE"
+    ],
+    "marketplace_editorial_wrapper_optional": true,
+    "category_tags": {
+      "Gas Engine / CHP": "KGU",
+      "Gas Boiler": "GAS BOILER",
+      "Gas Turbine": "TURBIN",
+      "BESS": "BESS"
     }
   },
   "urgent_promotion": {
