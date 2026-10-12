@@ -929,3 +929,14 @@ In addition to the general Page 4+ CTA rule, every Digest page with `kind=market
 The renderer must treat this as a MARKET-kind invariant, not merely as an incidental consequence of being Page 4+.
 
 Working Preview, Final Preview, standalone HTML and PDF must preserve both active links. Exactly one footer pair is allowed per MARKET page.
+
+
+## PAID HOSTING MIGRATION V5 — HARD LOCK REFERENCE
+
+The Marketplace → Digest V5 behavior, Page 4/5+ rules, category tags, per-equipment deep-links, ADMIN_2 ↑/↓/⇄/× controls, issue-scoped persistence, Page 4+ CTA invariant, Final Preview/ADMIN_1 approval invalidation and PDF publication requirements are migration-critical.
+
+Authoritative migration specification: `docs/IIG-PAID-HOSTING-MIGRATION-HARD-LOCK-V5.md`.
+Machine-readable contract: `config/paid-hosting-migration-contract-v5.json`.
+CI acceptance gate: `scripts/check_paid_hosting_migration_contract.py`.
+
+**HARD RULE:** paid-hosting migration may replace GitHub Pages/localStorage with API/DB/object storage, but must not change editorial behavior or lose any state/route/link/approval rule defined by the migration contract.
