@@ -1,0 +1,520 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IIG Адмін-панель — Marketplace Digest V5 • Демо</title><link rel="stylesheet" href="assets/admin.css?v=digest-row-lock-manual-authority-v2-20261003"><link rel="stylesheet" href="assets/admin-market.css?v=MARKET-DIGEST-V4"><link rel="stylesheet" href="assets/admin-market-digest-v5.css?v=MARKETPLACE-HARD-RULE-V5-20261012"></head><body>
+<div class="shell"><aside class="side"><div class="brand">IIG<small>АДМІН-ПАНЕЛЬ / CMS</small></div><div class="demo"><b>КРОК 26 • ДЕМО</b><br>Безпечний деморежим.<br>Паролі, персональні дані та секрети тут не зберігаються.</div>
+<nav class="nav" id="nav">
+<button class="active" data-tab="dashboard">▦ <span>Головна</span></button>
+<button data-tab="content">▤ <span>Новини та публікації</span></button>
+<button data-tab="market">▣ <span>IIG MARKET</span></button>
+<button data-tab="digest">◫ <span>Дайджест</span></button>
+<button data-tab="mailing">✉ <span>Розсилка та база</span></button><button data-tab="requests">☷ <span>Обробка Заяв та Підписки</span></button>
+<button data-tab="robots">⚙ <span>Роботи та джерела</span></button>
+<button data-tab="website">⌂ <span>Керування сайтом</span></button>
+<button data-tab="users">♙ <span>Користувачі та права</span></button>
+<button data-tab="security">◆ <span>Безпека</span></button>
+<button data-tab="audit">≡ <span>Журнал / Резерв / Публікація</span></button>
+</nav><div class="env"><b>ДЕМО-СЕРЕДОВИЩЕ</b><br><span>GitHub Pages<br>Production backend: НЕ ПІДКЛЮЧЕНО</span></div></aside>
+<main class="main"><header class="top"><div><h1 id="title">ЦЕНТР КЕРУВАННЯ САЙТОМ</h1><p id="subtitle">IIG • Адміністрування сайту • Крок 26</p></div><div class="adminsession"><span class="pill green" id="activeAdminBadge">ADMIN_1 · Igor Kryvoshei</span> <span class="pill blue">EDITORIAL AUTHORITY ACTIVE</span> <span class="pill amber">DEMO · PRODUCTION LOCKED</span> <a class="btn primary" href="index.html">Відкрити сайт</a></div></header>
+<div class="content"><div id="adminToast" class="admintoast hidden" role="status" aria-live="polite"></div><div class="notice"><b>Безпека:</b> у демоверсії можна безпечно перевірити роботу адмін-панелі. Публікація на сайт, масова розсилка, керування користувачами та інші захищені дії будуть активовані тільки після підключення production backend, MFA, прав доступу та журналу дій.</div>
+
+<section class="tab active" id="dashboard"><div class="kpis">
+<div class="card kpi"><div class="l">Протокол адмін-панелі</div><div class="n">v1.0</div><span class="pill green">ЗАФІКСОВАНО</span></div>
+<div class="card kpi"><div class="l">Архітектура роботів</div><div class="n">7</div><span class="pill blue">#1–#7</span></div>
+<div class="card kpi"><div class="l">Реєстр джерел</div><div class="n" id="sourceCount">…</div><span class="pill blue">дані репозиторію</span></div>
+<div class="card kpi"><div class="l">Реєстр новин</div><div class="n" id="newsCount">…</div><span class="pill blue">дані репозиторію</span></div>
+<div class="card kpi"><div class="l">Блокери запуску</div><div class="n">8</div><span class="pill red">КРОК 27</span></div></div>
+<div class="grid"><div class="card"><h2>ГОТОВНІСТЬ СИСТЕМИ</h2>
+<div class="row"><span>Публічний сайт / контент</span><span class="pill green">РЕАЛІЗОВАНО</span></div>
+<div class="row"><span>Протоколи роботів #1–#5</span><span class="pill green">РЕАЛІЗОВАНО</span></div>
+<div class="row"><span>Дайджест #6 MASTER / протокол</span><span class="pill green">ЗАФІКСОВАНО</span></div>
+<div class="row"><span>Планувальник #7</span><span class="pill amber">PR / НЕ ФІНАЛЬНИЙ</span></div>
+<div class="row"><span>Інтерфейс адмін-панелі</span><span class="pill blue">КРОК 26 • ДЕМО</span></div>
+<div class="row"><span>Production-авторизація / MFA / RBAC / API</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div>
+<div class="row"><span>Production DB / персональні дані</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div>
+<div class="row"><span>Email / відписка / виключення</span><span class="pill red">БЛОКЕР</span></div></div>
+<div class="card"><h2>ШВИДКІ ДІЇ</h2>
+<div class="newsgenbox">
+  <button class="btn success newsgenbtn" id="dashboardNewsRefresh">ЗГЕНЕРУВАТИ ОНОВЛЕННЯ НОВИН САЙТУ</button>
+  <div class="newsgenmeta"><b>Орієнтовний час повного циклу:</b> ~10–20 хв · Discovery → Content → QA → Image/Rights → REVIEW</div>
+  <div class="newsgenstatus" id="dashboardNewsRefreshStatus"><span class="pill blue">ГОТОВО ДО ЗАПУСКУ</span><span>Минуло: <b id="dashboardNewsRefreshElapsed">00:00</b></span></div>
+</div>
+<div class="toolbar"><button class="btn primary" data-go="content">Перевірити новини</button><button class="btn primary" data-go="digest">Дайджест</button><button class="btn primary" data-go="robots">Роботи</button><button class="btn danger" data-locked="Публікація production-версії потребує MFA та захищеного backend">Опублікувати production-версію</button></div><h3>Поточне середовище</h3><div class="row"><span>Режим</span><b>ДЕМО</b></div><div class="row"><span>Захищені зміни</span><b>ЗАФІКСОВАНО</b></div><div class="row"><span>Секретні дані у браузері</span><b>НЕМАЄ</b></div></div></div><div class="card gatecard"><h2>STEP 26 — 10/10 КОНТРОЛЬНИХ GATE</h2><div id="gate10" class="gategrid"></div><p class="muted">GREEN тут означає готовність ADMIN MASTER/CMS на демосередовищі. Production-підключення КРОКУ 27 не імітуються.</p></div>
+<div class="card readinesscard"><div class="sectionhead"><div><h2>ГОТОВНІСТЬ ДО НОВОГО ВИПУСКУ</h2><p class="muted">Операційний контроль перед сценарієм: оновити матеріали → модерація → сформувати Digest тільки через Admin.</p></div><span class="pill blue" id="releaseReadinessState">ПЕРЕВІРКА…</span></div><div id="releaseReadiness" class="readinessgrid"></div><div class="toolbar"><button class="btn primary" id="refreshEditorialData">Оновити дані з main</button><button class="btn primary" data-go="content">Перейти до модерації</button><button class="btn success" data-go="digest">Сформувати Digest</button><button class="btn primary" id="exportEditorialSession">Експорт сесії JSON</button></div><div class="miniwarn">Редакційні NEWS/ADVICE-чернетки STEP 26 зберігаються локально у браузері. Production-збереження та публікація залишаються серверними діями КРОКУ 27.</div></div></section>
+
+<section class="tab" id="content">
+<div class="workgrid"><div class="card module"><div class="sectionhead"><div><h2>РЕДАГУВАННЯ НОВИН</h2><p class="muted">Оберіть новину, внесіть зміни, перегляньте результат і підтвердьте її. Утвердження ADMIN_1 зберігаються в постійному Approval Ledger і не скидаються при наступних оновленнях NEWS.</p></div><button class="btn primary" id="newNews">+ Створити новину</button></div>
+<div class="toolbar"><input class="input grow" id="newsSearch" placeholder="Пошук новини"><select class="input" id="digestRubricFilter"><option value="all">Усі рубрики дайджесту</option><option value="GENERAL">Україна / Світ</option><option value="FINANCE">Фінанси</option><option value="REGULATION">Законодавство / Регулювання</option><option value="ADVICE">Поради Головного інженера</option></select><select class="input" id="newsFilter"><option value="all">Усі</option><option value="DRAFT">Чернетки</option><option value="REVIEW">На перевірці</option><option value="APPROVED">Затверджені</option><option value="PUBLISHED">Опубліковані</option><option value="REJECTED">Відхилені</option><option value="BLOCKED">Заблоковані</option></select>
+<select class="input" id="contentTypeFilter"><option value="all">Усі типи</option><option value="NEWS">Новини</option><option value="ADVICE">Поради Головного інженера</option></select><button class="btn success" id="freezeApprovedSet">🔒 ЗАФІКСУВАТИ ВЕСЬ ЗАТВЕРДЖЕНИЙ МАТЕРІАЛ</button><span class="pill blue" id="approvalLedgerState">LEDGER: —</span></div>
+<div id="newsList" class="newslist"><div class="empty">Завантаження новин…</div></div></div>
+<div class="card editor"><h2>РЕДАКТОР НОВИНИ</h2>
+<div class="form2 newsroles"><label>Поточна роль редактора<select class="input" id="newsEditorRole"><option value="ADMIN_2" selected>ADMIN_2 · Редактор новин</option><option value="ADMIN_1">ADMIN_1 · Final Approver</option></select></label><div class="rolecontract"><b>ADMIN_2:</b> редагує заголовок, опис, текст, рубрику, дату, source URL та зберігає редакцію у REVIEW.<br><b>ADMIN_1:</b> фінально затверджує фото, матеріал і публікацію.</div></div><div id="editorEmpty" class="empty">Оберіть новину зі списку ліворуч.</div><form id="newsEditor" class="hidden">
+<label>Заголовок<input class="input" id="edTitle" required></label>
+<div class="form2"><label>Рубрика<select class="input" id="edSector"><option value="energy">Енергетика</option><option value="metallurgy">Металургія</option><option value="food">Харчова промисловість</option><option value="logistics">Логістика</option><option value="datacenters">Дата-центри</option><option value="chemical">Хімічна промисловість</option><option value="agriculture">Агросектор</option><option value="pharma">Фармацевтика</option><option value="waste">Waste-to-Energy</option><option value="finance">Фінанси</option><option value="regulation">Законодавство / Регулювання</option><option value="other">Інше</option></select></label><label>Дата<input class="input" type="date" id="edDate"></label></div>
+<div class="form2"><label>Рубрика у Digest<select class="input" id="edDigestRubric"><option value="AUTO">Автоматично за змістом</option><option value="GENERAL">Україна / Світ</option><option value="FINANCE">Фінанси</option><option value="REGULATION">Законодавство / Регулювання</option><option value="ADVICE">Поради Головного інженера</option></select></label><label>Короткий опис<textarea class="input" id="edSummary" rows="3"></textarea></label></div>
+<label class="checkline top5check"><input type="checkbox" id="edHomepageTop5"> Показувати у TOP‑5 на головній сторінці <span class="muted">— додатково до галузі та загального розділу «Новини та інсайти»</span></label>
+<label id="edBodyLabel">Повний текст матеріалу</label>
+<div class="richEditorShell" id="newsRichEditorShell">
+  <div class="richToolbar" aria-label="Панель форматування тексту">
+    <span class="richPencil">✎ РЕДАГУВАТИ</span>
+    <button type="button" class="richBtn" data-rich-cmd="bold" title="Жирний"><b>B</b></button>
+    <button type="button" class="richBtn" data-rich-cmd="italic" title="Курсив"><i>I</i></button>
+    <button type="button" class="richBtn" data-rich-case="upper" title="ВЕРХНІЙ РЕГІСТР">AA</button>
+    <button type="button" class="richBtn" data-rich-case="lower" title="нижній регістр">aa</button>
+    <button type="button" class="richBtn" data-rich-case="sentence" title="Регістр речення">Aa</button>
+    <select class="input richSelect" id="richFontFamily" title="Шрифт"><option>Arial</option><option>Georgia</option><option>Verdana</option><option>Tahoma</option><option>Times New Roman</option></select>
+    <select class="input richSelect richSize" id="richFontSize" title="Розмір шрифту"><option value="14">14</option><option value="16" selected>16</option><option value="18">18</option><option value="20">20</option><option value="22">22</option><option value="24">24</option></select>
+  </div>
+  <div id="edBodyRich" class="richBody" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="true"></div>
+  <textarea class="input richHidden" id="edBody" rows="11" aria-hidden="true" tabindex="-1"></textarea>
+  <small class="muted" id="edBodyHint">ADMIN_2: виділіть фрагмент і використайте B / I / регістр / шрифт / розмір. Повний текст зберігається у REVIEW.</small>
+</div>
+<label>Посилання на першоджерело<input class="input" id="edSource" type="url"></label>
+<label>Адреса матеріалу (slug)<input class="input" id="edSlug"></label>
+<div class="newsimagepanel" id="newsImagePanel">
+  <div class="sectionhead"><div><h3>ЗОБРАЖЕННЯ НОВИНИ / IMAGE REVIEW</h3><p class="muted">Фото затверджується ADMIN окремо від тексту. Без затвердженого зображення NEWS не переходить у APPROVED і не потрапляє до Digest.</p></div><span class="pill amber" id="imageApprovalState">НЕ ЗАТВЕРДЖЕНО</span></div>
+  <div class="imageapprovalgrid">
+    <div>
+      <div class="newsimagepreview" id="newsImagePreview"><span>Зображення ще не вибрано</span></div>
+      <div class="miniwarn" id="newsImageMeta">Спочатку оберіть джерело зображення.</div>
+    </div>
+    <div>
+      <label>Джерело зображення<select class="input" id="newsImageMode"><option value="CATALOG">Каталог IIG у репозиторії</option><option value="SOURCE">Фото з першоджерела</option><option value="UPLOAD">Завантажити з комп’ютера</option></select></label>
+      <label id="newsCatalogLabel">Зображення з каталогу<select class="input" id="newsCatalogImage"></select></label>
+      <div id="newsSourceImageInfo" class="miniwarn hidden">Для цієї новини немає підтвердженого source_photo з правами.</div>
+      <div id="newsUploadBlock" class="hidden">
+        <label>Файл JPG / PNG / WebP<input class="input" type="file" id="newsImageFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></label>
+        <label>Credit / власник прав <span class="muted">(необов’язково для ADMIN_1)</span><input class="input" id="newsImageCredit" placeholder="За бажанням: BASF / IIG / назва правовласника"></label>
+        <label class="checkline"><input type="checkbox" id="newsImageRights"> ADMIN_1 особисто перевірив першоджерело та підтверджує право на використання цього зображення</label>
+        <div class="miniwarn"><b>Правило ADMIN_1:</b> одного підтвердження вище достатньо для editorial approval. Credit/власник прав — необов’язковий, якщо ADMIN_1 особисто перевірив офіційний первоисточник. Demo зберігає uploaded-фото лише локально у браузері; production КРОК 27 переносить файл у media storage/CDN і зберігає rights/audit metadata.</div>
+      </div>
+      <div class="toolbar"><button type="button" class="btn primary" id="previewNewsImage">Переглянути фото</button><button type="button" class="btn success" id="approveNewsImage">✓ ЗАТВЕРДИТИ ФОТО</button><button type="button" class="btn danger" id="resetNewsImage">Скинути фото</button></div>
+    </div>
+  </div>
+</div>
+<div id="approvalState" class="approvalstate pending">● НЕ ЗАТВЕРДЖЕНО ДО ПУБЛІКАЦІЇ</div><div class="toolbar"><button type="button" class="btn primary" id="saveDraft">💾 ЗБЕРЕГТИ КОРИГУВАННЯ</button><button type="button" class="btn primary" id="previewNews">Попередній перегляд статті з фото</button><button type="button" class="btn success" id="approveDemo">✓ Затвердити до публікації</button><button type="button" class="btn danger" id="rejectDemo">Відхилити</button><button type="button" class="btn primary" id="publishProd">Опублікувати у DEMO</button></div>
+<div class="miniwarn">У STEP 26 ADMIN_1 може пройти повний редакційний цикл і опублікувати матеріал у DEMO. Реальна production-публікація на платний хостинг залишається окремою захищеною дією КРОКУ 27.</div>
+</form></div></div></section>
+
+
+<section class="tab" id="market">
+  <div class="market-admin-shell">
+    <div class="card market-head-card">
+      <div class="sectionhead">
+        <div>
+          <div class="market-eyebrow">IIG MARKET · ADMIN MASTER</div>
+          <h2>КЕРУВАННЯ ЕНЕРГЕТИЧНИМ ОБЛАДНАННЯМ</h2>
+          <p class="muted">Публічний MARKET поки прихований. ADMIN_2 готує картки, технічні параметри, фото, продавця, ціну та умови. ADMIN_1 затверджує публічну ціну і активну редакцію умов.</p>
+        </div>
+        <div class="market-head-actions">
+          <span class="pill amber">HIDDEN UNTIL CONTENT READY</span>
+          <button class="btn success" id="marketNewItem">+ ДОДАТИ ОБЛАДНАННЯ</button>
+          <button class="btn primary" id="marketTermsBtn">УМОВИ РОЗМІЩЕННЯ ОБЛАДНАННЯ</button>
+        </div>
+      </div>
+      <div class="market-kpis">
+        <div><small>ВСЬОГО</small><b id="marketKpiTotal">0</b></div>
+        <div><small>ЧЕРНЕТКИ</small><b id="marketKpiDraft">0</b></div>
+        <div><small>WAIT ADMIN_1</small><b id="marketKpiWait">0</b></div>
+        <div><small>ОПУБЛІКОВАНО</small><b id="marketKpiPublished">0</b></div>
+        <div><small>ПРОДАНО</small><b id="marketKpiSold">0</b></div>
+        <div><small>УМОВИ</small><b id="marketKpiTerms">v1 DRAFT</b></div>
+      </div>
+    </div>
+
+    <div class="card market-role-card">
+      <div class="form2">
+        <label>Поточна роль MARKET
+          <select class="input" id="marketRole">
+            <option value="ADMIN_2" selected>ADMIN_2 · Operational Manager</option>
+            <option value="ADMIN_1">ADMIN_1 · Commercial Final Approver</option>
+          </select>
+        </label>
+        <div class="rolecontract">
+          <b>ADMIN_2:</b> створює/редагує картки, фото, параметри, продавця, проєкт ціни й умови.<br>
+          <b>ADMIN_1:</b> виключно затверджує публічну ціну та активує нову редакцію умов розміщення/продажу.
+        </div>
+      </div>
+    </div>
+
+    <div class="card market-filter-card">
+      <div class="market-toolbar">
+        <input class="input grow" id="marketSearch" placeholder="Пошук: Listing ID / виробник / модель / категорія">
+        <select class="input" id="marketStatusFilter"><option value="all">Усі статуси</option><option>DRAFT</option><option>ADMIN_2_PREPARED</option><option>READY_FOR_ADMIN_1</option><option>PUBLISHED</option><option>RESERVED</option><option>SOLD</option><option>ARCHIVED</option></select>
+        <select class="input" id="marketConditionFilter"><option value="all">Усі стани</option><option>NEW</option><option>Б/У</option><option>REFURBISHED</option><option>NEVER INSTALLED</option></select>
+        <select class="input" id="marketCategoryFilter"><option value="all">Усі категорії</option><option>Gas Engine / CHP</option><option>Gas Boiler</option><option>Gas Turbine</option><option>Transformers</option><option>BESS</option><option>SCADA / Control</option><option>Packaged CHP</option></select>
+        <button class="btn primary" id="marketResetFilters">Скинути</button>
+      </div>
+    </div>
+
+    <div class="market-workgrid">
+      <div class="card market-list-card">
+        <div class="sectionhead"><div><h2>ОБЛАДНАННЯ</h2><p class="muted">Список підтримує десятки позицій і внутрішній скрол.</p></div><span class="pill blue" id="marketListCount">0 позицій</span></div>
+        <div id="marketList" class="market-list"></div>
+      </div>
+
+      <div class="card market-editor-card">
+        <div class="sectionhead">
+          <div><h2>КАРТКА ОБЛАДНАННЯ</h2><p class="muted" id="marketEditorHint">Оберіть позицію зі списку або створіть нову.</p></div>
+          <span class="pill blue" id="marketListingId">—</span>
+        </div>
+
+        <div class="market-digest-top-toggle" id="marketDigestTopBar">
+          <div class="market-digest-top-options">
+            <label class="market-digest-top-label">
+              <input type="checkbox" id="marketIncludeDigestTop">
+              <span><b>РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ</b><small>Позначає обладнання для автоматичного підтягування у Digest при виборі типу «Marketplace». У Digest потрапляють тільки позиції, що пройшли release-gates.</small></span>
+            </label>
+            <label class="market-digest-top-label market-feature-top">
+              <input type="checkbox" id="marketFeatureDigestTop">
+              <span><b>FEATURE</b><small>Пріоритетне виділення у MARKET / Digest.</small></span>
+            </label>
+            <label class="market-digest-top-label market-urgent-top">
+              <input type="checkbox" id="marketUrgentTop">
+              <span><b>ТЕРМІНОВО</b><small>Платне термінове виділення. Червона мітка також передається у Digest.</small></span>
+            </label>
+          </div>
+          <span class="pill green">MARKETPLACE AUTO-PULL READY</span>
+        </div>
+
+        <div id="marketEditorEmpty" class="empty">Оберіть обладнання зі списку.</div>
+
+        <div id="marketEditor" class="hidden">
+          <div class="market-editor-grid">
+            <div class="market-editor-left">
+              <div class="market-block">
+                <h3>1. ФОТО / МЕДІА</h3>
+                <div class="market-cover" id="marketCoverPreview"><span>Немає фото</span></div>
+                <label>Завантажити фото
+                  <input class="input" type="file" id="marketPhotoFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" multiple>
+                </label>
+                <div id="marketGallery" class="market-gallery"></div>
+                <small class="muted">DEMO: фото переглядається локально. Production — Media Library / object storage / rights validation.</small>
+              </div>
+
+              <div class="market-block">
+                <h3>2. ПУБЛІЧНА КАРТКА</h3>
+                <label>Назва UA<input class="input" id="marketTitleUa"></label>
+                <label>Назва EN<input class="input" id="marketTitleEn"></label>
+                <label>Короткий опис UA<textarea class="input" id="marketSummaryUa" rows="3"></textarea></label>
+                <div class="form2">
+                  <label>Категорія<select class="input" id="marketCategory"><option>Gas Engine / CHP</option><option>Gas Boiler</option><option>Gas Turbine</option><option>Transformers</option><option>BESS</option><option>SCADA / Control</option><option>Packaged CHP</option><option>Other</option></select></label>
+                  <label>Стан<select class="input" id="marketCondition"><option>NEW</option><option>Б/У</option><option>REFURBISHED</option><option>NEVER INSTALLED</option></select></label>
+                </div>
+                <div class="form2">
+                  <label>Виробник<input class="input" id="marketManufacturer"></label>
+                  <label>Модель<input class="input" id="marketModel"></label>
+                </div>
+                <div class="form2">
+                  <label>Країна / регіон<input class="input" id="marketCountry"></label>
+                  <label>Доступність<input class="input" id="marketAvailability" placeholder="Immediate / Q2 2027"></label>
+                </div>
+              </div>
+
+              <div class="market-block market-private">
+                <h3>3. ПРОДАВЕЦЬ · PRIVATE</h3>
+                <label>Компанія продавця<input class="input" id="marketSellerCompany"></label>
+                <div class="form2"><label>Контактна особа<input class="input" id="marketSellerName"></label><label>Email<input class="input" id="marketSellerEmail" type="email"></label></div>
+                <div class="form2"><label>Телефон<input class="input" id="marketSellerPhone"></label><label>Seller / CRM ID<input class="input" id="marketSellerId"></label></div>
+                <div class="miniwarn"><b>HARD RULE:</b> ці поля не входять до public MARKET API / сторінки обладнання.</div>
+              </div>
+
+              <div class="market-block">
+                <h3>4. ЦІНА / COMMERCIAL GATE</h3>
+                <div class="form2">
+                  <label>Режим ціни<select class="input" id="marketPriceMode"><option>ON REQUEST</option><option>FIXED PRICE</option><option>PRICE RANGE</option><option>FROM</option></select></label>
+                  <label>Валюта<select class="input" id="marketCurrency"><option>EUR</option><option>USD</option><option>CZK</option></select></label>
+                </div>
+                <div class="form2">
+                  <label>Seller asking price · PRIVATE<input class="input" id="marketSellerPrice" type="number" min="0"></label>
+                  <label>Підготовлена публічна ціна<input class="input" id="marketPublicPrice" type="number" min="0"></label>
+                </div>
+                <div class="form2">
+                  <label>IIG Success Fee % · PRIVATE<input class="input" id="marketFee" type="number" min="0" step="0.1"></label>
+                  <label>Статус ціни<input class="input" id="marketPriceState" readonly></label>
+                </div>
+                <div class="toolbar">
+                  <button class="btn primary" id="marketPreparePrice">ADMIN_2 · ПІДГОТУВАТИ ЦІНУ</button>
+                  <button class="btn success" id="marketApprovePrice">ADMIN_1 · ЗАТВЕРДИТИ ПУБЛІЧНУ ЦІНУ</button>
+                </div>
+                <div class="miniwarn"><b>NO PUBLIC PRICE WITHOUT ADMIN_1 APPROVAL.</b> Будь-яка зміна після approval переводить ціну у PRICE_REAPPROVAL_REQUIRED.</div>
+              </div>
+            </div>
+
+            <div class="market-editor-right">
+              <div class="market-tech-head">
+                <div><h3>5. ТЕХНІЧНІ ПАРАМЕТРИ</h3><p class="muted">Необмежена кількість параметрів. Панель має власний вертикальний скрол.</p></div>
+                <button class="btn primary" id="marketAddParam">+ ПАРАМЕТР</button>
+              </div>
+              <div id="marketParamList" class="market-param-list"></div>
+
+              <div class="market-block">
+                <h3>6. IIG TECHNICAL REVIEW / PROJECT FIT</h3>
+                <label>Статус перевірки<select class="input" id="marketReviewStatus"><option>NOT REVIEWED</option><option>DOCUMENTS RECEIVED</option><option>IIG REVIEWED</option><option>TECHNICALLY QUALIFIED</option></select></label>
+                <label>Публічна технічна примітка IIG<textarea class="input" id="marketTechnicalNote" rows="5"></textarea></label>
+                <label>Project Fit<input class="input" id="marketProjectFit" placeholder="Reserve CHP; Industrial onsite generation; Data Center backup"></label>
+              </div>
+
+              <div class="market-block">
+                <h3>7. WORKFLOW / VISIBILITY</h3>
+                <div class="form2">
+                  <label>Статус<select class="input" id="marketStatus"><option>DRAFT</option><option>ADMIN_2_PREPARED</option><option>TECHNICAL_REVIEW</option><option>READY_FOR_ADMIN_1</option><option>ADMIN_1_APPROVED</option><option>PUBLISHED</option><option>RESERVED</option><option>SOLD</option><option>ARCHIVED</option></select></label>
+                  <label>Публічна видимість<select class="input" id="marketVisibility"><option>HIDDEN</option><option>SHOW_ON_MARKET</option><option>FEATURE_ON_MARKET</option></select></label>
+                </div>            </div>
+          </div>
+
+          <div class="market-editor-actions">
+            <button class="btn primary" id="marketSaveDraft">ЗБЕРЕГТИ КАРТКУ</button>
+            <button class="btn success" id="marketSubmitAdmin1">ПЕРЕДАТИ ADMIN_1</button>
+            <button class="btn primary" id="marketPreviewItem">ПЕРЕГЛЯД КАРТКИ</button>
+            <button class="btn danger" id="marketArchiveItem">В АРХІВ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card market-terms-card hidden" id="marketTermsPanel">
+      <div class="sectionhead">
+        <div><div class="market-eyebrow">MARKET TERMS / PUBLIC OFFER</div><h2>УМОВИ РОЗМІЩЕННЯ ОБЛАДНАННЯ</h2><p class="muted">ADMIN_2 готує редакцію. ADMIN_1 затверджує та активує.</p></div>
+        <button class="btn primary" id="marketTermsClose">Закрити</button>
+      </div>
+      <div class="form2">
+        <label>Версія<input class="input" id="marketTermsVersion" value="1.0"></label>
+        <label>Дата набрання чинності<input class="input" id="marketTermsEffective" type="date"></label>
+      </div>
+      <label>Коротке пояснення для продавця<textarea class="input" id="marketTermsSummary" rows="3">IIG MARKET — контрольована B2B-платформа для спеціалізованого енергетичного обладнання. Публікація проходить модерацію IIG; прямі контакти продавця не публікуються.</textarea></label>
+      <label>Покрокова інструкція<textarea class="input" id="marketTermsSteps" rows="7">1. Подати обладнання та базові технічні дані.
+2. Завантажити фото і документацію.
+3. Пройти перевірку IIG.
+4. Погодити комерційні умови і публічну ціну.
+5. Після ADMIN_1 approval позиція може бути опублікована.
+6. Запити покупців надходять через IIG.
+7. Контакт продавця розкривається тільки за контрольованим workflow IIG.</textarea></label>
+      <label>Повні умови / публічна оферта<textarea class="input" id="marketTermsBody" rows="12" placeholder="Тут ADMIN_2 готує повний текст умов, відповідальності, конфіденційності, success fee, резервування, відкликання, продажу та інших правил..."></textarea></label>
+      <div class="toolbar">
+        <button class="btn primary" id="marketTermsSave">ADMIN_2 · ЗБЕРЕГТИ DRAFT</button>
+        <button class="btn success" id="marketTermsSubmit">ADMIN_2 · ПЕРЕДАТИ ADMIN_1</button>
+        <button class="btn success" id="marketTermsApprove">ADMIN_1 · ЗАТВЕРДИТИ ТА АКТИВУВАТИ</button>
+      </div>
+      <div class="row"><span>Статус редакції</span><b id="marketTermsState">DRAFT</b></div>
+      <div class="miniwarn"><b>HARD RULE:</b> публічна сторінка «Умови розміщення обладнання» завжди показує тільки останню ACTIVE версію, затверджену ADMIN_1.</div>
+    </div>
+  </div>
+</section>
+
+<section class="tab" id="digest">
+<div class="card masterdigest"><div class="masterhead"><div><div class="mastereyebrow">ЗАТВЕРДЖЕНИЙ ЕТАЛОН · READ-ONLY</div><h2>IIG MONTHLY DIGEST — ВЕРЕСЕНЬ 2026</h2><p class="muted">Офіційний MASTER v2 для візуального контролю ADMIN_1 · джерело: IIG_Monthly_Digest_2026-09_FINAL_DEMO (2). Робочий конструктор нижче не змінює цей еталон.</p></div><div class="mastermeta"><span class="pill green">APPROVED MASTER</span><span class="pill blue">3 СТОРІНКИ</span></div></div><div class="masterfacts"><div><small>MASTER SHA-256</small><code>6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc</code></div><div><small>СТРУКТУРА</small><b>1 — Обкладинка · 2 — 15 подій · 3 — Фінанси / Регулювання / Поради</b></div></div><div class="mastertoolbar"><button class="btn primary masterPage active" data-page="1">Сторінка 1 / 3 · Обкладинка</button><button class="btn primary masterPage" data-page="2">Сторінка 2 / 3 · 15 подій</button><button class="btn primary masterPage" data-page="3">Сторінка 3 / 3 · Фінанси / Законодавство / Поради</button><a class="btn primary" href="digest/admin-master-2026-09-v2.html?page=1" target="_blank" rel="noopener">Відкрити MASTER v2</a></div><div class="masterviewer"><iframe id="digestMasterFrame" title="Затверджений IIG Monthly Digest MASTER" src="digest/admin-master-2026-09-v2.html?page=1#page=1&zoom=page-width&toolbar=0&navpanes=0"></iframe></div><div class="miniwarn"><b>Контроль версії:</b> цей блок показує новий затверджений ADMIN MASTER v2 з IIG_Monthly_Digest_2026-09_FINAL_DEMO (2). Старий PDF сайту тут НЕ використовується. Будь-яка зміна дизайну або структури потребує нового погодження ADMIN_1 та нового MASTER SHA.</div></div>
+<div class="card market-digest-queue-card">
+  <div class="sectionhead">
+    <div>
+      <div class="market-eyebrow">IIG MARKET → DIGEST</div>
+      <h2>КАНДИДАТИ IIG MARKET ДЛЯ АВТОМАТИЧНОГО ПІДТЯГУВАННЯ У ДАЙДЖЕСТ</h2>
+      <p class="muted">Тут з'являються кандидати, для яких ADMIN_2 поставив галочку «Розмістити дане обладнання у Дайджесті». Коли в конструкторі обрано тип «Marketplace» і запускається формування сторінок 4+, робот автоматично підтягує тільки позначені позиції, що пройшли release-gates. ADMIN_2 після автозбірки зберігає повний ручний контроль порядку і складу.</p>
+    </div>
+    <span class="pill blue" id="marketDigestQueueCount">0 позицій</span>
+  </div>
+  <div id="marketDigestQueue" class="market-digest-queue"><div class="empty">Поки немає обладнання, вибраного для Дайджесту.</div></div>
+  <div class="miniwarn"><b>HARD RULE · MARKETPLACE AUTO-PULL:</b> позначена MARKET-позиція стає кандидатом для автоматичного формування Page 4/5 після вибору типу «Marketplace». Автозбірка не обходить release-gates і не перезаписує сторінку іншого типу. Після автозбірки ADMIN_2 може ↑/↓ змінювати порядок, ⇄ переносити позицію та × виключати її лише з поточного випуску. Видалення з Digest ніколи не видаляє картку з IIG MARKET.</div>
+</div>
+
+<div class="card market-digest-composer-card" id="marketDigestComposer">
+  <div class="sectionhead">
+    <div>
+      <div class="market-eyebrow">IIG MARKET · DIGEST PAGE BUILDER / MANUAL FALLBACK</div>
+      <h2>ДОДАТКОВА СТОРІНКА IIG MARKET</h2>
+      <p class="muted">Резервний ручний конструктор Page 4+. Основний сценарій — у вкладці «Дайджест» обрати тип матеріалу «Marketplace» і запустити автопідтягування. Тут ADMIN_2 може вручну сформувати конкретну MARKET-сторінку за потреби.</p>
+    </div>
+    <span class="pill blue">MANUAL FALLBACK</span>
+  </div>
+  <div class="market-digest-composer-controls">
+    <label>Цільова сторінка
+      <select class="input" id="marketDigestTargetPage">
+        <option value="4">Page 4</option>
+        <option value="5">Page 5</option>
+      </select>
+    </label>
+    <label>Категорія
+      <select class="input" id="marketDigestCategory"><option value="all">Усі категорії</option></select>
+    </label>
+    <div class="market-digest-composer-actions">
+      <button class="btn primary" id="marketDigestRefresh">ОНОВИТИ КАНДИДАТІВ</button>
+      <button class="btn success" id="marketDigestBuildPage">СФОРМУВАТИ MARKET-СТОРІНКУ ВРУЧНУ</button>
+    </div>
+  </div>
+  <div id="marketDigestComposerList" class="market-digest-composer-list"><div class="empty">Немає відмічених MARKET-позицій.</div></div>
+  <div class="miniwarn"><b>CONFLICT LOCK:</b> якщо обраний Page 4/5 уже зайнятий IIG ORIGINAL / власним проєктом / PARTNER / SPONSORED / іншим матеріалом, MARKET не перезаписує сторінку. ADMIN_2 повинен обрати інший номер або спочатку видалити існуючу додаткову сторінку.</div>
+</div>
+<div class="card covereditor"><div class="sectionhead"><div><h2>РЕДАКТОР ТИТУЛЬНОЇ СТОРІНКИ</h2><p class="muted">Керуйте робочою обкладинкою: фон, заголовок, слоган, анонси та CTA. <b>Якщо ADMIN нічого не змінює — автоматично використовується затверджена титульна сторінка MASTER v2 1:1.</b></p></div><span class="pill blue">WORKING COVER</span></div>
+<div class="covereditgrid"><div>
+<label>Фонове зображення<input class="input" type="file" id="coverBgFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></label>
+<div id="coverBgStatus" class="miniwarn">Рекомендовано: портретне зображення від 1800×2546 px. Мінімум 1200×1697 px, JPG/PNG/WebP, до 10 MB.</div>
+<label class="checkline"><input type="checkbox" id="coverBgRights"> ADMIN_1 особисто перевірив джерело та підтверджує право IIG на використання цього фонового зображення</label>
+<div class="toolbar"><button type="button" class="btn success" id="approveCoverBg">✓ ПІДТВЕРДИТИ ФОН ADMIN_1</button></div>
+<div id="coverBgApprovalState" class="miniwarn">MASTER v2 активний. Новий фон не вибрано.</div>
+<label>Головний заголовок<input class="input" id="coverTitle" value="MONTHLY DIGEST"></label>
+<label>Підзаголовок<input class="input" id="coverSubtitle" value="ПРОМИСЛОВОЇ ЕНЕРГЕТИКИ"></label>
+<label>Слоган<textarea class="input" id="coverSlogan" rows="3">Енергія відновлення. Інвестиції в майбутнє промисловості України</textarea></label>
+</div><div>
+<label>Анонс 1<input class="input coverAnnouncement" data-i="0" value="Генерація промисловості – Україна"></label>
+<label>Анонс 2<input class="input coverAnnouncement" data-i="1" value="Світова практика промислової енергетики"></label>
+<label>Анонс 3<input class="input coverAnnouncement" data-i="2" value="Фінансування та державне регулювання"></label>
+<label>Анонс 4<input class="input coverAnnouncement" data-i="3" value="Поради Головного інженера"></label>
+<div class="form2"><label>Затемнення фону<select class="input" id="coverOverlay"><option value="0.45">45%</option><option value="0.55" selected>55%</option><option value="0.65">65%</option></select></label><label>Позиція фону<select class="input" id="coverBgPosition"><option value="center">По центру</option><option value="top">Верх</option><option value="bottom">Низ</option></select></label></div>
+<div class="toolbar"><button class="btn primary" id="applyCover">Застосувати до титульної</button><button class="btn primary" id="previewCover">Попередній перегляд</button><button class="btn danger" id="resetCover">Скинути до робочого стандарту</button></div>
+</div></div></div>
+<div class="card digestroles"><div class="sectionhead"><div><h2>DIGEST WORKFLOW ROLES</h2><p class="muted">ADMIN_2 редагує поточний Digest; ручна редакція є головним working source-of-truth. Окремий release-candidate не є обов’язковим після правок: Final Preview сам створює технічну release-оболонку з поточного ручного макета без Auto-fill. Тільки ADMIN_1 червоною кнопкою фіксує цей exact snapshot як canonical candidate і одночасно затверджує фінальний макет.</p></div><span class="pill blue">RUNTIME · ADMIN1 FINAL LOCK v1</span><span class="pill amber" id="digestCandidateState">CANDIDATE НЕ СФОРМОВАНО</span></div><div class="form2"><label>Поточна роль у Digest workflow<select class="input" id="digestOperatorRole"><option value="ADMIN_2" selected>ADMIN_2 · Digest Builder</option><option value="ADMIN_1">ADMIN_1 · Final Approver</option></select></label><div class="rolecontract"><b>ADMIN_2:</b> edit CURRENT manual Digest / Final Preview / QA / re-upload approved PDF<br><b>ADMIN_1:</b> lock exact previewed CURRENT revision + final approval / PDF re-upload</div></div></div><div class="buildertop card"><div><h2>КОНСТРУКТОР ДАЙДЖЕСТУ</h2><p class="muted">Стандартний Monthly Digest має 3 основні сторінки. NEWS / Finance / Regulation автоматично пакуються тільки ПІД ЧАС ПЕРШОГО формування candidate або після явного натискання Auto-fill. Після створення candidate ручний макет ADMIN_2 має вищий пріоритет і ніколи не перезаписується approve/publish/reject/refresh подіями. Матеріали понад місткість не створюють Page 4. Page 4+ додається тільки вручну. ADMIN_2 сам обирає тип додаткової сторінки: IIG ORIGINAL / власний проєкт IIG / PARTNER / SPONSORED / IIG MARKET. Наявність кандидатів MARKET не створює і не резервує Page 4/5 автоматично. Після ручного видалення, перестановки або корекції просто відкрийте «ФІНАЛЬНИЙ ПЕРЕГЛЯД ВЕРСТКИ». Final Preview бере ПОТОЧНИЙ ручний макет як пріоритетний стан; якщо технічної release-оболонки немає, вона створюється автоматично без Auto-fill. Після цього червона кнопка ADMIN_1 «ЗАТВЕРДИТИ ФІНАЛЬНИЙ МАКЕТ» одним атомарним кроком фіксує fingerprint останнього переглянутого snapshot як canonical candidate і затверджує саме цю редакцію.</p><div class="issuebar"><span class="issuebadge" id="digestIssueBadge">ВЕРЕСЕНЬ 2026</span><label class="digestLanguageControl">МОВА ДАЙДЖЕСТУ <select class="input" id="digestLanguage"><option value="UA" selected>UA · Українська (основна)</option><option value="EN">EN · English</option></select></label><button class="btn primary" id="changeDigestIssue">Змінити місяць / рік</button><span class="muted" id="digestPackingStatus">Автопакування активне</span></div></div><div class="toolbar"><button class="btn success digestgenerate" id="generateDigestCandidate">⚙ НОВЕ АВТОФОРМУВАННЯ (СКИДАЄ РУЧНІ ПРАВКИ)</button><button class="btn primary" id="autoFillDigest">Автозаповнити заново (скидає ручний макет)</button><button class="btn primary" id="addDigestPage">+ Додати сторінку 4+</button><button class="btn primary" id="previewDigest">Робочий перегляд</button><button class="btn success" id="finalPreviewDigest">ФІНАЛЬНИЙ ПЕРЕГЛЯД ВЕРСТКИ</button><button class="btn danger" id="approveDigestProd">ЗАТВЕРДИТИ ФІНАЛЬНИЙ МАКЕТ</button><button class="btn success" id="downloadDigestHtml" disabled>⬇ ЗАВАНТАЖИТИ РОБОЧИЙ ФАЙЛ ДАЙДЖЕСТУ</button><button class="btn primary" id="printDigestPdf" disabled>PDF · ЗБЕРЕГТИ</button><label class="digestPdfUpload">Раніше згенерований / готовий PDF<input type="file" id="digestPdfFile" accept=".pdf,application/pdf" disabled></label><button class="btn success" id="publishDigestSite" disabled>⇧ ЗАЛИТИ ДАЙДЖЕСТ НА САЙТ IIG</button><span class="miniwarn" id="digestPdfUploadState">Якщо випуск уже був затверджений ADMIN_1, ADMIN_2 може вибрати раніше збережений PDF зі свого каталогу і натиснути «ЗАЛИТИ ДАЙДЖЕСТ НА САЙТ IIG» БЕЗ повторної генерації, Final Preview або нового approval. Публікація вважається успішною лише після фізичної появи нового CURRENT PDF у public storage.</span></div></div>
+<div class="card articleimporter"><div class="sectionhead"><div><h2>ІМПОРТ / ФОРМУВАННЯ ДОДАТКОВОГО МАТЕРІАЛУ</h2><p class="muted">Для IIG ORIGINAL / PARTNER / SPONSORED можна завантажити DOCX/TXT. Для типу «Marketplace» файл не потрібен: робот автоматично підтягує позначене й допущене обладнання з IIG MARKET у Page 4/5+. Заголовок, лід і текст залишаються необов’язковою редакційною підложкою ADMIN_2.</p></div><span class="pill green">PAGE 2 CANVAS</span></div>
+<div class="articleimportgrid"><div>
+<label>Тип матеріалу<select class="input" id="articleMaterialType"><option value="IIG_ORIGINAL">IIG ORIGINAL</option><option value="SUCCESS_PROJECT">Успішно реалізований проєкт IIG</option><option value="PARTNER">PARTNER MATERIAL</option><option value="SPONSORED">SPONSORED MATERIAL</option><option value="MARKETPLACE">Marketplace</option></select></label>
+<label>Файл матеріалу<input class="input" type="file" id="articleSourceFile" accept=".docx,.txt,.md,.rtf,.html,text/plain,text/markdown,text/html,application/rtf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></label>
+<div id="articleImportStatus" class="miniwarn">DOCX/TXT/MD/RTF/HTML. DOCX читається локально в браузері; текст і вбудовані фото не передаються зовнішнім сервісам.</div>
+<label>Заголовок<input class="input" id="articleImportTitle"></label>
+<label>Лід / короткий анонс<textarea class="input" id="articleImportLead" rows="3"></textarea></label>
+</div><div>
+<label>Текст матеріалу<textarea class="input" id="articleImportBody" rows="13" placeholder="Текст буде завантажено з файлу; його можна відредагувати перед версткою."></textarea></label>
+<label>Пряме посилання на повний матеріал IIG<input class="input" id="articleImportUrl" placeholder="article.html?id=... або https://..."></label>
+<div class="row"><span>Вбудовані фото</span><b id="articleImageCount">0</b></div>
+<div class="toolbar"><button class="btn success" id="buildArticlePages">Сформувати сторінки</button><button class="btn primary" id="previewArticleImport">Попередній перегляд</button><button class="btn danger" id="clearArticleImport">Очистити</button></div>
+<div class="miniwarn"><b>Правило:</b> для Marketplace автопідтягування є первинною збіркою. ADMIN_2 після неї визначає фінальний порядок і склад. На кожній Page 4+ обов’язково зберігаються дві CTA: «РОЗМІСТИТИ ПРОЄКТ» і «ПІДПИСАТИСЯ НА ДАЙДЖЕСТ».</div>
+</div></div></div>
+<div class="digestgrid"><div class="card"><h2>ПІДТВЕРДЖЕНІ МАТЕРІАЛИ ЗА РУБРИКАМИ</h2><input class="input" id="digestSearch" placeholder="Пошук матеріалу"><div class="rubriclegend"><span>Україна / Світ</span><span>Фінанси</span><span>Законодавство / Регулювання</span><span>Поради Головного інженера</span></div><div id="digestLibrary" class="newslist compact"><div class="empty">Завантаження…</div></div></div>
+<div class="card"><div class="sectionhead"><div><h2>ПОТОЧНИЙ ДАЙДЖЕСТ</h2><p class="muted" id="digestWorkingTitle">IIG Monthly Digest • Вересень 2026 • робоча версія</p></div><span class="pill blue" id="digestCounter">0 матеріалів</span></div>
+<div class="finalpreviewstatus card"><div class="sectionhead"><div><h2>ФІНАЛЬНИЙ PREVIEW / RELEASE GATE</h2><p class="muted">Фінальна посторінкова перевірка перед завантаженням на сайт і передачею Robot #7 у розсилку. Preview не публікує і не надсилає Digest.</p></div><span class="pill amber" id="finalPreviewState">НЕ ПЕРЕВІРЕНО</span></div><div id="finalPreviewChecks" class="readinessgrid"></div></div>
+<div id="digestPages"></div>
+<div class="card extrapageeditor hidden" id="extraPageEditor"><div class="sectionhead"><div><h2>РЕДАКТОР СТОРІНКИ 4+</h2><p class="muted">Для IIG ORIGINAL, успішних проєктів, PARTNER / SPONSORED та Marketplace. Для Marketplace заголовок, анонс і текст є необов’язковою редакційною підложкою ADMIN_2; обладнання підтягується з IIG MARKET автоматично.</p></div><button class="btn danger" id="closeExtraPageEditor">Закрити</button></div>
+<input type="hidden" id="extraPageIndex">
+<div class="covereditgrid"><div>
+<label>Тип сторінки<select class="input" id="extraPageType"><option value="IIG_ORIGINAL">IIG ORIGINAL</option><option value="SUCCESS_PROJECT">Успішно реалізований проєкт</option><option value="PARTNER">PARTNER MATERIAL</option><option value="SPONSORED">SPONSORED MATERIAL</option><option value="MARKETPLACE">Marketplace</option><option value="EDITORIAL">Редакційна сторінка</option></select></label>
+<label>Фонове зображення<input class="input" type="file" id="extraPageBgFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></label>
+<div id="extraPageBgStatus" class="miniwarn">Рекомендовано: 1800×2546 px. Мінімум 1200×1697 px, JPG/PNG/WebP, до 10 MB.</div>
+<label>Заголовок<input class="input" id="extraPageTitle"></label>
+<label>Підзаголовок / анонс<input class="input" id="extraPageSubtitle"></label>
+<label>Анонс / теза 1<input class="input extraAnnouncement" data-i="0"></label>
+<label>Анонс / теза 2<input class="input extraAnnouncement" data-i="1"></label>
+<label>Анонс / теза 3<input class="input extraAnnouncement" data-i="2"></label>
+<div class="form2"><label>Затемнення фону<select class="input" id="extraPageOverlay"><option value="0.35">35%</option><option value="0.45">45%</option><option value="0.55" selected>55%</option><option value="0.65">65%</option></select></label><label>Позиція фону<select class="input" id="extraPageBgPosition"><option value="center">По центру</option><option value="top">Верх</option><option value="bottom">Низ</option></select></label></div>
+</div><div>
+<label>Основний текст<textarea class="input" id="extraPageBody" rows="9"></textarea></label>
+<div class="form2"><label>CTA 1<input class="input" id="extraPageCta1" placeholder="Детальніше"></label><label>Посилання CTA 1<input class="input" id="extraPageCta1Url" placeholder="article.html?id=..."></label></div>
+<div class="form2"><label>CTA 2<input class="input" id="extraPageCta2" placeholder="Розмістити проєкт"></label><label>Посилання CTA 2<input class="input" id="extraPageCta2Url" placeholder="forms.html#project"></label></div>
+<div class="toolbar"><button class="btn success" id="saveExtraPage">Зберегти сторінку</button><button class="btn primary" id="previewExtraPage">Попередній перегляд</button></div>
+</div></div></div>
+<div class="miniwarn">Оформлення дайджесту захищене від випадкових змін. Адміністратор керує матеріалами, їх порядком і сторінками.</div></div></div></section>
+
+<section class="tab" id="mailing">
+<div class="grid"><div class="card module"><div class="sectionhead"><div><h2>БАЗА ОТРИМУВАЧІВ</h2><p class="muted">Перед кожною розсилкою ADMIN_2 може завантажити актуальну затверджену MASTER-базу IIG у XLSX/CSV: з новими контактами із заявок, RADAR або ручного внесення. Імпорт об’єднує записи за e-mail та ніколи не реактивує UNSUBSCRIBE / SUPPRESSED.</p></div><span class="pill blue">ІМПОРТ БАЗИ · ADMIN_2</span></div>
+<label class="uploadbox"><b>Вибрати затверджену базу IIG · XLSX / CSV</b><span>Підтримуються: email, ім’я, компанія, посада, джерело, мова, статус/згода та підтвердження згоди.</span><input type="file" id="recipientFile" accept=".csv,.xls,.xlsx,text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></label>
+<div class="toolbar"><button class="btn primary" id="importRecipientBase">⬆ ЗАВАНТАЖИТИ ОНОВЛЕНУ БАЗУ В IIG · ADMIN_2</button><span class="pill amber" id="recipientImportState">ФАЙЛ НЕ ВИБРАНО</span></div>
+<div id="xlsxStatus" class="miniwarn"><b>Правило:</b> імпорт може виконати тільки ADMIN_2. Існуючі заявки/RADAR/ручні контакти об’єднуються за e-mail; відписані адреси залишаються SUPPRESSED.</div>
+<div class="kpis small"><div class="card kpi"><div class="l">Усього</div><div class="n" id="rcRows">0</div></div><div class="card kpi"><div class="l">Коректні</div><div class="n" id="rcValid">0</div></div><div class="card kpi"><div class="l">Помилки</div><div class="n" id="rcInvalid">0</div></div><div class="card kpi"><div class="l">Дублікати</div><div class="n" id="rcDup">0</div></div></div>
+<div class="tablewrap recipientpreview"><table class="table"><thead><tr><th>Email</th><th>Ім’я</th><th>Мова</th><th>Згода</th></tr></thead><tbody id="recipientRows"><tr><td colspan="4">Базу ще не завантажено</td></tr></tbody></table></div></div>
+<div class="card module" id="contactsManager"><h2>КЕРУВАННЯ БАЗОЮ КОНТАКТІВ</h2><p class="muted">Додавайте й редагуйте контакти, керуйте статусами та готуйте перевірені контакти до розсилки. Демодані існують тільки у цій вкладці.</p>
+<div class="toolbar"><input class="input grow" id="contactSearch" placeholder="Пошук за назвою, ім’ям або email"><select class="input" id="contactFilter"><option value="all">Усі контакти</option><option value="active">З активною згодою</option><option value="pending">Очікують підтвердження</option><option value="blocked">Виключені з розсилки</option></select><button class="btn primary" id="addContact">+ Додати контакт</button><button class="btn success" id="exportContactsBase">⬇ СКАЧАТИ БАЗУ IIG В EXCEL</button></div>
+<div class="tablewrap recipientpreview"><table class="table"><thead><tr><th>Контакт / організація</th><th>Email</th><th>Статус</th><th>Дії</th></tr></thead><tbody id="contactRows"><tr><td colspan="4">Завантажте базу або додайте контакт.</td></tr></tbody></table></div>
+<div class="miniwarn"><b>Єдина база IIG:</b> контакти, які ADMIN_2 вручну заводить/імпортує до цієї бази та переводить у ACTIVE, беруть участь у розсилці. PENDING не розсилаються. Відписані та SUPPRESSED не активуються повторним імпортом.</div></div>
+<div class="card module" id="radarContacts">
+<div class="sectionhead"><div><h2>RADAR · ЦІЛЬОВИЙ ПОШУК ПОТЕНЦІЙНИХ КЛІЄНТІВ</h2><p class="muted">Один запуск формує одну тимчасову вибірку. Результати не накопичуються у базі IIG і не зберігаються як клієнтська база. ADMIN_2 переглядає результат, завантажує Excel і після цього сам вирішує, які контакти вручну додати до загальної бази.</p></div><span class="pill blue">1 ПОШУК → EXCEL → СКИДАННЯ</span></div>
+<div class="form2">
+<label>Що шукати<input class="input" id="radarQuery" value="промислова генерація CHP BESS енергетичний проєкт"></label>
+<label>Країна / ринок<input class="input" id="radarCountry" value="UA"></label>
+</div>
+<div class="form2">
+<label>Галузь<select class="input" id="radarIndustry"><option value="energy">Енергетика</option><option value="metallurgy">Металургія / Mining</option><option value="agriculture">Агро</option><option value="food">Харчова промисловість</option><option value="logistics">Логістика</option><option value="datacenters">Data Centers</option><option value="other">Інше</option></select></label>
+<label>Максимум кандидатів<select class="input" id="radarLimit"><option>10</option><option>20</option><option selected>50</option><option>100</option></select></label>
+</div>
+<div class="toolbar"><button class="btn success" id="radarStartRobot">▶ ЗАПУСТИТИ RADAR · ADMIN_2</button><button class="btn primary" id="radarExportExcel" disabled>⬇ СКАЧАТИ ЗГЕНЕРОВАНУ БАЗУ В EXCEL</button><button class="btn danger" id="radarResetGeneration" disabled>✕ СКИНУТИ ГЕНЕРАЦІЮ</button><span class="pill blue" id="radarRunState">LIVE RADAR · 1000+ SOURCES</span></div>
+<div id="radarRunInfo" class="miniwarn"><b>LIVE RADAR:</b> production-запуск має реально обробити щонайменше 1000 зовнішніх web-джерел. Лише після підтвердженого scan_count ≥ 1000 вибірка вважається успішною. Новий запуск замінює попередній; автоматичного перенесення у базу розсилки немає.</div>
+<div class="row"><span>Згенеровано у поточній сесії</span><b id="radarPending">0</b></div>
+<div class="tablewrap recipientpreview"><table class="table"><thead><tr><th>Компанія</th><th>ПІБ / посада</th><th>Email</th><th>Коротко: актуальність</th><th>Джерело</th></tr></thead><tbody id="radarRows"><tr><td colspan="5">Генерацію ще не запускали.</td></tr></tbody></table></div>
+<div class="miniwarn"><b>Після Excel:</b> ADMIN_2 сам вирішує, які контакти потрібні IIG, і вручну додає їх у блок «КЕРУВАННЯ БАЗОЮ КОНТАКТІВ» вище. RADAR не має кнопки автоматичного перенесення у mailing/CRM.</div>
+<div class="miniwarn"><b>Paid-hosting contract:</b> live RADAR повертає результат тільки у поточну Admin-сесію. Генерована база не записується у PostgreSQL/CRM автоматично. Зберігається лише технічний audit без персональних даних: факт запуску, час і кількість результатів.</div></div>
+<div class="card" id="mailingCenter"><h2>РОЗСИЛКА ДАЙДЖЕСТУ</h2>
+<p class="muted">ADMIN_2 завантажує з комп’ютера точний PDF, вже затверджений ADMIN_1. Сервер звіряє SHA-256 із затвердженим CURRENT Digest. Масову розсилку запускає ADMIN_1.</p>
+<div class="form2">
+<label>Мова PDF<select class="input" id="mailDigestLanguage"><option value="UA">UA — Українська</option><option value="EN">EN — English</option></select></label>
+<label>Завантажити затверджений Digest PDF<input class="input" id="mailDigestFile" type="file" accept="application/pdf,.pdf"></label>
+</div>
+<div class="toolbar"><button class="btn primary" id="uploadMailDigest">⬆ ЗАВАНТАЖИТИ ДАЙДЖЕСТ ДЛЯ РОЗСИЛКИ</button><span class="pill amber" id="mailDigestState">PDF НЕ ПЕРЕВІРЕНО</span></div>
+<div class="card" id="mailLetterEditor">
+<div class="sectionhead"><div><h3>РЕДАКТОР СУПРОВОДЖУЮЧОГО EMAIL · ADMIN_2</h3><p class="muted">За замовчуванням автоматично завантажується раніше затверджений текст. ADMIN_2 може підготувати окремі UA та EN версії перед розсилкою.</p></div><span class="pill blue" id="mailTemplateState">MASTER DEFAULT</span></div>
+<div class="form2">
+<label>Мова листа<select class="input" id="mailTemplateLanguage"><option value="UA">UA — Українська</option><option value="EN">EN — English</option></select></label>
+<label>Тема листа<input class="input" id="campaignSubject" value="IIG Monthly Digest — промислова енергетика | [Місяць, рік]"></label>
+</div>
+<div class="richEditorShell" id="mailRichEditorShell">
+<div class="richToolbar" aria-label="Панель форматування email">
+<span class="richPencil">✎ РЕДАГУВАТИ EMAIL</span>
+<button type="button" class="richBtn" data-mail-cmd="bold" title="Жирний"><b>B</b></button>
+<button type="button" class="richBtn" data-mail-cmd="italic" title="Курсив"><i>I</i></button>
+<button type="button" class="richBtn" data-mail-cmd="underline" title="Підкреслення"><u>U</u></button>
+<button type="button" class="richBtn" data-mail-case="upper" title="ВЕРХНІЙ РЕГІСТР">AA</button>
+<button type="button" class="richBtn" data-mail-case="lower" title="нижній регістр">aa</button>
+<button type="button" class="richBtn" data-mail-case="sentence" title="Регістр речення">Aa</button>
+<button type="button" class="richBtn" data-mail-block="h2" title="Заголовок">H2</button>
+<button type="button" class="richBtn" data-mail-cmd="insertUnorderedList" title="Маркірований список">• Список</button>
+<button type="button" class="richBtn" data-mail-cmd="insertOrderedList" title="Нумерований список">1. Список</button>
+<button type="button" class="richBtn" id="mailAddLink" title="Додати посилання">🔗</button>
+<button type="button" class="richBtn" data-mail-cmd="removeFormat" title="Очистити форматування">Tx</button>
+</div>
+<div id="mailBodyRich" class="richBody" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="true"></div>
+</div>
+<div class="toolbar"><button class="btn primary" id="saveMailTemplate">💾 ЗБЕРЕГТИ ТЕКСТ · ADMIN_2</button><button class="btn primary" id="resetMailTemplate">↺ ПОВЕРНУТИ ЗАТВЕРДЖЕНИЙ ТЕКСТ</button></div>
+<div class="miniwarn"><b>Системні елементи:</b> у рядку <code>Шановний {{name}} !</code> backend автоматично підставляє поле «Ім’я» з бази IIG. Якщо ім’я відсутнє — використовується «Шановний колего !». У production тестове mailto-відписування автоматично замінюється персональним HTTPS unsubscribe та suppression.</div>
+</div>
+<div class="row"><span>ACTIVE отримувачів у базі IIG</span><b id="campaignRecipients">0</b></div>
+<div class="row"><span>Відписані / виключені</span><span class="pill red" id="mailSuppressed">0</span></div>
+<div class="row"><span>Сервіс відправлення</span><span class="pill red" id="mailTransportState">НЕ ПІДКЛЮЧЕНО</span></div>
+<div class="row"><span>Unsubscribe endpoint</span><span class="pill red" id="mailUnsubscribeState">НЕ ПІДКЛЮЧЕНО</span></div>
+<div class="form2"><label>Тестовий e-mail<input class="input" id="mailTestEmail" type="email" placeholder="email для тестового листа"></label><label>Мова тесту<select class="input" id="mailTestLanguage"><option value="UA">UA</option><option value="EN">EN</option></select></label></div>
+<div class="toolbar"><button class="btn primary" id="mailDryRun">Перевірити розсилку</button><button class="btn primary" id="testSendProd">Надіслати тестовий лист</button><button class="btn danger" id="massSendProd">ЗАПУСТИТИ РОЗСИЛКУ · ADMIN_1</button></div>
+<div id="mailCheck" class="miniwarn">Перед реальною розсилкою система перевіряє: exact approved Digest SHA, ACTIVE consent, unsubscribe/suppression, SMTP, ADMIN role та захист від підміни PDF.</div>
+<div class="tablewrap recipientpreview"><table class="table"><thead><tr><th>Кампанія</th><th>Статус</th><th>Відправлено</th><th>Помилки</th><th>Дата</th></tr></thead><tbody id="mailCampaignRows"><tr><td colspan="5">Кампаній ще немає.</td></tr></tbody></table></div>
+</div></div></section>
+
+<section class="tab" id="requests">
+<div class="card requestscommand">
+  <div class="sectionhead"><div><h2>ОБРОБКА ЗАЯВ ТА ПІДПИСКИ</h2><p class="muted">Public Form → protected backend → єдиний реєстр → ADMIN_2 download + processing → єдина база контактів IIG. Дані не зберігаються у Git.</p></div><span class="pill blue" id="requestsSourceMode">ЗАВАНТАЖЕННЯ…</span></div>
+  <div class="requestslifetime">
+    <div><small>УСЬОГО ЗВЕРНЕНЬ ВІД ПОЧАТКУ</small><b id="requestsAllTotal">0</b></div>
+    <div><small>ЩЕ НЕ ОБРОБЛЕНО</small><b id="requestsAllPending">0</b></div>
+    <div><small>ОБРОБЛЕНО ADMIN_2</small><b id="requestsAllProcessed">0</b></div>
+    <label>Роль обробки<select class="input" id="requestsRole"><option value="ADMIN_2" selected>ADMIN_2 · Processing Operator</option><option value="ADMIN_1">ADMIN_1 · Read / Control</option></select></label>
+  </div>
+  <div class="miniwarn"><b>HARD RULE:</b> заявка НЕ вважається обробленою, доки її дані не були скачані з IIG. Excel‑експорт фіксує <code>downloaded_at</code>. Лише після цього ADMIN_2 може поставити галочку «дані оброблено». ADMIN_1 бачить lifetime‑лічильники незалежно від поточної черги.</div>
+  <div class="toolbar"><button class="btn primary" id="requestsRefresh">↻ Оновити реєстр</button></div>
+</div>
+<div class="requests3">
+  <div class="card requestlane" data-request-type="project">
+    <div class="requestlanehead"><div><span class="requestlaneicon">▣</span><h2>РОЗМІСТИТИ ПРОЄКТ</h2></div><div class="lifetimebubble"><b id="projectTotal">0</b><small>усього</small></div></div>
+    <div class="requeststats"><span>Нові <b id="projectPending">0</b></span><span>Скачано <b id="projectDownloaded">0</b></span><span>Оброблено <b id="projectProcessed">0</b></span></div>
+    <div id="projectRequestList" class="requeststream"><div class="empty">Завантаження…</div></div>
+    <button class="btn success requestexport" id="projectExport">⬇ СКАЧАТИ ПРОЄКТИ В EXCEL</button>
+  </div>
+  <div class="card requestlane" data-request-type="engineer">
+    <div class="requestlanehead"><div><span class="requestlaneicon">⚙</span><h2>ЗАДАТИ ПИТАННЯ ГОЛОВНОМУ ІНЖЕНЕРУ</h2></div><div class="lifetimebubble"><b id="engineerTotal">0</b><small>усього</small></div></div>
+    <div class="requeststats"><span>Нові <b id="engineerPending">0</b></span><span>Скачано <b id="engineerDownloaded">0</b></span><span>Оброблено <b id="engineerProcessed">0</b></span></div>
+    <div id="engineerRequestList" class="requeststream"><div class="empty">Завантаження…</div></div>
+    <button class="btn success requestexport" id="engineerExport">⬇ СКАЧАТИ ПИТАННЯ В EXCEL</button>
+  </div>
+  <div class="card requestlane" data-request-type="subscribe">
+    <div class="requestlanehead"><div><span class="requestlaneicon">✉</span><h2>ПІДПИСКА НА DIGEST</h2></div><div class="lifetimebubble"><b id="subscribeTotal">0</b><small>усього</small></div></div>
+    <div class="requeststats"><span>Нові <b id="subscribePending">0</b></span><span>Скачано <b id="subscribeDownloaded">0</b></span><span>Оброблено <b id="subscribeProcessed">0</b></span></div>
+    <div id="subscribeRequestList" class="requeststream"><div class="empty">Завантаження…</div></div>
+    <button class="btn success requestexport" id="subscribeExport">⬇ СКАЧАТИ ПІДПИСКИ В EXCEL</button>
+  </div>
+</div>
+<div class="card"><h2>ПРАВИЛО КОНСОЛІДАЦІЇ</h2><p class="muted">Після download та обробки ADMIN_2 може передати контакт до єдиної бази IIG. Для PROJECT / ENGINEER він потрапляє як <b>PENDING</b> — згода на відповідь не є маркетинговою згодою. Для SUBSCRIBE з явною згодою — як <b>ACTIVE</b>. Первинна заявка при цьому залишається у lifetime‑реєстрі та не видаляється.</p></div>
+</section>
+
+<section class="tab" id="robots"><div class="grid"><div class="card module"><h2>РОБОТИ ТА АВТОМАТИЗАЦІЯ</h2><p class="muted">Статус показує фактичний стан у main. Наявність коду не дорівнює production GREEN.</p><div class="schedulelock"><b>РЕДАКЦІЙНИЙ ЦИКЛ:</b> ЩОПОНЕДІЛКА · 09:00–10:00 · Europe/Prague → Robot #1/#2 оновлюють матеріали → статус REVIEW → публікація лише після перевірки та затвердження ADMIN_1.</div><div id="robotRows"></div><div class="toolbar"><button class="btn success" id="manualNewsRefresh">▶ ОНОВИТИ НОВИНИ ЗАРАЗ</button><button class="btn lock" id="manualWorkflowLink" data-locked="Production Robot-run запускається через захищений backend/API /api/v1/editorial/refresh. GitHub не відкривається автоматично.">Robot-run · через backend/API</button><button class="btn danger" data-locked="Запуск окремого production-робота потребує захищеного server-side Audit">Запустити вибраного робота</button><button class="btn danger" data-locked="Аварійна зупинка потребує авторизованої захищеної дії через backend">Аварійна зупинка</button></div></div>
+<div class="miniwarn"><b>Ручний запуск ADMIN_1:</b> кнопка «ОНОВИТИ НОВИНИ ЗАРАЗ» фіксує поточні approvals і оновлює Admin без зовнішньої навігації. Повний Discovery → Content → Quality → Image/Rights цикл у production запускається через захищений backend/API, а не переходом на GitHub. Токени GitHub у браузері не зберігаються. Усі нові результати — тільки REVIEW, auto-publish заборонено.</div></div><div class="card"><h2>РЕЄСТР 260 ДЖЕРЕЛ</h2><div class="row"><span>Кількість за протоколом</span><b>260</b></div><div class="row"><span>Завантажено в демоверсії</span><b id="sourceCount2">…</b></div><div class="row"><span>Системне джерело даних</span><code>repo://content/discovery/…</code></div><p class="muted">Реєстр відображається без необхідності відкривати JSON. У production зміни джерел потребують прав та Audit.</p><div class="toolbar"><input class="input grow" id="sourceSearch" placeholder="Пошук джерела"><select class="input" id="sourceStateFilter"><option value="all">Усі</option><option value="verified">Технічно перевірені</option><option value="unverified">Потребують технічної перевірки</option></select></div><div id="sourceHealthSummary" class="miniwarn">Перевірка технічного стану реєстру…</div><div id="sourceRegistryPreview" class="tablewrap recipientpreview"></div></div></div></section>
+
+<section class="tab" id="website"><div class="grid"><div class="card"><h2>КЕРУВАННЯ САЙТОМ І ДИЗАЙНОМ</h2><div class="row"><span>Сторінки / навігація / нижній блок</span><span class="pill amber">ПОТРІБЕН API</span></div><div class="row"><span>UA за замовчуванням / EN за вибором</span><span class="pill green">ЗАФІКСОВАНО</span></div><div class="row"><span>SEO / перенаправлення</span><span class="pill red">PRODUCTION-НАЛАШТУВАННЯ</span></div><div class="row"><span>Дизайн-система / затверджений MASTER</span><span class="pill green">КОНТРОЛЬ ЗМІН</span></div><div class="toolbar"><a class="btn primary" href="index.html" target="_blank">Переглянути публічний сайт</a><button class="btn lock" data-locked="Редагування публічних сторінок активується через production CMS/API з Audit; у STEP 26 доступний preview та контроль контракту.">Редагувати сторінку</button></div></div><div class="card"><h2>МЕДІАТЕКА</h2><p class="muted">Файл, права використання, URL джерела, авторство, описи UA/EN, тематична заміна та версії.</p><button class="btn lock" data-locked="Production медіатека потребує backend storage, rights metadata, versioning та Audit. Локальні Digest-зображення перевіряються окремим quality gate.">Завантажити / замінити — потрібен backend</button></div></div><div class="card module partner-program-card"><div class="sectionhead"><div><h2>ПАРТНЕРСЬКА ПРОГРАМА</h2><p class="muted">ADMIN_2 керує логотипами та посиланнями у правій колонці головної сторінки під кнопкою «НАДІСЛАТИ ПРОЄКТ».</p></div><span class="pill green">2 STRATEGIC + 8 PARTNERS</span></div><div id="partnerProgramAdmin"></div></div></section>
+
+<section class="tab" id="users"><div class="grid"><div class="card module"><h2>USERS & ROLES</h2><p class="muted">This section is intentionally maintained in English. ADMIN_1 is the primary accountable administrator for website integrity and Digest mailing governance.</p><div class="profilecard"><div class="profilehead"><div><span class="pill green">ADMIN_1 · ACTIVE</span><h3>Igor Kryvoshei</h3></div><span class="pill blue">PRIMARY ADMIN</span></div><div class="profilegrid"><div><small>ROLE</small><b>ADMIN_1 / Primary Administrator</b></div><div><small>EMAIL</small><b>develop.iig@gmail.com</b></div><div><small>PHONE</small><b>+38 067 5063591</b></div><div><small>RESPONSIBILITY</small><b>Website correctness & Digest mailing governance</b></div><div><small>ADMIN APPROVAL AUTHORITY</small><b>Exclusive</b></div><div><small>MFA</small><b>Required in production</b></div></div></div><div class="profilecard"><div class="profilehead"><div><span class="pill blue">ADMIN_2 · DIGEST ROLE</span><h3>Digest Builder</h3></div><span class="pill blue">OPERATIONAL ROLE</span></div><div class="profilegrid"><div><small>ROLE</small><b>ADMIN_2 / Digest Builder</b></div><div><small>BUILD DIGEST</small><b>ALLOWED</b></div><div><small>EDIT / PREVIEW / QA</small><b>ALLOWED</b></div><div><small>FINAL DIGEST APPROVAL</small><b>FORBIDDEN</b></div><div><small>MAILING AUTHORIZATION</small><b>FORBIDDEN</b></div><div><small>ACTIVATION</small><b>ADMIN_1 approval required</b></div></div></div><div class="toolbar"><button class="btn danger" data-locked="Only ADMIN_1 may approve creation or elevation of another Admin account. Production action requires MFA, RBAC and Audit.">+ ADD NEW ADMIN</button><button class="btn danger" data-locked="Role elevation requires explicit ADMIN_1 approval and an immutable Audit event.">CHANGE ADMIN ROLE</button></div></div><div class="card security"><h2>ADMIN APPROVAL RULE</h2><div class="row"><span>Who may approve a new Admin?</span><b>ADMIN_1 ONLY</b></div><div class="row"><span>Primary accountable Admin</span><b>Igor Kryvoshei</b></div><div class="row"><span>Second Admin self-approval</span><span class="pill red">FORBIDDEN</span></div><div class="row"><span>Role escalation without ADMIN_1</span><span class="pill red">BLOCKED</span></div><div class="row"><span>Audit record</span><span class="pill green">MANDATORY</span></div><p class="muted">Any future Admin account remains PENDING until ADMIN_1 approves it. The rule applies to account creation, role elevation and restoration of Admin privileges.</p></div></div></section>
+
+<section class="tab" id="security"><div class="card security"><h2>ADMIN_1 SECURITY AUTHORITY</h2><div class="row"><span>Primary responsible administrator</span><b>ADMIN_1 · Igor Kryvoshei</b></div><div class="row"><span>New Admin activation</span><b>ADMIN_1 approval required</b></div><div class="row"><span>Admin role elevation</span><b>ADMIN_1 approval required</b></div><div class="row"><span>Website / Digest governance</span><b>ADMIN_1 accountable</b></div><div class="row"><span>Bypass by Robot / another Admin</span><span class="pill red">FORBIDDEN</span></div></div><div class="card module"><h2>МОДЕЛЬ ВХОДУ /admin/</h2><div class="authflow"><span>Login</span><b>→</b><span>Password</span><b>→</b><span>MFA</span><b>→</b><span>Серверна сесія</span><b>→</b><span>Dashboard</span></div><div class="miniwarn">Це лише схема. GitHub Pages не містить паролів, MFA-кодів або клієнтської псевдоавторизації. Реальна авторизація — КРОК 27.</div></div><div class="grid3"><div class="card security"><h2>АВТОРИЗАЦІЯ</h2><div class="row"><span>MFA</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Сесії</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Захист від перебору паролів</span><span class="pill red">ПІСЛЯ ПЕРЕНОСУ</span></div></div><div class="card security"><h2>ЗАХИСТ ЗАСТОСУНКУ</h2><div class="row"><span>CSRF</span><span class="pill red">ПОТРІБЕН API</span></div><div class="row"><span>CSP / HSTS / політика фреймів</span><span class="pill red">ПІСЛЯ ПЕРЕНОСУ</span></div><div class="row"><span>Перевірка завантажених файлів</span><span class="pill red">ПОТРІБЕН API</span></div></div><div class="card security"><h2>ЗАХИСТ ДАНИХ</h2><div class="row"><span>Сховище секретів</span><span class="pill red">ПІСЛЯ ПЕРЕНОСУ</span></div><div class="row"><span>Персональні дані у приватній DB</span><span class="pill red">КРОК 27</span></div><div class="row"><span>Зашифровані резервні копії + тест відновлення</span><span class="pill red">КРОК 27</span></div></div></div>
+<div class="card" style="margin-top:14px"><h2>ПРАВИЛО БЕЗПЕКИ ПЕРЕД ЗАПУСКОМ</h2><p>Жоден показник WAF, MFA, сесій, інцидентів або резервних копій не позначається як готовий, доки production provider/backend не підтверджує реальний стан. Демонстраційні цифри не є доказом безпеки.</p></div></section>
+
+<section class="tab" id="audit"><div class="card module"><h2>ЖУРНАЛ ДЕМО-ДІЙ</h2><p class="muted">Показує дії поточної вкладки без персональних даних і без збереження.</p><div id="demoAudit" class="auditlist"><div class="empty">Дій ще немає.</div></div></div><div class="grid"><div class="card"><h2>ЖУРНАЛ ДІЙ</h2><p class="muted">Незмінний production-журнал: користувач, роль, дія, об’єкт, час, результат і зв’язок із сесією. Демоверсія не створює фіктивних записів про захищені дії.</p><div class="tablewrap"><table class="table"><thead><tr><th>Час</th><th>Користувач</th><th>Дія</th><th>Об’єкт</th><th>Результат</th></tr></thead><tbody><tr><td>—</td><td>—</td><td>Production backend журналу</td><td>НЕ ПІДКЛЮЧЕНО</td><td><span class="pill amber">ДЕМО</span></td></tr></tbody></table></div></div><div class="card"><h2>РЕЗЕРВНІ КОПІЇ / РОЗГОРТАННЯ</h2><div class="row"><span>Зашифрована резервна копія за розкладом</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Копія на окремому сховищі</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Тест відновлення</span><span class="pill red">ОБОВ’ЯЗКОВО</span></div><div class="row"><span>Тестове середовище → Production</span><span class="pill red">КРОК 27</span></div><div class="row"><span>Відкат версії</span><span class="pill red">ОБОВ’ЯЗКОВО</span></div><button class="btn danger" data-locked="Restore is destructive/high-risk and requires додаткове підтвердження authentication + audit">Restore backup</button></div></div></section>
+</div></main></div>
+<div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2 id="modalTitle">ПОВІДОМЛЕННЯ ADMIN</h2><p id="modalText"></p><p class="muted hidden" id="modalProductionHint">У демоверсії ця production-дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
+<script src="assets/admin-final-admin1-v1.js?v=MARKETPLACE-HARD-RULE-V5-20261012"></script><script defer src="assets/admin-market.js?v=MARKETPLACE-HARD-RULE-V5-20261012"></script><script defer src="assets/admin-market-digest-v5.js?v=MARKETPLACE-HARD-RULE-V5-20261012"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V34"></script><!-- digest-publish-route-final-20261003 -->
+<script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V36"></script><script src="assets/admin-radar.js?v=RADAR-V49"></script><script src="assets/admin-partners.js?v=PARTNERS-V1"></script></body></html>
