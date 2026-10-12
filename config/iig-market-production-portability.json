@@ -1,0 +1,111 @@
+{
+  "version": "IIG_MARKET_PRODUCTION_PORTABILITY_V1",
+  "status": "OWNER_APPROVED_CONCEPT_HARD_RULE",
+  "public_market_status": "HIDDEN_UNTIL_CONTENT_READY",
+  "routes": {
+    "admin": "/admin/",
+    "admin_demo": "/admin-ua.html#market",
+    "public_market": "/market.html",
+    "public_listing": "/market.html?id={listing_id}#listing-{listing_id}"
+  },
+  "production": {
+    "environments": [
+      "STAGING",
+      "PRODUCTION"
+    ],
+    "database": "TRANSACTIONAL_POSTGRESQL_RECOMMENDED",
+    "media_storage": "S3_COMPATIBLE_OR_PERSISTENT_OBJECT_STORAGE",
+    "browser_local_storage_allowed_as_production": false,
+    "secrets_in_repo": false,
+    "server_side_auth": true,
+    "mfa_required": [
+      "ADMIN_1",
+      "ADMIN_2"
+    ],
+    "backend_rbac": true,
+    "audit_append_only": true,
+    "backups_required": true,
+    "restore_test_required": true
+  },
+  "roles": {
+    "ADMIN_2": [
+      "listing_crud",
+      "media",
+      "technical_parameters",
+      "seller_private",
+      "prepare_price",
+      "urgent",
+      "digest_candidate",
+      "feature",
+      "manual_market_digest_page",
+      "draft_terms",
+      "buyer_requests"
+    ],
+    "ADMIN_1": [
+      "approve_public_price",
+      "approve_price_change",
+      "activate_terms",
+      "final_commercial_publish_gate",
+      "final_digest_layout",
+      "exceptional_seller_disclosure"
+    ]
+  },
+  "hard_rules": {
+    "public_market_hidden_until_owner_activation": true,
+    "public_price_requires_admin_1": true,
+    "terms_activation_requires_admin_1": true,
+    "seller_contact_public": false,
+    "internal_commission_public": false,
+    "unlimited_technical_parameters": true,
+    "technical_editor_internal_scroll": true,
+    "urgent_label_ua": "ТЕРМІНОВО",
+    "urgent_color": "RED",
+    "digest_candidate_does_not_create_page": true,
+    "supplemental_pages_manual_only": true,
+    "market_never_overwrites_other_supplemental_page": true,
+    "exact_listing_deeplink_required": true,
+    "numeric_digest_price_requires_admin_1": true,
+    "every_market_digest_page_has_project_subscribe_cta": true,
+    "duplicate_market_digest_controls_forbidden": true
+  },
+  "digest": {
+    "standard_core_pages": 3,
+    "candidate_only_flag": "include_digest",
+    "allowed_supplemental_types": [
+      "IIG_MARKET",
+      "IIG_PROJECT",
+      "SPONSORED_MATERIAL",
+      "PARTNER_MATERIAL",
+      "IIG_ORIGINAL",
+      "OTHER_ADMIN_APPROVED"
+    ],
+    "canonical_ctas": [
+      {
+        "label_ua": "РОЗМІСТИТИ ПРОЄКТ",
+        "route": "forms.html#project"
+      },
+      {
+        "label_ua": "ПІДПИСАТИСЯ НА ДАЙДЖЕСТ",
+        "route": "forms.html#subscribe"
+      }
+    ]
+  },
+  "migration_gate": [
+    "HTTPS",
+    "DB_PERSISTENCE",
+    "MEDIA_PERSISTENCE",
+    "PASSWORD_MFA_SESSION",
+    "BACKEND_RBAC",
+    "AUDIT",
+    "BACKUP_RESTORE",
+    "SELLER_PRIVATE_ISOLATION",
+    "PRICE_APPROVAL",
+    "TERMS_VERSIONING",
+    "BUYER_INQUIRY",
+    "NO_AUTO_DIGEST_PAGE",
+    "MANUAL_DIGEST_COMPOSER",
+    "EXACT_LISTING_LINKS",
+    "MARKET_PAGE_CTA_LINKS",
+    "PUBLIC_HIDDEN_UNTIL_OWNER_ACTIVATION"
+  ]
+}
