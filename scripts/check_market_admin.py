@@ -21,16 +21,21 @@ required_html=[
  'id="marketParamList"',
  'id="marketApprovePrice"',
  'id="marketTermsApprove"',
- 'id="marketIncludeDigest"',
  'id="marketIncludeDigestTop"',
+ 'id="marketFeatureDigestTop"',
+ 'id="marketUrgentTop"',
+ 'ТЕРМІНОВО',
+ 'id="marketDigestComposer"',
+ 'id="marketDigestBuildPage"',
+ 'id="marketDigestComposerList"',
  'MANUAL PAGE 4+ ONLY',
  'РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ',
  'id="marketDigestQueue"',
  'id="marketDigestQueueCount"',
  'HARD RULE · NO AUTO PAGE',
  'КАНДИДАТИ IIG MARKET ДЛЯ РУЧНОГО ДОДАВАННЯ У ДАЙДЖЕСТ',
- 'assets/admin-market.js?v=MARKET-DIGEST-V3',
- 'assets/admin-market.css?v=MARKET-DIGEST-V3'
+ 'assets/admin-market.js?v=MARKET-DIGEST-V4',
+ 'assets/admin-market.css?v=MARKET-DIGEST-V4'
 ]
 for x in required_html:
     if x not in html: errors.append('admin-ua.html missing '+x)
@@ -81,7 +86,10 @@ required_contract=[
  '"digest_market_exact_listing_link": true',
  '"digest_market_price_requires_admin_1": true',
  '"digest_market_never_auto_creates_page": true',
- '"digest_supplemental_pages_manual_only": true'
+ '"digest_supplemental_pages_manual_only": true',
+ '"market_urgent_red_ua_label": true',
+ '"market_digest_controls_single_location": true',
+ '"market_digest_manual_composer_conflict_lock": true'
 ]
 for x in required_contract:
     if x not in contract: errors.append('market contract missing '+x)
