@@ -915,3 +915,17 @@ The MARKET Digest card inherits the listing flags:
 - **ТЕРМІНОВО** — red Ukrainian urgency label.
 
 `ТЕРМІНОВО` is presentation priority only. It never bypasses public-price approval, listing release, exact deep-link validation, or ADMIN_1 final Digest approval.
+
+
+## IIG MARKET — EVERY PAGE CTA FOOTER LOCK
+
+Marker: `DIGEST_MARKET_EVERY_PAGE_CTA_V1`
+
+In addition to the general Page 4+ CTA rule, every Digest page with `kind=market` explicitly carries the canonical footer pair irrespective of its array index or total page count:
+
+- `РОЗМІСТИТИ ПРОЄКТ` → `forms.html#project`
+- `ПІДПИСАТИСЯ НА ДАЙДЖЕСТ` → `forms.html#subscribe`
+
+The renderer must treat this as a MARKET-kind invariant, not merely as an incidental consequence of being Page 4+.
+
+Working Preview, Final Preview, standalone HTML and PDF must preserve both active links. Exactly one footer pair is allowed per MARKET page.
