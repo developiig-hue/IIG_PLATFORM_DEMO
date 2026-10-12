@@ -219,6 +219,8 @@ if(saveExtra){
   const old=saveExtra.onclick;
   saveExtra.onclick=(e)=>{if($id('extraPageType')?.value==='MARKETPLACE')return convertExtraPageToMarketplace();return old&&old.call(saveExtra,e)};
 }
-syncImporterMode();injectAdminControls();
+syncImporterMode();
+try{renderDigest()}catch(e){console.warn('[IIG MARKET V5] initial Digest rerender skipped',e)}
+injectAdminControls();
 window.IIG_MARKETPLACE_DIGEST_V5={readMarket,selectedMarketItems,eligibleMarketItems,buildMarketplacePages,categoryMeta,shortName};
 })();
