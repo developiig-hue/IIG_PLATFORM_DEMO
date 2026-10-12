@@ -135,5 +135,7 @@ function collectTerms(){terms.version=$('marketTermsVersion').value;terms.effect
 $('marketTermsSave').onclick=()=>{if(role!=='ADMIN_2')return;collectTerms();terms.state='DRAFT';persistTerms();renderTerms();toast('Draft умов збережено')};
 $('marketTermsSubmit').onclick=()=>{if(role!=='ADMIN_2')return;collectTerms();terms.state='ADMIN_2_READY';persistTerms();renderTerms();toast('Умови передано ADMIN_1')};
 $('marketTermsApprove').onclick=()=>{if(role!=='ADMIN_1')return;collectTerms();terms.state='ACTIVE';terms.approved_at=new Date().toISOString();terms.approved_by='ADMIN_1';persistTerms();renderTerms();toast('ACTIVE Terms затверджено ADMIN_1')};
+window.IIG_MARKET_DIGEST_SOURCE=()=>JSON.parse(JSON.stringify(items));
+window.IIG_MARKET_DIGEST_REFRESH=()=>{renderDigestQueue();renderDigestComposer();};
 renderKpis();renderList();renderTerms();renderDigestQueue();renderDigestComposer();syncRoleButtons();
 })();
