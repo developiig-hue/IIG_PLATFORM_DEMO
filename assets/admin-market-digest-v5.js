@@ -164,9 +164,18 @@ function injectAdminControls(){
     const body=pageEl.querySelector('.digestpagebody'); if(!body)return;
     let box=body.querySelector('.marketdigest-admin-controls');
     if(!box){box=document.createElement('div');box.className='marketdigest-admin-controls';body.prepend(box)}
-    box.innerHTML='<div class="marketdigest-admin-title"><b>ADMIN_2 · ПОРЯДОК MARKETPLACE</b><small>Автозбірка — лише старт. ↑/↓ порядок · ⇄ інша MARKET-сторінка · × прибрати тільки з цього Digest.</small></div>'+
+    box.innerHTML='<div class="marketdigest-admin-title"><div><b>ADMIN_2 · ПОРЯДОК MARKETPLACE</b><small>Автозбірка — лише старт. ↑/↓ порядок · ⇄ інша MARKET-сторінка · × прибрати тільки з цього Digest.</small></div><button class="btn primary mktEditWrap" data-p="'+pi+'">✎ РЕДАГУВАТИ ПІДЛОЖКУ</button></div>'+
       (p.design?.marketItems||[]).map((x,i)=>'<div class="marketdigest-admin-row" data-p="'+pi+'" data-i="'+i+'"><span class="marketdigest-admin-tag">'+h(x.category_tag||categoryMeta(x).tag)+'</span><span class="marketdigest-admin-name">'+h(x.short_name||shortName(x))+'</span><span class="marketdigest-admin-actions"><button class="iconbtn mktUp">↑</button><button class="iconbtn mktDown">↓</button><button class="iconbtn mktMove">⇄</button><button class="iconbtn mktDel">×</button></span></div>').join('');
   });
+}
+function openMarketWrapperEditor(pi){
+  const p=digestPages[pi],d=p?.design||{};if(!p||p.kind!=='market')return;
+  $id('extraPageIndex').value=String(pi);$id('extraPageType').value='MARKETPLACE';
+  $id('extraPageTitle').value=d.title||'IIG MARKET';$id('extraPageSubtitle').value=d.subtitle||'';
+  $id('extraPageBody').value=d.editorialBody||'';
+  document.querySelectorAll('.extraAnnouncement').forEach(x=>x.value='');
+  $id('extraPageEditor').classList.remove('hidden');
+  $id('extraPageEditor').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function mutateMarketItem(button,action){
   const row=button.closest('.marketdigest-admin-row'),pi=Number(row.dataset.p),ii=Number(row.dataset.i),p=digestPages[pi],a=p?.design?.marketItems;
@@ -187,6 +196,7 @@ function mutateMarketItem(button,action){
   commitManualDigestEdit();renderDigest();
 }
 document.addEventListener('click',e=>{
+  const edit=e.target.closest('.mktEditWrap');if(edit){openMarketWrapperEditor(Number(edit.dataset.p));return}
   const b=e.target.closest('.mktUp,.mktDown,.mktMove,.mktDel');if(!b)return;
   if(b.classList.contains('mktUp'))mutateMarketItem(b,'up');
   else if(b.classList.contains('mktDown'))mutateMarketItem(b,'down');
