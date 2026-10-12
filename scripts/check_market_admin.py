@@ -58,6 +58,7 @@ required_js=[
  "marketPhotoFile",
  "marketTermsApprove",
  "marketCanonicalUrl",
+ "market-mandatory-ctas",
  "renderDigestQueue",
  "digestEligibility",
  "PRICE_NOT_ADMIN_1_APPROVED",
