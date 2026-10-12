@@ -410,7 +410,7 @@ async function pollEditorialRefresh(id){
  await tick();editorialRefreshPoll=setInterval(tick,5000);
 }
 async function startDashboardNewsRefresh(){
- if(!requireAdmin1("СГЕНЕРИРОВАТЬ ОБНОВЛЕНИЕ КОНТЕНТА НОВОСТЕЙ САЙТА"))return;
+ if(!requireAdmin1("ЗГЕНЕРУВАТИ ОНОВЛЕННЯ НОВИН САЙТУ"))return;
  freezeApprovedSet();dashboardRefreshStartedAt=Date.now();clearInterval(dashboardRefreshTimer);setDashboardRefreshState("ЗАПУСК...","amber");const elapsed=$("dashboardNewsRefreshElapsed");if(elapsed)elapsed.textContent="00:00";dashboardRefreshTimer=setInterval(()=>{if(elapsed)elapsed.textContent=fmtElapsed(Date.now()-dashboardRefreshStartedAt)},1000);
  try{const r=await fetch("/api/v1/editorial/refresh",{method:"POST",headers:{"Content-Type":"application/json"},credentials:"same-origin",body:JSON.stringify({reason:"admin-dashboard"})});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||("HTTP "+r.status));auditEvent("Запущено editorial refresh","Robots #1–#4",d.request_id||"QUEUED");adminToast("Robot-run запущено. Залишайтесь в Admin — статус оновлюється автоматично.");pollEditorialRefresh(d.request_id)}
  catch(e){clearInterval(dashboardRefreshTimer);setDashboardRefreshState("BACKEND НЕ ПІДКЛЮЧЕНО","red");gate("На GitHub Pages немає server-side API, тому безпечний Robot-run звідси не стартує. GitHub не відкривається. На production hosting кнопка працює через /api/v1/editorial/refresh.");auditEvent("Editorial refresh","backend",String(e.message||e))}
