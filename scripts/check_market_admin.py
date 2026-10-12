@@ -5,6 +5,7 @@ import sys
 root=Path(__file__).resolve().parents[1]
 html=(root/'admin-ua.html').read_text(encoding='utf-8')
 js=(root/'assets/admin-market.js').read_text(encoding='utf-8')
+digest_runtime=(root/'assets/admin-final-admin1-v1.js').read_text(encoding='utf-8')
 css=(root/'assets/admin-market.css').read_text(encoding='utf-8')
 contract=(root/'config/iig-market-admin-contract.json').read_text(encoding='utf-8')
 errors=[]
@@ -58,9 +59,6 @@ required_js=[
  "marketPhotoFile",
  "marketTermsApprove",
  "marketCanonicalUrl",
- "IIG_MARKET_EVERY_PAGE_CTA_INVARIANT_V1",
- "forms.html#project",
- "forms.html#subscribe",
  "renderDigestQueue",
  "digestEligibility",
  "PRICE_NOT_ADMIN_1_APPROVED",
@@ -70,6 +68,9 @@ required_js=[
 ]
 for x in required_js:
     if x not in js: errors.append('admin-market.js missing '+x)
+
+for x in ['IIG_MARKET_EVERY_PAGE_CTA_INVARIANT_V1','forms.html#project','forms.html#subscribe','function digestEndCtas()']:
+    if x not in digest_runtime: errors.append('digest_runtime missing MARKET CTA invariant '+x)
 
 required_css=[
  '.market-editor-right',
