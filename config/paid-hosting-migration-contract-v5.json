@@ -13,7 +13,9 @@
     "assets/admin-market-digest-v5.css",
     "config/iig-market-admin-contract.json",
     "docs/HARD-RULE-IIG-MARKET-DIGEST-V5.md",
-    "docs/IIG-PAID-HOSTING-MIGRATION-HARD-LOCK-V5.md"
+    "docs/IIG-PAID-HOSTING-MIGRATION-HARD-LOCK-V5.md",
+    "docs/IIG-MARKET-PUBLIC-CONCEPT-V1.md",
+    "config/iig-market-public-concept-v1.json"
   ],
   "production": {
     "database": "PostgreSQL_or_approved_relational_DB",
@@ -114,5 +116,13 @@
     "marketplace_hard_lock_block_release": true,
     "search_gate_block_release": true,
     "js_syntax_gate_block_release": true
+  },
+  "market_public_concept": {
+    "contract": "config/iig-market-public-concept-v1.json",
+    "spec": "docs/IIG-MARKET-PUBLIC-CONCEPT-V1.md",
+    "preserve_information_architecture": true,
+    "preserve_admin_source_of_truth": true,
+    "preserve_digest_integration": true,
+    "pixel_perfect_design_required": false
   }
 }
