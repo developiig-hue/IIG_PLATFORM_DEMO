@@ -59,6 +59,20 @@
     "internal_commission_public": false,
     "right_parameter_editor_scroll": true,
     "unlimited_custom_parameters": true,
-    "public_market_hidden_until_owner_activation": true
+    "public_market_hidden_until_owner_activation": true,
+    "digest_market_exact_listing_link": true,
+    "digest_market_price_requires_admin_1": true
+  },
+  "digest_integration": {
+    "selection_control": "РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ",
+    "selected_field": "include_digest",
+    "feature_field": "feature_digest",
+    "future_pages": [
+      4,
+      5
+    ],
+    "canonical_deeplink": "market.html?id={listing_id}#listing-{listing_id}",
+    "price_rule": "Public price may appear in Digest only when price_state=ADMIN_1_APPROVED; ON REQUEST allowed without numeric price",
+    "release_rule": "Listing must be public/not hidden before final PDF release"
   }
 }
