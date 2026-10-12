@@ -12,7 +12,7 @@ const seed=[
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||'null');return Array.isArray(x)&&x.length?x:seed}catch(e){return seed}}
 let items=load();
 let terms=(()=>{try{return JSON.parse(localStorage.getItem(TERMS_KEY)||'null')||{version:'1.0',effective:'',summary:'IIG MARKET — контрольована B2B-платформа для спеціалізованого енергетичного обладнання.',steps:'',body:'',state:'DRAFT'}}catch(e){return{version:'1.0',effective:'',summary:'',steps:'',body:'',state:'DRAFT'}}})();
-function persist(){localStorage.setItem(KEY,JSON.stringify(items))}
+function persist(){localStorage.setItem(KEY,JSON.stringify(items));renderDigestQueue()}
 function persistTerms(){localStorage.setItem(TERMS_KEY,JSON.stringify(terms))}
 const current=()=>items.find(x=>x.listing_id===selectedId);
 function condClass(c){return c==='NEW'?'NEW':c==='Б/У'?'USED':c==='REFURBISHED'?'REFURBISHED':'NEVER'}
@@ -70,8 +70,25 @@ function syncRoleButtons(){
  $('marketApprovePrice').classList.toggle('lock',!is1);$('marketTermsApprove').classList.toggle('lock',!is1);
  $('marketPreparePrice').disabled=is1;$('marketTermsSave').disabled=is1;$('marketTermsSubmit').disabled=is1;
 }
+function marketCanonicalUrl(x){return 'market.html?id='+encodeURIComponent(x.listing_id)+'#listing-'+encodeURIComponent(x.listing_id)}
+function digestEligibility(x){
+ const reasons=[];
+ if(!x.include_digest)return {ok:false,reasons:['NOT_SELECTED']};
+ if(x.visibility==='HIDDEN')reasons.push('MARKET_HIDDEN');
+ if(!['PUBLISHED','ADMIN_1_APPROVED'].includes(x.status))reasons.push('LISTING_NOT_PUBLIC');
+ if(x.price_mode!=='ON REQUEST' && x.price_state!=='ADMIN_1_APPROVED')reasons.push('PRICE_NOT_ADMIN_1_APPROVED');
+ return {ok:reasons.length===0,reasons};
+}
+function renderDigestQueue(){
+ const host=$('marketDigestQueue'),count=$('marketDigestQueueCount');if(!host||!count)return;
+ const arr=items.filter(x=>x.include_digest);
+ count.textContent=arr.length+' позицій';
+ host.innerHTML=arr.length?arr.map(x=>{const e=digestEligibility(x);const price=x.price_mode==='ON REQUEST'?'За запитом':(x.price_state==='ADMIN_1_APPROVED'?x.currency+' '+Number(x.public_price||0).toLocaleString('uk-UA'):'ЦІНА НЕ ЗАТВЕРДЖЕНА');const specs=(x.params||[]).filter(p=>p[3]).slice(0,4).map(p=>esc(p[0])+': '+esc(p[1]+' '+p[2])).join(' · ');return '<div class="market-digest-queue-item"><div><span class="market-cond '+condClass(x.condition)+'">'+esc(x.condition)+'</span> <b>'+esc(x.title_ua)+'</b><small>'+esc(x.listing_id)+' · '+esc(x.category)+' · '+esc(price)+'</small><small>'+specs+'</small><code>'+esc(marketCanonicalUrl(x))+'</code></div><div><span class="pill '+(e.ok?'green':'amber')+'">'+(e.ok?'READY FOR DIGEST':'QUEUE / BLOCKED')+'</span><small>'+esc(e.ok?'Deep-link ready':e.reasons.join(' · '))+'</small></div></div>'}).join(''):'<div class="empty">Поки немає обладнання, вибраного для Дайджесту.</div>';
+}
 function toast(m){if(window.adminToast)return window.adminToast(m);alert(m)}
-$('marketRole').onchange=e=>{role=e.target.value;syncRoleButtons();toast('MARKET role: '+role)};
+$('marketRole').onchange=e=>{role=e.target.value;syncRoleButtons();toast('MARKET role: '+role)};$('marketIncludeDigest').onchange=()=>{const x=current();if(!x)return;x.include_digest=$('marketIncludeDigest').checked;persist();renderDigestQueue();toast(x.include_digest?'Додано до черги MARKET → DIGEST':'Видалено з черги MARKET → DIGEST')};
+$('marketFeatureDigest').onchange=()=>{const x=current();if(!x)return;x.feature_digest=$('marketFeatureDigest').checked;persist();renderDigestQueue()};
+
 ['marketSearch','marketStatusFilter','marketConditionFilter','marketCategoryFilter'].forEach(id=>$(id).addEventListener(id==='marketSearch'?'input':'change',renderList));
 $('marketResetFilters').onclick=()=>{$('marketSearch').value='';$('marketStatusFilter').value='all';$('marketConditionFilter').value='all';$('marketCategoryFilter').value='all';renderList()};
 $('marketNewItem').onclick=()=>{const n=items.reduce((m,x)=>Math.max(m,Number((x.listing_id.match(/\d+$/)||['0'])[0])),0)+1;const id='IIG-MKT-'+String(n).padStart(4,'0');items.unshift({listing_id:id,status:'DRAFT',visibility:'HIDDEN',category:'Gas Engine / CHP',condition:'NEW',title_ua:'Нове обладнання',title_en:'New equipment',summary_ua:'',manufacturer:'',model:'',country:'',availability:'',price_mode:'ON REQUEST',currency:'EUR',seller_price:0,public_price:0,fee:0,price_state:'DRAFT',seller:{},review:'NOT REVIEWED',note:'',fit:'',params:[],photos:[]});persist();renderKpis();select(id)};
@@ -90,5 +107,5 @@ function collectTerms(){terms.version=$('marketTermsVersion').value;terms.effect
 $('marketTermsSave').onclick=()=>{if(role!=='ADMIN_2')return;collectTerms();terms.state='DRAFT';persistTerms();renderTerms();toast('Draft умов збережено')};
 $('marketTermsSubmit').onclick=()=>{if(role!=='ADMIN_2')return;collectTerms();terms.state='ADMIN_2_READY';persistTerms();renderTerms();toast('Умови передано ADMIN_1')};
 $('marketTermsApprove').onclick=()=>{if(role!=='ADMIN_1')return;collectTerms();terms.state='ACTIVE';terms.approved_at=new Date().toISOString();terms.approved_by='ADMIN_1';persistTerms();renderTerms();toast('ACTIVE Terms затверджено ADMIN_1')};
-renderKpis();renderList();renderTerms();syncRoleButtons();
+renderKpis();renderList();renderTerms();renderDigestQueue();syncRoleButtons();
 })();
