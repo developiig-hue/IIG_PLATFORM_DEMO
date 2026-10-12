@@ -878,3 +878,62 @@ Hard release rules:
 4. A listing still `HIDDEN` or not publicly released stays in the Admin Digest queue but is BLOCKED from final PDF publication.
 5. Seller identity/contact and IIG private commission never enter Digest.
 6. ADMIN_2 controls inclusion selection; ADMIN_1 price approval remains mandatory.
+
+
+## 27. DIGEST SUPPLEMENTAL PAGE CONFLICT RULE — NO AUTO PAGE
+
+Marker: `IIG_MARKET_DIGEST_NO_AUTO_PAGE_V1`
+
+This rule supersedes any wording that may imply that selecting a MARKET listing automatically forms, reserves or assigns Digest Page 4 or Page 5.
+
+### Standard issue
+The standard IIG Monthly Digest remains the currently approved **3-page** structure.
+
+### Meaning of MARKET checkbox
+The checkbox:
+`РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ`
+
+means ONLY:
+`ADD THIS LISTING TO THE MARKET → DIGEST CANDIDATE POOL`.
+
+It MUST NOT:
+- create Page 4;
+- create Page 5;
+- reserve a page number;
+- alter the standard 3-page Digest;
+- displace advertising/sponsored content;
+- displace IIG own project material;
+- displace partner or IIG ORIGINAL material;
+- trigger Digest generation by itself.
+
+### Additional pages
+Any Page 4+ is created ONLY by explicit manual Admin action in the Digest Builder.
+
+ADMIN_2 chooses the supplemental page content type manually from the approved set:
+- IIG MARKET;
+- SPONSORED MATERIAL / advertising material;
+- PARTNER MATERIAL;
+- IIG own project / SUCCESS PROJECT;
+- IIG ORIGINAL;
+- OTHER ADMIN-APPROVED supplemental content.
+
+There is no fixed ownership of Page 4 or Page 5 by MARKET.
+
+A future issue may have:
+- no supplemental page;
+- Page 4 = IIG project;
+- Page 4 = sponsored material;
+- Page 4 = IIG MARKET;
+- Page 4 + Page 5 using different approved content types;
+- any other explicit Admin-approved ordering.
+
+Final layout remains subject to ADMIN_1 approval.
+
+### MARKET pool
+MARKET queue is a source library only. An item enters the PDF only after:
+1. ADMIN_2 explicitly creates/selects a supplemental page;
+2. ADMIN_2 chooses MARKET as that page's content type;
+3. ADMIN_2 selects one or more eligible MARKET candidates;
+4. listing/public-link/price gates pass;
+5. final Digest layout is approved under the existing Digest release workflow.
+
