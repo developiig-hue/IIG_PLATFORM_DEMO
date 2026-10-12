@@ -847,3 +847,34 @@ Files/modules created later MUST reference:
 `IIG_MARKET_ADMIN_PROTOCOL_V1`
 
 Any conflicting implementation is a release blocker until OWNER decision.
+
+
+## 26. MARKET → DIGEST bridge — HARD RULE
+
+Marker: `IIG_MARKET_DIGEST_BRIDGE_V1`
+
+Every equipment editor MUST expose the checkbox:
+
+`РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ`
+
+ADMIN_2 may select/deselect it. The selected record enters the dedicated `MARKET → DIGEST` queue.
+
+The queue is reserved for future commercial Digest pages 4/5 and does NOT alter the currently approved three-page Digest MASTER until a separate OWNER layout approval.
+
+Each selected item carries:
+- Listing ID;
+- cover image;
+- title;
+- NEW / Б/У / REFURBISHED / NEVER INSTALLED badge;
+- up to key public technical parameters;
+- approved public price or `За запитом`;
+- exact canonical deep-link to that listing:
+  `market.html?id={listing_id}#listing-{listing_id}`.
+
+Hard release rules:
+1. Digest MARKET card must link to the exact equipment listing, never only to MARKET home.
+2. Numeric public price may appear only when `price_state=ADMIN_1_APPROVED`.
+3. `ON REQUEST` may appear without numeric price.
+4. A listing still `HIDDEN` or not publicly released stays in the Admin Digest queue but is BLOCKED from final PDF publication.
+5. Seller identity/contact and IIG private commission never enter Digest.
+6. ADMIN_2 controls inclusion selection; ADMIN_1 price approval remains mandatory.
