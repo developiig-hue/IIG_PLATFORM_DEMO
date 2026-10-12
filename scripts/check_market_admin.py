@@ -21,8 +21,12 @@ required_html=[
  'id="marketParamList"',
  'id="marketApprovePrice"',
  'id="marketTermsApprove"',
- 'assets/admin-market.js?v=MARKET-V1',
- 'assets/admin-market.css?v=MARKET-V1'
+ 'id="marketIncludeDigest"',
+ 'РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ',
+ 'id="marketDigestQueue"',
+ 'id="marketDigestQueueCount"',
+ 'assets/admin-market.js?v=MARKET-DIGEST-V2',
+ 'assets/admin-market.css?v=MARKET-DIGEST-V2'
 ]
 for x in required_html:
     if x not in html: errors.append('admin-ua.html missing '+x)
@@ -44,6 +48,12 @@ required_js=[
  "marketParamList",
  "marketPhotoFile",
  "marketTermsApprove",
+ "marketCanonicalUrl",
+ "renderDigestQueue",
+ "digestEligibility",
+ "PRICE_NOT_ADMIN_1_APPROVED",
+ "market.html?id=",
+ "include_digest",
  "HIDDEN"
 ]
 for x in required_js:
@@ -63,7 +73,9 @@ required_contract=[
  '"public_status": "HIDDEN_UNTIL_CONTENT_READY"',
  '"public_price_requires_admin_1": true',
  '"terms_activation_requires_admin_1": true',
- '"right_parameter_editor_scroll": true'
+ '"right_parameter_editor_scroll": true',
+ '"digest_market_exact_listing_link": true',
+ '"digest_market_price_requires_admin_1": true'
 ]
 for x in required_contract:
     if x not in contract: errors.append('market contract missing '+x)
