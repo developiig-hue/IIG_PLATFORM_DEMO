@@ -61,18 +61,39 @@
     "unlimited_custom_parameters": true,
     "public_market_hidden_until_owner_activation": true,
     "digest_market_exact_listing_link": true,
-    "digest_market_price_requires_admin_1": true
+    "digest_market_price_requires_admin_1": true,
+    "digest_market_never_auto_creates_page": true,
+    "digest_supplemental_pages_manual_only": true
   },
   "digest_integration": {
     "selection_control": "РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ",
     "selected_field": "include_digest",
     "feature_field": "feature_digest",
-    "future_pages": [
-      4,
-      5
-    ],
     "canonical_deeplink": "market.html?id={listing_id}#listing-{listing_id}",
     "price_rule": "Public price may appear in Digest only when price_state=ADMIN_1_APPROVED; ON REQUEST allowed without numeric price",
-    "release_rule": "Listing must be public/not hidden before final PDF release"
+    "release_rule": "Listing must be public/not hidden before final PDF release",
+    "selection_semantics": "CANDIDATE_POOL_ONLY",
+    "auto_create_digest_page": false,
+    "auto_assign_page_number": false,
+    "standard_digest_pages": 3,
+    "additional_pages_mode": "MANUAL_ONLY",
+    "eligible_manual_page_numbers": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "allowed_additional_page_types": [
+      "IIG_MARKET",
+      "SPONSORED_MATERIAL",
+      "PARTNER_MATERIAL",
+      "IIG_PROJECT",
+      "IIG_ORIGINAL",
+      "OTHER_ADMIN_APPROVED"
+    ],
+    "page_type_selected_by": "ADMIN_2",
+    "final_layout_approval": "ADMIN_1",
+    "conflict_rule": "MARKET candidates never reserve or displace supplemental Digest pages"
   }
 }
