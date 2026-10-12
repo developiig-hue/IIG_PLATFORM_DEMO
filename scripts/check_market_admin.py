@@ -25,6 +25,8 @@ required_html=[
  'РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ',
  'id="marketDigestQueue"',
  'id="marketDigestQueueCount"',
+ 'HARD RULE · NO AUTO PAGE',
+ 'КАНДИДАТИ IIG MARKET ДЛЯ РУЧНОГО ДОДАВАННЯ У ДАЙДЖЕСТ',
  'assets/admin-market.js?v=MARKET-DIGEST-V2',
  'assets/admin-market.css?v=MARKET-DIGEST-V2'
 ]
@@ -75,7 +77,9 @@ required_contract=[
  '"terms_activation_requires_admin_1": true',
  '"right_parameter_editor_scroll": true',
  '"digest_market_exact_listing_link": true',
- '"digest_market_price_requires_admin_1": true'
+ '"digest_market_price_requires_admin_1": true',
+ '"digest_market_never_auto_creates_page": true',
+ '"digest_supplemental_pages_manual_only": true'
 ]
 for x in required_contract:
     if x not in contract: errors.append('market contract missing '+x)
