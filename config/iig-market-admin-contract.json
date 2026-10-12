@@ -63,7 +63,10 @@
     "digest_market_exact_listing_link": true,
     "digest_market_price_requires_admin_1": true,
     "digest_market_never_auto_creates_page": true,
-    "digest_supplemental_pages_manual_only": true
+    "digest_supplemental_pages_manual_only": true,
+    "market_urgent_red_ua_label": true,
+    "market_digest_controls_single_location": true,
+    "market_digest_manual_composer_conflict_lock": true
   },
   "digest_integration": {
     "selection_control": "РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ",
@@ -94,6 +97,34 @@
     ],
     "page_type_selected_by": "ADMIN_2",
     "final_layout_approval": "ADMIN_1",
-    "conflict_rule": "MARKET candidates never reserve or displace supplemental Digest pages"
+    "conflict_rule": "MARKET candidates never reserve or displace supplemental Digest pages",
+    "visible_controls": [
+      "include_digest",
+      "feature_digest",
+      "urgent"
+    ],
+    "duplicate_controls_forbidden": true,
+    "manual_market_composer": {
+      "admin_section": "DIGEST",
+      "title": "IIG MARKET · ДОДАТКОВА СТОРІНКА",
+      "source": "include_digest=true candidate pool",
+      "category_filter": true,
+      "target_pages": [
+        4,
+        5
+      ],
+      "overwrite_non_market_page": false,
+      "rebuild_existing_market_page": true,
+      "urgent_badge": "ТЕРМІНОВО"
+    }
+  },
+  "urgent_promotion": {
+    "label_ua": "ТЕРМІНОВО",
+    "color_semantics": "RED",
+    "admin_role": "ADMIN_2",
+    "paid_promotion": true,
+    "visible_on_market": true,
+    "propagate_to_digest": true,
+    "bypasses_approval": false
   }
 }
