@@ -63,6 +63,8 @@ jobs:
         run: python scripts/check_market_admin.py
       - name: IIG MARKET Production Portability HARD LOCK
         run: python scripts/check_market_production_portability.py
+      - name: Paid-hosting Migration HARD LOCK
+        run: python scripts/check_paid_hosting_migration_contract.py
       - name: Public site search gate
         run: python scripts/check_site_search.py
       - name: Security exposure guard
