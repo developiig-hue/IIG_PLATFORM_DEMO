@@ -29,13 +29,14 @@ required_html=[
  'id="marketDigestComposer"',
  'id="marketDigestBuildPage"',
  'id="marketDigestComposerList"',
- 'MANUAL PAGE 4+ ONLY',
+ 'MARKETPLACE AUTO-PULL READY',
  'РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ',
  'id="marketDigestQueue"',
  'id="marketDigestQueueCount"',
- 'HARD RULE · NO AUTO PAGE',
- 'КАНДИДАТИ IIG MARKET ДЛЯ РУЧНОГО ДОДАВАННЯ У ДАЙДЖЕСТ',
- 'assets/admin-market.js?v=MARKET-DIGEST-V4',
+ 'HARD RULE · MARKETPLACE AUTO-PULL',
+ 'КАНДИДАТИ IIG MARKET ДЛЯ АВТОМАТИЧНОГО ПІДТЯГУВАННЯ У ДАЙДЖЕСТ',
+ 'assets/admin-market.js?v=MARKETPLACE-HARD-RULE-V5-20261012',
+ 'assets/admin-market-digest-v5.js?v=MARKETPLACE-HARD-RULE-V5-20261012',
  'assets/admin-market.css?v=MARKET-DIGEST-V4'
 ]
 for x in required_html:
@@ -83,14 +84,21 @@ for x in required_css:
     if x not in css: errors.append('admin-market.css missing '+x)
 
 required_contract=[
+ '"version": "IIG_MARKET_ADMIN_PROTOCOL_V2_MARKETPLACE_DIGEST"',
+ '"marketplace_material_type_required": true',
+ '"marketplace_auto_pull_selected_only": true',
+ '"marketplace_manual_reorder_after_pull": true',
+ '"marketplace_remove_from_digest_not_market": true',
+ '"marketplace_group_by_equipment_type": true',
+ '"marketplace_each_item_deeplink": true',
+ '"marketplace_page4plus_cta_pair_required": true',
+ '"marketplace_changes_invalidate_approval": true',
  '"public_status": "HIDDEN_UNTIL_CONTENT_READY"',
  '"public_price_requires_admin_1": true',
  '"terms_activation_requires_admin_1": true',
  '"right_parameter_editor_scroll": true',
  '"digest_market_exact_listing_link": true',
  '"digest_market_price_requires_admin_1": true',
- '"digest_market_never_auto_creates_page": true',
- '"digest_supplemental_pages_manual_only": true',
  '"market_urgent_red_ua_label": true',
  '"market_digest_controls_single_location": true',
  '"market_digest_manual_composer_conflict_lock": true'
@@ -102,4 +110,4 @@ if errors:
     print('IIG MARKET ADMIN GATE FAILED')
     for e in errors: print(' -',e)
     sys.exit(1)
-print('IIG MARKET ADMIN GATE OK — IIG_MARKET_ADMIN_PROTOCOL_V1')
+print('IIG MARKET ADMIN GATE OK — IIG_MARKET_ADMIN_PROTOCOL_V2_MARKETPLACE_DIGEST')
