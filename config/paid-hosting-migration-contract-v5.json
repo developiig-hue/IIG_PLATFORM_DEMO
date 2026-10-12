@@ -1,0 +1,118 @@
+{
+  "version": "IIG_PAID_HOSTING_MIGRATION_V5",
+  "status": "LOCKED",
+  "date": "2026-10-12",
+  "canonical_admin_route": "/admin/",
+  "required_files": [
+    "admin-ua.html",
+    "admin-ua-v5.html",
+    "assets/admin-final-admin1-v1.js",
+    "assets/admin-market.js",
+    "assets/admin-market-digest-v5.js",
+    "assets/admin-market.css",
+    "assets/admin-market-digest-v5.css",
+    "config/iig-market-admin-contract.json",
+    "docs/HARD-RULE-IIG-MARKET-DIGEST-V5.md",
+    "docs/IIG-PAID-HOSTING-MIGRATION-HARD-LOCK-V5.md"
+  ],
+  "production": {
+    "database": "PostgreSQL_or_approved_relational_DB",
+    "media_storage": "persistent_object_storage",
+    "pdf_storage": "persistent_public_storage_with_current_pointer",
+    "secrets": "outside_code",
+    "https": true,
+    "mfa": true,
+    "rbac": true,
+    "audit_log": true,
+    "rate_limit": true,
+    "session_timeout": true,
+    "backups": true,
+    "restore_test": true,
+    "rollback": true,
+    "staging_before_production": true
+  },
+  "digest": {
+    "approved_content_only": true,
+    "manual_layout_authority_after_initial_build": true,
+    "any_change_invalidates_final_approval": true,
+    "final_flow": [
+      "WORKING_LAYOUT",
+      "FINAL_PREVIEW",
+      "ADMIN_1_APPROVAL",
+      "PDF_EXPORT",
+      "PUBLICATION"
+    ],
+    "ci_must_not_silently_rebuild_approved_issue": true,
+    "public_pdf_must_physically_exist": true,
+    "current_pdf_pointer_required": true,
+    "page4plus_cta": [
+      "forms.html#project",
+      "forms.html#subscribe"
+    ]
+  },
+  "marketplace_digest": {
+    "material_type": "MARKETPLACE",
+    "source_field": "include_digest",
+    "source": "IIG_MARKET",
+    "explicit_admin_build_required": true,
+    "release_gates_required": true,
+    "starts_on_pages": [
+      4,
+      5
+    ],
+    "page6plus_allowed": true,
+    "overwrite_non_marketplace_page": false,
+    "optional_editorial_wrapper": true,
+    "category_tags": {
+      "Gas Engine / CHP": "KGU",
+      "Gas Boiler": "GAS BOILER",
+      "Gas Turbine": "TURBIN",
+      "BESS": "BESS"
+    },
+    "one_equipment_one_clickable_row": true,
+    "direct_listing_deeplink": true,
+    "urgent_label_ua": "ТЕРМІНОВО",
+    "urgent_color_semantics": "RED",
+    "manual_controls": [
+      "UP",
+      "DOWN",
+      "MOVE",
+      "EXCLUDE_FROM_ISSUE"
+    ],
+    "exclude_does_not_delete_market_listing": true,
+    "issue_scoped_manual_order": true,
+    "issue_scoped_exclusions": true,
+    "repeat_autopull_requires_confirmation_if_manual_state_exists": true
+  },
+  "persistence_required_for_digest_market": [
+    "issue_id",
+    "month",
+    "year",
+    "language",
+    "page_order",
+    "page_type",
+    "listing_ids",
+    "listing_order",
+    "issue_exclusions",
+    "category_tag_snapshot",
+    "power_capacity_snapshot",
+    "direct_url_snapshot",
+    "urgent_snapshot",
+    "editorial_wrapper",
+    "final_preview_fingerprint",
+    "admin1_approval_receipt",
+    "published_pdf_version",
+    "current_pdf_pointer"
+  ],
+  "search": {
+    "real_content_indexing_required": true,
+    "matching_content_routes_required": true
+  },
+  "acceptance": {
+    "migration_contract_gate_required": true,
+    "broken_internal_links_block_release": true,
+    "marketplace_hard_lock_block_release": true,
+    "search_gate_block_release": true,
+    "js_syntax_gate_block_release": true
+  }
+}
