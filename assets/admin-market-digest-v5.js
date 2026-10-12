@@ -5,7 +5,7 @@ const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt
 const $id=id=>document.getElementById(id);
 
 function readMarket(){
-  try{const x=JSON.parse(localStorage.getItem(MKEY)||'[]');return Array.isArray(x)?x:[]}catch(e){return[]}
+  try{if(typeof window.IIG_MARKET_DIGEST_SOURCE==='function'){const live=window.IIG_MARKET_DIGEST_SOURCE();if(Array.isArray(live))return live}const x=JSON.parse(localStorage.getItem(MKEY)||'[]');return Array.isArray(x)?x:[]}catch(e){return[]}
 }
 function canonicalUrl(x){return 'market.html?id='+encodeURIComponent(x.listing_id)+'#listing-'+encodeURIComponent(x.listing_id)}
 function eligibility(x){
