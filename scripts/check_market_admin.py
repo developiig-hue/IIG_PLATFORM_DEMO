@@ -22,13 +22,15 @@ required_html=[
  'id="marketApprovePrice"',
  'id="marketTermsApprove"',
  'id="marketIncludeDigest"',
+ 'id="marketIncludeDigestTop"',
+ 'MANUAL PAGE 4+ ONLY',
  'РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ',
  'id="marketDigestQueue"',
  'id="marketDigestQueueCount"',
  'HARD RULE · NO AUTO PAGE',
  'КАНДИДАТИ IIG MARKET ДЛЯ РУЧНОГО ДОДАВАННЯ У ДАЙДЖЕСТ',
- 'assets/admin-market.js?v=MARKET-DIGEST-V2',
- 'assets/admin-market.css?v=MARKET-DIGEST-V2'
+ 'assets/admin-market.js?v=MARKET-DIGEST-V3',
+ 'assets/admin-market.css?v=MARKET-DIGEST-V3'
 ]
 for x in required_html:
     if x not in html: errors.append('admin-ua.html missing '+x)
