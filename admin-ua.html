@@ -1,4 +1,4 @@
-<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IIG Адмін-панель — Крок 26 • Демо</title><link rel="stylesheet" href="assets/admin.css?v=digest-row-lock-manual-authority-v2-20261003"><link rel="stylesheet" href="assets/admin-market.css?v=MARKET-DIGEST-V2"></head><body>
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IIG Адмін-панель — Крок 26 • Демо</title><link rel="stylesheet" href="assets/admin.css?v=digest-row-lock-manual-authority-v2-20261003"><link rel="stylesheet" href="assets/admin-market.css?v=MARKET-DIGEST-V3"></head><body>
 <div class="shell"><aside class="side"><div class="brand">IIG<small>АДМІН-ПАНЕЛЬ / CMS</small></div><div class="demo"><b>КРОК 26 • ДЕМО</b><br>Безпечний деморежим.<br>Паролі, персональні дані та секрети тут не зберігаються.</div>
 <nav class="nav" id="nav">
 <button class="active" data-tab="dashboard">▦ <span>Головна</span></button>
@@ -156,6 +156,14 @@
           <span class="pill blue" id="marketListingId">—</span>
         </div>
 
+        <div class="market-digest-top-toggle" id="marketDigestTopBar">
+          <label class="market-digest-top-label">
+            <input type="checkbox" id="marketIncludeDigestTop">
+            <span><b>РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ</b><small>Додає позицію тільки в пул кандидатів MARKET → DIGEST. Сторінка 4/5 автоматично НЕ створюється.</small></span>
+          </label>
+          <span class="pill amber">MANUAL PAGE 4+ ONLY</span>
+        </div>
+
         <div id="marketEditorEmpty" class="empty">Оберіть обладнання зі списку.</div>
 
         <div id="marketEditor" class="hidden">
@@ -243,7 +251,7 @@
                 <div class="market-digest-select">
                   <label class="checkline market-digest-check"><input type="checkbox" id="marketIncludeDigest"> <b>РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ</b></label>
                   <label class="checkline"><input type="checkbox" id="marketFeatureDigest"> Виділити у Дайджесті як FEATURE</label>
-                  <small class="muted">Позначена позиція потрапляє у чергу MARKET → DIGEST для майбутньої 4-ї/5-ї сторінки. У фінальному PDF картка повинна вести на конкретну сторінку цього обладнання в IIG MARKET.</small>
+                  <small class="muted">Позначена позиція потрапляє тільки у пул кандидатів MARKET → DIGEST. Page 4+ створюється виключно вручну ADMIN_2; MARKET не резервує Page 4/5. У фінальному PDF картка повинна вести на конкретну сторінку цього обладнання в IIG MARKET.</small>
                 </div>
               </div>
             </div>
@@ -477,5 +485,5 @@
 <section class="tab" id="audit"><div class="card module"><h2>ЖУРНАЛ ДЕМО-ДІЙ</h2><p class="muted">Показує дії поточної вкладки без персональних даних і без збереження.</p><div id="demoAudit" class="auditlist"><div class="empty">Дій ще немає.</div></div></div><div class="grid"><div class="card"><h2>ЖУРНАЛ ДІЙ</h2><p class="muted">Незмінний production-журнал: користувач, роль, дія, об’єкт, час, результат і зв’язок із сесією. Демоверсія не створює фіктивних записів про захищені дії.</p><div class="tablewrap"><table class="table"><thead><tr><th>Час</th><th>Користувач</th><th>Дія</th><th>Об’єкт</th><th>Результат</th></tr></thead><tbody><tr><td>—</td><td>—</td><td>Production backend журналу</td><td>НЕ ПІДКЛЮЧЕНО</td><td><span class="pill amber">ДЕМО</span></td></tr></tbody></table></div></div><div class="card"><h2>РЕЗЕРВНІ КОПІЇ / РОЗГОРТАННЯ</h2><div class="row"><span>Зашифрована резервна копія за розкладом</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Копія на окремому сховищі</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Тест відновлення</span><span class="pill red">ОБОВ’ЯЗКОВО</span></div><div class="row"><span>Тестове середовище → Production</span><span class="pill red">КРОК 27</span></div><div class="row"><span>Відкат версії</span><span class="pill red">ОБОВ’ЯЗКОВО</span></div><button class="btn danger" data-locked="Restore is destructive/high-risk and requires додаткове підтвердження authentication + audit">Restore backup</button></div></div></section>
 </div></main></div>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2 id="modalTitle">ПОВІДОМЛЕННЯ ADMIN</h2><p id="modalText"></p><p class="muted hidden" id="modalProductionHint">У демоверсії ця production-дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
-<script src="assets/admin-final-admin1-v1.js?v=MARKET-TAB-V1"></script><script defer src="assets/admin-market.js?v=MARKET-DIGEST-V2"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V34"></script><!-- digest-publish-route-final-20261003 -->
+<script src="assets/admin-final-admin1-v1.js?v=MARKET-TAB-V1"></script><script defer src="assets/admin-market.js?v=MARKET-DIGEST-V3"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V34"></script><!-- digest-publish-route-final-20261003 -->
 <script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V36"></script><script src="assets/admin-radar.js?v=RADAR-V49"></script><script src="assets/admin-partners.js?v=PARTNERS-V1"></script></body></html>
