@@ -937,3 +937,53 @@ MARKET queue is a source library only. An item enters the PDF only after:
 4. listing/public-link/price gates pass;
 5. final Digest layout is approved under the existing Digest release workflow.
 
+
+
+## 28. URGENT promotion + manual MARKET Digest composer
+
+Marker: `IIG_MARKET_URGENT_AND_DIGEST_COMPOSER_V1`
+
+### Single visible Digest controls
+The equipment editor MUST expose the Digest controls only once, in the top section of the equipment card:
+- `РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ`
+- `FEATURE`
+- `ТЕРМІНОВО`
+
+The same controls MUST NOT be duplicated lower in WORKFLOW / VISIBILITY.
+
+### ТЕРМІНОВО
+`ТЕРМІНОВО` is a paid urgency/promotion flag for an equipment listing.
+
+UI hard rule:
+- public/admin label is Ukrainian: **ТЕРМІНОВО**;
+- it is rendered in red;
+- it may be set/removed by ADMIN_2 as an operational promotional attribute;
+- it is preserved in the MARKET → DIGEST candidate payload;
+- if the listing is manually selected for a MARKET supplemental Digest page, the Digest card MUST also render the red `ТЕРМІНОВО` badge.
+
+`ТЕРМІНОВО` does not bypass:
+- price approval;
+- public visibility;
+- listing publication;
+- Digest manual-page rule;
+- ADMIN_1 final Digest approval.
+
+### Digest Admin composer
+The Digest Admin section MUST contain a separate window:
+`IIG MARKET · ДОДАТКОВА СТОРІНКА`.
+
+It shows only MARKET listings for which `include_digest=true`.
+
+ADMIN_2 can:
+- filter candidate listings by category;
+- choose listings;
+- choose target Page 4 / Page 5;
+- manually create a MARKET supplemental page.
+
+Hard conflict rule:
+- MARKET NEVER overwrites an existing supplemental page.
+- If Page 4/5 already contains IIG ORIGINAL, IIG PROJECT, PARTNER, SPONSORED, article or another non-MARKET page, the operation is blocked.
+- ADMIN_2 must select another available page or remove the existing page first.
+- If the target already contains a MARKET page, ADMIN_2 may rebuild that MARKET page with the new selected candidate set.
+
+MARKET candidate categories must reflect the actual equipment categories from IIG MARKET; no fixed category count is assumed.
