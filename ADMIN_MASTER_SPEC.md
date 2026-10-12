@@ -1548,3 +1548,12 @@ Machine-readable contract: `config/paid-hosting-migration-contract-v5.json`.
 CI acceptance gate: `scripts/check_paid_hosting_migration_contract.py`.
 
 No production migration is accepted while this gate is failing.
+
+
+## IIG MARKET PUBLIC CONCEPT V1 — FUTURE SECTION REFERENCE
+
+The future public IIG MARKET information architecture and commercial UX concept is locked in `docs/IIG-MARKET-PUBLIC-CONCEPT-V1.md` with machine-readable rules in `config/iig-market-public-concept-v1.json`.
+
+This reference preserves the core idea: industrial hero → real inventory filters → equipment cards with exact listing deep-links → IIG trust/value strip → 4-step commercial process → seller/buyer CTA; supporting technical/editorial materials may be added without displacing equipment discovery as the primary function.
+
+This concept must be carried into paid-hosting migration together with the current IIG MARKET Admin and Marketplace → Digest workflow.
