@@ -1,8 +1,9 @@
-<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IIG Адмін-панель — Крок 26 • Демо</title><link rel="stylesheet" href="assets/admin.css?v=digest-row-lock-manual-authority-v2-20261003"></head><body>
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IIG Адмін-панель — Крок 26 • Демо</title><link rel="stylesheet" href="assets/admin.css?v=digest-row-lock-manual-authority-v2-20261003"><link rel="stylesheet" href="assets/admin-market.css?v=MARKET-V1"></head><body>
 <div class="shell"><aside class="side"><div class="brand">IIG<small>АДМІН-ПАНЕЛЬ / CMS</small></div><div class="demo"><b>КРОК 26 • ДЕМО</b><br>Безпечний деморежим.<br>Паролі, персональні дані та секрети тут не зберігаються.</div>
 <nav class="nav" id="nav">
 <button class="active" data-tab="dashboard">▦ <span>Головна</span></button>
 <button data-tab="content">▤ <span>Новини та публікації</span></button>
+<button data-tab="market">▣ <span>IIG MARKET</span></button>
 <button data-tab="digest">◫ <span>Дайджест</span></button>
 <button data-tab="mailing">✉ <span>Розсилка та база</span></button><button data-tab="requests">☷ <span>Обробка Заяв та Підписки</span></button>
 <button data-tab="robots">⚙ <span>Роботи та джерела</span></button>
@@ -91,6 +92,198 @@
 <div id="approvalState" class="approvalstate pending">● НЕ ЗАТВЕРДЖЕНО ДО ПУБЛІКАЦІЇ</div><div class="toolbar"><button type="button" class="btn primary" id="saveDraft">💾 ЗБЕРЕГТИ КОРИГУВАННЯ</button><button type="button" class="btn primary" id="previewNews">Попередній перегляд статті з фото</button><button type="button" class="btn success" id="approveDemo">✓ Затвердити до публікації</button><button type="button" class="btn danger" id="rejectDemo">Відхилити</button><button type="button" class="btn primary" id="publishProd">Опублікувати у DEMO</button></div>
 <div class="miniwarn">У STEP 26 ADMIN_1 може пройти повний редакційний цикл і опублікувати матеріал у DEMO. Реальна production-публікація на платний хостинг залишається окремою захищеною дією КРОКУ 27.</div>
 </form></div></div></section>
+
+
+<section class="tab" id="market">
+  <div class="market-admin-shell">
+    <div class="card market-head-card">
+      <div class="sectionhead">
+        <div>
+          <div class="market-eyebrow">IIG MARKET · ADMIN MASTER</div>
+          <h2>КЕРУВАННЯ ЕНЕРГЕТИЧНИМ ОБЛАДНАННЯМ</h2>
+          <p class="muted">Публічний MARKET поки прихований. ADMIN_2 готує картки, технічні параметри, фото, продавця, ціну та умови. ADMIN_1 затверджує публічну ціну і активну редакцію умов.</p>
+        </div>
+        <div class="market-head-actions">
+          <span class="pill amber">HIDDEN UNTIL CONTENT READY</span>
+          <button class="btn success" id="marketNewItem">+ ДОДАТИ ОБЛАДНАННЯ</button>
+          <button class="btn primary" id="marketTermsBtn">УМОВИ РОЗМІЩЕННЯ ОБЛАДНАННЯ</button>
+        </div>
+      </div>
+      <div class="market-kpis">
+        <div><small>ВСЬОГО</small><b id="marketKpiTotal">0</b></div>
+        <div><small>ЧЕРНЕТКИ</small><b id="marketKpiDraft">0</b></div>
+        <div><small>WAIT ADMIN_1</small><b id="marketKpiWait">0</b></div>
+        <div><small>ОПУБЛІКОВАНО</small><b id="marketKpiPublished">0</b></div>
+        <div><small>ПРОДАНО</small><b id="marketKpiSold">0</b></div>
+        <div><small>УМОВИ</small><b id="marketKpiTerms">v1 DRAFT</b></div>
+      </div>
+    </div>
+
+    <div class="card market-role-card">
+      <div class="form2">
+        <label>Поточна роль MARKET
+          <select class="input" id="marketRole">
+            <option value="ADMIN_2" selected>ADMIN_2 · Operational Manager</option>
+            <option value="ADMIN_1">ADMIN_1 · Commercial Final Approver</option>
+          </select>
+        </label>
+        <div class="rolecontract">
+          <b>ADMIN_2:</b> створює/редагує картки, фото, параметри, продавця, проєкт ціни й умови.<br>
+          <b>ADMIN_1:</b> виключно затверджує публічну ціну та активує нову редакцію умов розміщення/продажу.
+        </div>
+      </div>
+    </div>
+
+    <div class="card market-filter-card">
+      <div class="market-toolbar">
+        <input class="input grow" id="marketSearch" placeholder="Пошук: Listing ID / виробник / модель / категорія">
+        <select class="input" id="marketStatusFilter"><option value="all">Усі статуси</option><option>DRAFT</option><option>ADMIN_2_PREPARED</option><option>READY_FOR_ADMIN_1</option><option>PUBLISHED</option><option>RESERVED</option><option>SOLD</option><option>ARCHIVED</option></select>
+        <select class="input" id="marketConditionFilter"><option value="all">Усі стани</option><option>NEW</option><option>Б/У</option><option>REFURBISHED</option><option>NEVER INSTALLED</option></select>
+        <select class="input" id="marketCategoryFilter"><option value="all">Усі категорії</option><option>Gas Engine / CHP</option><option>Gas Turbine</option><option>Transformers</option><option>BESS</option><option>SCADA / Control</option><option>Packaged CHP</option></select>
+        <button class="btn primary" id="marketResetFilters">Скинути</button>
+      </div>
+    </div>
+
+    <div class="market-workgrid">
+      <div class="card market-list-card">
+        <div class="sectionhead"><div><h2>ОБЛАДНАННЯ</h2><p class="muted">Список підтримує десятки позицій і внутрішній скрол.</p></div><span class="pill blue" id="marketListCount">0 позицій</span></div>
+        <div id="marketList" class="market-list"></div>
+      </div>
+
+      <div class="card market-editor-card">
+        <div class="sectionhead">
+          <div><h2>КАРТКА ОБЛАДНАННЯ</h2><p class="muted" id="marketEditorHint">Оберіть позицію зі списку або створіть нову.</p></div>
+          <span class="pill blue" id="marketListingId">—</span>
+        </div>
+
+        <div id="marketEditorEmpty" class="empty">Оберіть обладнання зі списку.</div>
+
+        <div id="marketEditor" class="hidden">
+          <div class="market-editor-grid">
+            <div class="market-editor-left">
+              <div class="market-block">
+                <h3>1. ФОТО / МЕДІА</h3>
+                <div class="market-cover" id="marketCoverPreview"><span>Немає фото</span></div>
+                <label>Завантажити фото
+                  <input class="input" type="file" id="marketPhotoFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" multiple>
+                </label>
+                <div id="marketGallery" class="market-gallery"></div>
+                <small class="muted">DEMO: фото переглядається локально. Production — Media Library / object storage / rights validation.</small>
+              </div>
+
+              <div class="market-block">
+                <h3>2. ПУБЛІЧНА КАРТКА</h3>
+                <label>Назва UA<input class="input" id="marketTitleUa"></label>
+                <label>Назва EN<input class="input" id="marketTitleEn"></label>
+                <label>Короткий опис UA<textarea class="input" id="marketSummaryUa" rows="3"></textarea></label>
+                <div class="form2">
+                  <label>Категорія<select class="input" id="marketCategory"><option>Gas Engine / CHP</option><option>Gas Turbine</option><option>Transformers</option><option>BESS</option><option>SCADA / Control</option><option>Packaged CHP</option><option>Other</option></select></label>
+                  <label>Стан<select class="input" id="marketCondition"><option>NEW</option><option>Б/У</option><option>REFURBISHED</option><option>NEVER INSTALLED</option></select></label>
+                </div>
+                <div class="form2">
+                  <label>Виробник<input class="input" id="marketManufacturer"></label>
+                  <label>Модель<input class="input" id="marketModel"></label>
+                </div>
+                <div class="form2">
+                  <label>Країна / регіон<input class="input" id="marketCountry"></label>
+                  <label>Доступність<input class="input" id="marketAvailability" placeholder="Immediate / Q2 2027"></label>
+                </div>
+              </div>
+
+              <div class="market-block market-private">
+                <h3>3. ПРОДАВЕЦЬ · PRIVATE</h3>
+                <label>Компанія продавця<input class="input" id="marketSellerCompany"></label>
+                <div class="form2"><label>Контактна особа<input class="input" id="marketSellerName"></label><label>Email<input class="input" id="marketSellerEmail" type="email"></label></div>
+                <div class="form2"><label>Телефон<input class="input" id="marketSellerPhone"></label><label>Seller / CRM ID<input class="input" id="marketSellerId"></label></div>
+                <div class="miniwarn"><b>HARD RULE:</b> ці поля не входять до public MARKET API / сторінки обладнання.</div>
+              </div>
+
+              <div class="market-block">
+                <h3>4. ЦІНА / COMMERCIAL GATE</h3>
+                <div class="form2">
+                  <label>Режим ціни<select class="input" id="marketPriceMode"><option>ON REQUEST</option><option>FIXED PRICE</option><option>PRICE RANGE</option><option>FROM</option></select></label>
+                  <label>Валюта<select class="input" id="marketCurrency"><option>EUR</option><option>USD</option><option>CZK</option></select></label>
+                </div>
+                <div class="form2">
+                  <label>Seller asking price · PRIVATE<input class="input" id="marketSellerPrice" type="number" min="0"></label>
+                  <label>Підготовлена публічна ціна<input class="input" id="marketPublicPrice" type="number" min="0"></label>
+                </div>
+                <div class="form2">
+                  <label>IIG Success Fee % · PRIVATE<input class="input" id="marketFee" type="number" min="0" step="0.1"></label>
+                  <label>Статус ціни<input class="input" id="marketPriceState" readonly></label>
+                </div>
+                <div class="toolbar">
+                  <button class="btn primary" id="marketPreparePrice">ADMIN_2 · ПІДГОТУВАТИ ЦІНУ</button>
+                  <button class="btn success" id="marketApprovePrice">ADMIN_1 · ЗАТВЕРДИТИ ПУБЛІЧНУ ЦІНУ</button>
+                </div>
+                <div class="miniwarn"><b>NO PUBLIC PRICE WITHOUT ADMIN_1 APPROVAL.</b> Будь-яка зміна після approval переводить ціну у PRICE_REAPPROVAL_REQUIRED.</div>
+              </div>
+            </div>
+
+            <div class="market-editor-right">
+              <div class="market-tech-head">
+                <div><h3>5. ТЕХНІЧНІ ПАРАМЕТРИ</h3><p class="muted">Необмежена кількість параметрів. Панель має власний вертикальний скрол.</p></div>
+                <button class="btn primary" id="marketAddParam">+ ПАРАМЕТР</button>
+              </div>
+              <div id="marketParamList" class="market-param-list"></div>
+
+              <div class="market-block">
+                <h3>6. IIG TECHNICAL REVIEW / PROJECT FIT</h3>
+                <label>Статус перевірки<select class="input" id="marketReviewStatus"><option>NOT REVIEWED</option><option>DOCUMENTS RECEIVED</option><option>IIG REVIEWED</option><option>TECHNICALLY QUALIFIED</option></select></label>
+                <label>Публічна технічна примітка IIG<textarea class="input" id="marketTechnicalNote" rows="5"></textarea></label>
+                <label>Project Fit<input class="input" id="marketProjectFit" placeholder="Reserve CHP; Industrial onsite generation; Data Center backup"></label>
+              </div>
+
+              <div class="market-block">
+                <h3>7. WORKFLOW / VISIBILITY</h3>
+                <div class="form2">
+                  <label>Статус<select class="input" id="marketStatus"><option>DRAFT</option><option>ADMIN_2_PREPARED</option><option>TECHNICAL_REVIEW</option><option>READY_FOR_ADMIN_1</option><option>ADMIN_1_APPROVED</option><option>PUBLISHED</option><option>RESERVED</option><option>SOLD</option><option>ARCHIVED</option></select></label>
+                  <label>Публічна видимість<select class="input" id="marketVisibility"><option>HIDDEN</option><option>SHOW_ON_MARKET</option><option>FEATURE_ON_MARKET</option></select></label>
+                </div>
+                <label class="checkline"><input type="checkbox" id="marketIncludeDigest"> INCLUDE IN DIGEST</label>
+                <label class="checkline"><input type="checkbox" id="marketFeatureDigest"> FEATURE IN DIGEST</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="market-editor-actions">
+            <button class="btn primary" id="marketSaveDraft">ЗБЕРЕГТИ КАРТКУ</button>
+            <button class="btn success" id="marketSubmitAdmin1">ПЕРЕДАТИ ADMIN_1</button>
+            <button class="btn primary" id="marketPreviewItem">ПЕРЕГЛЯД КАРТКИ</button>
+            <button class="btn danger" id="marketArchiveItem">В АРХІВ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card market-terms-card hidden" id="marketTermsPanel">
+      <div class="sectionhead">
+        <div><div class="market-eyebrow">MARKET TERMS / PUBLIC OFFER</div><h2>УМОВИ РОЗМІЩЕННЯ ОБЛАДНАННЯ</h2><p class="muted">ADMIN_2 готує редакцію. ADMIN_1 затверджує та активує.</p></div>
+        <button class="btn primary" id="marketTermsClose">Закрити</button>
+      </div>
+      <div class="form2">
+        <label>Версія<input class="input" id="marketTermsVersion" value="1.0"></label>
+        <label>Дата набрання чинності<input class="input" id="marketTermsEffective" type="date"></label>
+      </div>
+      <label>Коротке пояснення для продавця<textarea class="input" id="marketTermsSummary" rows="3">IIG MARKET — контрольована B2B-платформа для спеціалізованого енергетичного обладнання. Публікація проходить модерацію IIG; прямі контакти продавця не публікуються.</textarea></label>
+      <label>Покрокова інструкція<textarea class="input" id="marketTermsSteps" rows="7">1. Подати обладнання та базові технічні дані.
+2. Завантажити фото і документацію.
+3. Пройти перевірку IIG.
+4. Погодити комерційні умови і публічну ціну.
+5. Після ADMIN_1 approval позиція може бути опублікована.
+6. Запити покупців надходять через IIG.
+7. Контакт продавця розкривається тільки за контрольованим workflow IIG.</textarea></label>
+      <label>Повні умови / публічна оферта<textarea class="input" id="marketTermsBody" rows="12" placeholder="Тут ADMIN_2 готує повний текст умов, відповідальності, конфіденційності, success fee, резервування, відкликання, продажу та інших правил..."></textarea></label>
+      <div class="toolbar">
+        <button class="btn primary" id="marketTermsSave">ADMIN_2 · ЗБЕРЕГТИ DRAFT</button>
+        <button class="btn success" id="marketTermsSubmit">ADMIN_2 · ПЕРЕДАТИ ADMIN_1</button>
+        <button class="btn success" id="marketTermsApprove">ADMIN_1 · ЗАТВЕРДИТИ ТА АКТИВУВАТИ</button>
+      </div>
+      <div class="row"><span>Статус редакції</span><b id="marketTermsState">DRAFT</b></div>
+      <div class="miniwarn"><b>HARD RULE:</b> публічна сторінка «Умови розміщення обладнання» завжди показує тільки останню ACTIVE версію, затверджену ADMIN_1.</div>
+    </div>
+  </div>
+</section>
 
 <section class="tab" id="digest">
 <div class="card masterdigest"><div class="masterhead"><div><div class="mastereyebrow">ЗАТВЕРДЖЕНИЙ ЕТАЛОН · READ-ONLY</div><h2>IIG MONTHLY DIGEST — ВЕРЕСЕНЬ 2026</h2><p class="muted">Офіційний MASTER v2 для візуального контролю ADMIN_1 · джерело: IIG_Monthly_Digest_2026-09_FINAL_DEMO (2). Робочий конструктор нижче не змінює цей еталон.</p></div><div class="mastermeta"><span class="pill green">APPROVED MASTER</span><span class="pill blue">3 СТОРІНКИ</span></div></div><div class="masterfacts"><div><small>MASTER SHA-256</small><code>6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc</code></div><div><small>СТРУКТУРА</small><b>1 — Обкладинка · 2 — 15 подій · 3 — Фінанси / Регулювання / Поради</b></div></div><div class="mastertoolbar"><button class="btn primary masterPage active" data-page="1">Сторінка 1 / 3 · Обкладинка</button><button class="btn primary masterPage" data-page="2">Сторінка 2 / 3 · 15 подій</button><button class="btn primary masterPage" data-page="3">Сторінка 3 / 3 · Фінанси / Законодавство / Поради</button><a class="btn primary" href="digest/admin-master-2026-09-v2.html?page=1" target="_blank" rel="noopener">Відкрити MASTER v2</a></div><div class="masterviewer"><iframe id="digestMasterFrame" title="Затверджений IIG Monthly Digest MASTER" src="digest/admin-master-2026-09-v2.html?page=1#page=1&zoom=page-width&toolbar=0&navpanes=0"></iframe></div><div class="miniwarn"><b>Контроль версії:</b> цей блок показує новий затверджений ADMIN MASTER v2 з IIG_Monthly_Digest_2026-09_FINAL_DEMO (2). Старий PDF сайту тут НЕ використовується. Будь-яка зміна дизайну або структури потребує нового погодження ADMIN_1 та нового MASTER SHA.</div></div>
@@ -269,5 +462,5 @@
 <section class="tab" id="audit"><div class="card module"><h2>ЖУРНАЛ ДЕМО-ДІЙ</h2><p class="muted">Показує дії поточної вкладки без персональних даних і без збереження.</p><div id="demoAudit" class="auditlist"><div class="empty">Дій ще немає.</div></div></div><div class="grid"><div class="card"><h2>ЖУРНАЛ ДІЙ</h2><p class="muted">Незмінний production-журнал: користувач, роль, дія, об’єкт, час, результат і зв’язок із сесією. Демоверсія не створює фіктивних записів про захищені дії.</p><div class="tablewrap"><table class="table"><thead><tr><th>Час</th><th>Користувач</th><th>Дія</th><th>Об’єкт</th><th>Результат</th></tr></thead><tbody><tr><td>—</td><td>—</td><td>Production backend журналу</td><td>НЕ ПІДКЛЮЧЕНО</td><td><span class="pill amber">ДЕМО</span></td></tr></tbody></table></div></div><div class="card"><h2>РЕЗЕРВНІ КОПІЇ / РОЗГОРТАННЯ</h2><div class="row"><span>Зашифрована резервна копія за розкладом</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Копія на окремому сховищі</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Тест відновлення</span><span class="pill red">ОБОВ’ЯЗКОВО</span></div><div class="row"><span>Тестове середовище → Production</span><span class="pill red">КРОК 27</span></div><div class="row"><span>Відкат версії</span><span class="pill red">ОБОВ’ЯЗКОВО</span></div><button class="btn danger" data-locked="Restore is destructive/high-risk and requires додаткове підтвердження authentication + audit">Restore backup</button></div></div></section>
 </div></main></div>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2 id="modalTitle">ПОВІДОМЛЕННЯ ADMIN</h2><p id="modalText"></p><p class="muted hidden" id="modalProductionHint">У демоверсії ця production-дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
-<script src="assets/admin-final-admin1-v1.js?v=REQUESTS-PROCESSING-V31"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V34"></script><!-- digest-publish-route-final-20261003 -->
+<script src="assets/admin-final-admin1-v1.js?v=MARKET-TAB-V1"></script><script defer src="assets/admin-market.js?v=MARKET-V1"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V34"></script><!-- digest-publish-route-final-20261003 -->
 <script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V36"></script><script src="assets/admin-radar.js?v=RADAR-V49"></script><script src="assets/admin-partners.js?v=PARTNERS-V1"></script></body></html>
