@@ -42,7 +42,7 @@ function select(id){
  setVal('marketSellerCompany',x.seller?.company);setVal('marketSellerName',x.seller?.name);setVal('marketSellerEmail',x.seller?.email);setVal('marketSellerPhone',x.seller?.phone);setVal('marketSellerId',x.seller?.id);
  setVal('marketPriceMode',x.price_mode);setVal('marketCurrency',x.currency);setVal('marketSellerPrice',x.seller_price||'');setVal('marketPublicPrice',x.public_price||'');setVal('marketFee',x.fee||'');setVal('marketPriceState',x.price_state||'DRAFT');
  setVal('marketReviewStatus',x.review);setVal('marketTechnicalNote',x.note);setVal('marketProjectFit',x.fit);setVal('marketStatus',x.status);setVal('marketVisibility',x.visibility);
- $('marketIncludeDigest').checked=!!x.include_digest;$('marketFeatureDigest').checked=!!x.feature_digest;
+ $('marketIncludeDigest').checked=!!x.include_digest;if($('marketIncludeDigestTop'))$('marketIncludeDigestTop').checked=!!x.include_digest;$('marketFeatureDigest').checked=!!x.feature_digest;
  renderParams(x);renderGallery(x);renderList();syncRoleButtons();
 }
 function renderParams(x){
@@ -86,7 +86,8 @@ function renderDigestQueue(){
  host.innerHTML=arr.length?arr.map(x=>{const e=digestEligibility(x);const price=x.price_mode==='ON REQUEST'?'За запитом':(x.price_state==='ADMIN_1_APPROVED'?x.currency+' '+Number(x.public_price||0).toLocaleString('uk-UA'):'ЦІНА НЕ ЗАТВЕРДЖЕНА');const specs=(x.params||[]).filter(p=>p[3]).slice(0,4).map(p=>esc(p[0])+': '+esc(p[1]+' '+p[2])).join(' · ');return '<div class="market-digest-queue-item"><div><span class="market-cond '+condClass(x.condition)+'">'+esc(x.condition)+'</span> <b>'+esc(x.title_ua)+'</b><small>'+esc(x.listing_id)+' · '+esc(x.category)+' · '+esc(price)+'</small><small>'+specs+'</small><code>'+esc(marketCanonicalUrl(x))+'</code></div><div><span class="pill '+(e.ok?'green':'amber')+'">'+(e.ok?'READY FOR DIGEST':'QUEUE / BLOCKED')+'</span><small>'+esc(e.ok?'Deep-link ready':e.reasons.join(' · '))+'</small></div></div>'}).join(''):'<div class="empty">Поки немає обладнання, вибраного для Дайджесту.</div>';
 }
 function toast(m){if(window.adminToast)return window.adminToast(m);alert(m)}
-$('marketRole').onchange=e=>{role=e.target.value;syncRoleButtons();toast('MARKET role: '+role)};$('marketIncludeDigest').onchange=()=>{const x=current();if(!x)return;x.include_digest=$('marketIncludeDigest').checked;persist();renderDigestQueue();toast(x.include_digest?'Додано до черги MARKET → DIGEST':'Видалено з черги MARKET → DIGEST')};
+$('marketRole').onchange=e=>{role=e.target.value;syncRoleButtons();toast('MARKET role: '+role)};$('marketIncludeDigest').onchange=()=>{const x=current();if(!x)return;x.include_digest=$('marketIncludeDigest').checked;if($('marketIncludeDigestTop'))$('marketIncludeDigestTop').checked=x.include_digest;persist();renderDigestQueue();toast(x.include_digest?'Додано до пулу кандидатів MARKET → DIGEST':'Видалено з пулу кандидатів MARKET → DIGEST')};
+if($('marketIncludeDigestTop'))$('marketIncludeDigestTop').onchange=()=>{const x=current();if(!x)return;x.include_digest=$('marketIncludeDigestTop').checked;$('marketIncludeDigest').checked=x.include_digest;persist();renderDigestQueue();toast(x.include_digest?'Додано до пулу кандидатів MARKET → DIGEST':'Видалено з пулу кандидатів MARKET → DIGEST')};
 $('marketFeatureDigest').onchange=()=>{const x=current();if(!x)return;x.feature_digest=$('marketFeatureDigest').checked;persist();renderDigestQueue()};
 
 ['marketSearch','marketStatusFilter','marketConditionFilter','marketCategoryFilter'].forEach(id=>$(id).addEventListener(id==='marketSearch'?'input':'change',renderList));
