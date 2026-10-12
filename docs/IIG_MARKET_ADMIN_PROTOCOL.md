@@ -987,3 +987,28 @@ Hard conflict rule:
 - If the target already contains a MARKET page, ADMIN_2 may rebuild that MARKET page with the new selected candidate set.
 
 MARKET candidate categories must reflect the actual equipment categories from IIG MARKET; no fixed category count is assumed.
+
+
+## 29. Mandatory CTA pair on EVERY IIG MARKET Digest page
+
+Marker: `IIG_MARKET_DIGEST_MANDATORY_CTA_PAIR_V1`
+
+Every manually created IIG MARKET page inside the Digest MUST end with the same two canonical active buttons, regardless of:
+- page number;
+- how many MARKET pages exist;
+- how many listings are displayed on that page.
+
+Mandatory buttons:
+1. `РОЗМІСТИТИ ПРОЄКТ` → `forms.html#project`
+2. `ПІДПИСАТИСЯ НА ДАЙДЖЕСТ` → `forms.html#subscribe`
+
+This is a page-level invariant for each `kind="market"` page.
+
+Hard rules:
+- one and only one canonical CTA pair per MARKET page;
+- buttons remain active in Working Preview, Final Preview, exported HTML and final PDF;
+- buttons are always at the bottom of the MARKET page;
+- MARKET cards themselves must not duplicate this footer pair;
+- the rule applies equally to Page 4, Page 5, Page 6 or any later manually approved MARKET page.
+
+Loss of either link or duplication of the pair is a RELEASE BLOCKER.
