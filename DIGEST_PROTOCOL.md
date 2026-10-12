@@ -886,3 +886,32 @@ Robot #6 and Admin Auto-fill MUST ignore MARKET candidate-pool presence when dec
 
 Final page composition is manual and final Digest approval remains governed by the existing ADMIN_1 release gate.
 
+
+
+## IIG MARKET MANUAL SUPPLEMENTAL PAGE COMPOSER — 2026-10-12
+
+Marker: `DIGEST_MARKET_MANUAL_COMPOSER_V1`
+
+The Digest Admin section includes a dedicated manual window for IIG MARKET supplemental content.
+
+Candidate source:
+`IIG MARKET listings where include_digest=true`.
+
+This window is independent from Auto-fill and does not alter the 3-page core Digest.
+
+ADMIN_2 manually:
+1. chooses Page 4 or Page 5;
+2. filters/selects MARKET candidates;
+3. clicks the explicit build action.
+
+Conflict lock:
+- an existing non-MARKET Page 4/5 is NEVER overwritten;
+- MARKET has no priority over SPONSORED, PARTNER, IIG PROJECT or IIG ORIGINAL;
+- an existing MARKET page may be rebuilt manually.
+
+The MARKET Digest card inherits the listing flags:
+- NEW / Б/У / other condition;
+- FEATURE;
+- **ТЕРМІНОВО** — red Ukrainian urgency label.
+
+`ТЕРМІНОВО` is presentation priority only. It never bypasses public-price approval, listing release, exact deep-link validation, or ADMIN_1 final Digest approval.
