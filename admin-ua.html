@@ -240,8 +240,11 @@
                   <label>Статус<select class="input" id="marketStatus"><option>DRAFT</option><option>ADMIN_2_PREPARED</option><option>TECHNICAL_REVIEW</option><option>READY_FOR_ADMIN_1</option><option>ADMIN_1_APPROVED</option><option>PUBLISHED</option><option>RESERVED</option><option>SOLD</option><option>ARCHIVED</option></select></label>
                   <label>Публічна видимість<select class="input" id="marketVisibility"><option>HIDDEN</option><option>SHOW_ON_MARKET</option><option>FEATURE_ON_MARKET</option></select></label>
                 </div>
-                <label class="checkline"><input type="checkbox" id="marketIncludeDigest"> INCLUDE IN DIGEST</label>
-                <label class="checkline"><input type="checkbox" id="marketFeatureDigest"> FEATURE IN DIGEST</label>
+                <div class="market-digest-select">
+                  <label class="checkline market-digest-check"><input type="checkbox" id="marketIncludeDigest"> <b>РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ</b></label>
+                  <label class="checkline"><input type="checkbox" id="marketFeatureDigest"> Виділити у Дайджесті як FEATURE</label>
+                  <small class="muted">Позначена позиція потрапляє у чергу MARKET → DIGEST для майбутньої 4-ї/5-ї сторінки. У фінальному PDF картка повинна вести на конкретну сторінку цього обладнання в IIG MARKET.</small>
+                </div>
               </div>
             </div>
           </div>
@@ -287,6 +290,18 @@
 
 <section class="tab" id="digest">
 <div class="card masterdigest"><div class="masterhead"><div><div class="mastereyebrow">ЗАТВЕРДЖЕНИЙ ЕТАЛОН · READ-ONLY</div><h2>IIG MONTHLY DIGEST — ВЕРЕСЕНЬ 2026</h2><p class="muted">Офіційний MASTER v2 для візуального контролю ADMIN_1 · джерело: IIG_Monthly_Digest_2026-09_FINAL_DEMO (2). Робочий конструктор нижче не змінює цей еталон.</p></div><div class="mastermeta"><span class="pill green">APPROVED MASTER</span><span class="pill blue">3 СТОРІНКИ</span></div></div><div class="masterfacts"><div><small>MASTER SHA-256</small><code>6003552eed45f96e32bc1794b2297a04adef84dd319595844cebef57118111fc</code></div><div><small>СТРУКТУРА</small><b>1 — Обкладинка · 2 — 15 подій · 3 — Фінанси / Регулювання / Поради</b></div></div><div class="mastertoolbar"><button class="btn primary masterPage active" data-page="1">Сторінка 1 / 3 · Обкладинка</button><button class="btn primary masterPage" data-page="2">Сторінка 2 / 3 · 15 подій</button><button class="btn primary masterPage" data-page="3">Сторінка 3 / 3 · Фінанси / Законодавство / Поради</button><a class="btn primary" href="digest/admin-master-2026-09-v2.html?page=1" target="_blank" rel="noopener">Відкрити MASTER v2</a></div><div class="masterviewer"><iframe id="digestMasterFrame" title="Затверджений IIG Monthly Digest MASTER" src="digest/admin-master-2026-09-v2.html?page=1#page=1&zoom=page-width&toolbar=0&navpanes=0"></iframe></div><div class="miniwarn"><b>Контроль версії:</b> цей блок показує новий затверджений ADMIN MASTER v2 з IIG_Monthly_Digest_2026-09_FINAL_DEMO (2). Старий PDF сайту тут НЕ використовується. Будь-яка зміна дизайну або структури потребує нового погодження ADMIN_1 та нового MASTER SHA.</div></div>
+<div class="card market-digest-queue-card">
+  <div class="sectionhead">
+    <div>
+      <div class="market-eyebrow">IIG MARKET → DIGEST</div>
+      <h2>ОБЛАДНАННЯ ДЛЯ 4-Ї / 5-Ї СТОРІНКИ ДАЙДЖЕСТУ</h2>
+      <p class="muted">Тут автоматично з'являються позиції, для яких ADMIN_2 поставив галочку «Розмістити дане обладнання у Дайджесті». Це резерв майбутніх комерційних сторінок Digest і не змінює затверджені 3 сторінки MASTER v2.</p>
+    </div>
+    <span class="pill blue" id="marketDigestQueueCount">0 позицій</span>
+  </div>
+  <div id="marketDigestQueue" class="market-digest-queue"><div class="empty">Поки немає обладнання, вибраного для Дайджесту.</div></div>
+  <div class="miniwarn"><b>HARD RULE:</b> у фінальний Digest може потрапити тільки картка з конкретним Listing ID і deep-link на її сторінку IIG MARKET. Публічна ціна показується лише зі статусом ADMIN_1_APPROVED. Якщо MARKET/позиція ще HIDDEN, запис залишається у черзі, але не допускається до фінального PDF.</div>
+</div>
 <div class="card covereditor"><div class="sectionhead"><div><h2>РЕДАКТОР ТИТУЛЬНОЇ СТОРІНКИ</h2><p class="muted">Керуйте робочою обкладинкою: фон, заголовок, слоган, анонси та CTA. <b>Якщо ADMIN нічого не змінює — автоматично використовується затверджена титульна сторінка MASTER v2 1:1.</b></p></div><span class="pill blue">WORKING COVER</span></div>
 <div class="covereditgrid"><div>
 <label>Фонове зображення<input class="input" type="file" id="coverBgFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></label>
