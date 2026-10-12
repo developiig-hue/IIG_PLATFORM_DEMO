@@ -1,4 +1,4 @@
-<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IIG Адмін-панель — Крок 26 • Демо</title><link rel="stylesheet" href="assets/admin.css?v=digest-row-lock-manual-authority-v2-20261003"><link rel="stylesheet" href="assets/admin-market.css?v=MARKET-DIGEST-V4"></head><body>
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>IIG Адмін-панель — Крок 26 • Демо</title><link rel="stylesheet" href="assets/admin.css?v=digest-row-lock-manual-authority-v2-20261003"><link rel="stylesheet" href="assets/admin-market.css?v=MARKET-DIGEST-V4"><link rel="stylesheet" href="assets/admin-market-digest-v5.css?v=MARKETPLACE-HARD-RULE-V5-20261012"></head><body>
 <div class="shell"><aside class="side"><div class="brand">IIG<small>АДМІН-ПАНЕЛЬ / CMS</small></div><div class="demo"><b>КРОК 26 • ДЕМО</b><br>Безпечний деморежим.<br>Паролі, персональні дані та секрети тут не зберігаються.</div>
 <nav class="nav" id="nav">
 <button class="active" data-tab="dashboard">▦ <span>Головна</span></button>
@@ -139,7 +139,7 @@
         <input class="input grow" id="marketSearch" placeholder="Пошук: Listing ID / виробник / модель / категорія">
         <select class="input" id="marketStatusFilter"><option value="all">Усі статуси</option><option>DRAFT</option><option>ADMIN_2_PREPARED</option><option>READY_FOR_ADMIN_1</option><option>PUBLISHED</option><option>RESERVED</option><option>SOLD</option><option>ARCHIVED</option></select>
         <select class="input" id="marketConditionFilter"><option value="all">Усі стани</option><option>NEW</option><option>Б/У</option><option>REFURBISHED</option><option>NEVER INSTALLED</option></select>
-        <select class="input" id="marketCategoryFilter"><option value="all">Усі категорії</option><option>Gas Engine / CHP</option><option>Gas Turbine</option><option>Transformers</option><option>BESS</option><option>SCADA / Control</option><option>Packaged CHP</option></select>
+        <select class="input" id="marketCategoryFilter"><option value="all">Усі категорії</option><option>Gas Engine / CHP</option><option>Gas Boiler</option><option>Gas Turbine</option><option>Transformers</option><option>BESS</option><option>SCADA / Control</option><option>Packaged CHP</option></select>
         <button class="btn primary" id="marketResetFilters">Скинути</button>
       </div>
     </div>
@@ -160,7 +160,7 @@
           <div class="market-digest-top-options">
             <label class="market-digest-top-label">
               <input type="checkbox" id="marketIncludeDigestTop">
-              <span><b>РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ</b><small>Додає позицію тільки в пул кандидатів MARKET → DIGEST. Page 4+ автоматично НЕ створюється.</small></span>
+              <span><b>РОЗМІСТИТИ ДАНЕ ОБЛАДНАННЯ У ДАЙДЖЕСТІ</b><small>Позначає обладнання для автоматичного підтягування у Digest при виборі типу «Marketplace». У Digest потрапляють тільки позиції, що пройшли release-gates.</small></span>
             </label>
             <label class="market-digest-top-label market-feature-top">
               <input type="checkbox" id="marketFeatureDigestTop">
@@ -171,7 +171,7 @@
               <span><b>ТЕРМІНОВО</b><small>Платне термінове виділення. Червона мітка також передається у Digest.</small></span>
             </label>
           </div>
-          <span class="pill amber">MANUAL PAGE 4+ ONLY</span>
+          <span class="pill green">MARKETPLACE AUTO-PULL READY</span>
         </div>
 
         <div id="marketEditorEmpty" class="empty">Оберіть обладнання зі списку.</div>
@@ -195,7 +195,7 @@
                 <label>Назва EN<input class="input" id="marketTitleEn"></label>
                 <label>Короткий опис UA<textarea class="input" id="marketSummaryUa" rows="3"></textarea></label>
                 <div class="form2">
-                  <label>Категорія<select class="input" id="marketCategory"><option>Gas Engine / CHP</option><option>Gas Turbine</option><option>Transformers</option><option>BESS</option><option>SCADA / Control</option><option>Packaged CHP</option><option>Other</option></select></label>
+                  <label>Категорія<select class="input" id="marketCategory"><option>Gas Engine / CHP</option><option>Gas Boiler</option><option>Gas Turbine</option><option>Transformers</option><option>BESS</option><option>SCADA / Control</option><option>Packaged CHP</option><option>Other</option></select></label>
                   <label>Стан<select class="input" id="marketCondition"><option>NEW</option><option>Б/У</option><option>REFURBISHED</option><option>NEVER INSTALLED</option></select></label>
                 </div>
                 <div class="form2">
@@ -305,23 +305,23 @@
   <div class="sectionhead">
     <div>
       <div class="market-eyebrow">IIG MARKET → DIGEST</div>
-      <h2>КАНДИДАТИ IIG MARKET ДЛЯ РУЧНОГО ДОДАВАННЯ У ДАЙДЖЕСТ</h2>
-      <p class="muted">Тут з'являються лише кандидати, для яких ADMIN_2 поставив галочку «Розмістити дане обладнання у Дайджесті». Галочка НЕ створює Page 4/5 автоматично. Стандартний Digest залишається 3-сторінковим; будь-яка Page 4+ додається тільки вручну в конструкторі, де ADMIN обирає тип контенту.</p>
+      <h2>КАНДИДАТИ IIG MARKET ДЛЯ АВТОМАТИЧНОГО ПІДТЯГУВАННЯ У ДАЙДЖЕСТ</h2>
+      <p class="muted">Тут з'являються кандидати, для яких ADMIN_2 поставив галочку «Розмістити дане обладнання у Дайджесті». Коли в конструкторі обрано тип «Marketplace» і запускається формування сторінок 4+, робот автоматично підтягує тільки позначені позиції, що пройшли release-gates. ADMIN_2 після автозбірки зберігає повний ручний контроль порядку і складу.</p>
     </div>
     <span class="pill blue" id="marketDigestQueueCount">0 позицій</span>
   </div>
   <div id="marketDigestQueue" class="market-digest-queue"><div class="empty">Поки немає обладнання, вибраного для Дайджесту.</div></div>
-  <div class="miniwarn"><b>HARD RULE · NO AUTO PAGE:</b> MARKET-черга — лише пул кандидатів. Вона ніколи автоматично не створює Page 4/5 і не резервує номер сторінки. Додаткову сторінку ADMIN_2 створює вручну та сам обирає її тип: IIG MARKET / рекламний або партнерський матеріал / власний проєкт IIG / IIG ORIGINAL / інший затверджений блок. MARKET-картка у фінальному Digest повинна мати конкретний Listing ID + deep-link. Публічна ціна — тільки ADMIN_1_APPROVED.</div>
+  <div class="miniwarn"><b>HARD RULE · MARKETPLACE AUTO-PULL:</b> позначена MARKET-позиція стає кандидатом для автоматичного формування Page 4/5 після вибору типу «Marketplace». Автозбірка не обходить release-gates і не перезаписує сторінку іншого типу. Після автозбірки ADMIN_2 може ↑/↓ змінювати порядок, ⇄ переносити позицію та × виключати її лише з поточного випуску. Видалення з Digest ніколи не видаляє картку з IIG MARKET.</div>
 </div>
 
 <div class="card market-digest-composer-card" id="marketDigestComposer">
   <div class="sectionhead">
     <div>
-      <div class="market-eyebrow">IIG MARKET · MANUAL DIGEST PAGE BUILDER</div>
+      <div class="market-eyebrow">IIG MARKET · DIGEST PAGE BUILDER / MANUAL FALLBACK</div>
       <h2>ДОДАТКОВА СТОРІНКА IIG MARKET</h2>
-      <p class="muted">Ручний конструктор для Page 4+. Тут відображаються тільки товари, відмічені у IIG MARKET. MARKET не створює сторінку автоматично і не має зарезервованого номера.</p>
+      <p class="muted">Резервний ручний конструктор Page 4+. Основний сценарій — у вкладці «Дайджест» обрати тип матеріалу «Marketplace» і запустити автопідтягування. Тут ADMIN_2 може вручну сформувати конкретну MARKET-сторінку за потреби.</p>
     </div>
-    <span class="pill amber">MANUAL ONLY</span>
+    <span class="pill blue">MANUAL FALLBACK</span>
   </div>
   <div class="market-digest-composer-controls">
     <label>Цільова сторінка
@@ -360,9 +360,9 @@
 <div class="toolbar"><button class="btn primary" id="applyCover">Застосувати до титульної</button><button class="btn primary" id="previewCover">Попередній перегляд</button><button class="btn danger" id="resetCover">Скинути до робочого стандарту</button></div>
 </div></div></div>
 <div class="card digestroles"><div class="sectionhead"><div><h2>DIGEST WORKFLOW ROLES</h2><p class="muted">ADMIN_2 редагує поточний Digest; ручна редакція є головним working source-of-truth. Окремий release-candidate не є обов’язковим після правок: Final Preview сам створює технічну release-оболонку з поточного ручного макета без Auto-fill. Тільки ADMIN_1 червоною кнопкою фіксує цей exact snapshot як canonical candidate і одночасно затверджує фінальний макет.</p></div><span class="pill blue">RUNTIME · ADMIN1 FINAL LOCK v1</span><span class="pill amber" id="digestCandidateState">CANDIDATE НЕ СФОРМОВАНО</span></div><div class="form2"><label>Поточна роль у Digest workflow<select class="input" id="digestOperatorRole"><option value="ADMIN_2" selected>ADMIN_2 · Digest Builder</option><option value="ADMIN_1">ADMIN_1 · Final Approver</option></select></label><div class="rolecontract"><b>ADMIN_2:</b> edit CURRENT manual Digest / Final Preview / QA / re-upload approved PDF<br><b>ADMIN_1:</b> lock exact previewed CURRENT revision + final approval / PDF re-upload</div></div></div><div class="buildertop card"><div><h2>КОНСТРУКТОР ДАЙДЖЕСТУ</h2><p class="muted">Стандартний Monthly Digest має 3 основні сторінки. NEWS / Finance / Regulation автоматично пакуються тільки ПІД ЧАС ПЕРШОГО формування candidate або після явного натискання Auto-fill. Після створення candidate ручний макет ADMIN_2 має вищий пріоритет і ніколи не перезаписується approve/publish/reject/refresh подіями. Матеріали понад місткість не створюють Page 4. Page 4+ додається тільки вручну. ADMIN_2 сам обирає тип додаткової сторінки: IIG ORIGINAL / власний проєкт IIG / PARTNER / SPONSORED / IIG MARKET. Наявність кандидатів MARKET не створює і не резервує Page 4/5 автоматично. Після ручного видалення, перестановки або корекції просто відкрийте «ФІНАЛЬНИЙ ПЕРЕГЛЯД ВЕРСТКИ». Final Preview бере ПОТОЧНИЙ ручний макет як пріоритетний стан; якщо технічної release-оболонки немає, вона створюється автоматично без Auto-fill. Після цього червона кнопка ADMIN_1 «ЗАТВЕРДИТИ ФІНАЛЬНИЙ МАКЕТ» одним атомарним кроком фіксує fingerprint останнього переглянутого snapshot як canonical candidate і затверджує саме цю редакцію.</p><div class="issuebar"><span class="issuebadge" id="digestIssueBadge">ВЕРЕСЕНЬ 2026</span><label class="digestLanguageControl">МОВА ДАЙДЖЕСТУ <select class="input" id="digestLanguage"><option value="UA" selected>UA · Українська (основна)</option><option value="EN">EN · English</option></select></label><button class="btn primary" id="changeDigestIssue">Змінити місяць / рік</button><span class="muted" id="digestPackingStatus">Автопакування активне</span></div></div><div class="toolbar"><button class="btn success digestgenerate" id="generateDigestCandidate">⚙ НОВЕ АВТОФОРМУВАННЯ (СКИДАЄ РУЧНІ ПРАВКИ)</button><button class="btn primary" id="autoFillDigest">Автозаповнити заново (скидає ручний макет)</button><button class="btn primary" id="addDigestPage">+ Додати сторінку 4+</button><button class="btn primary" id="previewDigest">Робочий перегляд</button><button class="btn success" id="finalPreviewDigest">ФІНАЛЬНИЙ ПЕРЕГЛЯД ВЕРСТКИ</button><button class="btn danger" id="approveDigestProd">ЗАТВЕРДИТИ ФІНАЛЬНИЙ МАКЕТ</button><button class="btn success" id="downloadDigestHtml" disabled>⬇ ЗАВАНТАЖИТИ РОБОЧИЙ ФАЙЛ ДАЙДЖЕСТУ</button><button class="btn primary" id="printDigestPdf" disabled>PDF · ЗБЕРЕГТИ</button><label class="digestPdfUpload">Раніше згенерований / готовий PDF<input type="file" id="digestPdfFile" accept=".pdf,application/pdf" disabled></label><button class="btn success" id="publishDigestSite" disabled>⇧ ЗАЛИТИ ДАЙДЖЕСТ НА САЙТ IIG</button><span class="miniwarn" id="digestPdfUploadState">Якщо випуск уже був затверджений ADMIN_1, ADMIN_2 може вибрати раніше збережений PDF зі свого каталогу і натиснути «ЗАЛИТИ ДАЙДЖЕСТ НА САЙТ IIG» БЕЗ повторної генерації, Final Preview або нового approval. Публікація вважається успішною лише після фізичної появи нового CURRENT PDF у public storage.</span></div></div>
-<div class="card articleimporter"><div class="sectionhead"><div><h2>ІМПОРТ ПЕРСОНАЛЬНОГО / РЕКЛАМНОГО МАТЕРІАЛУ</h2><p class="muted">Завантажте Word DOCX або текстовий файл. Матеріал автоматично верстається у канву Сторінки 2 та, якщо не вміщується, продовжується на наступних сторінках з тим самим footer і кнопкою «ПІДПИСАТИСЯ НА ДАЙДЖЕСТ».</p></div><span class="pill green">PAGE 2 CANVAS</span></div>
+<div class="card articleimporter"><div class="sectionhead"><div><h2>ІМПОРТ / ФОРМУВАННЯ ДОДАТКОВОГО МАТЕРІАЛУ</h2><p class="muted">Для IIG ORIGINAL / PARTNER / SPONSORED можна завантажити DOCX/TXT. Для типу «Marketplace» файл не потрібен: робот автоматично підтягує позначене й допущене обладнання з IIG MARKET у Page 4/5+. Заголовок, лід і текст залишаються необов’язковою редакційною підложкою ADMIN_2.</p></div><span class="pill green">PAGE 2 CANVAS</span></div>
 <div class="articleimportgrid"><div>
-<label>Тип матеріалу<select class="input" id="articleMaterialType"><option value="IIG_ORIGINAL">IIG ORIGINAL</option><option value="SUCCESS_PROJECT">Успішно реалізований проєкт IIG</option><option value="PARTNER">PARTNER MATERIAL</option><option value="SPONSORED">SPONSORED MATERIAL</option></select></label>
+<label>Тип матеріалу<select class="input" id="articleMaterialType"><option value="IIG_ORIGINAL">IIG ORIGINAL</option><option value="SUCCESS_PROJECT">Успішно реалізований проєкт IIG</option><option value="PARTNER">PARTNER MATERIAL</option><option value="SPONSORED">SPONSORED MATERIAL</option><option value="MARKETPLACE">Marketplace</option></select></label>
 <label>Файл матеріалу<input class="input" type="file" id="articleSourceFile" accept=".docx,.txt,.md,.rtf,.html,text/plain,text/markdown,text/html,application/rtf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></label>
 <div id="articleImportStatus" class="miniwarn">DOCX/TXT/MD/RTF/HTML. DOCX читається локально в браузері; текст і вбудовані фото не передаються зовнішнім сервісам.</div>
 <label>Заголовок<input class="input" id="articleImportTitle"></label>
@@ -372,16 +372,16 @@
 <label>Пряме посилання на повний матеріал IIG<input class="input" id="articleImportUrl" placeholder="article.html?id=... або https://..."></label>
 <div class="row"><span>Вбудовані фото</span><b id="articleImageCount">0</b></div>
 <div class="toolbar"><button class="btn success" id="buildArticlePages">Сформувати сторінки</button><button class="btn primary" id="previewArticleImport">Попередній перегляд</button><button class="btn danger" id="clearArticleImport">Очистити</button></div>
-<div class="miniwarn"><b>Правило:</b> канва, поля, шапка і нижня зона — як на Сторінці 2. Текст і фото автоматично розподіляються по висоті. На кожній сформованій сторінці обов’язково зберігається CTA «ПІДПИСАТИСЯ НА ДАЙДЖЕСТ».</div>
+<div class="miniwarn"><b>Правило:</b> для Marketplace автопідтягування є первинною збіркою. ADMIN_2 після неї визначає фінальний порядок і склад. На кожній Page 4+ обов’язково зберігаються дві CTA: «РОЗМІСТИТИ ПРОЄКТ» і «ПІДПИСАТИСЯ НА ДАЙДЖЕСТ».</div>
 </div></div></div>
 <div class="digestgrid"><div class="card"><h2>ПІДТВЕРДЖЕНІ МАТЕРІАЛИ ЗА РУБРИКАМИ</h2><input class="input" id="digestSearch" placeholder="Пошук матеріалу"><div class="rubriclegend"><span>Україна / Світ</span><span>Фінанси</span><span>Законодавство / Регулювання</span><span>Поради Головного інженера</span></div><div id="digestLibrary" class="newslist compact"><div class="empty">Завантаження…</div></div></div>
 <div class="card"><div class="sectionhead"><div><h2>ПОТОЧНИЙ ДАЙДЖЕСТ</h2><p class="muted" id="digestWorkingTitle">IIG Monthly Digest • Вересень 2026 • робоча версія</p></div><span class="pill blue" id="digestCounter">0 матеріалів</span></div>
 <div class="finalpreviewstatus card"><div class="sectionhead"><div><h2>ФІНАЛЬНИЙ PREVIEW / RELEASE GATE</h2><p class="muted">Фінальна посторінкова перевірка перед завантаженням на сайт і передачею Robot #7 у розсилку. Preview не публікує і не надсилає Digest.</p></div><span class="pill amber" id="finalPreviewState">НЕ ПЕРЕВІРЕНО</span></div><div id="finalPreviewChecks" class="readinessgrid"></div></div>
 <div id="digestPages"></div>
-<div class="card extrapageeditor hidden" id="extraPageEditor"><div class="sectionhead"><div><h2>РЕДАКТОР СТОРІНКИ 4+</h2><p class="muted">Для IIG ORIGINAL, успішних проєктів, партнерських або рекламних матеріалів. Сторінка має ті самі базові можливості: фон, заголовок, анонс/текст та CTA.</p></div><button class="btn danger" id="closeExtraPageEditor">Закрити</button></div>
+<div class="card extrapageeditor hidden" id="extraPageEditor"><div class="sectionhead"><div><h2>РЕДАКТОР СТОРІНКИ 4+</h2><p class="muted">Для IIG ORIGINAL, успішних проєктів, PARTNER / SPONSORED та Marketplace. Для Marketplace заголовок, анонс і текст є необов’язковою редакційною підложкою ADMIN_2; обладнання підтягується з IIG MARKET автоматично.</p></div><button class="btn danger" id="closeExtraPageEditor">Закрити</button></div>
 <input type="hidden" id="extraPageIndex">
 <div class="covereditgrid"><div>
-<label>Тип сторінки<select class="input" id="extraPageType"><option value="IIG_ORIGINAL">IIG ORIGINAL</option><option value="SUCCESS_PROJECT">Успішно реалізований проєкт</option><option value="PARTNER">PARTNER MATERIAL</option><option value="SPONSORED">SPONSORED MATERIAL</option><option value="EDITORIAL">Редакційна сторінка</option></select></label>
+<label>Тип сторінки<select class="input" id="extraPageType"><option value="IIG_ORIGINAL">IIG ORIGINAL</option><option value="SUCCESS_PROJECT">Успішно реалізований проєкт</option><option value="PARTNER">PARTNER MATERIAL</option><option value="SPONSORED">SPONSORED MATERIAL</option><option value="MARKETPLACE">Marketplace</option><option value="EDITORIAL">Редакційна сторінка</option></select></label>
 <label>Фонове зображення<input class="input" type="file" id="extraPageBgFile" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></label>
 <div id="extraPageBgStatus" class="miniwarn">Рекомендовано: 1800×2546 px. Мінімум 1200×1697 px, JPG/PNG/WebP, до 10 MB.</div>
 <label>Заголовок<input class="input" id="extraPageTitle"></label>
@@ -516,5 +516,5 @@
 <section class="tab" id="audit"><div class="card module"><h2>ЖУРНАЛ ДЕМО-ДІЙ</h2><p class="muted">Показує дії поточної вкладки без персональних даних і без збереження.</p><div id="demoAudit" class="auditlist"><div class="empty">Дій ще немає.</div></div></div><div class="grid"><div class="card"><h2>ЖУРНАЛ ДІЙ</h2><p class="muted">Незмінний production-журнал: користувач, роль, дія, об’єкт, час, результат і зв’язок із сесією. Демоверсія не створює фіктивних записів про захищені дії.</p><div class="tablewrap"><table class="table"><thead><tr><th>Час</th><th>Користувач</th><th>Дія</th><th>Об’єкт</th><th>Результат</th></tr></thead><tbody><tr><td>—</td><td>—</td><td>Production backend журналу</td><td>НЕ ПІДКЛЮЧЕНО</td><td><span class="pill amber">ДЕМО</span></td></tr></tbody></table></div></div><div class="card"><h2>РЕЗЕРВНІ КОПІЇ / РОЗГОРТАННЯ</h2><div class="row"><span>Зашифрована резервна копія за розкладом</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Копія на окремому сховищі</span><span class="pill red">НЕ ПІДКЛЮЧЕНО</span></div><div class="row"><span>Тест відновлення</span><span class="pill red">ОБОВ’ЯЗКОВО</span></div><div class="row"><span>Тестове середовище → Production</span><span class="pill red">КРОК 27</span></div><div class="row"><span>Відкат версії</span><span class="pill red">ОБОВ’ЯЗКОВО</span></div><button class="btn danger" data-locked="Restore is destructive/high-risk and requires додаткове підтвердження authentication + audit">Restore backup</button></div></div></section>
 </div></main></div>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="close">×</button><h2 id="modalTitle">ПОВІДОМЛЕННЯ ADMIN</h2><p id="modalText"></p><p class="muted hidden" id="modalProductionHint">У демоверсії ця production-дія навмисно не виконується. Реальна дія буде доступна лише авторизованому адміністратору після підключення production-захисту.</p></div></div>
-<script src="assets/admin-final-admin1-v1.js?v=MARKET-TAB-V1"></script><script defer src="assets/admin-market.js?v=MARKET-DIGEST-V4"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V34"></script><!-- digest-publish-route-final-20261003 -->
+<script src="assets/admin-final-admin1-v1.js?v=MARKETPLACE-HARD-RULE-V5-20261012"></script><script defer src="assets/admin-market.js?v=MARKETPLACE-HARD-RULE-V5-20261012"></script><script defer src="assets/admin-market-digest-v5.js?v=MARKETPLACE-HARD-RULE-V5-20261012"></script><script defer src="assets/admin-contacts.js?v=CONTACTS-V34"></script><!-- digest-publish-route-final-20261003 -->
 <script src="assets/admin-requests.js?v=REQUESTS-V31"></script><script src="assets/admin-mailing.js?v=MAILING-V36"></script><script src="assets/admin-radar.js?v=RADAR-V49"></script><script src="assets/admin-partners.js?v=PARTNERS-V1"></script></body></html>
