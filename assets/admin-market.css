@@ -67,3 +67,19 @@
 .market-page-card-urgent{border:2px solid #b42318!important}
 .market-page-urgent-label{display:inline-block;background:#b42318;color:#fff;font-weight:1000;font-size:9px;padding:4px 7px;border-radius:999px;letter-spacing:.3px}
 @media(max-width:900px){.market-digest-composer-controls{grid-template-columns:1fr}.market-digest-composer-actions{align-items:stretch}.market-digest-composer-actions .btn{flex:1}}
+
+.marketdigestpage{background:#f7f9fb;border:1px solid #dce4ea;border-radius:12px;padding:18px;color:#06223d}
+.marketdigesthead{border-bottom:3px solid #ffc400;padding-bottom:10px;margin-bottom:14px}
+.marketdigesthead>span{font-size:10px;font-weight:1000;letter-spacing:1.2px;color:#153f8a}
+.marketdigesthead h2{margin:4px 0 2px;font-size:26px}.marketdigesthead p{margin:0;color:#65748a;font-size:11px}
+.marketdigestgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.marketdigestcard{position:relative;display:block;text-decoration:none;color:#06223d;background:#fff;border:1px solid #dfe7ed;border-radius:10px;padding:13px;min-height:185px}
+.marketdigestcard:hover{border-color:#153f8a}
+.marketdigestcard-urgent{border:2px solid #b42318}
+.marketdigesturgent{position:absolute;right:10px;top:10px;background:#b42318;color:#fff;padding:4px 7px;border-radius:999px;font-size:9px;font-weight:1000}
+.marketdigestbadges{display:flex;gap:6px;padding-right:76px}.marketdigestbadges span{font-size:8px;font-weight:900;padding:3px 6px;background:#eef4f8;border-radius:999px}
+.marketdigestcard h3{font-size:14px;margin:10px 0 4px}.marketdigestcard p{font-size:10px;color:#65748a;margin:0 0 8px}
+.marketdigestspecs{display:flex;flex-direction:column;gap:3px}.marketdigestspecs small{font-size:9px;color:#3b5265}
+.marketdigestprice{font-size:12px;font-weight:1000;margin-top:10px}.marketdigestcta{display:block;margin-top:8px;font-size:9px;font-weight:1000;color:#153f8a}
+.marketdigestfoot{margin-top:14px;border-top:1px solid #dfe7ed;padding-top:9px;font-size:9px;color:#65748a}
+@media(max-width:700px){.marketdigestgrid{grid-template-columns:1fr}}
