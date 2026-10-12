@@ -852,3 +852,37 @@ The Digest is not releasable if:
 ## Paid-hosting portability audit — 2026-10-10
 Marker: `IIG_DIGEST_PORTABILITY_AUDIT_2026_10_10`.
 No behavior change; this marker forces a fresh acceptance workflow on the current main branch.
+
+
+## SUPPLEMENTAL PAGE SOURCE CONTROL — MANUAL ONLY — 2026-10-12
+
+Marker: `DIGEST_SUPPLEMENTAL_PAGES_MANUAL_ONLY_V1`
+
+The approved standard IIG Monthly Digest remains **3 core pages**.
+
+**NO candidate pool, including IIG MARKET, may automatically generate Page 4, Page 5 or any Page 4+.**
+
+A supplemental page exists only after explicit manual action:
+`ADMIN_2 → + Додати сторінку 4+ → choose content type → choose content`.
+
+Approved supplemental content types include:
+- IIG ORIGINAL;
+- SUCCESS PROJECT / own IIG project;
+- PARTNER MATERIAL;
+- SPONSORED / advertising material;
+- IIG MARKET;
+- other separately Admin-approved supplemental material.
+
+IIG MARKET has NO reserved page number and NO priority over the other supplemental content types.
+
+The MARKET checkbox is only an eligibility/candidate flag. It does not:
+- change page count;
+- trigger Robot #6 to build a MARKET page;
+- select Page 4/5;
+- replace promo/partner/project material;
+- change the approved standard layout.
+
+Robot #6 and Admin Auto-fill MUST ignore MARKET candidate-pool presence when deciding page count.
+
+Final page composition is manual and final Digest approval remains governed by the existing ADMIN_1 release gate.
+
