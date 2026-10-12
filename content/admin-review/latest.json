@@ -1,8 +1,8 @@
 {
   "schema": "iig.admin-review-latest.v1",
-  "generated_at": "2026-10-10T09:48:13.311225+00:00",
+  "generated_at": "2026-10-12T07:30:00.958117+00:00",
   "status": "ADMIN_REVIEW",
-  "run_id": "38042453263",
+  "run_id": "38217759666",
   "items": [
     {
       "route": "chief_engineer_advice",
@@ -68,6 +68,44 @@
       "route": "news",
       "item": {
         "type": "news",
+        "title": "Risen releases 23.5%-efficient anti-glare heterojunction solar module",
+        "company_name": "pv magazine",
+        "company_activity": "Industry / energy market participant",
+        "project": "Risen releases 23.5%-efficient anti-glare heterojunction solar module",
+        "technology": "Industrial / energy technology and market development",
+        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
+        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
+        "date": "2026-10-12",
+        "canonical_url": "https://www.pv-magazine.com/2026/10/12/risen-releases-23-5-efficient-anti-glare-heterojunction-solar-module",
+        "primary_source_verified": true,
+        "company_context": "pv magazine опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
+        "evidence": 4,
+        "practical_value": 4,
+        "transferability": 4,
+        "technology_diversity": 4,
+        "decision_maker_value": 4,
+        "sector": "energy",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. The bifacial panel achieves a maximum efficiency of 23.5% and has received Class AAA anti-glare certification from TÜV Rheinland. By Emiliano Bellini 12 Oct 2026 Technology & Products Modules The Hyper-ion anti-glare HJT module Image: Risen Energy Advertisement Chinese solar module manufacturer Risen Energy has unveiled a new heterojunction (HJT) solar module featuring a dual-layer optical design to reduce glare. The company said the new product is part of its Hyper-ion series and is designed for installations with stringent glare-control requirements, such as those near airports and residential areas, where reflected sunlight may cause visual disturbances. “Risen Energy’s capabilities in photovoltaic optical safety extend beyond product development. It is also the principal drafting organization behind T/CPIA0119-2025, the group standard for Photovoltaic Module Glare Testing Method,” the manufacturer said in a statement. “The launch of Hyper-ion anti-glare module represents the translation of this accumulated technical and standardization expertise into a commercial product.” According to Risen Energy, the module uses a dual-layer optical design combining a micron-scale matte glass surface, produced through a process it calls “nanocrystalline phase reconstruction,” with technology to suppress internal reflections. The company did not provide further technical details about the process. The manufacturer said tests conducted by Germany’s TÜV Rheinland showed a maximum daylight glare probability (DGP) of 0.30, below the Class AAA threshold of 0.35, and a maximum glare luminance of 3,463.94 cd/m², compared with a limit of 20,000 cd/m².\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
+        "quote_search_status": "NOT_FOUND",
+        "editorial_tag": "ENERGY",
+        "event_type": null,
+        "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMirAFBVV95cUxQQ3ZUcUhNTjl3UXlzM3NObHRJalNSazJxTlJkUWRlMnZCeDhpLUFicVZ5dWdxM29aOEp6RG15YnM4Z2MydUp2N3ZsNXJ1NHByczhaa1JIUEdsY1cybUdlWXVGNFFuMjNqWEEtUDFybUo4cW9aNnFOalVLMmxLUWxCdU1yTS03WG5PYzZVcFJ4alRfNldwRFZTWjFkOVVHU1pnRUhFYnhLcl9aM1cy?oc=5"
+        ],
+        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
+        "source_capture_characters": 10661
+      },
+      "item_sha256": "fff21256f1459536beb16de81621d358ffa3a28a74036f6b25e26286786ed8b7",
+      "image_required": true,
+      "image_decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "publication_eligible": false
+    },
+    {
+      "route": "news",
+      "item": {
+        "type": "news",
         "title": "tt group tiep tuc dau tu du an nha may dien gio savan 2 gan 500 mw tai lao 36748.html",
         "company_name": "Vietnam Energy",
         "company_activity": "Industry / energy market participant",
@@ -75,7 +113,7 @@
         "technology": "Industrial / energy technology and market development",
         "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
         "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
-        "date": "2026-10-10",
+        "date": "2026-10-12",
         "canonical_url": "https://nangluongvietnam.vn/tt-group-tiep-tuc-dau-tu-du-an-nha-may-dien-gio-savan-2-gan-500-mw-tai-lao-36748.html",
         "primary_source_verified": true,
         "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
@@ -85,19 +123,20 @@
         "technology_diversity": 4,
         "decision_maker_value": 4,
         "sector": "energy",
-        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. T&T Group tiếp tục đầu tư dự án Nhà máy điện gió Savan 2 (gần 500 MW) tại Lào | Tạp chí Năng lượng Việt Nam Liên hệ tòa soạn Kiến giải tồn tại Nhận định, Phản biện Nhận định - Dự báo Phản biện Điện lực Dầu khí Công nghiệp than Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo Năng lượng nguyên tử Khoa học, công nghệ, môi trường Văn hóa doanh nghiệp Thứ bảy 10/10/2026 16:39 TRANG TTĐT CỦA TẠP CHÍ NĂNG LƯỢNG VIỆT NAM Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo T&T Group tiếp tục đầu tư dự án Nhà máy điện gió Savan 2 (gần 500 MW) tại Lào 10:11 10/10/2026 - Sau khi đưa giai đoạn 1 Savan 1 (công suất 300 MW) vào vận hành, T&T Group tiếp tục phát triển Savan 2 tại Lào với quy mô 495 MW, tổng vốn khoảng 768 triệu USD. Dự kiến vận hành thương mại cuối năm 2028, dự án sẽ bổ sung nguồn điện cho Việt Nam, góp phần bảo đảm an ninh năng lượng quốc gia. Chính thức vận hành thương mại Nhà máy điện gió Savan 1 của T&T Group tại Lào Việc Nhà máy điện gió Savan 1 chính thức vận hành thương mại (ngày 26/12/2025) không chỉ đánh dấu bước tiến mới của T&T Group trong lĩnh vực năng lượng tái tạo, mà còn góp phần hiện thực hóa mục tiêu gia tăng quy mô nhập khẩu điện từ Lào theo Hiệp định giữa hai Chính phủ. T&T Group hợp tác cùng TotalEnergies (Pháp) phát triển dự án Nhà máy điện LNG Long Sơn Ngày 10/9/2026, tại Thủ đô Paris (CH Pháp), tại chương trình gặp gỡ lãnh đạo các doanh nghiệp Việt - Pháp, dưới sự chứng kiến của lãnh đạo cấp cao hai nước, Công ty cổ phần Tập đoàn Năng lượng T&T (T&T Energy Group) - đơn vị thành viên của Tập đoàn T&T Group và Công ty TotalEnergies Gas & Power Activities (thuộc Tập đoàn TotalEnergies SE) đã trao biên bản ghi nhớ về hợp tác phát triển dự án Nhà máy điện LNG Long Sơn.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. T&T Group tiếp tục đầu tư dự án Nhà máy điện gió Savan 2 (gần 500 MW) tại Lào | Tạp chí Năng lượng Việt Nam Liên hệ tòa soạn Kiến giải tồn tại Nhận định, Phản biện Nhận định - Dự báo Phản biện Điện lực Dầu khí Công nghiệp than Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo Năng lượng nguyên tử Khoa học, công nghệ, môi trường Văn hóa doanh nghiệp Thứ hai 12/10/2026 14:25 TRANG TTĐT CỦA TẠP CHÍ NĂNG LƯỢNG VIỆT NAM Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo T&T Group tiếp tục đầu tư dự án Nhà máy điện gió Savan 2 (gần 500 MW) tại Lào 10:11 10/10/2026 - Sau khi đưa giai đoạn 1 Savan 1 (công suất 300 MW) vào vận hành, T&T Group tiếp tục phát triển Savan 2 tại Lào với quy mô 495 MW, tổng vốn khoảng 768 triệu USD. Dự kiến vận hành thương mại cuối năm 2028, dự án sẽ bổ sung nguồn điện cho Việt Nam, góp phần bảo đảm an ninh năng lượng quốc gia. Chính thức vận hành thương mại Nhà máy điện gió Savan 1 của T&T Group tại Lào Việc Nhà máy điện gió Savan 1 chính thức vận hành thương mại (ngày 26/12/2025) không chỉ đánh dấu bước tiến mới của T&T Group trong lĩnh vực năng lượng tái tạo, mà còn góp phần hiện thực hóa mục tiêu gia tăng quy mô nhập khẩu điện từ Lào theo Hiệp định giữa hai Chính phủ. T&T Group hợp tác cùng TotalEnergies (Pháp) phát triển dự án Nhà máy điện LNG Long Sơn Ngày 10/9/2026, tại Thủ đô Paris (CH Pháp), tại chương trình gặp gỡ lãnh đạo các doanh nghiệp Việt - Pháp, dưới sự chứng kiến của lãnh đạo cấp cao hai nước, Công ty cổ phần Tập đoàn Năng lượng T&T (T&T Energy Group) - đơn vị thành viên của Tập đoàn T&T Group và Công ty TotalEnergies Gas & Power Activities (thuộc Tập đoàn TotalEnergies SE) đã trao biên bản ghi nhớ về hợp tác phát triển dự án Nhà máy điện LNG Long Sơn.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
         "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
         "quote_search_status": "NOT_FOUND",
         "editorial_tag": "ENERGY",
         "event_type": null,
         "supplementary_sources": [
+          "https://news.google.com/rss/articles/CBMioAFBVV95cUxOYTloQldqMGF6d0RMcEtlT0ZoSG80eFBQTk81NVl3SzFGaUg2V0dtU1RQS1FkWkZhbWJwTENBQTZ4QkI4OTB6T0hfdy1WSk9USkpPTFNod21SN0czajN4ZWRaY2xsRG41ekt5SnY4R3Z2WDhMaTl2MWRqdDNFNnE4LWtLOGMzMUFvcFNWRzgzcGM2N19Ib0F4TDFYWlFrRW5k?oc=5",
           "https://news.google.com/rss/articles/CBMitAFBVV95cUxNeTRRQl9QbzV0UW1SM3NvTmhFYnZhOERmZE1FTGZjX3ZwRUxHWS1JVTZUT3FwVUF5WWsxdUxOYU9PYVNmVGRHUHRRX2tLX2Jocm85bjZhWF9yT3ZTT2ZSdmM0eTJBUVZ6UUVEYkwxdHJXei1raUw4MklkUk1YOXhQZ1hIeGswaDhVZHd5TWE3a295Ri1fYjQyb290SXM5VUl0YUFCN0tSTFlfb1p4QmhPREZyRUc?oc=5",
-          "https://news.google.com/rss/articles/CBMioAFBVV95cUxOYTloQldqMGF6d0RMcEtlT0ZoSG80eFBQTk81NVl3SzFGaUg2V0dtU1RQS1FkWkZhbWJwTENBQTZ4QkI4OTB6T0hfdy1WSk9USkpPTFNod21SN0czajN4ZWRaY2xsRG41ekt5SnY4R3Z2WDhMaTl2MWRqdDNFNnE4LWtLOGMzMUFvcFNWRzgzcGM2N19Ib0F4TDFYWlFrRW5k?oc=5"
+          "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPa09QVnRkc2dZc3FoUzVFUUI5ZE9rZXoxb0ZXcl9QTWlRNUM3a0ZVS2tsM2pvVDN6bVZjMUJJdXBYRW9HSWVKdXR1S0ZFWmp5Y1ZvQ2ZURU9CYnZLbDk3SHdsVWVZMVZnWG1zLUNOdl80bVpxb3hRcHN0MkxoUDR5TzYxd0lQOXpka3Y3NEoxNXRRNklUUDB3MC1WNXlLYWpQc1UxOURQWE5zdkU?oc=5"
         ],
         "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
-        "source_capture_characters": 10455
+        "source_capture_characters": 10423
       },
-      "item_sha256": "112fa8870ac3ed9cf36104f5e1552e8fdc9108f7f27b2acd58d25e233f3f50bc",
+      "item_sha256": "b0651fa7030ee17179bc8a53ef3c978f42cf1440ceac944d0a34b35e0a29095b",
       "image_required": true,
       "image_decision": "ADMIN_IMAGE_REQUIRED",
       "selected_image": null,
@@ -114,7 +153,7 @@
         "technology": "Industrial / energy technology and market development",
         "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
         "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
-        "date": "2026-10-10",
+        "date": "2026-10-12",
         "canonical_url": "https://nangluongvietnam.vn/cuc-dien-luc-va-lien-minh-nang-luong-toan-cau-thuc-day-hien-dai-hoa-luoi-dien-va-phat-trien-bess-tai-viet-nam-36712.html",
         "primary_source_verified": true,
         "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
@@ -124,7 +163,7 @@
         "technology_diversity": 4,
         "decision_maker_value": 4,
         "sector": "energy",
-        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. Cục Điện lực và Liên minh Năng lượng Toàn cầu thúc đẩy hiện đại hóa lưới điện và phát triển BESS tại Việt Nam | Tạp chí Năng lượng Việt Nam Liên hệ tòa soạn Kiến giải tồn tại Nhận định, Phản biện Nhận định - Dự báo Phản biện Điện lực Dầu khí Công nghiệp than Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo Năng lượng nguyên tử Khoa học, công nghệ, môi trường Văn hóa doanh nghiệp Thứ bảy 10/10/2026 16:43 TRANG TTĐT CỦA TẠP CHÍ NĂNG LƯỢNG VIỆT NAM Khoa học, công nghệ, môi trường Cục Điện lực và Liên minh Năng lượng Toàn cầu thúc đẩy hiện đại hóa lưới điện và phát triển BESS tại Việt Nam 07:54 02/10/2026 - Ngày 1/10/2026, tại Hà Nội, tiếp nối Tọa đàm “Xây dựng Lưới điện Tương lai” diễn ra ngày 30/9 - nơi các chuyên gia và đối tác phát triển trao đổi với báo chí về các yêu cầu mới đối với hệ thống điện Việt Nam, Cục Điện lực, Bộ Công Thương và Liên minh Năng lượng Toàn cầu vì Con người và Hành tinh (hay còn gọi là Liên minh Năng lượng Toàn cầu) đã tổ chức Phiên họp Tổ công tác triển khai Biên bản ghi nhớ (MOU) về hợp tác trong chuyển dịch năng lượng đã được hai bên ký kết gần đây. Vai trò của lưu trữ năng lượng (BESS) và công nghệ tạo lưới (GFM) trong hệ thống điện tương lai Bài viết trình bày về xu hướng tất yếu của việc áp dụng công nghệ tạo lưới (Grid-Forming - GFM) cho các hệ thống pin lưu trữ năng lượng (BESS) trong hệ thống điện. Trong bối cảnh gia tăng mạnh mẽ các nguồn năng lượng tái tạo sử dụng biến tần như điện mặt trời, điện gió, việc ứng dụng BESS kết hợp GFM là giải pháp then chốt để khắc phục các rào cản về tính ổn định, bù đắp sự suy giảm quán tính cơ học và đảm bảo an ninh năng lượng cho hệ thống điện hiện đại.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
+        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. Cục Điện lực và Liên minh Năng lượng Toàn cầu thúc đẩy hiện đại hóa lưới điện và phát triển BESS tại Việt Nam | Tạp chí Năng lượng Việt Nam Liên hệ tòa soạn Kiến giải tồn tại Nhận định, Phản biện Nhận định - Dự báo Phản biện Điện lực Dầu khí Công nghiệp than Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo Năng lượng nguyên tử Khoa học, công nghệ, môi trường Văn hóa doanh nghiệp Thứ hai 12/10/2026 14:29 TRANG TTĐT CỦA TẠP CHÍ NĂNG LƯỢNG VIỆT NAM Khoa học, công nghệ, môi trường Cục Điện lực và Liên minh Năng lượng Toàn cầu thúc đẩy hiện đại hóa lưới điện và phát triển BESS tại Việt Nam 07:54 02/10/2026 - Ngày 1/10/2026, tại Hà Nội, tiếp nối Tọa đàm “Xây dựng Lưới điện Tương lai” diễn ra ngày 30/9 - nơi các chuyên gia và đối tác phát triển trao đổi với báo chí về các yêu cầu mới đối với hệ thống điện Việt Nam, Cục Điện lực, Bộ Công Thương và Liên minh Năng lượng Toàn cầu vì Con người và Hành tinh (hay còn gọi là Liên minh Năng lượng Toàn cầu) đã tổ chức Phiên họp Tổ công tác triển khai Biên bản ghi nhớ (MOU) về hợp tác trong chuyển dịch năng lượng đã được hai bên ký kết gần đây. Vai trò của lưu trữ năng lượng (BESS) và công nghệ tạo lưới (GFM) trong hệ thống điện tương lai Bài viết trình bày về xu hướng tất yếu của việc áp dụng công nghệ tạo lưới (Grid-Forming - GFM) cho các hệ thống pin lưu trữ năng lượng (BESS) trong hệ thống điện. Trong bối cảnh gia tăng mạnh mẽ các nguồn năng lượng tái tạo sử dụng biến tần như điện mặt trời, điện gió, việc ứng dụng BESS kết hợp GFM là giải pháp then chốt để khắc phục các rào cản về tính ổn định, bù đắp sự suy giảm quán tính cơ học và đảm bảo an ninh năng lượng cho hệ thống điện hiện đại.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
         "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
         "quote_search_status": "NOT_FOUND",
         "editorial_tag": "ENERGY",
@@ -132,50 +171,12 @@
         "supplementary_sources": [
           "https://news.google.com/rss/articles/CBMikgFBVV95cUxQY2J0dVEyYWpPV1Y1blhmRkVaSDdxeTh6aTdsLUhUcjd0ZGNsSkpyU3UteWhmek5PcnBvaDB1SGQ3RWxjZXB1eWxDZTZRajA2Y0RlMkxXUUJEMHNQWFNZUkgzdTk4YnBVTThmYWFqWnpra0Z4UlhtS0FYaWdXY3hhVDlnLVFXb1NKYzZwNnZuOHV6dw?oc=5",
           "https://news.google.com/rss/articles/CBMimgFBVV95cUxONUtYZGNnWmhiSklublVQWHR0R2ZrNVlOT3pLQnlGcFdKUkp1Unk0bVRucUhBRHZXXzltRWhJRHVvU3RWemtVdUxJZXRNcGZ6bDBRUGRxT010X21BY2JUZ01Ea25UTWtvclZNWFpCeWlDY0ZKQ29KY3dmNDlPcmZWc0NrOVJyODY0c2k3ZTFVNXNSS1dZN1JnOExB?oc=5",
-          "https://news.google.com/rss/articles/CBMicEFVX3lxTE96OXBJcXdScUdVemZPVXpxdnlGek9EYVVDT0p2ZW9sQ0wwbUpVd1ZiTVJlZTVULUNhZmJncDg3TDFnZWpva3M4TFQ1XzV3NVA3OHVVQ0ljUWZrbVNPOEpuZkQzaHFNYWwzYW52QzhmM3U?oc=5"
+          "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPSnN5bmtub1FHRmh3WWZ4TEZ1YmhnR1l0MEVUYkxfc3NnS3AzV0RrTUFacjF6em9HSkRRLW4zbzlvaGxtQmJQbGxjZ2hJdS1fVER2MFBaemJFR1I4a3g0LUFXNWpCSjd3OXZ1c3czWjJWZHlvbkRLandkNnpqdS1jR2xraUp2NTBjVWRnd045bFZiNGVNRnE2aHhsWUxRdkljZTRoTXZELXppYUEzQ1lMWm1LbHBqRXFLaFJCbVhzYlVVZFZNUi1xakhvOGJYRXl3dEZZVg?oc=5"
         ],
         "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
-        "source_capture_characters": 14590
+        "source_capture_characters": 14558
       },
-      "item_sha256": "a0c0df2100a873a0c9db59c3ef0dd671e963e81c7b81737e304bf9f8deddd286",
-      "image_required": true,
-      "image_decision": "ADMIN_IMAGE_REQUIRED",
-      "selected_image": null,
-      "publication_eligible": false
-    },
-    {
-      "route": "news",
-      "item": {
-        "type": "news",
-        "title": "evnnpc dong dien 5 du an lap dat he thong pin luu tru nang luong bess tai lang son 36698.html",
-        "company_name": "Vietnam Energy",
-        "company_activity": "Industry / energy market participant",
-        "project": "evnnpc dong dien 5 du an lap dat he thong pin luu tru nang luong bess tai lang son 36698.html",
-        "technology": "Industrial / energy technology and market development",
-        "project_status": "Primary-source development identified by Robot #1; requires ADMIN_1 editorial review",
-        "project_status_evidence": "Primary-source text captured directly by Robot #1 and preserved in the generated NEWS draft.",
-        "date": "2026-10-10",
-        "canonical_url": "https://nangluongvietnam.vn/evnnpc-dong-dien-5-du-an-lap-dat-he-thong-pin-luu-tru-nang-luong-bess-tai-lang-son-36698.html",
-        "primary_source_verified": true,
-        "company_context": "Vietnam Energy опублікував первинний матеріал, який Robot #1 передав до Content Engine після source capture.\n\nIIG зберігає первинний URL та відокремлює факти джерела від власної аналітики.\n\nМатеріал віднесено до сектору energy; публікація залишається REVIEW до затвердження ADMIN_1.",
-        "evidence": 4,
-        "practical_value": 4,
-        "transferability": 4,
-        "technology_diversity": 4,
-        "decision_maker_value": 4,
-        "sector": "energy",
-        "body": "ФАКТ / ПЕРВИННЕ ДЖЕРЕЛО. EVNNPC đóng điện 5 dự án lắp đặt hệ thống pin lưu trữ năng lượng (BESS) tại Lạng Sơn | Tạp chí Năng lượng Việt Nam Liên hệ tòa soạn Kiến giải tồn tại Nhận định, Phản biện Nhận định - Dự báo Phản biện Điện lực Dầu khí Công nghiệp than Điện hạt nhân, năng lượng tái tạo Năng lượng tái tạo Năng lượng nguyên tử Khoa học, công nghệ, môi trường Văn hóa doanh nghiệp Thứ bảy 10/10/2026 16:43 TRANG TTĐT CỦA TẠP CHÍ NĂNG LƯỢNG VIỆT NAM Điện lực EVNNPC đóng điện 5 dự án lắp đặt hệ thống pin lưu trữ năng lượng (BESS) tại Lạng Sơn 15:11 29/09/2026 - Trong tháng 9/2026, Ban Quản lý dự án Xây dựng điện miền Bắc - BA3 (đơn vị thành viên của Tổng công ty Điện lực miền Bắc - EVNNPC) tiếp tục ghi dấu ấn với kết quả nổi bật khi hoàn thành đóng điện 5 dự án lắp đặt hệ thống pin lưu trữ năng lượng (BESS) tại các trạm biến áp (TBA) 110 kV trên địa bàn tỉnh Lạng Sơn. EVNNPC đưa vào vận hành hệ thống pin lưu trữ năng lượng (BESS) đầu tiên tại Ninh Bình Ngày 21/8/2026, tại Ninh Bình, Tổng công ty Điện lực miền Bắc (EVNNPC) nghiệm thu, đóng điện, chính thức đưa vào vận hành hệ thống hệ thống pin lưu trữ năng lượng đầu tiên (BESS) trên địa bàn tỉnh Ninh Bình. EVNNPC đưa vào vận hành hệ thống pin lưu trữ năng lượng (BESS) tại Hải Phòng Ban Quản lý dự án Xây dựng điện miền Bắc - BA3 (thuộc Tổng công ty Điện lực miền Bắc - EVNNPC) vừa tổ chức đóng điện đưa vào vận hành dự án lắp đặt hệ thống pin lưu trữ năng lượng (BESS) tại Trạm biến áp (TBA) 110 kV Cửu Long, TP. Công tác chuẩn bị đóng điện dự án lắp đặt hệ thống BESS tại TBA 110 kV Tràng Định, tỉnh Lạng Sơn. Cụ thể, BA3 đã lần lượt hoàn thành đóng điện các dự án BESS tại: TBA 110 kV Lộc Bình, ngày 10/9; TBA 110 kV Tràng Định, ngày 12/9; TBA 110 kV Hữu Lũng, ngày 14/9; TBA 110 kV Đồng Đăng, ngày 20/9 và TBA 110 kV Đồng Mỏ, ngày 26/9.\n\nЧОМУ ЦЕ ВАЖЛИВО. Матеріал важливий для керівників, інвесторів і технічних спеціалістів як перевірений ринковий сигнал щодо активності компаній, технологій, строків, партнерств та потенційних інвестиційних або EPC-рішень.\n\nПОРАДА IIG. Перед використанням цього кейсу у власному проєкті перевірте project stage, product scope, references, compliance, local acceptance, delivery terms, interfaces, warranty/LTSA, сервісну модель, CAPEX/OPEX та фінансову спроможність контрагентів. Для EVENT-контактів переводьте релевантних постачальників у formal vendor qualification, RFI/RFQ, technical workshop або pre-FEED.",
-        "iig_advice": "Керівникам, інвесторам і технічним спеціалістам слід перевірити стадію проєкту, технічний scope, references, delivery, interfaces, CAPEX/OPEX і сервіс перед використанням матеріалу як основи для рішення.",
-        "quote_search_status": "NOT_FOUND",
-        "editorial_tag": "ENERGY",
-        "event_type": null,
-        "supplementary_sources": [
-          "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcmFqbF9KS0JtMUpqbnVjaldxYkF6YXpwemk2di1ONWdjem0xdGQwX2h5Z2hJY1VXSzZ3NkxZOF84bEdoNExEYU1Ed3ptaWxlT1p4ZElaaFlKVG5GWDNjX2I4NjZPRkhPM09sUkprck53bElfM3cxc1RhV19GYmxIWDFkRkdMbkV4b3l2UHNMbmpiWFNWSGNIcXB3TTF2UmNIb0E?oc=5"
-        ],
-        "generated_from": "DISCOVERY_PRIMARY_SOURCE_CAPTURE",
-        "source_capture_characters": 7039
-      },
-      "item_sha256": "697b187c57ae7e3232ceb933ce274db8872ab67e2a517ac0e1cf9de30c1ac67e",
+      "item_sha256": "5de9a365e07ad36dd17dedc38e219c057ebc1a7111b0168cf2d1bb4a463ea2ad",
       "image_required": true,
       "image_decision": "ADMIN_IMAGE_REQUIRED",
       "selected_image": null,
@@ -196,6 +197,18 @@
     },
     {
       "audit_file": null,
+      "slug": "Risen releases 23.5%-efficient anti-glare heterojunction solar module",
+      "source_page": "https://www.pv-magazine.com/2026/10/12/risen-releases-23-5-efficient-anti-glare-heterojunction-solar-module",
+      "decision": "ADMIN_IMAGE_REQUIRED",
+      "selected_image": null,
+      "reasons": [
+        "image_audit_missing_admin_must_generate_or_approve"
+      ],
+      "quality_gate_eligible": true,
+      "publication_eligible": false
+    },
+    {
+      "audit_file": null,
       "slug": "tt group tiep tuc dau tu du an nha may dien gio savan 2 gan 500 mw tai lao 36748.html",
       "source_page": "https://nangluongvietnam.vn/tt-group-tiep-tuc-dau-tu-du-an-nha-may-dien-gio-savan-2-gan-500-mw-tai-lao-36748.html",
       "decision": "ADMIN_IMAGE_REQUIRED",
@@ -210,18 +223,6 @@
       "audit_file": null,
       "slug": "cuc dien luc va lien minh nang luong toan cau thuc day hien dai hoa luoi dien va phat trien bess tai viet nam 36712.html",
       "source_page": "https://nangluongvietnam.vn/cuc-dien-luc-va-lien-minh-nang-luong-toan-cau-thuc-day-hien-dai-hoa-luoi-dien-va-phat-trien-bess-tai-viet-nam-36712.html",
-      "decision": "ADMIN_IMAGE_REQUIRED",
-      "selected_image": null,
-      "reasons": [
-        "image_audit_missing_admin_must_generate_or_approve"
-      ],
-      "quality_gate_eligible": true,
-      "publication_eligible": false
-    },
-    {
-      "audit_file": null,
-      "slug": "evnnpc dong dien 5 du an lap dat he thong pin luu tru nang luong bess tai lang son 36698.html",
-      "source_page": "https://nangluongvietnam.vn/evnnpc-dong-dien-5-du-an-lap-dat-he-thong-pin-luu-tru-nang-luong-bess-tai-lang-son-36698.html",
       "decision": "ADMIN_IMAGE_REQUIRED",
       "selected_image": null,
       "reasons": [

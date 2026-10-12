@@ -1,8 +1,8 @@
 {
   "schema": "iig.content-engine-report.v1",
-  "generated_at": "2026-10-10T09:48:12.997560+00:00",
+  "generated_at": "2026-10-12T07:30:00.654119+00:00",
   "kind": "weekly",
-  "artifact": "content/review-queue/weekly-20261010T094812Z.json",
+  "artifact": "content/review-queue/weekly-20261012T073000Z.json",
   "discovery_received": 3,
   "discovery_research_packets": 3,
   "discovery_rejected": 0,

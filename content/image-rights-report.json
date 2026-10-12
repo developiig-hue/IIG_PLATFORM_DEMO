@@ -1,8 +1,8 @@
 {
   "schema": "iig.image-rights-report.v1",
   "status": "PASS",
-  "generated_at": "2026-10-10T09:48:13.311225+00:00",
-  "artifact": "content/image-rights/image-rights-ae477f3511a328f5.json",
+  "generated_at": "2026-10-12T07:30:00.958117+00:00",
+  "artifact": "content/image-rights/image-rights-16d68c7e435fc0eb.json",
   "evaluated_total": 4,
   "passed_total": 3,
   "blocked_total": 1,
