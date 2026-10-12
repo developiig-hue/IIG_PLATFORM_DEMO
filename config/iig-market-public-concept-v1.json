@@ -1,0 +1,140 @@
+{
+  "version": "IIG_MARKET_PUBLIC_CONCEPT_V1",
+  "status": "CONCEPT_LOCK",
+  "date": "2026-10-12",
+  "purpose": "Future public IIG MARKET section structure and inventory/content model",
+  "visual_reference_semantics": [
+    "industrial_hero",
+    "filter_bar_below_hero",
+    "equipment_grid_primary",
+    "iig_value_strip",
+    "how_it_works",
+    "seller_buyer_bottom_cta"
+  ],
+  "navigation": {
+    "top_level_item": "IIG MARKET",
+    "global_header": true,
+    "language_switcher": true
+  },
+  "hero": {
+    "title": "IIG MARKET",
+    "positioning": "new_and_used_industrial_energy_equipment",
+    "themes": [
+      "generation",
+      "transformation",
+      "automation",
+      "industrial_solutions"
+    ]
+  },
+  "filters": [
+    "category",
+    "condition",
+    "power_capacity",
+    "manufacturer",
+    "country_region",
+    "free_search"
+  ],
+  "listing_card": {
+    "required_public_fields": [
+      "listing_id",
+      "category",
+      "condition",
+      "image",
+      "title",
+      "manufacturer_model",
+      "key_power_capacity",
+      "key_public_parameters",
+      "location_region",
+      "price_mode",
+      "detail_request_deeplink"
+    ],
+    "optional_badges": [
+      "FEATURE",
+      "ТЕРМІНОВО"
+    ],
+    "forbidden_public_fields": [
+      "seller_contact",
+      "seller_asking_price",
+      "iig_fee"
+    ]
+  },
+  "categories": [
+    "Gas Engine / CHP",
+    "Gas Boiler",
+    "Gas Turbine",
+    "BESS",
+    "Transformers",
+    "SCADA / Control",
+    "Packaged CHP",
+    "Other approved industrial energy equipment"
+  ],
+  "value_strip": [
+    "IIG technical review",
+    "Confidential sale",
+    "Project-fit selection",
+    "Request through IIG"
+  ],
+  "process": [
+    "Publication / intake",
+    "Technical assessment",
+    "Buyer request through IIG",
+    "Deal support through IIG"
+  ],
+  "bottom_cta": {
+    "seller": "place own equipment / submit offer",
+    "buyer": "send request / find solution through IIG",
+    "placement_terms_visible": true
+  },
+  "supporting_content": [
+    "technical_notes",
+    "equipment_selection_guidance",
+    "technical_comparisons",
+    "project_fit",
+    "logistics_and_dismantling",
+    "financing_or_ECA_relevance",
+    "case_studies",
+    "partner_material",
+    "IIG_ORIGINAL",
+    "Digest_market_selection"
+  ],
+  "source_of_truth": "IIG MARKET Admin",
+  "admin_roles": {
+    "ADMIN_2": [
+      "create",
+      "edit",
+      "media",
+      "technical_parameters",
+      "price_prepare",
+      "digest_select",
+      "feature",
+      "urgent",
+      "supporting_content"
+    ],
+    "ADMIN_1": [
+      "approve_public_price",
+      "approve_commercial_state",
+      "activate_public_market"
+    ]
+  },
+  "digest_integration": "IIG_MARKETPLACE_DIGEST_V5",
+  "hard_rules": {
+    "seller_contact_public": false,
+    "internal_commission_public": false,
+    "unapproved_numeric_price_public": false,
+    "unique_listing_id_required": true,
+    "exact_listing_deeplink_required": true,
+    "buyer_seller_bypass_public_ui": false,
+    "real_inventory_filters_required": true,
+    "hidden_until_owner_activation": true
+  },
+  "responsive": {
+    "filters_may_collapse": true,
+    "cards_mobile_columns": [
+      1,
+      2
+    ],
+    "primary_cta_visible": true,
+    "badges_visible": true,
+    "no_core_horizontal_scroll": true
+  }
+}
