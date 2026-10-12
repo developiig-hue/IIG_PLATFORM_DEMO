@@ -1537,3 +1537,14 @@ Migration MUST preserve all approved MARKET ↔ Digest invariants, including:
 - ADMIN_1 numeric-price approval;
 - red UA `ТЕРМІНОВО`;
 - canonical Project + Subscribe CTA pair on every MARKET Digest page.
+
+
+## PAID HOSTING MIGRATION V5 — HARD LOCK REFERENCE
+
+Production migration must preserve the current ADMIN_1/ADMIN_2 authority model, CMS/Digest workflow, IIG MARKET integration, Marketplace auto-pull, manual equipment ordering/exclusion controls, search, public PDF behavior, audit/security requirements and all deep-links.
+
+Authoritative migration specification: `docs/IIG-PAID-HOSTING-MIGRATION-HARD-LOCK-V5.md`.
+Machine-readable contract: `config/paid-hosting-migration-contract-v5.json`.
+CI acceptance gate: `scripts/check_paid_hosting_migration_contract.py`.
+
+No production migration is accepted while this gate is failing.
