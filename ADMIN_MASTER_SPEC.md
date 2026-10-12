@@ -1509,3 +1509,31 @@ RBAC hard rule:
 This module MUST remain inside the existing ADMIN MASTER shell and MUST NOT replace or redesign the accepted Admin architecture.
 
 Marker: `IIG_MARKET_ADMIN_PROTOCOL_V1`.
+
+
+## IIG MARKET — PRODUCTION / PAID-HOSTING PORTABILITY MASTER — 2026-10-12
+
+Controlling production protocol:
+`docs/IIG_MARKET_PRODUCTION_PORTABILITY_PROTOCOL.md`
+
+Machine-readable production contract:
+`config/iig-market-production-portability.json`
+
+Marker:
+`IIG_MARKET_PRODUCTION_PORTABILITY_V1`
+
+The IIG MARKET Admin/demo implementation is NOT itself production authority. Paid-hosting activation requires server-side Password → MFA → session → RBAC, transactional private DB, persistent/object media storage, audit, backup/restore, private seller-data isolation, Terms versioning and the full MARKET production acceptance gate.
+
+Public MARKET remains:
+`HIDDEN_UNTIL_CONTENT_READY`
+until separate OWNER activation.
+
+Migration MUST preserve all approved MARKET ↔ Digest invariants, including:
+- candidate-pool only;
+- NO AUTO Page 4/5;
+- manual supplemental-page composer;
+- no overwrite of project/partner/sponsored/IIG ORIGINAL pages;
+- exact listing deep-links;
+- ADMIN_1 numeric-price approval;
+- red UA `ТЕРМІНОВО`;
+- canonical Project + Subscribe CTA pair on every MARKET Digest page.
