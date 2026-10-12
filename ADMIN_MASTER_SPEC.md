@@ -1484,3 +1484,28 @@ PII MUST NOT be stored in Git. Production persistence uses `IIG_REQUESTS_DIR` or
 Full machine contract: `REQUESTS_PROTOCOL.md`.
 
 **PORTABLE / PII / RBAC / COMMERCIAL CORE / RELEASE-BLOCKING.**
+
+
+## IIG MARKET MODULE — RESERVED / OWNER CONCEPT APPROVED — 2026-10-12
+
+A future ADMIN MASTER module `IIG MARKET` is reserved between NEWS and DIGEST.
+
+Canonical future Admin route:
+`/admin-ua.html#market`
+
+Controlling specification:
+`docs/IIG_MARKET_ADMIN_PROTOCOL.md`
+
+Machine-readable contract:
+`config/iig-market-admin-contract.json`
+
+Public MARKET remains hidden until separate OWNER activation:
+`HIDDEN_UNTIL_CONTENT_READY`.
+
+RBAC hard rule:
+- ADMIN_2 manages listings, media, specifications, seller/private data, buyer requests, draft prices and draft placement Terms.
+- ADMIN_1 exclusively approves final public prices / price changes and activates final placement/sale Terms / public-offer versions.
+
+This module MUST remain inside the existing ADMIN MASTER shell and MUST NOT replace or redesign the accepted Admin architecture.
+
+Marker: `IIG_MARKET_ADMIN_PROTOCOL_V1`.
