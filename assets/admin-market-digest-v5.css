@@ -1,0 +1,36 @@
+/* IIG MARKETPLACE → DIGEST V5 · HARD RULE 2026-10-12 */
+.marketdigestpage-v5{display:flex;flex-direction:column;gap:14px}
+.marketdigesteditorial{margin-top:8px;padding:10px 12px;border-left:4px solid #1b6aa8;background:#f5f9fc;white-space:pre-wrap}
+.marketdigestgroup{border:1px solid #d8e2ea;border-radius:12px;overflow:hidden;background:#fff}
+.marketdigestgrouphead{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:12px;padding:10px 12px;background:#eef4f8}
+.marketdigesttypetag{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:4px 10px;border-radius:7px;background:#07375a;color:#fff;font-weight:800;letter-spacing:.04em;font-size:12px}
+.marketdigestgrouphead b{font-size:13px;color:#102e3c}
+.marketdigestrows{display:flex;flex-direction:column}
+.marketdigestrow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:11px 12px;border-top:1px solid #e6edf2;color:#102e3c;text-decoration:none}
+.marketdigestrow:first-child{border-top:0}
+.marketdigestrow:hover{background:#f8fbfd}
+.marketdigestrowmain{display:flex;align-items:center;gap:8px;min-width:0}
+.marketdigestrowmain strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.marketdigestrowmeta{font-size:12px;color:#637985;white-space:nowrap}
+.marketdigestread{font-size:12px;font-weight:800;color:#1769a5;white-space:nowrap}
+.marketdigestrow.is-urgent{border-left:4px solid #c52026}
+.marketdigesturgent{display:inline-flex;background:#c52026;color:#fff;border-radius:4px;padding:2px 6px;font-size:10px;font-weight:900}
+.marketdigest-admin-controls{margin:0 0 14px;border:1px solid #cfdde7;border-radius:12px;background:#fbfdff;overflow:hidden}
+.marketdigest-admin-title{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:10px 12px;background:#eaf3f9}
+.marketdigest-admin-title small{color:#607580}
+.marketdigest-admin-row{display:grid;grid-template-columns:100px minmax(0,1fr) auto;align-items:center;gap:10px;padding:8px 10px;border-top:1px solid #e1e9ef}
+.marketdigest-admin-tag{font-size:11px;font-weight:900;color:#07375a;background:#eef4f8;padding:5px 7px;border-radius:5px;text-align:center}
+.marketdigest-admin-name{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.marketdigest-admin-actions{white-space:nowrap}
+@media(max-width:900px){
+ .marketdigestgrouphead{grid-template-columns:1fr}
+ .marketdigestrow{grid-template-columns:1fr}
+ .marketdigestrowmain strong{white-space:normal}
+ .marketdigest-admin-title{align-items:flex-start;flex-direction:column}
+ .marketdigest-admin-row{grid-template-columns:80px 1fr}
+ .marketdigest-admin-actions{grid-column:1/-1}
+}
+@media print{
+ .marketdigest-admin-controls{display:none!important}
+ .marketdigestrow{break-inside:avoid}
+}
