@@ -475,31 +475,103 @@ app.post("/unsubscribe",async(req,reply)=>{
 
 
 const RADAR_RUNS=new Map();
-const radarUpstream=()=>String(process.env.IIG_RADAR_UPSTREAM_URL||"").replace(/\/$/,"");
-const radarServiceToken=()=>String(process.env.IIG_RADAR_SERVICE_TOKEN||"");
-async function radarForward(pathname,options={}){
-  const base=radarUpstream();if(!base)throw Object.assign(new Error("RADAR_UPSTREAM_NOT_CONFIGURED"),{statusCode:503});
-  const headers={"Content-Type":"application/json",...(options.headers||{})};if(radarServiceToken())headers.Authorization="Bearer "+radarServiceToken();
-  const r=await fetch(base+pathname,{method:options.method||"GET",headers,body:options.body?JSON.stringify(options.body):undefined});
-  const x=await r.json().catch(()=>({}));if(!r.ok)throw Object.assign(new Error(x.error||x.detail||("RADAR_HTTP_"+r.status)),{statusCode:r.status,data:x});return x;
+const RADAR_ACTIVE_BY_ACTOR=new Map();
+const radarUpstream=()=>String(process.env.IIG_RADAR_SEARCH_ENDPOINT||process.env.IIG_RADAR_UPSTREAM_URL||"").replace(/\/$/,"");
+const radarServiceToken=()=>String(process.env.IIG_RADAR_SEARCH_TOKEN||process.env.IIG_RADAR_SERVICE_TOKEN||"");
+const radarActor=(req,role)=>String(req.iigAdminSession?.username||role||"admin");
+const cleanRadarText=(v,n=300)=>String(v??"").replace(/[\u0000-\u001F\u007F]/g,"").trim().slice(0,n);
+const validEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v||"").trim());
+function validateRadarPayload(body={}){
+  const query=cleanRadarText(body.query,500),industry=cleanRadarText(body.industry,120),country=cleanRadarText(body.country,120);
+  const limit=Math.max(1,Math.min(100,Number(body.limit||20))),min_sources=Number(body.min_sources||0),deep_scan=body.deep_scan===true;
+  if(query.length<3)throw Object.assign(new Error("RADAR_QUERY_REQUIRED"),{statusCode:422});
+  if(!deep_scan)throw Object.assign(new Error("RADAR_DEEP_SCAN_REQUIRED"),{statusCode:422});
+  if(!Number.isFinite(min_sources)||min_sources<1000)throw Object.assign(new Error("RADAR_MIN_SOURCES_1000_REQUIRED"),{statusCode:422});
+  return {query,industry,country,limit,min_sources:Math.floor(min_sources),deep_scan:true};
 }
+function sanitizeRadarResult(x={}){
+  const state=String(x.state||x.status||"").toLowerCase();
+  const scanned_sources=Number(x.scanned_sources||0),scanned_domains=Number(x.scanned_domains||x.discovered_domains||0);
+  let rows=Array.isArray(x.rows)?x.rows:[];
+  rows=rows.map(r=>({
+    company_name:cleanRadarText(r.company_name||r.company,220),
+    contact_name:cleanRadarText(r.contact_name||r.full_name||r.name,180),
+    position:cleanRadarText(r.position||r.role||r.title,180),
+    email:cleanRadarText(r.email,220).toLowerCase(),
+    country:cleanRadarText(r.country,100),
+    industry:cleanRadarText(r.industry,120),
+    relevance:cleanRadarText(r.relevance||r.signal,500),
+    source_url:cleanRadarText(r.source_url||r.source,900)
+  })).filter(r=>r.company_name&&r.contact_name&&r.position&&validEmail(r.email)&&/^https?:\/\//i.test(r.source_url));
+  if(state==="success"&&scanned_sources<1000){
+    return {...x,state:"failed",error:"RADAR_SCAN_UNDER_1000_SOURCES",scanned_sources,scanned_domains,count:0,rows:[]};
+  }
+  return {...x,state,scanned_sources,scanned_domains,count:rows.length,rows};
+}
+async function radarForward(pathname,options={}){
+  const base=radarUpstream();if(!base)throw Object.assign(new Error("RADAR_PRODUCTION_PROVIDER_NOT_CONFIGURED"),{statusCode:503});
+  if(!/^https?:\/\//i.test(base))throw Object.assign(new Error("RADAR_PROVIDER_URL_INVALID"),{statusCode:503});
+  const headers={"Content-Type":"application/json","Accept":"application/json",...(options.headers||{})};
+  if(radarServiceToken())headers.Authorization="Bearer "+radarServiceToken();
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),Number(process.env.IIG_RADAR_HTTP_TIMEOUT_MS||120000));
+  try{
+    const r=await fetch(base+pathname,{method:options.method||"GET",headers,body:options.body?JSON.stringify(options.body):undefined,signal:controller.signal});
+    const x=await r.json().catch(()=>({}));if(!r.ok)throw Object.assign(new Error(x.error||x.detail||("RADAR_HTTP_"+r.status)),{statusCode:r.status,data:x});return x;
+  }finally{clearTimeout(timeout)}
+}
+async function cancelRadarUpstream(id){
+  if(!id)return;
+  try{await radarForward("/api/v1/radar/runs/"+encodeURIComponent(id),{method:"DELETE"})}catch{}
+}
+app.get("/api/v1/radar/status",async(req,reply)=>{
+  const role=requireRole(req,reply,["ADMIN_1","ADMIN_2"]);if(!role)return;
+  reply.header("Cache-Control","no-store");
+  return {configured:!!radarUpstream(),provider:"SERVER_SIDE",ephemeral:true,min_sources:1000,persisted:false};
+});
 app.post("/api/v1/radar/runs",async(req,reply)=>{
   const role=requireRole(req,reply,["ADMIN_1","ADMIN_2"]);if(!role)return;
+  const actor=radarActor(req,role);
   if(String(process.env.IIG_E2E_MODE||"false").toLowerCase()==="true"){
-    const id="RADAR-E2E-"+Date.now().toString(36),rec={id,state:"success",scanned_sources:1000,scanned_domains:100,count:1,rows:[{company_name:"E2E Industrial",contact_name:"Test Contact",position:"Energy Manager",email:"e2e@example.invalid",country:"UA",industry:"energy",relevance:"E2E verified",source_url:"https://example.invalid"}]};RADAR_RUNS.set(id,rec);return reply.code(201).send(rec);
+    const id="RADAR-E2E-"+Date.now().toString(36),rec={id,state:"success",scanned_sources:1000,scanned_domains:100,count:1,rows:[{company_name:"E2E Industrial",contact_name:"Test Contact",position:"Energy Manager",email:"e2e@example.invalid",country:"UA",industry:"energy",relevance:"E2E verified",source_url:"https://example.invalid"}]};RADAR_RUNS.set(id,rec);RADAR_ACTIVE_BY_ACTOR.set(actor,id);return reply.code(201).send(rec);
   }
-  try{const x=await radarForward("/api/v1/radar/runs",{method:"POST",body:req.body||{}});await audit({actor:req.iigAdminSession?.username||role,role,action:"RADAR_RUN_START",object:x.id||"run",result:"QUEUED"});return reply.code(201).send(x)}
-  catch(e){return reply.code(e.statusCode||502).send({error:e.message})}
+  try{
+    const payload=validateRadarPayload(req.body||{});
+    const previous=RADAR_ACTIVE_BY_ACTOR.get(actor);
+    if(previous){
+      await cancelRadarUpstream(previous);
+      RADAR_RUNS.set(previous,{id:previous,state:"superseded",scanned_sources:0,scanned_domains:0,count:0,rows:[]});
+      await audit({actor,role,action:"RADAR_RUN_SUPERSEDE",object:previous,result:"SUPERSEDED"});
+    }
+    const raw=await radarForward("/api/v1/radar/runs",{method:"POST",body:payload});
+    const id=cleanRadarText(raw.id||raw.run_id,200);if(!id)throw Object.assign(new Error("RADAR_PROVIDER_RUN_ID_MISSING"),{statusCode:502});
+    const rec={...raw,id,state:String(raw.state||raw.status||"queued").toLowerCase(),scanned_sources:Number(raw.scanned_sources||0),scanned_domains:Number(raw.scanned_domains||0),count:0,rows:[],persisted:false,mode:"EPHEMERAL"};
+    RADAR_RUNS.set(id,rec);RADAR_ACTIVE_BY_ACTOR.set(actor,id);
+    await audit({actor,role,action:"RADAR_RUN_START",object:id,result:"QUEUED"});
+    reply.header("Cache-Control","no-store");return reply.code(201).send(rec);
+  }catch(e){return reply.code(e.statusCode||502).send({error:e.message,detail:e.data?.detail})}
 });
 app.get("/api/v1/radar/runs/:id",async(req,reply)=>{
   const role=requireRole(req,reply,["ADMIN_1","ADMIN_2"]);if(!role)return;
-  if(RADAR_RUNS.has(req.params.id))return RADAR_RUNS.get(req.params.id);
-  try{return await radarForward("/api/v1/radar/runs/"+encodeURIComponent(req.params.id))}catch(e){return reply.code(e.statusCode||502).send({error:e.message})}
+  const id=cleanRadarText(req.params.id,200),local=RADAR_RUNS.get(id);
+  if(local&&["superseded","cancelled"].includes(local.state))return local;
+  if(String(process.env.IIG_E2E_MODE||"false").toLowerCase()==="true"&&local)return local;
+  try{
+    const out=sanitizeRadarResult(await radarForward("/api/v1/radar/runs/"+encodeURIComponent(id)));
+    RADAR_RUNS.set(id,{...out,id,persisted:false,mode:"EPHEMERAL"});
+    if(["success","failed","cancelled","superseded"].includes(out.state)){
+      for(const [actor,runId] of RADAR_ACTIVE_BY_ACTOR)if(runId===id)RADAR_ACTIVE_BY_ACTOR.delete(actor);
+    }
+    reply.header("Cache-Control","no-store");return RADAR_RUNS.get(id);
+  }catch(e){return reply.code(e.statusCode||502).send({error:e.message,detail:e.data?.detail})}
 });
 app.delete("/api/v1/radar/runs/:id",async(req,reply)=>{
   const role=requireRole(req,reply,["ADMIN_1","ADMIN_2"]);if(!role)return;
-  if(RADAR_RUNS.delete(req.params.id))return {status:"DELETED"};
-  try{return await radarForward("/api/v1/radar/runs/"+encodeURIComponent(req.params.id),{method:"DELETE"})}catch(e){return reply.code(e.statusCode||502).send({error:e.message})}
+  const id=cleanRadarText(req.params.id,200),actor=radarActor(req,role);
+  if(String(process.env.IIG_E2E_MODE||"false").toLowerCase()!=="true")await cancelRadarUpstream(id);
+  RADAR_RUNS.set(id,{id,state:"cancelled",scanned_sources:0,scanned_domains:0,count:0,rows:[],persisted:false,mode:"EPHEMERAL"});
+  for(const [a,runId] of RADAR_ACTIVE_BY_ACTOR)if(runId===id)RADAR_ACTIVE_BY_ACTOR.delete(a);
+  await audit({actor,role,action:"RADAR_RUN_CANCEL",object:id,result:"CANCELLED"});
+  reply.header("Cache-Control","no-store");return {id,state:"cancelled",persisted:false};
 });
 
 function validateEditorialRichHtml(item){
