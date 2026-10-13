@@ -28,6 +28,8 @@ jobs:
       - name: Syntax guard
         working-directory: backend
         run: npm run check
+      - name: Production backend portability gate
+        run: python scripts/check_production_backend.py
       - name: Backend unit tests
         working-directory: backend
         run: npm test
