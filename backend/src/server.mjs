@@ -127,7 +127,7 @@ app.get("/admin/app",async(req,reply)=>{
   try{
     let html=await fs.readFile(path.join(uiRoot,"admin-ua-v5.html"),"utf8");
     const bootstrap={authenticated:true,role:req.iigAdminSession.role,username:req.iigAdminSession.username,display_name:adminDisplayName(req.iigAdminSession.role),csrf:req.iigAdminSession.csrf_token,expires_at:req.iigAdminSession.expires_at};
-    html=html.replace("<head>","<head><base href=\"/\"><script>window.IIG_SECURE_BOOTSTRAP="+JSON.stringify(bootstrap).replace(/</g,"\\u003c")+";<\\/script>");
+    html=html.replace("<head>","<head><base href=\"/\"><script>window.IIG_SECURE_BOOTSTRAP="+JSON.stringify(bootstrap).replace(/</g,"\\u003c")+";</script>");
     if(!html.includes("admin-secure-session.js"))html=html.replace("</head>",'<script src="/assets/admin-secure-session.js"></script></head>');
     html=html.replace(/DEMO · PRODUCTION LOCKED/g,"PRODUCTION · SECURE SESSION");
     reply.header("Cache-Control","no-store");
