@@ -30,6 +30,8 @@ jobs:
         run: npm run check
       - name: Production backend portability gate
         run: python scripts/check_production_backend.py
+      - name: Validate production Docker Compose
+        run: docker compose -f backend/docker-compose.production.yml --env-file backend/.env.production.example config >/dev/null
       - name: Backend unit tests
         working-directory: backend
         run: npm test
