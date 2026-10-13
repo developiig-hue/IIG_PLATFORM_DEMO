@@ -37,6 +37,7 @@ function applyRole(){
     el.disabled=true;el.title="Роль визначається захищеною server-side сесією";
   }
   document.querySelectorAll("[data-locked]").forEach(el=>{if(el.textContent?.match(/production/i))el.dataset.locked="Production privilege requires server-side RBAC"});
+  const host=document.querySelector(".adminsession");if(host&&!document.getElementById("secureAdminLogout")){const b=document.createElement("button");b.id="secureAdminLogout";b.className="btn danger";b.textContent="Вийти";b.onclick=()=>window.IIGAdminLogout();host.appendChild(b)}
 }
 document.addEventListener("DOMContentLoaded",()=>{window.IIGSecureSession.ready.then(applyRole)});
 window.IIGAdminLogout=async()=>{try{await window.fetch("/api/v1/auth/logout",{method:"POST"})}finally{location.replace("/admin/")}};
