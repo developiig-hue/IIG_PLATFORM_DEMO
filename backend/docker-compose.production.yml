@@ -1,0 +1,59 @@
+services:
+  iig-backend:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    environment:
+      NODE_ENV: production
+      PORT: 8787
+      HOST: 0.0.0.0
+      IIG_AUTH_DIR: /app/var/auth
+      IIG_AUDIT_DIR: /app/var/audit
+      IIG_REQUESTS_DIR: /app/var/requests
+      IIG_EDITORIAL_DRAFT_DIR: /app/var/editorial-drafts
+      IIG_MAILING_DIR: /app/var/mailing
+      IIG_DIGEST_LOCAL_DIR: /app/data/digest
+    volumes:
+      - iig-private-var:/app/var
+      - iig-digest-data:/app/data/digest
+    ports:
+      - "127.0.0.1:8787:8787"
+    healthcheck:
+      test: ["CMD","node","-e","fetch('http://127.0.0.1:8787/healthz').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=128m
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-iig}
+      POSTGRES_USER: ${POSTGRES_USER:-iig}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env.production}
+    volumes:
+      - iig-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U ${POSTGRES_USER:-iig} -d ${POSTGRES_DB:-iig}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "127.0.0.1:5432:5432"
+
+volumes:
+  iig-private-var:
+  iig-digest-data:
+  iig-postgres-data:
