@@ -75,7 +75,28 @@ app.addHook("onRequest",async(req,reply)=>{
   }
 });
 
-app.get("/healthz",async()=>({ok:true,service:"iig-digest-publication-service"}));
+app.get("/healthz",async()=>({ok:true,service:"iig-production-backend"}));
+app.get("/readyz",async(req,reply)=>{
+  const checks={
+    production:String(process.env.NODE_ENV||"").toLowerCase()==="production",
+    public_base_url:/^https:\/\//i.test(String(process.env.PUBLIC_BASE_URL||"")),
+    allowed_origins:String(process.env.IIG_ALLOWED_ORIGINS||"").includes("https://"),
+    auth_dir:!!process.env.IIG_AUTH_DIR,
+    audit_dir:!!process.env.IIG_AUDIT_DIR,
+    requests_dir:!!process.env.IIG_REQUESTS_DIR,
+    editorial_dir:!!process.env.IIG_EDITORIAL_DRAFT_DIR,
+    mailing_dir:!!process.env.IIG_MAILING_DIR,
+    digest_storage:["local","s3"].includes(String(process.env.IIG_DIGEST_STORAGE||"local").toLowerCase()),
+    smtp:!!(process.env.IIG_SMTP_HOST&&process.env.IIG_SMTP_USER&&process.env.IIG_SMTP_PASS),
+    unsubscribe_secret:String(process.env.IIG_UNSUBSCRIBE_SECRET||"").length>=32,
+    admin1_auth:!!(process.env.IIG_ADMIN1_PASSWORD_HASH&&process.env.IIG_ADMIN1_MFA_SECRET),
+    admin2_auth:!!(process.env.IIG_ADMIN2_PASSWORD_HASH&&process.env.IIG_ADMIN2_MFA_SECRET),
+    radar_provider:!!radarUpstream()
+  };
+  const ok=Object.values(checks).every(Boolean);
+  reply.header("Cache-Control","no-store");
+  return reply.code(ok?200:503).send({ok,service:"iig-production-backend",checks});
+});
 
 app.get("/api/v1/auth/session",async(req,reply)=>{
   if(!req.iigAdminSession)return reply.code(401).send({authenticated:false});
