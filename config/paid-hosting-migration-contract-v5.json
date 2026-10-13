@@ -15,7 +15,15 @@
     "docs/HARD-RULE-IIG-MARKET-DIGEST-V5.md",
     "docs/IIG-PAID-HOSTING-MIGRATION-HARD-LOCK-V5.md",
     "docs/IIG-MARKET-PUBLIC-CONCEPT-V1.md",
-    "config/iig-market-public-concept-v1.json"
+    "config/iig-market-public-concept-v1.json",
+    "docs/IIG-SECURE-ADMIN-PRODUCTION-ACTIVATION-GATE.md",
+    "scripts/check_secure_admin_prehosting.py",
+    ".github/workflows/secure-admin-prehosting.yml",
+    "assets/admin-secure-session.js",
+    "backend/src/session-auth.mjs",
+    "backend/src/auth.mjs",
+    "backend/src/admin-login.mjs",
+    "backend/test/admin-e2e.test.mjs"
   ],
   "production": {
     "database": "PostgreSQL_or_approved_relational_DB",
@@ -124,5 +132,34 @@
     "preserve_admin_source_of_truth": true,
     "preserve_digest_integration": true,
     "pixel_perfect_design_required": false
+  },
+  "secure_admin": {
+    "route": "/admin/",
+    "chain": [
+      "PASSWORD",
+      "TOTP_MFA",
+      "HTTPONLY_SECURE_SESSION",
+      "CSRF",
+      "RBAC"
+    ],
+    "roles": [
+      "ADMIN_1",
+      "ADMIN_2"
+    ],
+    "legacy_tokens_default": false,
+    "trusted_proxy_auth_default": false,
+    "production_api_required_for_privileged_actions": true,
+    "privileged_domains": [
+      "NEWS",
+      "DIGEST",
+      "MAILING",
+      "REQUESTS",
+      "CONTACTS",
+      "RADAR",
+      "AUDIT"
+    ],
+    "e2e_required": true,
+    "prehosting_ci": ".github/workflows/secure-admin-prehosting.yml",
+    "live_staging_validation_required_before_cutover": true
   }
 }
