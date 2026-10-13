@@ -1,11 +1,15 @@
 services:
-  iig-digest:
-    build: .
+  iig-backend:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
     restart: unless-stopped
     env_file: .env
     volumes:
       - iig-digest-data:/app/data/digest
+      - iig-private-var:/app/var
     ports:
       - "127.0.0.1:8787:8787"
 volumes:
   iig-digest-data:
+  iig-private-var:
