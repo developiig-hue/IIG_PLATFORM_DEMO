@@ -1,7 +1,11 @@
 import Fastify from "fastify";
 import multipart from "@fastify/multipart";
 import formbody from "@fastify/formbody";
-import {requireAdmin} from "./auth.mjs";
+import {requireAdmin,requireRole} from "./auth.mjs";
+import {startLogin,finishMfa,resolveSession,logout,sessionCookie,clearSessionCookie,adminDisplayName} from "./session-auth.mjs";
+import {audit,recentAudit} from "./audit-store.mjs";
+import {saveDraft as saveEditorialRecord,approveEditorial,publishEditorial,getEditorial} from "./editorial-store.mjs";
+import {adminLoginHtml} from "./admin-login.mjs";
 import {putCurrent,getCurrentMeta,getCurrentPdf,revisionFor,sha256} from "./storage.mjs";
 import {saveApproval,getApproval} from "./approval-store.mjs";
 import {verifyPdfLinks} from "./pdf-links.mjs";
@@ -19,7 +23,7 @@ await app.register(formbody);
 const normLang=v=>String(v||"UA").toUpperCase()==="EN"?"EN":"UA";
 const editorialDraftDir=path.resolve(process.env.IIG_EDITORIAL_DRAFT_DIR||"./var/editorial-drafts");
 const safeSlug=v=>String(v||"").toLowerCase().replace(/[^a-z0-9-]/g,"").slice(0,160);
-async function saveEditorialDraft(slug,record){await fs.mkdir(editorialDraftDir,{recursive:true});const tmp=path.join(editorialDraftDir,slug+".tmp"),dst=path.join(editorialDraftDir,slug+".json");await fs.writeFile(tmp,JSON.stringify(record,null,2)+"\n",{mode:0o600});await fs.rename(tmp,dst)}
+async function saveEditorialDraftLegacy(slug,record){await fs.mkdir(editorialDraftDir,{recursive:true});const tmp=path.join(editorialDraftDir,slug+".tmp"),dst=path.join(editorialDraftDir,slug+".json");await fs.writeFile(tmp,JSON.stringify(record,null,2)+"\n",{mode:0o600});await fs.rename(tmp,dst)}
 
 
 const EDITORIAL_REFRESH_REQUESTS=new Map();
@@ -56,6 +60,7 @@ function requestExcelXml(type,rows){
 }
 const allowedOrigins=new Set(String(process.env.IIG_ALLOWED_ORIGINS||"").split(",").map(x=>x.trim()).filter(Boolean));
 app.addHook("onRequest",async(req,reply)=>{
+  req.iigAdminSession=await resolveSession(req);
   const origin=req.headers.origin;
   if(origin && allowedOrigins.size && !allowedOrigins.has(origin))return reply.code(403).send({error:"ORIGIN_NOT_ALLOWED"});
   if(origin && allowedOrigins.has(origin)){
@@ -71,6 +76,69 @@ app.addHook("onRequest",async(req,reply)=>{
 });
 
 app.get("/healthz",async()=>({ok:true,service:"iig-digest-publication-service"}));
+
+app.get("/api/v1/auth/session",async(req,reply)=>{
+  if(!req.iigAdminSession)return reply.code(401).send({authenticated:false});
+  reply.header("Cache-Control","no-store");
+  return {authenticated:true,role:req.iigAdminSession.role,username:req.iigAdminSession.username,display_name:adminDisplayName(req.iigAdminSession.role),csrf:process.env.NODE_ENV==="test"?req.headers["x-iig-test-csrf"]||null:undefined,expires_at:req.iigAdminSession.expires_at};
+});
+
+app.post("/api/v1/auth/login",async(req,reply)=>{
+  try{
+    const out=await startLogin(req,req.body?.username,req.body?.password);
+    await audit({actor:String(req.body?.username||"").slice(0,120),role:out.role_hint,action:"AUTH_PASSWORD_OK",object:"/admin/",result:"MFA_REQUIRED"});
+    reply.header("Cache-Control","no-store");return out;
+  }catch(e){
+    await audit({actor:String(req.body?.username||"").slice(0,120),role:null,action:"AUTH_PASSWORD_FAILED",object:"/admin/",result:String(e.message||e)});
+    return reply.code(e.statusCode||401).send({error:String(e.message||"INVALID_CREDENTIALS")});
+  }
+});
+
+app.post("/api/v1/auth/mfa",async(req,reply)=>{
+  try{
+    const ip=String(req.headers["x-forwarded-for"]||req.ip||"").split(",")[0].trim();
+    const out=await finishMfa(req.body?.challenge_id,req.body?.code,{ip_hash:crypto.createHash("sha256").update(ip+"|"+String(process.env.IIG_AUTH_IP_SALT||"iig")).digest("hex").slice(0,32),user_agent:req.headers["user-agent"]||""});
+    reply.header("Set-Cookie",sessionCookie(out.token));
+    reply.header("Cache-Control","no-store");
+    await audit({actor:out.username,role:out.role,action:"AUTH_MFA_OK",object:"/admin/",result:"SESSION_CREATED"});
+    return {authenticated:true,role:out.role,username:out.username,display_name:adminDisplayName(out.role),csrf:out.csrf,expires_at:out.expires_at};
+  }catch(e){
+    await audit({actor:"MFA_CHALLENGE",role:null,action:"AUTH_MFA_FAILED",object:"/admin/",result:String(e.message||e)});
+    return reply.code(e.statusCode||401).send({error:String(e.message||"MFA_FAILED")});
+  }
+});
+
+app.post("/api/v1/auth/logout",async(req,reply)=>{
+  if(req.iigAdminSession)await logout(req);
+  reply.header("Set-Cookie",clearSessionCookie());
+  reply.header("Cache-Control","no-store");
+  return {status:"LOGGED_OUT"};
+});
+
+app.get("/admin/",async(req,reply)=>{
+  reply.header("Cache-Control","no-store");
+  if(req.iigAdminSession)return reply.redirect("/admin/app");
+  return reply.type("text/html; charset=utf-8").send(adminLoginHtml());
+});
+
+app.get("/admin/app",async(req,reply)=>{
+  if(!req.iigAdminSession)return reply.redirect("/admin/");
+  const uiRoot=path.resolve(process.env.IIG_ADMIN_UI_DIR||"./admin-ui");
+  try{
+    let html=await fs.readFile(path.join(uiRoot,"admin-ua-v5.html"),"utf8");
+    html=html.replace("<head>","<head><base href=\"/\">");
+    if(!html.includes("admin-secure-session.js"))html=html.replace("</head>",'<script src="/assets/admin-secure-session.js"></script></head>');
+    html=html.replace(/DEMO · PRODUCTION LOCKED/g,"PRODUCTION · SECURE SESSION");
+    reply.header("Cache-Control","no-store");
+    return reply.type("text/html; charset=utf-8").send(html);
+  }catch(e){req.log.error(e);return reply.code(503).send({error:"ADMIN_UI_NOT_PACKAGED"})}
+});
+
+app.get("/api/v1/audit",async(req,reply)=>{
+  const role=requireRole(req,reply,["ADMIN_1"]);if(!role)return;
+  reply.header("Cache-Control","no-store");return {rows:await recentAudit(Number(req.query?.limit||100))};
+});
+
 
 app.post("/api/v1/requests",async(req,reply)=>{
   if(!rateLimitPublic(req))return reply.code(429).send({error:"RATE_LIMIT"});
@@ -125,6 +193,7 @@ app.post("/api/v1/digest/approvals",async(req,reply)=>{
   if(!/^\d{4}-\d{2}$/.test(issue)||fingerprint.length<8)return reply.code(400).send({error:"INVALID_APPROVAL"});
   const record={schema:"iig.digest-server-approval.v2",issue,language,fingerprint,preview_fingerprint:String(body.preview_fingerprint||fingerprint),approved_by:"ADMIN_1",approved_at:new Date().toISOString(),revision:Number(body.revision||0)};
   await saveApproval(record);
+  await audit({actor:req.iigAdminSession?.username||role,role,action:"DIGEST_APPROVE",object:issue+"."+language,result:fingerprint.slice(0,32)});
   return {status:"APPROVED",...record};
 });
 
@@ -152,6 +221,7 @@ app.post("/api/v1/digest/releases",async(req,reply)=>{
   const publicUrl=(publicBase?publicBase:"")+"/digest/"+fileName;
   const record={schema:"iig.digest-current.v2",status:"CURRENT",issue,language,fingerprint,approved_by:"ADMIN_1",approved_at:approval.approved_at,uploaded_by:role,published_at:new Date().toISOString(),revision,sha256:hash,bytes:pdf.length,public_url:publicUrl,links_preserved:true,link_count:linkCheck.link_count,previous_current_deleted:true};
   await putCurrent(pdf,record);
+  await audit({actor:req.iigAdminSession?.username||role,role,action:"DIGEST_RELEASE",object:issue+"."+language,result:revision});
   reply.header("Cache-Control","no-store");
   return record;
 });
@@ -400,6 +470,35 @@ app.post("/unsubscribe",async(req,reply)=>{
 });
 
 
+
+const RADAR_RUNS=new Map();
+const radarUpstream=()=>String(process.env.IIG_RADAR_UPSTREAM_URL||"").replace(/\/$/,"");
+const radarServiceToken=()=>String(process.env.IIG_RADAR_SERVICE_TOKEN||"");
+async function radarForward(pathname,options={}){
+  const base=radarUpstream();if(!base)throw Object.assign(new Error("RADAR_UPSTREAM_NOT_CONFIGURED"),{statusCode:503});
+  const headers={"Content-Type":"application/json",...(options.headers||{})};if(radarServiceToken())headers.Authorization="Bearer "+radarServiceToken();
+  const r=await fetch(base+pathname,{method:options.method||"GET",headers,body:options.body?JSON.stringify(options.body):undefined});
+  const x=await r.json().catch(()=>({}));if(!r.ok)throw Object.assign(new Error(x.error||x.detail||("RADAR_HTTP_"+r.status)),{statusCode:r.status,data:x});return x;
+}
+app.post("/api/v1/radar/runs",async(req,reply)=>{
+  const role=requireRole(req,reply,["ADMIN_1","ADMIN_2"]);if(!role)return;
+  if(String(process.env.IIG_E2E_MODE||"false").toLowerCase()==="true"){
+    const id="RADAR-E2E-"+Date.now().toString(36),rec={id,state:"success",scanned_sources:1000,scanned_domains:100,count:1,rows:[{company_name:"E2E Industrial",contact_name:"Test Contact",position:"Energy Manager",email:"e2e@example.invalid",country:"UA",industry:"energy",relevance:"E2E verified",source_url:"https://example.invalid"}]};RADAR_RUNS.set(id,rec);return reply.code(201).send(rec);
+  }
+  try{const x=await radarForward("/api/v1/radar/runs",{method:"POST",body:req.body||{}});await audit({actor:req.iigAdminSession?.username||role,role,action:"RADAR_RUN_START",object:x.id||"run",result:"QUEUED"});return reply.code(201).send(x)}
+  catch(e){return reply.code(e.statusCode||502).send({error:e.message})}
+});
+app.get("/api/v1/radar/runs/:id",async(req,reply)=>{
+  const role=requireRole(req,reply,["ADMIN_1","ADMIN_2"]);if(!role)return;
+  if(RADAR_RUNS.has(req.params.id))return RADAR_RUNS.get(req.params.id);
+  try{return await radarForward("/api/v1/radar/runs/"+encodeURIComponent(req.params.id))}catch(e){return reply.code(e.statusCode||502).send({error:e.message})}
+});
+app.delete("/api/v1/radar/runs/:id",async(req,reply)=>{
+  const role=requireRole(req,reply,["ADMIN_1","ADMIN_2"]);if(!role)return;
+  if(RADAR_RUNS.delete(req.params.id))return {status:"DELETED"};
+  try{return await radarForward("/api/v1/radar/runs/"+encodeURIComponent(req.params.id),{method:"DELETE"})}catch(e){return reply.code(e.statusCode||502).send({error:e.message})}
+});
+
 function validateEditorialRichHtml(item){
   const h=String(item?.body_html?.ua||"");
   if(!h)return true;
@@ -412,8 +511,41 @@ app.post("/api/v1/editorial/drafts/:slug",async(req,reply)=>{
   if(!["ADMIN_1","ADMIN_2"].includes(role))return reply.code(403).send({error:"EDITOR_ROLE_REQUIRED"});
   const slug=safeSlug(req.params?.slug),item=req.body?.item;
   if(!slug||!item||typeof item!=="object")return reply.code(400).send({error:"INVALID_EDITORIAL_DRAFT"});if(!validateEditorialRichHtml(item))return reply.code(400).send({error:"UNSAFE_EDITORIAL_HTML"});
-  const record={schema:"iig.editorial-draft.v1",slug,status:"REVIEW",edited_by:role,edited_at:new Date().toISOString(),item:{...item,slug,status:"REVIEW",admin_approved:false,demo_published:false,editorial_edited_by:role}};
-  await saveEditorialDraft(slug,record);reply.header("Cache-Control","no-store");return {status:"SAVED",slug,edited_by:role,edited_at:record.edited_at};
+  const record=await saveEditorialRecord(slug,item,role);
+  await audit({actor:req.iigAdminSession?.username||role,role,action:"EDITORIAL_SAVE_DRAFT",object:slug,result:"REVIEW"});
+  reply.header("Cache-Control","no-store");return {status:"SAVED",slug,edited_by:role,edited_at:record.edited_at};
+});
+
+
+app.get("/api/v1/editorial/drafts/:slug",async(req,reply)=>{
+  const role=requireAdmin(req,reply);if(!role)return;
+  const record=await getEditorial(safeSlug(req.params?.slug));
+  if(!record)return reply.code(404).send({error:"EDITORIAL_NOT_FOUND"});
+  reply.header("Cache-Control","no-store");return record;
+});
+
+app.post("/api/v1/editorial/:slug/approve",async(req,reply)=>{
+  const role=requireRole(req,reply,["ADMIN_1"]);if(!role)return;
+  try{
+    const rec=await approveEditorial(safeSlug(req.params?.slug),role);
+    await audit({actor:req.iigAdminSession?.username||role,role,action:"EDITORIAL_APPROVE",object:rec.slug,result:"APPROVED"});
+    return {status:"APPROVED",record:rec};
+  }catch(e){return reply.code(e.code==="EDITORIAL_NOT_FOUND"?404:422).send({error:e.code||"EDITORIAL_APPROVAL_FAILED"})}
+});
+
+app.post("/api/v1/editorial/:slug/publish",async(req,reply)=>{
+  const role=requireRole(req,reply,["ADMIN_1"]);if(!role)return;
+  try{
+    const rec=await publishEditorial(safeSlug(req.params?.slug),role);
+    let dispatch={status:"NOT_CONFIGURED"};
+    if(ghToken()){
+      const rid="publish-"+Date.now().toString(36)+"-"+rec.slug.slice(0,48);
+      await githubApi("/repos/"+ghRepo+"/actions/workflows/"+encodeURIComponent(ghWorkflow)+"/dispatches",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ref:ghBranch,inputs:{reason:rid+":publish:"+rec.slug}})});
+      dispatch={status:"QUEUED",request_id:rid};
+    }
+    await audit({actor:req.iigAdminSession?.username||role,role,action:"EDITORIAL_PUBLISH",object:rec.slug,result:dispatch.status});
+    return {status:"PUBLISHED",record:rec,publication_dispatch:dispatch};
+  }catch(e){return reply.code(e.code==="EDITORIAL_NOT_FOUND"?404:e.code==="EDITORIAL_APPROVAL_REQUIRED"?409:422).send({error:e.code||"EDITORIAL_PUBLICATION_FAILED"})}
 });
 
 app.post("/api/v1/editorial/refresh",async(req,reply)=>{
