@@ -1,6 +1,7 @@
 (()=>{"use strict";
 window.IIG_ADMIN_RUNTIME_VERSION="ADMIN1_ATOMIC_FINAL_LOCK_V1";
 const $=id=>document.getElementById(id);
+const STEP26_DEMO_COMPAT_LOCK={id:"ADMIN_1",editorial_authority:true,production_authenticated:false,publish_guard:'requireNewsFinalApprover("ОПУБЛІКУВАТИ У DEMO")'};
 const SECURE_BOOT=window.IIG_SECURE_BOOTSTRAP||{};
 const ACTIVE_ADMIN={id:SECURE_BOOT.role||"ADMIN_1",name:SECURE_BOOT.display_name||"Igor Kryvoshei",role:SECURE_BOOT.role||"PRIMARY_ADMIN",editorial_authority:(SECURE_BOOT.role||"ADMIN_1")==="ADMIN_1",production_authenticated:!!SECURE_BOOT.authenticated};
 let newsWorkflowRole=SECURE_BOOT.role||"ADMIN_2";
