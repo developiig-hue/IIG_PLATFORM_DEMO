@@ -133,3 +133,107 @@ API:
 Persistence is controlled by `IIG_REQUESTS_DIR`. This path contains PII and MUST be private, backed up and excluded from Git/static hosting. Records are retained for lifetime counters; processing never deletes the original submission.
 
 GitHub Pages cannot provide the protected backend. Its frontend uses a same-browser local fallback only for UX testing; that fallback is never a production source of truth.
+
+
+## Production paid-hosting stack
+
+The production-ready backend stack is defined in:
+
+- `backend/docker-compose.production.yml`
+- `backend/.env.production.example`
+- `backend/nginx.iig-production.conf.template`
+- `backend/backup-production.sh`
+- `backend/restore-production.sh`
+
+### Persistent data
+
+The backend writes all private JSON/state stores under `/app/var`, mounted to the Docker named volume `iig-private-var`:
+
+- authentication sessions/challenges;
+- audit log;
+- requests;
+- contacts;
+- editorial drafts;
+- mailing campaign ledger/templates.
+
+Digest CURRENT PDFs and approval/release metadata use:
+- `/app/data/digest` persistent Docker volume in `local` mode; or
+- S3-compatible object storage when `IIG_DIGEST_STORAGE=s3`.
+
+PostgreSQL 16 is provisioned with its own persistent volume as the production relational-data foundation for subsequent structured CMS/MARKET migrations. Existing backend state remains fully persistent through the mounted private volumes and does not depend on container writable layers.
+
+### First deployment
+
+```bash
+cp backend/.env.production.example backend/.env.production
+chmod 600 backend/.env.production
+# replace every CHANGE_ME value
+
+docker compose \
+  -f backend/docker-compose.production.yml \
+  --env-file backend/.env.production \
+  up -d --build
+
+curl -fsS http://127.0.0.1:8787/healthz
+curl -i http://127.0.0.1:8787/readyz
+```
+
+`/readyz` returns HTTP 200 only when the required production configuration is present, including HTTPS public URL, auth/MFA secrets, SMTP and permanent RADAR provider configuration.
+
+### HTTPS / reverse proxy
+
+Install the public static site at `/srv/iig/public` (or adjust the root), copy `backend/nginx.iig-production.conf.template` into the hosting Nginx configuration, replace `CHANGE_ME_DOMAIN`, and install a valid TLS certificate using the hosting panel or Certbot.
+
+Backend port 8787 remains bound only to `127.0.0.1`.
+
+### RADAR production contract
+
+The browser no longer needs a temporary tunnel/crawler URL on paid hosting.
+
+Admin calls only:
+- `POST /api/v1/radar/runs`
+- `GET /api/v1/radar/runs/:id`
+- `DELETE /api/v1/radar/runs/:id`
+
+The IIG backend connects server-side to the stable private provider configured by:
+- `IIG_RADAR_SEARCH_ENDPOINT`
+- `IIG_RADAR_SEARCH_TOKEN`
+
+Backend enforcement:
+- `deep_scan=true`;
+- `min_sources >= 1000`;
+- active run replacement/cancellation;
+- `scanned_sources >= 1000` before SUCCESS;
+- contact-complete rows only;
+- generated contact rows are ephemeral and are not stored in DB/object storage.
+
+This removes the GitHub Pages `radar_api=trycloudflare...` dependency from production.
+
+### SMTP
+
+Configure:
+- `IIG_SMTP_HOST`
+- `IIG_SMTP_PORT`
+- `IIG_SMTP_SECURE`
+- `IIG_SMTP_USER`
+- `IIG_SMTP_PASS`
+- `IIG_MAIL_FROM`
+- `IIG_UNSUBSCRIBE_SECRET`
+
+SPF/DKIM/DMARC remain DNS/provider configuration and must be completed on the production mail domain.
+
+### Backup / restore
+
+Run:
+
+```bash
+chmod +x backend/backup-production.sh backend/restore-production.sh
+./backend/backup-production.sh /srv/iig/backups
+```
+
+A production cutover is not GREEN until at least one controlled restore test has completed successfully.
+
+### Server-side secrets
+
+`backend/.env.production` must never be committed. Restrict it to the deployment user (`chmod 600`) or replace it with the hosting provider's secret manager.
+
