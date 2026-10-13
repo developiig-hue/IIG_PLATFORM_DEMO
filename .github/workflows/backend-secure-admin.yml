@@ -1,0 +1,36 @@
+name: Secure Admin Backend E2E
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - "assets/admin-secure-session.js"
+      - "assets/admin-final-admin1-v1.js"
+      - "assets/admin-radar.js"
+      - "assets/admin-requests.js"
+      - "assets/admin-contacts.js"
+      - ".github/workflows/backend-secure-admin.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  secure-admin-e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm install --no-audit --no-fund
+      - name: Syntax guard
+        working-directory: backend
+        run: npm run check
+      - name: Backend unit tests
+        working-directory: backend
+        run: npm test
+      - name: Full secure Admin E2E
+        working-directory: backend
+        run: npm run e2e
