@@ -59,6 +59,21 @@ function requestExcelXml(type,rows){
   return '<?xml version="1.0" encoding="UTF-8"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Worksheet ss:Name="'+xmlEsc(type)+'"><Table>'+tr(heads)+body+'</Table></Worksheet></Workbook>';
 }
 const allowedOrigins=new Set(String(process.env.IIG_ALLOWED_ORIGINS||"").split(",").map(x=>x.trim()).filter(Boolean));
+app.addHook("onSend",async(req,reply,payload)=>{
+  const url=String(req.raw.url||"");
+  if(url.startsWith("/admin/")||url.startsWith("/api/v1/")){
+    reply.header("Cache-Control","no-store");
+    reply.header("X-Content-Type-Options","nosniff");
+    reply.header("X-Frame-Options","DENY");
+    reply.header("Referrer-Policy","no-referrer");
+    reply.header("Permissions-Policy","camera=(), microphone=(), geolocation=()");
+    if(url.startsWith("/admin/")){
+      reply.header("Content-Security-Policy","default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; connect-src 'self' https:; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'");
+    }
+  }
+  return payload;
+});
+
 app.addHook("onRequest",async(req,reply)=>{
   req.iigAdminSession=await resolveSession(req);
   const origin=req.headers.origin;
