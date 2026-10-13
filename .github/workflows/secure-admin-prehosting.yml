@@ -1,0 +1,38 @@
+name: Secure Admin Prehosting Gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - "assets/admin*.js"
+      - "admin-ua-v5.html"
+      - "scripts/check_secure_admin_prehosting.py"
+      - ".github/workflows/secure-admin-prehosting.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  secure-admin-prehost:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Static production gate
+        run: python scripts/check_secure_admin_prehosting.py
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm install --ignore-scripts
+      - name: Backend syntax gate
+        working-directory: backend
+        run: npm run check
+      - name: Backend unit/integration tests
+        working-directory: backend
+        run: npm test
+      - name: Secure Admin end-to-end
+        working-directory: backend
+        run: npm run e2e
+      - name: Container build gate
+        run: docker build -f backend/Dockerfile -t iig-secure-admin-prehost .
