@@ -18,6 +18,8 @@ function legacyRole(req){
 }
 
 function trustedProxyRole(req){
+  const production=String(process.env.NODE_ENV||"").toLowerCase()==="production";
+  if(production&&String(process.env.IIG_ALLOW_TRUSTED_PROXY_AUTH||"false").toLowerCase()!=="true")return null;
   const secret=String(process.env.IIG_TRUSTED_PROXY_SECRET||"");
   if(!secret)return null;
   const supplied=String(req.headers["x-iig-proxy-secret"]||"");
