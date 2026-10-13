@@ -70,7 +70,7 @@ app.addHook("onRequest",async(req,reply)=>{
   }
   if(req.method==="OPTIONS"){
     reply.header("Access-Control-Allow-Methods","GET,HEAD,POST,OPTIONS");
-    reply.header("Access-Control-Allow-Headers","Authorization,Content-Type,X-IIG-Admin-Role,X-IIG-Admin-Action,X-IIG-Digest-Revision,X-IIG-Digest-Issue,X-IIG-Digest-Fingerprint");
+    reply.header("Access-Control-Allow-Headers","Authorization,Content-Type,X-IIG-CSRF,X-IIG-Admin-Action,X-IIG-Digest-Revision,X-IIG-Digest-Issue,X-IIG-Digest-Fingerprint");
     return reply.code(204).send();
   }
 });
