@@ -34,8 +34,11 @@ if not errors:
 
 html=(root/'admin-ua.html').read_text(encoding='utf-8') if (root/'admin-ua.html').exists() else ''
 js=(root/'assets/admin-market-digest-v5.js').read_text(encoding='utf-8') if (root/'assets/admin-market-digest-v5.js').exists() else ''
-for token in ['value="MARKETPLACE"','MARKETPLACE AUTO-PULL','forms.html#project','forms.html#subscribe']:
+digest_runtime=(root/'assets/admin-final-admin1-v1.js').read_text(encoding='utf-8') if (root/'assets/admin-final-admin1-v1.js').exists() else ''
+for token in ['value="MARKETPLACE"','MARKETPLACE AUTO-PULL']:
     if token not in html: errors.append('admin-ua.html missing migration token: '+token)
+for token in ['forms.html#project','forms.html#subscribe']:
+    if token not in (html+digest_runtime): errors.append('Digest runtime missing migration CTA token: '+token)
 for token in ['MARKETPLACE','mktUp','mktDown','mktMove','mktDel','ТЕРМІНОВО','market.html?id=']:
     if token not in js: errors.append('Marketplace V5 runtime missing token: '+token)
 
