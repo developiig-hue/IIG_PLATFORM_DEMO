@@ -80,7 +80,7 @@ app.get("/healthz",async()=>({ok:true,service:"iig-digest-publication-service"})
 app.get("/api/v1/auth/session",async(req,reply)=>{
   if(!req.iigAdminSession)return reply.code(401).send({authenticated:false});
   reply.header("Cache-Control","no-store");
-  return {authenticated:true,role:req.iigAdminSession.role,username:req.iigAdminSession.username,display_name:adminDisplayName(req.iigAdminSession.role),csrf:process.env.NODE_ENV==="test"?req.headers["x-iig-test-csrf"]||null:undefined,expires_at:req.iigAdminSession.expires_at};
+  return {authenticated:true,role:req.iigAdminSession.role,username:req.iigAdminSession.username,display_name:adminDisplayName(req.iigAdminSession.role),csrf:req.iigAdminSession.csrf_token,expires_at:req.iigAdminSession.expires_at};
 });
 
 app.post("/api/v1/auth/login",async(req,reply)=>{
