@@ -115,7 +115,7 @@ export async function finishMfa(challengeId,code,meta={}){
     verified={...rec};db.challenges=db.challenges.filter(x=>x.id!==rec.id);return true;
   });
   const raw=randomToken(32),csrf=randomToken(24),t=now();
-  const session={id_hash:hashToken(raw),role:verified.role,username:verified.username,csrf_hash:hashToken(csrf),created_at:t,last_seen_at:t,expires_at:t+SESSION_TTL_MS,absolute_expires_at:t+ABS_TTL_MS,ip_hash:clean(meta.ip_hash),user_agent:clean(meta.user_agent).slice(0,300)};
+  const session={id_hash:hashToken(raw),role:verified.role,username:verified.username,csrf_hash:hashToken(csrf),csrf_token:csrf,created_at:t,last_seen_at:t,expires_at:t+SESSION_TTL_MS,absolute_expires_at:t+ABS_TTL_MS,ip_hash:clean(meta.ip_hash),user_agent:clean(meta.user_agent).slice(0,300)};
   await mutate(sessionFile,{sessions:[]},db=>{db.sessions=(db.sessions||[]).filter(x=>x.expires_at>t&&x.absolute_expires_at>t);db.sessions.push(session);return true});
   return {token:raw,csrf,role:session.role,username:session.username,expires_at:session.expires_at};
 }
