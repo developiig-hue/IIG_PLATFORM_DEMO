@@ -43,7 +43,10 @@ async function refresh(){
   const r=await fetch("/api/v1/requests",{credentials:"same-origin",cache:"no-store"});
   if(!r.ok)throw Error("HTTP "+r.status);
   const d=await r.json();rows=Array.isArray(d.rows)?d.rows:[];mode="BACKEND";
- }catch(e){rows=localRows();mode="DEMO"}
+ }catch(e){
+   if(location.hostname.endsWith("github.io")){rows=localRows();mode="DEMO"}
+   else{rows=[];mode="BACKEND_ERROR";console.error("[IIG] Requests backend unavailable",e)}
+ }
  render();
 }
 function xmlEsc(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
