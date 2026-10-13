@@ -31,6 +31,14 @@ if not errors:
     for src,label in {'Gas Engine / CHP':'KGU','Gas Boiler':'GAS BOILER','Gas Turbine':'TURBIN','BESS':'BESS'}.items():
         if tags.get(src)!=label: errors.append('category tag mismatch: '+src)
     if d.get('page4plus_cta')!=['forms.html#project','forms.html#subscribe']: errors.append('Page 4+ CTA invariant mismatch')
+    s=c.get('secure_admin',{})
+    if s.get('route')!='/admin/': errors.append('secure Admin route mismatch')
+    if s.get('chain')!=['PASSWORD','TOTP_MFA','HTTPONLY_SECURE_SESSION','CSRF','RBAC']: errors.append('secure Admin auth chain mismatch')
+    if s.get('legacy_tokens_default') is not False: errors.append('legacy Admin tokens must default false')
+    if s.get('trusted_proxy_auth_default') is not False: errors.append('trusted proxy Admin auth must default false')
+    if s.get('production_api_required_for_privileged_actions') is not True: errors.append('privileged Admin actions must use production API')
+    if s.get('e2e_required') is not True: errors.append('secure Admin E2E gate missing')
+    if s.get('live_staging_validation_required_before_cutover') is not True: errors.append('live staging validation must block cutover')
 
 html=(root/'admin-ua.html').read_text(encoding='utf-8') if (root/'admin-ua.html').exists() else ''
 js=(root/'assets/admin-market-digest-v5.js').read_text(encoding='utf-8') if (root/'assets/admin-market-digest-v5.js').exists() else ''
