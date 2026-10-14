@@ -1520,7 +1520,7 @@ Machine-readable production contract:
 `config/iig-market-production-portability.json`
 
 Marker:
-`IIG_MARKET_PRODUCTION_PORTABILITY_V1`
+`IIG_MARKET_PRODUCTION_PORTABILITY_V2_MARKETPLACE_DIGEST`
 
 The IIG MARKET Admin/demo implementation is NOT itself production authority. Paid-hosting activation requires server-side Password → MFA → session → RBAC, transactional private DB, persistent/object media storage, audit, backup/restore, private seller-data isolation, Terms versioning and the full MARKET production acceptance gate.
 
