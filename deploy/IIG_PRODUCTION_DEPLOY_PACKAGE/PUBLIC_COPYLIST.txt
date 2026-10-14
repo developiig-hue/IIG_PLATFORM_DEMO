@@ -1,0 +1,32 @@
+# PUBLIC COPYLIST — IIG_PRODUCTION_DEPLOY_PACKAGE
+# Destination: /srv/iig/public
+# Admin source HTML is intentionally excluded from public static root.
+
+index.html
+industry.html
+case.html
+advice.html
+advice-article.html
+financing.html
+finance-news.html
+news.html
+article.html
+forms.html
+about.html
+railway.json
+.nojekyll
+assets/
+content/
+digest/
+baze_foto_news/
+baze_foto_news_agriculture.jpg
+baze_foto_news_chemical.jpg
+baze_foto_news_datacenters.jpg
+baze_foto_news_energy.jpg
+baze_foto_news_food.jpg
+baze_foto_news_logistics.jpg
+baze_foto_news_metallurgy.jpg
+baze_foto_news_pharma.jpg
+baze_foto_news_waste.jpg
+Вариант шапки сайта_промкомплекса на рассвете ( розово-фиалетовый).png
+Принятое фото главного инженера в каске IIG.png
