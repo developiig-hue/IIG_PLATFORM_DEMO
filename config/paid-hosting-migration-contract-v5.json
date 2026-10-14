@@ -32,7 +32,11 @@
     "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/assemble.sh",
     "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/verify_freeze.py",
     ".github/workflows/production-package-freeze.yml",
-    ".dockerignore"
+    ".dockerignore",
+    "docs/IIG-PRE-HOSTING-FINAL-GATE.md",
+    "scripts/run_prehosting_final_gate.sh",
+    "scripts/check_prehosting_package_links.py",
+    ".github/workflows/prehosting-final-gate.yml"
   ],
   "production": {
     "database": "PostgreSQL_or_approved_relational_DB",
@@ -188,6 +192,20 @@
     "package_workflow": ".github/workflows/production-package-freeze.yml",
     "frozen_before_hosting_credentials": true,
     "public_admin_source_excluded": true,
+    "future_market_public_page_not_activated": true
+  },
+  "prehosting_final_gate": {
+    "version": "2026.10.14-FINAL-GATE-1",
+    "workflow": ".github/workflows/prehosting-final-gate.yml",
+    "protocol": "docs/IIG-PRE-HOSTING-FINAL-GATE.md",
+    "only_statuses": [
+      "READY FOR HOSTING",
+      "BLOCKED"
+    ],
+    "all_subgates_required": true,
+    "package_scope": "IIG_PRODUCTION_DEPLOY_PACKAGE",
+    "hosting_credentials_required": false,
+    "dns_changes": false,
     "future_market_public_page_not_activated": true
   }
 }
