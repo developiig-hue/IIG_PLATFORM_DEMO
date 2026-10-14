@@ -49,7 +49,7 @@ jobs:
         with:
           name: IIG_PRE_HOSTING_FINAL_GATE_EVIDENCE
           path: |
-            .prehosting-final/
+            prehosting-final-evidence/
             dist/IIG_PRODUCTION_DEPLOY_PACKAGE/
           if-no-files-found: warn
           retention-days: 30
@@ -60,8 +60,8 @@ jobs:
         shell: bash
         run: |
           STATUS="BLOCKED"
-          if [ -f .prehosting-final/PREHOST_STATUS.txt ]; then
-            STATUS="$(tr -d '\r\n' < .prehosting-final/PREHOST_STATUS.txt)"
+          if [ -f prehosting-final-evidence/PREHOST_STATUS.txt ]; then
+            STATUS="$(tr -d '\r\n' < prehosting-final-evidence/PREHOST_STATUS.txt)"
           fi
 
           if [ "$STATUS" != "READY FOR HOSTING" ] && [ "$STATUS" != "BLOCKED" ]; then
