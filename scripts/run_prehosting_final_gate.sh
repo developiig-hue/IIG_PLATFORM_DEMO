@@ -65,8 +65,8 @@ run_gate "H03_DOCKER_UP" docker compose -f "$PKG/backend/docker-compose.producti
 sleep 3
 run_gate "H03A_BACKEND_RUNTIME_LOGS" docker compose -f "$PKG/backend/docker-compose.production.yml" --env-file "$ENVFILE" logs --no-color iig-backend
 run_gate "H03B_BACKEND_RUNNING" bash -c 'test "$(docker inspect -f "{{.State.Running}}" backend-iig-backend-1 2>/dev/null || true)" = "true"'
-run_gate "H04_HEALTHZ" curl -fsS --retry 10 --retry-delay 2 http://127.0.0.1:8787/healthz
-run_gate "H05_READYZ" curl -fsS --retry 5 --retry-delay 2 http://127.0.0.1:8787/readyz
+run_gate "H04_HEALTHZ" curl -fsS --retry 10 --retry-all-errors --retry-delay 2 http://127.0.0.1:8787/healthz
+run_gate "H05_READYZ" curl -fsS --retry 5 --retry-all-errors --retry-delay 2 http://127.0.0.1:8787/readyz
 run_gate "H06_ADMIN_LOGIN_SURFACE" bash -c 'set -e; h=$(mktemp); b=$(mktemp); curl -fsS -D "$h" -o "$b" http://127.0.0.1:8787/admin/; grep -q "Захищена адмін-панель" "$b"; grep -qi "^X-Frame-Options: DENY" "$h"; grep -qi "^Cache-Control: no-store" "$h"; rm -f "$h" "$b"'
 run_gate "H07_UNAUTH_PRIVILEGED_BLOCK" bash -c 'code=$(curl -s -o /tmp/iig-unauth.json -w "%{http_code}" http://127.0.0.1:8787/api/v1/contacts); test "$code" = "401"'
 
@@ -75,7 +75,8 @@ mkdir -p "$BACK"
 run_gate "I01_BACKUP_DRY_RUN" bash -c 'cd "'"$PKG"'" && chmod +x backend/backup-production.sh backend/restore-production.sh && backend/backup-production.sh "'"$BACK"'"'
 run_gate "I02_BACKUP_CHECKSUMS" bash -c 'set -e; f=$(ls -1 "'"$BACK"'"/iig-backup-*.sha256 | tail -1); sha256sum -c "$f"'
 run_gate "I03_RESTORE_DRY_RUN" bash -c 'set -e; cd "'"$PKG"'"; pg=$(ls -1 "'"$BACK"'"/iig-postgres-*.sql.gz | tail -1); pr=$(ls -1 "'"$BACK"'"/iig-private-var-*.tar.gz | tail -1); dg=$(ls -1 "'"$BACK"'"/iig-digest-data-*.tar.gz | tail -1); backend/restore-production.sh "$pg" "$pr" "$dg"'
-run_gate "I04_POST_RESTORE_HEALTH" curl -fsS --retry 10 --retry-delay 2 http://127.0.0.1:8787/healthz
+sleep 3
+run_gate "I04_POST_RESTORE_HEALTH" curl -fsS --retry 10 --retry-all-errors --retry-delay 2 http://127.0.0.1:8787/healthz
 
 run_gate "J01_PACKAGE_SHA256" bash -c 'cd "'"$PKG"'" && find . -type f ! -path "./.prehost-backups/*" ! -name ".env.production" -print0 | sort -z | xargs -0 sha256sum > PACKAGE_SHA256SUMS.txt && test -s PACKAGE_SHA256SUMS.txt'
 
