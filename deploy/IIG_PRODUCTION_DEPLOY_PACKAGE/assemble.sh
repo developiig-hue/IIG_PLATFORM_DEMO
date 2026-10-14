@@ -49,7 +49,7 @@ done
 [ ! -f "$PKG/backend/.env.production" ] || { echo "SECURITY_FAIL_REAL_ENV_PACKAGED"; exit 6; }
 
 # No runtime data in frozen output.
-rm -rf "$PKG/backend/var" "$PKG/backend/data"
+rm -rf "$PKG/backend/var" "$PKG/backend/data" "$PKG/backend/node_modules"
 
 printf "%s\n" "IIG_PRODUCTION_DEPLOY_PACKAGE 2026.10.14-FREEZE-1" > "$PKG/FREEZE_VERSION"
 printf "%s\n" "PACKAGE_ASSEMBLY_OK $PKG"
