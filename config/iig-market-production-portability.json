@@ -1,5 +1,5 @@
 {
-  "version": "IIG_MARKET_PRODUCTION_PORTABILITY_V1",
+  "version": "IIG_MARKET_PRODUCTION_PORTABILITY_V2_MARKETPLACE_DIGEST",
   "status": "OWNER_APPROVED_CONCEPT_HARD_RULE",
   "public_market_status": "HIDDEN_UNTIL_CONTENT_READY",
   "routes": {
@@ -37,9 +37,12 @@
       "urgent",
       "digest_candidate",
       "feature",
-      "manual_market_digest_page",
       "draft_terms",
-      "buyer_requests"
+      "buyer_requests",
+      "marketplace_auto_pull",
+      "marketplace_reorder",
+      "marketplace_move_between_pages",
+      "marketplace_exclude_from_issue"
     ],
     "ADMIN_1": [
       "approve_public_price",
@@ -60,18 +63,26 @@
     "technical_editor_internal_scroll": true,
     "urgent_label_ua": "ТЕРМІНОВО",
     "urgent_color": "RED",
-    "digest_candidate_does_not_create_page": true,
-    "supplemental_pages_manual_only": true,
+    "digest_candidate_does_not_create_page": false,
+    "supplemental_pages_manual_only": false,
     "market_never_overwrites_other_supplemental_page": true,
     "exact_listing_deeplink_required": true,
     "numeric_digest_price_requires_admin_1": true,
     "every_market_digest_page_has_project_subscribe_cta": true,
-    "duplicate_market_digest_controls_forbidden": true
+    "duplicate_market_digest_controls_forbidden": true,
+    "marketplace_explicit_auto_pull": true,
+    "marketplace_auto_pull_selected_only": true,
+    "marketplace_manual_reorder_after_pull": true,
+    "marketplace_exclude_is_issue_only": true,
+    "marketplace_changes_invalidate_digest_approval": true,
+    "marketplace_category_grouping_required": true,
+    "marketplace_material_type_required": true
   },
   "digest": {
     "standard_core_pages": 3,
     "candidate_only_flag": "include_digest",
     "allowed_supplemental_types": [
+      "MARKETPLACE",
       "IIG_MARKET",
       "IIG_PROJECT",
       "SPONSORED_MATERIAL",
@@ -88,7 +99,31 @@
         "label_ua": "ПІДПИСАТИСЯ НА ДАЙДЖЕСТ",
         "route": "forms.html#subscribe"
       }
-    ]
+    ],
+    "marketplace": {
+      "material_type": "MARKETPLACE",
+      "normal_start_pages": [
+        4,
+        5
+      ],
+      "page6plus_allowed": true,
+      "explicit_admin_build_required": true,
+      "auto_pull_source": "include_digest=true + release gates",
+      "non_market_page_overwrite": false,
+      "manual_controls": [
+        "UP",
+        "DOWN",
+        "MOVE",
+        "EXCLUDE_FROM_ISSUE"
+      ],
+      "optional_editorial_wrapper": true,
+      "category_tags": {
+        "Gas Engine / CHP": "KGU",
+        "Gas Boiler": "GAS BOILER",
+        "Gas Turbine": "TURBIN",
+        "BESS": "BESS"
+      }
+    }
   },
   "migration_gate": [
     "HTTPS",
@@ -102,10 +137,12 @@
     "PRICE_APPROVAL",
     "TERMS_VERSIONING",
     "BUYER_INQUIRY",
-    "NO_AUTO_DIGEST_PAGE",
-    "MANUAL_DIGEST_COMPOSER",
     "EXACT_LISTING_LINKS",
     "MARKET_PAGE_CTA_LINKS",
-    "PUBLIC_HIDDEN_UNTIL_OWNER_ACTIVATION"
+    "PUBLIC_HIDDEN_UNTIL_OWNER_ACTIVATION",
+    "MARKETPLACE_MATERIAL_TYPE",
+    "MARKETPLACE_EXPLICIT_AUTO_PULL",
+    "MARKETPLACE_MANUAL_ORDER_PERSISTENCE",
+    "MARKETPLACE_ISSUE_ONLY_EXCLUSION"
   ]
 }
