@@ -1,0 +1,78 @@
+name: IIG Pre-Hosting Final Gate
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/**"
+      - "backend/**"
+      - "assets/**"
+      - "content/**"
+      - "digest/**"
+      - "baze_foto_news/**"
+      - "config/**"
+      - "docs/**"
+      - "scripts/**"
+      - "tests/**"
+      - "*.html"
+      - "*.jpg"
+      - "*.png"
+      - ".dockerignore"
+      - ".github/workflows/prehosting-final-gate.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  prehosting-final:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    outputs:
+      status: ${{ steps.verdict.outputs.status }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run IIG Pre-Hosting Final Gate
+        id: gate
+        continue-on-error: true
+        run: bash scripts/run_prehosting_final_gate.sh
+
+      - name: Upload Final Gate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: IIG_PRE_HOSTING_FINAL_GATE_EVIDENCE
+          path: |
+            .prehosting-final/
+            dist/IIG_PRODUCTION_DEPLOY_PACKAGE/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Binary verdict
+        id: verdict
+        if: always()
+        shell: bash
+        run: |
+          STATUS="BLOCKED"
+          if [ -f .prehosting-final/PREHOST_STATUS.txt ]; then
+            STATUS="$(tr -d '\r\n' < .prehosting-final/PREHOST_STATUS.txt)"
+          fi
+
+          if [ "$STATUS" != "READY FOR HOSTING" ] && [ "$STATUS" != "BLOCKED" ]; then
+            STATUS="BLOCKED"
+          fi
+
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          printf "%s\n" "$STATUS"
+          printf "## %s\n" "$STATUS" >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$STATUS" = "READY FOR HOSTING" ]; then
+            exit 0
+          fi
+          exit 1
