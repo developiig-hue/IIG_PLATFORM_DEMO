@@ -1,0 +1,56 @@
+name: IIG Production Package Freeze
+on:
+  push:
+    branches: [main]
+    paths:
+      - "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/**"
+      - "backend/**"
+      - "admin-ua-v5.html"
+      - "assets/**"
+      - "content/**"
+      - "digest/**"
+      - "baze_foto_news/**"
+      - "*.html"
+      - "*.jpg"
+      - "*.png"
+      - ".dockerignore"
+      - ".github/workflows/production-package-freeze.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  freeze-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen manifest
+        run: python3 deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/verify_freeze.py
+      - name: Assemble canonical deploy package
+        run: bash deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/assemble.sh
+      - name: Assert public/admin security boundary
+        run: |
+          test -s dist/IIG_PRODUCTION_DEPLOY_PACKAGE/public/index.html
+          test -s dist/IIG_PRODUCTION_DEPLOY_PACKAGE/backend/docker-compose.production.yml
+          test -s dist/IIG_PRODUCTION_DEPLOY_PACKAGE/admin-ua-v5.html
+          test ! -e dist/IIG_PRODUCTION_DEPLOY_PACKAGE/public/admin.html
+          test ! -e dist/IIG_PRODUCTION_DEPLOY_PACKAGE/public/admin-ua-v5.html
+          test ! -e dist/IIG_PRODUCTION_DEPLOY_PACKAGE/backend/.env.production
+      - name: Validate production compose
+        run: |
+          cp dist/IIG_PRODUCTION_DEPLOY_PACKAGE/backend/.env.production.example dist/IIG_PRODUCTION_DEPLOY_PACKAGE/backend/.env.production
+          docker compose -f dist/IIG_PRODUCTION_DEPLOY_PACKAGE/backend/docker-compose.production.yml --env-file dist/IIG_PRODUCTION_DEPLOY_PACKAGE/backend/.env.production config >/tmp/iig-compose.yml
+          rm -f dist/IIG_PRODUCTION_DEPLOY_PACKAGE/backend/.env.production
+      - name: Build frozen backend image
+        working-directory: dist/IIG_PRODUCTION_DEPLOY_PACKAGE
+        run: docker build -f backend/Dockerfile -t iig-production-freeze:2026.10.14 .
+      - name: Write package checksums
+        run: |
+          cd dist/IIG_PRODUCTION_DEPLOY_PACKAGE
+          find . -type f -print0 | sort -z | xargs -0 sha256sum > PACKAGE_SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: IIG_PRODUCTION_DEPLOY_PACKAGE_2026.10.14-FREEZE-1
+          path: dist/IIG_PRODUCTION_DEPLOY_PACKAGE
+          if-no-files-found: error
+          retention-days: 30
