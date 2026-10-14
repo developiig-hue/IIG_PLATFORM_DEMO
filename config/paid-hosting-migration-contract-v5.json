@@ -36,7 +36,8 @@
     "docs/IIG-PRE-HOSTING-FINAL-GATE.md",
     "scripts/run_prehosting_final_gate.sh",
     "scripts/check_prehosting_package_links.py",
-    ".github/workflows/prehosting-final-gate.yml"
+    ".github/workflows/prehosting-final-gate.yml",
+    "docs/IIG-HOST-HANDOVER-CHECKLIST.md"
   ],
   "production": {
     "database": "PostgreSQL_or_approved_relational_DB",
@@ -207,5 +208,19 @@
     "hosting_credentials_required": false,
     "dns_changes": false,
     "future_market_public_page_not_activated": true
+  },
+  "host_handover": {
+    "checklist": "docs/IIG-HOST-HANDOVER-CHECKLIST.md",
+    "required_inputs": [
+      "production_domain",
+      "staging_url",
+      "server_access",
+      "postgres_or_local_db_permission",
+      "s3_or_persistent_storage_permission",
+      "smtp",
+      "dns_access_or_admin"
+    ],
+    "development_after_receipt": false,
+    "next_action": "DEPLOY_FROZEN_PACKAGE_TO_STAGING"
   }
 }
