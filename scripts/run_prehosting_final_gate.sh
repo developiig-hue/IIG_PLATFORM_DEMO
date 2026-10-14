@@ -62,6 +62,9 @@ PY
 run_gate "H01_COMPOSE_CONFIG" docker compose -f "$PKG/backend/docker-compose.production.yml" --env-file "$ENVFILE" config
 run_gate "H02_DOCKER_BUILD" docker compose -f "$PKG/backend/docker-compose.production.yml" --env-file "$ENVFILE" build --pull
 run_gate "H03_DOCKER_UP" docker compose -f "$PKG/backend/docker-compose.production.yml" --env-file "$ENVFILE" up -d
+sleep 3
+run_gate "H03A_BACKEND_RUNTIME_LOGS" docker compose -f "$PKG/backend/docker-compose.production.yml" --env-file "$ENVFILE" logs --no-color iig-backend
+run_gate "H03B_BACKEND_RUNNING" bash -c 'test "$(docker inspect -f "{{.State.Running}}" backend-iig-backend-1 2>/dev/null || true)" = "true"'
 run_gate "H04_HEALTHZ" curl -fsS --retry 10 --retry-delay 2 http://127.0.0.1:8787/healthz
 run_gate "H05_READYZ" curl -fsS --retry 5 --retry-delay 2 http://127.0.0.1:8787/readyz
 run_gate "H06_ADMIN_LOGIN_SURFACE" bash -c 'set -e; h=$(mktemp); b=$(mktemp); curl -fsS -D "$h" -o "$b" http://127.0.0.1:8787/admin/; grep -q "Захищена адмін-панель" "$b"; grep -qi "^X-Frame-Options: DENY" "$h"; grep -qi "^Cache-Control: no-store" "$h"; rm -f "$h" "$b"'
