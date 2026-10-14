@@ -23,7 +23,16 @@
     "backend/src/session-auth.mjs",
     "backend/src/auth.mjs",
     "backend/src/admin-login.mjs",
-    "backend/test/admin-e2e.test.mjs"
+    "backend/test/admin-e2e.test.mjs",
+    "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/MANIFEST.json",
+    "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/README.md",
+    "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/ENV_REQUIRED.md",
+    "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/COMMANDS.md",
+    "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/PUBLIC_COPYLIST.txt",
+    "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/assemble.sh",
+    "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/verify_freeze.py",
+    ".github/workflows/production-package-freeze.yml",
+    ".dockerignore"
   ],
   "production": {
     "database": "PostgreSQL_or_approved_relational_DB",
@@ -161,5 +170,24 @@
     "e2e_required": true,
     "prehosting_ci": ".github/workflows/secure-admin-prehosting.yml",
     "live_staging_validation_required_before_cutover": true
+  },
+  "production_package_freeze": {
+    "package_name": "IIG_PRODUCTION_DEPLOY_PACKAGE",
+    "version": "2026.10.14-FREEZE-1",
+    "canonical_manifest": "deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/MANIFEST.json",
+    "freeze_branch": "production-freeze-2026-10-14",
+    "public_root": "/srv/iig/public",
+    "compose": "backend/docker-compose.production.yml",
+    "env_template": "backend/.env.production.example",
+    "reverse_proxy_template": "backend/nginx.iig-production.conf.template",
+    "persistent_volumes": [
+      "iig-private-var",
+      "iig-digest-data",
+      "iig-postgres-data"
+    ],
+    "package_workflow": ".github/workflows/production-package-freeze.yml",
+    "frozen_before_hosting_credentials": true,
+    "public_admin_source_excluded": true,
+    "future_market_public_page_not_activated": true
   }
 }
