@@ -2,7 +2,7 @@
 
 Date: 2026-10-12  
 Status: **OWNER-APPROVED CONCEPT / HARD RULE / PRODUCTION BUILD SOURCE OF TRUTH**  
-Primary marker: `IIG_MARKET_PRODUCTION_PORTABILITY_V1`
+Primary marker: `IIG_MARKET_PRODUCTION_PORTABILITY_V2_MARKETPLACE_DIGEST`
 
 This document consolidates the approved IIG MARKET concept, Admin workflow, Digest integration, commercial controls and paid-hosting portability requirements.
 
@@ -365,7 +365,7 @@ Allowed:
 - prepare Terms revisions;
 - select Digest candidate;
 - select FEATURE;
-- build a manual MARKET supplemental Digest page;
+- manage explicit Marketplace auto-pull and the resulting manual order/move/exclude controls;
 - preview.
 
 Not allowed:
@@ -504,28 +504,27 @@ The include checkbox means ONLY:
 
 `ADD TO MARKET → DIGEST CANDIDATE POOL`
 
-It does NOT create a Digest page.
+It enters the approved Marketplace candidate pool. Selecting material type `Marketplace` and explicitly building Marketplace pages may auto-pull eligible selected listings into Page 4/5+; this action never silently overwrites a non-Marketplace page.
 
 ---
 
-## 19. Digest — NO AUTO PAGE
+## 19. Digest — MARKETPLACE EXPLICIT AUTO-PULL
 
 The standard approved Digest remains 3 core pages.
 
 Hard rule:
 
-`MARKET CANDIDATE != DIGEST PAGE`
+`MARKET CANDIDATE != SILENT DIGEST PAGE`
 
-MARKET:
-- never creates Page 4 automatically;
-- never creates Page 5 automatically;
-- never reserves a page number;
-- never displaces IIG project material;
-- never displaces SPONSORED content;
-- never displaces PARTNER content;
-- never displaces IIG ORIGINAL.
-
-Additional Page 4+ is created only manually.
+MARKETPLACE rules:
+- Page 4 / Page 5 are the normal starting pages when ADMIN_2 explicitly selects material type `Marketplace` and starts the build;
+- eligible records are pulled only from `include_digest=true` candidates that pass release gates;
+- Page 6+ is allowed when needed;
+- a non-Marketplace supplemental page is never overwritten automatically;
+- a repeated auto-pull that could replace manual order requires explicit confirmation;
+- after the initial pull, ADMIN_2 controls ↑ / ↓ / ⇄ / × per equipment row;
+- × excludes the item from the current Digest issue only and never deletes the source MARKET listing;
+- any Marketplace content/order change invalidates the previous Digest approval.
 
 Allowed supplemental types:
 - IIG MARKET
@@ -537,26 +536,25 @@ Allowed supplemental types:
 
 ---
 
-## 20. Manual MARKET Digest composer
+## 20. Marketplace auto-pull + manual composition
 
 Digest Admin contains:
 
-`IIG MARKET · ДОДАТКОВА СТОРІНКА`
+`Marketplace`
 
-The window shows only listings with:
+Selecting this material type initializes the page from approved IIG MARKET candidates with `include_digest=true` and valid release gates.
 
-`include_digest=true`
-
-ADMIN_2 may:
-- filter by equipment category;
-- select candidates;
-- choose target Page 4 / Page 5;
-- manually build the page.
+ADMIN_2 may then:
+- reorder rows ↑ / ↓;
+- move rows ⇄ to another Marketplace page/block;
+- exclude rows × from the current issue only;
+- optionally add an editorial wrapper (title/lead/body);
+- continue to Page 6+ when capacity requires it.
 
 Conflict lock:
-- MARKET cannot overwrite a non-MARKET supplemental page;
-- if Page 4/5 is already occupied, Admin chooses another slot or removes the existing page;
-- an existing MARKET page may be rebuilt manually.
+- Marketplace cannot overwrite a non-Marketplace supplemental page;
+- if Page 4/5 is occupied by another material type, Admin resolves the conflict explicitly;
+- rebuilding a Marketplace page that already has manual order requires confirmation.
 
 Final Digest layout remains ADMIN_1-controlled.
 
@@ -1170,6 +1168,6 @@ Implementation must preserve/reference:
 - `DIGEST_SUPPLEMENTAL_PAGES_MANUAL_ONLY_V1`
 - `DIGEST_MARKET_MANUAL_COMPOSER_V1`
 - `DIGEST_MARKET_EVERY_PAGE_CTA_V1`
-- `IIG_MARKET_PRODUCTION_PORTABILITY_V1`
+- `IIG_MARKET_PRODUCTION_PORTABILITY_V2_MARKETPLACE_DIGEST`
 
 These markers define the accepted architecture across demo, staging and production.
