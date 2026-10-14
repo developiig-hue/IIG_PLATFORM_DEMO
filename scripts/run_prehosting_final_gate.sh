@@ -2,7 +2,7 @@
 set -u
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
-OUT="$ROOT/.prehosting-final"
+OUT="$ROOT/prehosting-final-evidence"
 LOG="$OUT/PREHOST_FINAL_GATE.log"
 STATUS="$OUT/PREHOST_STATUS.txt"
 FAILS="$OUT/FAILED_GATES.txt"
