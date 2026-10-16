@@ -37,7 +37,11 @@
     "scripts/run_prehosting_final_gate.sh",
     "scripts/check_prehosting_package_links.py",
     ".github/workflows/prehosting-final-gate.yml",
-    "docs/IIG-HOST-HANDOVER-CHECKLIST.md"
+    "docs/IIG-HOST-HANDOVER-CHECKLIST.md",
+    "MAILING_PROTOCOL.md",
+    "config/iig-mailing-personalization-v37.json",
+    "backend/src/mailing-greeting.mjs",
+    "backend/test/mailing-greeting.test.mjs"
   ],
   "production": {
     "database": "PostgreSQL_or_approved_relational_DB",
@@ -222,5 +226,35 @@
     ],
     "development_after_receipt": false,
     "next_action": "DEPLOY_FROZEN_PACKAGE_TO_STAGING"
+  },
+  "mailing_personalization": {
+    "version": "IIG_UA_PERSONALIZED_ADDRESS_V37",
+    "unified_base_only": true,
+    "required_fields": [
+      "gender",
+      "appeal_ua"
+    ],
+    "template_token": "{{greeting}}",
+    "rendering_priority": [
+      "APPEAL_UA_VERBATIM",
+      "FEMALE_NOMINATIVE_FROM_NAME_AND_PATRONYMIC",
+      "MALE_FALLBACK",
+      "NEUTRAL_FALLBACK"
+    ],
+    "female_declension": false,
+    "female_with_patronymic_example": "Шановна Олена Олександрівна!",
+    "female_forbidden_example": "Шановна Олено Олександрівно!",
+    "female_without_patronymic_example": "Шановна Олена!",
+    "neutral_fallback": "Вітаємо!",
+    "import_preserves": [
+      "gender",
+      "appeal_ua"
+    ],
+    "blank_import_must_not_overwrite_verified_appeal_ua": true,
+    "backend_renderer": "backend/src/mailing-greeting.mjs",
+    "backend_test": "backend/test/mailing-greeting.test.mjs",
+    "protocol": "MAILING_PROTOCOL.md",
+    "machine_contract": "config/iig-mailing-personalization-v37.json",
+    "release_blocker_if_lost": true
   }
 }
