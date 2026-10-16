@@ -67,6 +67,10 @@ jobs:
           grep -q 'mailTemplateLanguage' admin-ua.html
           grep -q 'data-mail-cmd="bold"' admin-ua.html
           grep -q 'IIG_UA_MAIL_MASTER_V36' MAILING_PROTOCOL.md
-          grep -q '{{name}}' backend/src/mailing-store.mjs
-          grep -q 'Шановний {{name}} !' backend/src/mailing-store.mjs
+          grep -q 'IIG_UA_PERSONALIZED_ADDRESS_V37' MAILING_PROTOCOL.md
+          grep -q '{{greeting}}' backend/src/mailing-store.mjs
+          grep -q 'mailingGreeting' backend/src/server.mjs
+          grep -q 'appeal_ua' backend/src/server.mjs
+          grep -q 'appeal_ua' backend/src/request-store.mjs
+          grep -q 'Шановна Алла Олегівна!' MAILING_PROTOCOL.md
           grep -q 'РОЗМІСТИТИ ПРОЄКТ' backend/src/mailing-store.mjs
