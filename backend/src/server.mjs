@@ -16,6 +16,7 @@ import crypto from "node:crypto";
 import nodemailer from "nodemailer";
 import * as XLSX from "xlsx";
 import {saveValidatedDigest,getValidatedDigest,beginCampaign,completeCampaign,listCampaigns,getMailTemplate,saveMailTemplate,resetMailTemplate} from "./mailing-store.mjs";
+import {mailingGreeting} from "./mailing-greeting.mjs";
 
 const app=Fastify({logger:true,bodyLimit:30*1024*1024});
 await app.register(multipart,{limits:{fileSize:25*1024*1024,files:1,fields:8}});
@@ -310,14 +311,11 @@ function contactName(contact,language){
   if(n)return escapeHtml(n);
   return language==="EN"?"colleague":"колего";
 }
-function fallbackGreeting(contact,language){
-  return language==="EN"?"Dear "+contactName(contact,language)+"!":"Шановний "+contactName(contact,language)+" !";
-}
 async function messageFor(contact,language,unsubscribeUrl){
-  const lang=normLang(language),template=await getMailTemplate(lang),name=contactName(contact,lang),greeting=fallbackGreeting(contact,lang);
+  const lang=normLang(language),template=await getMailTemplate(lang),name=contactName(contact,lang),greeting=mailingGreeting(contact,lang);
   let html=sanitizeMailHtml(template.html||"");
-  html=html.replaceAll("{{name}}",name).replaceAll("{{greeting}}",greeting);
-  if(!/Шановний|Dear/i.test(plainTextFromHtml(html)))html="<p><b>"+greeting+"</b></p>"+html;
+  html=html.replaceAll("{{name}}",name).replaceAll("{{greeting}}",escapeHtml(greeting));
+  if(!/Шановний|Шановна|Вітаємо|Dear/i.test(plainTextFromHtml(html)))html="<p><b>"+escapeHtml(greeting)+"</b></p>"+html;
   const unsubLabel=lang==="EN"?"UNSUBSCRIBE FROM MAILING":"ВІДПИСАТИСЯ ВІД РОЗСИЛКИ";
   const personal='<a href="'+escapeHtml(unsubscribeUrl)+'">'+unsubLabel+"</a>";
   html=html.replace(/<a\b[^>]*href\s*=\s*["']mailto:[^"']+["'][^>]*>\s*ВІДПИСАТИСЯ ВІД РОЗСИЛКИ\s*<\/a>/gi,personal);
@@ -343,6 +341,8 @@ function contactImportRows(buffer,filename=""){
     "статус":"status","статус_розсилки":"status","status":"status",
     "згода":"consent","статус_згоди":"consent","consent":"consent","marketing_consent":"marketing_consent",
     "підтвердження_згоди":"consent_evidence","підтвердження":"consent_evidence","consent_evidence":"consent_evidence",
+    "gender":"gender","стать":"gender","sex":"gender",
+    "appeal_ua":"appeal_ua","звернення":"appeal_ua","звернення_ua":"appeal_ua",
     "примітка":"note","note":"note"
   };
   return rows.map(row=>{
