@@ -153,6 +153,8 @@ export async function importContactsBase(rows,role,source="ADMIN_2_XLSX"){
           company:clean(raw.company).slice(0,220),
           position:clean(raw.position).slice(0,160),
           language:String(raw.language||raw.lang||"UA").toUpperCase()==="EN"?"EN":"UA",
+          gender:["M","F"].includes(clean(raw.gender).toUpperCase())?clean(raw.gender).toUpperCase():"",
+          appeal_ua:clean(raw.appeal_ua).slice(0,220),
           status:wantsSuppressed?"SUPPRESSED":(wantsActive&&(consentOk||evidence)?"ACTIVE":"PENDING"),
           marketing_consent:!wantsSuppressed&&wantsActive&&(consentOk||!!evidence),
           consent_evidence:evidence,
@@ -170,6 +172,9 @@ export async function importContactsBase(rows,role,source="ADMIN_2_XLSX"){
         x.company=clean(raw.company)||x.company;
         x.position=clean(raw.position)||x.position;
         x.language=String(raw.language||raw.lang||x.language||"UA").toUpperCase()==="EN"?"EN":"UA";
+        const importedGender=clean(raw.gender).toUpperCase();
+        if(["M","F"].includes(importedGender))x.gender=importedGender;
+        if(clean(raw.appeal_ua))x.appeal_ua=clean(raw.appeal_ua).slice(0,220);
         x.source=clean(raw.source)||x.source||source;
         x.imported_at=now;x.imported_by=role;x.import_source=source;
         if(evidence)x.consent_evidence=evidence;
