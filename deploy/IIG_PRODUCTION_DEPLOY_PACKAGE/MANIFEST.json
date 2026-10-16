@@ -161,5 +161,15 @@
     "No real secret may be committed to repository or deploy package",
     "HARD RULE migration contracts remain authoritative",
     "Future public IIG MARKET concept is not activated by this freeze"
+  ],
+  "migration_locked_rules": [
+    {
+      "id": "IIG_UA_PERSONALIZED_ADDRESS_V37",
+      "protocol": "MAILING_PROTOCOL.md",
+      "machine_contract": "config/iig-mailing-personalization-v37.json",
+      "runtime": "backend/src/mailing-greeting.mjs",
+      "test": "backend/test/mailing-greeting.test.mjs",
+      "release_blocker": true
+    }
   ]
 }
