@@ -37,6 +37,9 @@ cp -a "$ROOT/.dockerignore" "$PKG/.dockerignore"
 
 # Package operations metadata.
 cp -a "$ROOT/deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/." "$OPS/"
+mkdir -p "$OPS/contracts/mailing"
+cp -a "$ROOT/MAILING_PROTOCOL.md" "$OPS/contracts/mailing/MAILING_PROTOCOL.md"
+cp -a "$ROOT/config/iig-mailing-personalization-v37.json" "$OPS/contracts/mailing/iig-mailing-personalization-v37.json"
 
 # Explicit security assertions: demo/admin source pages must not be public.
 for f in admin.html admin-ua.html admin-ua-v5.html admin-final-admin1-v1.html admin-backstage.html; do
