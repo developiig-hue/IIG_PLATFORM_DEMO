@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node src/server.mjs",
     "test": "node --test test/*.test.mjs",
-    "check": "node --check src/server.mjs && node --check src/storage.mjs && node --check src/auth.mjs && node --check src/session-auth.mjs && node --check src/audit-store.mjs && node --check src/editorial-store.mjs && node --check src/admin-login.mjs && node --check src/request-store.mjs",
+    "check": "node --check src/server.mjs && node --check src/storage.mjs && node --check src/auth.mjs && node --check src/session-auth.mjs && node --check src/audit-store.mjs && node --check src/editorial-store.mjs && node --check src/admin-login.mjs && node --check src/request-store.mjs && node --check src/mailing-greeting.mjs",
     "e2e": "node --test test/admin-e2e.test.mjs"
   },
   "dependencies": {
