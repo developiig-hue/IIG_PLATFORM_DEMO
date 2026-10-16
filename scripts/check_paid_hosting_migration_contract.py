@@ -40,6 +40,34 @@ if not errors:
     if s.get('e2e_required') is not True: errors.append('secure Admin E2E gate missing')
     if s.get('live_staging_validation_required_before_cutover') is not True: errors.append('live staging validation must block cutover')
 
+
+    mp=c.get('mailing_personalization',{})
+    if mp.get('version')!='IIG_UA_PERSONALIZED_ADDRESS_V37': errors.append('mailing personalization V37 missing')
+    if mp.get('unified_base_only') is not True: errors.append('mailing must use one unified base')
+    if mp.get('required_fields')!=['gender','appeal_ua']: errors.append('mailing personalization fields mismatch')
+    if mp.get('template_token')!='{{greeting}}': errors.append('UA mailing greeting token mismatch')
+    if mp.get('female_declension') is not False: errors.append('female UA greeting must not decline name/patronymic')
+    if mp.get('female_with_patronymic_example')!='Шановна Олена Олександрівна!': errors.append('female nominative example mismatch')
+    if mp.get('female_forbidden_example')!='Шановна Олено Олександрівно!': errors.append('forbidden female vocative example missing')
+    if mp.get('neutral_fallback')!='Вітаємо!': errors.append('neutral greeting fallback mismatch')
+    if mp.get('blank_import_must_not_overwrite_verified_appeal_ua') is not True: errors.append('blank appeal_ua overwrite protection missing')
+    if mp.get('release_blocker_if_lost') is not True: errors.append('mailing personalization migration blocker missing')
+    mail_contract=json.loads((root/'config/iig-mailing-personalization-v37.json').read_text(encoding='utf-8'))
+    if mail_contract.get('version')!='IIG_UA_PERSONALIZED_ADDRESS_V37': errors.append('mailing machine contract version mismatch')
+    if mail_contract.get('female_rule',{}).get('grammatical_form')!='NOMINATIVE': errors.append('female greeting nominative rule missing')
+    mail_protocol=(root/'MAILING_PROTOCOL.md').read_text(encoding='utf-8')
+    if 'IIG_UA_PERSONALIZED_ADDRESS_V37' not in mail_protocol: errors.append('MAILING_PROTOCOL V37 marker missing')
+    if 'Шановна Олена Олександрівна!' not in mail_protocol: errors.append('MAILING_PROTOCOL female nominative example missing')
+    greeting=(root/'backend/src/mailing-greeting.mjs').read_text(encoding='utf-8')
+    for token in ['contact.appeal_ua','gender==="F"','Шановна ','Вітаємо!']:
+        if token not in greeting: errors.append('mailing greeting runtime missing '+token)
+    request_store=(root/'backend/src/request-store.mjs').read_text(encoding='utf-8')
+    for token in ['raw.gender','raw.appeal_ua','if(clean(raw.appeal_ua))x.appeal_ua']:
+        if token not in request_store: errors.append('contact import personalization missing '+token)
+    server=(root/'backend/src/server.mjs').read_text(encoding='utf-8')
+    for token in ['mailingGreeting','{{greeting}}','"appeal_ua":"appeal_ua"','"gender":"gender"']:
+        if token not in server: errors.append('server mailing personalization missing '+token)
+
 html=(root/'admin-ua.html').read_text(encoding='utf-8') if (root/'admin-ua.html').exists() else ''
 js=(root/'assets/admin-market-digest-v5.js').read_text(encoding='utf-8') if (root/'assets/admin-market-digest-v5.js').exists() else ''
 digest_runtime=(root/'assets/admin-final-admin1-v1.js').read_text(encoding='utf-8') if (root/'assets/admin-final-admin1-v1.js').exists() else ''
