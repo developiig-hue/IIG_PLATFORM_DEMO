@@ -1,0 +1,78 @@
+{
+  "version": "IIG_UA_PERSONALIZED_ADDRESS_V37",
+  "status": "OWNER_APPROVED_HARD_RULE",
+  "date": "2026-10-16",
+  "scope": "UA_MAILING_PERSONALIZATION",
+  "unified_base_only": true,
+  "contact_fields": {
+    "gender": {
+      "allowed": [
+        "M",
+        "F"
+      ],
+      "purpose": "automatic fallback generation only"
+    },
+    "appeal_ua": {
+      "purpose": "final exact UA greeting text",
+      "priority": 1
+    }
+  },
+  "rendering_priority": [
+    "APPEAL_UA_VERBATIM",
+    "FEMALE_NOMINATIVE_FROM_NAME_AND_PATRONYMIC",
+    "MALE_FALLBACK",
+    "NEUTRAL_FALLBACK"
+  ],
+  "female_rule": {
+    "prefix": "Шановна",
+    "grammatical_form": "NOMINATIVE",
+    "decline_first_name": false,
+    "decline_patronymic": false,
+    "with_patronymic_example": "Шановна Олена Олександрівна!",
+    "with_patronymic_forbidden_example": "Шановна Олено Олександрівно!",
+    "without_patronymic_example": "Шановна Олена!"
+  },
+  "male_rule": {
+    "explicit_appeal_ua_has_priority": true,
+    "fallback": "Шановний + stored name"
+  },
+  "ambiguous_rule": {
+    "fallback": "Вітаємо!",
+    "never_guess_gender_when_ambiguous": true
+  },
+  "template": {
+    "ua_token": "{{greeting}}",
+    "server_side_rendering": true
+  },
+  "import": {
+    "formats": [
+      "XLSX",
+      "XLS",
+      "CSV"
+    ],
+    "preserve_fields": [
+      "gender",
+      "appeal_ua"
+    ],
+    "blank_import_must_not_overwrite_verified_appeal_ua": true,
+    "aliases": {
+      "gender": [
+        "gender",
+        "стать",
+        "sex"
+      ],
+      "appeal_ua": [
+        "appeal_ua",
+        "звернення",
+        "звернення_ua"
+      ]
+    }
+  },
+  "migration": {
+    "preserve_on_paid_hosting": true,
+    "required_backend_file": "backend/src/mailing-greeting.mjs",
+    "required_test_file": "backend/test/mailing-greeting.test.mjs",
+    "required_protocol_marker": "IIG_UA_PERSONALIZED_ADDRESS_V37",
+    "release_blocker_if_missing": true
+  }
+}
