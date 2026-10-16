@@ -252,3 +252,33 @@ Acceptance scope:
 - GitHub Pages DEMO must clearly report production backend as not connected rather than simulate delivery.
 
 Marker: `IIG_MAILING_REDTEAM_GREEN_CHECK_2026_10_10`.
+
+
+## UA PERSONALIZED ADDRESS V37 — OWNER APPROVED 2026-10-16
+
+This section **supersedes the V36 greeting line and V36 empty-name fallback only**. All other V36 mailing, approval, attachment, unsubscribe, role and sender invariants remain active.
+
+Canonical contact-base fields:
+- `gender` = `M` / `F`;
+- `appeal_ua` = final UA greeting text for the exact recipient.
+
+Rendering priority:
+1. if `appeal_ua` is present, backend uses it verbatim;
+2. if `appeal_ua` is empty and `gender=F`, backend generates `Шановна + ім’я + по батькові` in the **nominative form**, without vocative declension;
+3. if a female contact has no patronymic, backend generates `Шановна + ім’я`, also without declension;
+4. if `appeal_ua` is empty and `gender=M`, the male fallback remains `Шановний + name` unless a curated `appeal_ua` is supplied;
+5. if gender/name data are insufficient or ambiguous, fallback is the neutral `Вітаємо!`.
+
+Female examples locked by OWNER:
+- `Шановна Алла Олегівна!` — NOT `Шановна Алло Олегівно!`;
+- `Шановна Олена Олександрівна!` — NOT `Шановна Олено Олександрівно!`;
+- `Шановна Олена!` when patronymic is absent.
+
+The UA template personalization token is `{{greeting}}`. The backend injects the resolved greeting server-side for every recipient. Splitting the mailing base into separate male/female files is forbidden; one unified base is used.
+
+Import rule:
+- XLSX/XLS/CSV importer must preserve `gender` and `appeal_ua`;
+- uploaded `appeal_ua` has priority over automatic generation;
+- an existing verified `appeal_ua` must not be replaced by a blank imported value.
+
+Migration marker: `IIG_UA_PERSONALIZED_ADDRESS_V37`.
