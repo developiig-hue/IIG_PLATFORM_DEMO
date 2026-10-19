@@ -1,6 +1,16 @@
 name: IIG Mirohost eVPS Staging Package
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'deploy/mirohost-evps-staging/**'
+      - '.github/workflows/mirohost-evps-staging.yml'
+      - 'deploy/IIG_PRODUCTION_DEPLOY_PACKAGE/PUBLIC_COPYLIST.txt'
+      - 'backend/**'
+      - 'scripts/check_paid_hosting_migration_contract.py'
+      - 'scripts/check_site_design_lock.py'
+      - 'scripts/check_site_search.py'
 permissions:
   contents: read
 jobs:
