@@ -1,0 +1,692 @@
+{
+  "schema": "iig.weekly-editorial-review.v1",
+  "week_start": "2026-10-12",
+  "week_end": "2026-10-18",
+  "prepared_on": "2026-10-19",
+  "status": "REVIEW",
+  "admin_gate": "ADMIN_1",
+  "auto_publish": false,
+  "auto_digest": false,
+  "auto_mail": false,
+  "source_scope": "Targeted fresh primary-source verification; not a verified full 260-source robot sweep",
+  "source_registry_reference": "content/discovery/IIG_news_source_registry_260.json",
+  "baseline_main": {
+    "news_total": 49,
+    "news_approved": 11,
+    "news_review": 38,
+    "advice_total": 8,
+    "advice_approved": 8,
+    "baseline_verified_before_write": true
+  },
+  "existing_approvals": "UNTOUCHED: this batch is created on a separate editorial branch only; no changes to public-news, public-advice or Approval Ledger",
+  "count": 12,
+  "count_by_category": {
+    "NEWS": 4,
+    "FINANCE": 2,
+    "REGULATION": 3,
+    "CHIEF_ENGINEER_ADVICE": 3
+  },
+  "items": [
+    {
+      "id": "IIG-W42-01",
+      "slug": "metinvest-zaporizhstal-17oct-2026",
+      "category": "NEWS",
+      "sector": "metallurgy",
+      "publication_date": "2026-10-17",
+      "title": {
+        "ua": "Metinvest: новий удар по «Запоріжсталі» поглибив кризу промислової інфраструктури",
+        "en": "Metinvest: another strike on Zaporizhstal deepens the industrial infrastructure crisis"
+      },
+      "summary": {
+        "ua": "Шість ракет 17 жовтня пошкодили внутрішню енергетичну й логістичну інфраструктуру заводу; нормальне виробництво не відновлено.",
+        "en": "Six missiles struck the plant's internal energy and logistics infrastructure on 17 October; normal production has not resumed."
+      },
+      "body": {
+        "ua": "ФАКТ І СТАДІЯ ПРОЄКТУ. Метинвест повідомив про шість балістичних ракет, які 17 жовтня влучили в енергетичну, логістичну інфраструктуру та окремі об'єкти доменного виробництва «Запоріжсталі». Компанія повідомляє, що цього разу обійшлося без постраждалих завдяки укриттям. Нормальний випуск сталі після попередніх ударів не відновлений.\n\nПРОЄКТНИЙ КОНТЕКСТ ТА РИЗИКИ. Для IIG це сигнал про високий ризик фінансування нової великої генерації під підприємство без прогнозованого виробничого навантаження. Інженерні роботи доцільно починати з карти критичних навантажень, режимів безпечної консервації, відокремлення аварійних шин та оцінки живучості мереж.\n\nАНАЛІЗ IIG / НАСТУПНІ ДІЇ. Не ототожнювати пошкодження енергетичної інфраструктури з підтвердженим замовленням на CHP. До будь-якої EPC+F-пропозиції потрібні підтвердження стану майданчика, горизонту відновлення виробництва, доступу та платоспроможності.\n\nРЕДАКЦІЙНА ОБМЕЖУВАЛЬНА ПРИМІТКА. Цей матеріал є редакційним оглядом первинного повідомлення, а не підтвердженням наявності відкритого EPC-тендеру, укладеного контракту, доступного кредиту чи введення потужності в експлуатацію. До затвердження ADMIN_1 потрібно окремо перевірити дату, числові параметри, стадію реалізації, компанію-бенефіціара, правовий статус зображення та відсутність дублювання з попередніми випусками.",
+        "en": "Six missiles struck the plant's internal energy and logistics infrastructure on 17 October; normal production has not resumed.\n\nIIG ANALYSIS: Для IIG це сигнал про високий ризик фінансування нової великої генерації під підприємство без прогнозованого виробничого навантаження. Інженерні роботи доцільно починати з карти критичних навантажень, режимів безпечної консервації, відокремлення аварійних шин та оцінки живучості мереж.\n\nACTION: Не ототожнювати пошкодження енергетичної інфраструктури з підтвердженим замовленням на CHP. До будь-якої EPC+F-пропозиції потрібні підтвердження стану майданчика, горизонту відновлення виробництва, доступу та платоспроможності."
+      },
+      "canonical_url": "https://www.metinvestholding.com/en/media/news/russia-attacks-zaporizhstal-for-the-fifth-time-firing-six-more-ballistic-missiles-at-the-steelworks",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "REPORTED_STAGE_ONLY",
+      "evidence_note": "Метинвест повідомив про шість балістичних ракет, які 17 жовтня влучили в енергетичну, логістичну інфраструктуру та окремі об'єкти доменного виробництва «Запоріжсталі». Компанія повідомляє, що цього разу обійшлося без постраждалих завдяки укриттям. Нормальний випуск сталі після попередніх ударів не відновлений.",
+      "iig_analysis": "Для IIG це сигнал про високий ризик фінансування нової великої генерації під підприємство без прогнозованого виробничого навантаження. Інженерні роботи доцільно починати з карти критичних навантажень, режимів безпечної консервації, відокремлення аварійних шин та оцінки живучості мереж.",
+      "iig_action": "Не ототожнювати пошкодження енергетичної інфраструктури з підтвердженим замовленням на CHP. До будь-якої EPC+F-пропозиції потрібні підтвердження стану майданчика, горизонту відновлення виробництва, доступу та платоспроможності.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "IMAGE_SELECTION_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "HIGH",
+      "admin_notes": "Do not copy publisher image until licensing/permission confirmed."
+    },
+    {
+      "id": "IIG-W42-02",
+      "slug": "grid-connection-64-sites-476mw-2026",
+      "category": "NEWS",
+      "sector": "energy",
+      "publication_date": "2026-10-14",
+      "title": {
+        "ua": "НКРЕКП: врегульовано питання приєднання 64 установок на приблизно 476 МВт",
+        "en": "Regulator reports connection issues resolved for 64 installations totalling about 476 MW"
+      },
+      "summary": {
+        "ua": "Результат 36 координаційних нарад із січня 2026 року; це замовлена потужність, а не підтверджений введений у роботу обсяг.",
+        "en": "Following 36 coordination meetings since January; 476 MW is requested capacity, not confirmed commissioned generation."
+      },
+      "body": {
+        "ua": "ФАКТ І СТАДІЯ ПРОЄКТУ. Регулятор повідомив про врегулювання проблемних питань приєднання 64 електроустановок потенційних виробників із сумарною замовленою потужністю близько 476 МВт. Із розглянутих проблем 51% стосувалися надмірних технічних вимог, 13% — затримок видачі технічних умов, 36% — інших питань, зокрема обліку та якості електроенергії.\n\nПРОЄКТНИЙ КОНТЕКСТ ТА РИЗИКИ. Для IIG це індикатор великого потенційного pipeline розподіленої генерації, але не перелік відкритих тендерів. Перед EPC+F-пропозицією необхідні техумови, схема видачі потужності, режим автономної роботи, комерційний облік і перевірка прав на землю.\n\nАНАЛІЗ IIG / НАСТУПНІ ДІЇ. Запросити деталізацію відкритих проєктів у регіональних ОСР; відокремити проєкти з готовими техумовами від концепцій; визначити можливості CHP+BESS та окремо перевірити eligibility міжнародного фінансування.\n\nРЕДАКЦІЙНА ОБМЕЖУВАЛЬНА ПРИМІТКА. Цей матеріал є редакційним оглядом первинного повідомлення, а не підтвердженням наявності відкритого EPC-тендеру, укладеного контракту, доступного кредиту чи введення потужності в експлуатацію. До затвердження ADMIN_1 потрібно окремо перевірити дату, числові параметри, стадію реалізації, компанію-бенефіціара, правовий статус зображення та відсутність дублювання з попередніми випусками.",
+        "en": "Following 36 coordination meetings since January; 476 MW is requested capacity, not confirmed commissioned generation.\n\nIIG ANALYSIS: Для IIG це індикатор великого потенційного pipeline розподіленої генерації, але не перелік відкритих тендерів. Перед EPC+F-пропозицією необхідні техумови, схема видачі потужності, режим автономної роботи, комерційний облік і перевірка прав на землю.\n\nACTION: Запросити деталізацію відкритих проєктів у регіональних ОСР; відокремити проєкти з готовими техумовами від концепцій; визначити можливості CHP+BESS та окремо перевірити eligibility міжнародного фінансування."
+      },
+      "canonical_url": "https://www.nerc.gov.ua/news/nkrekp-za-rezultatamy-koordynatsiinykh-narad-vrehulovano-pytannia-pryiednannia-64-elektroustanovok-zahalnoiu-potuzhnistiu-blyzko-476-mvt",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "REPORTED_STAGE_ONLY",
+      "evidence_note": "Регулятор повідомив про врегулювання проблемних питань приєднання 64 електроустановок потенційних виробників із сумарною замовленою потужністю близько 476 МВт. Із розглянутих проблем 51% стосувалися надмірних технічних вимог, 13% — затримок видачі технічних умов, 36% — інших питань, зокрема обліку та якості електроенергії.",
+      "iig_analysis": "Для IIG це індикатор великого потенційного pipeline розподіленої генерації, але не перелік відкритих тендерів. Перед EPC+F-пропозицією необхідні техумови, схема видачі потужності, режим автономної роботи, комерційний облік і перевірка прав на землю.",
+      "iig_action": "Запросити деталізацію відкритих проєктів у регіональних ОСР; відокремити проєкти з готовими техумовами від концепцій; визначити можливості CHP+BESS та окремо перевірити eligibility міжнародного фінансування.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "IMAGE_SELECTION_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "HIGH",
+      "admin_notes": "Do not copy publisher image until licensing/permission confirmed."
+    },
+    {
+      "id": "IIG-W42-03",
+      "slug": "klubivka-eco-park-2026",
+      "category": "NEWS",
+      "sector": "food",
+      "publication_date": "2026-10-16",
+      "title": {
+        "ua": "Індустріальний парк «Клубівка Еко Парк»: новий попит на енергетику переробних виробництв",
+        "en": "Klubivka Eco Park: potential demand for energy systems in processing industries"
+      },
+      "summary": {
+        "ua": "Зареєстрований парк 56,4914 га на Хмельниччині; заявлені майже 2,05 млрд грн інвестицій і до 2200 робочих місць — плани, а не введені потужності.",
+        "en": "Registered 56.4914-ha industrial park in Khmelnytskyi region; planned UAH 2.05bn investment and up to 2,200 jobs are projections."
+      },
+      "body": {
+        "ua": "ФАКТ І СТАДІЯ ПРОЄКТУ. Уряд включив парк «КЛУБІВКА ЕКО ПАРК» до реєстру. Ініціатор — ТОВ «БІО ЕЛЕКТРІКС». Планується розвиток харчової, паперової, хімічної та пластмасової переробки, а також альтернативної енергетики. Це етап реєстрації та планування, а не підтверджений EPC-тендер.\n\nПРОЄКТНИЙ КОНТЕКСТ ТА РИЗИКИ. Для IIG доцільно запропонувати master plan енергозабезпечення парку: профілі електричного та теплового навантаження резидентів, CHP/котельні/BESS, приєднання, пар і технологічний холод. Потенціал конкретної потужності невідомий.\n\nАНАЛІЗ IIG / НАСТУПНІ ДІЇ. Перший контакт — ініціатор/керуюча компанія; запросити план резидентів і стадію інфраструктури; після цього визначити попередній CAPEX і можливі гарантійні/банківські інструменти.\n\nРЕДАКЦІЙНА ОБМЕЖУВАЛЬНА ПРИМІТКА. Цей матеріал є редакційним оглядом первинного повідомлення, а не підтвердженням наявності відкритого EPC-тендеру, укладеного контракту, доступного кредиту чи введення потужності в експлуатацію. До затвердження ADMIN_1 потрібно окремо перевірити дату, числові параметри, стадію реалізації, компанію-бенефіціара, правовий статус зображення та відсутність дублювання з попередніми випусками.",
+        "en": "Registered 56.4914-ha industrial park in Khmelnytskyi region; planned UAH 2.05bn investment and up to 2,200 jobs are projections.\n\nIIG ANALYSIS: Для IIG доцільно запропонувати master plan енергозабезпечення парку: профілі електричного та теплового навантаження резидентів, CHP/котельні/BESS, приєднання, пар і технологічний холод. Потенціал конкретної потужності невідомий.\n\nACTION: Перший контакт — ініціатор/керуюча компанія; запросити план резидентів і стадію інфраструктури; після цього визначити попередній CAPEX і можливі гарантійні/банківські інструменти."
+      },
+      "canonical_url": "https://www.kmu.gov.ua/news/zrobleno-v-ukraini-industrialnyi-park-klubivka-eko-park-vkliuchyly-do-reiestru",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "REPORTED_STAGE_ONLY",
+      "evidence_note": "Уряд включив парк «КЛУБІВКА ЕКО ПАРК» до реєстру. Ініціатор — ТОВ «БІО ЕЛЕКТРІКС». Планується розвиток харчової, паперової, хімічної та пластмасової переробки, а також альтернативної енергетики. Це етап реєстрації та планування, а не підтверджений EPC-тендер.",
+      "iig_analysis": "Для IIG доцільно запропонувати master plan енергозабезпечення парку: профілі електричного та теплового навантаження резидентів, CHP/котельні/BESS, приєднання, пар і технологічний холод. Потенціал конкретної потужності невідомий.",
+      "iig_action": "Перший контакт — ініціатор/керуюча компанія; запросити план резидентів і стадію інфраструктури; після цього визначити попередній CAPEX і можливі гарантійні/банківські інструменти.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "IMAGE_SELECTION_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "HIGH",
+      "admin_notes": "Do not copy publisher image until licensing/permission confirmed."
+    },
+    {
+      "id": "IIG-W42-04",
+      "slug": "czech-hospitals-modernisation-2026",
+      "category": "NEWS",
+      "sector": "pharma",
+      "publication_date": "2026-10-16",
+      "title": {
+        "ua": "Чеська ініціатива модернізації лікарень України: €100,7 млн на 13 закладів",
+        "en": "Czech-supported Ukrainian hospital modernisation: €100.7m initiative for 13 facilities"
+      },
+      "summary": {
+        "ua": "На першому етапі готують шість лікарень; фінансування — гранти, кредити й технічна допомога. Енергетична складова поки не виділена.",
+        "en": "First phase targets six hospitals; grants, loans and technical assistance. A separate energy package has not been confirmed."
+      },
+      "body": {
+        "ua": "ФАКТ І СТАДІЯ ПРОЄКТУ. МОЗ повідомило про підготовку чеської інвестиційної ініціативи у межах Ukraine Facility для 13 медзакладів у семи областях. На першому етапі шість лікарень; для трьох детальні інвестиційні пропозиції підготовлено, для трьох — завершуються. Сума всієї ініціативи — €100,7 млн.\n\nПРОЄКТНИЙ КОНТЕКСТ ТА РИЗИКИ. Можливість IIG — не припускати автоматичної закупівлі CHP, а перевірити, чи містять інвестиційні пакети модернізацію аварійного електроживлення, HVAC, холоду, BESS і мікромереж. Потрібні вимоги медичного резервування та режимів безперервності.\n\nАНАЛІЗ IIG / НАСТУПНІ ДІЇ. Запросити перелік шести закладів і статус procurement; звернутися до Czech Development Agency / відповідальних бенефіціарів; запропонувати технічний аудит енергостійкості.\n\nРЕДАКЦІЙНА ОБМЕЖУВАЛЬНА ПРИМІТКА. Цей матеріал є редакційним оглядом первинного повідомлення, а не підтвердженням наявності відкритого EPC-тендеру, укладеного контракту, доступного кредиту чи введення потужності в експлуатацію. До затвердження ADMIN_1 потрібно окремо перевірити дату, числові параметри, стадію реалізації, компанію-бенефіціара, правовий статус зображення та відсутність дублювання з попередніми випусками.",
+        "en": "First phase targets six hospitals; grants, loans and technical assistance. A separate energy package has not been confirmed.\n\nIIG ANALYSIS: Можливість IIG — не припускати автоматичної закупівлі CHP, а перевірити, чи містять інвестиційні пакети модернізацію аварійного електроживлення, HVAC, холоду, BESS і мікромереж. Потрібні вимоги медичного резервування та режимів безперервності.\n\nACTION: Запросити перелік шести закладів і статус procurement; звернутися до Czech Development Agency / відповідальних бенефіціарів; запропонувати технічний аудит енергостійкості."
+      },
+      "canonical_url": "https://www.kmu.gov.ua/news/shist-ukrainskykh-likaren-planuiut-modernizuvaty-za-pidtrymky-chekhii",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "REPORTED_STAGE_ONLY",
+      "evidence_note": "МОЗ повідомило про підготовку чеської інвестиційної ініціативи у межах Ukraine Facility для 13 медзакладів у семи областях. На першому етапі шість лікарень; для трьох детальні інвестиційні пропозиції підготовлено, для трьох — завершуються. Сума всієї ініціативи — €100,7 млн.",
+      "iig_analysis": "Можливість IIG — не припускати автоматичної закупівлі CHP, а перевірити, чи містять інвестиційні пакети модернізацію аварійного електроживлення, HVAC, холоду, BESS і мікромереж. Потрібні вимоги медичного резервування та режимів безперервності.",
+      "iig_action": "Запросити перелік шести закладів і статус procurement; звернутися до Czech Development Agency / відповідальних бенефіціарів; запропонувати технічний аудит енергостійкості.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "IMAGE_SELECTION_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "MEDIUM",
+      "admin_notes": "Do not copy publisher image until licensing/permission confirmed."
+    },
+    {
+      "id": "IIG-W42-05",
+      "slug": "uesf-report-684m-h1-2026",
+      "category": "FINANCE",
+      "sector": "energy",
+      "publication_date": "2026-10-14",
+      "title": {
+        "ua": "Ukraine Energy Support Fund: €684 млн розподілено у першому півріччі 2026 року",
+        "en": "Ukraine Energy Support Fund allocated €684m in H1 2026"
+      },
+      "summary": {
+        "ua": "На 14 жовтня внески донорів перевищили €2,4 млрд; додаткова потреба оцінена приблизно у €400 млн.",
+        "en": "Donor contributions exceeded €2.4bn by 14 October; further priority needs estimated at roughly €400m."
+      },
+      "body": {
+        "ua": "ФАКТ І СТАДІЯ ПРОЄКТУ. Секретаріат Енергетичного Співтовариства опублікував звіт 14 жовтня: за січень–червень 2026 року фонд розподілив €684 млн, а загальна сума донорських внесків на дату публікації перевищила €2,4 млрд. Звіт описує закупівлі обладнання для відновлення генерації, мереж та теплопостачання.\n\nПРОЄКТНИЙ КОНТЕКСТ ТА РИЗИКИ. Для IIG це можливість участі у закупівлях обладнання та EPC, але не універсальна кредитна лінія для приватних проєктів. Eligibility, procurement route, кінцевий бенефіціар, правила походження товарів та санкційний комплаєнс необхідно перевіряти окремо.\n\nАНАЛІЗ IIG / НАСТУПНІ ДІЇ. Вивчити поточні закупівлі UESF, відфільтрувати CHP/газові двигуни/BESS/підстанції, визначити OEM і пакет документів для тендеру.\n\nРЕДАКЦІЙНА ОБМЕЖУВАЛЬНА ПРИМІТКА. Цей матеріал є редакційним оглядом первинного повідомлення, а не підтвердженням наявності відкритого EPC-тендеру, укладеного контракту, доступного кредиту чи введення потужності в експлуатацію. До затвердження ADMIN_1 потрібно окремо перевірити дату, числові параметри, стадію реалізації, компанію-бенефіціара, правовий статус зображення та відсутність дублювання з попередніми випусками.",
+        "en": "Donor contributions exceeded €2.4bn by 14 October; further priority needs estimated at roughly €400m.\n\nIIG ANALYSIS: Для IIG це можливість участі у закупівлях обладнання та EPC, але не універсальна кредитна лінія для приватних проєктів. Eligibility, procurement route, кінцевий бенефіціар, правила походження товарів та санкційний комплаєнс необхідно перевіряти окремо.\n\nACTION: Вивчити поточні закупівлі UESF, відфільтрувати CHP/газові двигуни/BESS/підстанції, визначити OEM і пакет документів для тендеру."
+      },
+      "canonical_url": "https://www.energy-community.org/news/Energy-Community-News/2026/10/8.html",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "OFFICIAL_FINANCING_ANNOUNCEMENT",
+      "evidence_note": "Секретаріат Енергетичного Співтовариства опублікував звіт 14 жовтня: за січень–червень 2026 року фонд розподілив €684 млн, а загальна сума донорських внесків на дату публікації перевищила €2,4 млрд. Звіт описує закупівлі обладнання для відновлення генерації, мереж та теплопостачання.",
+      "iig_analysis": "Для IIG це можливість участі у закупівлях обладнання та EPC, але не універсальна кредитна лінія для приватних проєктів. Eligibility, procurement route, кінцевий бенефіціар, правила походження товарів та санкційний комплаєнс необхідно перевіряти окремо.",
+      "iig_action": "Вивчити поточні закупівлі UESF, відфільтрувати CHP/газові двигуни/BESS/підстанції, визначити OEM і пакет документів для тендеру.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "IMAGE_SELECTION_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "HIGH",
+      "admin_notes": "Do not copy publisher image until licensing/permission confirmed."
+    },
+    {
+      "id": "IIG-W42-06",
+      "slug": "ukrenergo-eurobond-restructuring-2026",
+      "category": "FINANCE",
+      "sector": "energy",
+      "publication_date": "2026-10-16",
+      "title": {
+        "ua": "«Укренерго»: реструктуризація єврооблігацій вивільняє близько $135 млн",
+        "en": "Ukrenergo eurobond restructuring frees approximately $135m"
+      },
+      "summary": {
+        "ua": "За даними Міненерго, економію спрямують на відновлення мереж; це не оголошений бюджет конкретного EPC-контракту.",
+        "en": "According to the energy ministry, savings support grid restoration; no specific EPC award has been announced."
+      },
+      "body": {
+        "ua": "ФАКТ І СТАДІЯ ПРОЄКТУ. Міненерго 16 жовтня повідомило про завершення реструктуризації гарантованих облігацій «Укренерго». Заявлена економія — близько $135 млн; окремо описані нові параметри боргу та участь DFC. Публікація не називає затвердженого списку підрядних закупівель.\n\nПРОЄКТНИЙ КОНТЕКСТ ТА РИЗИКИ. Для IIG це сигнал щодо фінансової стійкості оператора та майбутніх потреб мережевого обладнання. Однак savings не тотожні доступному авансу або EPC-бюджету. Потрібно звірити інвестпрограму, тендерні плани й кредиторські обмеження.\n\nАНАЛІЗ IIG / НАСТУПНІ ДІЇ. Перевірити закупівельний план «Укренерго» та можливість постачання електротехнічного обладнання; не використовувати $135 млн як розмір контрактного pipeline без окремого підтвердження.\n\nРЕДАКЦІЙНА ОБМЕЖУВАЛЬНА ПРИМІТКА. Цей матеріал є редакційним оглядом первинного повідомлення, а не підтвердженням наявності відкритого EPC-тендеру, укладеного контракту, доступного кредиту чи введення потужності в експлуатацію. До затвердження ADMIN_1 потрібно окремо перевірити дату, числові параметри, стадію реалізації, компанію-бенефіціара, правовий статус зображення та відсутність дублювання з попередніми випусками.",
+        "en": "According to the energy ministry, savings support grid restoration; no specific EPC award has been announced.\n\nIIG ANALYSIS: Для IIG це сигнал щодо фінансової стійкості оператора та майбутніх потреб мережевого обладнання. Однак savings не тотожні доступному авансу або EPC-бюджету. Потрібно звірити інвестпрограму, тендерні плани й кредиторські обмеження.\n\nACTION: Перевірити закупівельний план «Укренерго» та можливість постачання електротехнічного обладнання; не використовувати $135 млн як розмір контрактного pipeline без окремого підтвердження."
+      },
+      "canonical_url": "https://www.kmu.gov.ua/news/nek-ukrenerho-uspishno-zavershyla-restrukturyzatsiiu-ievrooblihatsii-staloho-rozvytku-vypushchenykh-u-2021-rotsi-denys-shmyhal",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "OFFICIAL_FINANCING_ANNOUNCEMENT",
+      "evidence_note": "Міненерго 16 жовтня повідомило про завершення реструктуризації гарантованих облігацій «Укренерго». Заявлена економія — близько $135 млн; окремо описані нові параметри боргу та участь DFC. Публікація не називає затвердженого списку підрядних закупівель.",
+      "iig_analysis": "Для IIG це сигнал щодо фінансової стійкості оператора та майбутніх потреб мережевого обладнання. Однак savings не тотожні доступному авансу або EPC-бюджету. Потрібно звірити інвестпрограму, тендерні плани й кредиторські обмеження.",
+      "iig_action": "Перевірити закупівельний план «Укренерго» та можливість постачання електротехнічного обладнання; не використовувати $135 млн як розмір контрактного pipeline без окремого підтвердження.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "IMAGE_SELECTION_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "HIGH",
+      "admin_notes": "Do not copy publisher image until licensing/permission confirmed."
+    },
+    {
+      "id": "IIG-W42-07",
+      "slug": "nerc-1650-tertiary-reserves-kyiv-2026",
+      "category": "REGULATION",
+      "sector": "energy",
+      "publication_date": "2026-10-13",
+      "title": {
+        "ua": "Постанова №1650: резерви заміщення поширено на Київ і Київську область",
+        "en": "Resolution 1650 extends replacement reserve mechanism to Kyiv region"
+      },
+      "summary": {
+        "ua": "Регулятор погодив зміни до тимчасового порядку придбання допоміжних послуг.",
+        "en": "Regulator approved changes to the temporary procedure for procuring replacement reserves."
+      },
+      "body": {
+        "ua": "ФАКТ І СТАДІЯ ПРОЄКТУ. 13 жовтня НКРЕКП повідомила про розширення географії механізму резервів заміщення на Київ та область. Це створює додатковий регуляторний маршрут для місцевих генеруючих потужностей у балансуванні системи.\n\nПРОЄКТНИЙ КОНТЕКСТ ТА РИЗИКИ. Для CHP+BESS бізнес-кейсу важливо перевірити фактичні вимоги до кваліфікації, мінімальної потужності, доступності, телеметрії, випробувань і договору з ОСП. Сам факт рішення не гарантує доходу.\n\nАНАЛІЗ IIG / НАСТУПНІ ДІЇ. ADMIN_1 має звірити повний текст №1650 і чинну редакцію тимчасового порядку перед будь-яким твердженням про можливий дохід від допоміжних послуг.\n\nРЕДАКЦІЙНА ОБМЕЖУВАЛЬНА ПРИМІТКА. Цей матеріал є редакційним оглядом первинного повідомлення, а не підтвердженням наявності відкритого EPC-тендеру, укладеного контракту, доступного кредиту чи введення потужності в експлуатацію. До затвердження ADMIN_1 потрібно окремо перевірити дату, числові параметри, стадію реалізації, компанію-бенефіціара, правовий статус зображення та відсутність дублювання з попередніми випусками.",
+        "en": "Regulator approved changes to the temporary procedure for procuring replacement reserves.\n\nIIG ANALYSIS: Для CHP+BESS бізнес-кейсу важливо перевірити фактичні вимоги до кваліфікації, мінімальної потужності, доступності, телеметрії, випробувань і договору з ОСП. Сам факт рішення не гарантує доходу.\n\nACTION: ADMIN_1 має звірити повний текст №1650 і чинну редакцію тимчасового порядку перед будь-яким твердженням про можливий дохід від допоміжних послуг."
+      },
+      "canonical_url": "https://www.nerc.gov.ua/news/nkrekp-rozshyryla-mozhlyvosti-zaluchennia-heneruiuchykh-potuzhnostei-u-kyievi-ta-kyivskii-oblasti",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "OFFICIAL_REGULATORY_ACTION",
+      "evidence_note": "13 жовтня НКРЕКП повідомила про розширення географії механізму резервів заміщення на Київ та область. Це створює додатковий регуляторний маршрут для місцевих генеруючих потужностей у балансуванні системи.",
+      "iig_analysis": "Для CHP+BESS бізнес-кейсу важливо перевірити фактичні вимоги до кваліфікації, мінімальної потужності, доступності, телеметрії, випробувань і договору з ОСП. Сам факт рішення не гарантує доходу.",
+      "iig_action": "ADMIN_1 має звірити повний текст №1650 і чинну редакцію тимчасового порядку перед будь-яким твердженням про можливий дохід від допоміжних послуг.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "IMAGE_SELECTION_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "HIGH",
+      "admin_notes": "Do not copy publisher image until licensing/permission confirmed."
+    },
+    {
+      "id": "IIG-W42-08",
+      "slug": "nerc-1683-price-caps-2026",
+      "category": "REGULATION",
+      "sector": "energy",
+      "publication_date": "2026-10-13",
+      "title": {
+        "ua": "Постанова №1683: нові price caps 15 000/17 000 грн за МВт·год із 31 жовтня",
+        "en": "Resolution 1683: new UAH 15,000/17,000 per MWh price caps from 31 October"
+      },
+      "summary": {
+        "ua": "Максимум РДН/ВДР — 15 000 грн/МВт·год; балансуючий ринок — 17 000 грн/МВт·год.",
+        "en": "Day-ahead/intraday cap UAH 15,000/MWh; balancing market cap UAH 17,000/MWh."
+      },
+      "body": {
+        "ua": "ФАКТ І СТАДІЯ ПРОЄКТУ. НКРЕКП ухвалила постанову №1683 від 13 жовтня, оприлюднену 14 жовтня. Установлені максимальні граничні ціни 15 000 грн/МВт·год на РДН і ВДР та 17 000 грн/МВт·год на балансуючому ринку. Основні положення набирають чинності 31 жовтня 2026 року; пункт 2 — з дати прийняття.\n\nПРОЄКТНИЙ КОНТЕКСТ ТА РИЗИКИ. Для EPC+F-моделі CHP+BESS price cap — верхня межа сегмента ринку, а не прогноз середньої ціни реалізації. Перерахувати сценарії доходу за фактичними погодинними цінами, OPEX, газом, технічними обмеженнями й небалансами.\n\nАНАЛІЗ IIG / НАСТУПНІ ДІЇ. Перевірити тарифні сценарії і дату набрання чинності, не підміняти cap гарантованим PPA або merchant revenue.\n\nРЕДАКЦІЙНА ОБМЕЖУВАЛЬНА ПРИМІТКА. Цей матеріал є редакційним оглядом первинного повідомлення, а не підтвердженням наявності відкритого EPC-тендеру, укладеного контракту, доступного кредиту чи введення потужності в експлуатацію. До затвердження ADMIN_1 потрібно окремо перевірити дату, числові параметри, стадію реалізації, компанію-бенефіціара, правовий статус зображення та відсутність дублювання з попередніми випусками.",
+        "en": "Day-ahead/intraday cap UAH 15,000/MWh; balancing market cap UAH 17,000/MWh.\n\nIIG ANALYSIS: Для EPC+F-моделі CHP+BESS price cap — верхня межа сегмента ринку, а не прогноз середньої ціни реалізації. Перерахувати сценарії доходу за фактичними погодинними цінами, OPEX, газом, технічними обмеженнями й небалансами.\n\nACTION: Перевірити тарифні сценарії і дату набрання чинності, не підміняти cap гарантованим PPA або merchant revenue."
+      },
+      "canonical_url": "https://www.nerc.gov.ua/acts/pro-hranychni-tsiny-na-rynku-na-dobu-napered-vnutrishnodobovomu-rynku-ta-balansuiuchomu-rynku-2",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "OFFICIAL_REGULATORY_ACTION",
+      "evidence_note": "НКРЕКП ухвалила постанову №1683 від 13 жовтня, оприлюднену 14 жовтня. Установлені максимальні граничні ціни 15 000 грн/МВт·год на РДН і ВДР та 17 000 грн/МВт·год на балансуючому ринку. Основні положення набирають чинності 31 жовтня 2026 року; пункт 2 — з дати прийняття.",
+      "iig_analysis": "Для EPC+F-моделі CHP+BESS price cap — верхня межа сегмента ринку, а не прогноз середньої ціни реалізації. Перерахувати сценарії доходу за фактичними погодинними цінами, OPEX, газом, технічними обмеженнями й небалансами.",
+      "iig_action": "Перевірити тарифні сценарії і дату набрання чинності, не підміняти cap гарантованим PPA або merchant revenue.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "IMAGE_SELECTION_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "HIGH",
+      "admin_notes": "Do not copy publisher image until licensing/permission confirmed."
+    },
+    {
+      "id": "IIG-W42-09",
+      "slug": "nerc-voltage-class-subconsumers-2026",
+      "category": "REGULATION",
+      "sector": "energy",
+      "publication_date": "2026-10-15",
+      "title": {
+        "ua": "НКРЕКП пояснила визначення класу напруги субспоживачів",
+        "en": "Regulator clarifies voltage class for electricity sub-consumers"
+      },
+      "summary": {
+        "ua": "Клас визначається на власній межі балансової належності субспоживача, а не автоматично за класом основного споживача.",
+        "en": "Voltage class is assessed at the sub-consumer's own asset boundary, not inherited automatically from the main consumer."
+      },
+      "body": {
+        "ua": "ФАКТ І СТАДІЯ ПРОЄКТУ. 15 жовтня НКРЕКП роз'яснила: для субспоживача, приєднаного до технологічних мереж основного споживача, клас напруги визначають за критеріями Порядку №1175 на межі балансової належності саме субспоживача. За номінальної напруги нижче 27,5 кВ — другий клас.\n\nПРОЄКТНИЙ КОНТЕКСТ ТА РИЗИКИ. Для індустріальних парків, орендних виробництв і SPV з власною генерацією це впливає на моделювання витрат на розподіл, структуру договорів і схеми обліку. Не можна переносити клас напруги власника мережі на всіх резидентів без аналізу.\n\nАНАЛІЗ IIG / НАСТУПНІ ДІЇ. Перевірити однолінійну схему, акти розмежування, точки обліку й чинні тарифи кожного субспоживача.\n\nРЕДАКЦІЙНА ОБМЕЖУВАЛЬНА ПРИМІТКА. Цей матеріал є редакційним оглядом первинного повідомлення, а не підтвердженням наявності відкритого EPC-тендеру, укладеного контракту, доступного кредиту чи введення потужності в експлуатацію. До затвердження ADMIN_1 потрібно окремо перевірити дату, числові параметри, стадію реалізації, компанію-бенефіціара, правовий статус зображення та відсутність дублювання з попередніми випусками.",
+        "en": "Voltage class is assessed at the sub-consumer's own asset boundary, not inherited automatically from the main consumer.\n\nIIG ANALYSIS: Для індустріальних парків, орендних виробництв і SPV з власною генерацією це впливає на моделювання витрат на розподіл, структуру договорів і схеми обліку. Не можна переносити клас напруги власника мережі на всіх резидентів без аналізу.\n\nACTION: Перевірити однолінійну схему, акти розмежування, точки обліку й чинні тарифи кожного субспоживача."
+      },
+      "canonical_url": "https://www.nerc.gov.ua/news/roziasnennia-shchodo-vyznachennia-klasu-napruhy-dlia-subspozhyvachiv-elektroenerhii",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "OFFICIAL_REGULATORY_ACTION",
+      "evidence_note": "15 жовтня НКРЕКП роз'яснила: для субспоживача, приєднаного до технологічних мереж основного споживача, клас напруги визначають за критеріями Порядку №1175 на межі балансової належності саме субспоживача. За номінальної напруги нижче 27,5 кВ — другий клас.",
+      "iig_analysis": "Для індустріальних парків, орендних виробництв і SPV з власною генерацією це впливає на моделювання витрат на розподіл, структуру договорів і схеми обліку. Не можна переносити клас напруги власника мережі на всіх резидентів без аналізу.",
+      "iig_action": "Перевірити однолінійну схему, акти розмежування, точки обліку й чинні тарифи кожного субспоживача.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "IMAGE_SELECTION_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "MEDIUM",
+      "admin_notes": "Do not copy publisher image until licensing/permission confirmed."
+    },
+    {
+      "id": "IIG-W42-10",
+      "slug": "advice-grid-connection-evidence-pack-2026",
+      "category": "CHIEF_ENGINEER_ADVICE",
+      "sector": "energy",
+      "publication_date": "2026-10-14",
+      "title": {
+        "ua": "Як підготувати пакет для приєднання CHP+BESS без зайвих техумов",
+        "en": "How to prepare a defensible CHP+BESS grid-connection package"
+      },
+      "summary": {
+        "ua": "Практична порада на основі проблем 64 заявників, описаних НКРЕКП.",
+        "en": "Practical guidance based on the regulator's analysis of 64 connection cases."
+      },
+      "body": {
+        "ua": "Проблема: невизначеність техумов затримує EPC-графік і фінансове закриття. Перевірки: погодинний баланс, max export/import, коротке замикання, селективність, релейний захист, телеметрія, якість електроенергії, межа балансової належності. Рішення: зафіксувати єдиний design basis та interface matrix з ОСР. Управлінське рішення: не замовляти довгострокове OEM-обладнання до підтвердження ключових мережевих параметрів.",
+        "en": "Practical guidance based on the regulator's analysis of 64 connection cases.\n\nIIG ANALYSIS: undefined\n\nACTION: undefined"
+      },
+      "canonical_url": "https://www.nerc.gov.ua/news/nkrekp-za-rezultatamy-koordynatsiinykh-narad-vrehulovano-pytannia-pryiednannia-64-elektroustanovok-zahalnoiu-potuzhnistiu-blyzko-476-mvt",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "ORIGINAL_ENGINEERING_GUIDANCE",
+      "evidence_note": "Проблема: невизначеність техумов затримує EPC-графік і фінансове закриття. Перевірки: погодинний баланс, max export/import, коротке замикання, селективність, релейний захист, телеметрія, якість електроенергії, межа балансової належності. Рішення: зафіксувати єдиний design basis та interface matrix з ОСР. Управлінське рішення: не замовляти довгострокове OEM-обладнання до підтвердження ключових мережевих параметрів.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "CONCEPTUAL_SCHEMATIC_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "MEDIUM",
+      "admin_notes": "Prepare unique content-specific conceptual engineering schematic; do not use generic placeholder."
+    },
+    {
+      "id": "IIG-W42-11",
+      "slug": "advice-ancillary-services-chp-bess-2026",
+      "category": "CHIEF_ENGINEER_ADVICE",
+      "sector": "energy",
+      "publication_date": "2026-10-13",
+      "title": {
+        "ua": "CHP+BESS та допоміжні послуги: як уникнути подвійного продажу однієї потужності",
+        "en": "CHP+BESS ancillary services: avoid double-counting the same capacity"
+      },
+      "summary": {
+        "ua": "Інженерна перевірка перед заявкою на резерви заміщення.",
+        "en": "Engineering checks before offering replacement reserve capacity."
+      },
+      "body": {
+        "ua": "Проблема: в EPC+F моделі одночасно враховують власне споживання, експорт і резерви, завищуючи доступну потужність. Перевірки: minimum stable load двигуна, BESS SOC, ramp rate, телеметрія, island-mode reserve, контрактні штрафи. Рішення: побудувати диспетчерський графік з взаємовиключними commitments та окремими сценаріями. Управлінське рішення: допускати до фінмоделі лише підтверджені контрактом та технічно здійсненні обсяги послуг.",
+        "en": "Engineering checks before offering replacement reserve capacity.\n\nIIG ANALYSIS: undefined\n\nACTION: undefined"
+      },
+      "canonical_url": "https://www.nerc.gov.ua/news/nkrekp-rozshyryla-mozhlyvosti-zaluchennia-heneruiuchykh-potuzhnostei-u-kyievi-ta-kyivskii-oblasti",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "ORIGINAL_ENGINEERING_GUIDANCE",
+      "evidence_note": "Проблема: в EPC+F моделі одночасно враховують власне споживання, експорт і резерви, завищуючи доступну потужність. Перевірки: minimum stable load двигуна, BESS SOC, ramp rate, телеметрія, island-mode reserve, контрактні штрафи. Рішення: побудувати диспетчерський графік з взаємовиключними commitments та окремими сценаріями. Управлінське рішення: допускати до фінмоделі лише підтверджені контрактом та технічно здійсненні обсяги послуг.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "CONCEPTUAL_SCHEMATIC_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "MEDIUM",
+      "admin_notes": "Prepare unique content-specific conceptual engineering schematic; do not use generic placeholder."
+    },
+    {
+      "id": "IIG-W42-12",
+      "slug": "advice-hospital-microgrid-reliability-2026",
+      "category": "CHIEF_ENGINEER_ADVICE",
+      "sector": "pharma",
+      "publication_date": "2026-10-16",
+      "title": {
+        "ua": "Енергостійкість лікарні: чому PV+BESS не замінюють аварійний дизель без розрахунку",
+        "en": "Hospital resilience: why PV+BESS cannot replace emergency diesel without a study"
+      },
+      "summary": {
+        "ua": "Чотириблокова технічна порада на тлі чеської програми модернізації лікарень.",
+        "en": "Four-block engineering guidance prompted by Czech-supported hospital modernisation."
+      },
+      "body": {
+        "ua": "Проблема: лікарняні критичні навантаження не допускають втрати живлення під час переходу на резерв. Перевірки: класи навантажень, UPS runtime, пускові струми, автономність дизеля, пожежна безпека BESS, резервування медичних газів, АВР. Рішення: багаторівнева архітектура UPS + аварійна генерація + BESS/PV за підтвердженою категорією надійності. Управлінське рішення: не погоджувати концепцію до лікарняного risk assessment, FAT/SAT і протоколу випробування island mode.",
+        "en": "Four-block engineering guidance prompted by Czech-supported hospital modernisation.\n\nIIG ANALYSIS: undefined\n\nACTION: undefined"
+      },
+      "canonical_url": "https://www.kmu.gov.ua/news/shist-ukrainskykh-likaren-planuiut-modernizuvaty-za-pidtrymky-chekhii",
+      "source_type": "PRIMARY_OFFICIAL",
+      "primary_source_verified": true,
+      "project_status": "ORIGINAL_ENGINEERING_GUIDANCE",
+      "evidence_note": "Проблема: лікарняні критичні навантаження не допускають втрати живлення під час переходу на резерв. Перевірки: класи навантажень, UPS runtime, пускові струми, автономність дизеля, пожежна безпека BESS, резервування медичних газів, АВР. Рішення: багаторівнева архітектура UPS + аварійна генерація + BESS/PV за підтвердженою категорією надійності. Управлінське рішення: не погоджувати концепцію до лікарняного risk assessment, FAT/SAT і протоколу випробування island mode.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "auto_publish": false,
+      "digest_eligible": false,
+      "rights": {
+        "image_url": null,
+        "image_source": null,
+        "rights_status": "CONCEPTUAL_SCHEMATIC_REQUIRED",
+        "credit": null,
+        "usage_authorized": false
+      },
+      "checks": {
+        "source_date": "VERIFIED",
+        "facts": "ADMIN_1_VERIFY",
+        "text": "ADMIN_1_EDIT",
+        "image_rights": "PENDING",
+        "legal": "PENDING",
+        "duplication": "CHECK_PRIOR_APPROVAL_LEDGER"
+      },
+      "publication_destinations": {
+        "news_insights": false,
+        "homepage_top5": false,
+        "digest": false,
+        "mailing": false
+      },
+      "review_priority": "MEDIUM",
+      "admin_notes": "Prepare unique content-specific conceptual engineering schematic; do not use generic placeholder."
+    }
+  ],
+  "additional_watchlist": [
+    {
+      "topic": "G7 €260m support for Chornobyl NSC restoration (15 Oct)",
+      "url": "https://www.ebrd.com/home/what-we-do/focus-areas/nuclear-safety/making-chornobyl-safe.html",
+      "status": "NOT_IN_WEEKLY_12; specialist nuclear EPC outside main IIG CHP focus"
+    },
+    {
+      "topic": "EBRD Kyiv liquidity/cogeneration and Kernel 106 MW solar+BESS",
+      "url": "https://www.ebrd.com/home/news-and-events/news/2026/ebrd-and-eu-join-forces-to-strengthen-kyiv-s-energy-security.html",
+      "status": "PUBLICATION_DATE_NOT_VERIFIED; excluded from strict weekly items"
+    }
+  ],
+  "admin_1_next_actions": [
+    "Review UA/EN text and ensure IIG editorial 1200-char NEWS minimum; the present package is an editorial draft, not final copy",
+    "Cross-check all numbers, dates, project stage and legal effects against linked primary sources",
+    "Verify rights for each news image; prepare individual engineering schematic for each Advice",
+    "Check duplicate URLs/slugs and prior Approval Ledger before import",
+    "Only after explicit ADMIN_1 approval may approved records enter public registry or Digest Builder"
+  ]
+}
