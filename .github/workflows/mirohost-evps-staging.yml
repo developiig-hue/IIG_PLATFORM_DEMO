@@ -1,0 +1,35 @@
+name: IIG Mirohost eVPS Staging Package
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Migration HARD LOCK
+        run: python scripts/check_paid_hosting_migration_contract.py
+      - name: Public design/search gates
+        run: |
+          python scripts/check_site_design_lock.py
+          python scripts/check_site_search.py
+      - name: Backend syntax/tests
+        working-directory: backend
+        run: |
+          npm install --ignore-scripts --no-audit --no-fund
+          npm run check
+          npm test
+      - name: Build Mirohost eVPS staging package
+        run: bash deploy/mirohost-evps-staging/build.sh
+      - name: Public secret scan
+        run: |
+          ! grep -RqiE '(DATABASE_URL|SECRET_KEY|PRIVATE_KEY|PASSWORD=|postgresql://|IIG_ADMIN[12]_MFA_SECRET|IIG_SMTP_PASS)' dist/IIG_MIROHOST_EVPS_STAGING/public
+      - uses: actions/upload-artifact@v4
+        with:
+          name: IIG_MIROHOST_EVPS_STAGING
+          path: dist/IIG_MIROHOST_EVPS_STAGING
+          retention-days: 7
