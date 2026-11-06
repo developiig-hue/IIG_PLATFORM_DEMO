@@ -738,3 +738,10 @@ The Digest is not releasable if:
 - a hosting/domain migration changes this approved form without a new owner approval.
 
 **Status:** VERIFIED / OWNER APPROVED / STANDARD VISUAL FORM / PORTABLE.
+
+
+## CANONICAL HTML BUILD / APPROVAL HARD RULE — 2026-11-06
+**OWNER-APPROVED ARCHITECTURE / IMPLEMENTATION PENDING ON MIROHOST.**
+The authoritative workflow is defined in [docs/HARD_RULE_IIG_DIGEST_CANONICAL_HTML_V1_2026-11-06.md](docs/HARD_RULE_IIG_DIGEST_CANONICAL_HTML_V1_2026-11-06.md).
+
+This dated rule supersedes conflicting earlier instructions that allowed Final Preview, ADMIN_1 or PDF to rebuild the Digest; relied on a mutable/default/legacy cover; or required separate ADMIN_1 cover approval. The GREEN button «ЗІБРАТИ ДАЙДЖЕСТ» alone must create a versioned physical HTML artifact with frozen media. ADMIN_2 and ADMIN_1 preview the exact same HTML revision, ADMIN_1 approves that revision/hash, and ADMIN_2 generates PDF only from approved HTML. Existing MASTER visual, individual article links, image rights, RBAC/MFA, and mailing gates remain mandatory. Documentation approval does not constitute production deployment or E2E acceptance.
