@@ -748,3 +748,6 @@ This dated rule supersedes conflicting earlier instructions that allowed Final P
 
 
 **BLUE PREVIEW SINGLE-SOURCE LOCK — 2026-11-06:** Once green BUILD has created physical `digest.html`, the blue working-preview button and Final Preview MUST load the exact same immutable revision/asset manifest; neither may independently rebuild, invoke legacy renderers, or show stale cached drafts. The blue button is read-only and does not set PREVIEWED. Final Preview may set PREVIEWED only for the version it displayed. Any post-BUILD edits invalidate the revision and require a new green BUILD; explicit STALE/REBUILD REQUIRED feedback replaces silent fallback. ADMIN_1 reviews the same revision/hash. Detailed enforcement and GREEN tests: HR-03A of the linked authoritative protocol.
+
+
+**AUTOFORM COVER BAN — 2026-11-07:** «НОВЕ АВТОФОРМУВАННЯ» builds only Page 2–N and MUST NOT create or inject a template/default Page 1 or modify saved Working Cover. ADMIN_2 Cover Studio + SAVE WORKING COVER alone owns Page 1. Missing saved cover image blocks green BUILD; the separate SAVE handler bug (COVER_RED) must still be fixed. See HR-01A of the authoritative Canonical HTML HARD RULE.
