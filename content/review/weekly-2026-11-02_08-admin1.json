@@ -1,0 +1,245 @@
+{
+  "issue": "2026-W45",
+  "period_start": "2026-11-02",
+  "period_end": "2026-11-08",
+  "generated_at": "2026-11-09",
+  "workflow": "IIG_WEEKLY_REVIEW_ONLY",
+  "publication": "BLOCKED",
+  "digest": "NOT_RUN",
+  "mailing": "NOT_RUN",
+  "source_coverage": "Selective verified sources; not complete 260-source crawl",
+  "finance_note": "No newly announced financing instrument in the period independently verified; finance item concerns draft tariffs, not funding",
+  "items": [
+    {
+      "id": "IIG-2026-W45-01",
+      "category": "NEWS",
+      "title": {
+        "ua": "Удари по енергетичних об’єктах Одещини та Житомирщини 3 листопада"
+      },
+      "summary": {
+        "ua": "3 листопада повідомлено про значні пошкодження об’єкта ДТЕК на Одещині та перебої електропостачання на Житомирщині. Це сигнал для перегляду промислових сценаріїв N-1, резервної генерації та мережевої стійкості."
+      },
+      "admin_check": "Підтвердити деталі за повідомленнями ДТЕК/операторів, не розкривати чутливі локації.",
+      "source_url": "https://www.reuters.com/world/russian-attacks-hit-energy-facilities-ukraines-odesa-zhytomyr-regions-2026-11-03/",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W45-02",
+      "category": "NEWS",
+      "title": {
+        "ua": "НКРЕКП видала ліцензії новим виробникам електроенергії"
+      },
+      "summary": {
+        "ua": "3 листопада регулятор повідомив про ліцензування ТОВ «ГРІН АПЕКС» і ТОВ «НОРТ ЛЕНД». Ліцензія не доводить введення потужностей в експлуатацію."
+      },
+      "admin_check": "Перевірити потужності, технології, об'єкти та потенційні EPC-контакти.",
+      "source_url": "https://www.nerc.gov.ua/news/03-lystopada-2026-roku-vidbulosia-zasidannia-nkrekp",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W45-03",
+      "category": "INDUSTRY",
+      "title": {
+        "ua": "Плани розвитку електромереж на 2027–2031 роки"
+      },
+      "summary": {
+        "ua": "3 листопада НКРЕКП схвалила плани розвитку мереж Закарпаття-, Запоріжжя-, Кіровоград- і Тернопільобленерго. Потенційні напрямки: підстанції, автоматизація, стійкість та приєднання нової генерації."
+      },
+      "admin_check": "Вивчити додатки, CAPEX, закупівлі та часові рамки; не називати плани тендерами.",
+      "source_url": "https://www.nerc.gov.ua/news/03-lystopada-2026-roku-vidbulosia-zasidannia-nkrekp",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W45-04",
+      "category": "INDUSTRY",
+      "title": {
+        "ua": "Інвестиційні програми ДТЕК Одеські електромережі та Львівобленерго"
+      },
+      "summary": {
+        "ua": "3 листопада НКРЕКП схвалила зміни до інвестиційних програм обох операторів на 2026 рік."
+      },
+      "admin_check": "Перевірити перелік проєктів і тендери; відділити затвердження програми від закупівлі.",
+      "source_url": "https://www.nerc.gov.ua/news/03-lystopada-2026-roku-vidbulosia-zasidannia-nkrekp",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W45-05",
+      "category": "FINANCE",
+      "title": {
+        "ua": "Проєкти тарифів Укренерго на 2027 рік: вплив на EPC+F"
+      },
+      "summary": {
+        "ua": "3 листопада регулятор схвалив проєкти тарифів на передачу та диспетчеризацію на 2027 рік. Це проєкти, а не остаточно встановлені тарифи. У фінансових моделях CHP/BESS потрібен сценарний аналіз."
+      },
+      "admin_check": "Отримати числові значення проєктів, дату остаточного рішення та перевірити вплив на netback.",
+      "source_url": "https://www.nerc.gov.ua/news/03-lystopada-2026-roku-vidbulosia-zasidannia-nkrekp",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W45-06",
+      "category": "REGULATION",
+      "title": {
+        "ua": "НКРЕКП змінила методику тарифів на тепло ТЕЦ і КГУ"
+      },
+      "summary": {
+        "ua": "3 листопада прийнято зміни до методики формування, розрахунку і встановлення тарифів на теплову енергію ТЕЦ, ТЕС та когенераційних установок."
+      },
+      "admin_check": "Зіставити текст постанови з попередньою редакцією, визначити дату чинності й застосовність до промислових КГУ.",
+      "source_url": "https://www.nerc.gov.ua/news/03-lystopada-2026-roku-vidbulosia-zasidannia-nkrekp",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W45-07",
+      "category": "REGULATION",
+      "title": {
+        "ua": "Нові правила балансуючої потужності — поки проєкт"
+      },
+      "summary": {
+        "ua": "3 листопада НКРЕКП схвалила до оприлюднення проєкт змін Правил ринку щодо термінології та договору на послуги балансуючої потужності."
+      },
+      "admin_check": "Не подавати як чинне право; перевірити консультаційний строк, остаточний текст та наслідки для CHP+BESS.",
+      "source_url": "https://www.nerc.gov.ua/news/03-lystopada-2026-roku-vidbulosia-zasidannia-nkrekp",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W45-08",
+      "category": "REGULATION",
+      "title": {
+        "ua": "Тарифи на тепло КГУ: Вінницяоблтеплоенерго та Укрпалет Енерджі"
+      },
+      "summary": {
+        "ua": "3 листопада регулятор схвалив проєкти рішень щодо тарифів на виробництво тепла когенераційними установками за спрощеним порядком."
+      },
+      "admin_check": "Перевірити фактичні ставки і статус проєктів; оцінити методичний прецедент для IIG.",
+      "source_url": "https://www.nerc.gov.ua/news/03-lystopada-2026-roku-vidbulosia-zasidannia-nkrekp",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W45-09",
+      "category": "ADVICE",
+      "title": {
+        "ua": "Резервування промислової електромережі після повторних пошкоджень"
+      },
+      "summary": {
+        "ua": "Концепція: порівняння N-1 і N-2, селективність захистів, секціонування шин, АВР, black-start, CHP+BESS, критичні навантаження та тестування острова."
+      },
+      "admin_check": "Створити індивідуальну концептуальну схему, перевірити інженером і права на зображення.",
+      "source_url": "https://www.reuters.com/world/russian-attacks-hit-energy-facilities-ukraines-odesa-zhytomyr-regions-2026-11-03/",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NEEDS_CUSTOM_SCHEMATIC"
+    },
+    {
+      "id": "IIG-2026-W45-10",
+      "category": "ADVICE",
+      "title": {
+        "ua": "Як враховувати зміну тарифів передачі у моделі CHP+BESS"
+      },
+      "summary": {
+        "ua": "Концепція: модель 11 місяців роботи, енергобаланс, власне споживання, передача/диспетчеризація, ancillary services, чутливість DSCR і IRR до тарифних сценаріїв."
+      },
+      "admin_check": "Зробити окрему концептуальну схему та перевірити економічні припущення.",
+      "source_url": "https://www.nerc.gov.ua/news/03-lystopada-2026-roku-vidbulosia-zasidannia-nkrekp",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NEEDS_CUSTOM_SCHEMATIC"
+    },
+    {
+      "id": "IIG-2026-W45-11",
+      "category": "ADVICE",
+      "title": {
+        "ua": "Тарифна модель промислової когенерації: тепло для власних потреб чи продаж"
+      },
+      "summary": {
+        "ua": "Концепція: розділити технічну теплову утилізацію, продаж тепла, регульований тариф і випадки без комерційного відпуску тепла; не зараховувати невикористане тепло до виручки."
+      },
+      "admin_check": "Створити технологічну схему КГУ та юридично перевірити застосування тарифної методики.",
+      "source_url": "https://www.nerc.gov.ua/news/03-lystopada-2026-roku-vidbulosia-zasidannia-nkrekp",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NEEDS_CUSTOM_SCHEMATIC"
+    }
+  ]
+}
