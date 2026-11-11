@@ -94,6 +94,15 @@ HTML и assets до публикации **не** выкладываются в 
 - Gate before patch: получить полный исходник одного сохранённого `cover.html` (3461 байт) и связанный манифест/данные обложки, чтобы не придумать KPI и не нарушить source-of-truth; затем backup, guard checks, syntax, staging rendering, визуальный HTML/PDF QA. REV 26/27 immutable; публикация и рассылка запрещены до `COVER_GREEN`.
 - `COVER_COMPARISON_COMPLETE`; `COVER_GREEN=NO`.
 
+### HR-03C.3. SAVED COVER SOURCE EXTRACTION — 2026-11-11
+По предоставленному скриншоту `SOURCE EXTRACTION COMPLETE` установлено:
+- Сохранённый `working-pages/cover-*/cover.html` — самостоятельный A4 HTML с `.page{width:210mm;height:297mm}`, фоновым `assets/cover.jpg`, красным `.issue`, блоком `.announcements` и двумя CTA.
+- CSS сохранённой обложки: `.heading h1{font-size:48px}`, `.heading h2{font-size:24px}`, `.issue{background:#ec4144;font-size:17px}`, `.announcements{grid-template-columns:1fr}`, `.announcement{font-size:14px;background:#103c66ca}`, `.kpis{...}`, `.cta a{...background:#ef383f}`, последний CTA оранжевый `#f47c2a`.
+- В видимом сохранённом HTML **нет разметки KPI**, хотя CSS для `.kpis` присутствует; показанный эталон ADMIN_2 ранее содержал 4 KPI (50, 24, 13, 13). Следовательно, сохранённый `cover.html` **ещё не является полным WYSIWYG эталоном**.
+- Требуется исправить/согласовать оба пути: генератор сохранённого Working Cover и `digest-html-renderer-v1.mjs`. Значения KPI брать из данных выпуска, не хардкодить 50/24/13/13 на все выпуски. Для новых выпусков нельзя придумывать показатели.
+- Следующий gate: установить файлы и функции, генерирующие Working Cover и KPI в ADMIN_2, затем подготовить единый guarded patch с backup, syntax check и тестовой сборкой без изменения REV 26/27.
+- Статус: `SOURCE_EXTRACTION_COMPLETE`; `CANONICAL_WYSIWYG_MISMATCH_CONFIRMED`; `COVER_GREEN=NO`.
+
 ## HR-04. Обязательное содержание
 Page 1 = фактически сохранённое изображение и тексты cover-working.json (месяц/год, title, subtitle, slogan, 4 анонса, KPI, 2 CTA).  
 Page 2 = одобренные NEWS Ukraine/World/Event из отредактированного snapshot с category/tag/order/individual URL.  
