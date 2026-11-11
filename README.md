@@ -1,6 +1,12 @@
 # IIG_PLATFORM_DEMO
 Public demo of the IIG Industrial Energy Intelligence Platform
 
+## HARD RULE — IIG Digest, optional pages 4–5
+- Approved protocol: [`docs/protocols/IIG_DIGEST_PAGES_4_5_HARD_RULE.md`](docs/protocols/IIG_DIGEST_PAGES_4_5_HARD_RULE.md).
+- Pages 4–5 may contain IIG ORIGINAL, PARTNER, SPONSORED, MARKETPLACE, or mixed materials; **IIG MARKET content is not a prerequisite**.
+- When no additional materials exist, the valid digest is **3 pages**. ADMIN_2 controls final ordering and exclusion; no auto-import may override manual edits.
+- The protocol documents a requirement; deployment and runtime enforcement must be verified separately.
+
 ## HARD RULE — IIG visual identity
 - MASTER visual reference: `digest/2026-09-review.html` / approved MASTER V11 Digest composition.
 - Website surfaces must inherit the Digest visual language: IIG navy/blue system, white content surfaces, restrained red CTA/accent where applicable, Calibri/Carlito typography, compact editorial grids, aligned rows/cards, and industrial-energy photography.
