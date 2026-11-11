@@ -86,6 +86,14 @@ HTML и assets до публикации **не** выкладываются в 
 - Равный размер и видимый текст **не доказывают** побайтовую идентичность, визуальное соответствие или использование конкретного `cover.html` итоговым renderer. Следующий gate: SHA256 трёх файлов, source wiring между Working Cover и HTML renderer, после чего отдельное контролируемое исправление с backup и визуальной QA.
 - Статус: `COVER_IDENTITY_AUDIT_COMPLETE`; `COVER_RENDER_INTEGRATION_PENDING`; `COVER_GREEN=NO`.
 
+### HR-03C.2. RENDERER COVER COMPARISON — 2026-11-11
+Оператор предоставил скриншот результата `COVER COMPARISON COMPLETE`. Подтверждено в `iig-backend/src/digest-html-renderer-v1.mjs`:
+- `renderPage` строки 47–53 создаёт титульную страницу независимо через шаблон `page-cover`; 4 анонса создаются через `list(d?.announcements).slice(0,4)` и `cover-ann`, ссылки CTA — `forms.html#project` и `forms.html#subscribe`.
+- В renderer CSS `.cover-center h1{font-size:44px}`, `.cover-center h2{font-size:23px}`, `.cover-center p{font-size:18px}`; `.cover-announcements` использует `grid-template-columns:1fr 1fr`; `.cover-ann` использует `font-size:12px`. Это расходится с визуальным эталоном ADMIN_2 (крупный заголовок, подзаголовок, красный месяц/год, четыре крупные строки анонсов, KPI и две CTA).
+- В видимой строке 53 нет отдельного красного блока месяца/года и KPI; это не исключает иных вставок из данных, но требует source-level интеграции.
+- Gate before patch: получить полный исходник одного сохранённого `cover.html` (3461 байт) и связанный манифест/данные обложки, чтобы не придумать KPI и не нарушить source-of-truth; затем backup, guard checks, syntax, staging rendering, визуальный HTML/PDF QA. REV 26/27 immutable; публикация и рассылка запрещены до `COVER_GREEN`.
+- `COVER_COMPARISON_COMPLETE`; `COVER_GREEN=NO`.
+
 ## HR-04. Обязательное содержание
 Page 1 = фактически сохранённое изображение и тексты cover-working.json (месяц/год, title, subtitle, slogan, 4 анонса, KPI, 2 CTA).  
 Page 2 = одобренные NEWS Ukraine/World/Event из отредактированного snapshot с category/tag/order/individual URL.  
