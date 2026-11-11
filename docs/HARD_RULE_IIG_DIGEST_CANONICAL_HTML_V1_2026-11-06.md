@@ -69,6 +69,15 @@ HTML и assets до публикации **не** выкладываются в 
 10. **GREEN/RED gate.** При одинаковом масштабе сравнить ADMIN_2 Working Cover с Page 1 `digest.html` и Page 1 PDF: заголовок/подзаголовок, красный месяц, слоган, четыре крупные строки, KPI, обе CTA, выбранное фото, затемнение, отступы и прямые ссылки. При несовпадении — `DIGEST_COVER_VISUAL_MISMATCH`, запрет передачи ADMIN_1, PDF/CURRENT/mailing до устранения. Проверить и кликабельность PDF.
 11. **Граница внедрения.** Запись этого HARD RULE в репозиторий **не означает**, что Mirohost runtime уже исправлен. Production patch выполняется отдельно: audit source + Working Cover HTML/CSS/assets → backup → устранение независимой упрощённой титулки → syntax/E2E/visual QA → GREEN. Никаких слепых CSS overrides, не проверенных на реальном сохранённом Working Cover.
 
+## HR-03C. COVER SOURCE AUDIT — контрольная точка 2026-11-11
+**Источник:** предоставленный оператором скриншот SSH/PowerShell с результатом команды COVER SOURCE AUDIT (11.11.2026). **Статус:** факты диагностики подтверждены, runtime fix ещё не выполнен.
+
+- Каталог `/var/www/iigeur/iig-data/digest/cover/working-pages/` содержит как минимум три `cover-*/cover.html`, показанные с временем `2026-11-11 16:04`. Это доказывает существование сохранённых HTML-копий, но **не** устанавливает, какая связана с текущим issue и `cover-working.json`.
+- В `/var/www/iigeur/iig-backend/src/digest-html-renderer-v1.mjs`: строка 43 — `function renderPage(page, idx, coverPath, issue, language)`; строка 53 — самостоятельная строка шаблона HTML `page-cover` с `cover-bg` и `cover-shade`; строка 76 — `bundle.pages.map((p,i)=>renderPage(...))`; строка 78 — собственный CSS шаблона A4.
+- Следовательно, существует отдельный путь рендеринга титульной страницы, который требует сопоставления с сохранённым `cover.html`; **не подтверждено**, что он визуально совпадает с ADMIN_2.
+- Следующий read-only gate: определить активный `cover.html` по metadata/issue, проверить его содержимое и CSS, сопоставить с `renderPage()`; затем отдельный backup + targeted patch + syntax/E2E/visual QA. Не выбирать один из трёх файлов по времени создания, не менять REV 26/27 и не запускать Autoform.
+- Запрещено отмечать `COVER_GREEN` до проверки ADMIN_2 Working Cover = immutable HTML Page 1 = PDF Page 1, включая красный месяц, KPI, анонсы и две CTA.
+
 ## HR-04. Обязательное содержание
 Page 1 = фактически сохранённое изображение и тексты cover-working.json (месяц/год, title, subtitle, slogan, 4 анонса, KPI, 2 CTA).  
 Page 2 = одобренные NEWS Ukraine/World/Event из отредактированного snapshot с category/tag/order/individual URL.  
