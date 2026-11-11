@@ -78,6 +78,14 @@ HTML и assets до публикации **не** выкладываются в 
 - Следующий read-only gate: определить активный `cover.html` по metadata/issue, проверить его содержимое и CSS, сопоставить с `renderPage()`; затем отдельный backup + targeted patch + syntax/E2E/visual QA. Не выбирать один из трёх файлов по времени создания, не менять REV 26/27 и не запускать Autoform.
 - Запрещено отмечать `COVER_GREEN` до проверки ADMIN_2 Working Cover = immutable HTML Page 1 = PDF Page 1, включая красный месяц, KPI, анонсы и две CTA.
 
+### HR-03C.1. SAVED COVER IDENTITY AUDIT — 2026-11-11
+По скриншоту SSH-диагностики оператора (COVER IDENTITY AUDIT COMPLETE):
+- Обнаружены три `working-pages/cover-*/cover.html`, каждый `3461` байт. Текстовое содержимое каждого включает `IIG MONTHLY DIGEST`, `ПРОМИСЛОВОЇ ЕНЕРГЕТИКИ`, `ВЕРЕСЕНЬ 2026`, слоган, четыре анонса и две CTA.
+- Ссылки CTA в трёх файлах: `https://iig-eu.com/forms.html#project` и `https://iig-eu.com/forms.html#subscribe`.
+- В метаданных фона есть `file=cover-working-75273698-cc68-430a-b067-8d3ab9a87ff4.jpg` и оригинальный PNG; метаданные не связывают явно конкретный `cover.html` с REV 27.
+- Равный размер и видимый текст **не доказывают** побайтовую идентичность, визуальное соответствие или использование конкретного `cover.html` итоговым renderer. Следующий gate: SHA256 трёх файлов, source wiring между Working Cover и HTML renderer, после чего отдельное контролируемое исправление с backup и визуальной QA.
+- Статус: `COVER_IDENTITY_AUDIT_COMPLETE`; `COVER_RENDER_INTEGRATION_PENDING`; `COVER_GREEN=NO`.
+
 ## HR-04. Обязательное содержание
 Page 1 = фактически сохранённое изображение и тексты cover-working.json (месяц/год, title, subtitle, slogan, 4 анонса, KPI, 2 CTA).  
 Page 2 = одобренные NEWS Ukraine/World/Event из отредактированного snapshot с category/tag/order/individual URL.  
