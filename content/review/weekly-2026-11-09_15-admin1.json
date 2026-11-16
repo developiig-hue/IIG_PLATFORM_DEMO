@@ -1,0 +1,234 @@
+{
+  "issue": "IIG Weekly News Refresh — 2026-11-09_15",
+  "period_start": "2026-11-09",
+  "period_end": "2026-11-15",
+  "generated_at": "2026-11-16",
+  "workflow": "ADMIN_1_REVIEW_ONLY",
+  "publication": false,
+  "digest": false,
+  "mailing": false,
+  "source_coverage": "Targeted verification of Energy Community Secretariat and NEURC official primary sources; not a full 260-source crawler sweep.",
+  "preservation": "No modifications to public-news.json, public-advice.json or browser Approval Ledger; prior approvals preserved.",
+  "items": [
+    {
+      "id": "IIG-2026-W46-01",
+      "category": "FINANCE",
+      "publication_date": "2026-11-10",
+      "title": {
+        "ua": "Norway-funded €2m de-risking pilot selects two decentralised power projects"
+      },
+      "summary": {
+        "ua": "12 November: Rengy Starokostiantyniv LLC and Acumen LLC selected for pilot. Partial commercial-loan guarantee plus physical protection; selection is not an open funding call."
+      },
+      "source_url": "https://www.energy-community.org/news/Energy-Community-News/2026/11/12.html",
+      "admin_check": "Verify pilot guarantee share, lender eligibility, future application window; do not imply IIG projects are eligible.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "PRIMARY_SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W46-02",
+      "category": "FINANCE",
+      "publication_date": "2026-11-10",
+      "title": {
+        "ua": "Ukraine Energy Support Fund: October equipment procurement nearly €200m"
+      },
+      "summary": {
+        "ua": "10 November: 90 October contracts almost €200m; 40 donors pledged >€2.41bn and >1,700 contracts worth >€1.33bn. Procurement, not an ECA buyer-credit facility."
+      },
+      "source_url": "https://www.energy-community.org/news/Energy-Community-News/2026/11/10a.html",
+      "admin_check": "Check current UESF tenders and supplier registration; avoid double-counting 6 November announcement.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "PRIMARY_SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W46-03",
+      "category": "NEWS",
+      "publication_date": "2026-11-10",
+      "title": {
+        "ua": "G7+ and Rebuild Ukraine: suppliers mobilised for Ukrainian energy restoration"
+      },
+      "summary": {
+        "ua": "13 November: Energy Community Secretariat reports donor and supplier mobilisation at Warsaw events 12–13 November; procurement remains the actionable channel."
+      },
+      "source_url": "https://www.energy-community.org/news/Energy-Community-News/2026/11/13.html",
+      "admin_check": "Identify specific procurement notices rather than treating conference statements as EPC awards.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "PRIMARY_SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W46-04",
+      "category": "NEWS",
+      "publication_date": "2026-11-10",
+      "title": {
+        "ua": "Malta joins Ukraine Energy Support Fund"
+      },
+      "summary": {
+        "ua": "10 November: Malta deposited €50,000; the Fund reports more than €811.3m of delivered goods and services. Incremental donor participation, not new €811m funding."
+      },
+      "source_url": "https://www.energy-community.org/news/Energy-Community-News/2026/11/10.html",
+      "admin_check": "Verify the distinction between cumulative deliveries, commitments and new contribution.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "PRIMARY_SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W46-05",
+      "category": "REGULATION",
+      "publication_date": "2026-11-10",
+      "title": {
+        "ua": "NEURC Resolution 1836 amends the Transmission System Code"
+      },
+      "summary": {
+        "ua": "10 November: regulator adopted Resolution No. 1836 amending the Transmission System Code. Project-level impact depends on exact annex provisions."
+      },
+      "source_url": "https://www.nerc.gov.ua/acts/pro-zatverdzhennia-zmin-do-kodeksu-systemy-peredachi-3",
+      "admin_check": "Legal review of full annex and effective date required before citing specific grid-connection consequences.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "PRIMARY_SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W46-06",
+      "category": "REGULATION",
+      "publication_date": "2026-11-10",
+      "title": {
+        "ua": "NEURC Resolutions 1837–1838 revise connection-fee methodology"
+      },
+      "summary": {
+        "ua": "10 November decision register lists two amendments to methodology for connection charges to transmission and distribution systems."
+      },
+      "source_url": "https://www.nerc.gov.ua/decisions/rishennia-nkrekp-za-10-lystopada-2026-roku",
+      "admin_check": "Read both resolution texts, effective dates and transitional rules; no tariff claim before verification.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "PRIMARY_SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W46-07",
+      "category": "REGULATION",
+      "publication_date": "2026-11-10",
+      "title": {
+        "ua": "Energy Community Q3 Observatory: EU market coupling and regulator independence"
+      },
+      "summary": {
+        "ua": "10 November: report highlights NEMO appointment, EU-aligned renewable rules and first-reading regulator-independence bill; these are Q3 developments reported this week, not newly enacted laws."
+      },
+      "source_url": "https://www.energy-community.org/news/Energy-Community-News/2026/11/10b.html",
+      "admin_check": "Separate already enacted decisions from first-reading legislation; confirm implications for DAM/IDM revenues.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "PRIMARY_SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W46-08",
+      "category": "INDUSTRY",
+      "publication_date": "2026-11-10",
+      "title": {
+        "ua": "Ukraine Energy Support Fund supplier workshop in Warsaw"
+      },
+      "summary": {
+        "ua": "12 November supplier workshop explained procurement opportunities; October saw 90 contracts. IIG may assess eligibility for transformer, CHP auxiliary and balance-of-plant supplies."
+      },
+      "source_url": "https://www.energy-community.org/news/Energy-Community-News/2026/11/10a.html",
+      "admin_check": "Obtain tender portal instructions and identify eligible OEM/product lots; event already concluded.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "NEEDS_SELECTION_AND_RIGHTS_CHECK",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "PRIMARY_SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "IIG-2026-W46-09",
+      "category": "CHIEF_ENGINEER_ADVICE",
+      "publication_date": "2026-11-16",
+      "title": {
+        "ua": "How to specify war-risk protection for distributed CHP/BESS"
+      },
+      "summary": {
+        "ua": "Engineering guidance derived from 12 November de-risking pilot: define protection scope, physical separation, fire safety, N-1 auxiliaries, island-mode and insurer/lender acceptance."
+      },
+      "source_url": "https://www.energy-community.org/news/Energy-Community-News/2026/11/12.html",
+      "admin_check": "Technical draft, not an announced regulation; create unique conceptual single-line/protection schematic and have qualified engineer review.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "CONCEPTUAL_SCHEMATIC_REQUIRED",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "PRIMARY_SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "REQUIRED_NOT_CREATED"
+    },
+    {
+      "id": "IIG-2026-W46-10",
+      "category": "CHIEF_ENGINEER_ADVICE",
+      "publication_date": "2026-11-16",
+      "title": {
+        "ua": "Grid connection fee change-control before fixed-price EPC"
+      },
+      "summary": {
+        "ua": "Engineering guidance based on NEURC 10 November decisions: baseline technical conditions, import/export MW, connection point, grid studies, fee methodology and change-order triggers."
+      },
+      "source_url": "https://www.nerc.gov.ua/decisions/rishennia-nkrekp-za-10-lystopada-2026-roku",
+      "admin_check": "Check actual text of 1837/1838 and effective dates; prepare unique connection-boundary conceptual schematic.",
+      "status": "REVIEW",
+      "admin_approved": false,
+      "image_admin_approved": false,
+      "rights_verified": false,
+      "publication_enabled": false,
+      "photo_status": "CONCEPTUAL_SCHEMATIC_REQUIRED",
+      "text_status": "DRAFT_NEEDS_ADMIN_REVIEW",
+      "fact_status": "PRIMARY_SOURCE_CHECKED_NEEDS_ADMIN_REVIEW",
+      "diagram_status": "REQUIRED_NOT_CREATED"
+    }
+  ]
+}
